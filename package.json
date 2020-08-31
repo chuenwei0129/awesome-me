@@ -5,13 +5,15 @@
 	"main": "index.js",
 	"dependencies": {},
 	"devDependencies": {
+		"html-webpack-plugin": "^4.4.1",
 		"webpack": "^4.44.1",
 		"webpack-cli": "^3.3.12",
 		"webpack-dev-server": "^3.11.0"
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"build": "webpack --config webpack.conf.js"
+		"build": "webpack --config webpack.conf.js",
+		"dev": "webpack-dev-server --config webpack.conf.js"
 	},
 	"repository": {
 		"type": "git",
