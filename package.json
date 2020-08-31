@@ -1,23 +1,26 @@
 {
-  "name": "webpack_learn_repo",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "webpack": "^4.44.1"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chuenwei0129/webpack_learn_repo.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/chuenwei0129/webpack_learn_repo/issues"
-  },
-  "homepage": "https://github.com/chuenwei0129/webpack_learn_repo#readme"
+	"name": "webpack_learn_repo",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"dependencies": {},
+	"devDependencies": {
+		"webpack": "^4.44.1",
+		"webpack-cli": "^3.3.12",
+		"webpack-dev-server": "^3.11.0"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "webpack --config webpack.conf.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/chuenwei0129/webpack_learn_repo.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/chuenwei0129/webpack_learn_repo/issues"
+	},
+	"homepage": "https://github.com/chuenwei0129/webpack_learn_repo#readme"
 }
