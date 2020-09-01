@@ -22,6 +22,14 @@
 		"build": "webpack --config webpack.conf.js",
 		"dev": "webpack-dev-server --config webpack.conf.js"
 	},
+	"browserslist": {
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version",
+			"last 1 ie version"
+		]
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/chuenwei0129/webpack_learn_repo.git"

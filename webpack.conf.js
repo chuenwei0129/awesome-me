@@ -4,10 +4,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
 	mode: 'production',
-	// devServer: {
-	// 	port: 9000,
-	// 	contentBase: './dist',
-	// },
+	devServer: {
+		port: 3000,
+		contentBase: './dist',
+	},
 	entry: './src/index.js',
 	output: {
 		filename: 'bundle.js',
@@ -24,7 +24,17 @@ module.exports = {
 	],
 	module: {
 		rules: [
-			{ test: /\.css$/, use: ['style-loader', 'css-loader'] },
+			{
+				test: /.js$/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: ['stage-0', 'react'],
+						plugins: [],
+					},
+				},
+			},
+			{ test: /\.css$/, use: [MiniCssExtractPlugin.loader, 'css-loader'] },
 			{
 				test: /\.(sass|scss)$/,
 				use: [
