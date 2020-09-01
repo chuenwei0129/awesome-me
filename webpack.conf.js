@@ -2,7 +2,7 @@ const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-	mode: 'development',
+	mode: 'production',
 	devServer: {
 		contentBase: './dist',
 		port: 3000,
@@ -19,10 +19,13 @@ module.exports = {
 			title: 'Title',
 			template: './src/index.html',
 			filename: 'index.html',
-			minify: {
-				collapseWhitespace: true,
-			},
+			// minify: {
+			// 	collapseWhitespace: true,
+			// },
 			hash: true,
 		}),
 	],
+	module: {
+		rules: [{ test: /\.css$/, use: ['style-loader', 'css-loader'] }],
+	},
 }

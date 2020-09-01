@@ -20,7 +20,7 @@ webpack --config xxxx
 
 开发服务：npm i webpack-dev-server -D
 
-打包到内存中
+打包到内存中，并起个服务
 npx webpack-dev-server --config webpack.conf.js
 
     devServer: {
@@ -53,3 +53,20 @@ hash: true
 
 bundle.[hash:8],js
 hash 长度
+
+样式处理
+style-loader
+插件作用是可以把 css 插入 head
+css-loader
+处理@import 语法
+加前缀
+需要 postcss.config.js
+autoprefixer
+postcss-loader
+处理预处理器
+sass-loader
+node-sass
+压缩 css 插件
+loader 从下往上执行
+
+通过向 npm run build 命令和你的参数之间添加两个中横线，可以将自定义参数传递给 webpack，例如：npm run build -- --colors ？
