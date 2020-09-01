@@ -70,3 +70,27 @@ node-sass
 loader 从下往上执行
 
 通过向 npm run build 命令和你的参数之间添加两个中横线，可以将自定义参数传递给 webpack，例如：npm run build -- --colors ？
+
+文档
+内置插件
+new webpack.optimize.UglifyJsPlugin(),
+
+loader 三种用法
+
+模式： development
+会将 process.env.NODE_ENV 的值设为 development。启用 NamedChunksPlugin 和 NamedModulesPlugin。
+production
+会将 process.env.NODE_ENV 的值设为 production。启用 FlagDependencyUsagePlugin, FlagIncludedChunksPlugin, ModuleConcatenationPlugin, NoEmitOnErrorsPlugin, OccurrenceOrderPlugin, SideEffectsFlagPlugin 和 UglifyJsPlugin.
+
+loader 处理 import require
+module.exports = {
+plugins: [require('autoprefixer')],
+}
+
+'css-loader',
+{
+loader: 'postcss-loader',
+options: { sourceMap: true },
+},
+
+在 css 之前处理
