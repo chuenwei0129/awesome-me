@@ -3,7 +3,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-	mode: 'production',
+	mode: 'development',
 	devServer: {
 		port: 3000,
 		contentBase: './dist',
@@ -24,13 +24,29 @@ module.exports = {
 	],
 	module: {
 		rules: [
+			// {
+			// 	test: /.js$/,
+			// 	use: {
+			// 		loader: 'eslint-loader',
+			// 		enforce: 'pre',
+			// 	},
+			// },
 			{
 				test: /.js$/,
+				exclude: /node_modules/,
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: ['stage-0', 'react'],
-						plugins: [],
+						presets: ['@babel/preset-env'],
+						plugins: [
+							'@babel/plugin-proposal-class-properties',
+							[
+								'@babel/plugin-transform-runtime',
+								{
+									corejs: 3,
+								},
+							],
+						],
 					},
 				},
 			},

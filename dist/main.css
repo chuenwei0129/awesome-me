@@ -2,5 +2,9 @@ h1 {
 	color: yellowgreen;
 }
 
-body{background-color:aqua}h1{transform:rotate(45deg)}
+body {
+  background-color: aqua; }
+
+h1 {
+  transform: rotate(45deg); }
 

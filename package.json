@@ -3,10 +3,21 @@
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
-	"dependencies": {},
+	"dependencies": {
+		"@babel/polyfill": "^7.11.5",
+		"@babel/runtime": "^7.11.2",
+		"@babel/runtime-corejs3": "^7.11.2"
+	},
 	"devDependencies": {
+		"@babel/core": "^7.11.5",
+		"@babel/plugin-proposal-class-properties": "^7.10.4",
+		"@babel/plugin-transform-runtime": "^7.11.5",
+		"@babel/preset-env": "^7.11.5",
 		"autoprefixer": "^9.8.6",
+		"babel-loader": "^8.1.0",
 		"css-loader": "^4.2.2",
+		"eslint": "^7.8.1",
+		"eslint-loader": "^4.0.2",
 		"html-webpack-plugin": "^4.4.1",
 		"mini-css-extract-plugin": "^0.11.0",
 		"node-sass": "^4.14.1",
@@ -21,14 +32,6 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "webpack --config webpack.conf.js",
 		"dev": "webpack-dev-server --config webpack.conf.js"
-	},
-	"browserslist": {
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version",
-			"last 1 ie version"
-		]
 	},
 	"repository": {
 		"type": "git",
