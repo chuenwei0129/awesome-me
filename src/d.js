@@ -1,5 +1,3 @@
-const str = 'hello vue'
+const str = "hello vue";
 
-export default {
-	str,
-}
+export default {str};

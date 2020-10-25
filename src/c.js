@@ -1,3 +1,5 @@
-export function* gen() {
-	console.log('hello world')
+export function *gen () {
+
+    console.log("hello world");
+
 }
