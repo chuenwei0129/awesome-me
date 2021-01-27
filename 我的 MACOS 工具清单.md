@@ -8,7 +8,7 @@
 
 - 🖥 [官网](https://telegram.org/)
 
-Telegram 客户端汉化
+客户端汉化
 
 1. 点击 https://t.me/setlanguage/classic-zh-cn
 
@@ -16,7 +16,7 @@ Telegram 客户端汉化
 
 3. 重启即可完成汉化操作
 
-Telegram iOS 官方原生客户端进入 Apple 限制群（开车群）的方法
+iOS 官方原生客户端进入 Apple 限制群（开车群）的方法
 
 - Windows 电脑桌面客户端：左上角三短线：设置 → 隐私 → 开启"显示含有敏感内容的媒体"
 
@@ -26,26 +26,27 @@ Telegram iOS 官方原生客户端进入 Apple 限制群（开车群）的方法
 
 频道或群组分享
 
-- [中文频道大全-TG上的好123](https://t.me/hao123bots)
+- [中文频道大全-TG 上的好 123](https://t.me/hao123bots)
 
 - [TGCN-群组索引计划](https://t.me/zh_groups_bot)
 
 - [百度云网盘 SVIP 合租](https://t.me/baiduyunm)
 
-- [JIKE社区](https://t.me/jikeinfo)
+- [JIKE 社区](https://t.me/jikeinfo)
 
-- [Newlearnerの自留地](https://t.me/NewlearnerChannel)
+- [Newlearner の自留地](https://t.me/NewlearnerChannel)
 
-- [4K影视资源分享](https://t.me/Remux_2160P)
+- [4K 影视资源分享](https://t.me/Remux_2160P)
 
+<!-- #### Telegram：跨平台的即时通信软件
 
+- 🖥 [官网](https://telegram.org/) -->
 
-<!-- #### **Downie 4**
+#### Downie 4：优秀的网页在线视频下载工具
 
-- 🖥 [官网](https://mediaatelier.com/CheatSheet/)
+- 🖥 [官网](https://software.charliemonroe.net/downie/)
 
-Downie 4：优秀的网页在线视频下载工具
-支持包括爱奇艺、优酷、土豆、腾讯视频、网易云音乐、哔哩哔哩 Bilibili 等国内外 10000 多个在线视频网站的视频下载，特点是下载成功率很高 -->
+支持包括爱奇艺、优酷、土豆、腾讯视频、网易云音乐、哔哩哔哩 Bilibili 等国内外 10000 多个在线视频网站的视频下载，特点是下载成功率很高
 
 #### 开源软件
 
@@ -68,9 +69,112 @@ Downie 4：优秀的网页在线视频下载工具
 
 control option 空格 表情
 强制退出 option commond esc
-
+commod + k
 
 ### iterm2
+
+安装字体 Nerd Fonts
+上文我们已经安装了 PowerFonts，如果需要使用一些图标，这个字体是不够用的，我们需要一个强大的字体： Nerd Fonts，它支持下面这么多种图标：
+
+
+安装
+你可以如官网所说，通过 brew 来安装：
+
+brew tap homebrew/cask-fonts
+brew cask install font-hack-nerd-font
+但是我不建议这样，包括不建议你下载 zip 包，因为这个文件太大了，太大了，太大了。。。
+
+我们可以这样：
+
+打开 https://github.com/ryanoasis/nerd-fonts/releases，滑动页面找到 Assets 区域，如图：
+
+
+我们只要下载箭头所指的 Hack.zip 这个字体包，解压缩之后就会获得一些 ttf 字体文件，双击安装即可。
+
+#### 普通 Window
+
+- 新建 Window：`Command + N`
+- 关闭 Window：`Command + W`
+- 全屏：`Command + Enter`，再按一次还原
+- 展示所有窗口：`Command + Option + E`
+- 关闭窗口：`Command + W`
+
+#### 选项卡 Tab
+
+- 新建标签：`Command + t`
+- 关闭标签：`Command + w`
+- 切换标签：`Command + 数字` 或者 `Command + 左 / 右方向`
+
+#### 窗格 Panes
+
+- 垂直分屏：`Command + d`
+- 水平分屏：`Command + shift + d`
+- 切换窗格：`Command + Option + 方向键` 或者 `Command + 左右中括号`
+
+#### 即时回放
+
+>除了窗口划分，Term2 的另一杀手锏就是回放。不仅可以查看剪切板的历史记录，还能像视频一样回放窗口内的历史记录！
+
+##### 历史剪切板
+
+对于普通文本编辑器来说，每次复制后都会覆盖之前的剪切板，非常不好用。而 iTerm2 提供了和 IDEA 一样查看历史剪切板功能，对于 CV 工程师来说是相当友好了！
+
+快捷键：`Command + Shift + h`
+
+##### 历史命令提示
+
+命令提示，能够提示最近输入的内容，以及常用的命令；需要注意的是，这里仅仅会输入过的内容。
+
+快捷键：`Command + ;`
+
+当然除了历史命令提示之外，也可以使用系统支持的方式来搜索和查看历史命令。
+
+- 上一条命令：`Ctrl + p(previous)` 或 向上方向键
+- 下一条命令： `Ctrl + n(next)` 或 向下方向键
+- 搜索历史命令：`ctrl + r`
+
+##### 即时回放
+
+非常有意思的功能，像录屏一样，记录过去一段时间内窗口显示的内容。
+
+快捷键：`Command + Option + b`
+
+前进/后退：左右箭头/鼠标拖动进度条
+
+退出回放：`esc`
+
+#### 快捷功能
+
+##### 智能复制
+
+在 item 中选中即复制，被选择的文本会自动保存在剪切板中。**双击选中**，**三击选中整行**，四击智能选择，可以智能的选中你想要的数据，如网址，邮箱，括号或引号中的数据等。
+
+同样也支持快速粘贴，鼠标选中复制后，可以通过鼠标中键或者 `Command + v` 进行粘贴。同时，选中后也可以通过拖拽实现快速的复制和粘贴。
+
+使用 `Command + f` 即可完成搜索，搜索后，通过 `Tab` 或者 `Tab + Shift` 可向右或向左扩大选中范围，完成复制。
+
+##### 妙用 Command
+
+`Command` 既可以和其他按键组合成快捷键，也可以搭配鼠标实现一些快捷功能。只需要按下 `Command` 在搭配一下操作即可。
+
+- 点击 url，调用默认浏览器访问该网址
+- 点击文件，调用默认程序打开文件。如果选中的是文件名:数字，且默认文本编辑器是 `Vim` 将会直接打开到这一行。
+- 点击文件夹，在 `Finder` 中打开该文件夹
+- 配合 `Option` 键，使用鼠标可以选择矩形区域内容
+
+#### 常用快捷键
+
+这些快捷键并非 iTem2 特有，也是非常基础的快捷键。当然最重要的是它们非常实用，几乎每天都会用到。
+
+- 清屏：`Command + r` 或者 `ctrl + l`
+- 清除当前行：`ctrl + u`
+- 删除当前光标的字符：`ctrl + d`
+- 删除光标之前的字符：`ctrl + h`
+- 删除光标之前的单词：`ctrl + w`
+- 删除到文本末尾：`ctrl + k`
+- 交换光标处文本：`ctrl + t`
+- 光标移动导行首：`Ctrl + a`
+- 光标移动到行位：`Ctrl + e`
 
 
 ### chrome 插件
@@ -99,7 +203,7 @@ control option 空格 表情
 
 [Search by Image](https://chrome.google.com/webstore/detail/search-by-image/cnojnbdhbhnkbcieeekonklommdnndci)：图像搜索工具，支持各种搜索引擎
 
-[哔哩哔哩助手](https://chrome.google.com/webstore/detail/%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9%E5%8A%A9%E6%89%8B%EF%BC%9Abilibilicom-%E7%BB%BC%E5%90%88%E8%BE%85%E5%8A%A9%E6%89%A9%E5%B1%95/kpbnombpnpcffllnianjibmpadjolanh)：助你快速成为B站老司机
+[哔哩哔哩助手](https://chrome.google.com/webstore/detail/%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9%E5%8A%A9%E6%89%8B%EF%BC%9Abilibilicom-%E7%BB%BC%E5%90%88%E8%BE%85%E5%8A%A9%E6%89%A9%E5%B1%95/kpbnombpnpcffllnianjibmpadjolanh)：助你快速成为 B 站老司机
 
 [Wappalyzer](https://chrome.google.com/webstore/detail/wappalyzer/gppongmhjkpfnbhagpmjfkannfbllamg)：一键分析网站技术栈
 
@@ -111,10 +215,10 @@ control option 空格 表情
 
 [Downie](https://github.com/charlieMonroe/DownieExtensions)：在浏览器中打开 downie 链接
 
-[扩展管理器](https://chrome.google.com/webstore/detail/extension-manager/gjldcdngmdknpinoemndlidpcabkggco)： 管理你的Chrome扩展
+[扩展管理器](https://chrome.google.com/webstore/detail/extension-manager/gjldcdngmdknpinoemndlidpcabkggco)： 管理你的 Chrome 扩展
 
 [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)：油猴脚本，给浏览器开个挂！
- 
+
 ### 油猴脚本
 
 > 使用自定义网站脚本的插件，可以使用各种 **user.js** 脚本，相当于小型的插件管理器，下面是我常用的脚本，其他用途的脚本请自行探索 [Greasy Fork](https://greasyfork.org/zh-CN)、[Sleazy Fork](https://sleazyfork.org/zh-CN)、[OpenUserJS](https://openuserjs.org/)
@@ -133,10 +237,13 @@ control option 空格 表情
 
 [拒绝二维码登陆](https://greasyfork.org/zh-CN/scripts/27183-%E6%8B%92%E7%BB%9D%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%99%BB%E5%BD%95-%E6%B7%98%E5%AE%9D-%E4%BA%AC%E4%B8%9C%E7%AD%89%E7%BD%91%E7%AB%99%E9%BB%98%E8%AE%A4%E5%87%BA%E7%8E%B0%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2)：淘宝、京东、阿里云等网站默认使用账号密码登录，不出现二维码登录界面
 
-[解除B站区域限制](https://greasyfork.org/zh-CN/scripts/25718-%E8%A7%A3%E9%99%A4b%E7%AB%99%E5%8C%BA%E5%9F%9F%E9%99%90%E5%88%B6)：解除 B站 区域限制; 只对 HTML5 播放器生效
+[解除 B 站区域限制](https://greasyfork.org/zh-CN/scripts/25718-%E8%A7%A3%E9%99%A4b%E7%AB%99%E5%8C%BA%E5%9F%9F%E9%99%90%E5%88%B6)：解除 B 站 区域限制; 只对 HTML5 播放器生效
 
 [HTML5 视频截图器](https://greasyfork.org/zh-CN/scripts/370819-html5%E8%A7%86%E9%A2%91%E6%88%AA%E5%9B%BE%E5%99%A8)：基于 HTML5 的简单原生视频截图，可控制快进/逐帧/视频调速，支持自定义快捷键
 
 ### 网站导航
 
 [图片无损放大 - waifu2x](http://waifu2x.udp.jp/index.zh-CN.html)
+[极简插件](https://chrome.zzzmh.cn/index#index)
+
+f4cb467751c138b0d21a2501314ade4a6239a78f
