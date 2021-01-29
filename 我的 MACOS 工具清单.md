@@ -245,5 +245,3 @@ brew cask install font-hack-nerd-font
 
 [图片无损放大 - waifu2x](http://waifu2x.udp.jp/index.zh-CN.html)
 [极简插件](https://chrome.zzzmh.cn/index#index)
-
-f4cb467751c138b0d21a2501314ade4a6239a78f
