@@ -28,10 +28,6 @@ iOS 官方原生客户端进入 Apple 限制群（开车群）的方法
 
 - [中文频道大全-TG 上的好 123](https://t.me/hao123bots)
 
-- [TGCN-群组索引计划](https://t.me/zh_groups_bot)
-
-- [百度云网盘 SVIP 合租](https://t.me/baiduyunm)
-
 - [JIKE 社区](https://t.me/jikeinfo)
 
 - [Newlearner の自留地](https://t.me/NewlearnerChannel)
@@ -245,3 +241,20 @@ brew cask install font-hack-nerd-font
 
 [图片无损放大 - waifu2x](http://waifu2x.udp.jp/index.zh-CN.html)
 [极简插件](https://chrome.zzzmh.cn/index#index)
+
+
+### vscode插件
+
+[Auto Close Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag)
+
+From VS Code 1.16, it has built-in close tag support for HTML, Handlebars and Razor files. This extension is enabled for other languages like XML, PHP, Vue, JavaScript, TypeScript, JSX, TSX and so on. It is configurable.
+
+[Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag)
+
+From 1.44, VS Code offers the built-in Rename On Type support for HTML and Handlebars that can be enabled with the setting editor.renameOnType. If this setting is enabled, this extension will skip HTML and Handlebars files regardless of the languages listed in auto-rename-tag.activationOnLanguage
+
+https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2&ssr=false#overview
+
+https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner
+
+https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
