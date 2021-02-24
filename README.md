@@ -8,6 +8,6 @@
 
 ### JavaScript 基础
 
-- `[基础]` [JavaScript 基础知识梳理(一)]()
+- `[基础]` [JavaScript 基础知识梳理(一)](js/js_base.md)
 - `[基础]` [JavaScript 基础知识梳理(二)]()
 
