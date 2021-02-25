@@ -1,6 +1,6 @@
 # JavaScript 基础知识梳理(五)<!-- omit in toc -->
 - [声明](#声明)
-- [](#)
+- [解构赋值](#解构赋值)
 
 ## 声明
 
@@ -44,8 +44,50 @@ console.log(foo) // { prop: 123 }
 foo = {} // TypeError: Assignment to constant variable
 ```
 
-## 
+## 解构赋值
 
+> 解构赋值的规则是，只要等号右边的值不是对象或数组，就先将其转为对象。由于`undefined` 和 `null` 无法转为对象，所以对它们进行解构赋值，都会报错。
 
+```js
+let {toString: s} = 123;
+s === Number.prototype.toString // true
 
+let {toString: s} = true;
+s === Boolean.prototype.toString // true
+
+let { prop: x } = undefined; // TypeError
+let { prop: y } = null; // TypeError
+```
+
+- [x] 数组解构
+- 规则：数据结构具有`Iterator 接口`可采用数组形式的解构赋值
+- 形式：`const [x, y] = [1, 2]`
+- 默认：`const [x, y = 2] = [1]`
+- [x] 对象解构
+- 形式：`const { x, y } = { x: 1, y: 2 }`
+- 默认：`const { x, y = 2 } = { x: 1 }`
+- 改名：`const { x, y: z } = { x: 1, y: 2 }`
+- [x] 函数参数解构
+- 数组解构：`function Func([x = 0, y = 1]) {}`
+- 对象解构：`function Func({ x = 0, y = 1 } = {}) {}`
+- [x] 字符串解构：const [a, b, c, d, e] = "hello"
+
+> 应用场景
+
+- 交换变量值：`[x, y] = [y, x]`
+- 返回函数多个值：`const [x, y, z] = Func()`
+- 定义函数参数：`Func([1, 2])`
+- 提取 JSON 数据：`const { name, version } = packageJson`
+- 定义函数参数默认值：`function Func({ x = 1, y = 2 } = {}) {}`
+- 遍历Map结构：`for (let [k, v] of Map) {}`
+- 输入模块指定属性和方法：`const { readFile, writeFile } = require("fs")`
+
+> 重点难点
+
+- 匹配模式：只要等号两边的模式相同，左边的变量就会被赋予对应的值
+- 解构赋值规则：只要等号右边的值不是对象或数组，就先将其转为对象
+- 解构默认值生效条件：属性值严格等于 `undefined`
+- 解构遵循匹配模式
+- 解构不成功时变量的值等于 `undefined`
+- `undefined` 和 `null` 无法转为对象，因此无法进行解构
 
