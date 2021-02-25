@@ -1,23 +1,41 @@
-# JavaScript 基础知识梳理（一）
+# JavaScript 基础知识梳理(一)<!-- omit in toc -->
 
-## 目录
-  - [数据类型](#数据类型)
-  - [类型检测](#类型检测)
-  - [类型转换](#类型转换)
-  - [运算符](#运算符)
-    - [二元运算符 + 连接字符串](#二元运算符--连接字符串)
-    - [数字转化，一元运算符 +](#数字转化一元运算符-)
-    - [比较运算符](#比较运算符)
-    - [原地修改/自增/自减](#原地修改自增自减)
-    - [位运算符](#位运算符)
-    - [逗号运算符](#逗号运算符)
-    - [逻辑运算符](#逻辑运算符)
-      - [或运算寻找第一个真值](#或运算寻找第一个真值)
-      - [与运算寻找第一个假值](#与运算寻找第一个假值)
-      - [感叹符号 ! 表示布尔非运算符。](#感叹符号--表示布尔非运算符)
-    - [空值合并运算符 '??'](#空值合并运算符-)
-    - [运算符优先级](#运算符优先级)
-  - [循环](#循环)
+- [数据类型](#数据类型)
+  - [值类型和引用类型](#值类型和引用类型)
+  - [函数参数按值传递](#函数参数按值传递)
+- [类型检测](#类型检测)
+  - [typeof](#typeof)
+  - [instanceof](#instanceof)
+  - [Object.prototype.toString](#objectprototypetostring)
+  - [isObject](#isobject)
+  - [isEmptyObject](#isemptyobject)
+  - [isInteger](#isinteger)
+  - [isPrime](#isprime)
+  - [`Object.is` / `Array.isArray` / `Number.isInteger` / `isNaN` / `Number.isNaN`](#objectis--arrayisarray--numberisinteger--isnan--numberisnan)
+- [类型转换](#类型转换)
+  - [转换成布尔值](#转换成布尔值)
+  - [转换成数字](#转换成数字)
+  - [转换成字符串](#转换成字符串)
+  - [转换成 JSON](#转换成-json)
+  - [原始类型与实例对象的自动转换](#原始类型与实例对象的自动转换)
+  - [对象转换成原始类型](#对象转换成原始类型)
+  - [面试题：如何让 `if(a == 1 && a == 2 && a == 3)` 条件成立？](#面试题如何让-ifa--1--a--2--a--3-条件成立)
+  - [面试题：为什么 `['1', '2', '3'].map(parseInt)` 返回 `[1,NaN,NaN]` ？](#面试题为什么-1-2-3mapparseint-返回-1nannan-)
+  - [面试题：请实现一个 add 函数，满足以下功能。](#面试题请实现一个-add-函数满足以下功能)
+- [运算符](#运算符)
+  - [二元运算符 + 连接字符串](#二元运算符--连接字符串)
+  - [数字转化，一元运算符 +](#数字转化一元运算符-)
+  - [比较运算符](#比较运算符)
+  - [原地修改 / 自增 / 自减](#原地修改--自增--自减)
+  - [位运算符](#位运算符)
+  - [逗号运算符](#逗号运算符)
+  - [逻辑运算符](#逻辑运算符)
+    - [或运算寻找第一个真值](#或运算寻找第一个真值)
+    - [与运算寻找第一个假值](#与运算寻找第一个假值)
+    - [感叹符号 ! 表示布尔非运算符。](#感叹符号--表示布尔非运算符)
+  - [空值合并运算符 '??'](#空值合并运算符-)
+  - [运算符优先级](#运算符优先级)
+- [循环](#循环)
 
 ## 数据类型
 
@@ -32,7 +50,55 @@ JavaScript 中有八种基本的数据类型（前七种为基本数据类型，
 - `symbol` 用于唯一的标识符。
 - `object` 用于更复杂的数据结构。
 
+
+### 值类型和引用类型
+
+值类型：字符串（string）、数值（number）、布尔值（boolean）、undefined、null、symbol、bigInt
+
+> 值类型保存在栈中，值类型赋值之后两个变量互不影响
+
+```js
+let foo = 1
+let bar = foo
+
+bar = 2
+console.log(foo, bar) // 1, 2
+```
+
+引用类型：对象（Object）、数组（Array）、函数（Function）...
+
+> 引用类型保存在堆中，栈中保存的是引用类型的指针，引用类型赋值之后，两个变量具有相同的引用，指向同一个对象，相互之间有影响
+
+```js
+let foo = { a: 1, b: 2 }
+var bar = foo
+
+bar.a = 2
+
+console.log(foo, bar) // { a: 2, b: 2 }, { a: 2, b: 2 }
+```
+
+### 函数参数按值传递
+
+> 在向参数传递基本类型的值时，被传递的值会被复制给一个局部变量
+>
+> 在向参数传递引用类型的值时，会把这个引用类型的地址复制给一个局部变量，因此在函数内部修改参数，将会影响到原始值
+
+```js
+function test(person) {
+	person.name = 'chu'
+	person = { name: 'bar', age: 18 }
+	return person
+}
+const p1 = { name: 'foo', age: 25 }
+const p2 = test(p1)
+console.log(p1) // -> { name: 'chu', age: 25 }
+console.log(p2) // -> { name: 'bar', age: 18 }
+```
+
 ## 类型检测
+
+### typeof
 
 `typeof` 运算符返回参数的类型。
 
@@ -47,10 +113,332 @@ console.log(typeof Array.isArray) // 'function'
 console.log(typeof typeof Array.isArray) // 'string'
 ```
 
+
+### instanceof
+
+```js
+function myInstanceof(left, right) {
+	//基本数据类型直接返回false
+	if (typeof left !== 'object' || left === null) return false
+	//getProtypeOf 是 Object 对象自带的一个方法，相当于 xxx.__proto__
+	let proto = Object.getPrototypeOf(left)
+	while (true) {
+		//查找到尽头，还没找到
+		if (proto === null) return false
+		//找到相同的原型对象
+		if (proto === right.prototype) return true
+		proto = Object.getPrototypeOf(proto)
+	}
+}
+
+console.log(myInstanceof(Number(1), Number)) // false
+console.log(myInstanceof(new Date(), Date)) // true
+```
+
+### Object.prototype.toString
+
+```js
+Object.prototype.toString.call(2) // "[object Number]"
+Object.prototype.toString.call('') // "[object String]"
+Object.prototype.toString.call(true) // "[object Boolean]"
+Object.prototype.toString.call(undefined) // "[object Undefined]"
+Object.prototype.toString.call(null) // "[object Null]"
+Object.prototype.toString.call(Math) // "[object Math]"
+Object.prototype.toString.call({}) // "[object Object]"
+Object.prototype.toString.call([]) // "[object Array]"
+Object.prototype.toString.call(/\d/) // "[object RegExp]"
+Object.prototype.toString.call(Array.isArray) // "[object Function]"
+```
+
+### isObject
+
+```js
+// Object 方法的参数是一个对象，它总是返回该对象，即不用转换。
+function isObject(value) {
+	return value === Object(value)
+}
+```
+
+### isEmptyObject
+
+```js
+function isEmptyObject(obj) {
+	if (typeof obj !== 'object' || obj === null) return false
+	return Object.keys(obj).length === 0 ? true : false
+}
+
+console.log(isEmptyObject({})) // true
+console.log(isEmptyObject([])) // true 空数组算空对象吗？
+```
+
+### isInteger
+
+```js
+// 整数取整还是整数
+function isInteger(num) {
+	return typeof num === 'number' && (num | 0) === num ? true : false
+}
+
+console.log(isInteger(1)) // true
+console.log(isInteger(1.1)) // false
+```
+
+### isPrime
+
+```js
+// 素数只能被自己和 1 整除不含 1 , 2 是素数
+// 判断素数只要判断到开方就行，false 跳出条件是 num % i === 0
+
+function isPrime(num) {
+	if (typeof num === 'number' && (num | 0) === num) {
+		if (num <= 1) return false
+		const N = Math.floor(Math.sqrt(num))
+		let primeState = true
+		for (let i = 2; i <= N; i++) {
+			if (num % i === 0) {
+				primeState = false
+				break
+			}
+		}
+		return primeState
+	} else {
+		return false
+	}
+}
+
+console.log(isPrime(2)) // true
+console.log(isPrime(87)) // false
+console.log(isPrime(77)) // false
+```
+
+### `Object.is` / `Array.isArray` / `Number.isInteger` / `isNaN` / `Number.isNaN`
+
+```js
+console.log(Object.is(+0, -0)) // false
+console.log(Object.is(NaN, NaN)) // true
+
+console.log(Array.isArray([])) // true
+console.log(Array.isArray({})) // false
+
+console.log(Number.isInteger('1')) // false
+console.log(Number.isInteger(1)) //true
+
+console.log(Number.isNaN(NaN)) // true
+console.log(isNaN(NaN)) // true
+
+console.log(isNaN({})) // true 先 Number(...)
+console.log(Number.isNaN({})) // false
+```
+
 ## 类型转换
-// TODO
+
+### 转换成布尔值
+
+在 JavaScript 中，只有 7 种值可以被转换成 false，其他都会被转换成 true。
+
+```js
+console.log(Boolean(false)) // false
+
+console.log(Boolean(undefined)) // false
+console.log(Boolean(null)) // false
+console.log(Boolean(+0)) // false
+console.log(Boolean(-0)) // false
+console.log(Boolean(NaN)) // false
+console.log(Boolean('')) // false
+console.log(Boolean(0n)) // false
+```
+
+### 转换成数字
+
+```js
+console.log(Number('')) // 0
+console.log(Number(undefined)) // NaN
+console.log(Number(null)) // 0
+console.log(Number([])) // 0
+console.log(Number([1, 2, 3])) // NaN
+console.log(Number({})) // NaN
+```
+
+### 转换成字符串
+
+```js
+console.log(String([]) === '') // true
+console.log(String({})) // "[object Object]"
+```
+
+### 转换成 JSON
+
+```js
+const obj = {
+	toJSON() {
+		return 'hello world'
+	},
+}
+
+console.log(JSON.stringify(obj)) // "hello world"
+```
+
+### 原始类型与实例对象的自动转换
+
+```js
+console.log('hello world'.length) // 11
+```
+
+> 上面代码中，`'hello world'` 是一个字符串，本身不是对象，不能调用 length 属性。
+>
+> JavaScript 引擎自动将其转为包装对象，在这个对象上调用 length 属性。
+>
+> 调用结束后，这个临时对象就会被销毁。这就叫原始类型与实例对象的自动转换。
+
+### 对象转换成原始类型
+
+```js
+const obj = {
+	value: 3,
+	valueOf: () => 4,
+	toString: () => '5',
+	[Symbol.toPrimitive]: () => 6,
+}
+```
+
+- 三者都存在，转换成原始类型会优先调用 `[Symbol.toPrimitive]` 的返回值。
+
+  ```js
+  console.log(String(obj)) // '6'
+  console.log(Number(obj)) // 6
+  ```
+
+- `[Symbol.toPrimitive]` 不存在，`String` 会调用 `toString`，`Number` 会调用 `valueOf`。
+
+  ```js
+  console.log(String(obj)) // '5'
+  console.log(Number(obj)) // 4
+  ```
+
+- 只有 `toString` 存在，`String` 会调用 `toString`，`Number` 也会调用 `toString`，然后会使用 `Number` 把字符串转换成数字。
+
+  ```js
+  console.log(String(obj)) // '5'
+  console.log(Number(obj)) // 5
+  ```
+
+- 只有 `valueOf` 存在，`Number` 会调用 `valueOf`，`String` 会调用 `Object.prototype.toString`
+
+  ```js
+  console.log(String(obj)) // '[object Object]'
+  console.log(Number(obj)) // 4
+  ```
+
+- 都不存在，`String` 会调用 `Object.prototype.toString`，`Number` 也会调用 `Object.prototype.toString`，然后会使用 `Number` 把字符串转换成数字。
+
+  ```js
+  console.log(String(obj)) // '[object Object]'
+  console.log(Number(obj)) // NaN
+  ```
+
+### 面试题：如何让 `if(a == 1 && a == 2 && a == 3)` 条件成立？
+
+解法一：
+
+```js
+const a = {
+	i: 1,
+	toString() {
+		return this.i++
+	},
+}
+if (a == 1 && a == 2 && a == 3) {
+	console.log('success')
+}
+```
+
+解法二：
+
+```js
+const a = {
+	i: [1, 2, 3],
+	valueOf() {
+		return this.i.shift()
+	},
+}
+if (a == 1 && a == 2 && a == 3) {
+	console.log('success')
+}
+```
+
+解法三：`===` 也行
+
+```js
+window.val = 1
+Object.defineProperty(window, 'a', {
+	get: () => this.val++,
+})
+
+if (a == 1 && a == 2 && a == 3) {
+	console.log('success')
+}
+```
+
+### 面试题：为什么 `['1', '2', '3'].map(parseInt)` 返回 `[1,NaN,NaN]` ？
+
+- `parseInt` 方法用于将字符串转为整数。
+- `parseInt` 的参数不是字符串，会先转为字符串再转换。
+- `parseInt` 方法还可以接受第二个参数（2 到 36 之间），如果第二个参数不是数值，会被自动转为一个整数。这个整数只有在 2 到 36 之间，才能得到有意义的结果，超出这个范围，则返回 NaN。如果第二个参数是 `0`、`undefined` 和 `null`，则直接忽略。
+- 二进制只能转换含有'0'、'1'的字符串，其他进制也类似。
+- `parseInt` 的返回值只有两种可能，要么是一个十进制整数，要么是 NaN。
+
+### 面试题：请实现一个 add 函数，满足以下功能。
+
+分析：链式调用的实现？链式操作，操作返回自身
+
+小试牛刀：
+
+```js
+add(1); 	// 1
+add(1)(2);  	// 3
+add(1)(2)(3)；  // 6
+```
+
+实现：
+
+```js
+const add = (sum) => {
+	const fn = (n) => add(n + sum)
+	fn.valueOf = () => sum
+	return fn
+}
+
+console.log(+add(1)) // 1
+console.log(+add(1)(2)) // 3
+console.log(+add(1)(2)(3)) // 6
+```
+
+扩展：
+
+```
+add(1)(2, 3);   // 6
+add(1, 2)(3);   // 6
+add(1, 2, 3);   // 6
+```
+
+```js
+const add = (...sums) => {
+	sums = sums.reduce((acc, cur) => acc + cur)
+	const fn = (...args) => {
+		args = args.reduce((acc, cur) => acc + cur)
+		return add(sums + args)
+	}
+	fn.valueOf = () => sums
+	return fn
+}
+
+console.log(+add(1)(2, 3)) // 6
+console.log(+add(1, 2)(3)) // 6
+console.log(+add(1, 2, 3)) // 6
+```
 
 ## 运算符
+
 ### 二元运算符 + 连接字符串
 通常，加号 + 用于求和。但是如果加号 + 被应用于字符串，它将合并（连接）各个字符串：
 
@@ -97,7 +485,7 @@ console.log( undefined < 0 ) // false (3)
 console.log( undefined == 0 ) // false (4)
 ```
 
-### 原地修改/自增/自减
+### 原地修改 / 自增 / 自减
 
 我们经常需要对一个变量做运算，并将新的结果存储在同一个变量中。
 
