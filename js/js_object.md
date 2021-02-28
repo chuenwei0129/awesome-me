@@ -1,26 +1,70 @@
 # JavaScript 基础知识梳理(三)<!-- omit in toc -->
 
 - [面向对象编程](#面向对象编程)
-  - [new 关键字](#new-关键字)
-  - [Object.create](#objectcreate)
-  - [原型与原型链](#原型与原型链)
-  - [控制对象状态](#控制对象状态)
-  - [属性描述对象](#属性描述对象)
-  - [继承](#继承)
-    - [原型链继承](#原型链继承)
-    - [原型链继承优化](#原型链继承优化)
+	- [对象基础知识](#对象基础知识)
+	- [Object() 工具方法](#object-工具方法)
+	- [new 关键字](#new-关键字)
+	- [Object.create](#objectcreate)
+	- [原型与原型链](#原型与原型链)
+	- [控制对象状态](#控制对象状态)
+	- [属性描述对象](#属性描述对象)
+	- [继承](#继承)
+		- [原型链继承](#原型链继承)
+		- [原型链继承优化](#原型链继承优化)
 - [浅拷贝与深拷贝](#浅拷贝与深拷贝)
-  - [浅拷贝](#浅拷贝)
-    - [手动实现](#手动实现)
-    - [Object.assign](#objectassign)
-    - [concat 浅拷贝数组](#concat-浅拷贝数组)
-    - [slice 浅拷贝](#slice-浅拷贝)
-    - [...展开运算符](#展开运算符)
-  - [深拷贝](#深拷贝)
-    - [JSON.parse(JSON.stringify(target));](#jsonparsejsonstringifytarget)
-    - [手写实现](#手写实现)
+	- [浅拷贝](#浅拷贝)
+		- [手动实现](#手动实现)
+		- [Object.assign](#objectassign)
+		- [concat 浅拷贝数组](#concat-浅拷贝数组)
+		- [slice 浅拷贝](#slice-浅拷贝)
+		- [...展开运算符](#展开运算符)
+	- [深拷贝](#深拷贝)
+		- [JSON.parse(JSON.stringify(target));](#jsonparsejsonstringifytarget)
+		- [手写实现](#手写实现)
 
 ## 面向对象编程
+
+### 对象基础知识
+
+对象是具有一些特殊特性的关联数组。
+
+它们存储属性（键值对），其中：
+
+- 属性的键必须是**字符串**或者 symbol（通常是字符串）。
+- 值可以是任何类型。
+
+我们可以用下面的方法访问属性：
+
+- 点符号: obj.property。
+- 方括号 obj["property"]，方括号允许从变量中获取键，例如 `obj[varWithKey]`。
+
+其他操作：
+
+- 使用 `const` 声明的对象是可以被修改的
+- 计算属性：当创建一个对象时，我们可以在对象字面量中使用方括号。
+- 属性值简写: 属性名跟变量名一样。
+- 删除属性：`delete obj.prop`。
+- 检查是否存在给定键的属性：`"key" in obj`。
+- 遍历对象：`for(let key in obj)` 循环。
+
+### Object() 工具方法
+
+Object 本身是一个函数，可以当作工具方法使用，将任意值转为对象。
+
+- 如果参数为空（或者为 undefined 和 null），Object() 返回一个空对象。
+- 如果参数是原始类型的值，Object 方法将其转为对应的包装对象的实例。如果
+- Object 方法的参数是一个对象，它总是返回该对象，即不用转换。
+
+利用这一点，可以写一个判断变量是否为对象的函数。
+
+```js
+function isObject(value) {
+	return value === Object(value)
+}
+
+isObject([]) // true
+isObject(true) // false
+```
 
 ### new 关键字
 

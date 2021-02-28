@@ -1,5 +1,9 @@
 # JavaScript 基础知识梳理(二)<!-- omit in toc -->
 
+- [函数基础](#函数基础)
+	- [函数对象，NFE](#函数对象nfe)
+	- ['new Function' 语法](#new-function-语法)
+	- [箭头函数](#箭头函数)
 - [作用域, 调用堆栈, 闭包](#作用域-调用堆栈-闭包)
 	- [闭包产生的原因 ?](#闭包产生的原因-)
 	- [那是不是只有返回函数才算是产生了闭包呢？](#那是不是只有返回函数才算是产生了闭包呢)
@@ -14,12 +18,75 @@
 		- [高阶函数 / 回调函数](#高阶函数--回调函数)
 		- [setTimeout / setInterval](#settimeout--setinterval)
 		- [DOM 事件绑定](#dom-事件绑定)
-		- [箭头函数](#箭头函数)
+		- [箭头函数](#箭头函数-1)
 		- [new + 构造函数](#new--构造函数)
 	- [显示绑定](#显示绑定)
 		- [手写 call / apply](#手写-call--apply)
 		- [手写 bind](#手写-bind)
 	- [链式调用](#链式调用)
+
+
+## 函数基础
+
+### 函数对象，NFE
+
+- [x] `name` —— 函数的名字。通常取自函数定义，但如果函数定义时没设定函数名，JavaScript 会尝试通过函数的上下文猜一个函数名（例如把赋值的变量名取为函数名）。
+
+- [x] `length` —— 函数定义时的入参的个数。Rest 参数不参与计数。
+
+如果函数是通过函数表达式的形式被声明的（不是在主代码流里），并且附带了名字，那么它被称为**命名函数表达式**（Named Function Expression）
+
+1. 它允许函数在内部引用自己。
+2. 它在函数外是不可见的。
+
+```js
+let sayHi = function func(who) {
+  if (who) {
+    alert(`Hello, ${who}`)
+  } else {
+    func("Guest") // 现在一切正常
+  }
+}
+
+let welcome = sayHi
+sayHi = null
+
+welcome() // Hello, Guest（嵌套调用有效）
+```
+
+- [x] 自定义属性
+
+> 函数可以带有额外的属性。很多知名的 JavaScript 库都充分利用了这个功能。
+
+它们创建一个“主”函数，然后给它附加很多其它“辅助”函数。例如，jQuery 库创建了一个名为 $ 的函数。lodash 库创建一个 _ 函数，然后为其添加了 _.add、_.keyBy 以及其它属性。
+
+实际上，它们这么做是为了减少对全局空间的污染，这样一个库就只会有一个全局变量。这样就降低了命名冲突的可能性。
+
+### 'new Function' 语法
+
+语法：
+
+```js
+let func = new Function ([arg1, arg2, ...argN], functionBody);
+```
+由于历史原因，参数也可以按逗号分隔符的形式给出。
+
+以下三种声明的含义相同：
+
+```js
+new Function('a', 'b', 'return a + b'); // 基础语法
+new Function('a,b', 'return a + b'); // 逗号分隔
+new Function('a , b', 'return a + b'); // 逗号和空格分隔
+```
+
+使用 `new Function` 创建的函数，它的 `[[Environment]]` 指向全局词法环境，而不是函数所在的外部词法环境。因此，我们不能在 `new Function` 中直接使用外部变量。
+
+### 箭头函数
+
+- 没有 `this`
+- 没有 `arguments`
+- 不能使用 `new` 进行调用
+- 也没有 `super`
 
 ## 作用域, 调用堆栈, 闭包
 

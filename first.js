@@ -1,9 +1,15 @@
-const arr = [1, 2, 3]
-
-for (let i = 0; i < arr.length; i++) {
-	const i = 'abc'
-	// 循环体中的作用域是括号中作用域的子作用域
-	console.log(i)
+/* eslint-disable no-mixed-spaces-and-tabs */
+class Button {
+	constructor(val) {
+		this.val = val
+	}
+	click = () => {
+		console.log(this.val)
+	}
 }
 
-console.log(i) // i is not defined
+const button = new Button('hello world')
+
+button.click() // 'hello world'
+
+setTimeout(button.click, 1000)
