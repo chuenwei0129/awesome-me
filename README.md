@@ -9,11 +9,13 @@
 ### JavaScript 基础
 
 - `[基础]` [JavaScript 基础知识梳理(一)](js/js_base.md)
-- `[基础]` [JavaScript 基础知识梳理(二)](js/js_function.md)
-- `[基础]` [JavaScript 基础知识梳理(三)](js/js_object.md)
-- `[基础]` [JavaScript 基础知识梳理(四)](js/js_promise.md)
-- `[基础]` [JavaScript 基础知识梳理(五)](js/js_next.md)
-
+- `[对象]` [JavaScript 基础知识梳理(二)](js/js_object.md)
+- `[函数]` [JavaScript 基础知识梳理(三)](js/js_function.md)
+- `[数据结构]` [JavaScript 基础知识梳理(四)](js/js_data_structure.md)
+- `[类]` [JavaScript 基础知识梳理(五)](js/js_class.md)
+- `[异步]` [JavaScript 基础知识梳理(六)](js/js_promise.md)
+- `[杂项]`[JavaScript 基础知识梳理(七)](js/js_other.md)
+- `[正则]` [JavaScript 基础知识梳理(八)](js/js_regexp.md)
 
 
 

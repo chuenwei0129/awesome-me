@@ -197,3 +197,72 @@ const resStr = string.replace(regexp, (...[word, $1]) => {
 console.log(resStr)
 
 // 字符串中字母出现次数最多，多少次
+
+// 排序 + 分组\1
+// 字母排序 unicode 排序
+// new Regexp 变量
+const testStr = 'woshichuenweiwoaininiwoxihuanjavascript'
+
+function showMaxWord(testStr) {
+	return [...testStr].sort((a, b) => a.localeCompare(b))
+		.join('')
+		.match(/([a-zA-Z])\1*/g)
+		.sort((a, b) => b.length - a.length)
+		.filter((val, idx, arr) => val.length === arr[0].length)
+		.map(item => ({ [item[0]]: item.length }))
+}
+
+const testRes = showMaxWord(testStr)
+
+console.log(testRes)
+
+// { maxCharArr: [ 'e', 'f' ], count: 7 }
+// 对象 + 计数器
+function findMaxWord(str) {
+	const res = {}
+	;[...str].forEach(item => {
+		if (!res[item]) {
+			res[item] = 1
+		} else {
+			res[item]++
+		}
+	})
+	return res
+}
+
+console.log(findMaxWord(testStr))
+
+// url 处理
+const URL = 'http://www.baidu.com/s?chuenwei=0129&%123=%123&sw=12#html'
+const res = {}
+
+URL.replace(/([^?&#=]+)=([^?&=#]+)/g, (...[, $1, $2]) => {
+	res[$1] = $2
+})
+URL.replace(/#([^?&#=]+)/g, (...[ctx]) => {
+	res.hash = ctx.slice(1)
+})
+console.log(res)
+
+// 千位分隔符
+const num = '1234567890'
+
+function checkNum(num) {
+	const arr = [...num].reverse()
+	const len = Math.floor(arr.length / 3)
+	const res = []
+
+	for (let i = 0; i < len; i++) {
+		res.push(...arr.splice(0, 3), ',')
+	}
+	return [...res, ...arr].reverse().join('')
+}
+
+console.log(checkNum(num))
+
+// 两个量词需要加括号，?=不需要加括号
+function _checkNum(str) {
+	return str.replace(/\d{1,3}(?=(\d{3})+$)/g, ctn => `${ctn},`)
+}
+
+console.log(_checkNum(num))

@@ -674,3 +674,15 @@ console.log(user2 ?? "Anonymous") // John
 - `switch` 语句有至少一个 `case` 代码块和一个可选的 `default` 代码块。如果没有 `break`，程序将不经过任何检查就会继续执行下一个 `case`。
 - `switch/case` 有通过 `case` 进行“分组”的能力，其实是 `switch `语句没有 `break` 时的副作用。
 - for 循环还有一个特别之处，就是设置循环变量的那部分是一个父作用域，而循环体内部是一个单独的子作用域。
+
+```js
+const arr = [1, 2, 3]
+
+for (let i = 0; i < arr.length; i++) {
+	const i = 'abc'
+	// 循环体中的作用域是括号中作用域的子作用域
+	console.log(i)
+}
+
+console.log(i) // i is not defined
+```
