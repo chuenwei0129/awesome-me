@@ -1,16 +1,169 @@
 # JavaScript 基础知识梳理(七)<!-- omit in toc -->
 
+- [声明](#声明)
+- [Symbol 类型](#symbol-类型)
+- [setTimeout 和 setInterval](#settimeout-和-setinterval)
+  - [setTimeout](#settimeout)
+  - [嵌套的 setTimeout](#嵌套的-settimeout)
 - [错误处理，"try..catch"](#错误处理trycatch)
 - [Eval](#eval)
 - [Reference Type](#reference-type)
 - [柯里化（Currying）](#柯里化currying)
-- [声明](#声明)
-- [Symbol](#symbol)
 - [Proxy](#proxy)
 - [Reflect](#reflect)
 - [Module](#module)
 - [globalThis](#globalthis)
 - [链判断操作符(?.)](#链判断操作符)
+
+## 声明
+
+- [x] var 命令：声明变量（存在变量提升）
+- [x] let 命令：声明变量
+- [x] const 命令：声明常量
+- [x] function：声明函数
+- [x] class：声明类
+- [x] import
+
+> ⚠️ 注意
+
+- `let 命令`和`const 命令`不允许重复声明
+- 未定义就使用会报错：`const 命令`和`let 命令`不存在变量提升
+- `const 命令`声明常量后必须立马赋值，`let 命令`声明变量后可立马赋值或使用时赋值
+- 暂时性死区：在代码块内使用`const 命令`和`let 命令`声明变量之前，该变量都不可用
+- 作用域：`const 命令`和`let 命令`只能在代码块中执行———`块级作用域`，`var 命令`在全局代码中执行——`全局作用域`，for 循环中设置循环变量的那部分是一个父作用域，而循环体内部是一个单独的子作用域。
+- `const 命令`实际上保证的，并不是变量的值不得改动，而是变量指向的那个内存地址所保存的数据不得改动。
+
+```js
+// 暂时性死区：在代码块内使用`const 命令`和`let 命令`声明变量之前，该变量都不可用，`let 命令`不同作用域可以重复声明的副作用。
+let j = 1
+!function () {
+  console.log(j) // Cannot access 'j' before initialization
+  let j = 2
+}()
+
+const foo = {}
+// 为 foo 添加一个属性，可以成功
+foo.prop = 123
+console.log(foo) // { prop: 123 }
+
+// 将 foo 指向另一个对象，就会报错
+foo = {} // TypeError: Assignment to constant variable
+```
+
+## Symbol 类型
+
+- [x] 定义：独一无二的值
+- [x] 声明：`const set = Symbol(str)`
+- [x] 入参：字符串(可选)
+
+`Symbol` 保证是唯一的。即使我们创建了许多具有相同描述的 `Symbol`，它们的值也是不同。描述只是一个标签，不影响任何东西。
+
+```js
+let id1 = Symbol("id");
+let id2 = Symbol("id");
+
+alert(id1 == id2); // false
+```
+
+通常所有的 `Symbol` 都是不同的，即使它们有相同的名字。但有时我们想要名字相同的 `Symbol` 具有相同的实体。例如，应用程序的不同部分想要访问的 `Symbol "id"` 指的是完全相同的属性。为了实现这一点，这里有一个 全局 `Symbol` 注册表。
+
+```js
+// 从全局注册表中读取
+let id = Symbol.for("id"); // 如果该 Symbol 不存在，则创建它
+
+// 再次读取（可能是在代码中的另一个位置）
+let idAgain = Symbol.for("id");
+
+// 相同的 Symbol
+alert( id === idAgain ); // true
+```
+
+对于全局 `Symbol`，不仅有 `Symbol.for(key)` 按名字返回一个 `Symbol`，还有一个反向调用：`Symbol.keyFor(sym)`，它的作用完全反过来：通过全局 `Symbol` 返回一个名字。
+
+```js
+// 通过 name 获取 Symbol
+let sym = Symbol.for("name");
+let sym2 = Symbol.for("id");
+
+// 通过 Symbol 获取 name
+alert( Symbol.keyFor(sym) ); // name
+alert( Symbol.keyFor(sym2) ); // id
+```
+
+- `Symbol` 属性不参与 `for..in` 循环。
+- `Object.keys/values/entries` 会忽略 `symbol` 属性
+- `Object.assign` 会同时复制字符串和 `symbol` 属性
+
+## setTimeout 和 setInterval
+
+### setTimeout
+
+- [x] `setTimeout(func, delay, ...args)` 和 `setInterval(func, delay, ...args)` 方法允许我们在 `delay` 毫秒之后运行 `func` 一次或以 `delay` 毫秒为时间间隔周期性运行 `func`。
+
+- [x] 要取消函数的执行，我们应该调用 `clearInterval/clearTimeout`，并将 `setInterval/setTimeout` 返回的值作为入参传入。
+
+- [x] 零延时调度 `setTimeout(func, 0)`（与 `setTimeout(func)` 相同）用来调度需要尽快执行的调用，但是会在当前脚本执行完成后进行调用。
+
+- [x] 浏览器会将 `setTimeout` 或 `setInterval` 的五层或更多层嵌套调用（调用五次之后）的最小延时限制在 4ms。这是历史遗留问题。
+
+> 所有的调度方法都不能 **保证** 确切的延时。
+
+浏览器内的计时器可能由于许多原因而变慢：
+
+- CPU 过载。
+- 浏览器页签处于后台模式。
+- 笔记本电脑用的是电池供电（译注：使用电池供电会以降低性能为代价提升续航）。
+  
+所有这些因素，可能会将定时器的最小计时器分辨率（最小延迟）增加到 300ms 甚至 1000ms，具体以浏览器及其设置为准。
+
+### 嵌套的 setTimeout
+
+嵌套的 `setTimeout` 能够精确地设置两次执行之间的延时，而 `setInterval` 却不能。
+
+下面来比较这两个代码片段。第一个使用的是 `setInterval`：
+
+```js
+let i = 1;
+setInterval(function() {
+  func(i++);
+}, 100);
+```
+
+第二个使用的是嵌套的 `setTimeout`：
+
+```js
+let i = 1;
+setTimeout(function run() {
+  func(i++);
+  setTimeout(run, 100);
+}, 100);
+```
+
+![](setinterval.png)
+
+使用 `setInterval `时，`func` 函数的实际调用间隔要比代码中设定的时间间隔要短！
+
+这也是正常的，因为 `func` 的执行所花费的时间“消耗”了一部分间隔时间。
+
+也可能出现这种情况，就是 `func` 的执行所花费的时间比我们预期的时间更长，并且超出了 100 毫秒。
+
+在这种情况下，JavaScript 引擎会等待 func 执行完成，然后检查调度程序，如果时间到了，则 立即 再次执行它。
+
+极端情况下，如果函数每次执行时间都超过 delay 设置的时间，那么每次调用之间将完全没有停顿。
+
+![](settimeout.png)
+
+嵌套的 `setTimeout` 就能确保延时的固定（这里是 100 毫秒）。
+
+这是因为下一次调用是在前一次调用完成时再调度的。
+
+当一个函数传入 setInterval/setTimeout 时，将为其创建一个内部引用，并保存在调度程序中。这样，即使这个函数没有其他引用，也能防止垃圾回收器（GC）将其回收。
+
+// 在调度程序调用这个函数之前，这个函数将一直存在于内存中
+setTimeout(function() {...}, 100);
+对于 setInterval，传入的函数也是一直存在于内存中，直到 clearInterval 被调用。
+
+这里还要提到一个副作用。如果函数引用了外部变量（译注：闭包），那么只要这个函数还存在，外部变量也会随之存在。它们可能比函数本身占用更多的内存。因此，当我们不再需要调度函数时，最好取消它，即使这是个（占用内存）很小的函数。
 
 ## 错误处理，"try..catch"
 
@@ -65,55 +218,8 @@ alert(typeof x); // undefined（没有这个变量）
 
 ## 柯里化（Currying）
 
-## 声明
 
-- [x] var 命令：声明变量（存在变量提升）
-- [x] let 命令：声明变量
-- [x] const 命令：声明常量
-- [x] function：声明函数
-- [x] class：声明类
-- [x] import
 
-> ⚠️ 注意
-
-- `let 命令`和`const 命令`不允许重复声明
-- 未定义就使用会报错：`const 命令`和`let 命令`不存在变量提升
-- `const 命令`声明常量后必须立马赋值，`let 命令`声明变量后可立马赋值或使用时赋值
-- 暂时性死区：在代码块内使用`const 命令`和`let 命令`声明变量之前，该变量都不可用
-- 作用域：`const 命令`和`let 命令`只能在代码块中执行———`块级作用域`，`var 命令`在全局代码中执行——`全局作用域`，for 循环中设置循环变量的那部分是一个父作用域，而循环体内部是一个单独的子作用域。
-- `const 命令`实际上保证的，并不是变量的值不得改动，而是变量指向的那个内存地址所保存的数据不得改动。
-
-```js
-// 暂时性死区：在代码块内使用`const 命令`和`let 命令`声明变量之前，该变量都不可用，`let 命令`不同作用域可以重复声明的副作用。
-let j = 1
-!function () {
-  console.log(j) // Cannot access 'j' before initialization
-  let j = 2
-}()
-
-const foo = {}
-// 为 foo 添加一个属性，可以成功
-foo.prop = 123
-console.log(foo) // { prop: 123 }
-
-// 将 foo 指向另一个对象，就会报错
-foo = {} // TypeError: Assignment to constant variable
-```
-
-## Symbol
-
-定义：独一无二的值
-声明：const set = Symbol(str)
-入参：字符串(可选)
-方法
-
-Symbol()：创建以参数作为描述的Symbol值(不登记在全局环境)
-Symbol.for()：创建以参数作为描述的Symbol值，如存在此参数则返回原有的Symbol值(先搜索后创建，登记在全局环境)
-Symbol.keyFor()：返回已登记的Symbol值的描述(只能返回Symbol.for()的key)
-
-Symbol.hasInstance：指向一个内部方法，当其他对象使用instanceof运算符判断是否为此对象的实例时会调用此方法
-
-Object.keys/values/entries 会忽略 symbol 属性
 
 ## Proxy
 
