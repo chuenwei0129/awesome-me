@@ -1,11 +1,21 @@
+# JavaScript 基础知识梳理(六)<!-- omit in toc -->
 
+- [回调](#回调)
+- [Promise](#promise)
+	- [Promise.all](#promiseall)
+	- [Promise.finally](#promisefinally)
+	- [Promise.resolve](#promiseresolve)
+	- [Promise.race](#promiserace)
+	- [微任务（Microtask）](#微任务microtask)
+- [co + Generator](#co--generator)
 
+## 回调
 
+```js
+// jsonp 原理
+```
 
-
-## 异步
-
-### Promise
+## Promise
 
 > TIP
 
@@ -166,7 +176,7 @@ module.exports = Promise
 promises-aplus-tests Promise.js
 ```
 
-#### Promise.all
+### Promise.all
 
 ```js
 const promise1 = function () {
@@ -262,7 +272,7 @@ Promise.myAll([]).then((data) => {
 })
 ```
 
-#### Promise.finally
+### Promise.finally
 
 ```js
 const promise = (timeout, data) => {
@@ -311,7 +321,7 @@ promise(2000, 2000)
 	})
 ```
 
-#### Promise.resolve
+### Promise.resolve
 
 ```js
 const promise1 = (function () {
@@ -367,7 +377,7 @@ Promise.myResolve(1).then((data) => {
 })
 ```
 
-#### Promise.race
+### Promise.race
 
 ```js
 const promise1 = function () {
@@ -430,7 +440,9 @@ Promise.myRace([]).then((data) => {
 })
 ```
 
-### co + Generator
+### 微任务（Microtask）
+
+## co + Generator
 
 ```js
 function* gen(data0) {
