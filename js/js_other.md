@@ -5,6 +5,8 @@
 - [setTimeout 和 setInterval](#settimeout-和-setinterval)
   - [setTimeout](#settimeout)
   - [嵌套的 setTimeout](#嵌套的-settimeout)
+  - [垃圾回收和 `setInterval/setTimeout` 回调（callback）。](#垃圾回收和-setintervalsettimeout-回调callback)
+- [](#)
 - [错误处理，"try..catch"](#错误处理trycatch)
 - [Eval](#eval)
 - [Reference Type](#reference-type)
@@ -104,7 +106,7 @@ alert( Symbol.keyFor(sym2) ); // id
 
 - [x] 零延时调度 `setTimeout(func, 0)`（与 `setTimeout(func)` 相同）用来调度需要尽快执行的调用，但是会在当前脚本执行完成后进行调用。
 
-- [x] 浏览器会将 `setTimeout` 或 `setInterval` 的五层或更多层嵌套调用（调用五次之后）的最小延时限制在 4ms。这是历史遗留问题。
+- [x] 浏览器会将 `setTimeout` 或 `setInterval` 的五层或更多层嵌套调用（调用五次之后）的最小延时限制在 4ms。这是历史遗留问题。对于服务端的 JavaScript，就没有这个限制，并且还有其他调度即时异步任务的方式。
 
 > 所有的调度方法都不能 **保证** 确切的延时。
 
@@ -147,23 +149,28 @@ setTimeout(function run() {
 
 也可能出现这种情况，就是 `func` 的执行所花费的时间比我们预期的时间更长，并且超出了 100 毫秒。
 
-在这种情况下，JavaScript 引擎会等待 func 执行完成，然后检查调度程序，如果时间到了，则 立即 再次执行它。
+在这种情况下，JavaScript 引擎会等待 `func` 执行完成，然后检查调度程序，如果时间到了，则 **立即** 再次执行它。
 
-极端情况下，如果函数每次执行时间都超过 delay 设置的时间，那么每次调用之间将完全没有停顿。
+极端情况下，如果函数每次执行时间都超过 `delay` 设置的时间，那么每次调用之间将完全没有停顿。
 
 ![](settimeout.png)
 
 嵌套的 `setTimeout` 就能确保延时的固定（这里是 100 毫秒）。
 
-这是因为下一次调用是在前一次调用完成时再调度的。
+### 垃圾回收和 `setInterval/setTimeout` 回调（callback）。
 
-当一个函数传入 setInterval/setTimeout 时，将为其创建一个内部引用，并保存在调度程序中。这样，即使这个函数没有其他引用，也能防止垃圾回收器（GC）将其回收。
+当一个函数传入 `setInterval/setTimeout` 时，将为其创建一个内部引用，并保存在调度程序中。这样，即使这个函数没有其他引用，也能防止垃圾回收器（GC）将其回收。
 
+```js
 // 在调度程序调用这个函数之前，这个函数将一直存在于内存中
 setTimeout(function() {...}, 100);
-对于 setInterval，传入的函数也是一直存在于内存中，直到 clearInterval 被调用。
+```
 
-这里还要提到一个副作用。如果函数引用了外部变量（译注：闭包），那么只要这个函数还存在，外部变量也会随之存在。它们可能比函数本身占用更多的内存。因此，当我们不再需要调度函数时，最好取消它，即使这是个（占用内存）很小的函数。
+对于 `setInterval`，传入的函数也是一直存在于内存中，直到 `clearInterval` 被调用。
+
+> 这里还要提到一个副作用。如果函数引用了外部变量（闭包），那么只要这个函数还存在，外部变量也会随之存在。它们可能比函数本身占用更多的内存。因此，当我们不再需要调度函数时，最好取消它，即使这是个（占用内存）很小的函数。
+
+## 
 
 ## 错误处理，"try..catch"
 
