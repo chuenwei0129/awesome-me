@@ -26,17 +26,16 @@
 
 ### 对象基础知识
 
-对象是具有一些特殊特性的关联数组。
+对象是具有一些特殊特性的关联数组。它们存储属性（键值对），其中：
 
-它们存储属性（键值对），其中：
-
-- 属性的键必须是**字符串**或者 symbol（通常是字符串）。
+- 属性的键必须是**字符串**或者 **symbol**（通常是字符串）。
 - 值可以是任何类型。
+- 属性名可以是关键字。
 
 我们可以用下面的方法访问属性：
 
-- 点符号: obj.property。
-- 方括号 obj["property"]，方括号允许从变量中获取键，例如 `obj[varWithKey]`。
+- 点符号: `obj.property`。
+- 方括号 `obj["property"]`，方括号允许从变量中获取键，例如 `obj[varWithKey]`。
 
 其他操作：
 
@@ -46,6 +45,14 @@
 - 删除属性：`delete obj.prop`。
 - 检查是否存在给定键的属性：`"key" in obj`。
 - 遍历对象：`for(let key in obj)` 循环。
+
+```js
+// 对象比较
+const a = {x: 1}
+const b = a
+
+console.log(a === b) // true
+```
 
 ### Object() 工具方法
 
@@ -77,7 +84,7 @@ isObject(true) // false
 
 > TIP
 
-> 构造函数内部有 return 语句，并且 return 后面跟着一个对象，new 命令会返回 return 语句指定的对象，后面跟着原始类型，new 命令 return 会忽略，new 命令 默认返回 {} 对象
+> 构造函数内部有 return 语句，并且 return 后面跟着一个对象，new 命令会返回 return 语句指定的对象，后面跟着原始类型，new 命令 return 会忽略，new 命令 默认返回 {} 对象。
 
 ```js
 function _new(F, ...args) {
