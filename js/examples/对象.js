@@ -1,1 +1,0 @@
-console.log((123456.123456).toFixed(2))
