@@ -6,11 +6,10 @@
 
 ## 好看是第一生产力
 
-- `[Windows]` [打造完美的、纯净的 Windows 开发环境](win/system_win.md)
-- `[Windows]` [Windows 10 日常使用的一些小技巧](Notes/Some-tips.md)
-- `[Windows]` [我的 Windows 工具清单](Notes/Tool_list.md)
-- `[Windows]` [Windows Terminal 完美配置 PowerShell](Notes/Powershell_Terminal.md)
-- `[Linux]` [Windows 上面用 WSL 2 优雅开发](Notes/Linux_Wsl.md)
+- `[Windows]` [我的 Windows 工具清单](win/tool_list.md)
+- `[Windows]` [Windows Terminal 完美配置 PowerShell](win/powershell_terminal.md)
+- `[Windows]` [打造完美的、纯净的 Windows 开发环境](win/win_dev.md)
+- `[Windows]` [Windows 日常使用的技巧](win/some-tips.md)
 
 ## JavaScript
 
