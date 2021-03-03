@@ -1,0 +1,5 @@
+Host cvm
+HostName 111.231.101.18
+Port 22
+User ubuntu
+IdentityFile C:\Users\Gakki\.ssh\UBUNTU_SSH_GAKKI

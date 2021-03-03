@@ -1,0 +1,93 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Base.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <system:Boolean x:Key="ThemeBlurEnabled">True</system:Boolean>
+
+    <Style x:Key="QueryBoxStyle" BasedOn="{StaticResource BaseQueryBoxStyle}" TargetType="{x:Type TextBox}">
+        <Setter Property="Foreground" Value="#FFFFFFFF" />
+        <Setter Property="Background" Value="#01000001" />
+    </Style>
+
+    <Style x:Key="WindowBorderStyle" BasedOn="{StaticResource BaseWindowBorderStyle}" TargetType="{x:Type Border}">
+        <!-- 窗体背景色 -->
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Color="#242424" Opacity="0.9"/>
+            </Setter.Value>
+        </Setter>
+        <!-- 窗体背景色圆角 -->
+        <Setter Property="CornerRadius" Value="3" />
+        <!-- 窗体边框颜色，Gradient设置了渐变-->
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <LinearGradientBrush>
+                    <GradientStopCollection>
+                        <GradientStop Offset="0" Color="#45334a" />
+                        <GradientStop Offset="0.2" Color="#796b7d"/>
+                        <GradientStop Offset="0.4" Color="#ccc4b0" />
+                        <GradientStop Offset="0.6" Color="#fff1b5"/>
+                        <GradientStop Offset="0.8" Color="#ffa3a3"/>
+                        
+                    </GradientStopCollection>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter> 
+        <!-- 窗体边框宽度 -->
+        <Setter Property="BorderThickness" Value="5" />
+    </Style> 
+
+    <Style x:Key="WindowStyle" BasedOn="{StaticResource BaseWindowStyle}" TargetType="{x:Type Window}">
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Color="Black" Opacity="0"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PendingLineStyle" BasedOn="{StaticResource BasePendingLineStyle}" TargetType="{x:Type Line}">
+    </Style>
+
+    <!-- Item Style -->
+     <!-- 查询结果标题的样式 -->
+    <Style x:Key="ItemTitleStyle" BasedOn="{StaticResource BaseItemTitleStyle}" TargetType="{x:Type TextBlock}" >
+        <Setter Property="Foreground" Value="#fffbf0"></Setter>
+    </Style>
+
+    <!-- 查询结果子标题样式 -->
+    <Style x:Key="ItemSubTitleStyle" BasedOn="{StaticResource BaseItemSubTitleStyle}" TargetType="{x:Type TextBlock}" >
+        <Setter Property="Foreground"  Value="#fffbf0"></Setter>
+    </Style>
+
+    <!-- 选中查询结果标题样式 -->
+    <Style x:Key="ItemTitleSelectedStyle" BasedOn="{StaticResource BaseItemTitleSelectedStyle}" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="#EF476F" />
+    </Style>
+
+    <!-- 选中查询结果子标题样式 -->
+    <Style x:Key="ItemSubTitleSelectedStyle" BasedOn="{StaticResource BaseItemSubTitleSelectedStyle}" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="#06D6A0" />
+    </Style>
+    
+    <!-- 选中结果背景色样式 -->
+    <SolidColorBrush x:Key="ItemSelectedBackgroundColor" Color="#CCFFFF" Opacity="0.3" />
+
+    <!-- 滚动条中间的按钮样式 -->
+    <Style x:Key="ThumbStyle" BasedOn="{StaticResource BaseThumbStyle}" TargetType="{x:Type Thumb}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Border CornerRadius="2" DockPanel.Dock="Right" Background="#fffbf0" BorderBrush="Transparent" BorderThickness="0" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- 滚动条中间按钮背景色 -->
+    <Style x:Key="ScrollBarStyle" BasedOn="{StaticResource BaseScrollBarStyle}" TargetType="{x:Type ScrollBar}">
+        <Setter Property="Background" Value="#fffbf0"/>
+    </Style>
+</ResourceDictionary>

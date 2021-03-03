@@ -2,17 +2,17 @@
 
 > 没有经过整理的知识才是徒然浪费时间，伤透脑筋！
 
-**笔记内容**： **[好看是第一生产力](#好看是第一生产力) | [框架开发](#框架开发) | [JavaScript](#javascript) | [网络](#网络) | [其他](#其他) | [浏览器](#浏览器) | [CSS 世界](#css-世界) | [设计模式](#设计模式)**
+**笔记内容**： **[好看是第一生产力](#好看是第一生产力) | [JavaScript](#javascript) | [浏览器](#浏览器) | [框架开发](#框架开发) | [CSS 世界](#css-世界) | [技术实践、项目总结](#技术实践、项目总结) | [设计模式](#设计模式) | [算法](#算法) | [其他](#其他)**
 
-- `[Windows]` [Windows Terminal 完美配置 PowerShell](Notes/Powershell_Terminal.md)
-- `[Windows]` [打造完美的、纯净的 Windows 开发环境](Notes/System_win.md)
+## 好看是第一生产力
+
+- `[Windows]` [打造完美的、纯净的 Windows 开发环境](win/system_win.md)
 - `[Windows]` [Windows 10 日常使用的一些小技巧](Notes/Some-tips.md)
 - `[Windows]` [我的 Windows 工具清单](Notes/Tool_list.md)
+- `[Windows]` [Windows Terminal 完美配置 PowerShell](Notes/Powershell_Terminal.md)
 - `[Linux]` [Windows 上面用 WSL 2 优雅开发](Notes/Linux_Wsl.md)
 
 ## JavaScript
-
-### JS 基础
 
 - `[基础]` [JavaScript 基础知识梳理(一)](js/js_base.md)
 - `[函数]` [JavaScript 基础知识梳理(二)](js/js_object.md)
@@ -22,6 +22,36 @@
 - `[异步]` [JavaScript 基础知识梳理(六)](js/js_promise.md)
 - `[杂项]`[JavaScript 基础知识梳理(七)](js/js_other.md)
 - `[正则]` [JavaScript 基础知识梳理(八)](js/js_regexp.md)
+- `[奇技淫巧]` [JavaScript 中的奇技淫巧]()
+- `[代码]` [前端面试中常考的源码实现]()
+
+## 浏览器
+
+- `[WEB]` [浏览器知识整理](Notes/Bom_learn.md)
+- `[Cookie]`
+- `[XHR]`
+- `[跨域]`
+
+## 框架开发
+
+- `[Webpack]` [渐进式的学习 Webpack]()
+- `[Webpack]` [Webpack 从入门到入土]()
+
+## CSS 世界
+## 技术实践、项目总结
+## 设计模式
+## 算法
+## 其他
+
+- `[Markdown]` [Markdown 的基本撰写和格式语法](Notes/Markdown_github.md)
+- `[Git]` [Git 简单学习与高频使用的命令](Notes/Git.md)
+- `[Nvm]` [Node 版本及源管理](Notes/Nvm_win.md)
+- `[SSH]` [使用 SSH 登录 Linux 实例](Notes/SSH_remote.md)
+
+
+
+
+
 
 
 
