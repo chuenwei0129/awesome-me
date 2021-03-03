@@ -5,17 +5,26 @@
 - [setTimeout 和 setInterval](#settimeout-和-setinterval)
   - [setTimeout](#settimeout)
   - [嵌套的 setTimeout](#嵌套的-settimeout)
-  - [垃圾回收和 `setInterval/setTimeout` 回调（callback）。](#垃圾回收和-setintervalsettimeout-回调callback)
-- [](#)
+  - [垃圾回收和 setInterval/setTimeout 回调（callback）](#垃圾回收和-setintervalsettimeout-回调callback)
+- [globalThis](#globalthis)
+- [模块](#模块)
+  - [概述](#概述)
+  - [语法](#语法)
+  - [模块方案](#模块方案)
+  - [动态导入](#动态导入)
+  - [重点难点](#重点难点)
+- [Proxy](#proxy)
+  - [概述](#概述-1)
+  - [局限性：](#局限性)
+  - [可撤销 `Proxy`](#可撤销-proxy)
+  - [应用场景](#应用场景)
+- [Reflect](#reflect)
 - [错误处理，"try..catch"](#错误处理trycatch)
+  - [概述](#概述-2)
+  - [try..catch 同步工作](#trycatch-同步工作)
 - [Eval](#eval)
 - [Reference Type](#reference-type)
 - [柯里化（Currying）](#柯里化currying)
-- [Proxy](#proxy)
-- [Reflect](#reflect)
-- [Module](#module)
-- [globalThis](#globalthis)
-- [链判断操作符(?.)](#链判断操作符)
 
 ## 声明
 
@@ -157,7 +166,7 @@ setTimeout(function run() {
 
 嵌套的 `setTimeout` 就能确保延时的固定（这里是 100 毫秒）。
 
-### 垃圾回收和 `setInterval/setTimeout` 回调（callback）。
+### 垃圾回收和 setInterval/setTimeout 回调（callback）
 
 当一个函数传入 `setInterval/setTimeout` 时，将为其创建一个内部引用，并保存在调度程序中。这样，即使这个函数没有其他引用，也能防止垃圾回收器（GC）将其回收。
 
@@ -170,384 +179,331 @@ setTimeout(function() {...}, 100);
 
 > 这里还要提到一个副作用。如果函数引用了外部变量（闭包），那么只要这个函数还存在，外部变量也会随之存在。它们可能比函数本身占用更多的内存。因此，当我们不再需要调度函数时，最好取消它，即使这是个（占用内存）很小的函数。
 
-## 
+## globalThis
+
+- [x] `globalThis`：作为顶层对象，指向全局环境下的 this
+- [x] `Browser`：顶层对象是 `window`
+- [x] `Node`：顶层对象是 `global`
+- [x] `WebWorker`：顶层对象是 `self`
+
+以上三者：通用顶层对象是 `globalThis`
+
+## 模块
+
+### 概述
+
+一个模块（module）就是一个文件。一个模块可以相互加载，并可以使用特殊的指令 `export` 和 `import` 来交换功能，从另一个模块调用一个模块的函数：
+
+- `export` 关键字标记了可以从当前模块外部访问的变量和函数。
+- `import` 关键字允许从其他模块导入功能。
+
+> ⚠️ 模块只通过 **HTTP(s)** 工作，在本地文件则不行
+如果你尝试通过 **file://** 协议在本地打开一个网页，你会发现 `import/export` 指令不起作用。
+
+浏览器需要使用 `<script type="module">` 以使 `import/export` 可以工作。模块相较于常规脚本有几点差别：
+
+- 默认是延迟解析的（deferred）与 `defer` 特性相同。
+- `async` 可用于内联脚本。
+- 要从另一个源（域/协议/端口）加载外部脚本，需要 `CORS header`。
+- 重复的外部脚本会被忽略
+- 模块具有自己的本地顶级作用域，在一个模块中，“this” 是 `undefined`。
+- 模块始终使用 `use strict`。
+- 模块代码只执行一次。导出仅创建一次，然后会在导入之间共享。
+
+### 语法
+
+- [x] `export`：规定模块对外接口
+
+- 默认导出：`export default Person`(导入时可指定模块任意名称，无需知晓内部真实名称)
+- 单独导出：`export const name = "Bruce"`
+- 按需导出：`export { age, name, sex }`(推荐)
+- 改名导出：`export { name as newName }`
+
+- [x] `import`：导入模块内部功能
+
+- 默认导入：`import Person from "person"`
+- 整体导入：`import * as Person from "person"`
+- 按需导入：`import { age, name, sex } from "person"`
+- 改名导入：`import { name as newName } from "person"`
+- 自执导入：`import "person"`
+- 复合导入：`import Person, { name } from "person"`
+
+- [x] 复合模式：`export` 命令和 `import` 命令结合在一起写成一行，变量实质没有被导入当前模块，相当于对外转发接口，导致当前模块无法直接使用其导入变量
+
+- 默认导入导出：`export { default } from "person"`
+- 整体导入导出：`export * from "person"`
+- 按需导入导出：`export { age, name, sex } from "person"`
+- 改名导入导出：`export { name as newName } from "person"`
+- 具名改默认导入导出：`export { name as default } from "person"`
+- 默认改具名导入导出：`export { default as name } from "person"`
+
+### 模块方案
+
+- `CommonJS`：用于服务器(动态化依赖)
+- `AMD`：用于浏览器(动态化依赖)
+- `CMD`：用于浏览器(动态化依赖)
+- `UMD`：用于浏览器和服务器(动态化依赖)
+- `ESM`：用于浏览器和服务器(静态化依赖)
+
+`CommonJS` 和 `ESM`的区别：`CommonJS `输出值的拷贝，`ESM` 输出值的引用
+
+- `CommonJS` 一旦输出一个值，模块内部的变化就影响不到这个值
+- `ESM` 是动态引用且不会缓存值，模块里的变量绑定其所在的模块，等到脚本真正执行时，再根据这个只读引用到被加载的那个模块里去取值
+
+`CommonJS` 是运行时加载，`ESM` 是编译时加载（类似于闭包，作用域时的理解，导出的变量也是动态的）
+
+### 动态导入
+
+import(module) 表达式加载模块并返回一个 `promise`，该 `promise resolve` 为一个包含其所有导出的模块对象。我们可以在代码中的任意位置调用这个表达式。
+
+```js
+let modulePath = prompt("Which module to load?");
+
+import(modulePath)
+  .then(obj => <module object>)
+  .catch(err => <loading error, e.g. if no such module>)
+```
+
+> ⚠️ 动态导入在常规脚本中工作时，它们不需要 `script type="module"`，`import()`不是一个函数，它只是一种特殊语法，只是恰好使用了括号（类似于 `super()`）。
+
+### 重点难点
+
+- ES6 模块中，顶层 `this` 指向 `undefined`，不应该在顶层代码使用 `this`
+- 一个模块就是一个独立的文件，该文件内部的所有变量，外部无法获取
+- `export` 命令输出的接口与其对应的值是动态绑定关系，即通过该接口可获取模块内部实时的值
+- `import` 命令命令具有提升效果，会提升到整个模块的头部，首先执行
+- 重复执行同一句 `import` 语句，只会执行一次
+- `export default` 命令只能使用一次
+- `export default` 命令本质是输出一个名为 `default` 的变量，后面不能跟变量声明语句
+- `export default` 命令本质是将后面的值赋给名为 `default` 的变量，可直接将值写在其后
+- `export default` 命令和 `export {}` 命令可同时存在，对应复合导入
+- `export` 命令和 `import` 命令可出现在模块任何位置，只要处于模块顶层即可，不能处于块级作用域
+- `import()` 加载模块成功后，此模块会作为一个对象，当作 `then()` 的参数，可使用对象解构赋值来获取输出接口
+- 同时动态加载多个模块时，可使用 `Promise.all()` 和 `import()` 相结合来实现 `import()` 和结合 `async/await` 来书写同步操作的代码
+
+## Proxy
+
+### 概述
+
+- [x] 定义：修改某些操作的默认行为
+- [x] 声明：`const proxy = new Proxy(target, handler)`
+- [x] 入参
+
+- target：拦截的目标对象，可以是任何东西，包括函数。
+- handler：带有“捕捉器”（“traps”，即拦截操作的方法）的对象。比如 `get` 捕捉器用于读取 `target` 的属性，`set` 捕捉器用于写入 `target` 的属性，等等。
+
+```js
+let target = {};
+let proxy = new Proxy(target, {}); // 空的 handler 对象
+
+proxy.test = 5; // 写入 proxy 对象 (1)
+alert(target.test); // 5，test 属性出现在了 target 中！
+
+alert(proxy.test); // 5，我们也可以从 proxy 对象读取它 (2)
+
+for(let key in proxy) alert(key); // test，迭代也正常工作 (3)
+```
+
+可用于添加到 `new Proxy` 的 `handler` 参数中以拦截操作的方法
+
+- `get()`：拦截对象属性读取
+- `set()`：拦截对象属性设置，返回布尔
+- `has()`：拦截对象属性检查 `k in obj`，返回布尔
+- `deleteProperty()`：拦截对象属性删除 `delete obj[k]`，返回布尔
+- `defineProperty()`：拦截对象属性定义 `Object.defineProperty()`、`Object.defineProperties()`，返回布尔
+- `ownKeys()`：拦截对象属性遍历 `for-in`、`Object.keys()`、`Object.getOwnPropertyNames()`、`Object.getOwnPropertySymbols()`，返回数组
+- `getOwnPropertyDescriptor()`：拦截对象属性描述读取 `Object.getOwnPropertyDescriptor()`，返回对象
+- `getPrototypeOf()`：拦截对象原型读取 `instanceof`、`Object.getPrototypeOf()`、`Object.prototype.__proto__`、`Object.prototype.isPrototypeOf()`、`Reflect.getPrototypeOf()`，返回对象
+- `setPrototypeOf()`：拦截对象原型设置 `Object.setPrototypeOf()`，返回布尔
+- `isExtensible()`：拦截对象是否可扩展读取 `Object.isExtensible()`，返回布尔
+- `preventExtensions()`：拦截对象不可扩展设置 `Object.preventExtensions()`，返回布尔
+- `apply()`：拦截 `Proxy` 实例作为函数调用 `proxy()`、`proxy.apply()`、`proxy.call()`
+- `construct()`：拦截 `Proxy` 实例作为构造函数调用 `new proxy()`
+
+### 局限性：
+
+许多内建对象，例如 `Map`，`Set`，`Date`，`Promise` 等，都使用了所谓的“内部插槽”。在类似这样的内建对象被代理后，代理对象没有这些内部插槽，因此内建方法将会失败。私有类字段也是如此，因为它们也是在内部使用插槽实现的。
+
+> ⚠️ 一个值得注意的例外：内建 `Array` 没有使用内部插槽。那是出于历史原因，因为它出现于很久以前。所以，代理数组时没有这种问题。
+
+> 对象的严格相等性检查 === 无法被拦截。
+
+### 可撤销 `Proxy`
+
+一个 **可撤销** 的代理是可以被禁用的代理。
+
+语法为：
+
+```js
+let {proxy, revoke} = Proxy.revocable(target, handler)
+```
+
+该调用返回一个带有 `proxy `和 `revoke` 函数的对象以将其禁用。
+
+这是一个例子：
+
+```js
+let object = {
+  data: "Valuable data"
+};
+
+let {proxy, revoke} = Proxy.revocable(object, {});
+
+// 将 proxy 传递到其他某处，而不是对象...
+alert(proxy.data); // Valuable data
+
+// 稍后，在我们的代码中
+revoke();
+
+// proxy 不再工作（revoked）
+alert(proxy.data); // Error
+```
+
+调用 `revoke()` 会从代理中删除对目标对象的所有内部引用，因此它们之间再无连接。之后可以对目标对象进行垃圾回收。
+
+### 应用场景
+
+- `Proxy.revocable()`：不允许直接访问对象，必须通过代理访问，一旦访问结束就收回代理权不允许再次访问
+- `get()`：读取未知属性报错、读取数组负数索引的值、封装链式操作、生成 `DOM` 嵌套节点
+- `set()`：数据绑定(`Vue`数据绑定实现原理)、确保属性值设置符合要求、防止内部属性被外部读写
+- `has()`：隐藏内部属性不被发现、排除不符合属性条件的对象
+- `deleteProperty()`：保护内部属性不被删除
+- `defineProperty()`：阻止属性被外部定义
+- `ownKeys()`：保护内部属性不被遍历
+
+## Reflect
+
+`Reflect` 对象与 `Proxy` 对象一样，也是 `ES6` 为了操作对象而提供的新 `API`。`Reflect` 对象的设计目的有这样几个。
+
+1. 将 `Object` 对象的一些明显属于语言内部的方法（比如 `Object.defineProperty`），放到 `Reflect` 对象上。现阶段，某些方法同时在 `Object` 和 `Reflect` 对象上部署，未来的新方法将只部署在 `Reflect` 对象上。也就是说，从 `Reflect` 对象上可以拿到语言内部的方法。
+2. 修改某些 `Object` 方法的返回结果，让其变得更合理。比如，`Object.defineProperty(obj, name, desc)` 在无法定义属性时，会抛出一个错误，而 `Reflect.defineProperty(obj, name, desc)` 则会返回 `false`。
+3. 让 `Object` 操作都变成函数行为。某些 `Object` 操作是命令式，比如 `name in obj` 和 `delete obj[name]`，而 `Reflect.has(obj, name)` 和 `Reflect.deleteProperty(obj, name)` 让它们变成了函数行为。
+4. `Reflect` 对象的方法与 `Proxy` 对象的方法一一对应，只要是 `Proxy` 对象的方法，就能在 `Reflect` 对象上找到对应的方法。这就让 `Proxy` 对象可以方便地调用对应的 `Reflect`方法，完成默认行为，作为修改行为的基础。也就是说，不管 `Proxy` 怎么修改默认行为，你总可以在 `Reflect` 上获取默认行为。
 
 ## 错误处理，"try..catch"
 
-## Eval
-Eval：执行代码字符串
-内建函数 eval 允许执行一个代码字符串。
+### 概述
+
+`try..catch` 结构允许我们处理执行过程中出现的 `error`。从字面上看，它允许“尝试”运行代码并“捕获”其中可能发生的错误。
 
 语法如下：
 
+```js
+try {
+  // 执行此处代码
+} catch(err) {
+  // 如果发生错误，跳转至此处
+  // err 是一个 error 对象
+} finally {
+  // 无论怎样都会在 try/catch 之后执行
+}
+```
+
+这儿可能会没有 `catch` 部分或者没有 `finally`，所以 `try..catch` 或 `try..finally` 都是可用的。
+
+`Error` 对象包含下列属性：
+
+- `message `— 人类可读的 `error` 信息。
+- `name` — 具有 `error` 名称的字符串（`Error` 构造器的名称）。
+- `stack`（没有标准，但得到了很好的支持）— `Error` 发生时的调用栈。
+
+我们也可以使用 `throw` 操作符来生成自定义的 `error`。从技术上讲，`throw` 的参数可以是任何东西，但通常是继承自内建的 `Error` 类的 `error` 对象。
+
+### try..catch 同步工作
+
+如果在“计划的（scheduled）”代码中发生异常，例如在 `setTimeout` 中，则 `try..catch` 不会捕获到异常：
+
+```js
+try {
+  setTimeout(function() {
+    noSuchVariable; // 脚本将在这里停止运行
+  }, 1000);
+} catch (e) {
+  alert( "won't work" );
+}
+```
+
+因为 `try..catch` 包裹了计划要执行的函数，该函数本身要稍后才执行，这时引擎已经离开了 `try..catch` 结构。
+
+为了捕获到计划的（scheduled）函数中的异常，那么 `try..catch` 必须在这个函数内：
+
+```js
+setTimeout(function() {
+  try {
+    noSuchVariable; // try..catch 处理 error 了！
+  } catch {
+    alert( "error is caught here!" );
+  }
+}, 1000);
+```
+
+## Eval
+
+内建函数 `eval` 允许执行一个代码字符串。
+
+语法如下：
+
+```js
 let result = eval(code);
+```
+
 例如：
 
+```js
 let code = 'alert("Hello")';
 eval(code); // Hello
+```
+
 代码字符串可能会比较长，包含换行符、函数声明和变量等。
 
-eval 的结果是最后一条语句的结果。
+`eval` 的结果是最后一条语句的结果。
 
 例如：
 
+```js
 let value = eval('1+1');
 alert(value); // 2
 let value = eval('let i = 0; ++i');
 alert(value); // 1
-eval 内的代码在当前词法环境（lexical environment）中执行，因此它能访问外部变量：
+```
 
-let a = 1;
-
-function f() {
-  let a = 2;
-
-  eval('alert(a)'); // 2
-}
-
-f();
-它也可以更改外部变量：
-
-let x = 5;
-eval("x = 10");
-alert(x); // 10，值被更改了
-严格模式下，eval 有属于自己的词法环境。因此我们不能从外部访问在 eval 中声明的函数和变量：
-
-// 提示：本教程所有可运行的示例都默认启用了严格模式 'use strict'
-
-eval("let x = 5; function f() {}");
-
-alert(typeof x); // undefined（没有这个变量）
-// 函数 f 也不可从外部进行访问
-如果不启用严格模式，eval 没有属于自己的词法环境，因此我们可以从外部访问变量 x 和函数 f。
+> 🦶 严格模式下，`eval` 有属于自己的词法环境。因此我们不能从外部访问在 `eval` 中声明的函数和变量，如果不启用严格模式，`eval` 没有属于自己的词法环境，因此我们可以从外部访问变量。
 
 ## Reference Type
 
+```js
+let user = {
+  name: "John",
+  hi() { alert(this.name); }
+}
+
+// user.hi(); // 正常运行
+// 把获取方法和调用方法拆成两行
+let hi = user.hi;
+hi(); // 报错了，因为 this 的值是 undefined
+```
+
+仔细看的话，我们可能注意到 `obj.method()` 语句中的两个操作：
+
+首先，点 **'.'** 取了属性 `obj.method` 的值。
+接着 **()** 执行了它。
+
+这里 `hi = user.hi` 把函数赋值给了一个变量，接下来在最后一行它是完全独立的，所以这里没有 `this`。
+
+**为确保 `user.hi()` 调用正常运行，JavaScript 玩了个小把戏 —— 点 '.' 返回的不是一个函数，而是一个特殊的 `Reference Type` 的值。**
+
+`Reference Type` 是 ECMA 中的一个“规范类型”。我们不能直接使用它，但它被用在 JavaScript 语言内部。
+
+`Reference Type` 的值是一个三个值的组合 `(base, name, strict)`，其中：
+
+- `base` 是对象。
+- `name` 是属性名。
+- `strict` 在 `use strict` 模式下为 `true`。
+
+当 `()` 被在 `Reference Type` 上调用时，它们会接收到关于对象和对象的方法的完整信息，然后可以设置正确的 `this`（在此处 = `user`）。
+
+`Reference Type `是一个特殊的“中间人”内部类型，目的是从** . **传递信息给 `() `调用。
+
+任何例如赋值 `hi = user.hi` 等其他的操作，都会将 `Reference Type` 作为一个整体丢弃掉，而会取 `user.hi`（一个函数）的值并继续传递。所以任何后续操作都“丢失”了 `this`。
+
 ## 柯里化（Currying）
-
-
-
-
-## Proxy
-
-定义：修改某些操作的默认行为
-声明：const proxy = new Proxy(target, handler)
-入参
-
-target：拦截的目标对象
-handler：定制拦截行为
-
-
-方法
-
-Proxy.revocable()：返回可取消的Proxy实例(返回{ proxy, revoke }，通过revoke()取消代理)
-
-
-拦截方式
-
-get()：拦截对象属性读取
-set()：拦截对象属性设置，返回布尔
-has()：拦截对象属性检查k in obj，返回布尔
-deleteProperty()：拦截对象属性删除delete obj[k]，返回布尔
-defineProperty()：拦截对象属性定义Object.defineProperty()、Object.defineProperties()，返回布尔
-ownKeys()：拦截对象属性遍历for-in、Object.keys()、Object.getOwnPropertyNames()、Object.getOwnPropertySymbols()，返回数组
-getOwnPropertyDescriptor()：拦截对象属性描述读取Object.getOwnPropertyDescriptor()，返回对象
-getPrototypeOf()：拦截对象原型读取instanceof、Object.getPrototypeOf()、Object.prototype.__proto__、Object.prototype.isPrototypeOf()、Reflect.getPrototypeOf()，返回对象
-setPrototypeOf()：拦截对象原型设置Object.setPrototypeOf()，返回布尔
-isExtensible()：拦截对象是否可扩展读取Object.isExtensible()，返回布尔
-preventExtensions()：拦截对象不可扩展设置Object.preventExtensions()，返回布尔
-apply()：拦截Proxy实例作为函数调用proxy()、proxy.apply()、proxy.call()
-construct()：拦截Proxy实例作为构造函数调用new proxy()
-
-
-
-
-应用场景
-
-
-Proxy.revocable()：不允许直接访问对象，必须通过代理访问，一旦访问结束就收回代理权不允许再次访问
-get()：读取未知属性报错、读取数组负数索引的值、封装链式操作、生成DOM嵌套节点
-set()：数据绑定(Vue数据绑定实现原理)、确保属性值设置符合要求、防止内部属性被外部读写
-has()：隐藏内部属性不被发现、排除不符合属性条件的对象
-deleteProperty()：保护内部属性不被删除
-defineProperty()：阻止属性被外部定义
-ownKeys()：保护内部属性不被遍历
-
-
-重点难点
-
-
-要使Proxy起作用，必须针对实例进行操作，而不是针对目标对象进行操作
-没有设置任何拦截时，等同于直接通向原对象
-属性被定义为不可读写/扩展/配置/枚举时，使用拦截方法会报错
-代理下的目标对象，内部this指向Proxy代理
-
-## Reflect
-
-定义：保持Object方法的默认行为
-方法
-
-get()：返回对象属性
-set()：设置对象属性，返回布尔
-has()：检查对象属性，返回布尔
-deleteProperty()：删除对象属性，返回布尔
-defineProperty()：定义对象属性，返回布尔
-ownKeys()：遍历对象属性，返回数组(Object.getOwnPropertyNames()+Object.getOwnPropertySymbols())
-getOwnPropertyDescriptor()：返回对象属性描述，返回对象
-getPrototypeOf()：返回对象原型，返回对象
-setPrototypeOf()：设置对象原型，返回布尔
-isExtensible()：返回对象是否可扩展，返回布尔
-preventExtensions()：设置对象不可扩展，返回布尔
-apply()：绑定this后执行指定函数
-construct()：调用构造函数创建实例
-
-
-
-
-设计目的
-
-
-将Object属于语言内部的方法放到Reflect上
-将某些Object方法报错情况改成返回false
-让Object操作变成函数行为
-Proxy与Reflect相辅相成
-
-
-废弃方法
-
-
-Object.defineProperty() => Reflect.defineProperty()
-Object.getOwnPropertyDescriptor() => Reflect.getOwnPropertyDescriptor()
-
-
-重点难点
-
-
-Proxy方法和Reflect方法一一对应
-Proxy和Reflect联合使用，前者负责拦截赋值操作，后者负责完成赋值操作
-
-
-数据绑定：观察者模式
-
-const observerQueue = new Set();
-const observe = fn => observerQueue.add(fn);
-const observable = obj => new Proxy(obj, {
-    set(tgt, key, val, receiver) {
-        const result = Reflect.set(tgt, key, val, receiver);
-        observerQueue.forEach(v => v());
-        return result;
-    }
-});
-
-const person = observable({ age: 25, name: "Yajun" });
-const print = () => console.log(`${person.name} is ${person.age} years old`);
-observe(print);
-person.name = "Joway";
-
-## Module
-
-命令
-
-export：规定模块对外接口
-
-默认导出：export default Person(导入时可指定模块任意名称，无需知晓内部真实名称)
-单独导出：export const name = "Bruce"
-按需导出：export { age, name, sex }(推荐)
-改名导出：export { name as newName }
-
-
-import：导入模块内部功能
-
-默认导入：import Person from "person"
-整体导入：import * as Person from "person"
-按需导入：import { age, name, sex } from "person"
-改名导入：import { name as newName } from "person"
-自执导入：import "person"
-复合导入：import Person, { name } from "person"
-
-
-复合模式：export命令和import命令结合在一起写成一行，变量实质没有被导入当前模块，相当于对外转发接口，导致当前模块无法直接使用其导入变量
-
-默认导入导出：export { default } from "person"
-整体导入导出：export * from "person"
-按需导入导出：export { age, name, sex } from "person"
-改名导入导出：export { name as newName } from "person"
-具名改默认导入导出：export { name as default } from "person"
-默认改具名导入导出：export { default as name } from "person"
-
-
-
-
-继承：默认导出和改名导出结合使用可使模块具备继承性
-设计思想：尽量地静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量
-严格模式：ES6模块自动采用严格模式(不管模块头部是否添加use strict)
-
-
-模块方案
-
-
-CommonJS：用于服务器(动态化依赖)
-AMD：用于浏览器(动态化依赖)
-CMD：用于浏览器(动态化依赖)
-UMD：用于浏览器和服务器(动态化依赖)
-ESM：用于浏览器和服务器(静态化依赖)
-
-
-加载方式
-
-
-运行时加载
-
-定义：整体加载模块生成一个对象，再从对象上获取需要的属性和方法进行加载(全部加载)
-影响：只有运行时才能得到这个对象，导致无法在编译时做静态优化
-
-
-编译时加载
-
-定义：直接从模块中获取需要的属性和方法进行加载(按需加载)
-影响：在编译时就完成模块加载，效率比其他方案高，但无法引用模块本身(本身不是对象)，可拓展JS高级语法(宏和类型校验)
-
-
-
-
-加载实现
-
-
-传统加载：通过<script>进行同步或异步加载脚本
-
-同步加载：<script src=""></script>
-Defer异步加载：<script src="" defer></script>(顺序加载，渲染完再执行)
-Async异步加载：<script src="" async></script>(乱序加载，下载完就执行)
-
-
-模块加载：<script type="module" src=""></script>(默认是Defer异步加载)
-
-
-CommonJS和ESM的区别
-
-
-CommonJS输出值的拷贝，ESM输出值的引用
-
-CommonJS一旦输出一个值，模块内部的变化就影响不到这个值
-ESM是动态引用且不会缓存值，模块里的变量绑定其所在的模块，等到脚本真正执行时，再根据这个只读引用到被加载的那个模块里去取值
-
-
-CommonJS是运行时加载，ESM是编译时加载
-
-CommonJS加载模块是对象(即module.exports)，该对象只有在脚本运行完才会生成
-ESM加载模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成
-
-
-
-
-Node加载
-
-
-背景：CommonJS和ESM互不兼容，目前解决方案是将两者分开，采用各自的加载方案
-区分：要求ESM采用.mjs后缀文件名
-
-require()不能加载.mjs文件，只有import命令才可加载.mjs文件
-.mjs文件里不能使用require()，必须使用import命令加载文件
-
-
-驱动：node --experimental-modules file.mjs
-限制：Node的import命令目前只支持加载本地模块(file:协议)，不支持加载远程模块
-加载优先级
-
-脚本文件省略后缀名：依次尝试加载四个后缀名文件(.mjs、.js、.json、node)
-以上不存在：尝试加载package.json的main字段指定的脚本
-以上不存在：依次尝试加载名称为index四个后缀名文件(.mjs、.js、.json、node)
-以上不存在：报错
-
-
-不存在的内部变量：arguments、exports、module、require、this、__dirname、__filename
-CommonJS加载ESM
-
-不能使用require()，只能使用import()
-
-
-ESM加载CommonJS
-
-自动将module.exports转化成export default
-CommonJS输出缓存机制在ESM加载方式下依然有效
-采用import命令加载CommonJS模块时，不允许采用按需导入，应使用默认导入或整体导入
-
-
-
-
-循环加载
-
-
-定义：脚本A的执行依赖脚本B，而脚本A的执行又依赖脚本B
-加载原理
-
-CommonJS：require()首次加载脚本就会执行整个脚本，在内存里生成一个对象缓存下来，二次加载脚本时直接从缓存中获取
-ESM：import命令加载变量不会被缓存，而是成为一个指向被加载模块的引用
-
-
-循环加载
-
-CommonJS：只输出已经执行的部分，还未执行的部分不会输出
-ESM：需开发者自己保证真正取值时能够取到值(可把变量写成函数形式，函数具有提升作用)
-
-
-
-
-重点难点
-
-
-ES6模块中，顶层this指向undefined，不应该在顶层代码使用this
-一个模块就是一个独立的文件，该文件内部的所有变量，外部无法获取
-export命令输出的接口与其对应的值是动态绑定关系，即通过该接口可获取模块内部实时的值
-import命令大括号里的变量名必须与被导入模块对外接口的名称相同
-import命令输入的变量只读(本质是输入接口)，不允许在加载模块的脚本里改写接口
-import命令命令具有提升效果，会提升到整个模块的头部，首先执行
-重复执行同一句import语句，只会执行一次
-export default命令只能使用一次
-export default命令导出的整体模块，在执行import命令时其后不能跟大括号
-export default命令本质是输出一个名为default的变量，后面不能跟变量声明语句
-export default命令本质是将后面的值赋给名为default的变量，可直接将值写在其后
-export default命令和export {}命令可同时存在，对应复合导入
-export命令和import命令可出现在模块任何位置，只要处于模块顶层即可，不能处于块级作用域
-import()加载模块成功后，此模块会作为一个对象，当作then()的参数，可使用对象解构赋值来获取输出接口
-同时动态加载多个模块时，可使用Promise.all()和import()相结合来实现
-import()和结合async/await来书写同步操作的代码
-
-
-单例模式：跨模块常量
-
-// 常量跨文件共享
-// person.js
-const NAME = "Bruce";
-const AGE = 25;
-const SEX = "male";
-export { AGE, NAME, SEX };
-复制代码
-// file1.js
-import { AGE } from "person";
-console.log(AGE);
-复制代码
-// file2.js
-import { AGE, NAME, SEX } from "person";
-console.log(AGE, NAME, SEX);
-复制代码
-
-默认导入互换整体导入
-
-import Person from "person";
-console.log(Person.AGE);
-复制代码
-import * as Person from "person";
-console.log(Person.default.AGE);
-
-## globalThis
-globalThis：作为顶层对象，指向全局环境下的this
-Browser：顶层对象是window
-Node：顶层对象是global
-WebWorker：顶层对象是self
-以上三者：通用顶层对象是globalThis
-
-## 链判断操作符(?.)
-：是否存在对象属性(不存在返回undefined且不再往下执行)
-对象属性：obj?.prop、obj?.[expr]
-函数调用：func?.(...args)
