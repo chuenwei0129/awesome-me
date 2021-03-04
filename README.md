@@ -6,10 +6,10 @@
 
 ## 好看是第一生产力
 
-- `[Windows]` [我的 Windows 工具清单](win/tool_list.md)
 - `[Windows]` [Windows Terminal 完美配置 PowerShell](win/powershell_terminal.md)
 - `[Windows]` [打造完美的、纯净的 Windows 开发环境](win/win_dev.md)
 - `[Windows]` [Windows 日常使用的技巧](win/some-tips.md)
+- `[Windows]` [我的 Windows 工具清单](win/tool_list.md)
 
 ## JavaScript
 
@@ -42,10 +42,10 @@
 ## 算法
 ## 其他
 
-- `[Markdown]` [Markdown 的基本撰写和格式语法](Notes/Markdown_github.md)
-- `[Git]` [Git 简单学习与高频使用的命令](Notes/Git.md)
-- `[Nvm]` [Node 版本及源管理](Notes/Nvm_win.md)
-- `[SSH]` [使用 SSH 登录 Linux 实例](Notes/SSH_remote.md)
+- `[Markdown]` [Markdown 的基本撰写和格式语法]
+- `[Git]` [Git 简单学习与高频使用的命令]
+- `[Nvm]` [Node 版本及源管理]
+- `[SSH]` [使用 SSH 登录 Linux 实例]
 
 
 

@@ -1,14 +1,20 @@
-## 我的 MAC 工具清单
+# 我的 MAC 工具清单
 
 > 本文内容：**mac** 好用的软件、**iterm2** 配置、谷歌插件、油猴脚本、网站导航
 
-### mac 好用的软件
+## mac 好用的软件
 
-#### Telegram：跨平台的即时通信软件
+### iMobie M1 App Checker：M1 Mac 应用检测工具
+
+- 🖥 [官网](https://www.imobie.com/cn/m1-app-checker/)
+
+`iMobie M1 App Checker` 是一款免费且简单好用的应用检测工具。它可以帮助您检查您喜爱的 `Mac` 或 `iPhone` 应用是否在 `M1 Mac` 上也支持。同时，它还可以通过导入 `.ipa` 文件使您的 `iPhone` 应用在 `M1 Mac` 上运行!
+
+### Telegram：跨平台的即时通信软件
 
 - 🖥 [官网](https://telegram.org/)
 
-客户端汉化
+- [x] 客户端汉化
 
 1. 点击 https://t.me/setlanguage/classic-zh-cn
 
@@ -16,15 +22,15 @@
 
 3. 重启即可完成汉化操作
 
-iOS 官方原生客户端进入 Apple 限制群（开车群）的方法
+- [x] `iOS` 官方原生客户端进入 `Apple` 限制群（开车群）的方法
 
-- Windows 电脑桌面客户端：左上角三短线：设置 → 隐私 → 开启"显示含有敏感内容的媒体"
+- `Windows` 电脑桌面客户端：左上角三短线：**设置 → 隐私 → 开启** "显示含有敏感内容的媒体"
 
-- macOS 电脑桌面客户端：设置 → 隐私安全 → 开启"显示含有敏感内容的媒体"
+- `macOS` 电脑桌面客户端：**设置 → 隐私安全 → 开启** "显示含有敏感内容的媒体"
 
-- 网页版：手机或电脑浏览器访问官方网页版地址：https://web.telegram.org，对话列表 → 左上角 / 右上角三短线 → Settings → 打开"Show Sensitive Content"
+- 网页版：手机或电脑浏览器访问官方网页版地址：https://web.telegram.org，**对话列表 → 左上角 / 右上角三短线 → Settings → 打开** "Show Sensitive Content"
 
-频道或群组分享
+- [x] 频道或群组分享
 
 - [中文频道大全-TG 上的好 123](https://t.me/hao123bots)
 
@@ -34,17 +40,13 @@ iOS 官方原生客户端进入 Apple 限制群（开车群）的方法
 
 - [4K 影视资源分享](https://t.me/Remux_2160P)
 
-<!-- #### Telegram：跨平台的即时通信软件
-
-- 🖥 [官网](https://telegram.org/) -->
-
-#### Downie 4：优秀的网页在线视频下载工具
+### Downie 4：优秀的网页在线视频下载工具
 
 - 🖥 [官网](https://software.charliemonroe.net/downie/)
 
-支持包括爱奇艺、优酷、土豆、腾讯视频、网易云音乐、哔哩哔哩 Bilibili 等国内外 10000 多个在线视频网站的视频下载，特点是下载成功率很高
+支持包括爱奇艺、优酷、土豆、腾讯视频、网易云音乐、哔哩哔哩 `Bilibili` 等国内外 **10000** 多个在线视频网站的视频下载，特点是下载成功率很高
 
-#### 开源软件
+## 开源软件
 
 | 软件                                               | 备注                                                                                               |
 | -------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
@@ -57,7 +59,11 @@ iOS 官方原生客户端进入 Apple 限制群（开车群）的方法
 | [ClashX](https://github.com/yichengchen/clashX)    | 基于 clash 的一款支持规则过滤的科学上网工具                                                        |
 | [Motrix](https://github.com/agalwood/Motrix)       | 全能的下载工具，支持下载 HTTP、FTP、BT、磁力链、百度网盘等资源                                     |
 | [Bob](https://github.com/ripperhe/Bob)             | 简小好用的翻译工具，支持语言自动检测，截图翻译                                                     |
-| [Hidden Bar](https://github.com/dwarvesf/hidden)   | 简洁的工具栏隐藏软件                                                                               |
+| [Gifski](https://github.com/dwarvesf/hidden)   | 简洁的工具栏隐藏软件                                                                               |
+| [LyricsX](https://github.com/dwarvesf/hidden)   | 简洁的工具栏隐藏软件                                                                               |
+| [OpenEmu](https://github.com/dwarvesf/hidden)   | 简洁的工具栏隐藏软件                                                                               |
+| [PicGo](https://github.com/dwarvesf/hidden)   | 简洁的工具栏隐藏软件                                                                               |
+| [Maccy](https://github.com/dwarvesf/hidden)   | 简洁的工具栏隐藏软件                                                                               |
 
 ### mac 使用技巧
 

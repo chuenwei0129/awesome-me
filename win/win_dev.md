@@ -15,7 +15,7 @@
 - [开发环境](#开发环境)
   - [lua](#lua)
     - [windows](#windows)
-  - [wsl](#wsl-1)
+    - [ubuntu](#ubuntu)
   - [powershell](#powershell)
     - [z.lua](#zlua)
     - [PSReadLine](#psreadline)
@@ -365,7 +365,7 @@ LC_ALL=en_US.UTF-8
 
    ![](../Images/lua_sucess.png)
 
-### wsl
+#### ubuntu
 
 在 Ubuntu 系统上使用以下命令编译安装 Lua：
 
