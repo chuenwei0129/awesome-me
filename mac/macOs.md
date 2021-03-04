@@ -1,6 +1,29 @@
-# 我的 MAC 工具清单
+# 我的 MAC 工具清单<!-- omit in toc -->
 
 > 本文内容：**mac** 好用的软件、**iterm2** 配置、谷歌插件、油猴脚本、网站导航
+
+- [mac 好用的软件](#mac-好用的软件)
+  - [iMobie M1 App Checker：M1 Mac 应用检测工具](#imobie-m1-app-checkerm1-mac-应用检测工具)
+  - [Telegram：跨平台的即时通信软件](#telegram跨平台的即时通信软件)
+  - [Downie 4：优秀的网页在线视频下载工具](#downie-4优秀的网页在线视频下载工具)
+- [开源软件](#开源软件)
+- [iterm2](#iterm2)
+  - [安装字体 Nerd Fonts](#安装字体-nerd-fonts)
+  - [普通 Window](#普通-window)
+  - [选项卡 Tab](#选项卡-tab)
+  - [窗格 Panes](#窗格-panes)
+  - [即时回放](#即时回放)
+    - [历史剪切板](#历史剪切板)
+    - [历史命令提示](#历史命令提示)
+    - [即时回放](#即时回放-1)
+  - [快捷功能](#快捷功能)
+    - [智能复制](#智能复制)
+    - [妙用 Command](#妙用-command)
+  - [常用快捷键](#常用快捷键)
+- [chrome 插件](#chrome-插件)
+- [油猴脚本](#油猴脚本)
+- [为 Chrome 设置搜索引擎关键词](#为-chrome-设置搜索引擎关键词)
+- [网站导航](#网站导航)
 
 ## mac 好用的软件
 
@@ -59,41 +82,32 @@
 | [ClashX](https://github.com/yichengchen/clashX)    | 基于 clash 的一款支持规则过滤的科学上网工具                                                        |
 | [Motrix](https://github.com/agalwood/Motrix)       | 全能的下载工具，支持下载 HTTP、FTP、BT、磁力链、百度网盘等资源                                     |
 | [Bob](https://github.com/ripperhe/Bob)             | 简小好用的翻译工具，支持语言自动检测，截图翻译                                                     |
-| [Gifski](https://github.com/dwarvesf/hidden)   | 简洁的工具栏隐藏软件                                                                               |
-| [LyricsX](https://github.com/dwarvesf/hidden)   | 简洁的工具栏隐藏软件                                                                               |
-| [OpenEmu](https://github.com/dwarvesf/hidden)   | 简洁的工具栏隐藏软件                                                                               |
-| [PicGo](https://github.com/dwarvesf/hidden)   | 简洁的工具栏隐藏软件                                                                               |
-| [Maccy](https://github.com/dwarvesf/hidden)   | 简洁的工具栏隐藏软件                                                                               |
+| [Gifski](https://github.com/sindresorhus/Gifski)   | 在 Mac 上将视频转换为高质量的 GIF                                                                               |
+| [LyricsX](https://github.com/ddddxxx/LyricsX)   | 功能完备的歌词工具                                                                               |
+| [OpenEmu](https://github.com/OpenEmu/OpenEmu)   | macOS 老游戏模拟器                                                                               |
+| [PicGo](https://github.com/Molunerfinn/PicGo)   | 图床管理工具                                                                               |
+| [Maccy](https://github.com/p0deje/Maccy)   | 轻量级的剪贴板管理工具                                                                               |
 
-### mac 使用技巧
+## iterm2
 
-#### 常用快捷键
+### 安装字体 Nerd Fonts
 
-control option 空格 表情
-强制退出 option commond esc
-commod + k
+通过 brew 来安装：
 
-### iterm2
-
-安装字体 Nerd Fonts
-上文我们已经安装了 PowerFonts，如果需要使用一些图标，这个字体是不够用的，我们需要一个强大的字体： Nerd Fonts，它支持下面这么多种图标：
-
-
-安装
-你可以如官网所说，通过 brew 来安装：
-
+```sh
 brew tap homebrew/cask-fonts
 brew cask install font-hack-nerd-font
-但是我不建议这样，包括不建议你下载 zip 包，因为这个文件太大了，太大了，太大了。。。
+```
+
+但是不建议这样，包括不建议你下载 zip 包，因为这个文件太大了，太大了，太大了。。。
 
 我们可以这样：
 
-打开 https://github.com/ryanoasis/nerd-fonts/releases，滑动页面找到 Assets 区域，如图：
+打开 https://github.com/ryanoasis/nerd-fonts/releases
 
+我们只要下载单个字体包，解压缩之后就会获得一些 `ttf` 字体文件，双击安装即可。
 
-我们只要下载箭头所指的 Hack.zip 这个字体包，解压缩之后就会获得一些 ttf 字体文件，双击安装即可。
-
-#### 普通 Window
+### 普通 Window
 
 - 新建 Window：`Command + N`
 - 关闭 Window：`Command + W`
@@ -101,29 +115,29 @@ brew cask install font-hack-nerd-font
 - 展示所有窗口：`Command + Option + E`
 - 关闭窗口：`Command + W`
 
-#### 选项卡 Tab
+### 选项卡 Tab
 
 - 新建标签：`Command + t`
 - 关闭标签：`Command + w`
 - 切换标签：`Command + 数字` 或者 `Command + 左 / 右方向`
 
-#### 窗格 Panes
+### 窗格 Panes
 
 - 垂直分屏：`Command + d`
 - 水平分屏：`Command + shift + d`
 - 切换窗格：`Command + Option + 方向键` 或者 `Command + 左右中括号`
 
-#### 即时回放
+### 即时回放
 
 >除了窗口划分，Term2 的另一杀手锏就是回放。不仅可以查看剪切板的历史记录，还能像视频一样回放窗口内的历史记录！
 
-##### 历史剪切板
+#### 历史剪切板
 
 对于普通文本编辑器来说，每次复制后都会覆盖之前的剪切板，非常不好用。而 iTerm2 提供了和 IDEA 一样查看历史剪切板功能，对于 CV 工程师来说是相当友好了！
 
 快捷键：`Command + Shift + h`
 
-##### 历史命令提示
+#### 历史命令提示
 
 命令提示，能够提示最近输入的内容，以及常用的命令；需要注意的是，这里仅仅会输入过的内容。
 
@@ -135,7 +149,7 @@ brew cask install font-hack-nerd-font
 - 下一条命令： `Ctrl + n(next)` 或 向下方向键
 - 搜索历史命令：`ctrl + r`
 
-##### 即时回放
+#### 即时回放
 
 非常有意思的功能，像录屏一样，记录过去一段时间内窗口显示的内容。
 
@@ -145,9 +159,9 @@ brew cask install font-hack-nerd-font
 
 退出回放：`esc`
 
-#### 快捷功能
+### 快捷功能
 
-##### 智能复制
+#### 智能复制
 
 在 item 中选中即复制，被选择的文本会自动保存在剪切板中。**双击选中**，**三击选中整行**，四击智能选择，可以智能的选中你想要的数据，如网址，邮箱，括号或引号中的数据等。
 
@@ -155,7 +169,7 @@ brew cask install font-hack-nerd-font
 
 使用 `Command + f` 即可完成搜索，搜索后，通过 `Tab` 或者 `Tab + Shift` 可向右或向左扩大选中范围，完成复制。
 
-##### 妙用 Command
+#### 妙用 Command
 
 `Command` 既可以和其他按键组合成快捷键，也可以搭配鼠标实现一些快捷功能。只需要按下 `Command` 在搭配一下操作即可。
 
@@ -164,9 +178,9 @@ brew cask install font-hack-nerd-font
 - 点击文件夹，在 `Finder` 中打开该文件夹
 - 配合 `Option` 键，使用鼠标可以选择矩形区域内容
 
-#### 常用快捷键
+### 常用快捷键
 
-这些快捷键并非 iTem2 特有，也是非常基础的快捷键。当然最重要的是它们非常实用，几乎每天都会用到。
+这些快捷键并非 `iTem2` 特有，也是非常基础的快捷键。当然最重要的是它们非常实用，几乎每天都会用到。
 
 - 清屏：`Command + r` 或者 `ctrl + l`
 - 清除当前行：`ctrl + u`
@@ -178,8 +192,7 @@ brew cask install font-hack-nerd-font
 - 光标移动导行首：`Ctrl + a`
 - 光标移动到行位：`Ctrl + e`
 
-
-### chrome 插件
+## chrome 插件
 
 [uBlock Origin](https://chrome.google.com/webstore/detail/ublock-origin-development/cgbcahbpdhpcegmbfconppldiemgcoii)：日常上网必备，屏蔽各种广告。
 
@@ -192,6 +205,12 @@ brew cask install font-hack-nerd-font
 [Web for TikTok](https://chrome.google.com/webstore/detail/web-for-tiktok/dedphjedjalglppdfpmmibdbbkmifnbb)：用 Chrome 刷海外版抖音 TikTok，下载 Tiktok 短视频
 
 [Listen1](https://chrome.google.com/webstore/detail/listen-1/indecfegkejajpaipjipfkkbedgaodbp)：支持多平台的音乐播放器
+
+[Similarsites](https://chrome.google.com/webstore/detail/similar-sites-discover-re/necpbmbhhdiplmfhmjicabdeighkndkn)：发现类似的网站
+
+[FireShot](https://chrome.google.com/webstore/detail/take-webpage-screenshots/mcbpblocgmgfnpjjppndjkmgjaogfceg)：网页截图
+
+[Screenity](https://chrome.google.com/webstore/detail/screenity-screen-recorder/kbbdabhdfibnancpjfhlkhafgdilcnji)：屏幕录像和标注工具
 
 [前端助手](https://chrome.google.com/webstore/detail/fehelper%E5%89%8D%E7%AB%AF%E5%8A%A9%E6%89%8B/pkgccpejnmalmdinmhkkfafefagiiiad)：JSON 自动格式化、手动格式化，支持排序、解码、下载等，更多功能可在配置页按需安装！
 
@@ -221,7 +240,7 @@ brew cask install font-hack-nerd-font
 
 [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)：油猴脚本，给浏览器开个挂！
 
-### 油猴脚本
+## 油猴脚本
 
 > 使用自定义网站脚本的插件，可以使用各种 **user.js** 脚本，相当于小型的插件管理器，下面是我常用的脚本，其他用途的脚本请自行探索 [Greasy Fork](https://greasyfork.org/zh-CN)、[Sleazy Fork](https://sleazyfork.org/zh-CN)、[OpenUserJS](https://openuserjs.org/)
 
@@ -243,24 +262,15 @@ brew cask install font-hack-nerd-font
 
 [HTML5 视频截图器](https://greasyfork.org/zh-CN/scripts/370819-html5%E8%A7%86%E9%A2%91%E6%88%AA%E5%9B%BE%E5%99%A8)：基于 HTML5 的简单原生视频截图，可控制快进/逐帧/视频调速，支持自定义快捷键
 
-### 网站导航
+## 为 Chrome 设置搜索引擎关键词
 
-[图片无损放大 - waifu2x](http://waifu2x.udp.jp/index.zh-CN.html)
-[极简插件](https://chrome.zzzmh.cn/index#index)
+Chrome 的搜索栏同时支持多种搜索：
 
+1. 进入设置搜索引擎的界面：为百度搜索设置 关键字 `bd`
 
-### vscode插件
+2. 搜索成功! 在地址栏输入关键词 `bd` 后, 按空格键, 就可以快速切换到百度搜索了
 
-[Auto Close Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag)
+## 网站导航
 
-From VS Code 1.16, it has built-in close tag support for HTML, Handlebars and Razor files. This extension is enabled for other languages like XML, PHP, Vue, JavaScript, TypeScript, JSX, TSX and so on. It is configurable.
-
-[Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag)
-
-From 1.44, VS Code offers the built-in Rename On Type support for HTML and Handlebars that can be enabled with the setting editor.renameOnType. If this setting is enabled, this extension will skip HTML and Handlebars files regardless of the languages listed in auto-rename-tag.activationOnLanguage
-
-https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2&ssr=false#overview
-
-https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner
-
-https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
+- [图片无损放大 - waifu2x](http://waifu2x.udp.jp/index.zh-CN.html)
+- [极简插件](https://chrome.zzzmh.cn/index#index)

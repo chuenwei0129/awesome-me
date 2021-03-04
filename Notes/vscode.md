@@ -120,3 +120,20 @@ task任务
 235
 
 1、将相同配置统一放置和管理(全局性)，2、专注开发无需理会这些繁琐的配置(专一性)，3、这些本身就是编辑器做的事情，为何强加到每个项目上(独立性)
+
+
+### vscode插件
+
+[Auto Close Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag)
+
+From VS Code 1.16, it has built-in close tag support for HTML, Handlebars and Razor files. This extension is enabled for other languages like XML, PHP, Vue, JavaScript, TypeScript, JSX, TSX and so on. It is configurable.
+
+[Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag)
+
+From 1.44, VS Code offers the built-in Rename On Type support for HTML and Handlebars that can be enabled with the setting editor.renameOnType. If this setting is enabled, this extension will skip HTML and Handlebars files regardless of the languages listed in auto-rename-tag.activationOnLanguage
+
+https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2&ssr=false#overview
+
+https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner
+
+https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig

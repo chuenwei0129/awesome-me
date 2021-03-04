@@ -10,6 +10,7 @@
 - `[Windows]` [打造完美的、纯净的 Windows 开发环境](win/win_dev.md)
 - `[Windows]` [Windows 日常使用的技巧](win/some-tips.md)
 - `[Windows]` [我的 Windows 工具清单](win/tool_list.md)
+- `[MacOs]` [我的 MAC 工具清单](mac/macOs.md)
 
 ## JavaScript
 
