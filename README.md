@@ -10,24 +10,24 @@
 - `[Windows]` [打造完美的、纯净的 Windows 开发环境](win/win_dev.md)
 - `[Windows]` [Windows 日常使用的技巧](win/some-tips.md)
 - `[Windows]` [我的 Windows 工具清单](win/tool_list.md)
-- `[MacOs]` [我的 MAC 工具清单](mac/macOs.md)
+- `[MacOS]` [我的 MacOS 工具清单](mac/macOs.md)
 
 ## JavaScript
 
 - `[基础]` [JavaScript 基础知识梳理(一)](js/js_base.md)
-- `[函数]` [JavaScript 基础知识梳理(二)](js/js_object.md)
-- `[对象]` [JavaScript 基础知识梳理(三)](js/js_function.md)
+- `[函数]` [JavaScript 基础知识梳理(二)](js/js_function.md)
+- `[对象]` [JavaScript 基础知识梳理(三)](js/js_object.md)
 - `[数据结构]` [JavaScript 基础知识梳理(四)](js/js_data_structure.md)
 - `[类]` [JavaScript 基础知识梳理(五)](js/js_class.md)
 - `[异步]` [JavaScript 基础知识梳理(六)](js/js_promise.md)
 - `[杂项]`[JavaScript 基础知识梳理(七)](js/js_other.md)
 - `[正则]` [JavaScript 基础知识梳理(八)](js/js_regexp.md)
 - `[奇技淫巧]` [JavaScript 中的奇技淫巧]()
-- `[代码]` [前端面试中常考的源码实现]()
+- `[代码]` [前端面试中常考的手写代码实现]()
 
 ## 浏览器
 
-- `[WEB]` [浏览器知识整理](Notes/Bom_learn.md)
+- `[WEB]` [DOM 知识整理](web/dom.md)
 - `[Cookie]`
 - `[XHR]`
 - `[跨域]`
@@ -43,15 +43,7 @@
 ## 算法
 ## 其他
 
-- `[Markdown]` [Markdown 的基本撰写和格式语法]
-- `[Git]` [Git 简单学习与高频使用的命令]
-- `[Nvm]` [Node 版本及源管理]
-- `[SSH]` [使用 SSH 登录 Linux 实例]
-
-
-
-
-
-
-
-
+- `[Markdown]` [Markdown 的基本撰写和格式语法](others/markdown.md)
+- `[Nvm]` [Node 版本及源管理](others/nvm.md)
+<!-- - `[Git]` [Git 简单学习与高频使用的命令] -->
+<!-- - `[SSH]` [使用 SSH 登录 Linux 实例](others/ssh.md) -->
