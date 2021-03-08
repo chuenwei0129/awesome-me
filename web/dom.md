@@ -282,7 +282,7 @@ var replacedNode = parentNode.replaceChild(newChild, oldChild)
 
 ### HTMLCollection 接口
 
-`HTMLCollection` 是一个节点对象的集合，只能包含元素节点（`element`），不能包含其他类型的节点。它的返回值是一个类似数组的对象，但是与 `NodeList` 接口不同，**`HTMLCollection` 没有 `forEach` 方法**，只能使用 `for` 循环遍历。
+`HTMLCollection` 是一个节点对象的集合，只能包含元素节点（`element`），不能包含其他类型的节点。它的返回值是一个类似数组的对象，但是与 `NodeList` 接口不同，**`HTMLCollection`没有`forEach` 方法**，只能使用 `for` 循环遍历。
 
 返回 `HTMLCollection` 实例的，**主要是一些 `Document` 对象的集合属性**，比如 `document.links`、`document.forms`、`document.images` 等。
 
