@@ -7,13 +7,45 @@
 // 6. 一旦 resolve 后就不可再 reject
 
 // 7. then没有返回值或者返回非 promise，value 值会一直向下传递，形成 promise 链，终止 promise 的方法是返回 pending状态的promise 即空的promise
-// 8. then 返回 promise，returnPromise的then会立即执行并把val return出去传给外部的then，内部的错误也会传给外部reject
-// 9. 错误处理，两种情况，内部抛出错误，或者返回的promise是错误状态
-// 10. 返回的promise是新的promise
+// 8. then 返回 promise，returnPromise的then会立即执行并把val return出去传给promise2的then，内部的错误也会传给外部reject
+// 9. 错误处理，两种情况，内部抛出错误，或者返回的promise2是错误状态
+// 10. 返回的promise是新的promise2
+
+// 外部有 then 方法，promise2.then就是外部的then方法 他的参数传递取决于onfulfilled放回值 传递参数靠resolve promise2.then执行
 
 const RESOLVED = 'RESOLVED'
 const REJECTED = 'REJECTED'
 const PENDING = 'PENDING'
+
+const resolvePromise2 = (promise2, x, resolve, reject) => {
+	if (promise2 === x) {
+		reject(new TypeError('出错了'))
+	} else if ((typeof x === 'object' && x !== null) || typeof x === 'function') {
+		let called = null
+		try {
+			const then = x.then
+			if (typeof then === 'function') {
+				then.call(x, y => {
+					if (called) return
+					called = true
+					resolvePromise2(promise2, y, resolve, reject)
+				}, r => {
+					if (called) return
+					called = true
+					reject(r)
+				})
+			} else {
+				resolve(x)
+			}
+		} catch (err) {
+			if (called) return
+			called = true
+			reject(err)
+		}
+	} else {
+		resolve(x)
+	}
+}
 
 class Promise {
 	constructor(exe) {
@@ -27,7 +59,7 @@ class Promise {
 			if (this.state === PENDING) {
 				this.state = RESOLVED
 				this.value = value
-				this.resolvedCb.forEach(fn => fn(value))
+				this.resolvedCb.forEach(fn => fn())
 			}
 		}
 
@@ -35,7 +67,7 @@ class Promise {
 			if (this.state === PENDING) {
 				this.state = REJECTED
 				this.reason = reason
-				this.resolvedCb.forEach(fn => fn(reason))
+				this.rejectedCb.forEach(fn => fn())
 			}
 		}
 
@@ -45,20 +77,67 @@ class Promise {
 			reject(err)
 		}
 	}
-	then(onfullfiled, onrejected) {
-		// 同步
-		if (this.state === RESOLVED) {
-			onfullfiled(this.value)
-		}
-		if (this.state === REJECTED) {
-			onrejected(this.reason)
-		}
-		// 异步
-		if (this.state === PENDING) {
-			this.resolvedCb.push(onfullfiled)
-			this.rejectedCb.push(onrejected)
-		}
+	then(onfulfilled, onrejected) {
+		onfulfilled = typeof onfulfilled === 'function' ? onfulfilled : value => value
+		onrejected = typeof onrejected === 'function' ? onrejected : err => { throw err }
+		const promise2 = new Promise((resolve, reject) => {
+			// 同步
+			if (this.state === RESOLVED) {
+				setTimeout(() => {
+					try {
+						const x = onfulfilled(this.value)
+						resolvePromise2(promise2, x, resolve, reject)
+					} catch (err) {
+						reject(err)
+					}
+				})
+			}
+			if (this.state === REJECTED) {
+				setTimeout(() => {
+					try {
+						const x = onrejected(this.reason)
+						resolvePromise2(promise2, x, resolve, reject)
+					} catch (err) {
+						reject(err)
+					}
+				})
+			}
+			// 异步
+			if (this.state === PENDING) {
+				this.resolvedCb.push(() => {
+					setTimeout(() => {
+						try {
+							const x = onfulfilled(this.value)
+							resolvePromise2(promise2, x, resolve, reject)
+						} catch (err) {
+							reject(err)
+						}
+					})
+				})
+				this.rejectedCb.push(() => {
+					setTimeout(() => {
+						try {
+							const x = onrejected(this.reason)
+							resolvePromise2(promise2, x, resolve, reject)
+						} catch (err) {
+							reject(err)
+						}
+					})
+				})
+			}
+		})
+
+		return promise2
 	}
+}
+
+Promise.defer = Promise.deferred = function() {
+	const dfd = {}
+	dfd.promise = new Promise((resolve, reject) => {
+		dfd.resolve = resolve
+		dfd.reject = reject
+	})
+	return dfd
 }
 
 module.exports = Promise
