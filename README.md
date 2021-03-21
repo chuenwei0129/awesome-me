@@ -25,6 +25,11 @@
 - `[奇技淫巧]` [JavaScript 中的奇技淫巧]()
 - `[代码]` [前端面试中常考的手写代码实现]()
 
+## TypeScript
+
+- `[基础]`[写给自己的 TypeScript 教程(一)](ts/ts_base.md)
+- `[进阶]`[写给自己的 TypeScript 教程(二)](ts/ts_high.md)
+
 ## 浏览器
 
 - `[WEB]` [DOM 知识整理](web/dom.md)
