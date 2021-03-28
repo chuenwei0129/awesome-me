@@ -987,8 +987,39 @@ module.exports = merge(common, {
 npm i speed-measure-webpack-plugin -D
 ```
 
+```js
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+
+const smp = new SpeedMeasurePlugin();
+
+const webpackConfig = smp.wrap({
+  plugins: [new MyPlugin(), new MyOtherPlugin()],
+});
+```
+
 `webpack-bundle-analyzer` 分析打包出的文件包含哪些，大小占比如何，模块包含关系，依赖项，文件是否重复，压缩后大小如何
 
 ```sh
 npm i webpack-bundle-analyzer -D
+```
+
+```js
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+module.exports = {
+  plugins: [
+    new BundleAnalyzerPlugin({
+			// 是否启服务
+			analyzerMode: 'disabled',
+			// 生成状态文件
+			generateStatsFile: true
+		})
+  ]
+}
+```
+
+```sh
+"scripts": {
+  "analyzer": "webpack-bundle-analyzer --port 8088 ./dist/stats.json"
+}, 
 ```

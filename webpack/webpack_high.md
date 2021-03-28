@@ -161,3 +161,29 @@ module.exports = {
 };
 ```
 
+## 长效缓存
+### 业界构建优化方案梳理和分析
+- `cache-loader` 可以在一些性能开销较大的 `loader` 之前添加，目的是将结果缓存到磁盘里；
+- `DLLPlugin `和 `DLLReferencePlugin` 实现了拆分 `bundles`，同时节约了反复构建 `bundles` 的成本，大大提升了构建的速度；- `thread-loader` 和 `happypack` 实现了单独的 `worker` 池，用于多进程/多线程运行 `loaders`；
+- `vue-cli` 和 `create-react-app` 并没有使用到 `dll` 技术，而是使用了更好的代替着：`hard-source-webpack-plugin`。
+
+### Webpack 5 持久化缓存
+在开发阶段，开发者一般习惯使用 `Webpack --watch` 选项或者 `webpack-dev-server` 启动一个不间断的进程（`continuous processes`）以达到最佳的构建速度和效率。`Webpack --watch` 选项和 `webpack-dev-server` 都会监听文件系统，进而在必要时，触发持续编译构建动作。
+
+`Webpack` 的 `--watch` 选项内置了类似 `batching` 的能力，我们称之为 `aggregateTimeout`。意思是说：在触发 `Watchpack` 实例监听的文件（夹）的 `change` 事件后，会将修改的内容暂存的 `aggregatedChanges` 数组中，并在最后一次文件（夹）没有变更的 `200ms` 后，将聚合事件 `emit` 给上层。
+
+在 `Webpack` 构建运行时，对于每一种类型模块，都会使用 `Resolver` 预先判断路径是否存在，并获取路径的完整地址供后续加载文件使用。当然对于这三种类型 `resolver`，也设置了缓存：`Webpack` 本身通过 `UnsafeCachePlugin` 对 `resolve` 结果进行缓存，对于相同引用，返回缓存路径结果。
+
+在通过 `UnsafeCachePlugin` 插件完成了必备文件路径查找之后，如果编辑过程没有出错，且当前 `loader` 调用了 `this.cacheable()`，且存在上一次构建的结果集合，那么即将进入「是否需要重新构建」的决断（`needRebuild`），决断策略根据当前模块的 `this.fileDependencies` 和 `this.contextDependencies` 这两个关键因素来确定。
+
+对于一个持续化构建过程来说，**第一次构建是一次全量构建**，它会利用**磁盘模块缓存**，使得后续的构建从中获利。后续构建具体流程是：**读取磁盘缓存 -> 校验模块 -> 解封模块内容**。因为**模块之间的关系并不会被显式缓存**，因此模块之间的关系仍然需要在每次构建过程中被校验，这个校验过程和正常的 webpack 进行分析依赖关系时的逻辑是完全一致的。对于 `resolver` 的缓存同样可以持久化缓存起来，一旦 `resolver` 缓存经过校验后发现准确匹配，就可以用于快速寻找依赖关系。对于 `resolver` 缓存校验失败的情况，将会直接执行 `resolver` 的常规构建逻辑。正常来讲，`resolver` 的变化也将会引起持续构建过程中文件路径变化的钩子触发。
+
+- 模块内容基于 `timestamps` 或 `filesystem metadata` 的校验需要被基于 `hash` 算法或其他基于内容的比对算法取代
+- 文件依赖关系（`File dependency`）的 `timestamps` 的校验需要被文件内容 `hashes` 算法取代
+- 上下文依赖（`Context dependency`）的 `timestamps` 的校验需要被文件路径的 `hashes` 算法取代
+
+除了模块缓存，前面提到过的 `resolver` 缓存同样需要有类似的缓存校验过程。那么这两种校验过程也同样需要被优化，以达到更好的性能和构建速度。
+
+缓存淘汰策略设计实际上类似一个经典的 `LRU cache`（Least Recently Used 最近最少使用）设计。
+
+
