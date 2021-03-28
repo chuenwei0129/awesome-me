@@ -22,8 +22,8 @@
 - `[异步]` [JavaScript 基础知识梳理(六)](js/js_promise.md)
 - `[杂项]`[JavaScript 基础知识梳理(七)](js/js_other.md)
 - `[正则]` [JavaScript 基础知识梳理(八)](js/js_regexp.md)
-- `[奇技淫巧]` [JavaScript 中的奇技淫巧]()
-- `[代码]` [前端面试中常考的手写代码实现]()
+<!-- - `[奇技淫巧]` [JavaScript 中的奇技淫巧]() -->
+<!-- - `[代码]` [前端面试中常考的手写代码实现]() -->
 
 ## TypeScript
 

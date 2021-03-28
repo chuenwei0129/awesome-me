@@ -426,7 +426,33 @@ npm i babel-loader @babel/core @babel/preset-env -D
 它是 `Babel` 核心库，提供了很多转译源文件的 `API`，它需要插件才能转译本身不会转译
 ##### @babel/preset-env
 `babel/preset-env` 是语法转译器也可以叫预设，但是它只转换新的 `ES` 语法。而不转换新的 `ES API`，比如 `Iterator`, `Generator`, `Set`, `Maps`, `Proxy`, `Reflect`,`Symbol`,`Promise`，而对与这些新的 `API` 可以通过 [core-js](https://github.com/zloirock/core-js) 转译。
+
+`babel` 的 `polyfill` 机制是，对于例如 `Array.from` 等静态方法，直接在 `global.Array` 上添加；对于例如 `includes` 等实例方法，直接在 `global.Array.prototype` 上添加。这样直接修改了全局变量的原型，有可能会带来意想不到的问题。
+
+`babel` 转译 `syntax` 时，有时候会使用一些辅助的函数来帮忙转，`class` 语法中，`babel` 自定义了 `_classCallCheck` 这个函数来辅助；`typeof` 则是直接重写了一遍，自定义了 `_typeof` 这个函数来辅助。这些函数叫做 `helpers`。如果一个项目中有 `100` 个文件，其中每个文件都写了一个 `class`，那么这个项目最终打包的产物里就会存在 `100` 个 `_classCallCheck` 函数，他们的长相和功能一模一样，这显然不合理。
+
+所以有两种解决方案，方案一：`preset-env` + `polyfill`，在 `usebuildins` 设置，适用于常规开发场景，方案二：`preset-env` + `@babel/runtime-corejs3` + `plugin-transform-runtime` 适用于类库开发。
+
+方案二
+```sh
+npm i plugin-transform-runtime -D
+npm i @babel/runtime-corejs3 -s
+```
+配置如下
 ```js
+{
+  "plugins": [
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "corejs": 3
+      }
+    ]
+  ]
+}
+```
+方案一
+```sh
 npm i core-js -s
 ```
 配置如下
@@ -443,6 +469,7 @@ npm i core-js -s
       loader: 'babel-loader',
       options: {
         presets: [['@babel/preset-env', {
+          // 告诉 babel 如何处理 api。这个选项默认值为 false，即不处理 api
           useBuiltIns: 'entry',
           corejs: '3.9.1',
           targets: {
@@ -455,6 +482,7 @@ npm i core-js -s
 },
 ```
 ##### @babel/preset-env 参数
+**方案二**不能和 `useBuiltIns` 混用，方案二解决的是 `helpers` 和全局污染，他不会根据浏览器规则动态变化，所以常规使用**方案一**即可
 - `useBuiltIns: "usage"| "entry"| false`，默认为 `false`, 这里讲一讲 `usage`
 - `usage` 会根据配置的浏览器兼容，和只对你用到的 `API` 来进行 `polyfill`，实现按需添加补丁
 - targets：
@@ -478,7 +506,7 @@ npm i core-js -s
 - `@babel/plugin-proposal-decorators` 把类和对象的装饰器编译成 `ES5` 代码
 - `@babel/plugin-proposal-class-properties` 转换静态类属性以及使用属性初始值化语法声明的属性
 
-> 配置转译所需要的插件。使用插件的顺序是按照插件在数组中的顺序依次调用的
+> 配置转译所需要的插件。使用插件的顺序是按照插件在数组中的顺序依次调用的，从前往后，预设的顺序相反，插件会比预设先执行
 
 现在 `babel-loader` 参数比较臃肿可以提到 `.babelrc.js` 文件中
 ```js
