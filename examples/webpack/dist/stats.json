@@ -1,8 +1,8 @@
 {
-  "hash": "9e6c32c15161f4f3ec14",
+  "hash": "385ba42792d9bd454ff6",
   "version": "5.28.0",
-  "time": 218,
-  "builtAt": 1617041681970,
+  "time": 312,
+  "builtAt": 1617044955180,
   "publicPath": "auto",
   "outputPath": "/Users/gakki/work/awesome-me/examples/webpack/dist",
   "assetsByChunkName": {
@@ -13,31 +13,14 @@
   "assets": [
     {
       "type": "asset",
-      "name": "index.html",
-      "size": 313,
-      "emitted": false,
-      "comparedForEmit": false,
-      "cached": true,
-      "info": {},
-      "chunkNames": [],
-      "chunkIdHints": [],
-      "auxiliaryChunkNames": [],
-      "auxiliaryChunkIdHints": [],
-      "related": {},
-      "chunks": [],
-      "auxiliaryChunks": [],
-      "isOverSizeLimit": false
-    },
-    {
-      "type": "asset",
       "name": "vendor.js",
-      "size": 274,
-      "emitted": false,
+      "size": 1755,
+      "emitted": true,
       "comparedForEmit": false,
-      "cached": true,
+      "cached": false,
       "info": {
         "javascriptModule": false,
-        "minimized": true
+        "size": 1755
       },
       "chunkNames": [
         "vendor"
@@ -47,8 +30,27 @@
       "auxiliaryChunkIdHints": [],
       "related": {},
       "chunks": [
-        736
+        "vendor"
       ],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    },
+    {
+      "type": "asset",
+      "name": "index.html",
+      "size": 329,
+      "emitted": false,
+      "comparedForEmit": true,
+      "cached": false,
+      "info": {
+        "size": 329
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "related": {},
+      "chunks": [],
       "auxiliaryChunks": [],
       "isOverSizeLimit": false
     }
@@ -59,9 +61,9 @@
       "initial": true,
       "entry": true,
       "recorded": false,
-      "size": 11,
+      "size": 529,
       "sizes": {
-        "javascript": 11
+        "javascript": 529
       },
       "names": [
         "vendor"
@@ -74,9 +76,9 @@
         "vendor.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "09077762940b21ea095d",
+      "hash": "f88398b1943c1c6cf129",
       "childrenByOrder": {},
-      "id": 736,
+      "id": "vendor",
       "siblings": [],
       "parents": [],
       "children": [],
@@ -85,14 +87,14 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 11,
+          "size": 529,
           "sizes": {
-            "javascript": 11
+            "javascript": 529
           },
           "built": true,
           "codeGenerated": true,
           "cached": false,
-          "identifier": "/Users/gakki/work/awesome-me/examples/webpack/loader/loader1.js!/Users/gakki/work/awesome-me/examples/webpack/loader/loader2.js!/Users/gakki/work/awesome-me/examples/webpack/loader/loader3.js!/Users/gakki/work/awesome-me/examples/webpack/index.js",
+          "identifier": "/Users/gakki/work/awesome-me/examples/webpack/loader/my-banner-loader.js??ruleSet[1].rules[0]!/Users/gakki/work/awesome-me/examples/webpack/loader/my-babel-loader.js??ruleSet[1].rules[1]!/Users/gakki/work/awesome-me/examples/webpack/index.js",
           "name": "./index.js",
           "nameForCondition": "/Users/gakki/work/awesome-me/examples/webpack/index.js",
           "index": 0,
@@ -106,13 +108,13 @@
           "issuer": null,
           "issuerName": null,
           "issuerPath": null,
-          "failed": true,
-          "errors": 1,
+          "failed": false,
+          "errors": 0,
           "warnings": 0,
-          "id": 7,
+          "id": "./index.js",
           "issuerId": null,
           "chunks": [
-            736
+            "vendor"
           ],
           "assets": [],
           "reasons": [
@@ -131,11 +133,9 @@
               "resolvedModuleId": null
             }
           ],
-          "usedExports": [],
+          "usedExports": null,
           "providedExports": null,
-          "optimizationBailout": [
-            "ModuleConcatenation bailout: Module is not an ECMAScript module"
-          ],
+          "optimizationBailout": [],
           "depth": 0
         }
       ],
@@ -155,14 +155,14 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 11,
+      "size": 529,
       "sizes": {
-        "javascript": 11
+        "javascript": 529
       },
       "built": true,
       "codeGenerated": true,
       "cached": false,
-      "identifier": "/Users/gakki/work/awesome-me/examples/webpack/loader/loader1.js!/Users/gakki/work/awesome-me/examples/webpack/loader/loader2.js!/Users/gakki/work/awesome-me/examples/webpack/loader/loader3.js!/Users/gakki/work/awesome-me/examples/webpack/index.js",
+      "identifier": "/Users/gakki/work/awesome-me/examples/webpack/loader/my-banner-loader.js??ruleSet[1].rules[0]!/Users/gakki/work/awesome-me/examples/webpack/loader/my-babel-loader.js??ruleSet[1].rules[1]!/Users/gakki/work/awesome-me/examples/webpack/index.js",
       "name": "./index.js",
       "nameForCondition": "/Users/gakki/work/awesome-me/examples/webpack/index.js",
       "index": 0,
@@ -175,13 +175,13 @@
       "issuer": null,
       "issuerName": null,
       "issuerPath": null,
-      "failed": true,
-      "errors": 1,
+      "failed": false,
+      "errors": 0,
       "warnings": 0,
-      "id": 7,
+      "id": "./index.js",
       "issuerId": null,
       "chunks": [
-        736
+        "vendor"
       ],
       "assets": [],
       "reasons": [
@@ -200,11 +200,9 @@
           "resolvedModuleId": null
         }
       ],
-      "usedExports": [],
+      "usedExports": null,
       "providedExports": null,
-      "optimizationBailout": [
-        "ModuleConcatenation bailout: Module is not an ECMAScript module"
-      ],
+      "optimizationBailout": [],
       "depth": 0
     }
   ],
@@ -212,15 +210,16 @@
     "vendor": {
       "name": "vendor",
       "chunks": [
-        736
+        "vendor"
       ],
       "assets": [
         {
-          "name": "vendor.js"
+          "name": "vendor.js",
+          "size": 1755
         }
       ],
       "filteredAssets": 0,
-      "assetsSize": null,
+      "assetsSize": 1755,
       "auxiliaryAssets": [],
       "filteredAuxiliaryAssets": 0,
       "auxiliaryAssetsSize": 0,
@@ -233,15 +232,16 @@
     "vendor": {
       "name": "vendor",
       "chunks": [
-        736
+        "vendor"
       ],
       "assets": [
         {
-          "name": "vendor.js"
+          "name": "vendor.js",
+          "size": 1755
         }
       ],
       "filteredAssets": 0,
-      "assetsSize": null,
+      "assetsSize": 1755,
       "auxiliaryAssets": [],
       "filteredAuxiliaryAssets": 0,
       "auxiliaryAssetsSize": 0,
@@ -250,27 +250,17 @@
       "isOverSizeLimit": false
     }
   },
-  "errors": [
-    {
-      "moduleIdentifier": "/Users/gakki/work/awesome-me/examples/webpack/loader/loader1.js!/Users/gakki/work/awesome-me/examples/webpack/loader/loader2.js!/Users/gakki/work/awesome-me/examples/webpack/loader/loader3.js!/Users/gakki/work/awesome-me/examples/webpack/index.js",
-      "moduleName": "./index.js",
-      "loc": "1:7",
-      "message": "Module parse failed: Unexpected token (1:7)\nFile was processed with these loaders:\n * ./loader/loader1.js\n * ./loader/loader2.js\n * ./loader/loader3.js\nYou may need an additional loader to handle the result of these loaders.\n> loader stop",
-      "moduleId": 7,
-      "moduleTrace": [],
-      "stack": "ModuleParseError: Module parse failed: Unexpected token (1:7)\nFile was processed with these loaders:\n * ./loader/loader1.js\n * ./loader/loader2.js\n * ./loader/loader3.js\nYou may need an additional loader to handle the result of these loaders.\n> loader stop\n    at handleParseError (/Users/gakki/.nvm/versions/node/v12.21.0/lib/node_modules/webpack/lib/NormalModule.js:887:19)\n    at /Users/gakki/.nvm/versions/node/v12.21.0/lib/node_modules/webpack/lib/NormalModule.js:988:5\n    at processResult (/Users/gakki/.nvm/versions/node/v12.21.0/lib/node_modules/webpack/lib/NormalModule.js:717:11)\n    at /Users/gakki/.nvm/versions/node/v12.21.0/lib/node_modules/webpack/lib/NormalModule.js:774:5\n    at /Users/gakki/.nvm/versions/node/v12.21.0/lib/node_modules/webpack/node_modules/loader-runner/lib/LoaderRunner.js:406:3\n    at iterateNormalLoaders (/Users/gakki/.nvm/versions/node/v12.21.0/lib/node_modules/webpack/node_modules/loader-runner/lib/LoaderRunner.js:232:10)\n    at iterateNormalLoaders (/Users/gakki/.nvm/versions/node/v12.21.0/lib/node_modules/webpack/node_modules/loader-runner/lib/LoaderRunner.js:239:10)\n    at /Users/gakki/.nvm/versions/node/v12.21.0/lib/node_modules/webpack/node_modules/loader-runner/lib/LoaderRunner.js:254:3\n    at runSyncOrAsync (/Users/gakki/.nvm/versions/node/v12.21.0/lib/node_modules/webpack/node_modules/loader-runner/lib/LoaderRunner.js:143:11)\n    at iterateNormalLoaders (/Users/gakki/.nvm/versions/node/v12.21.0/lib/node_modules/webpack/node_modules/loader-runner/lib/LoaderRunner.js:250:2)"
-    }
-  ],
-  "errorsCount": 1,
+  "errors": [],
+  "errorsCount": 0,
   "warnings": [],
   "warningsCount": 0,
   "children": [
     {
       "name": "HtmlWebpackCompiler",
-      "hash": "6f91b012271561ce59b7",
+      "hash": "642ff6d4e2f08262bf36",
       "version": "5.28.0",
-      "time": 70,
-      "builtAt": 1617041681840,
+      "time": 96,
+      "builtAt": 1617044954980,
       "publicPath": "",
       "outputPath": "/Users/gakki/work/awesome-me/examples/webpack/dist",
       "assetsByChunkName": {},
@@ -281,10 +271,10 @@
           "initial": true,
           "entry": true,
           "recorded": false,
-          "size": 1069,
+          "size": 1363,
           "sizes": {
             "javascript": 629,
-            "runtime": 440
+            "runtime": 734
           },
           "names": [
             "HtmlWebpackPlugin_0-0"
@@ -295,9 +285,9 @@
           ],
           "files": [],
           "auxiliaryFiles": [],
-          "hash": "d5db9ee528e060ca5407",
+          "hash": "9fde62c8a07f5a6d9f67",
           "childrenByOrder": {},
-          "id": 563,
+          "id": "HtmlWebpackPlugin_0-0",
           "siblings": [],
           "parents": [],
           "children": [],
@@ -330,10 +320,10 @@
               "failed": false,
               "errors": 0,
               "warnings": 0,
-              "id": 614,
+              "id": "./node_modules/html-webpack-plugin/lib/loader.js!./index.html",
               "issuerId": null,
               "chunks": [
-                563
+                "HtmlWebpackPlugin_0-0"
               ],
               "assets": [],
               "reasons": [
@@ -348,8 +338,8 @@
                   "explanation": "",
                   "userRequest": null,
                   "loc": "1:111-125",
-                  "moduleId": 614,
-                  "resolvedModuleId": 614
+                  "moduleId": "./node_modules/html-webpack-plugin/lib/loader.js!./index.html",
+                  "resolvedModuleId": "./node_modules/html-webpack-plugin/lib/loader.js!./index.html"
                 },
                 {
                   "moduleIdentifier": null,
@@ -382,9 +372,7 @@
               "usedExports": null,
               "providedExports": null,
               "optimizationBailout": [
-                "CommonJS bailout: module.exports is used directly at 1:111-125",
-                "Statement (VariableDeclaration) with side effects in source code at 1:0-111",
-                "ModuleConcatenation bailout: Module is not an ECMAScript module"
+                "CommonJS bailout: module.exports is used directly at 1:111-125"
               ],
               "depth": 0
             },
@@ -416,10 +404,10 @@
               "failed": false,
               "errors": 0,
               "warnings": 0,
-              "id": 295,
+              "id": "data:text/javascript,__webpack_public_path__ = __webpack_base_uri__ = htmlWebpackPluginPublicPath;",
               "issuerId": null,
               "chunks": [
-                563
+                "HtmlWebpackPlugin_0-0"
               ],
               "assets": [],
               "reasons": [
@@ -438,11 +426,9 @@
                   "resolvedModuleId": null
                 }
               ],
-              "usedExports": [],
+              "usedExports": null,
               "providedExports": [],
-              "optimizationBailout": [
-                "Statement (ExpressionStatement) with side effects in source code at 1:0-77"
-              ],
+              "optimizationBailout": [],
               "depth": 0
             },
             {
@@ -471,7 +457,42 @@
               "warnings": 0,
               "id": "",
               "chunks": [
-                563
+                "HtmlWebpackPlugin_0-0"
+              ],
+              "assets": [],
+              "reasons": [],
+              "usedExports": null,
+              "providedExports": [],
+              "optimizationBailout": [],
+              "depth": null
+            },
+            {
+              "type": "module",
+              "moduleType": "runtime",
+              "layer": null,
+              "size": 274,
+              "sizes": {
+                "runtime": 274
+              },
+              "built": false,
+              "codeGenerated": true,
+              "cached": false,
+              "identifier": "webpack/runtime/make namespace object",
+              "name": "webpack/runtime/make namespace object",
+              "nameForCondition": null,
+              "index": null,
+              "preOrderIndex": null,
+              "index2": null,
+              "postOrderIndex": null,
+              "optional": false,
+              "orphan": false,
+              "dependent": false,
+              "failed": false,
+              "errors": 0,
+              "warnings": 0,
+              "id": "",
+              "chunks": [
+                "HtmlWebpackPlugin_0-0"
               ],
               "assets": [],
               "reasons": [],
@@ -506,7 +527,7 @@
               "warnings": 0,
               "id": "",
               "chunks": [
-                563
+                "HtmlWebpackPlugin_0-0"
               ],
               "assets": [],
               "reasons": [],
@@ -519,9 +540,9 @@
               "type": "module",
               "moduleType": "runtime",
               "layer": null,
-              "size": 325,
+              "size": 345,
               "sizes": {
-                "runtime": 325
+                "runtime": 345
               },
               "built": false,
               "codeGenerated": true,
@@ -541,7 +562,7 @@
               "warnings": 0,
               "id": "",
               "chunks": [
-                563
+                "HtmlWebpackPlugin_0-0"
               ],
               "assets": [],
               "reasons": [],
@@ -597,10 +618,10 @@
           "failed": false,
           "errors": 0,
           "warnings": 0,
-          "id": 295,
+          "id": "data:text/javascript,__webpack_public_path__ = __webpack_base_uri__ = htmlWebpackPluginPublicPath;",
           "issuerId": null,
           "chunks": [
-            563
+            "HtmlWebpackPlugin_0-0"
           ],
           "assets": [],
           "reasons": [
@@ -619,11 +640,9 @@
               "resolvedModuleId": null
             }
           ],
-          "usedExports": [],
+          "usedExports": null,
           "providedExports": [],
-          "optimizationBailout": [
-            "Statement (ExpressionStatement) with side effects in source code at 1:0-77"
-          ],
+          "optimizationBailout": [],
           "depth": 0
         },
         {
@@ -653,10 +672,10 @@
           "failed": false,
           "errors": 0,
           "warnings": 0,
-          "id": 614,
+          "id": "./node_modules/html-webpack-plugin/lib/loader.js!./index.html",
           "issuerId": null,
           "chunks": [
-            563
+            "HtmlWebpackPlugin_0-0"
           ],
           "assets": [],
           "reasons": [
@@ -671,8 +690,8 @@
               "explanation": "",
               "userRequest": null,
               "loc": "1:111-125",
-              "moduleId": 614,
-              "resolvedModuleId": 614
+              "moduleId": "./node_modules/html-webpack-plugin/lib/loader.js!./index.html",
+              "resolvedModuleId": "./node_modules/html-webpack-plugin/lib/loader.js!./index.html"
             },
             {
               "moduleIdentifier": null,
@@ -705,9 +724,7 @@
           "usedExports": null,
           "providedExports": null,
           "optimizationBailout": [
-            "CommonJS bailout: module.exports is used directly at 1:111-125",
-            "Statement (VariableDeclaration) with side effects in source code at 1:0-111",
-            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+            "CommonJS bailout: module.exports is used directly at 1:111-125"
           ],
           "depth": 0
         },
@@ -736,7 +753,41 @@
           "warnings": 0,
           "id": "",
           "chunks": [
-            563
+            "HtmlWebpackPlugin_0-0"
+          ],
+          "assets": [],
+          "reasons": [],
+          "usedExports": null,
+          "providedExports": [],
+          "optimizationBailout": [],
+          "depth": null
+        },
+        {
+          "type": "module",
+          "moduleType": "runtime",
+          "layer": null,
+          "size": 274,
+          "sizes": {
+            "runtime": 274
+          },
+          "built": false,
+          "codeGenerated": true,
+          "cached": false,
+          "identifier": "webpack/runtime/make namespace object",
+          "name": "webpack/runtime/make namespace object",
+          "nameForCondition": null,
+          "index": null,
+          "preOrderIndex": null,
+          "index2": null,
+          "postOrderIndex": null,
+          "optional": false,
+          "orphan": false,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": "",
+          "chunks": [
+            "HtmlWebpackPlugin_0-0"
           ],
           "assets": [],
           "reasons": [],
@@ -770,7 +821,7 @@
           "warnings": 0,
           "id": "",
           "chunks": [
-            563
+            "HtmlWebpackPlugin_0-0"
           ],
           "assets": [],
           "reasons": [],
@@ -783,9 +834,9 @@
           "type": "module",
           "moduleType": "runtime",
           "layer": null,
-          "size": 325,
+          "size": 345,
           "sizes": {
-            "runtime": 325
+            "runtime": 345
           },
           "built": false,
           "codeGenerated": true,
@@ -804,7 +855,7 @@
           "warnings": 0,
           "id": "",
           "chunks": [
-            563
+            "HtmlWebpackPlugin_0-0"
           ],
           "assets": [],
           "reasons": [],
@@ -818,7 +869,7 @@
         "HtmlWebpackPlugin_0-0": {
           "name": "HtmlWebpackPlugin_0-0",
           "chunks": [
-            563
+            "HtmlWebpackPlugin_0-0"
           ],
           "assets": [],
           "filteredAssets": 0,
@@ -835,7 +886,7 @@
         "HtmlWebpackPlugin_0-0": {
           "name": "HtmlWebpackPlugin_0-0",
           "chunks": [
-            563
+            "HtmlWebpackPlugin_0-0"
           ],
           "assets": [],
           "filteredAssets": 0,

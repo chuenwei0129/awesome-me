@@ -18,4 +18,8 @@
 // 缓存复用了 utils
 // 代码没有分割
 
-console.log('test loader')
+const str = 'test loader'
+
+if (Object.is(str, 'test loader')) {
+	console.log(str)
+}
