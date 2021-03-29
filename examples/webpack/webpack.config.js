@@ -10,8 +10,24 @@ module.exports = smp.wrap({
 		vendor: './index.js'
 	},
 	mode: 'production',
+	resolveLoader: {
+		modules: [path.resolve(__dirname, 'loader'), 'node modules']
+	},
 	module: {
-		rules: []
+		rules: [
+			{
+				test: /\.jsx?$/,
+				loader: path.resolve(__dirname, 'loader', 'loader1')
+			},
+			{
+				test: /\.jsx?$/,
+				loader: path.resolve(__dirname, 'loader', 'loader2')
+			},
+			{
+				test: /\.jsx?$/,
+				loader: path.resolve(__dirname, 'loader', 'loader3')
+			}
+		]
 	},
 	plugins: [
 		new HTMLWebpackPlugin({ title: 'Title', template: './index.html' }),

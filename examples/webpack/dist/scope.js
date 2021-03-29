@@ -1,1 +1,0 @@
-(self.webpackChunkwebpack=self.webpackChunkwebpack||[]).push([[24],{330:(e,l,o)=>{"use strict";o.r(l),o.d(l,{default:()=>s});var c=o(980);console.log(c.Z),console.log("a"),console.log("b");const s="hello world"}}]);

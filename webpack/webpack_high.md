@@ -1,4 +1,19 @@
 # Webpack 从入门到入土<!-- omit in toc -->
+- [作用域提升（Scope Hoisting）](#作用域提升scope-hoisting)
+- [懒加载](#懒加载)
+- [tree shaking](#tree-shaking)
+- [分包策略（SplitChunksPlugin）](#分包策略splitchunksplugin)
+- [长效缓存](#长效缓存)
+  - [业界构建优化方案梳理和分析](#业界构建优化方案梳理和分析)
+  - [Webpack 5 持久化缓存](#webpack-5-持久化缓存)
+- [HMR](#hmr)
+- [tapable](#tapable)
+- [loader](#loader)
+  - [pitch loader](#pitch-loader)
+  - [babel-loader](#babel-loader)
+  - [](#)
+- [plugin](#plugin)
+- [simple webpack](#simple-webpack)
 ## 作用域提升（Scope Hoisting）
 - 大量函数闭包包裹代码，导致体积增大（模块越多越明显）
 - 运行代码时创建的函数作用域变多，内存开销变大
@@ -186,4 +201,30 @@ module.exports = {
 
 缓存淘汰策略设计实际上类似一个经典的 `LRU cache`（Least Recently Used 最近最少使用）设计。
 
+## HMR
 
+## tapable
+
+## loader
+### pitch loader
+
+![pitch loader](../Images/webpack_loader.png)
+
+```js
+function loader(source) {
+	console.log('loader2 执行')
+	return source
+}
+
+loader.pitch = function() {
+	return 'loader stop'
+}
+
+module.exports = loader
+```
+### babel-loader
+### 
+
+## plugin
+
+## simple webpack
