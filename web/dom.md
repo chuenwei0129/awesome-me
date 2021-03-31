@@ -1,4 +1,4 @@
-# DOM 知识整理<!-- omit in toc -->
+# DOM <!-- omit in toc -->
 
 - [节点](#节点)
 - [DOM 树 🌴](#dom-树-)
@@ -26,8 +26,6 @@
 	- [document.visibilityState](#documentvisibilitystate)
 	- [document.readyState](#documentreadystate)
 	- [document.domain](#documentdomain)
-	- [document.location](#documentlocation)
-	- [document.cookie](#documentcookie)
 	- [querySelector()，querySelectorAll()，getElementsByTagName()，getElementsByClassName()，getElementsByName()，getElementById()](#queryselectorqueryselectorallgetelementsbytagnamegetelementsbyclassnamegetelementsbynamegetelementbyid)
 	- [createElement()，createTextNode()，createAttribute()，createComment()，createDocumentFragment()](#createelementcreatetextnodecreateattributecreatecommentcreatedocumentfragment)
 	- [document.createNodeIterator()](#documentcreatenodeiterator)
@@ -73,9 +71,9 @@ DOM 的最小组成单位叫做节点，节点的类型有七种。
 
 ## DOM 树 🌴
 
-浏览器原生提供 document 节点，代表整个文档。
+浏览器原生提供 `document` 节点，代表整个文档。
 
-document 有两个子节点，第一个是文档类型节点（`<!doctype html>`），第二个是 HTML 网页的顶层容器标签`<html>`。后者构成了树结构的根节点（root node），其他 HTML 标签节点都是它的下级节点。
+`document` 有两个子节点，第一个是文档类型节点 `<!doctype html>`，第二个是 `HTML` 网页的顶层容器标签 `<html>`。后者构成了树结构的根节点 `root node`，其他 `HTML` 标签节点都是它的下级节点。
 
 **除了根节点，其他节点都有三种层级关系。**
 
@@ -85,7 +83,7 @@ document 有两个子节点，第一个是文档类型节点（`<!doctype html>`
 
 ## Node 接口
 
-所有 DOM 节点对象都继承了 Node 接口，拥有一些共同的属性和方法
+所有 `DOM` 节点对象都继承了 `Node` 接口，拥有一些共同的属性和方法
 
 ### 常用属性
 
@@ -105,7 +103,7 @@ document 有两个子节点，第一个是文档类型节点（`<!doctype html>`
 
 `textContent` 属性返回当前节点和它的所有后代节点的文本内容
 
-该属性是可读写的，设置该属性的值，会用一个新的文本节点，替换所有原来的子节点。它还有一个好处，就是自动对 HTML 标签转义。
+该属性是可读写的，设置该属性的值，会用一个新的文本节点，替换所有原来的子节点。它还有一个好处，就是自动对 `HTML` 标签转义。
 
 ```js
 document.getElementById('foo').textContent = '<p>GoodBye!</p>'
@@ -248,7 +246,7 @@ while (element.firstChild) {
 }
 ```
 
-被移除的节点依然存在于内存之中，但不再是 DOM 的一部分。所以，一个节点移除以后，依然可以使用它，比如插入到另一个节点下面。
+被移除的节点依然存在于内存之中，但不再是 `DOM` 的一部分。所以，一个节点移除以后，依然可以使用它，比如插入到另一个节点下面。
 
 #### replaceChild()
 
@@ -278,7 +276,7 @@ var replacedNode = parentNode.replaceChild(newChild, oldChild)
 `item` 方法接受一个整数值作为参数，表示成员的位置，返回该位置上的成员。
 所有类似数组的对象，都可以使用方括号运算符取出成员。一般情况下，都是使用方括号运算符，而不使用 `item` 方法。
 
-`keys()`、`values()`、`entries()` 这三个方法都返回一个 ES6 的遍历器对象，可以通过 `for...of` 循环遍历获取每一个成员的信息。
+`keys()`、`values()`、`entries()` 这三个方法都返回一个 `ES6` 的遍历器对象，可以通过 `for...of` 循环遍历获取每一个成员的信息。
 
 ### HTMLCollection 接口
 
@@ -308,6 +306,8 @@ document.images.pic === pic // true
 - `prepend` 方法为当前节点追加一个或多个子节点，位置是第一个元素子节点的前面。它的用法与 `append` 方法完全一致，也是没有返回值
 
 ### ChildNode 接口
+
+![insertElement](../Images/insertElement.png)
 
 - `remove` 方法用于从父节点移除当前节点
 - `before` 方法用于在当前节点的前面，插入一个或多个同级节点。两者拥有相同的父节点
@@ -339,9 +339,9 @@ document.images.pic === pic // true
 
 这个属性变化的过程如下。
 
-1. 浏览器开始解析 HTML 文档，`document.readyState` 属性等于 `loading`。
-1. 浏览器遇到 HTML 文档中的`<script>`元素，并且没有 `async` 或 `defer` 属性，就暂停解析，开始执行脚本，这时 `document.readyState` 属性还是等于 `loading`。
-1. HTML 文档解析完成，`document.readyState` 属性变成 `interactive`。
+1. 浏览器开始解析 `HTML` 文档，`document.readyState` 属性等于 `loading`。
+1. 浏览器遇到 `HTML` 文档中的`<script>`元素，并且没有 `async` 或 `defer` 属性，就暂停解析，开始执行脚本，这时 `document.readyState` 属性还是等于 `loading`。
+1. `HTML` 文档解析完成，`document.readyState` 属性变成 `interactive`。
 1. 浏览器等待图片、样式表、字体文件等外部资源加载完成，一旦全部加载完成，`document.readyState` 属性变成 `complete`
 
 ### document.domain
@@ -351,10 +351,6 @@ document.images.pic === pic // true
 - `document.domain` 基本上是一个只读属性，只有一种情况除外。次级域名的网页，可以把 `document.domain` 设为对应的上级域名。
 
 - `document.domain` 相同的两个网页，可以读取对方的资源，比如设置的 Cookie。
-
-### document.location
-
-### document.cookie
 
 ### querySelector()，querySelectorAll()，getElementsByTagName()，getElementsByClassName()，getElementsByName()，getElementById()
 
@@ -481,7 +477,6 @@ article.dataset.parent // "cars"
 - afterbegin：当前元素内部的第一个子节点前面
 - beforeend：当前元素内部的最后一个子节点后面
 - afterend：当前元素之后
--
 
 注意，`beforebegin` 和`afterend` 这两个值，只在当前节点有父节点时才会生效。如果当前节点是由脚本创建的，没有父节点，那么插入会失败。
 
@@ -507,6 +502,8 @@ d1.insertAdjacentHTML('afterend', '<div id="two">two</div>')
 
 该方法只是在现有的 DOM 结构里面插入节点，这使得它的执行速度比 `innerHTML` 方法快得多。
 
+![insertAdjacentHTML](../Images/insertHTML.png)
+
 注意，该方法不会转义 HTML 字符串，这导致它不能用来插入用户输入的内容，否则会有安全风险。
 
 `Element.insertAdjacentText` 方法在相对于当前节点的指定位置，插入一个文本节点，用法与 `Element.insertAdjacentHTML` 方法完全一致
@@ -531,12 +528,12 @@ document.body.attributes['ONLOAD']
 
 元素节点提供六个方法，用来操作属性。
 
-- `getAttribute(key)` 方法返回当前元素节点的指定属性。如果指定属性不存在，则返回 null
+- `getAttribute(key)` 方法返回当前元素节点的指定属性。如果指定属性不存在，则返回 `null`
 - `getAttributeNames()`返回一个数组，成员是当前元素的所有属性的名字。使用 `Element.attributes` 属性，也可以拿到同样的结果，唯一的区别是它返回的是类似数组的对象。
 - `setAttribute(key, val)`方法用于为当前元素节点新增属性。如果同名属性已存在，则相当于编辑已存在的属性。该方法没有返回值
 - `hasAttribute(key)`方法返回一个布尔值，表示当前元素节点是否包含指定属性
 - `hasAttributes()`方法返回一个布尔值，表示当前元素是否有属性，如果没有任何属性，就返回 `false`，否则返回 `true`
-- r`emoveAttribute(key)`方法移除指定属性。该方法没有返回值
+- `removeAttribute(key)`方法移除指定属性。该方法没有返回值
 
 ## CSS 操作
 
@@ -692,16 +689,16 @@ target.addEventListener(type, listener[, useCapture])
 
 该方法接受三个参数。
 
-- type：事件名称，大小写敏感。
-- listener：监听函数。事件发生时，会调用该监听函数。
-- useCapture：布尔值，表示监听函数是否在捕获阶段（capture）触发，默认为 false（监听函数只在冒泡阶段被触发）。该参数可选。
+- `type`：事件名称，大小写敏感。
+- `listener`：监听函数。事件发生时，会调用该监听函数。
+- `useCapture`：布尔值，表示监听函数是否在捕获阶段（capture）触发，默认为 false（监听函数只在冒泡阶段被触发）。该参数可选。
 
 首先，第二个参数除了监听函数，还可以是一个具有 `handleEvent` 方法的对象。
 其次，第三个参数除了布尔值 `useCapture`，还可以是一个属性配置对象。该对象有以下属性。
 
 - `capture`：布尔值，表示该事件是否在捕获阶段触发监听函数。
 - `once`：布尔值，表示监听函数是否只触发一次，然后就自动移除。
-- `passive`：布尔值，表示监听函数不会调用事件的 preventDefault 方法。如果监听函数调用了，浏览器将忽略这个要求，并在监控台输出一行警告。
+- `passive`：布尔值，表示监听函数不会调用事件的 `preventDefault` 方法。如果监听函数调用了，浏览器将忽略这个要求，并在监控台输出一行警告。
 
 ```js
 buttonElement.addEventListener(
@@ -720,9 +717,9 @@ buttonElement.addEventListener(
 
 一个事件发生后，会在子元素和父元素之间传播（propagation）。这种传播分成三个阶段。
 
-- 第一阶段：从 window 对象传导到目标节点（上层传到底层），称为“捕获阶段”（capture phase）。
+- 第一阶段：从 `window` 对象传导到目标节点（上层传到底层），称为“捕获阶段”（capture phase）。
 - 第二阶段：在目标节点上触发，称为“目标阶段”（target phase）。
-- 第三阶段：从目标节点传导回 window 对象（从底层传回上层），称为“冒泡阶段”（bubbling phase）。
+- 第三阶段：从目标节点传导回 `window` 对象（从底层传回上层），称为“冒泡阶段”（bubbling phase）。
 
 这种三阶段的传播模型，使得同一个事件会在多个节点上触发。
 
@@ -760,7 +757,7 @@ p.addEventListener(
 )
 ```
 
-但是，`stopPropagation` 方法只会阻止事件的传播，不会阻止该事件触发<p>节点的其他 click 事件的监听函数。也就是说，不是彻底取消 click 事件。
+但是，`stopPropagation` 方法只会阻止事件的传播，不会阻止该事件触发 `<p>` 节点的其他 `click` 事件的监听函数。也就是说，不是彻底取消 `click` 事件。
 
 ```js
 p.addEventListener('click', function (event) {
@@ -774,7 +771,7 @@ p.addEventListener('click', function (event) {
 })
 ```
 
-如果想要彻底取消该事件，不再触发后面所有 click 的监听函数，可以使用 `stopImmediatePropagation` 方法。
+如果想要彻底取消该事件，不再触发后面所有 `click` 的监听函数，可以使用 `stopImmediatePropagation` 方法。
 
 ```js
 p.addEventListener('click', function (event) {
@@ -790,16 +787,16 @@ p.addEventListener('click', function (event) {
 
 ### Event 对象
 
-Event 对象本身就是一个构造函数，可以用来生成新的实例。
+`Event` 对象本身就是一个构造函数，可以用来生成新的实例。
 
 ```js
 event = new Event(type, options)
 ```
 
-Event 构造函数接受两个参数。第一个参数 type 是字符串，表示事件的名称；第二个参数 options 是一个对象，表示事件对象的配置。该对象主要有下面两个属性。
+`Event` 构造函数接受两个参数。第一个参数 `type` 是字符串，表示事件的名称；第二个参数 `options` 是一个对象，表示事件对象的配置。该对象主要有下面两个属性。
 
-- bubbles：布尔值，可选，默认为 false，表示事件对象是否冒泡。
-- cancelable：布尔值，可选，默认为 false，表示事件是否可以被取消，即能否用 Event.preventDefault()取消这个事件。一旦事件被取消，就好像从来没有发生过，不会触发浏览器对该事件的默认行为。
+- `bubbles`：布尔值，可选，默认为 `false`，表示事件对象是否冒泡。
+- `cancelable`：布尔值，可选，默认为 `false`，表示事件是否可以被取消，即能否用 `Event.preventDefault()` 取消这个事件。一旦事件被取消，就好像从来没有发生过，不会触发浏览器对该事件的默认行为。
 
 ```js
 var ev = new Event('look', {
@@ -833,19 +830,18 @@ function checkName(e) {
 
 ### 常见事件
 
-- load 事件在页面或某个资源加载成功时触发。
-- error 事件是在页面或资源加载失败时触发
-- 各种外部资源：图像（image）、样式表（style sheet）、脚本（script）、视频（video）、音频（audio）、Ajax 请求（XMLHttpRequest）等等和 document 对象、window 对象、XMLHttpRequestUpload 对象，都会触发 load 事件和 error 事件。
-- 页面的 load 事件也可以用 pageshow 事件代替。
-- pageshow 事件在页面加载时触发，包括第一次加载和从缓存加载两种情况。
-- 第一次加载时，它的触发顺序排在 load 事件后面。从缓存加载时，load 事件不会触发，
-- hashchange 事件在 URL 的 hash 部分（即#号后面的部分，包括#号）发生变化时触发。该事件一般在 window 对象上监听。
-- hashchange 的事件实例具有两个特有属性：oldURL 属性和 newURL 属性，分别表示变化前后的完整 URL。
-- DOMContentLoaded 事件
-- readystatechange 事件
-- scroll 事件（节流）
-- resize 事件（节流）
-- fullscreenchange 事件
+- `load` 事件在页面或某个资源加载成功时触发。
+- `error` 事件是在页面或资源加载失败时触发
+- 各种外部资源：图像（image）、样式表（style sheet）、脚本（script）、视频（video）、音频（audio）、Ajax 请求（XMLHttpRequest）等等和 `document` 对象、`window` 对象、`XMLHttpRequestUpload` 对象，都会触发 `load` 事件和 `error` 事件。
+- 页面的 `load` 事件也可以用 `pageshow` 事件代替。
+- `pageshow` 事件在页面加载时触发，包括第一次加载和从缓存加载两种情况。
+- 第一次加载时，它的触发顺序排在 `load` 事件后面。从缓存加载时，`load` 事件不会触发，
+- `hashchange` 事件在 `URL` 的 `hash` 部分（即#号后面的部分，包括#号）发生变化时触发。该事件一般在 `window` 对象上监听。
+- `hashchange` 的事件实例具有两个特有属性：`oldURL` 属性和 `newURL` 属性，分别表示变化前后的完整 `URL`。
+- `DOMContentLoaded` 事件
+- `readystatechange` 事件
+- `scroll` 事件（节流）
+- `resize` 事件（节流）
 - 焦点事件
 - 表单事件
 - 鼠标事件（mousemove 节流）
