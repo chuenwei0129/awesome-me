@@ -10,8 +10,6 @@
 - [tapable](#tapable)
 - [loader](#loader)
   - [pitch loader](#pitch-loader)
-  - [babel-loader](#babel-loader)
-  - [](#)
 - [plugin](#plugin)
 - [simple webpack](#simple-webpack)
 ## 作用域提升（Scope Hoisting）
@@ -222,8 +220,7 @@ loader.pitch = function() {
 
 module.exports = loader
 ```
-### babel-loader
-### 
+
 
 ## plugin
 
