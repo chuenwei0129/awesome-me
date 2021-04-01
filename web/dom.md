@@ -56,6 +56,12 @@
 	- [事件的传播](#事件的传播)
 	- [Event 对象](#event-对象)
 	- [常见事件](#常见事件)
+		- [鼠标事件](#鼠标事件)
+		- [键盘事件](#键盘事件)
+		- [表单（form）元素事件](#表单form元素事件)
+		- [Document 事件](#document-事件)
+		- [CSS 事件](#css-事件)
+		- [其他](#其他-1)
 
 ## 节点
 
@@ -725,6 +731,8 @@ buttonElement.addEventListener(
 
 由于事件会在冒泡阶段向上传播到父节点，因此可以把子节点的监听函数定义在父节点上，由父节点的监听函数统一处理多个子元素的事件。这种方法叫做事件的代理（delegation）。
 
+![事件的传播](../Images/bubble.png)
+
 ```js
 var ul = document.querySelector('ul')
 
@@ -830,6 +838,34 @@ function checkName(e) {
 
 ### 常见事件
 
+#### 鼠标事件
+
+- `click` —— 当鼠标点击一个元素时（触摸屏设备会在点击时生成）。
+- `contextmenu` —— 当鼠标右键点击一个元素时。
+- `mouseover` / `mouseout` —— 当鼠标指针移入/离开一个元素时。
+- `mousedown` / `mouseup` —— 当在元素上按下/释放鼠标按钮时。
+- `mousemove` —— 当鼠标移动时。
+
+#### 键盘事件
+
+`keydown` 和 `keyup` —— 当按下和松开一个按键时。
+
+#### 表单（form）元素事件
+
+`submit` —— 当访问者提交了一个 `<form>` 时。
+`focus` —— 当访问者聚焦于一个元素时，例如聚焦于一个 `<input>`。
+
+#### Document 事件
+
+`DOMContentLoaded` —— 当 `HTML` 的加载和处理均完成，`DOM` 被完全构建完成时。
+
+#### CSS 事件
+
+`transitionend` —— 当一个 `CSS` 动画完成时。
+
+
+#### 其他
+
 - `load` 事件在页面或某个资源加载成功时触发。
 - `error` 事件是在页面或资源加载失败时触发
 - 各种外部资源：图像（image）、样式表（style sheet）、脚本（script）、视频（video）、音频（audio）、Ajax 请求（XMLHttpRequest）等等和 `document` 对象、`window` 对象、`XMLHttpRequestUpload` 对象，都会触发 `load` 事件和 `error` 事件。
@@ -838,11 +874,7 @@ function checkName(e) {
 - 第一次加载时，它的触发顺序排在 `load` 事件后面。从缓存加载时，`load` 事件不会触发，
 - `hashchange` 事件在 `URL` 的 `hash` 部分（即#号后面的部分，包括#号）发生变化时触发。该事件一般在 `window` 对象上监听。
 - `hashchange` 的事件实例具有两个特有属性：`oldURL` 属性和 `newURL` 属性，分别表示变化前后的完整 `URL`。
-- `DOMContentLoaded` 事件
 - `readystatechange` 事件
 - `scroll` 事件（节流）
 - `resize` 事件（节流）
-- 焦点事件
-- 表单事件
-- 鼠标事件（mousemove 节流）
-- 键盘事件
+
