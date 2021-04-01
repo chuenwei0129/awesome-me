@@ -32,8 +32,9 @@
 
 ## 浏览器
 
-- `[WEB]` [DOM 知识整理](web/dom.md)
-- `[Cookie]`
+- `[DOM]` [DOM 基础知识整理](web/dom.md)
+- `[坐标]` [窗口、坐标和滚动](web/scroll.md)
+- `[事件]` []
 - `[XHR]`
 - `[跨域]`
 
@@ -45,7 +46,7 @@
 ## CSS
 
 - `[知识整理]` [CSS 查漏补缺](web/css.md)
-- `[基础实践]` [CSS 常用布局](web/css_layout.md)
+- `[基础实践]` [CSS 常用布局](web/layout.md)
 
 ## 技术实践、项目总结
 ## 设计模式

@@ -1,4 +1,21 @@
-# 浏览器窗口、坐标和滚动
+# 浏览器窗口、坐标和滚动<!-- omit in toc -->
+
+- [浏览器窗口的 width/height](#浏览器窗口的-widthheight)
+- [不要从 CSS 中获取 width/height](#不要从-css-中获取-widthheight)
+- [示例元素](#示例元素)
+- [offsetParent，offsetLeft/Top](#offsetparentoffsetlefttop)
+- [offsetWidth/Height](#offsetwidthheight)
+- [clientTop/Left](#clienttopleft)
+- [clientWidth/Height](#clientwidthheight)
+- [scrollWidth/Height](#scrollwidthheight)
+- [scrollLeft/scrollTop](#scrollleftscrolltop)
+- [整体](#整体)
+- [获得当前滚动](#获得当前滚动)
+- [滚动：scrollTo，scrollBy，scrollIntoView](#滚动scrolltoscrollbyscrollintoview)
+- [禁止滚动](#禁止滚动)
+- [坐标](#坐标)
+  - [元素坐标：getBoundingClientRect](#元素坐标getboundingclientrect)
+  - [elementFromPoint(x, y)](#elementfrompointx-y)
 
 `JavaScript` 中有许多属性可让我们读取有关元素宽度、高度和其他几何特征的信息。
 

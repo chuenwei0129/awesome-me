@@ -1,8 +1,8 @@
 # DOM <!-- omit in toc -->
-
+- [层次结构](#层次结构)
 - [节点](#节点)
 - [DOM 树 🌴](#dom-树-)
-- [Node 接口](#node-接口)
+- [Node](#node)
 	- [常用属性](#常用属性)
 		- [nodeType、nodeName、nodeValue](#nodetypenodenamenodevalue)
 		- [textContent](#textcontent)
@@ -19,9 +19,6 @@
 - [NodeList 接口，HTMLCollection 接口](#nodelist-接口htmlcollection-接口)
 	- [NodeList 接口](#nodelist-接口)
 	- [HTMLCollection 接口](#htmlcollection-接口)
-- [ParentNode 接口，ChildNode 接口](#parentnode-接口childnode-接口)
-	- [ParentNode 接口](#parentnode-接口)
-	- [ChildNode 接口](#childnode-接口)
 - [Document 节点](#document-节点)
 	- [document.visibilityState](#documentvisibilitystate)
 	- [document.readyState](#documentreadystate)
@@ -34,34 +31,54 @@
 	- [Element.dataset](#elementdataset)
 	- [Element.innerHTML](#elementinnerhtml)
 	- [Element.outerHTML](#elementouterhtml)
-	- [Element.nextElementSibling，Element.previousElementSibling](#elementnextelementsiblingelementpreviouselementsibling)
 	- [Element.insertAdjacentElement()](#elementinsertadjacentelement)
 	- [Element.insertAdjacentHTML()，Element.insertAdjacentText()](#elementinsertadjacenthtmlelementinsertadjacenttext)
 	- [Element.focus()，Element.blur()](#elementfocuselementblur)
+	- [elem.matches(css)，elem.closest(css)](#elemmatchescsselemclosestcss)
 - [属性的操作](#属性的操作)
 - [CSS 操作](#css-操作)
 	- [行内样式](#行内样式)
+		- [设置元素节点的 style 属性](#设置元素节点的-style-属性)
+		- [驼峰直接读写](#驼峰直接读写)
+		- [elem.style.cssText](#elemstylecsstext)
+		- [className 和 classList](#classname-和-classlist)
 	- [CAN I USE](#can-i-use)
 	- [window.getComputedStyle()](#windowgetcomputedstyle)
-	- [盒模型](#盒模型)
-		- [Element.clientHeight，Element.clientWidth](#elementclientheightelementclientwidth)
-		- [Element.clientLeft，Element.clientTop](#elementclientleftelementclienttop)
-		- [Element.scrollHeight，Element.scrollWidth](#elementscrollheightelementscrollwidth)
-		- [Element.scrollLeft，Element.scrollTop](#elementscrollleftelementscrolltop)
-		- [Element.offsetHeight，Element.offsetWidth](#elementoffsetheightelementoffsetwidth)
-- [DOM 事件](#dom-事件)
-	- [HTML 的 on- 属性](#html-的-on--属性)
-	- [元素节点的事件属性](#元素节点的事件属性)
-	- [EventTarget.addEventListener()](#eventtargetaddeventlistener)
-	- [事件的传播](#事件的传播)
-	- [Event 对象](#event-对象)
-	- [常见事件](#常见事件)
-		- [鼠标事件](#鼠标事件)
-		- [键盘事件](#键盘事件)
-		- [表单（form）元素事件](#表单form元素事件)
-		- [Document 事件](#document-事件)
-		- [CSS 事件](#css-事件)
-		- [其他](#其他-1)
+
+## 层次结构
+
+`DOM` 的根节点是 `EventTarget`，`Node` 继承自它，其他 `DOM` 节点继承自 `Node`。`DOM` 节点是常规的 `JavaScript` 对象。它们使用基于原型的类进行继承。
+
+类如下所示：
+
+- `EventTarget` — 是根的“抽象（abstract）”类。该类的对象从未被创建。它作为一个基础，以便让所有 `DOM` 节点都支持所谓的“事件（event）”。
+- `Node` — 也是一个“抽象”类，充当 `DOM` 节点的基础。它提供了树的核心功能：`parentNode`，`nextSibling`，`childNodes` 等（它们都是 getter）。`Node` 类的对象从未被创建。但是有一些继承自它的具体的节点类，例如：文本节点的 `Text`，元素节点的 `Element`，以及更多异域（exotic）类，例如注释节点的 `Comment`。
+- `Element` — 是 `DOM` 元素的基本类。它提供了元素级的导航（navigation），例如 `nextElementSibling`，`children`，以及像 `getElementsByTagName` 和 `querySelector` 这样的搜索方法。浏览器中不仅有 `HTML`，还会有 `XML` 和 `SVG`。`Element` 类充当更多特定类的基本类：`SVGElement`，`XMLElement` 和 `HTMLElement`。
+- `HTMLElement` — 最终是所有 `HTML` 元素的基本类。各种 `HTML` 元素均继承自它：
+  - `HTMLInputElement` — `<input>` 元素的类，
+  - `HTMLBodyElement` — `<body>` 元素的类，
+  - `HTMLAnchorElement` — `<a>` 元素的类，……等。
+
+**每个标签都有自己的类，这些类可以提供特定的属性和方法。
+因此，给定节点的全部属性和方法都是继承的结果。**
+
+![](../Images/Node.png)
+
+例如 `<input>` 元素的 `DOM` 对象。它属于 `HTMLInputElement` 类。
+
+它获取属性和方法，并将其作为下列类（按继承顺序列出）的叠加：
+
+- `HTMLInputElement` — 该类提供特定于输入的属性，
+- `HTMLElement` — 它提供了通用（common）的 HTML 元素方法（以及 getter 和 setter）
+- `Element` — 提供通用（generic）元素方法，
+- `Node` — 提供通用 DOM 节点属性，
+- `EventTarget` — 为事件（包括事件本身）提供支持，
+- 最后，它继承自 `Object`，因为像 `hasOwnProperty `这样的“普通对象”方法也是可用的。
+
+```js 
+console.log(elem) // 显示元素的 DOM 树。
+console.dir(elem) // 将元素显示为 DOM 对象，非常适合探索其属性。
+```
 
 ## 节点
 
@@ -75,6 +92,8 @@ DOM 的最小组成单位叫做节点，节点的类型有七种。
 - `Comment`：注释
 - `DocumentFragment`：文档的片段
 
+![](../Images/dom.png)
+
 ## DOM 树 🌴
 
 浏览器原生提供 `document` 节点，代表整个文档。
@@ -87,9 +106,11 @@ DOM 的最小组成单位叫做节点，节点的类型有七种。
 - 子节点关系（childNodes）：直接的下级节点
 - 同级节点关系（sibling）：拥有同一个父节点的节点
 
-## Node 接口
+## Node
 
 所有 `DOM` 节点对象都继承了 `Node` 接口，拥有一些共同的属性和方法
+
+![](../Images/document.png)
 
 ### 常用属性
 
@@ -161,7 +182,7 @@ document.getElementById('foo').textContent = '<p>GoodBye!</p>'
 
 注意，节点还包括文本节点和注释节点（`<!-- comment -->`）。因此如果当前节点前面或后面或与子节点有空格，属性会返回一个文本节点，内容为`#text`。
 
-`nextSibling` 属性可以用来遍历所有子节点。
+**ps**：`nextSibling` 属性可以用来遍历所有子节点。
 
 ```js
 var el = document.getElementById('div1').firstChild
@@ -198,7 +219,7 @@ test.isConnected // true
 
 #### appendChild()
 
-`appendChild` 方法接受一个节点对象作为参数，将其作为最后一个子节点，插入当前节点，如果参数节点是 DOM 已经存在的节点，`appendChild` 方法会将其从原来的位置，移动到新位置。该方法的返回值就是插入文档的子节点。
+`appendChild` 方法接受一个节点对象作为参数，将其作为最后一个子节点，插入当前节点，如果参数节点是 `DOM` 已经存在的节点，`appendChild` 方法会将其从原来的位置，移动到新位置。该方法的返回值就是插入文档的子节点。
 
 ```js
 <div id="parent">
@@ -299,26 +320,6 @@ var replacedNode = parentNode.replaceChild(newChild, oldChild)
 var pic = document.getElementById('pic')
 document.images.pic === pic // true
 ```
-
-## ParentNode 接口，ChildNode 接口
-
-### ParentNode 接口
-
-- `children` 属性返回一个 `HTMLCollection` 实例，成员是当前节点的所有元素子节点。该属性只读
-- `firstElementChild` 属性返回当前节点的第一个元素子节点。如果没有任何元素子节点，则返回 `null`
-- `lastElementChild` 属性返回当前节点的最后一个元素子节点，如果不存在任何元素子节点，则返回 `null`
-- `childElementCount` 属性返回一个整数，表示当前节点的所有元素子节点的数目。如果不包含任何元素子节点，则返回 0
-- `append` 方法为当前节点追加一个或多个子节点，位置是最后一个元素子节点的后面
-- `prepend` 方法为当前节点追加一个或多个子节点，位置是第一个元素子节点的前面。它的用法与 `append` 方法完全一致，也是没有返回值
-
-### ChildNode 接口
-
-![insertElement](../Images/insertElement.png)
-
-- `remove` 方法用于从父节点移除当前节点
-- `before` 方法用于在当前节点的前面，插入一个或多个同级节点。两者拥有相同的父节点
-- `after` 方法用于在当前节点的后面，插入一个或多个同级节点，两者拥有相同的父节点。用法与 `before` 方法完全相同
-- `replaceWith` 方法使用参数节点，替换当前节点。参数可以是元素节点，也可以是文本节点
 
 ## Document 节点
 
@@ -422,6 +423,24 @@ document.images.pic === pic // true
 
 ## Element 节点
 
+![](../Images/element.png)
+
+- `children` 属性返回一个 `HTMLCollection` 实例，成员是当前节点的所有元素子节点。该属性只读
+- `firstElementChild` 属性返回当前节点的第一个元素子节点。如果没有任何元素子节点，则返回 `null`
+- `lastElementChild` 属性返回当前节点的最后一个元素子节点，如果不存在任何元素子节点，则返回 `null`
+- `childElementCount` 属性返回一个整数，表示当前节点的所有元素子节点的数目。如果不包含任何元素子节点，则返回 `0`
+- `nextElementSibling` 属性返回当前元素节点的后一个同级元素节点，如果没有则返回 `null`。
+- `previousElementSibling` 属性返回当前元素节点的前一个同级元素节点，如果没有则返回 `null`。
+
+![insertElement](../Images/insertElement.png)
+
+- `append` 方法为当前节点追加一个或多个子节点，位置是最后一个元素子节点的后面
+- `prepend` 方法为当前节点追加一个或多个子节点，位置是第一个元素子节点的前面。它的用法与 `append` 方法完全一致，也是没有返回值
+- `remove` 方法用于从父节点移除当前节点
+- `before` 方法用于在当前节点的前面，插入一个或多个同级节点。两者拥有相同的父节点
+- `after` 方法用于在当前节点的后面，插入一个或多个同级节点，两者拥有相同的父节点。用法与 `before` 方法完全相同
+- `replaceWith` 方法使用参数节点，替换当前节点。参数可以是元素节点，也可以是文本节点
+
 ### Element.dataset
 
 网页元素可以自定义 data-属性，用来添加数据。
@@ -467,22 +486,16 @@ article.dataset.parent // "cars"
 
 如果一个节点没有父节点，设置 `outerHTML` 属性会报错
 
-### Element.nextElementSibling，Element.previousElementSibling
-
-`Element.nextElementSibling` 属性返回当前元素节点的后一个同级元素节点，如果没有则返回 `null`。
-
-`Element.previousElementSibling` 属性返回当前元素节点的前一个同级元素节点，如果没有则返回 `null`。
-
 ### Element.insertAdjacentElement()
 
 `Element.insertAdjacentElement` 方法在相对于当前元素的指定位置，插入一个新的节点。该方法返回被插入的节点，如果插入失败，返回 `null`。
 
 `Element.insertAdjacentElement` 方法一共可以接受两个参数，第一个参数是一个字符串，表示插入的位置，第二个参数是将要插入的节点。第一个参数只可以取如下的值。
 
-- beforebegin：当前元素之前
-- afterbegin：当前元素内部的第一个子节点前面
-- beforeend：当前元素内部的最后一个子节点后面
-- afterend：当前元素之后
+- `beforebegin`：当前元素之前
+- `afterbegin`：当前元素内部的第一个子节点前面
+- `beforeend`：当前元素内部的最后一个子节点后面
+- `afterend`：当前元素之后
 
 注意，`beforebegin` 和`afterend` 这两个值，只在当前节点有父节点时才会生效。如果当前节点是由脚本创建的，没有父节点，那么插入会失败。
 
@@ -520,6 +533,15 @@ d1.insertAdjacentHTML('afterend', '<div id="two">two</div>')
 `Element.blur` 方法用于将焦点从当前元素移除。
 从 `document.activeElement` 属性可以得到当前获得焦点的元素
 
+### elem.matches(css)，elem.closest(css)
+
+`elem.matches(css)` 用于检查 `elem` 与给定的 `CSS` 选择器是否匹配。
+`elem.closest(css)` 用于查找与给定 `CSS` 选择器相匹配的最近的祖先。`elem` 本身也会被检查。
+
+另一种用来检查子级与父级之间关系的方法，因为它有时很有用：
+
+如果 `elemB` 在 `elemA` 内（elemA 的后代）或者 `elemA===elemB`，`elemA.contains(elemB)` 将返回 `true`。
+
 ## 属性的操作
 
 元素对象有一个 `attributes` 属性，返回一个类似数组的动态对象
@@ -545,17 +567,21 @@ document.body.attributes['ONLOAD']
 
 ### 行内样式
 
-操作 CSS 样式最简单的方法，就是使用网页元素节点的 `getAttribute()`方法、`setAttribute()`方法和 `removeAttribute()`方法，直接读写或删除网页元素的 `style` 属性。
+#### 设置元素节点的 style 属性
+
+操作 `CSS` 样式最简单的方法，就是使用网页元素节点的 `getAttribute()`方法、`setAttribute()`方法和 `removeAttribute()`方法，直接读写或删除网页元素的 `style` 属性。
 
 ```js
 div.setAttribute('style', 'background-color:red;' + 'border:1px solid black;')
 ```
 
-上面的代码相当于下面的 HTML 代码。
+上面的代码相当于下面的 `HTML` 代码。
 
 ```html
 <div style="background-color:red; border:1px solid black;" />
 ```
+
+#### 驼峰直接读写
 
 `CSSStyleDeclaration` 接口可以直接读写 CSS 的样式属性，不过，连词号需要变成骆驼拼写法。
 
@@ -565,6 +591,8 @@ var divStyle = document.querySelector('div').style
 divStyle.backgroundColor = 'red'
 divStyle.fontSize = '10em'
 ```
+
+#### elem.style.cssText
 
 `CSSStyleDeclaration.cssText` 属性用来读写当前规则的所有样式声明文本。
 
@@ -578,11 +606,27 @@ divStyle.cssText =
 	'width: 100px;'
 ```
 
-删除一个元素的所有行内样式，最简便的方法就是设置 cssText 为空字符串。
+删除一个元素的所有行内样式，最简便的方法就是设置 `cssText` 为空字符串。
 
 ```js
 divStyle.cssText = ''
 ```
+
+> ⚠️ 我们很少使用这个属性，因为这样的赋值会删除所有现有样式：它不是进行添加，而是替换它们。有时可能会删除所需的内容。
+
+#### className 和 classList
+
+对于类属性，引入了看起来类似的属性 "className"：`elem.className `对应于 "class" 特性（attribute）。
+
+如果我们对 `elem.className` 进行赋值，它将替换类中的整个字符串。
+
+这里还有另一个属性：`elem.classList`。`elem.classList` 是一个特殊的对象，它具有 `add/remove/toggle` 单个类的方法。
+
+- `elem.classList.add/remove(class)` — 添加/移除类。
+- `elem.classList.toggle(class)` — 如果类不存在就添加类，存在就移除它。
+- `elem.classList.contains(class)` — 检查给定类，返回 `true/false`。
+
+此外，`classList` 是可迭代的。
 
 ### CAN I USE
 
@@ -597,6 +641,7 @@ typeof element.style.transform === 'string'
 
 如果该 CSS 属性确实存在，会返回一个字符串。即使该属性实际上并未设置，也会返回一个空字符串。如果该属性不存在，则会返回 `undefined`。
 
+
 ### window.getComputedStyle()
 
 行内样式（`inline style`）具有最高的优先级，改变行内样式，通常会立即反映出来。但是，网页元素最终的样式是综合各种规则计算出来的。因此，如果想得到元素实际的样式，只读取行内样式是不够的，需要得到浏览器最终计算出来的样式规则。
@@ -609,272 +654,14 @@ var styleObj = window.getComputedStyle(div);
 styleObj.backgroundColor
 ```
 
-注意，`CSSStyleDeclaration` 实例是一个活的对象，任何对于样式的修改，会实时反映到这个实例上面。另外，这个实例是只读的。
+注意，`CSSStyleDeclaration` 实例是一个活的对象，任何对于样式的修改，会实时反映到这个实例上面。另外，**这个实例是只读的**。
 
 `getComputedStyle`方法还可以接受第二个参数，表示当前元素的伪元素（比如`:before`、`:after`、`:first-line`、`:first-letter` 等）
 
-### 盒模型
+> 在 `CSS` 中有两个概念：
 
-#### Element.clientHeight，Element.clientWidth
+>- 计算 (computed) 样式值是所有 `CSS` 规则和 `CSS` 继承都应用后的值，这是 `CSS` 级联（cascade）的结果。它看起来像 `height:1em` 或 `font-size:125%`。
+>- 解析 (resolved) 样式值是最终应用于元素的样式值值。诸如 `1em` 或 `125%` 这样的值是相对的。浏览器将使用计算（computed）值，并使所有单位均为固定的，且为绝对单位，例如：`height:20px` 或 `font-size:16px`。对于几何属性，解析（resolved）值可能具有浮点，例如：`width:50.5px`。
 
-`Element.clientHeight` 属性返回一个整数值，表示元素节点的 CSS 高度（单位像素），只对块级元素生效，对于行内元素返回 0。
-
-除了元素本身的高度，它还包括 `padding` 部分，但是不包括`border`、`margin`。如果有水平滚动条，还要减去水平滚动条的高度。注意，这个值始终是整数，如果是小数会被四舍五入。
-
-```js
-// 视口高度
-document.documentElement.clientHeight
-
-// 网页总高度 按下F11
-document.body.clientHeight
-```
-
-#### Element.clientLeft，Element.clientTop
-
-`Element.clientLeft` 属性等于元素节点左边框（left border）的宽度（单位像素），不包括左侧的 `padding` 和 `margin`。如果没有设置左边框，或者是行内元素（`display: inline`），该属性返回 0。该属性总是返回整数值，如果是小数，会四舍五入。
-
-#### Element.scrollHeight，Element.scrollWidth
-
-`Element.scrollHeight` 属性返回一个整数值（小数会四舍五入），表示当前元素的总高度（单位像素），包括溢出容器、当前不可见的部分。它包括 `padding`，但是不包括 `border`、`margin` 以及水平滚动条的高度（如果有水平滚动条的话），还包括伪元素（`::before` 或`::after`）的高度。
-
-#### Element.scrollLeft，Element.scrollTop
-
-`Element.scrollLeft` 属性表示当前元素的水平滚动条向右侧滚动的像素数量，`Element.scrollTop` 属性表示当前元素的垂直滚动条向下滚动的像素数量。对于那些没有滚动条的网页元素，这两个属性总是等于 0。
-
-#### Element.offsetHeight，Element.offsetWidth
-
-`Element.offsetHeight` 属性返回一个整数，表示元素的 CSS 垂直高度（单位像素），包括元素本身的高度、`padding` 和 `border`，以及水平滚动条的高度（如果存在滚动条）。
-
-这两个属性都是只读属性，只比 `Element.clientHeight` 和 `Element.clientWidth` 多了边框的高度或宽度。如果元素的 CSS 设为不可见（比如 `display: none;`），则返回 0。
-
-## DOM 事件
-
-JavaScript 有三种方法，可以为事件绑定监听函数。
-
-- HTML 的 on- 属性
-- 元素节点的事件属性
-- EventTarget.addEventListener()
-
-### HTML 的 on- 属性
-
-HTML 语言允许在元素的属性中，直接定义某些事件的监听代码。
-
-```html
-<div onclick="console.log('触发事件')"></div>
-```
-
-使用这个方法指定的监听代码，只会在冒泡阶段触发。
-
-```html
-<div onclick="console.log(2)">
-	<button onclick="console.log(1)">点击</button>
-</div>
-```
-
-由于 on-属性的监听代码，只在冒泡阶段触发，所以点击结果是先输出 1，再输出 2，即事件从子元素开始冒泡到父元素。
-
-### 元素节点的事件属性
-
-元素节点对象的事件属性，同样可以指定监听函数。
-
-```js
-div.onclick = function (event) {
-	console.log('触发事件')
-}
-```
-
-使用这个方法指定的监听函数，也是只会在冒泡阶段触发。
-
-### EventTarget.addEventListener()
-
-`EventTarget.addEventListener()`用于在当前节点或对象上，定义一个特定事件的监听函数。一旦这个事件发生，就会执行监听函数。该方法没有返回值。
-
-```js
-target.addEventListener(type, listener[, useCapture])
-```
-
-该方法接受三个参数。
-
-- `type`：事件名称，大小写敏感。
-- `listener`：监听函数。事件发生时，会调用该监听函数。
-- `useCapture`：布尔值，表示监听函数是否在捕获阶段（capture）触发，默认为 false（监听函数只在冒泡阶段被触发）。该参数可选。
-
-首先，第二个参数除了监听函数，还可以是一个具有 `handleEvent` 方法的对象。
-其次，第三个参数除了布尔值 `useCapture`，还可以是一个属性配置对象。该对象有以下属性。
-
-- `capture`：布尔值，表示该事件是否在捕获阶段触发监听函数。
-- `once`：布尔值，表示监听函数是否只触发一次，然后就自动移除。
-- `passive`：布尔值，表示监听函数不会调用事件的 `preventDefault` 方法。如果监听函数调用了，浏览器将忽略这个要求，并在监控台输出一行警告。
-
-```js
-buttonElement.addEventListener(
-	'click',
-	{
-		handleEvent: function (event) {
-			// 只执行一次的代码
-			console.log('click')
-		},
-	},
-	{ once: true }
-)
-```
-
-### 事件的传播
-
-一个事件发生后，会在子元素和父元素之间传播（propagation）。这种传播分成三个阶段。
-
-- 第一阶段：从 `window` 对象传导到目标节点（上层传到底层），称为“捕获阶段”（capture phase）。
-- 第二阶段：在目标节点上触发，称为“目标阶段”（target phase）。
-- 第三阶段：从目标节点传导回 `window` 对象（从底层传回上层），称为“冒泡阶段”（bubbling phase）。
-
-这种三阶段的传播模型，使得同一个事件会在多个节点上触发。
-
-由于事件会在冒泡阶段向上传播到父节点，因此可以把子节点的监听函数定义在父节点上，由父节点的监听函数统一处理多个子元素的事件。这种方法叫做事件的代理（delegation）。
-
-![事件的传播](../Images/bubble.png)
-
-```js
-var ul = document.querySelector('ul')
-
-ul.addEventListener('click', function (event) {
-	if (event.target.tagName.toLowerCase() === 'li') {
-		// some code
-	}
-})
-```
-
-如果希望事件到某个节点为止，不再传播，可以使用事件对象的 `stopPropagation` 方法。
-
-```js
-// 事件传播到 p 元素后，就不再向下传播了
-p.addEventListener(
-	'click',
-	function (event) {
-		event.stopPropagation()
-	},
-	true
-)
-
-// 事件冒泡到 p 元素后，就不再向上冒泡了
-p.addEventListener(
-	'click',
-	function (event) {
-		event.stopPropagation()
-	},
-	false
-)
-```
-
-但是，`stopPropagation` 方法只会阻止事件的传播，不会阻止该事件触发 `<p>` 节点的其他 `click` 事件的监听函数。也就是说，不是彻底取消 `click` 事件。
-
-```js
-p.addEventListener('click', function (event) {
-	event.stopPropagation()
-	console.log(1)
-})
-
-p.addEventListener('click', function (event) {
-	// 会触发
-	console.log(2)
-})
-```
-
-如果想要彻底取消该事件，不再触发后面所有 `click` 的监听函数，可以使用 `stopImmediatePropagation` 方法。
-
-```js
-p.addEventListener('click', function (event) {
-	event.stopImmediatePropagation()
-	console.log(1)
-})
-
-p.addEventListener('click', function (event) {
-	// 不会被触发
-	console.log(2)
-})
-```
-
-### Event 对象
-
-`Event` 对象本身就是一个构造函数，可以用来生成新的实例。
-
-```js
-event = new Event(type, options)
-```
-
-`Event` 构造函数接受两个参数。第一个参数 `type` 是字符串，表示事件的名称；第二个参数 `options` 是一个对象，表示事件对象的配置。该对象主要有下面两个属性。
-
-- `bubbles`：布尔值，可选，默认为 `false`，表示事件对象是否冒泡。
-- `cancelable`：布尔值，可选，默认为 `false`，表示事件是否可以被取消，即能否用 `Event.preventDefault()` 取消这个事件。一旦事件被取消，就好像从来没有发生过，不会触发浏览器对该事件的默认行为。
-
-```js
-var ev = new Event('look', {
-	bubbles: true,
-	cancelable: false,
-})
-document.dispatchEvent(ev)
-```
-
-`Event.currentTarget` 属性返回事件当前所在的节点，即事件当前正在通过的节点，也就是当前正在执行的监听函数所在的那个节点。随着事件的传播，这个属性的值会变。
-
-`Event.target` 属性返回原始触发事件的那个节点，即事件最初发生的节点。这个属性不会随着事件的传播而改变。
-
-`Event.preventDefault` 方法取消浏览器对当前事件的默认行为。
-利用这个方法，可以为文本输入框设置校验条件。如果用户的输入不符合条件，就无法将字符输入文本框。
-
-```js
-// HTML 代码为
-// <input type="text" id="my-input" />
-var input = document.getElementById('my-input')
-input.addEventListener('keypress', checkName, false)
-
-function checkName(e) {
-	if (e.charCode < 97 || e.charCode > 122) {
-		e.preventDefault()
-	}
-}
-```
-
-上面代码为文本框的 `keypress` 事件设定监听函数后，将只能输入小写字母，否则输入事件的默认行为（写入文本框）将被取消，导致不能向文本框输入内容。
-
-### 常见事件
-
-#### 鼠标事件
-
-- `click` —— 当鼠标点击一个元素时（触摸屏设备会在点击时生成）。
-- `contextmenu` —— 当鼠标右键点击一个元素时。
-- `mouseover` / `mouseout` —— 当鼠标指针移入/离开一个元素时。
-- `mousedown` / `mouseup` —— 当在元素上按下/释放鼠标按钮时。
-- `mousemove` —— 当鼠标移动时。
-
-#### 键盘事件
-
-`keydown` 和 `keyup` —— 当按下和松开一个按键时。
-
-#### 表单（form）元素事件
-
-`submit` —— 当访问者提交了一个 `<form>` 时。
-`focus` —— 当访问者聚焦于一个元素时，例如聚焦于一个 `<input>`。
-
-#### Document 事件
-
-`DOMContentLoaded` —— 当 `HTML` 的加载和处理均完成，`DOM` 被完全构建完成时。
-
-#### CSS 事件
-
-`transitionend` —— 当一个 `CSS` 动画完成时。
-
-
-#### 其他
-
-- `load` 事件在页面或某个资源加载成功时触发。
-- `error` 事件是在页面或资源加载失败时触发
-- 各种外部资源：图像（image）、样式表（style sheet）、脚本（script）、视频（video）、音频（audio）、Ajax 请求（XMLHttpRequest）等等和 `document` 对象、`window` 对象、`XMLHttpRequestUpload` 对象，都会触发 `load` 事件和 `error` 事件。
-- 页面的 `load` 事件也可以用 `pageshow` 事件代替。
-- `pageshow` 事件在页面加载时触发，包括第一次加载和从缓存加载两种情况。
-- 第一次加载时，它的触发顺序排在 `load` 事件后面。从缓存加载时，`load` 事件不会触发，
-- `hashchange` 事件在 `URL` 的 `hash` 部分（即#号后面的部分，包括#号）发生变化时触发。该事件一般在 `window` 对象上监听。
-- `hashchange` 的事件实例具有两个特有属性：`oldURL` 属性和 `newURL` 属性，分别表示变化前后的完整 `URL`。
-- `readystatechange` 事件
-- `scroll` 事件（节流）
-- `resize` 事件（节流）
-
+>很久以前，创建了 `getComputedStyle` 来获取计算（computed）值，但事实证明，解析（resolved）值要方便得多，标准也因此发生了变化。
+所以，现在 `getComputedStyle` 实际上返回的是属性的解析值（resolved）。
