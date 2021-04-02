@@ -34,7 +34,7 @@
 
 - `[DOM]` [DOM 基础知识整理](web/dom.md)
 - `[坐标]` [窗口、坐标和滚动](web/scroll.md)
-- `[事件]` [事件](web/event.md)
+- `[事件]` [事件的学习](web/event.md)
 - `[XHR]`
 - `[跨域]`
 
