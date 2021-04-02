@@ -1,13 +1,12 @@
+# 事件
 
-## DOM 事件
-
-JavaScript 有三种方法，可以为事件绑定监听函数。
+`JavaScript` 有三种方法，可以为事件绑定监听函数。
 
 - HTML 的 `on-` 属性
 - 元素节点的事件属性
 - `EventTarget.addEventListener()`
 
-### HTML 的 on- 属性
+## HTML 的 on- 属性
 
 HTML 语言允许在元素的属性中，直接定义某些事件的监听代码。
 
@@ -23,9 +22,9 @@ HTML 语言允许在元素的属性中，直接定义某些事件的监听代码
 </div>
 ```
 
-由于 on-属性的监听代码，只在冒泡阶段触发，所以点击结果是先输出 1，再输出 2，即事件从子元素开始冒泡到父元素。
+由于 `on-` 属性的监听代码，只在冒泡阶段触发，所以点击结果是先输出 `1`，再输出 `2`，即事件从子元素开始冒泡到父元素。
 
-### 元素节点的事件属性
+## 元素节点的事件属性
 
 元素节点对象的事件属性，同样可以指定监听函数。
 
@@ -37,9 +36,9 @@ div.onclick = function (event) {
 
 使用这个方法指定的监听函数，也是只会在冒泡阶段触发。
 
-### EventTarget.addEventListener()
+## EventTarget.addEventListener
 
-`EventTarget.addEventListener()`用于在当前节点或对象上，定义一个特定事件的监听函数。一旦这个事件发生，就会执行监听函数。该方法没有返回值。
+`EventTarget.addEventListener()` 用于在当前节点或对象上，定义一个特定事件的监听函数。一旦这个事件发生，就会执行监听函数。该方法没有返回值。
 
 ```js
 target.addEventListener(type, listener[, useCapture])
@@ -49,7 +48,7 @@ target.addEventListener(type, listener[, useCapture])
 
 - `type`：事件名称，大小写敏感。
 - `listener`：监听函数。事件发生时，会调用该监听函数。
-- `useCapture`：布尔值，表示监听函数是否在捕获阶段（capture）触发，默认为 false（监听函数只在冒泡阶段被触发）。该参数可选。
+- `useCapture`：布尔值，表示监听函数是否在捕获阶段（capture）触发，默认为 `false`（监听函数只在冒泡阶段被触发）。该参数可选。
 
 首先，第二个参数除了监听函数，还可以是一个具有 `handleEvent` 方法的对象。
 其次，第三个参数除了布尔值 `useCapture`，还可以是一个属性配置对象。该对象有以下属性。
@@ -71,7 +70,7 @@ buttonElement.addEventListener(
 )
 ```
 
-### 事件的传播
+## 事件的传播
 
 一个事件发生后，会在子元素和父元素之间传播（propagation）。这种传播分成三个阶段。
 
@@ -81,9 +80,9 @@ buttonElement.addEventListener(
 
 这种三阶段的传播模型，使得同一个事件会在多个节点上触发。
 
-由于事件会在冒泡阶段向上传播到父节点，因此可以把子节点的监听函数定义在父节点上，由父节点的监听函数统一处理多个子元素的事件。这种方法叫做事件的代理（delegation）。
-
 ![事件的传播](../Images/bubble.png)
+
+由于事件会在冒泡阶段向上传播到父节点，因此可以把子节点的监听函数定义在父节点上，由父节点的监听函数统一处理多个子元素的事件。这种方法叫做事件的代理（delegation）。
 
 ```js
 var ul = document.querySelector('ul')
@@ -145,7 +144,7 @@ p.addEventListener('click', function (event) {
 })
 ```
 
-### Event 对象
+## Event 对象
 
 `Event` 对象本身就是一个构造函数，可以用来生成新的实例。
 
@@ -170,6 +169,8 @@ document.dispatchEvent(ev)
 
 `Event.target` 属性返回原始触发事件的那个节点，即事件最初发生的节点。这个属性不会随着事件的传播而改变。
 
+`Event.eventPhase` —— 当前阶段（capturing=1，target=2，bubbling=3）
+
 `Event.composedPath()` 返回一个数组，成员是事件的最底层节点和依次冒泡经过的所有上层节点。
 
 `Event.preventDefault` 方法取消浏览器对当前事件的默认行为。
@@ -190,15 +191,115 @@ function checkName(e) {
 
 上面代码为文本框的 `keypress` 事件设定监听函数后，将只能输入小写字母，否则输入事件的默认行为（写入文本框）将被取消，导致不能向文本框输入内容。
 
-### 常见事件
+## 鼠标事件
 
-#### 鼠标事件
+- `mousedown/mouseup` 在元素上点击/释放鼠标按钮。
+- `mouseover/mouseout` 鼠标指针从一个元素上移入/移出。
+- `mousemove` 鼠标在元素上的每个移动都会触发此事件。
+- `click` 如果使用的是鼠标左键，则在同一个元素上的 `mousedown` 及 `mouseup` 相继触发后，触发该事件。
+- `dblclick` 在短时间内双击同一元素后触发。如今已经很少使用了。
+- `contextmenu` 在鼠标右键被按下时触发。还有其他打开上下文菜单的方式，例如使用特殊的键盘按键，在这种情况下它也会被触发，因此它并不完全是鼠标事件。
 
-- `click` —— 当鼠标点击一个元素时（触摸屏设备会在点击时生成）。
-- `contextmenu` —— 当鼠标右键点击一个元素时。
-- `mouseover` / `mouseout` —— 当鼠标指针移入/离开一个元素时。
-- `mousedown` / `mouseup` —— 当在元素上按下/释放鼠标按钮时。
-- `mousemove` —— 当鼠标移动时。
+### 事件顺序
+
+**一个用户操作可能会触发多个事件**。例如，点击鼠标左键，在鼠标左键被按下时，会首先触发 `mousedown`，然后当鼠标左键被释放时，会触发 `mouseup` 和 `click`。
+
+在单个动作触发多个事件时，事件的顺序是固定的。也就是说，会遵循 `mousedown → mouseup → click` 的顺序调用处理程序。
+
+### 鼠标按钮
+
+与点击相关的事件始终具有 `button` 属性，该属性允许获取确切的鼠标按钮。
+
+通常我们不在 `click` 和 `contextmenu` 事件中使用这一属性，因为前者只在单击鼠标左键时触发，后者只在单击鼠标右键时触发。
+
+不过，在 `mousedown` 和 `mouseup` 事件中则可能需要用到 `event.button`，因为这两个事件在任何按键上都会触发，所以我们可以使用 `button` 属性来区分是左键单击还是右键单击。
+
+`event.button` 的所有可能值如下：
+
+鼠标按键状态|	`event.button`
+:--:|:--:
+左键 (主要按键)	|0
+中键 (辅助按键)	|1
+右键 (次要按键)	|2
+X1 键 (后退按键)	|3
+X2 键 (前进按键)	|4
+
+### 组合键：shift，alt，ctrl，meta
+
+所有的鼠标事件都包含有关按下的组合键的信息。
+
+事件属性：
+
+- `shiftKey`：`Shift`
+- `altKey`：`Alt`（或对于 `Mac` 是 `Opt`）
+- `ctrlKey`：`Ctrl`
+- `metaKey`：对于 `Mac` 是 `Cmd`
+
+如果在事件期间按下了相应的键，则它们为 `true`。
+
+比如，下面这个按钮仅在 `Alt+Shift+click` 时才有效：
+
+```html
+<button id="button">Alt+Shift+Click on me!</button>
+<script>
+  button.onclick = function(event) {
+    if (event.altKey && event.shiftKey) {
+      alert('Hooray!');
+    }
+  };
+</script>
+```
+
+<button id="button">Alt+Shift+Click on me!</button>
+<script>
+  button.onclick = function(event) {
+    if (event.altKey && event.shiftKey) {
+      alert('Hooray!');
+    }
+  };
+</script>
+
+### 禁用复制粘贴
+
+如果我们想禁用选择以保护我们页面的内容不被复制粘贴，那么我们可以使用另一个事件：`oncopy`。
+
+```html
+<div oncopy="alert('Copying forbidden!');return false">
+  Dear user,
+  The copying is forbidden for you.
+  If you know JS or HTML, then you can get everything from the page source though.
+</div>
+```
+
+如果你试图在 `<div>` 中复制一段文本，这是行不通的，因为默认行为 `oncopy` 被阻止了。
+
+窗口相对坐标：clientX/clientY。
+
+文档相对坐标：pageX/pageY。
+
+事件 mouseover/mouseout，relatedTarget
+当鼠标指针移到某个元素上时，mouseover 事件就会发生，而当鼠标离开该元素时，mouseout 事件就会发生。
+
+这些事件很特别，因为它们具有 relatedTarget 属性。此属性是对 target 的补充。当鼠标从一个元素离开并去往另一个元素时，其中一个元素就变成了 target，另一个就变成了 relatedTarget。
+
+对于 mouseover：
+
+event.target —— 是鼠标移过的那个元素。
+event.relatedTarget —— 是鼠标来自的那个元素（relatedTarget → target）。
+mouseout 则与之相反：
+
+event.target —— 是鼠标离开的元素。
+event.relatedTarget —— 是鼠标移动到的，当前指针位置下的元素（target → relatedTarget）。
+
+relatedTarget 可以为 null
+relatedTarget 属性可以为 null。
+
+这是正常现象，仅仅是意味着鼠标不是来自另一个元素，而是来自窗口之外。或者它离开了窗口。
+
+当我们在代码中使用 event.relatedTarget 时，我们应该牢记这种可能性。如果我们访问 event.relatedTarget.tagName，那么就会出现错误。
+
+如果 mouseover 被触发了，则必须有 mouseout
+在鼠标快速移动的情况下，中间元素可能会被忽略，但是我们可以肯定一件事：如果鼠标指针“正式地”进入了一个元素（生成了 mouseover 事件），那么一旦它离开，我们就会得到 mouseout。
 
 #### 键盘事件
 
