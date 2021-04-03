@@ -44,6 +44,7 @@
 		- [className 和 classList](#classname-和-classlist)
 	- [CAN I USE](#can-i-use)
 	- [window.getComputedStyle()](#windowgetcomputedstyle)
+- [DOM 变动观察器（Mutation observer）](#dom-变动观察器mutation-observer)
 
 ## 层次结构
 
@@ -665,3 +666,72 @@ styleObj.backgroundColor
 
 >很久以前，创建了 `getComputedStyle` 来获取计算（computed）值，但事实证明，解析（resolved）值要方便得多，标准也因此发生了变化。
 所以，现在 `getComputedStyle` 实际上返回的是属性的解析值（resolved）。
+
+## DOM 变动观察器（Mutation observer）
+
+`Mutation Observer API` 用来监视 `DOM` 变动。`DOM` 的任何变动，比如节点的增减、属性的变动、文本内容的变动，这个 `API` 都可以得到通知。
+
+概念上，它很接近事件，可以理解为 `DOM` 发生变动就会触发 `Mutation Observer` 事件。但是，它与事件有一个本质不同：事件是同步触发，也就是说，`DOM` 的变动立刻会触发相应的事件；`Mutation Observer` 则是异步触发，`DOM` 的变动并不会马上触发，而是要等到当前所有 `DOM` 操作都结束才触发。
+
+`Mutation Observer` 有以下特点。
+
+- 它等待所有脚本任务完成后，才会运行（即异步触发方式）。
+- 它把 `DOM` 变动记录封装成一个数组进行处理，而不是一条条个别处理 `DOM` 变动。
+- 它既可以观察 `DOM` 的所有类型变动，也可以指定只观察某一类变动。
+
+语法：
+
+```js
+let observer = new MutationObserver(callback);
+```
+
+上面代码中的回调函数，会在每次 `DOM` 变动后调用。该回调函数接受两个参数，第一个是变动数组，第二个是观察器实例
+
+```js
+let observer = new MutationObserver(function (mutations, observer) {
+  mutations.forEach(function(mutation) {
+    console.log(mutation);
+  });
+});
+```
+
+`observe()` 方法用来启动监听，它接受两个参数。
+
+- 第一个参数：所要观察的 `DOM` 节点
+- 第二个参数：一个配置对象，指定所要观察的特定变动
+
+```js
+observer.observe(node, config);
+```
+
+`config` 是一个具有布尔选项的对象，该布尔选项表示“将对哪些更改做出反应”：
+
+- `childList` —— `node` 的直接子节点的更改，
+- `subtree` —— `node` 的所有后代的更改，
+- `attributes` —— `node` 的特性（attribute），
+- `attributeFilter` —— 特性名称数组，只观察选定的特性。
+- `characterData` —— 是否观察 `node.data`（文本内容），
+- `attributeOldValue` —— 如果为 `true`，则将特性的旧值和新值都传递给回调（参见下文），否则只传新值（需要 attributes 选项），
+- `characterDataOldValue` —— 如果为 `true`，则将 `node.data` 的旧值和新值都传递给回调（参见下文），否则只传新值（需要 characterData 选项）。
+
+`disconnect()` 方法用来停止观察。调用该方法后，`DOM` 再发生变动，也不会触发观察器。
+
+`takeRecords()` 方法用来清除变动记录，即不再处理未处理的变动。该方法返回变动记录的数组。
+
+`DOM` 每次发生变化，就会生成一条变动记录（MutationRecord 实例）。该实例包含了与变动相关的所有信息。`Mutation Observer` 处理的就是一个个 `MutationRecord` 实例所组成的数组。
+
+`MutationRecord` 对象包含了 `DOM` 的相关信息，有如下属性：
+
+- `type`：观察的变动类型（attributes、characterData 或者 childList）
+- `target`：发生变动的 `DOM` 节点。
+- `addedNodes`：新增的 `DOM` 节点。
+- `removedNodes`：删除的 `DOM` 节点。
+- `previousSibling`：前一个同级节点，如果没有则返回 `null`。
+- `nextSibling`：下一个同级节点，如果没有则返回 `null`。
+- `attributeName`：发生变动的属性。如果设置了 `attributeFilter`，则只返回预先指定的属性。
+- `oldValue`：变动前的值。这个属性只对 `attribute` 和 `characterData` 变动有效，如果发生 `childList` 变动，则返回 `null`。
+
+> ⚠️ **垃圾回收**
+> 
+> 观察器在内部对节点使用弱引用。也就是说，如果一个节点被从 `DOM` 中移除了，并且该节点变得不可访问，那么它就可以被垃圾回收。
+
