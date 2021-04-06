@@ -61,8 +61,32 @@
       - [设置基准大小：flex-basis](#设置基准大小flex-basis)
   - [总结](#总结)
 - [grid 布局](#grid-布局)
-  - [grid 容器属性](#grid-容器属性)
-  - [grid 项目属性](#grid-项目属性)
+  - [属性列表](#属性列表)
+  - [grid 容器](#grid-容器)
+    - [grid-template-columns 和 grid-template-rows](#grid-template-columns-和-grid-template-rows)
+      - [双命名](#双命名)
+      - [repeat 语法](#repeat-语法)
+      - [fr 单位](#fr-单位)
+    - [grid-template-areas](#grid-template-areas)
+    - [grid-template](#grid-template)
+    - [grid-column-gap 和 grid-row-gap](#grid-column-gap-和-grid-row-gap)
+    - [grid-gap](#grid-gap)
+    - [justify-items](#justify-items)
+    - [align-items](#align-items)
+    - [place-items](#place-items)
+    - [justify-content](#justify-content)
+    - [align-content](#align-content)
+    - [place-content](#place-content)
+    - [grid-auto-columns 和 grid-auto-rows](#grid-auto-columns-和-grid-auto-rows)
+    - [grid-auto-flow](#grid-auto-flow)
+    - [grid](#grid)
+  - [grid 子项](#grid-子项)
+    - [grid-column-start, grid-column-end, grid-row-start 和 grid-row-end](#grid-column-start-grid-column-end-grid-row-start-和-grid-row-end)
+    - [grid-column 和 grid-row](#grid-column-和-grid-row)
+    - [grid-area](#grid-area)
+    - [justify-self](#justify-self)
+    - [align-self](#align-self)
+    - [place-self](#place-self)
 
 ## 选择器
 
@@ -644,31 +668,461 @@ p { font-size: 2em; }
 
 ## grid 布局
 
-### grid 容器属性
+`Grid` 布局是一个二维的布局方法，纵横两个方向总是同时存在。
 
-- `grid-template-columns`：定义垂直栏
-- `grid-template-rows`：定义水平行
-- `grid-template-areas`：定义区域
-- `grid-column-gap`：定义垂直栏与垂直栏之间的间距
-- `grid-row-gap`：定义水平行与水平行之间的间距
-- `grid-gap`：上面两个栏与行间距的缩写
-- `justify-items`：`item` 在水平行中的对齐方式
-- `align-items`：`item` 在垂直栏中的对齐方式
-- `justify-content`：整个水平行在 `grid` 范围的对齐方式，这里有个好用的 `space-evenly` 值，补足了以前 `flex` 的`space-around` 和 `space-between` 的不足
-- `align-content`：整个垂直栏在 `grid` 范围的对齐方式
-- 当定义的行或列数量不够时，`item` 的自动排列方式：
-  - `grid-auto-columns`：定义多出的 `item` 的自动 `column` 的宽度大小
-  - `grid-auto-rows`：定义多出的 `item` 自动 `row` 的高度大小
-  - `grid-auto-flow`：定义自动 `item` 是按照先水平方向排列还是垂直方向排列
+给 `<div>` 这类块状元素元素设置 `display:grid` 或者给 `<span>` 这类内联元素设置 `display:inline-grid` ，`Grid` 布局即创建。
 
-### grid 项目属性
+在 `Grid` 布局中，所有相关 CSS 属性正好分为两拨，一拨作用在 `grid` 容器上，还有一拨作用在 `grid` 子项上。
 
-- `grid-column-start`：`item` 的起始栏
-- `grid-column-end`：`item` 的结束栏
-- `grid-column`：起始栏和结束栏的简写
-- `grid-row-start`：`item` 的起始行
-- `grid-row-end`：`item` 的结束行
-- `grid-row`：起始行与结束行的简写
-- `grid-area`：`item` 所在区域 
-- `justify-self`：自定义 `item` 的水平方向对齐方式
-- `align-self`：自定义 `item` 的垂直方向对齐方式
+> 在 `Grid` 布局中，`float`，`display:inline-block`，`display:table-cell`，`vertical-align` 以及 `column-*` 这些属性和声明对 `grid` 子项是没有任何作用的。
+
+### 属性列表
+
+作用在 grid 容器上 | 作用在 grid 子项上
+:--:|:--:
+grid-template-columns|grid-column-start
+grid-template-rows|grid-column-end
+grid-template-areas|grid-row-start
+grid-template|grid-row-end
+grid-column-gap|grid-column
+grid-row-gap|grid-row
+grid-gap|grid-area
+justify-items|justify-self
+align-items|align-self
+place-items|place-self
+justify-content|
+align-content|
+place-content|
+grid-auto-columns|
+grid-auto-rows|
+grid-auto-flow|
+grid|
+
+### grid 容器
+
+#### grid-template-columns 和 grid-template-rows
+
+```css
+.container {
+	grid-template-columns: <track-size> ... 或者 <line-name> <track-size> ...;
+	grid-template-rows: <track-size> ... 或者 <line-name> <track-size> ...;
+}
+```
+
+`<track-size>`：划分网格的尺寸。可以是长度值，百分比值，以及 `fr` 单位（网格剩余空间比例单位）。
+
+`<line-name>`：划分网格的网格线的名字，可以任意命名（支持中文名）。
+
+举个例子 🌰：
+
+```css
+.container {
+	grid-template-columns: 80px auto 100px;
+	grid-template-rows: 25% 100px auto 60px;
+}
+```
+
+![](../Images/grid-1.png)
+
+##### 双命名
+
+由于网格中中间区域的网格线是两边格子公用的，就像道路有两边，因此，我们起名字的时候可以起两个名称（使用空格分隔），分别表示两侧。例如：
+
+```css
+.container {
+	grid-template-columns: [第一根纵线] 80px [第1根纵线结束 第2根纵线开始] 100px [最后的结束线];
+}
+```
+
+##### repeat 语法
+
+```css
+.container {
+	grid-template-columns: repeat(24, 40px [col-start]);
+}
+```
+
+等同于：
+
+```css
+.container {
+	grid-template-columns: 40px [col-start], 40px [col-start], /* ...省略20个...*/, 40px [col-start], 40px [col-start];
+}
+```
+
+##### fr 单位
+
+`fr` 是单词 `fraction` 的缩写，表示分数。
+
+```css
+.container {
+	grid-template-columns: 200px 1fr 1fr 1fr;
+}
+```
+
+`4` 列，后面 `3` 列宽度是 `grid` 容器宽度减去 `200px` 后的 `1/3` 大小,`1:1:1`，剩余空间三等分
+
+
+和 `auto` 混用
+
+```css
+.container {
+	grid-template-columns: auto 1fr 1fr 1fr;
+}
+```
+
+当有设置 `fr` 尺寸的时候，`auto` 的尺寸表现为“包裹”，为**内容宽度**。如果没有设置 `fr` 尺寸的网格，则表现为拉伸。
+
+`fr` 数值之和小于 `1`
+
+```css
+.container {
+	grid-template-columns: auto .25fr .25fr .25fr;
+}
+```
+
+这里计算就相对复杂些，首先，由于第一个网格尺寸设置为 `auto`，因此 `fr` 计算需要的剩余空间尺寸是 `grid` 容器的宽度减去“宽 auto”这几个字符的宽度。所以，后面 `3` 个 `0.25` fr元素的宽度是：**(容器宽度 - “宽 auto”字符宽度) * 0.25**。然后剩余尺寸就是第一个网格宽度。
+
+#### grid-template-areas
+
+`area` 是区域的意思，`grid-template-areas` 就是给我们的网格划分区域的
+
+语法如下：
+
+```css
+.container {
+	grid-template-areas:
+		"<grid-area-name> | . | none | ..."
+		"...";
+}
+```
+
+- `grid-area-name`对应网格区域的名称。
+- `.` 表示空的网格单元格。
+- `none` 没有定义网格区域。
+
+举个例子 🌰：
+
+![](../Images/grid-2.png)
+
+```html
+<div class="grid">
+    <div class="item header">header</div>
+    <div class="item content">content</div>
+    <div class="item sidebar">sidebar</div>
+    <div class="item footer">footer</div>
+</div>
+```
+
+```css
+.grid {
+	display: grid;
+	gap: 5px;
+	height: 400px;
+	grid-template-areas:
+		"header  header"
+		"content sidebar"
+		"footer  footer";
+	grid-template-columns: 1fr 100px;
+	grid-template-rows: 80px 1fr 80px;
+}
+.header {
+	grid-area: header;
+	background-color: #009688;
+}
+.content {
+	grid-area: content;
+}
+.sidebar {
+	grid-area: sidebar;
+	background-color: #ff5722;
+}
+.footer {
+	grid-area: footer;
+	background: #9c27b0;
+}
+```
+
+#### grid-template
+
+`grid-template` 是 `grid-template-rows`，`grid-template-columns` 和 `grid-template-areas` 属性的缩写。
+
+语法如下：
+
+```css
+/* .container {
+	grid-template: none;
+} */
+.container {
+	grid-template: <grid-template-rows> / <grid-template-columns>;
+}
+```
+
+其中 `none` 表示将 3 个 `CSS` 属性都设置为初始值。
+
+前面例子，用 `grid-template` 缩写表示就是：
+
+```css
+.grid {
+	grid-template-areas:
+		"header  header" 80px
+		"content sidebar" 1fr
+		"footer  footer" 80px
+		/1fr 100px;
+}
+```
+
+#### grid-column-gap 和 grid-row-gap
+
+`grid-column-gap` 和 `grid-row-gap` 属性用来定义网格中网格间隙的尺寸。
+
+语法如下：
+
+```css
+.container {
+	grid-column-gap: <line-size>;
+	grid-row-gap: <line-size>;
+}
+```
+
+> 推荐使用 `column-gap` 和 `row-gap` 属性，最新。
+
+#### grid-gap
+
+`grid-gap` 属性是 `grid-column-gap` 和 `grid-row-gap` 属性的缩写。语法如下：
+
+```css
+.container {
+	grid-gap: <grid-row-gap> <grid-column-gap>;
+}
+```
+
+> 推荐使用 `gap` 属性作为缩写，`grid-gap` 已经很老了。
+
+#### justify-items
+
+`justify-items` 指定了网格元素的水平呈现方式，是水平拉伸显示，还是左中右对齐，类似于 `flex` 的 `justify-content`，语法如下：
+
+```css
+.container {
+	justify-items: stretch | start | end | center;
+}
+```
+
+#### align-items
+
+`align-items` 指定了网格元素的垂直呈现方式，是垂直拉伸显示，还是上中下对齐，语法如下：
+
+```css
+.container {
+	align-items: stretch | start | end | center;
+}
+```
+
+#### place-items
+
+`place-items` 可以让 `align-items` 和 `justify-items` 属性写在单个声明中。语法如下：
+
+```css
+.container {
+	place-items: <align-items> <justify-items>?;
+}
+```
+
+#### justify-content
+
+`justify-content` 指定了网格元素的水平分布方式。此属性仅在网格总宽度小于 `grid` 容器宽度时候有效果。
+
+语法如下：
+
+```css
+justify-content: stretch | start | end | center | space-between | space-around | space-evenly;
+```
+
+我们网格设定的都是固定的宽度值，结果还有剩余空间。例如：
+
+```css
+.container {
+	display: grid;
+	width: 300px;
+	grid-template: 100px 100px/100px 100px;
+}
+```
+
+此时，水平和垂直方向都有 `100px` 的剩余，`justify-content` 属性此时就有用武之地了，**对 `grid` 网格整体布局，类似于 `flex` 中 `align-content` 的作用**。
+
+#### align-content
+ 
+`align-content` 可以看成和 `justify-content` 是相似且对立的属性，`justify-content` 指明水平方向 `grid` 子项的分布方式，而`align-content` 则是指明垂直方向每一行 `grid` 元素的分布方式。如果所有 `grid` 子项只有一行，则 `align-content` 属性是没有任何效果的。
+
+#### place-content
+
+`place-content` 可以让 `align-content` 和 `justify-content` 属性写在一个 CSS 声明中，也就是俗称的缩写。语法如下：
+
+```css
+.container {
+	place-content: <align-content> <justify-content>?;
+}
+```
+
+#### grid-auto-columns 和 grid-auto-rows
+
+指定任何自动生成的网格轨道（也称为隐式网格轨道）的大小。当网格项目多于网格中的单元格或网格项目放置在显式网格之外时，将创建隐式轨道。
+
+语法如下：
+```css
+.container {
+	grid-auto-columns: <track-size> ...;
+	grid-auto-rows: <track-size> ...;
+}
+```
+
+通过一个实例来感受下 `grid-auto-columns` 和 `grid-auto-rows` 属性的样式表现。CSS 如下：
+
+```css
+.container {
+	display: grid;
+	width: 150px;
+	grid-template-columns: 60px 60px;
+	grid-template-rows: 30px 90px;
+	grid-auto-columns: 60px;
+}
+.item-a {
+	grid-column: 1 / 2;
+	grid-row: 2 / 3;
+}
+.item-b {
+	/* 容器水平只有2个格子，但这里设定的是第3个，隐式网格创建 */
+	grid-column: 3 / 4;
+	grid-row: 2 / 3;
+	background-color: rgba(255, 255, 0, .5);
+}
+```
+
+实时效果如下，`.item-b` 宽度强制表现为了 `60px`，否则，则表现为 `auto`，在这里，则是可怜巴巴填满剩余的 `30px`：
+
+![](../Images/grid-5.png)
+
+#### grid-auto-flow
+
+`grid-auto-flow` 属性控制没有明确指定位置的 `grid` 子项的放置方式。比方说定义了一个 **5*2** 的 `10` 格子，共有 5 个元素，其中 2 个元素指定了放在哪个格子里，还有 3 个则自生自灭排列。此时，这 3 个元素如何排列就是由 `grid-auto-flow` 属性控制的。
+
+语法如下：
+
+```css
+.container {
+	grid-auto-flow: row | column | row dense | column dense;
+}
+```
+
+#### grid
+
+是下面所有这些 CSS 属性的缩写集合，`grid-template-rows`，`grid-template-columns`，`grid-template-areas`，`grid-auto-rows`，`grid-auto-columns` 和 `grid-auto-flow`。
+
+### grid 子项
+
+#### grid-column-start, grid-column-end, grid-row-start 和 grid-row-end
+
+表示 `grid` 子项所占据的区域的起始和终止位置，包括水平方向和垂直方向。
+
+语法如下：
+
+```css
+.item {
+	grid-column-start: <number> | <name> | span <number> | span <name> | auto;
+	grid-column-end: <number> | <name> | span <number> | span <name> | auto;
+	grid-row-start: <number> | <name> | span <number> | span <name> | auto;
+	grid-row-end: <number> | <name> | span <number> | span <name> | auto;
+}
+```
+
+例子说话：
+
+```css
+.container {
+	grid-template-columns: [第一根纵线] 80px [纵线2] auto [纵线3] 100px [最后的结束线];
+	grid-template-rows: [第一行开始] 25% [第一行结束] 100px [行3] auto [行末];
+}
+.item-a {
+	grid-column-start: 2;
+	grid-column-end: 纵线3;
+	grid-row-start: 第一行开始;
+	grid-row-end: 3;
+}
+```
+
+![](../Images/grid-6.png)
+
+`span` 关键字的作用
+
+```css
+.item-b {
+	grid-column-start: 2;
+	grid-column-end: span 纵线3;
+	grid-row-start: 第一行开始;
+	grid-row-end: span 3;
+}
+```
+
+![](../Images/grid-7.png)
+
+`span` 仅限于网格线命名只有1个，且匹配的场景。如果多个匹配的网格线命名，或者没有匹配的网格线命名，`span` 关键字就会有明显的作用，
+
+对于数值网格线，则可以看出差异，有 `span` 则表示跨越的个数，而非网格线的序号。例如这里 `grid-row-end:span 3` 表示当前网格需要覆盖 3 个格子。于是，我们可以看到 `.item-b` 高度贯穿整个 `grid` 容器。
+
+#### grid-column 和 grid-row
+
+`grid-column` 和 `grid-row` 都是缩写啦，前者是 `grid-column-start + grid-column-end` 的缩写，后者是 `grid-row-start + grid-row-end` 的缩写。
+
+语法上是使用斜杠分隔，如下：
+
+```css
+.item {
+	grid-column: <start-line> / <end-line> | <start-line> / span <value>;
+	grid-row: <start-line> / <end-line> | <start-line> / span <value>;
+}
+```
+
+![](../Images/grid-8.png)
+
+#### grid-area
+
+`grid-area` 其实是 `grid-row-start`, `grid-column-start`, `grid-row-end` 以及 `grid-column-end`属性的缩写，以及额外支持`grid-template-areas` 设置的网格名称而已。
+
+
+语法如下：
+
+```css
+.item {
+	grid-area: <name> | <row-start> / <column-start> / <row-end> / <column-end>;
+}
+```
+
+#### justify-self
+
+`justify-self` 表示单个网格元素的水平对齐方式。语法如下：
+
+```css
+.item {
+	justify-self: stretch | start | end | center;
+}
+```
+
+#### align-self
+`align-self` 指定了网格元素的垂直呈现方式，是垂直拉伸显示，还是上中下对齐，语法如下：
+
+```css
+.container {
+	align-self: stretch | start | end | center;
+}
+```
+
+#### place-self
+
+`place-items` 可以让 `align-self` 和 `justify-self` 属性写在单个声明中。语法如下：
+
+```css
+.item {
+	place-self: <align-self> <justify-self>?;
+}
+```

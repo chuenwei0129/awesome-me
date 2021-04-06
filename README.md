@@ -49,7 +49,7 @@
 ## CSS
 
 - `[知识整理]` [CSS 查漏补缺](web/css.md)
-- `[基础实践]` [CSS 常用布局](web/layout.md)
+- `[基础实践]` [CSS 居中和三栏布局](web/layout.md)
 
 ## 技术实践、项目总结
 ## 设计模式
