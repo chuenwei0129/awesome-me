@@ -44,8 +44,22 @@
   - [对文档流的影响](#对文档流的影响)
   - [对浮动元素的影响](#对浮动元素的影响)
 - [flex 布局](#flex-布局)
-  - [flex 容器属性](#flex-容器属性)
-  - [flex 子元素属性](#flex-子元素属性)
+  - [flex 父容器属性](#flex-父容器属性)
+    - [设置子容器沿主轴排列：`justify-content`](#设置子容器沿主轴排列justify-content)
+    - [设置子容器如何沿交叉轴排列：align-items](#设置子容器如何沿交叉轴排列align-items)
+  - [flex 子容器属性](#flex-子容器属性)
+    - [在主轴上如何伸缩：`flex`](#在主轴上如何伸缩flex)
+    - [单独设置子容器如何沿交叉轴排列：align-self](#单独设置子容器如何沿交叉轴排列align-self)
+  - [轴](#轴)
+    - [主轴](#主轴)
+    - [交叉轴](#交叉轴)
+  - [flex 进阶概念](#flex-进阶概念)
+    - [父容器设置换行方式：flex-wrap](#父容器设置换行方式flex-wrap)
+    - [轴向与换行组合设置：flex-flow](#轴向与换行组合设置flex-flow)
+    - [多行沿交叉轴对齐：align-content](#多行沿交叉轴对齐align-content)
+    - [子容器 flex 属性](#子容器-flex-属性)
+      - [设置基准大小：flex-basis](#设置基准大小flex-basis)
+  - [总结](#总结)
 - [grid 布局](#grid-布局)
   - [grid 容器属性](#grid-容器属性)
   - [grid 项目属性](#grid-项目属性)
@@ -75,6 +89,10 @@
 - 后代选择器：`A B`
 
 ### 伪类
+
+![伪类](../Images/weilei.webp)
+
+![伪元素](../Images/weiyuansu.png)
 
 #### 条件伪类
 
@@ -384,21 +402,224 @@ p { font-size: 2em; }
 
 ## flex 布局
 
-### flex 容器属性
+`flex` 的核心的概念就是**容器**和**轴**。容器包括外层的**父容器**和内层的**子容器**，轴包括**主轴**和**交叉轴**。
 
-- `align-content` 定义了当作为一个弹性盒子容器的属性时，浏览器如何在容器的侧轴围绕弹性盒子项目分配空间。该属性对单行弹性盒子模型无效。
+![](../Images/flex_1.webp)
 
-- `align-items` 以与 `justify-content` 相同的方式在侧轴方向上将当前行上的弹性元素对齐。与 `align-content` 属性的区别在于它指定了当前 `flex` 容器的行中的子元素的对齐方式，而 `align-content` 则指定了行自身的对齐方式。
+> 容器具有这样的特点：父容器可以统一设置子容器的排列方式，子容器也可以单独设置自身的排列方式，**如果两者同时设置，以子容器的设置为准**。
 
-- `flex-direction` 指定了内部元素是如何在 `flex` 容器中布局的，定义了主轴的方向(正方向或反方向)
+![](../Images/flex_2.webp)
 
-- `flex-flow` 属性是 `flex-direction` 和 `flex-wrap` 的简写。
+### flex 父容器属性
 
-- `flex-wrap` 指定 `flex` 元素单行显示还是多行显示。如果允许换行，这个属性允许你控制行的堆叠方向。
+#### 设置子容器沿主轴排列：`justify-content`
 
-- `justify-content` 定义了浏览器如何分配顺着父容器主轴的弹性元素之间及其周围的空间。
+`justify-content` 属性用于定义如何沿着主轴方向排列子容器。
 
-### flex 子元素属性
+![](../Images/flex_3.webp)
+
+`flex-start`：起始端对齐
+
+![](../Images/flex_4.webp)
+
+`flex-end`：末尾段对齐
+
+![](../Images/flex_5.webp)
+
+`center`：居中对齐
+
+![](../Images/flex_6.webp)
+
+`space-around`：子容器沿主轴均匀分布，位于首尾两端的子容器到父容器的距离是子容器间距的一半。
+
+![](../Images/flex_7.webp)
+
+`space-between`：子容器沿主轴均匀分布，位于首尾两端的子容器与父容器相切。
+
+![](../Images/flex_8.webp)
+
+#### 设置子容器如何沿交叉轴排列：align-items
+
+`align-items` 属性用于定义如何沿着交叉轴方向分配子容器的间距。
+
+![](../Images/flex_9.webp)
+
+`flex-start`：起始端对齐
+
+![](../Images/flex_10.webp)
+
+`flex-end`：末尾段对齐
+
+![](../Images/flex_11.webp)
+
+`center`：居中对齐
+
+![](../Images/flex_12.webp)
+
+`baseline`：基线对齐，这里的 baseline 默认是指首行文字，即 `first baseline`，所有子容器向基线对齐，交叉轴起点到元素基线距离最大的子容器将会与交叉轴起始端相切以确定基线。
+
+![](../Images/flex_13.webp)
+
+`stretch`：子容器沿交叉轴方向的尺寸拉伸至与父容器一致。
+
+![](../Images/flex_14.webp)
+
+### flex 子容器属性
+
+#### 在主轴上如何伸缩：`flex`
+
+子容器是有弹性的（flex 即弹性），它们会自动填充剩余空间，子容器的伸缩比例由 `flex` 属性确定。
+
+`flex` 的值可以是无单位数字（如：1, 2, 3），也可以是有单位数字（如：15px，30px，60px），还可以是 `none` 关键字。子容器会按照 `flex` 定义的尺寸比例自动伸缩，如果取值为 `none` 则不伸缩。
+
+![](../Images/flex_15.webp)
+
+#### 单独设置子容器如何沿交叉轴排列：align-self
+
+每个子容器也可以单独定义沿交叉轴排列的方式，此属性的可选值与父容器 `align-items` 属性完全一致，如果两者同时设置则以子容器的 `align-self` 属性为准。
+
+![](../Images/flex_16.webp)
+
+`flex-start`：起始端对齐
+
+![](../Images/flex_17.webp)
+
+`flex-end`：末尾段对齐
+
+![](../Images/flex_18.webp)
+
+`center`：居中对齐
+
+![](../Images/flex_19.webp)
+
+`baseline`：基线对齐
+
+![](../Images/flex_20.webp)
+
+`stretch`：拉伸对齐
+
+![](../Images/flex_21.webp)
+
+### 轴
+
+轴包括主轴和交叉轴，`justify-content` 属性决定子容器沿主轴的排列方式，`align-items` 属性决定子容器沿着交叉轴的排列方式。在 `flex` 布局中，`flex-direction` 属性决定主轴的方向，交叉轴的方向由主轴确定。
+
+![](../Images/flex_22.webp)
+
+#### 主轴
+
+主轴的起始端由 `flex-start` 表示，末尾段由 `flex-end` 表示。不同的主轴方向对应的起始端、末尾段的位置也不相同。
+
+向右：`flex-direction: row`
+
+![](../Images/flex-1.webp)
+
+向下：`flex-direction: column`
+
+![](../Images/flex-2.webp)
+
+向左：`flex-direction: row-reverse`
+
+![](../Images/flex-3.webp)
+
+向上：`flex-direction: column-reverse`
+
+![](../Images/flex-4.webp)
+
+#### 交叉轴
+
+主轴沿逆时针方向旋转 `90°` 就得到了交叉轴，交叉轴的起始端和末尾段也由 `flex-start` 和 `flex-end` 表示。
+
+### flex 进阶概念
+
+#### 父容器设置换行方式：flex-wrap
+
+决定子容器是否换行排列，不但可以顺序换行而且支持逆序换行。
+
+![](../Images/flex-5.webp)
+
+`nowrap`：不换行
+
+![](../Images/flex-6.webp)
+
+`wrap`：换行
+
+![](../Images/flex-7.webp)
+
+`wrap-reverse`：逆序换行
+
+逆序换行是指沿着交叉轴的反方向换行。
+
+![](../Images/flex-8.webp)
+
+#### 轴向与换行组合设置：flex-flow
+
+`flow` 即流向，也就是子容器沿着哪个方向流动，流动到终点是否允许换行，比如 `flex-flow: row wrap`，**`flex-flow` 是一个复合属性**，相当于 `flex-direction` 与 `flex-wrap` 的组合，可选的取值如下：
+- `row`、`column `等，可单独设置主轴方向
+- `wrap`、`nowrap` 等，可单独设置换行方式
+- `row nowrap`、`column wrap` 等，也可两者同时设置
+
+#### 多行沿交叉轴对齐：align-content
+
+当子容器多行排列时，设置行与行之间的对齐方式。
+
+`flex-start`：起始端对齐
+
+![](../Images/flex-10.webp)
+
+`flex-end`：末尾段对齐
+
+![](../Images/flex-11.webp)
+
+`center`：居中对齐
+
+![](../Images/flex-12.webp)
+
+`space-around`：等边距均匀分布
+
+![](../Images/flex-13.webp)
+
+`space-between`：等间距均匀分布
+
+![](../Images/flex-14.webp)
+
+`stretch`：拉伸对齐
+
+![](../Images/flex-15.webp)
+
+#### 子容器 flex 属性
+
+##### 设置基准大小：flex-basis
+
+`flex-basis` 表示在不伸缩的情况下子容器的原始尺寸。**主轴为横向时代表宽度，主轴为纵向时代表高度。**
+
+![](../Images/flex-16.webp)
+
+![](../Images/flex-17.webp)
+
+设置扩展比例：`flex-grow`
+
+子容器弹性伸展的比例。如图，剩余空间按 `1:2` 的比例分配给子容器。
+
+![](../Images/flex-18.webp)
+
+![](../Images/flex-19.webp)
+
+设置收缩比例：`flex-shrink`
+
+子容器弹性收缩的比例。如图，超出的部分按 1:2 的比例从给子容器中减去。
+
+![](../Images/flex-20.webp)
+
+![](../Images/flex-21.webp)
+
+设置排列顺序：`order`
+
+改变子容器的排列顺序，覆盖 `HTML` 代码中的顺序，默认值为 `0`，可以为负值，数值越小排列越靠前。
+
+![](../Images/flex-22.webp)
+
+总结：
 
 - `order` 属性规定了弹性容器中的可伸缩项目在布局时的顺序。元素按照 `order` 属性的值的增序进行布局。拥有相同 `order` 属性值的元素按照它们在源代码中出现的顺序进行布局。**初始值为 0**。
   
@@ -414,6 +635,12 @@ p { font-size: 2em; }
 - 属性 `flex-basis` 指定了 `flex` 元素在主轴方向上的初始大小。如果不使用 `box-sizing` 来改变盒模型的话，那么这个属性就决定了 `flex` 元素的内容盒（content-box）的宽或者高（取决于主轴的方向）的尺寸大小。**初始值	auto**。
 
 - 属性 `align-self` 会对齐当前 `flex` 行中的 `flex` 元素，并覆盖 `align-items`（全局设置）的值. 如果任何 `flex` 元素的侧轴方向 `margin` 值设置为 `auto`，则会忽略 `align-self`（个体设置）。
+
+### 总结
+
+以上就是 `flex` 布局的全部属性，一共 `12` 个，父容器、子容器各 `6` 个，可以随时通过下图进行回顾。
+
+![](../Images/flex-23.webp)
 
 ## grid 布局
 
