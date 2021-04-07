@@ -33,10 +33,11 @@
 ## 浏览器
 
 - `[DOM]` [DOM 基础知识整理](web/dom.md)
+- `[HTML]`[网页元素](web/element.md)
 - `[坐标]` [窗口、坐标和滚动](web/scroll.md)
 - `[事件]` [事件和表单](web/event.md)
 - `[渲染原理]` [浏览器渲染原理](web/browser.md)
-- `[网络请求]`
+- `[二进制]` [前端操作文件和二进制数据](web/data.md)
 - `[数据存储]` 
 - `[拖拽]`
 - `[Web components]`
