@@ -38,9 +38,9 @@
 - `[事件]` [事件和表单](web/event.md)
 - `[渲染原理]` [浏览器渲染原理](web/browser.md)
 - `[二进制]` [前端操作文件和二进制数据](web/data.md)
-- `[HTTP]` [HTTP](web/http.md) 
-- `[数据存储]` 
-- `[拖拽]`
+- `[HTTP]` [什么是 HTTP](web/http.md) 
+- `[Cookies]` [数据存储、前端安全和登陆鉴权](web/cookie.md)
+- `[网络请求]`
 - `[Web components]`
 
 ## 打包、构建工具
