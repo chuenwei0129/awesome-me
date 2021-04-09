@@ -1,4 +1,5 @@
 # CSS 居中和三栏布局<!-- omit in toc -->
+
 - [水平居中](#水平居中)
 	- [inline-block + text-align](#inline-block--text-align)
 	- [width + margin](#width--margin)
@@ -26,6 +27,7 @@
 	- [grid 布局](#grid-布局)
 
 ## 水平居中
+
 效果：
 
 ![水平居中](../Images/center.png)
