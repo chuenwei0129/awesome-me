@@ -12,7 +12,9 @@
   - [pitch loader](#pitch-loader)
 - [plugin](#plugin)
 - [simple webpack](#simple-webpack)
+
 ## 作用域提升（Scope Hoisting）
+
 - 大量函数闭包包裹代码，导致体积增大（模块越多越明显）
 - 运行代码时创建的函数作用域变多，内存开销变大
   

@@ -11,8 +11,78 @@
 
 ## 回调
 
+在程序设计中，这种设计叫做回调，即：我们现在开始执行的行为，但它们会在稍后完成。例如，`setTimeout` 函数就是一个这样的函数。
 
+```js
+function loadScript(src) {
+  // 创建一个 <script> 标签，并将其附加到页面
+  // 这将使得具有给定 src 的脚本开始加载，并在加载完成后运行
+  let script = document.createElement('script');
+  script.src = src;
+  document.head.append(script);
+}
+```
 
+它将带有给定 `src` 的新动态创建的标签 `<script src="…">` 附加到文档中。浏览器将自动开始加载它，并在加载完成后执行。
+
+我们可以像这样使用这个函数：
+
+```js
+// 在给定路径下加载并执行脚本
+loadScript('/my/script.js');
+```
+
+脚本是“异步”调用的，因为它从现在开始加载，但是在这个加载函数执行完成后才运行。
+
+如果在 `loadScript(…)` 下面有任何其他代码，它们不会等到脚本加载完成才执行。
+
+```js
+loadScript('/my/script.js');
+// loadScript 下面的代码
+// 不会等到脚本加载完成才执行
+// ...
+```
+
+假设我们需要在新脚本加载后立即使用它。它声明了新函数，我们想运行它们
+
+但如果我们在 `loadScript(…)` 调用后立即执行此操作，这将不会有效。
+
+```js
+loadScript('/my/script.js'); // 这个脚本有 "function newFunction() {…}"
+
+newFunction(); // 没有这个函数！
+```
+
+`loadScript` 函数并没有提供跟踪加载完成的方法。
+
+让我们添加一个 `callback` 函数作为 `loadScript` 的第二个参数，该函数应在脚本加载完成时执行：
+
+```js
+function loadScript(src, callback) {
+  let script = document.createElement('script');
+  script.src = src;
+
+  script.onload = () => callback(script);
+
+  document.head.append(script);
+}
+```
+
+现在，如果我们想调用该脚本中的新函数，我们应该将其写在回调函数中：
+
+```js
+loadScript('/my/script.js', function() {
+  // 在脚本加载完成后，回调函数才会执行
+  newFunction(); // 现在它工作了
+  ...
+});
+```
+
+这是我们的想法：第二个参数是一个函数（通常是匿名函数），该函数会在行为（action）完成时运行
+
+这被称为“基于回调”的异步编程风格。异步执行某项功能的函数应该提供一个 `callback` 参数用于在相应事件完成时调用。（译注：上面这个例子中的相应事件是指脚本加载）
+
+这里我们在 `loadScript` 中就是这么做的，但当然这是一种通用方法。
 
 ## Promise
 
