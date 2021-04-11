@@ -48,6 +48,7 @@
   - [HTTPS 加密方式](#https-加密方式)
   - [HTTPS 通讯方式](#https-通讯方式)
   - [HTTPS 的缺点](#https-的缺点)
+  - [HTTPS 握手](#https-握手)
 - [Websocket](#websocket)
   - [典型的 Websocket 握手](#典型的-websocket-握手)
   - [Websocket 的作用](#websocket-的作用)
@@ -371,6 +372,8 @@
 
 某些请求不会触发 `CORS` 预检请求，这样的请求一般称为"简单请求",而会触发预检的请求则称为"复杂请求"。
 
+而在项目中常见的 `Content-Type: application/json` 及 `Authorization: <token>` 为典型的非简单请求，在发送请求时往往会带上 `Options`
+
 #### 简单请求
 
 - 请求方法为 GET、HEAD、POST 时发的请求
@@ -516,7 +519,7 @@
 
 `HTTPS` 并非是应用层的一种新协议。只是 `HTTP` 通信接口部分用 `SSL`（Secure Socket Layer）和 `TLS`（Transport Layer Security）协议代替而已。通常，`HTTP` 直接和 `TCP` 通信。当使用 `SSL` 时，则演变成先和 `SSL` 通信，再由 `SSL` 和 `TCP` 通信了。简言之，所谓 `HTTPS`，其实就是身披 `SSL` 协议这层外壳的 `HTTP`。
 
-> `http` 和 `https` 使用连接方式不同，默认端口也不一样，`http` 是 `80`，`https` 是 `443`。
+> http 和 `https` 使用连接方式不同，默认端口也不一样，`http` 是 `80`，`https` 是 `443`。
 
 ### 对称加密（天王盖地虎）
 
@@ -574,6 +577,23 @@
 - HTTPS 连接缓存不如 HTTP 高效，会增加数据开销和功耗；
 - 申请 SSL 证书需要钱，功能越强大的证书费用越高。
 - SSL 涉及到的安全算法会消耗 CPU 资源，对服务器资源消耗较大。
+
+### HTTPS 握手
+
+在 `TLS 1.2` 中，握手协议过程需要耗费两个 `RTT`，过程如下
+
+- [OUT] `Client Hello`，客户端选出自身支持的 TLS 版本号、`cipher suites`、一个随机数、`SessionId` 传送给服务器端 (有可能可服用 Session)
+- [IN] `Server Hello`，服务器端选出双方都支持的 TLS 版本，`cipher suite` 、一个随机数、`SeesionId` 给客户端
+- [IN] `Certificate`，服务器端给客户端发送证书，用以身份验证及提供公钥
+- [IN] `Server Key Exchange`，服务器端给客户端发送秘钥交换算法的一些参数
+- [IN] `Server Finished`
+- [OUT] `Client Key Exchange`，客户端给服务器端发送秘钥交换算法的一些参数，计算出预备主密钥 (pre master key)，作为随机数传递给服务器端 (这个随机数是安全的)。双方根据三个随机数生成对称加密中的秘钥
+- [OUT] `Change Cipher Spec`，告知对方以后的消息将要使用 `TLS` 记录层协议进行加密
+- [OUT] `Finished`，发送第一条加密的消息并完整性验证
+- [IN] `Change Cipher Spec`，告知以后的消息将要使用 `TLS` 记录层协议进行加密
+- [IN] `Finished`，发送第一条加密的消息并完整性验证
+
+`TLS 1.3` 握手时间从以前的 `2RTT` 缩短到 `1RTT`，通过 `Pre shared-key` 减少了单独的 `ServerKeyExchange` 与 `ClientKeyExchange` 消耗的一个 `RTT`
 
 ## Websocket
 

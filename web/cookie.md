@@ -34,6 +34,7 @@
 - [SSO](#sso)
 - [拓展安全知识](#拓展安全知识)
   - [XSS](#xss)
+  - [CSP](#csp)
   - [XSRF](#xsrf-1)
   - [HTTP 劫持](#http-劫持)
   - [DNS 劫持](#dns-劫持)
@@ -235,6 +236,23 @@ localStorage|	sessionStorage
 
 `session` 是基于 `cookie` 实现的，`session`存储在服务器端，`sessionId` 会被存储到客户端的 `cookie` 中
 
+在服务器端使用 `sessions` 存储键值对
+
+```js
+const sessions = {
+  "ABCED1": 10086,
+  "CDEFA0": 10010
+}
+```
+
+每次客户端请求带权限数据时携带 `sessionId`，`sessionId` 与 `sessions` 获取 `user_id`， 完成认证过程
+
+```js
+function getUserIdByToken (sessionId) {
+  return sessions[sessionId]
+}
+```
+
 ![](../Images/session-2.png)
 
 ### session 认证流程
@@ -260,6 +278,22 @@ localStorage|	sessionStorage
 - `sessionId` 是存储在 `cookie` 中的，假如浏览器禁止 `cookie` 或不支持 `cookie` 怎么办？ 一般会把 `sessionId` 跟在 `url` 参数后面即重写 `url`，所以 `session` 不一定非得需要靠 `cookie` 实现
 
 ## JWT
+
+`session` 需要在数据库中保持用户及 `sessionId` 对应信息，所以叫 **有状态**。
+
+试想一下，如何在数据库中不保持用户状态也可以登录。
+
+**第一种方法**： 前端直接传 `user_id` 给服务端
+
+缺点也特别特别明显，容易被用户篡改成任意 `user_id`，权限设置形同虚设。不过思路正确，接着往下走。
+
+**改进**： 对 `user_id` 进行对称加密
+
+服务端对 `user_id` 进行对称加密后，作为 `token` 返回客户端，作为用户状态凭证。比上边略微强点，但由于对称加密，选择合适的算法以及密钥比较重要
+
+**改进**： 对 `user_id` 不需要加密，只需要进行签名，保证不被篡改
+
+这便是 `jwt` 的思想：`user_id`，加密算法和签名组成 `token` 一起存储到客户端，每当客户端请求接口时携带 `token`，服务器根据 `token` 解析出加密算法与 `user_id` 来判断签名是否一致。
 
 JSON Web Token（简称 JWT）是目前最流行的**跨域**认证解决方案。通过客户端保存数据，而服务器根本不保存会话数据，每个请求都被发送回服务器。 
 
@@ -470,7 +504,36 @@ secret)
 
 ### XSS
 
-XSS 的攻击方式就是想办法“教唆”用户的浏览器去执行一些这个网页中原本不存在的前端代码。本质是 `HTML` 注入。
+`XSS` 的攻击方式就是想办法“教唆”用户的浏览器去执行一些这个网页中原本不存在的前端代码。本质是 `HTML` 注入。
+
+### CSP
+
+`CSP` 的实质就是白名单制度，开发者明确告诉客户端，哪些外部资源可以加载和执行，等同于提供白名单。它的实现和执行全部由浏览器完成，开发者只需提供配置。
+
+`CSP` 大大增强了网页的安全性。攻击者即使发现了漏洞，也没法注入脚本，除非还控制了一台列入了白名单的可信主机。
+
+两种方法可以启用 `CSP`。一种是通过 `HTTP` 头信息的 `Content-Security-Policy` 的字段。
+
+```js
+Content-Security-Policy: script-src 'self'; object-src 'none';
+style-src cdn.example.org third-party.org; child-src https:
+```
+
+另一种是通过网页的 `<meta>` 标签。
+
+```html
+<meta http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'none'; style-src cdn.example.org third-party.org; child-src https:">
+```
+
+上面代码中，`CSP` 做了如下配置。
+
+- 脚本：只信任当前域名
+- `<object>` 标签：不信任任何 `URL`，即不加载任何资源
+- 样式表：只信任 `cdn.example.org` 和 `third-party.org`
+- 框架（frame）：必须使用 `HTTPS` 协议加载
+- 其他资源：没有限制
+
+启用后，不符合 `CSP` 的外部资源就会被阻止加载。
 
 ### XSRF
 

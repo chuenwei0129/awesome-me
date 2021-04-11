@@ -33,6 +33,7 @@
   - [Blob 转换为 ArrayBuffer](#blob-转换为-arraybuffer)
 - [File 对象](#file-对象)
   - [FileReader](#filereader)
+- [实践](#实践)
 - [扩展知识](#扩展知识)
 
 ## 编码知识
@@ -783,6 +784,26 @@ function readFile(input) {
 
 }
 </script>
+```
+
+## 实践
+
+1. 如何上传本地图片并在网页上展示
+
+```js
+本地上传图片 -> Blob -> Object URL
+```
+
+2. 如何拼接两个音频文件
+  
+```js
+fetch请求音频资源 -> ArrayBuffer -> TypedArray -> 拼接成一个 TypedArray -> ArrayBuffer -> Blob -> Object URL
+```
+
+3. 如何把 `json` 数据转化为 `demo.json` 并下载文件
+
+```js
+Text -> DataURL
 ```
 
 ## 扩展知识
