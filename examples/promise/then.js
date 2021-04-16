@@ -23,6 +23,7 @@ const resolvePromise2 = (promise2, x, resolve, reject) => {
 	} else if ((typeof x === 'object' && x !== null) || typeof x === 'function') {
 		let called = null
 		try {
+			// 这个 trycatch处理 x.then，由于第三方所以 要开始处理
 			const then = x.then
 			if (typeof then === 'function') {
 				then.call(x, y => {

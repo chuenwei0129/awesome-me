@@ -1,7 +1,5 @@
 // 注意点 catch 的返回值是个 promise
-Promise.prototype.catch = function(onrejected) {
-	return this.then(null, onrejected)
-}
+// catch 是包了一层函数的 then，相当于代理了一层
 
 const p = new Promise((resolve, reject) => {
 	setTimeout(() => {
@@ -10,5 +8,13 @@ const p = new Promise((resolve, reject) => {
 })
 
 p.catch(reason => {
+	console.log(reason)
+})
+
+Promise.prototype._catch = function(onRejected) {
+	return this.then(null, onRejected)
+}
+
+p._catch(reason => {
 	console.log(reason)
 })
