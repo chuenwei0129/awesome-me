@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			function A() {
+				console.log(1)
+			}
+			function Func() {
+				A = function () {
+					console.log(2)
+				}
+				return this
+			}
+			Func.A = A
+			Func.prototype = {
+				A: () => {
+					console.log(3)
+				},
+			}
+			A() //1
+			Func.A() // 1
+			Func().A() // 2
+			new Func.A() // 1
+			new Func().A() // 3
+			// new new Func().A() // err 箭头函数不能做构造函数
+		</script>
+	</body>
+</html>

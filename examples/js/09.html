@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>面向对象</title>
+	</head>
+	<body>
+		<script>
+			function Foo() {
+				// 全局变量
+				getName = function () {
+					console.log(1)
+				}
+				return this
+				//  这一步返回的this是this.Foo()的this指的是undefined
+			}
+			Foo.getName = function () {
+				console.log(2)
+			}
+			Foo.prototype.getName = function () {
+				console.log(3)
+			}
+			var getName = function () {
+				console.log(4)
+			}
+			function getName() {
+				console.log(5)
+			}
+			// 定义阶段
+			// 这么恶心的题，我竟然对了
+			// new foo() 与点同级19，new 不带参数18，返回的this指的是
+			// this的执行环境
+
+			Foo.getName() // 2
+			getName() // 4
+			Foo().getName() // 1
+			getName() // 1
+			new Foo.getName() // 2
+			new Foo().getName() // 3
+			new new Foo().getName() //3
+		</script>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// 第三版
+			function Super() {
+				this.super_param = [1, 2, 3]
+			}
+			Super.prototype.getSuperParam = function () {
+				return this.super_param
+			}
+			function Sub() {
+				Super.call(this)
+				this.sub_param = true
+			}
+			// Sub.prototype = Object.create(Super.prototype)
+			// Sub.prototype.constructor = Sub
+			// 下面相当于上面两行
+			Object.setPrototypeOf(Sub.prototype, Super.prototype)
+
+			Sub.prototype.getSubParam = function () {
+				return this.sub_param
+			}
+			var instance1 = new Sub()
+			var instance2 = new Sub()
+			instance1.super_param.push(4)
+
+			console.log(instance1.super_param) // [1, 2, 3, 4]
+			console.log(instance2.super_param) // [1, 2, 3]
+			console.log(Sub.prototype.constructor === Sub) // true
+		</script>
+	</body>
+</html>

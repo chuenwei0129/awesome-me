@@ -1,70 +1,54 @@
-// 数组扁平化
+// 思考
+// 测试驱动开发
 
-// 外部变量
-const res = []
-const flat_1 = arr => {
-	arr.forEach(item => {
-		Array.isArray(item) ? flat_1(item) : res.push(item)
+const arr = [1, [2, { a: 1 }], [4, 5, [6, 7, 8, [9, [10]]]]]
+
+// 1. toString 方法 只适合 string[], number[] ...
+
+// 2. api 注意点 -> 层数
+console.log(
+	arr.flat(Infinity)
+)
+
+// 3. 正则 + 序列化、反序列化
+console.log(
+	JSON.parse(`[${JSON.stringify(arr).replace(/\[|\]/g, '')}]`)
+)
+
+// 4. 递归
+// x 是数组就递归,不是就放入 ret 中,重点是 ret 闭包
+const flat = (arr, ret = []) => {
+	arr.forEach(x => {
+		Array.isArray(x) ? flat(x, ret) : ret.push(x)
 	})
-	return res
+	return ret
 }
 
-// 函数参数变量
-const flat_2 = (arr, res = []) => {
-	if (!Array.isArray(res)) {
-		throw new Error('res 必须为数组')
-	}
-	arr.forEach(item => {
-		Array.isArray(item) ? flat_2(item, res) : res.push(item)
-	})
-	return res
-}
+console.log(
+	flat(arr)
+)
 
-// 函数内部变量
-const flat_3 = arr => {
-	const res = []
-	arr.forEach(item => {
-		if (Array.isArray(item)) {
-			// res = res.concat(flat_3(item))
-			res.push(...flat_3(item))
-		} else {
-			res.push(item)
-		}
-	})
-	return res
-}
-
-// IIFE
-const flat_4 = arr => {
-	const res = []
-	return (function flat(arr) {
-		arr.forEach(item => {
-			Array.isArray(item) ? flat(item) : res.push(item)
-		})
-		return res
-	})(arr)
-}
-
-// reduce 累加器保存值
-const flat_5 = arr => {
+// 5. reduce
+// 本质还是递归，累计器存储 concat
+const flatReduce = (arr) => {
 	return arr.reduce((acc, cur) => {
-		return acc.concat(Array.isArray(cur) ? flat_5(cur) : cur)
+		return acc.concat(Array.isArray(cur) ? flatReduce(cur) : cur)
 	}, [])
 }
+console.log(
+	flatReduce(arr)
+)
 
-// concat [].concat(...arr) 拍平一层，赋值给arr是拍平一层后，循环
-const flat_6 = arr => {
-	while (arr.some(item => Array.isArray(item))) {
+// 6. while + some + concat 原理：...拍平一层后的里面的数组和普通值都会被 concat 合并成新数组，可以少循环一次
+const flatWhile = (arr) => {
+	// 是否有子数组
+	while (arr.some(x => Array.isArray(x))) {
+		// console.log('执行次数')
 		arr = [].concat(...arr)
 	}
 	return arr
 }
 
-module.exports = {
-	flat_1,
-	flat_2,
-	flat_3,
-	flat_4,
-	flat_5,
-	flat_6
-}
+console.log(
+	flatWhile(arr)
+)

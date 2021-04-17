@@ -1,5 +1,6 @@
 // 应用
-Promise.resolve(100).then(val => console.log(val))
+Promise.resolve(100).then().then(() => 1000).then(val => console.log(val))
+// then 中的值如果不传递，有可能会丢失，resolve成功参数不处理默认会向下传递，不处理，下一次可能丢失
 
 Promise._resolve = function(props) {
 	console.log(props)

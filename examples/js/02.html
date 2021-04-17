@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			function Clock() {}
+			Clock.prototype.hour = 17
+			Clock.prototype.minute = 17
+			Clock.prototype.second = [1, 2, 3]
+			Clock.prototype.showTime = function () {
+				console.log(`当前时间为：${this.hour}:${this.minute}:${this.second}`)
+			}
+
+			var clock1 = new Clock()
+			var clock2 = new Clock()
+
+			clock1.second.push(4)
+			console.log(clock2.second)
+		</script>
+	</body>
+</html>

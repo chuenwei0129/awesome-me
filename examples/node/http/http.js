@@ -10,7 +10,7 @@ let users = [
 	{ username: '王小明', id: '1' },
 	{ username: '李小萌', id: '2' },
 	{ username: '李小刚', id: '3' },
-	{ username: '孙小红', id: '4' },
+	{ username: '孙小红', id: '4' }
 ]
 
 http
@@ -25,11 +25,11 @@ http
 			if (err) {
 				// 文件不存在 等同于 express sendStatus
 				res.statusCode = 404
-				res.end(`404 not found`)
+				res.end('404 not found')
 			} else if (stats.isFile()) {
 				// 输入的是文件 类似 localhost:3000/index.html
 				// 根据不同文件写不同的头，这里解决 css mime类型
-				let extname = pathname.match(/.\w+$/)[0]
+				const extname = pathname.match(/.\w+$/)[0]
 				if (extname === '.css') {
 					res.setHeader('Content-Type', 'text/css')
 				} else if (extname === '.html') {
