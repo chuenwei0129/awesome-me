@@ -98,3 +98,5 @@ module.exports = Promise
 // onResolved 执行多次
 // 递归过程，不需要处理参数
 // 最终传递的值是 resolve(x)
+
+// then 回调里不传值就会透传下去
