@@ -677,9 +677,11 @@ devServer: {
     proxy: {
       // 一旦devServer(5000)服务器接受到 /api/xxx 的请求，就会把请求转发到另外一个服务器(3000)
       // /api 的好处是可以给所有请求代理 /api 相当于一个袋子，用完就删
+      // 前端自我约束写法
       '/api': {
         target: 'http://localhost:3000',
         // 发送请求时，请求路径重写：将 /api/xxx --> /xxx （去掉/api）
+        // 这里把/api重写为空访问的后端就是localhost:3000/api/user => local..3000/user
         pathRewrite: {
           '^/api': ''
         }

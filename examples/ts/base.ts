@@ -125,3 +125,43 @@ getStudentName(student)
 // private
 
 // 
+
+const ts: number = null
+
+console.log(ts)
+
+// 类型
+// never unknown void undefined null
+// 子类型
+
+// 接口是必要条件，传的参数只要满足必要条件就行，超出接口范围没事，不是字面量就行，对比下面是多了一个变量赋值
+
+// 可选属性
+// 只读属性
+
+// 接口分号
+
+// implements ClockInterface
+// 类实现接口
+
+// 接口继承
+
+// 外部枚举, 编译时会被删除，只是用来描述已经存在的枚举类型的形状。
+// declare enum Enum {
+// 	A = 1,
+// 	B,
+// 	C = 2,
+// }
+
+// // 常量枚举, 编译后表示常量
+// const enum Test {
+// 	yes = 2,
+// 	no = 4,
+// }
+
+// const 断言
+let num = 1 as const
+// 等同于 const num = 1
+let arr: readonly [string, number] = ['h', 1]
+let arr1 = ['h', 1] as const
+// 因为是只读的所以字面量类型和基础类型都为 'h', 1 不可变？
