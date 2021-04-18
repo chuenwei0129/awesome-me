@@ -1,8 +1,8 @@
 # JavaScript 基础知识梳理(五)<!-- omit in toc -->
 - [Class 基本语法](#class-基本语法)
 - [类继承](#类继承)
-  - [“extends” 关键字](#extends-关键字)
-  - ["super" 关键字](#super-关键字)
+  - [extends 关键字](#extends-关键字)
+  - [super 关键字](#super-关键字)
   - [重写 constructor](#重写-constructor)
 - [静态属性和静态方法](#静态属性和静态方法)
 - [私有的和受保护的属性和方法](#私有的和受保护的属性和方法)
@@ -49,7 +49,7 @@ class MyClass {
 
 ## 类继承
 
-### “extends” 关键字
+### extends 关键字
 
 在 `extends` 后允许任意表达式
 
@@ -67,7 +67,7 @@ class User extends f("Hello") {}
 new User().sayHi() // Hello
 ```
 
-### "super" 关键字
+### super 关键字
 
 ES6 新增的关键字`super`，指向当前对象的原型对象。
 

@@ -215,7 +215,7 @@ a.constructor === A // 当获取 a.constructor 时，其实 a 中并没有 const
 
 - `value` 是该属性的属性值，默认为 undefined
 - `writable` 是一个布尔值，表示属性值（value）是否可改变（即是否可写），默认为 true
-- `enumerable` 是一个布尔值，表示该属性是否可遍历，默认为 true。如果设为 false，会使得某些操作（比如 for...in 循环、Object.keys()）跳过该属性。**TIPS：in 可以读取原型链，enumerable 是为了给 in 打补丁**
+- `enumerable` 是一个布尔值，表示该属性是否可遍历，默认为 true。如果设为 false，会使得某些操作（比如 for...in 循环、Object.keys()）跳过该属性。**TIPS：in 可以读取原型链，enumerable 是为了给 in 打补丁，所以 JS 规定 原型上的属性默认为 false**
 - `configurable` 是一个布尔值，表示可配置性，默认为 true。如果设为 false，将阻止某些操作改写该属性，比如无法删除该属性，也不得改变该属性的属性描述对象（value 属性除外）。也就是说，configurable 属性控制了属性描述对象的可写性。
 - `get` 是一个函数，表示该属性的取值函数（getter），默认为 undefined。**可以直接在对象中书写，使用 defineProperty 修改的不可遍历，直接写的可以遍历**
 - `set` 是一个函数，表示该属性的存值函数（setter），默认为 undefined。
