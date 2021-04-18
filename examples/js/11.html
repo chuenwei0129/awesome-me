@@ -7,26 +7,25 @@
 	</head>
 	<body>
 		<script>
-			var x = 2
-			var y = {
-				x: 3,
-				z: (function (x) {
-					this.x = this.x * x // 4
-					x += 2 // 4
-					return function (n) {
-						this.x = this.x * n // 4*4 3*5
-						x += 3
-						console.log(x) // 闭包变量x 7 + 3
-					}
-				})(x),
-			}
+			const x = 2
+			const y = {
+	x: 3,
+	z: (function(x) {
+		this.x = this.x * x // 4
+		x += 2 // 4
+		return function(n) {
+			this.x = this.x * n // 4*4 3*5
+			x += 3
+			console.log(x) // 闭包变量x 7 + 3
+		}
+	})(x)
+}
 
-			var m = y.z
+			const m = y.z
 			m(4) // 7
-			y.z(5) //10
+			y.z(5) // 10
 			console.log(x, y.x) // 16 15
 			// 这两道题教会了我们
-			// 闭包保存局部变量和全局变量
-		</script>
+			// 闭包保存局部变量和全局变量		</script>
 	</body>
 </html>

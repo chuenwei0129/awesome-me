@@ -131,3 +131,17 @@ console.log(
 )
 
 // 入栈顺序有序，出栈顺序可以改变
+
+// function compose(...fns) {
+// 	let len = fns.length
+// 	let res = null
+// 	return function fn(...arg) {
+// 			res = fns[len - 1].apply(null, arg) // 每次函数运行的结果
+// 			if(len > 1) {
+// 					len --
+// 					return fn.call(null, res) // 将结果递归传给下一个函数
+// 			} else {
+// 					return res //返回结果
+// 			}
+// 	}
+// }

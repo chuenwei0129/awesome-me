@@ -1,16 +1,16 @@
 // 并行的写法,处理串行异步的数据
 const fs = require('fs')
 
-let school = {}
+const school = {}
 
-let event = {
+const event = {
 	_arr: [],
 	on(fn) {
 		this._arr.push(fn)
 	},
 	emit() {
 		this._arr.forEach((fn) => fn())
-	},
+	}
 }
 
 fs.readFile('./Examples/learn-promise/name.txt', 'utf-8', (err, data) => {

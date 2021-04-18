@@ -1,6 +1,6 @@
 // 并行的写法,处理串行异步的数据
 
-let school = {}
+const school = {}
 
 const fs = require('fs')
 fs.readFile('./Examples/learn-promise/name.txt', 'utf-8', (err, data) => {
@@ -38,7 +38,7 @@ function after(times, cb) {
 	}
 }
 
-let out = after(2, (res) => {
+const out = after(2, (res) => {
 	// 处理数据
 	console.log(res)
 })

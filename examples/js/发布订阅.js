@@ -4,7 +4,6 @@ class EventEmitter {
 		this.eventPools = []
 		this.caches = {}
 	}
-
 	on(eventName, eventFn) {
 		if (eventName in this.caches) {
 			eventFn(...this.caches[eventName])
@@ -12,7 +11,6 @@ class EventEmitter {
 			this.eventPools.push({ [eventName]: eventFn })
 		}
 	}
-
 	emit(eventName, ...args) {
 		this.eventPools.forEach((event) => {
 			if (event[eventName]) {
@@ -22,7 +20,6 @@ class EventEmitter {
 			}
 		})
 	}
-
 	off(eventName) {
 		for (const [idx, event] of this.eventPools.entries()) {
 			if (event.hasOwnProperty(eventName)) {
@@ -30,7 +27,6 @@ class EventEmitter {
 			}
 		}
 	}
-
 	once(eventName, eventFn) {
 		const eventFnOnce = (...args) => {
 			eventFn(...args)

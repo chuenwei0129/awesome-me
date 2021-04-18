@@ -32,31 +32,30 @@
 
 			// foo.bar()
 
-			Function.prototype._call = function (foo) {
+			Function.prototype._call = function(foo) {
 				// null 指向 window
 				var foo = foo || window
 				// foo.bar = bar
 				// 此时 this 指向 bar bar._call(foo)
 				foo.bar = this
 				// 处理参数
-				var args = []
-				for (var i = 1; i < arguments.length; i++) {
+				const args = []
+				for (let i = 1; i < arguments.length; i++) {
 					args.push(arguments[i])
 				}
 				// foo.bar()
-				var res = eval('foo.bar(' + args + ')')
+				const res = eval('foo.bar(' + args + ')')
 				delete foo.bar
 				return res
 			}
-			var foo = {
-				val: 1,
+			const foo = {
+				val: 1
 			}
 
 			function bar() {
 				console.log(this.val)
 			}
 
-			bar.call(foo) // 1
-		</script>
+			bar.call(foo) // 1		</script>
 	</body>
 </html>

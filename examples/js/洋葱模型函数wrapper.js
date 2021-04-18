@@ -1,5 +1,4 @@
 // aop
-// 类似生命周期的感觉
 // 高阶函数,洋葱切面
 // +----------------------------------------------------------------------------------+
 //         |                                                                                  |
@@ -32,7 +31,7 @@ function highFn(method, wrappers) {
 	}
 }
 
-var newFn = highFn(() => {
+const newFn = highFn(() => {
 	console.log('hello world')
 }, [
 	{
@@ -41,7 +40,7 @@ var newFn = highFn(() => {
 		},
 		close() {
 			console.log('wrapper1 close')
-		},
+		}
 	},
 	{
 		init() {
@@ -49,8 +48,8 @@ var newFn = highFn(() => {
 		},
 		close() {
 			console.log('wrapper2 close')
-		},
-	},
+		}
+	}
 ])
 
 newFn()
