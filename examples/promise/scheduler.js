@@ -22,7 +22,7 @@ class Scheduler {
 		// 如果当前并发超过最大并发，那就进入任务队列等待
 		if (this.count >= this.maxNum) {
 			await new Promise((resolve) => {
-				this.taskList.push(resolve)
+				this.taskList.push(resolve) // 锁
 			})
 		}
 
@@ -36,10 +36,8 @@ class Scheduler {
 		// 次数 - 1
 		this.count--
 
-		// 将队首出队
-		// 队列先进先出，排队打饭，先进先出
 		if (this.taskList.length) {
-			this.taskList.shift()()
+			this.taskList.shift()() // 解锁
 		}
 
 		// 链式调用，将结果值返回出去
