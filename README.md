@@ -23,7 +23,7 @@
 - `[杂项]`[JavaScript 基础知识梳理(七)](js/js_other.md)
 - `[正则]` [JavaScript 基础知识梳理(八)](js/js_regexp.md)
 <!-- - `[奇技淫巧]` [JavaScript 中的奇技淫巧]() -->
-<!-- - `[代码]` [前端面试中常考的手写代码实现]() -->
+- `[代码]` [前端面试八股文](js/js_code.md)
 
 ## TypeScript
 
@@ -53,7 +53,6 @@
 - `[知识整理]` [CSS 查漏补缺](web/css.md)
 - `[基础实践]` [CSS 居中和三栏布局](web/layout.md)
 
-## 手写原理
 ## 前端武器库
 
 ## 技术实践

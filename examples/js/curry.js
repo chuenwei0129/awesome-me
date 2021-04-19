@@ -30,8 +30,13 @@ console.log(
 // 2.0
 // 函数参数保存变量
 // 低阶函数转高阶函数调用
-// 小于 fn.length 时,储存参数，返回高阶函数
+// 小于 fn.length 时,储存参数，返回一个高阶函数使用g来缓存
 // 等于 length 时 开始执行函数
+
+// const curry = fn => {
+// 	const g = (...allArgs) => allArgs.length >= fn.length ? fn(...allArgs) : (...args) => g(...args, ...allArgs)
+// 	return g
+// }
 
 const curry = fn => {
 	const g = (...allArgs) => allArgs.length >= fn.length ? fn(...allArgs) : (...args) => g(...args, ...allArgs)

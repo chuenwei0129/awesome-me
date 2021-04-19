@@ -75,9 +75,7 @@ function co(it) {
 	})
 }
 
-const it = gen()
-
-co(it).then(data => {
+co(gen()).then(data => {
 	console.log(data)
 })
 
