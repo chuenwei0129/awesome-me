@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div id="app">
+			姓名：<input v-model="student.name" /> 年龄：<input
+				v-model="student.age"
+			/>
+			<!-- 需要处理trim -->
+			<p>
+				我是一名学生，我的名字叫：{{student.name}}，我今年 {{student.age}} 了。
+			</p>
+			<p>{{message}}</p>
+			<p>{{info}}</p>
+			<ul>
+				<li>10</li>
+				<li>20</li>
+				<li>30</li>
+			</ul>
+			<button v-on:click="reverseInfo">翻转</button>
+		</div>
+
+		<script src="./mvvm.js"></script>
+
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					student: {
+						name: '小明',
+						age: 18,
+					},
+					info: 'hello Vue!',
+				},
+				computed: {
+					message() {
+						return `${this.student.name}同学${this.student.age}岁了`
+					},
+				},
+				methods: {
+					reverseInfo: function () {
+						this.info = this.info.split('').reverse().join('')
+					},
+				},
+			})
+		</script>
+	</body>
+</html>
