@@ -30,6 +30,14 @@ let data = {
 
 // data.msg = '我是改变后的数据'
 
+// const originArray = Array.prototype
+// const vueArray = Object.create(originArray)
+
+// 改写数组
+// vueArray.push = () => {}
+// 通过原型链调用
+// data.__proto__ = vueArray
+
 function reactive(data) {
  // 遍历对象，对对象的每个属性都使用defineProperty
 	for (let [k, v] of Object.entries(data)) {
@@ -87,3 +95,4 @@ arrMethods.forEach((method) => {
 
 proxyData.arr.push(5) // 数组数据改变了
 proxyData.arr.length = 2 // vue 无法处理
+// 索引也无法处理

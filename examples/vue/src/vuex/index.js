@@ -17,7 +17,7 @@ const install = (_Vue) => {
 
 class Store {
   constructor(options) {
-    // 这一步是把 store 中数据注入 vue 中，
+    // 这一步是把 store 中数据变成响应式数据
     this.vm = new Vue({
       data: {
         state: options.state

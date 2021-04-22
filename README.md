@@ -22,13 +22,18 @@
 - `[异步]` [JavaScript 基础知识梳理(六)](js/js_promise.md)
 - `[杂项]`[JavaScript 基础知识梳理(七)](js/js_other.md)
 - `[正则]` [JavaScript 基础知识梳理(八)](js/js_regexp.md)
-<!-- - `[奇技淫巧]` [JavaScript 中的奇技淫巧]() -->
 - `[代码]` [前端面试八股文](js/js_code.md)
+<!-- - `[奇技淫巧]` [JavaScript 中的奇技淫巧]() -->
+
 
 ## TypeScript
 
 - `[基础]`[写给自己的 TypeScript 教程(一)](ts/ts_base.md)
 - `[进阶]`[写给自己的 TypeScript 教程(二)](ts/ts_high.md)
+
+## 框架
+
+- `[vue]`[vue 相关知识点](web/vue.md)
 
 ## 浏览器
 
