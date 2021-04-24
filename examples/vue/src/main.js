@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import router from './router'
 // 导出 Vuex 中必须要有 install 函数
 // import Vuex from './vuex'
 
@@ -16,13 +17,19 @@ import App from './App.vue'
 
 // const vm = 
 new Vue({
-	// mounted() {
-	// 	console.log('vm store', this.$store)
-	// },
-	// 注入根 store 然后根据 $parent 注入子 $store
-	// store,
-	render: h => h(App)
+    // 4. 创建和挂载根实例。
+    // 记得要通过 router 配置参数注入路由，
+    // 从而让整个应用都有路由功能
+    router,
+    // mounted() {
+    // 	console.log('vm store', this.$store)
+    // },
+    // 注入根 store 然后根据 $parent 注入子 $store
+    // store,
+    render: h => h(App)
 }).$mount('#app')
+
+// 我们可以在任何组件内通过 this.$router 访问路由器，也可以通过 this.$route 访问当前路由：
 
 
 // // // 此时 #app 已经被替换

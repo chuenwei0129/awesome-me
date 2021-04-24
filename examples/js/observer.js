@@ -6,26 +6,27 @@ class Observer {
 }
 
 class Subject {
-	constructor(state) {
-		this.state = state
+	constructor() {
+		this.state = '😭'
 		this.obs = []
 	}
 	attach(ob) {
 		this.obs.push(ob)
 	}
 	notify() {
-		this.state = '😊'
 		this.obs.forEach(ob => ob.update(this.state))
 	}
 }
 
-const initState = '😭'
-const baby = new Subject(initState)
+const baby = new Subject()
 
 const father = new Observer()
 const mother = new Observer()
 
-baby.attach(father)
-baby.attach(mother)
+baby.attach(father) // 小宝宝的状态 😭 ==> 小宝宝的状态 😊
+baby.attach(mother) // 小宝宝的状态 😭 ==> 小宝宝的状态 😊
 
-baby.notify()
+baby.notify() // 第一次
+
+baby.state = '😊'
+baby.notify() // 第二次

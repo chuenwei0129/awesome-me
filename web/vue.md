@@ -26,6 +26,7 @@
   - [watch、computed 和 methods](#watchcomputed-和-methods)
 - [生命周期](#生命周期)
 - [组件通信](#组件通信)
+- [Router](#router)
 - [SPA](#spa)
 - [Vuex](#vuex)
 - [scoped](#scoped)
@@ -429,6 +430,7 @@ Vue.component('my-component', {
 
 ## 组件通信
 <!-- 组件的调用顺序都是先父后子,渲染完成的顺序是先子后父 -->
+## Router
 ## SPA
 
 `SPA`（ single-page application ）仅在 `Web` 页面初始化时加载相应的 `HTML`、`JavaScript` 和 `CSS`。一旦页面加载完成，`SPA` 不会因为用户的操作而进行页面的重新加载或跳转；取而代之的是利用路由机制实现 `HTML` 内容的变换，`UI` 与用户的交互，避免页面的重新加载。
@@ -550,8 +552,3 @@ new Vue({
 - 没有预处理器的情况下使用 `>>>`
   
 使用上面的操作符，`style` 必须有 `scoped` 属性
-
-
-<!-- 在React + Redux体系中，数据变更与视图变更之间的过程，就是经过了“精确——不精确——精确”这样的步骤。前一步是简单合并，而且是要改变数据引用的合并，后一步是diff。
-
-任何时候对视图进行修改，都应该造成“整个视图被重新渲染”的效果。其它的方面都是在这个效果的基础上进行的优化，而非破坏这个效果 -->

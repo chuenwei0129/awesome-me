@@ -25,7 +25,8 @@ Function.prototype._bind = function(thisArg, ...args) {
 	const bound = function(...boundArgs) {
 		// 已知 this.__proto__ === bound.prototype 要实现 fn 函数中 this 等同于当前 this 即 this（当前this，因为 thisFn.__proto__ === fn.prototype）.__proto__ === fn.prototype
 		// 所以只要构建原型链关系即可
-		bound.prototype = Object.create(fn.prototype)
+		// bound.prototype = Object.create(fn.prototype)
+		Object.setPrototypeOf(bound.prototype, fn.prototype)
 		// this.__proto__ === fn.prototype 为构造函数调用，忽略 thisArg 绑定，直接 call 实例 this
 		return fn.call(this instanceof fn ? this : thisArg, ...boundArgs, ...args)
 	}

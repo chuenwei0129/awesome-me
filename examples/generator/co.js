@@ -80,3 +80,5 @@ co(gen()).then(data => {
 })
 
 // 完美
+// co 执行就会返回一个 resolved 的 promise
+// async 一执行也会返回一个 resolve 的 promise

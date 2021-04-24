@@ -28,3 +28,5 @@
 // 复制代码检测数组是否有元素符合判断条件
 // const arr = [1, 2, 3, 4, 5]
 // const hasNum = arr.some(item => typeof item === 'number')
+
+// reduce 应用读取对象
