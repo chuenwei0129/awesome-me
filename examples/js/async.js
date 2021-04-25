@@ -31,3 +31,13 @@ fn2(next)
 fn3(next)
 
 // 不同 async 之间推的微任务不会阻塞，只会阻塞自己的为人物
+
+// async function a(){}
+// undefined
+// a()
+// Promise {<fulfilled>: undefined}
+
+// Promise.resolve(() => {})
+// Promise {<fulfilled>: ƒ}__proto__: Promise[[PromiseState]]: "fulfilled"[[PromiseResult]]: () => {}
+// new Promise(() => {})
+// Promise {<pending>}
