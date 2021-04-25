@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div style="background-color: beige;width: 0;height: 20px;"></div>
+  <button>开始</button>
+  <script>
+    const div = document.querySelector('div')
+    const btn = document.querySelector('button')
+    let startTime = null
+    function progress() {
+      div.style.width = div.offsetWidth + 1 + 'px'
+      div.innerHTML = div.offsetWidth + '%'
+      if (div.offsetWidth < 100) {
+        console.log(Date.now() - startTime + 'ms');
+        startTime = Date.now()       
+        requestAnimationFrame(progress)
+      }
+    }
+    btn.onclick = function () {
+      div.style.width = 0
+      startTime = Date.now()
+      requestAnimationFrame(progress)
+    }
+
+    // 每 16 ms 执行一次任务
+  </script>
+</body>
+
+</html>
