@@ -68,6 +68,30 @@ function workloop() {
   while(nextUnitOfWork) {
     nextUnitOfWork = performUnitOfWork(nextUnitOfWork)
   }
+
+  // 循环结束，下个工作单元没了，提交不可以打断
+  if(!nextUnitOfWork) {
+    commitRoot()
+  }
+
+}
+
+function commitRoot() {
+  // 因为 rootFiber 是引用对象，最后会回到它身上
+  // 构建的链表就是dom挂载顺序
+  // root f-> C1 n-> -> root
+  // console.log(rootFiber);
+  let currentFiber = rootFiber.firstEffect
+  // 循环挂载
+  while(currentFiber) {
+    if (currentFiber.effectTag === 'PLACEMENT') {
+      currentFiber.return.stateNode.appendChild(currentFiber.stateNode)
+    }
+    currentFiber = currentFiber.nextEffect
+  }
+
+  // 挂载完成，清空 rootFiber
+  rootFiber = null
 }
 
 /**
@@ -93,13 +117,10 @@ function performUnitOfWork(workingInProgressFiber) {
 
     workingInProgressFiber = workingInProgressFiber.return
   }
-
-
-
 }
 
 function beginWork(workingInProgressFiber) {
-  console.log('beginWork', workingInProgressFiber);
+  // console.log('beginWork', workingInProgressFiber);
   // 创建 dom 元素
   if (!workingInProgressFiber.stateNode) {
     workingInProgressFiber.stateNode = document.createElement(workingInProgressFiber.type)
@@ -136,9 +157,40 @@ function beginWork(workingInProgressFiber) {
 }
 
 function completeWork(workingInProgressFiber) {
-  console.log('completeWork', workingInProgressFiber);
+  // console.log('completeWork', workingInProgressFiber);
   // 构建副作用链条，链表
-  // TODO
+  // 这里绕的一笔，不过不用太关心只要知道，是为了构建链表就行了
+
+  // 第一次进来是 C1，最后一次是 rootFiber
+  let returnFiber = workingInProgressFiber.return
+
+  // 把它的副作用链表挂父节点上（即它儿子）
+  if (returnFiber) {
+    if (!returnFiber.firstEffect) {
+      returnFiber.firstEffect = workingInProgressFiber.firstEffect
+    }
+    if (workingInProgressFiber.lastEffect) {
+      if (returnFiber.lastEffect) {
+        returnFiber.lastEffect.nextEffect = workingInProgressFiber.firstEffect
+      }
+
+      returnFiber.lastEffect = workingInProgressFiber.lastEffect
+    }
+
+  // 把它自己挂载到上面链条的next上去
+    if (workingInProgressFiber.effectTag) {
+      if (returnFiber.lastEffect) {
+        returnFiber.lastEffect.nextEffect = workingInProgressFiber
+      } else {
+        // 父 fiber lastEffect 不存在就挂载到 firstEffect 上
+        returnFiber.firstEffect = workingInProgressFiber
+      }
+      // 走 C1 把自己也挂到 B1 的 f, l 上
+      returnFiber.lastEffect = workingInProgressFiber
+    }
+
+  }
+
 }
 
 // 浏览器空闲时间处理
