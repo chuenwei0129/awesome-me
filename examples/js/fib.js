@@ -30,16 +30,16 @@ memo(fib)(25)
 console.timeEnd('memo')
 
 function loop(n) {
-	let first = 0
+	let first = 1
 	let second = 1
-	let third = 1
+	let third = 2
 	if (n === 0) return first
 	if (n === 1) return second
 	if (n === 2) return third
 	for (let i = 3; i <= n; i++) {
+		third = first + second
 		first = second
 		second = third
-		third = first + second
 	}
 	return third
 }

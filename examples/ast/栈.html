@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // '3[abc]12[d]' === abcabcabc...
+    // 
+    // 指针，两个栈 index = 0,stack1,stack2
+    // for 循环步长不灵活，最后一次坑定是 】所以不需要遍历，index < length - 1
+    // 遍历每个字符，若果字符是数字，数字押入 stack1 ，空字符串 stack2， 匹配 ^\d+\[ 指针移动 times。length + 1，【算一个位置
+    // 如若是字母 \w+,stack2栈顶的空字符改写成 它，指针移动 \w 的长度，
+    // 若果是 】就代表一次结束，stack1.pop(), stack2,pop(),并且把，stack2,pop()重复 stack1.pop()次，然后拼接字符串到新的栈顶上
+    // 最后一定会存在 stack1[0].repeat(stack2[0]),返回它
+
+    const str = '2[2[a12]2[c]]'
+
+    const smartRepeat = (str) => {
+
+      let index = 0
+      let stack1 = []
+      let stack2 = []
+      let rest = null
+
+      while (index < str.length - 1) {
+        // 循环字符串
+        rest = str.slice(index)
+        if (/^\d+\[/.test(rest)) {
+          let times = /^(\d+)\[/.exec(rest)[1]
+          // 这里是数字
+          stack1.push(+times)
+          stack2.push('')
+          index += times.length + 1
+        } else if (/^\w+\]/.test(rest)) {
+          let word = rest.match(/^(\w+)\]/)[1]
+          stack2[stack2.length - 1] += word
+          index += word.length
+        } else if (rest[0] === ']') {
+          let times = stack1.pop()
+          let word = stack2.pop()
+          stack2[stack2.length - 1] += word.repeat(times)
+          index++
+        }
+      }
+
+      // console.log(stack1, stack2);
+
+      return stack2[0].repeat(stack1[0])
+    }
+
+    console.log(
+      smartRepeat(str)
+    );
+
+  </script>
+</body>
+
+</html>
