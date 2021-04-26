@@ -33,7 +33,8 @@
 
 ## 框架
 
-- `[vue]`[vue 相关知识点](web/vue.md)
+- `[vue]`[vue 知识点梳理](web/vue.md)
+- `[axios]`[axios 学习指南](web/axios.md)
 
 ## 浏览器
 

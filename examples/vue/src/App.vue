@@ -51,17 +51,24 @@ export default {
       // msg: 'hello world'
     }
   },
-  async created () {
-    await new Promise((resolve) => {
-      this.taskList.push(resolve) // 锁
+  beforeCreate () {
+    Promise.resolve().then(() => {
+      console.log('不执行2');
     })
+    // await new Promise((resolve) => {
+    //   this.taskList.push(resolve) // 锁
+    // })
     // async created 不会阻塞 渲染，因为 promise 之间是并行的，不会发生阻塞，watcher队列是一个promise，created await的也是一个 promise
     // promise 之间是并行的，阻塞 await 只是 await 后面的，事件循环遇到 promise 就先执行 同步代码
+    // create是 watcher.before(), run()是 render()，mounted
     console.log('永远不执行');
   },
   mounted () {
     console.log('mounted');
-    // this.$nextTick(this.) 相当于一个 watcher 
+    // 相当于队列里最后一个 watcher，在 比生命周期里的 promise 高一层 
+    this.$nextTick(
+      console.log('this.$nextTick')
+    )
   },
   updated () {
     console.log('渲染 watcher 更新');

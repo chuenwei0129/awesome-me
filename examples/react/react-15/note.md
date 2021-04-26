@@ -13,5 +13,21 @@
 
 dom diff 强依赖于 key ，diff 会出现 key 相同的琴况 
 
+16 的事件
+17 的事件
+
+16 的 React.create
+17 的 jsx.create
+
+dom diff
+
+15 diff
+17 两重循环
+
+diff 15 vdom
+diff 17 fiber vdom 
+
+hooks 解决了
+
 
 
