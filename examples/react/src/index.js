@@ -1,18 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import './index.css';
-// import App from './App';
 // import reportWebVitals from './reportWebVitals';
+import App from './App';
 
-const element = (
-  <div id="A1">
-    <div id="B1">
-      <div id="C1"></div>
-      <div id="C2"></div>
-    </div>
-    <div id="B2"></div>
-  </div>
-)
+
+// const element = (
+//   <div id="A1">
+//     <div id="B1">
+//       <div id="C1"></div>
+//       <div id="C2"></div>
+//     </div>
+//     <div id="B2"></div>
+//   </div>
+// )
 
 let vnode = {
   type: 'div',
@@ -196,15 +197,17 @@ function completeWork(workingInProgressFiber) {
 // 浏览器空闲时间处理
 requestIdleCallback(workloop)
 
+// ReactDOM.render(element, document.getElementById('root'))
 
-ReactDOM.render(element, document.getElementById('root'))
 
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
+
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
