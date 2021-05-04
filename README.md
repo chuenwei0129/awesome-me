@@ -22,9 +22,6 @@
 - `[异步]` [JavaScript 基础知识梳理(六)](js/js_promise.md)
 - `[杂项]`[JavaScript 基础知识梳理(七)](js/js_other.md)
 - `[正则]` [JavaScript 基础知识梳理(八)](js/js_regexp.md)
-- `[代码]` [前端面试八股文](js/js_code.md)
-<!-- - `[奇技淫巧]` [JavaScript 中的奇技淫巧]() -->
-
 
 ## TypeScript
 
@@ -63,10 +60,16 @@
 ## 前端武器库
 
 - `[vscode]` [vscode 使用指北](web/code.md)
+- `[lint]` [lint 不完全配置指南]
 
-## 技术实践
-## 设计模式
-## 算法
+<!-- ## 技术实践 -->
+
+<!-- - `[代码]` [前端面试八股文](js/js_code.md) -->
+<!-- - `[奇技淫巧]` [JavaScript 中的奇技淫巧]() -->
+<!-- 开发技巧 -->
+
+<!-- ## 设计模式
+## 算法 -->
 ## 其他
 <!-- 知乎问题 -->
 - `[Markdown]` [Markdown 的基本撰写和格式语法](others/markdown.md)
