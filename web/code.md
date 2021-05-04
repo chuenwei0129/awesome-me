@@ -282,6 +282,10 @@ div*1000+p
 - `command + T`：按名称搜索文件
 - `ctrl + R`：打开最近的项目
 - `ctrl + G`：跳转到某行
+- `ctrl + option + l`：选中变量之后，使用这个快捷键生成 `console.log`
+- `option + shift + c`：注释所有 `console.log`
+- `option + shift + u`：启用所有 `console.log`
+- `option + shift + d`：删除所有 `console.log`
 
 ## 插件
 

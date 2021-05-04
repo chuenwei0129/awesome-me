@@ -516,7 +516,7 @@ new Vue({
 `scoped` 是通过使用 `PostCSS` 来进行转换，给 `DOM` 节点增加一个 `data-v-xxx` 的唯一属性，再利用 `CSS` 的属性选择器，来达到样式隔离的效果。
 
 ```js
-<style scoped> 
+<style scoped>
   .a {
     color: red;
   }
@@ -550,5 +550,5 @@ new Vue({
 - 不推荐使用 `/deep/`
 - 在 `Sass` 之类的预处理器中使用 `::v-deep`
 - 没有预处理器的情况下使用 `>>>`
-  
+
 使用上面的操作符，`style` 必须有 `scoped` 属性
