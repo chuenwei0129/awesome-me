@@ -23,7 +23,8 @@
 - [ESLint 生态依赖包](#eslint-生态依赖包)
   - [扩展](#扩展)
   - [插件](#插件)
-- [vscode 本地配置](#vscode-本地配置)
+- [Eslint 本地配置](#eslint-本地配置)
+- [Husky + lint-staged 打造合格的代码检查工作流](#husky--lint-staged-打造合格的代码检查工作流)
 
 ## ESLint
 
@@ -33,7 +34,7 @@
 
 ```js
 /* eslint no-console: "error" */
-console.log('this is an eslint rule check!');
+console.log('this is an eslint rule check!')
 ```
 
 #### 使用配置文件进行 lint 规则配置
@@ -71,32 +72,32 @@ module.exports = {
   env: {
     // 环境
     browser: true,
-    es2021: true,
+    es2021: true
   },
   extends: [
     // 拓展
     'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended'
   ],
   // 解析器，本解析器支持 TS
   parser: '@typescript-eslint/parser',
   // 解析器配置选项
   parserOptions: {
     ecmaFeatures: {
-      jsx: true,
+      jsx: true
     },
     // 指定 es 版本
     ecmaVersion: 12,
     // 代码支持 es6，使用module
-    sourceType: 'module',
+    sourceType: 'module'
   },
   // 插件
   plugins: ['react', '@typescript-eslint'],
   // 规则
   rules: {
-    semi: ['error', 'never'],
-  },
+    semi: ['error', 'never']
+  }
 }
 ```
 
@@ -106,9 +107,7 @@ module.exports = {
 
 `ESLint` 默认使用 `Espree` 作为其解析器，但是该解析器仅支持最新的**ECMAScript(es5)** 标准，对于实验性的语法和非标准（TypeScript）语法是不支持的。因此，开源社区提供了以下两种解析器来丰富 `TSLint` 的功能：
 
-
 - `bable-eslint`：`Babel` 是一个工具链，主要用于将 **ECMAScript 2015+(es6+)** 版本的代码转换为向后兼容的 `JavaScript` 语法，以便能够运行在当前和旧版本的浏览器或其他环境中。因此，如果在项目中使用 `es6`，就需要将解析器改成`bable-eslint`。
-
 
 - `@typescript-eslint/parser`：该解析器将 `TypeScript` 转换成与 `estree` 兼容的形式，允许 `ESLint` 验证 `TypeScript` 源代码。
 
@@ -121,9 +120,9 @@ module.exports = {
 - **`ecmaVersion`** -你可以使用 `6`、`7`、`8`、`9` 或 `10` 来指定你想要使用的 `ECMAScript` 版本。你也可以用使用年份命名的版本号指定为 `2015`（同 6），`2016`（同 7），或 `2017`（同 8）或 `2018`（同 9）或 `2019` (same as 10)。
 - **`sourceType`** - 设置为 `script` (默认) 或 `module`（如果你的代码是 `ECMAScript` 模块)。
 - **`ecmaFeatures`** - 这是个对象，表示你想使用的额外的语言特性:
-    - `globalReturn` - 允许在全局作用域下使用 `return` 语句
-    - `impliedStrict` - 启用全局 `strict mode` (如果 `ecmaVersion` 是 `5` 或更高)
-    - `jsx` - 启用 `JSX`
+  - `globalReturn` - 允许在全局作用域下使用 `return` 语句
+  - `impliedStrict` - 启用全局 `strict mode` (如果 `ecmaVersion` 是 `5` 或更高)
+  - `jsx` - 启用 `JSX`
 
 设置解析器选项能帮助 `ESLint` 确定什么是解析错误，所有语言特性选项默认都是 `false`。
 
@@ -240,7 +239,7 @@ module.exports = {
 指定配置的字符串: 比如官方提供的两个拓展 [eslint:recommended](https://github.com/eslint/eslint/blob/v6.0.1/conf/eslint-recommended.js) 或 [eslint:all](https://github.com/yannickcr/eslint-plugin-react/blob/master/index.js#L108)，可以启用当前安装的 `ESLint` 中所有的核心规则，省得我们在 `rules` 中一一配置。
 
 > 字符串数组：每个配置继承它前面的配置。如下所示，拓展是一个数组，`ESLint` 递归地扩展配置, 然后使用 `rules` 属性来拓展或者覆盖 `extends` 配置规则。
-> 
+
 ```js
 {
     "extends": [
@@ -263,15 +262,16 @@ module.exports = {
 
 ```js
 /* eslint-disable */
-alert('该注释放在文件顶部，整个文件都不会出现 lint 警告');
+alert('该注释放在文件顶部，整个文件都不会出现 lint 警告')
 ```
 
 - 行注释： 使用如下方式可以在某一特定的行上禁用所有规则或者禁用特定规则：
+
 ```js
-alert('禁用该行所有规则'); // eslint-disable-line
+alert('禁用该行所有规则') // eslint-disable-line
 
 // eslint-disable-next-line
-alert('禁用该行所有规则');
+alert('禁用该行所有规则')
 ```
 
 ### 配置优先级
@@ -303,43 +303,43 @@ $ npm install --save-dev --save-exact prettier
 
 ```js
 module.exports = {
-	// 一行最多 200 字符
-	printWidth: 200,
-	// 使用 2 个空格缩进
-	tabWidth: 2,
-	// 不使用缩进符，而使用空格
-	useTabs: false,
-	// 行尾不需要分号
-	semi: false,
-	// 使用单引号
-	singleQuote: true,
-	// 对象的 key 仅在必要时用引号
-	quoteProps: "as-needed",
-	// jsx 不使用单引号，而使用双引号
-	jsxSingleQuote: false,
-	// 末尾不需要逗号
-	trailingComma: "none",
-	// 大括号内的首尾需要空格
-	bracketSpacing: true,
-	// jsx 标签的反尖括号不需要换行
-	jsxBracketSameLine: true,
-	// 箭头函数，只有一个参数的时候，也需要括号：always，avoid：省略括号
-	arrowParens: "avoid",
-	// 每个文件格式化的范围是文件的全部内容
-	rangeStart: 0,
-	rangeEnd: Infinity,
-	// 不需要写文件开头的 @prettier
-	requirePragma: false,
-	// 不需要自动在文件开头插入 @prettier
-	insertPragma: false,
-	// 使用默认的折行标准
-	proseWrap: "preserve",
-	// 根据显示样式决定 html 要不要折行
-	htmlWhitespaceSensitivity: "css",
-	// 换行符使用 lf
-	endOfLine: "lf",
-	// 不格式化 vue 文件，vue 文件的格式化单独设置
-	disableLanguages: ['vue']
+  // 一行最多 200 字符
+  printWidth: 200,
+  // 使用 2 个空格缩进
+  tabWidth: 2,
+  // 不使用缩进符，而使用空格
+  useTabs: false,
+  // 行尾不需要分号
+  semi: false,
+  // 使用单引号
+  singleQuote: true,
+  // 对象的 key 仅在必要时用引号
+  quoteProps: 'as-needed',
+  // jsx 不使用单引号，而使用双引号
+  jsxSingleQuote: false,
+  // 末尾不需要逗号
+  trailingComma: 'none',
+  // 大括号内的首尾需要空格
+  bracketSpacing: true,
+  // jsx 标签的反尖括号不需要换行
+  jsxBracketSameLine: true,
+  // 箭头函数，只有一个参数的时候，也需要括号：always，avoid：省略括号
+  arrowParens: 'avoid',
+  // 每个文件格式化的范围是文件的全部内容
+  rangeStart: 0,
+  rangeEnd: Infinity,
+  // 不需要写文件开头的 @prettier
+  requirePragma: false,
+  // 不需要自动在文件开头插入 @prettier
+  insertPragma: false,
+  // 使用默认的折行标准
+  proseWrap: 'preserve',
+  // 根据显示样式决定 html 要不要折行
+  htmlWhitespaceSensitivity: 'css',
+  // 换行符使用 lf
+  endOfLine: 'lf',
+  // 不格式化 vue 文件，vue 文件的格式化单独设置
+  disableLanguages: ['vue']
 }
 ```
 
@@ -409,15 +409,15 @@ npm install --save-dev eslint-plugin-prettier
 
 ### Prettier 插件 和 Eslint 插件 都安装
 
->**Linters have two categories of rules**:
+> **Linters have two categories of rules**:
 
->**Formatting rules**: eg: max-len, no-mixed-spaces-and-tabs, keyword-spacing, comma-style…
+> **Formatting rules**: eg: max-len, no-mixed-spaces-and-tabs, keyword-spacing, comma-style…
 
->Prettier alleviates the need for this whole category of rules! Prettier is going to reprint the entire program from scratch in a consistent way, so it’s not possible for the programmer to make a mistake there anymore :)
+> Prettier alleviates the need for this whole category of rules! Prettier is going to reprint the entire program from scratch in a consistent way, so it’s not possible for the programmer to make a mistake there anymore :)
 
->**Code-quality rules**: eg no-unused-vars, no-extra-bind, no-implicit-globals, prefer-promise-reject-errors…
+> **Code-quality rules**: eg no-unused-vars, no-extra-bind, no-implicit-globals, prefer-promise-reject-errors…
 
->Prettier does nothing to help with those kind of rules. They are also the most important ones provided by linters as they are likely to catch real bugs with your code!
+> Prettier does nothing to help with those kind of rules. They are also the most important ones provided by linters as they are likely to catch real bugs with your code!
 
 **In other words, use Prettier for formatting and linters for catching bugs!**
 
@@ -444,8 +444,10 @@ npm install --save-dev eslint-plugin-prettier
 
 使用 `VS Code` 设置来配置 `Prettier`。`Prettier` 将按以下优先级读取设置：
 
+> 巨坑，这里 2 会导致 3 配置失效
+
 1. `Prettier` 配置文件，比如 `.prettierrc` 、`.prettier.config.js`。
-2. `.editorconfig` 文件，用于覆盖用户/工作区设置，具体可了解 `EditorConfig for VS Code`。
+2. **`.editorconfig` 文件，用于覆盖用户/工作区设置，具体可了解 `EditorConfig for VS Code`。**
 3. `Visual Studio` 代码设置（分用户/工作区设置）。
 
 ## ESLint 生态依赖包
@@ -457,7 +459,7 @@ npm install --save-dev eslint-plugin-prettier
 
 - `eslint-config-prettier`: 将会禁用掉所有那些非必须或者和 `prettier` 冲突的规则。这让您可以使用您最喜欢的 `shareable` 配置，而不让它的风格选择在使用 `Prettier` 时碍事。请注意该配置只是将规则 `off` 掉,所以它只有在和别的配置一起使用的时候才有意义。
 
-- `eslint-config-standard`: 是一个标准配置，旨在让所有开发者不需要维护 `.eslintrc`, `.jshintrc`, or `.jscsrc`
+- `eslint-config-standard`: 是一个标准配置，旨在让所有开发者不需要维护 `.eslintrc`, `.jshintrc`, or `.jscsrc`，这里是规范：[JavaScript Standard Style](https://standardjs.com/rules-zhcn.html)
 
 ### 插件
 
@@ -483,8 +485,66 @@ npm install --save-dev eslint-plugin-prettier
 
 > 几个工具之间的关系是：`prettier` 是最基础的，然后你需要用 `eslint-config-prettier` 去禁用掉所有和 `prettier` 冲突的规则，这样才可以使用 `eslint-plugin-prettier` 去以符合 `eslint` 规则的方式格式化代码并提示对应的修改建议。
 
-## vscode 本地配置
+## Eslint 本地配置
 
-https://standardjs.com/rules-zhcn.html
+```sh
+npm i -D eslint babel-eslint eslint-config-standard eslint-plugin-import eslint-plugin-node eslint-plugin-promise
+```
 
+```js
+"eslint.nodePath": "/Users/gakki/Documents/lints/node_modules",
+"eslint.options": {
+  "configFile": "/Users/gakki/Documents/lints/.eslintrc.js"
+},
+```
 
+## Husky + lint-staged 打造合格的代码检查工作流
+
+首先，安装依赖：
+
+```js
+npm install -D husky
+```
+
+然后修改 `package.json`，增加配置：
+
+```sh
+{
+  "scripts": {
+    "precommit": "eslint src/**/*.js"
+  }
+}
+```
+
+这样，在 g`it commit` 的时候就会看到 `pre-commit` 执行了。
+
+针对历史项目，在中途安装代码检查工作流，提交代码时，对其他未修改的“历史”文件都进行检查，一下出现成百上千个错误，估计会吓得立马删掉 `eslint` 等相关配置，冒出一身冷汗。
+
+针对这样的痛点问题，就是每次只对当前修改后的文件进行扫描，即进行 `git add` 加入到`stage` 区的文件进行扫描即可，完成对增量代码进行检查。
+
+如何实现呢？这里就需要使用到 `lint-staged` 工具来识别被加入到 `stage` 区文件。
+
+首先安装依赖：
+
+```js
+npm install -D lint-staged
+```
+
+然后修改 `package.json`，增加配置：
+
+```sh
+"husky": {
+  "hooks": {
+    "pre-commit": "lint-staged"
+  }
+},
+"lint-staged": {
+  "src/**/*.{js,vue}": ["prettier --write", "eslint --cache --fix", "git add"]
+}
+```
+
+在进行 `git commit` 的时候会触发到 `git hook` 进而执行 `precommit`，而`precommit` 脚本引用了 `lint-staged` 配置表明只对 `git add` 到 `stage` 区的文件进行扫描，具体 `lint-staged` 做了三件事情：
+
+执行 `Prettier` 脚本，这是对代码进行格式化的;
+执行 `eslint --fix` 操作，进行扫描，对 `eslint` 问题进行修复；
+上述两项任务完成后将代码重新 `add` 进 `stage` 区，然后执行 `commit`。
