@@ -2,7 +2,9 @@
 
 > 没有经过整理的知识才是徒然浪费时间，伤透脑筋！
 
-**笔记内容**： **[好看是第一生产力](#好看是第一生产力) | [JavaScript](#javascript) | [浏览器](#浏览器) | [构建工具](#构建工具) | [CSS](#CSS) | [技术实践](#技术实践) | [设计模式](#设计模式) | [算法](#算法) | [其他](#其他)**
+**笔记内容**：[好看是第一生产力](#好看是第一生产力) | [JavaScript](#javascript) | [浏览器](#浏览器) | [构建工具](#构建工具) | [CSS](#CSS) | [前端武器库](#前端武器库)
+
+<!-- | [设计模式](#设计模式) | [算法](#算法) -->
 
 ## 好看是第一生产力
 
@@ -59,8 +61,10 @@
 
 ## 前端武器库
 
-- `[vscode]` [vscode 使用指北](web/code.md)
-- `[lint]` [搞懂 ESLint 和 Prettier](ts/eslint.md)
+- `[Vscode]` [Vscode 使用指北](web/code.md)
+- `[ESLint]` [搞懂 ESLint 和 Prettier](ts/eslint.md)
+- `[Chrome]` [Chrome DevTools 面板全攻略](ts/devTool.md)
+- `[Markdown]` [Markdown 的基本撰写和格式语法](others/markdown.md)
 
 <!-- ## 技术实践 -->
 
@@ -71,11 +75,8 @@
 <!-- ## 设计模式
 ## 算法 -->
 
-## 其他
-
 <!-- 知乎问题 -->
 
-- `[Markdown]` [Markdown 的基本撰写和格式语法](others/markdown.md)
   <!-- - `[Git]` [Git 简单学习与高频使用的命令] -->
   <!-- - `[SSH]` [使用 SSH 登录 Linux 实例](others/ssh.md) -->
 
