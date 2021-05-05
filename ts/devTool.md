@@ -21,6 +21,7 @@
   - [排队或停止阻塞](#排队或停止阻塞)
   - [TTFB](#ttfb)
   - [Content Download](#content-download)
+- [Source 面板](#source-面板)
 - [Performance 面板](#performance-面板)
   - [开始记录](#开始记录)
   - [controls 控制条区域](#controls-控制条区域)
@@ -288,6 +289,8 @@ $x('//li[p]') // 所有的 li 下的 p
 
 最常见的问题是很多个请求排队或被阻塞。这表示从单个客户端检索的资源太多。在 `HTTP 1.0/1.1` 连接协议中，`Chrome` 限制每个域名最多执行 `6` 个 `TCP` 连接。如果一次请求十二个资源，前 `6` 个将开始，后 `6` 个将排队。一旦其中一个请求完成，队列中的第一个请求项目将开始其请求过程。
 
+![](../Images/devtool_wat.webp)
+
 ### TTFB
 
 `TTFB` 就是等待第一个响应字节的时间，建议在 `200ms` 以下，以下情况可能会导致高 `TTFB`:
@@ -298,6 +301,12 @@ $x('//li[p]') // 所有的 li 下的 p
 ### Content Download
 
 如果 `Content Download` (内容下载) 阶段花费了很多时间，提高服务响应速度、并行下载等优化措施帮助都不大。主要的解决方案是发送更少的字节（比如一张高质量的大图可能几 `M` 的大小，这时可以酌情优化一下图片的宽高 / 清晰度）
+
+## Source 面板
+
+![](../Images/devtool_source.webp)
+
+![](../Images/devtool_debug.webp)
 
 ## Performance 面板
 
