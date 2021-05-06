@@ -1,8 +1,23 @@
-# Git 简单学习与高频使用的命令
+# Git 高频使用的命令
 
-## Git 基础知识
+## git log
 
-## 高频使用的命令
+```sh
+# 指定最近几个提交可以带上 - + 数字
+git log --oneline -5
+
+# 提供类似 GUI 工具的 log 展示
+git log --graph --date=relative --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset'
+##
+```
+
+## git status
+
+
+
+<!-- ##
+
+
 
 ## 遇到的问题
 
@@ -56,11 +71,11 @@ fatal: NotSupportedException encountered.
 |      ➕ (加号)      |   `:heavy_plug_sign:`    |     增加一个依赖      |
 |      🔧 (扳手)      |        `:wrench:`        |     修改配置文件      |
 |      🌐 (地球)      | `:globe_with_meridians:` |    国际化与本地化     |
-|      ✏️ (铅笔)      |       `:pencil2:`        |       修复 typo       |
+|      ✏️ (铅笔)      |       `:pencil2:`        |       修复 typo       | -->
 
-## 参考
+<!-- ## 参考
 
 - [廖雪峰 Git 教程](https://www.liaoxuefeng.com/wiki/896043488029600/896827951938304)
 - [高频使用的 Git 命令](https://juejin.im/post/5de8d849e51d455808332166)
 - [个性化提交：Git Emoji 指南](https://gitmoji.carloscuesta.me/)
-- [Git 资料汇总](https://github.com/xirong/my-git)
+- [Git 资料汇总](https://github.com/xirong/my-git) -->

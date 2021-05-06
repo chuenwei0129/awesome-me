@@ -1,9 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 // import './index.css';
 // import reportWebVitals from './reportWebVitals';
-import App from './App';
-
+import App from './App'
 
 // const element = (
 //   <div id="A1">
@@ -21,7 +20,7 @@ let vnode = {
     id: 'A1',
     children: [
       {
-        type: 'div', 
+        type: 'div',
         props: {
           id: 'B1',
           children: [
@@ -38,16 +37,16 @@ let vnode = {
                 id: 'C2',
                 children: []
               }
-            },
+            }
           ]
         }
       },
       {
-      type: 'div',
-      props: {
-        id: 'B2',
-        children: []
-      }
+        type: 'div',
+        props: {
+          id: 'B2',
+          children: []
+        }
       }
     ]
   }
@@ -58,7 +57,7 @@ const PLACEMENT = 'PLACEMENT'
 let rootFiber = {
   stateNode: document.getElementById('root'),
   props: {
-    children: [ vnode ]
+    children: [vnode]
   }
 }
 
@@ -66,15 +65,14 @@ let nextUnitOfWork = rootFiber
 
 function workloop() {
   // 有工作单元，执行它，并返回新的工作单元
-  while(nextUnitOfWork) {
+  while (nextUnitOfWork) {
     nextUnitOfWork = performUnitOfWork(nextUnitOfWork)
   }
 
   // 循环结束，下个工作单元没了，提交不可以打断
-  if(!nextUnitOfWork) {
+  if (!nextUnitOfWork) {
     commitRoot()
   }
-
 }
 
 function commitRoot() {
@@ -84,7 +82,7 @@ function commitRoot() {
   // console.log(rootFiber);
   let currentFiber = rootFiber.firstEffect
   // 循环挂载
-  while(currentFiber) {
+  while (currentFiber) {
     if (currentFiber.effectTag === 'PLACEMENT') {
       currentFiber.return.stateNode.appendChild(currentFiber.stateNode)
     }
@@ -97,7 +95,7 @@ function commitRoot() {
 
 /**
  * 把 vnode 变成 fiber 树，创建每个 fiber 对应的真实 DOM 节点
- * @param {*} workingInProgressFiber 
+ * @param {*} workingInProgressFiber
  */
 function performUnitOfWork(workingInProgressFiber) {
   beginWork(workingInProgressFiber)
@@ -107,8 +105,7 @@ function performUnitOfWork(workingInProgressFiber) {
     return workingInProgressFiber.child
   }
 
-  while(workingInProgressFiber) {
-
+  while (workingInProgressFiber) {
     // 最后一个儿子就是第一个完成的工作单元，然后循环找父亲兄弟依次完成，没儿子就表示完成
     completeWork(workingInProgressFiber)
 
@@ -124,7 +121,9 @@ function beginWork(workingInProgressFiber) {
   // console.log('beginWork', workingInProgressFiber);
   // 创建 dom 元素
   if (!workingInProgressFiber.stateNode) {
-    workingInProgressFiber.stateNode = document.createElement(workingInProgressFiber.type)
+    workingInProgressFiber.stateNode = document.createElement(
+      workingInProgressFiber.type
+    )
     for (const [k, v] of Object.entries(workingInProgressFiber.props)) {
       // 处理 dom 属性
       if (k !== 'children') {
@@ -178,7 +177,7 @@ function completeWork(workingInProgressFiber) {
       returnFiber.lastEffect = workingInProgressFiber.lastEffect
     }
 
-  // 把它自己挂载到上面链条的next上去
+    // 把它自己挂载到上面链条的next上去
     if (workingInProgressFiber.effectTag) {
       if (returnFiber.lastEffect) {
         returnFiber.lastEffect.nextEffect = workingInProgressFiber
@@ -189,9 +188,7 @@ function completeWork(workingInProgressFiber) {
       // 走 C1 把自己也挂到 B1 的 f, l 上
       returnFiber.lastEffect = workingInProgressFiber
     }
-
   }
-
 }
 
 // 浏览器空闲时间处理
@@ -199,15 +196,12 @@ requestIdleCallback(workloop)
 
 // ReactDOM.render(element, document.getElementById('root'))
 
-
-
-
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
   document.getElementById('root')
-);
+)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
