@@ -35,7 +35,7 @@
 - `[vue]`[vue 知识点梳理](web/vue.md)
 - `[axios]`[axios 学习指南](web/axios.md)
 - `[Node]` [Node 版本及源管理](others/nvm.md)
-- `[react]` [关于 React 的一切（一）](notes/react.md)
+- `[react]` [关于 React 的一切（一）](web/react1.md)
 - `[react]` [关于 React 的一切（二）](web/react.md)
 
 ## 浏览器
