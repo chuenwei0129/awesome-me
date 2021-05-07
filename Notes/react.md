@@ -48,6 +48,7 @@
   - [react 16](#react-16)
   - [react 17](#react-17)
 - [Suspense 和 lazy](#suspense-和-lazy)
+- [componentWillXXX 为什么 UNSAFE](#componentwillxxx-为什么-unsafe)
 - [Fragment](#fragment)
 - [Profiler](#profiler)
 - [cloneElement](#cloneelement)
@@ -566,6 +567,8 @@ function updateRef<T>(initialValue: T): {| current: T |} {
 可以看到，ref 对象确实仅仅是包含 current 属性的对象。
 
 > React.createRef 与 useRef 的返回值一个被缓存，一个没被缓存
+
+> 创建 useRef 时候，会创建一个原始对象，只要函数组件不被销毁，原始对象就会一直存在，那么我们可以利用这个特性，来通过 useRef 保存一些数据。
 
 那么我们可以利用这个特性，来通过 useRef 保存一些数据。
 
@@ -1361,6 +1364,80 @@ const Lazy = lazy(() => {
 
 export default Lazy
 ```
+
+## componentWillXXX 为什么 UNSAFE
+
+我们先来探讨第一点，这里我们以 componentWillRecieveProps 举例。
+
+我们经常在 componentWillRecieveProps 内处理 props 改变带来的影响。有些同学认为这个钩子会在每次 props 变化后触发。
+
+真的是这样么？让我们看看源码。
+
+这段代码出自 updateClassInstance 方法：
+
+```js
+if (unresolvedOldProps !== unresolvedNewProps || oldContext !== nextContext) {
+  callComponentWillReceiveProps(workInProgress, instance, newProps, nextContext)
+}
+```
+
+其中 callComponentWillReceiveProps 方法会调用 componentWillRecieveProps。
+
+可以看到，是否调用的关键是比较 unresolvedOldProps 与 unresolvedNewProps 是否全等，以及 context 是否变化。
+
+其中 unresolvedOldProps 为组件上次更新时的 props，而 unresolvedNewProps 则来自 ClassComponent 调用 this.render 返回的 JSX 中的 props 参数。
+
+可见他们的引用是不同的。所以他们全等比较为 false。
+
+基于此原因，每次父组件更新都会触发当前组件的 componentWillRecieveProps。
+
+想想你是否也曾误用过？
+
+了解了数据结构，接下来我们模拟一次异步中断更新，来揭示本文探寻的秘密 —— componentWillXXX 为什么 UNSAFE。
+
+在某个组件 updateQueue 中存在四个 Update，其中字母代表该 Update 要更新的字母，数字代表该 Update 的优先级，数字越小优先级越高。
+
+```js
+baseState = ''
+
+A1 - B2 - C1 - D2
+```
+
+首次渲染时，优先级 1。B D 优先级不够被跳过。
+
+为了保证更新的连贯性，第一个被跳过的 Update（B）及其后面所有 Update 会作为第二次渲染的 baseUpdate，无论他们的优先级高低，这里为 B C D。
+
+```js
+baseState: ''
+Updates: [A1, C1]
+Result state: 'AC'
+```
+
+接着第二次渲染，优先级 2。
+
+由于 B 在第一次渲染时被跳过，所以在他之后的 C 造成的渲染结果不会体现在第二次渲染的 baseState 中。所以 baseState 为 A 而不是上次渲染的 Result state AC。这也是为了保证更新的连贯性。
+
+```js
+baseState: 'A'
+Updates: [B2, C1, D2]
+Result state: 'ABCD'
+```
+
+我们发现，C 同时出现在两次渲染的 Updates 中，他代表的状态会被更新两次。
+
+如果有类似的代码：
+
+```js
+componentWillReceiveProps(nextProps) {
+if (!this.props.includes('C') && nextProps.includes('C')) {
+// ...do something
+}
+}
+```
+
+则很有可能被调用两次，这与同步更新的 React 表现不一致！
+
+基于以上原因，componentWillXXX 被标记为 UNSAFE。
 
 ## Fragment
 
