@@ -1,5 +1,5 @@
 export default {
-	INSERT: 'INSERT',
-	MOVE: 'MOVE',
-	REMOVE: 'REMOVE'
+  INSERT: 'INSERT',
+  MOVE: 'MOVE',
+  REMOVE: 'REMOVE'
 }

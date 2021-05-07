@@ -1,87 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <script>
-    function sleep(delay) {
-      let start = Date.now()
-      while (start + delay > Date.now()) {
-        // delay ms 內死循环
-        // 表示执行这段任务需要多长时间
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function sleep(delay) {
+        let start = Date.now()
+        while (start + delay > Date.now()) {
+          // delay ms 內循环工作
+          // 表示执行这段任务需要多长时间
+        }
       }
-    }
 
-    let i = 0
-    function progress() {
-      console.log('progress');
-      i < 1000 && requestAnimationFrame(progress)
-      ++i
-    }
-
-    progress()
-
-    const works = [
-      () => {
-        console.log('任务1开始');
-        sleep(20)
-        console.log('任务1结束');
-      },
-      () => {
-        console.log('任务2开始');
-        sleep(12)
-        console.log('任务2结束');
-      },
-      () => {
-        console.log('任务3开始');
-        sleep(20)
-        console.log('任务3结束');
-      },
-      () => {
-        console.log('任务4开始');
-        sleep(20)
-        console.log('任务4结束');
-      },
-      () => {
-        console.log('任务5开始');
-        sleep(20)
-        console.log('任务5结束');
+      let i = 0
+      function progress() {
+        console.log('progress')
+        i < 1000 && requestAnimationFrame(progress)
+        ++i
       }
-    ]
 
-    // requestIdleCallback 若果没有工作，时间片会延长为 50 ms 20 帧
-    // 回调参数自动获得 deadline 参数
-    // timeout 代表时间 1000ms后任务还没执行
-    // {timeout: 1000}
-    requestIdleCallback(workloop)
+      progress()
 
-    function workloop(deadline) {
-      console.log('本帧剩余时间', deadline.timeRemaining(), '时间片是否过期', deadline.didTimeout);
-      // 有剩余时间，并且有工作单元
-      while((deadline.timeRemaining() > 0) && works.length > 0) {
-        // deadline.timeRemaining() > 0 || deadline.didTimeout 表示任务过期
-        peformUnitOfWork()
+      const works = [
+        () => {
+          console.log('任务1开始')
+          sleep(20)
+          console.log('任务1结束')
+        },
+        () => {
+          console.log('任务2开始')
+          sleep(12)
+          console.log('任务2结束')
+        },
+        () => {
+          console.log('任务3开始')
+          sleep(20)
+          console.log('任务3结束')
+        },
+        () => {
+          console.log('任务4开始')
+          sleep(20)
+          console.log('任务4结束')
+        },
+        () => {
+          console.log('任务5开始')
+          sleep(20)
+          console.log('任务5结束')
+        }
+      ]
+
+      // requestIdleCallback 若果没有工作，时间片会延长为 50 ms 20 帧
+      // 回调参数自动获得 deadline 参数
+      // timeout 代表时间 1000ms后任务还没执行
+      // {timeout: 1000}
+      requestIdleCallback(workloop)
+
+      function workloop(deadline) {
+        console.log(
+          '本帧剩余时间',
+          deadline.timeRemaining(),
+          '时间片是否过期',
+          deadline.didTimeout
+        )
+        // 有剩余时间，并且有工作单元
+        while (deadline.timeRemaining() > 0 && works.length > 0) {
+          // deadline.timeRemaining() > 0 || deadline.didTimeout 表示任务过期
+          peformUnitOfWork()
+        }
+        // // 20 ms 时候超时了，卡住了
+        if (works.length > 0) {
+          // 超时处理，等待下次调度
+          requestIdleCallback(workloop)
+        }
       }
-      // // 20 ms 时候超时了，卡住了
-      if (works.length > 0) {
-        // 超时处理，等待下次调度
-        requestIdleCallback(workloop)
+
+      function peformUnitOfWork() {
+        // 取出工作数组中的第一个工作并执行
+        // 每次调度都会执行一次任务，无论超不超时
+        works.shift()()
       }
-    }
 
-    function peformUnitOfWork() {
-      // 取出工作数组中的第一个工作并执行
-      // 每次调度都会执行一次任务，无论超不超时
-      works.shift()()
-    }
-
-    // 50 ms，原因
-
-
-  </script>
-</body>
+      // 50 ms，原因
+    </script>
+  </body>
 </html>

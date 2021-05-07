@@ -4,6 +4,9 @@ import Lazy from './Lazy'
 import { Hello, LucencyMap, OpacityMap } from './Map'
 import Memo from './Memo'
 import Pure from './Pure'
+import Ref from './Ref'
+import { Child, Parent } from './Render'
+import State from './State'
 
 const App = () => {
   // Error: Objects are not valid as a React child (found: object with keys {}).
@@ -27,6 +30,22 @@ const App = () => {
 
   return (
     <>
+      <State />
+
+      <hr />
+      <Ref />
+
+      <hr />
+
+      {/* <Child />相当于此时作为 props 传入 parent 组件，只有 app 组件更新，<Child /> 
+      组件才会更新，相当于此时 app 与 child 嵌套 */}
+      {/* 组件是否渲染需要考虑 render props 情况 */}
+      <Parent>
+        <Child />
+      </Parent>
+
+      <hr />
+
       <h1>{count}</h1>
       <button onClick={add}> 异步+ </button>
       <button onClick={addSync}> 同步+ </button>
