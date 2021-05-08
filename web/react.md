@@ -22,6 +22,9 @@
   - [渲染](#渲染)
   - [useEffect 与 useLayoutEffect](#useeffect-与-uselayouteffect)
 - [useMemo / useCallback](#usememo--usecallback)
+- [如何优雅处理使用 React Context 导致的不必要渲染？](#如何优雅处理使用-react-context-导致的不必要渲染)
+  - [方案一：Split contexts](#方案一split-contexts)
+  - [方案二：使用「泛 memo」方案](#方案二使用泛-memo方案)
 
 ## 代数效应
 
@@ -966,6 +969,9 @@ useEffect 对应 fiber 作为 effectList 中的一个节点，他的调用逻辑
 
 useEffect 与 useLayoutEffect 一摸一样，只是调用时机不一样，一个 dom 渲染后同步，一个异步
 
+useEffect 执行顺序: 组件更新挂载完成 -> 浏览器 dom 绘制完成 -> 执行 useEffect 回调。
+useLayoutEffect 执行顺序: 组件更新挂载完成 -> 执行 useLayoutEffect 回调-> 浏览器 dom 绘制完成。
+
 ## useMemo / useCallback
 
 作为「性能优化」手段，一般用 useMemo 缓存函数组件中比较消耗性能的计算结果：
@@ -1040,3 +1046,85 @@ workInProgress.type === current.type
 所以，当我们使用 useMemo 包裹 ExpensiveTree 后，当 theme 不变，每次 Tree render 后返回的都是同一个 JSX 对象，满足第一条。
 
 基于这个原因，ExpensiveTree 不会 render。
+
+## 如何优雅处理使用 React Context 导致的不必要渲染？
+
+### 方案一：Split contexts
+
+顾名思义，就是拆分 Contexts，这里面主要指对于不同上下文背景的 Contexts 进行拆分，实现合理的 Contexts hierarchy，这样就很容易能做到「组件按需选用订阅自己的 Contexts data」。
+
+```
+const App = () => {
+  // ...
+  return (
+    <ContextA.Provider value={valueA}>
+      <ContextB.Provider value={valueB}>
+        <ContextC.Provider value={valueC}>
+          ...
+        </ContextC.Provider>
+      </ContextB.Provider>
+    </ContextA.Provider>
+  );
+};
+```
+
+如果你觉得「这种 Context hierarchy 好麻烦啊」，那请你养成更好的编程习惯吧，Split Contexts 也是官方所推荐的「最佳」方案——麻烦和合理往往就在一念之间。（btw, 是真的那么麻烦么？）
+
+另外值得一提的是，除了层级式按使用场景拆分 Contexts，我们还需要了解：**将多变的和不变的 Contexts 分开，让不变的 Contexts 在外层，多变的 Contexts 在内层。**
+
+### 方案二：使用「泛 memo」方案
+
+这里的 「泛 memo」是我编的词语，它 既可以是 React.memo，也可以是 useMemo 包裹一个 React 组件，以达到类似 scu 的优化目的。直接贴一个 Dan 的例子好了：
+
+React.memo 场景：
+
+```js
+function Button() {
+  let appContextValue = useContext(AppContext)
+  let theme = appContextValue.theme
+  return <ThemedButton theme={theme} />
+}
+// 对 ThemedButton 使用 Memo，只「响应」theme 的变化
+const ThemedButton = memo(({ theme }) => {
+  return <ExpensiveTree className={theme} />
+})
+```
+
+useMemo 包裹 React 组件场景：
+
+```js
+function Button() {
+  let appContextValue = useContext(AppContext)
+  let theme = appContextValue.theme // 相当于自己实现的 selector
+
+  return useMemo(() => {
+    return <ExpensiveTree className={theme} />
+  }, [theme])
+}
+```
+
+毕竟对于新的 Context API，（不像 legacy Context）我们知道：对于层级上祖先被 memorized bailout 的情况，新的 Context 特性依然可以订阅到 context data 的变化。
+
+在这个方案中，我也愿意把 props.children 的用法列举出来，本质上也是一种依靠「缓存」的 bailout 优化方案，简单示例：
+
+```js
+const Container = props => {
+  //...
+
+  return <Context.Provider value={value}>{props.children}</Context.Provider>
+}
+
+const Demo = () => {
+  return (
+    <div>
+      <Container>
+        <Count />
+        <SetCount />
+        <Pure />
+      </Container>
+    </div>
+  )
+}
+```
+
+这种 lift content up 为 props.children 的做法，能够防止不必要的渲染，其本质原理和 Memo 异曲同工：对应上面代码，只要作为 Context.Provider 的子组件不变化，props.children 引用不变化，React 可以自动优化规避掉不必要的渲染（相比于 Memo 指定的比对项，这种比对更加粗粒度）。更具体的说明，就牵扯到 JSX 编译为 React.createElement 细节了，这里我就不再赘述。

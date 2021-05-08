@@ -1,5 +1,6 @@
 # 关于 React 的一切（一）<!-- omit in toc -->
 
+- [如何优雅地处理使用 React Context 导致的不必要渲染问题？](#如何优雅地处理使用-react-context-导致的不必要渲染问题)
 - [React 在 Dev mode 下会刻意执行两次渲染](#react-在-dev-mode-下会刻意执行两次渲染)
 - [vue 和 react 的区别](#vue-和-react-的区别)
 - [React 更新粒度](#react-更新粒度)
@@ -56,6 +57,17 @@
 - [isValidElement](#isvalidelement)
 - [React.children.map()](#reactchildrenmap)
 - [优先级](#优先级)
+
+## 如何优雅地处理使用 React Context 导致的不必要渲染问题？
+
+> 一句话，react context 是给你注入服务的，不是让你注入数据的，如果要注入具有数据的服务那你就注入个类似 EventEmitter 的东西，例如 rxjs observable
+
+- Context 里面内容的改变根本就不会触发渲染
+- 导致渲染的是 App 的 dispatch
+- 解决办法是不要使用 App 的 dispatch，而是让组件监听自己依赖的数据的变化（比如调用 subscribe）
+- 如果你希望组件只在自己依赖的数据变化时 render，可以引入 selector 并对比新旧数据
+
+useContextSelector 实现的就是一个 provider 里面搞依赖收集，然后用 ref 来做状态，dispatch 后触发对应 selector 的 context 更新嘛。而 new context 本来就是一个这种实现了，只是它没有做 selector 的精确更新，但这不是重新在这套体系里面再实现一个用户层面的依赖更新的理由啊（纯粹就是利用现有的 context 再重复实现了一个 context，完全没必要嘛。）
 
 ## React 在 Dev mode 下会刻意执行两次渲染
 
@@ -443,10 +455,12 @@ shouldComponentUpdate 的实现
 
 ### 新 Context API 的实现
 
+reateContext 用于创建一个 Context 对象，createContext 对象中，包括用于传递 Context 对象值 value 的 Provider，和接受 value 变化订阅的 Consumer。
+
 当通过：
 
 ```js
-ctx = React.createContext()
+ctx = React.createContext(defaultValue)
 ```
 
 创建 context 实例后，需要使用 Provider 提供 value，使用 Consumer 或 useContext 订阅 value。
