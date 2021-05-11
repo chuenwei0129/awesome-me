@@ -1,5 +1,5 @@
 {
-  "name": "reactc",
+  "name": "react-demo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -46,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "mockjs": "^1.1.0"
   }
 }

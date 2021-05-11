@@ -68,7 +68,7 @@
 - `[Chrome]` [Chrome DevTools 面板全攻略](ts/devTool.md)
 - `[Markdown]` [Markdown 的基本撰写和格式语法](others/markdown.md)
 
-<!-- ## 技术实践 -->
+## 技术实践
 
 <!-- - `[代码]` [前端面试八股文](js/js_code.md) -->
 <!-- - `[奇技淫巧]` [JavaScript 中的奇技淫巧]() -->
