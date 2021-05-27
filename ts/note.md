@@ -1,37 +1,4 @@
-# 写给自己的 TypeScript 教程(一)<!-- omit in toc -->
-
-- [基础类型和对象类型](#基础类型和对象类型)
-- [参数强校验](#参数强校验)
-- [JSON](#json)
-- [函数](#函数)
-- [接口](#接口)
-- [类](#类)
-- [get / set](#get--set)
-- [单例模式](#单例模式)
-- [抽象类](#抽象类)
-- [类型保护](#类型保护)
-- [泛型](#泛型)
-
-## 基础类型和对象类型
-
-```ts
-// 基础类型
-const num: number = 1
-const str: string = 'hello world'
-
-// 对象类型（包含类、函数等）
-const obj: { x: number; y: string } = { x: 1, y: 'hello world' }
-
-const fn: (str: string) => number = str => Number.parseInt(str, 10)
-
-class Person {}
-
-const person: Person = new Person()
-
-const arr: number[] = [1, 2, 3]
-const arr1: (number | string)[] = ['hello', 2, '3', 1]
-const arr2: [number, string, number] = [1, '2', 3]
-```
+# TS
 
 ## 参数强校验
 
@@ -252,6 +219,33 @@ interface Student extends Person {
   learn(): string
 }
 ```
+
+## 编译
+
+ts import js
+.ts -> .d.ts 翻译文件 -> .js
+
+scripts 结合使用
+
+dev:build tsc -w
+dev:start nodemon node build.js
+concurrently 包
+dev `concurrently npm:dev:*`
+并行执行命令
+
+tsc --init
+生成 ts 配置文件编译配置
+
+tsc 不加任何参数才会执行应用 tsconfig
+
+编译 include 文件
+alowjs js 也会被编译
+
+.d.ts // declare 函数可以声明多次，函数重载
+
+全局命名空间嵌套，函数重载,声明，es6 模块化， declare module + export 到处去
+
+namespace + export + re fen ce
 
 ## 类型保护
 

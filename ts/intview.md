@@ -1,6 +1,6 @@
 # 写给自己的面试题
 
-<!-- 关于 react diff。react 的 diff 与 vue2 的 diff 有什么区别？与 vue3 呢？仅仅是 lis 吗？
+关于 react diff。react 的 diff 与 vue2 的 diff 有什么区别？与 vue3 呢？仅仅是 lis 吗？
 关于 react fiber。fiber 的引入究竟对 react 有什么架构层面的影响，double fiber tree 是否有必要存在？
 关于 react schedule。schedule 究竟以一个什么形式，什么规律来运行，中断和恢复呢？lane 解决了什么问题？
 关于 vue。reactive core 有自己实现过吗？为什么要做这种启发式的 aot？slot 的实现？
@@ -12,7 +12,7 @@
 关于 js 优化。自己会熟练使用 js profiler 吗？甚至是否是从未使用过？做过 ms 级别的优化吗？自己问的问题是否真的需要在 js trick 层面进行优化？
 关于 js-native 框架。知道 js 到 native 端的详细通信过程吗？做过 binding 吗？知道 jsbridge 的实现吗？知道怎么热更新吗？知道热更新的原理吗？知道怎么手写 js 引擎去做热更新吗？
 关于工程化。webpack5 是怎么做持久化储存的？mf 是怎么服务于微前端的，又是怎么解决 external 的问题的？mf 的原理是什么？hardsourceplugin 的原理是什么，它为什么这么快？lerna 的最佳实践？submodule 的最佳实践？webpack 和 gulp 怎么配合？tapable 究竟是什么抽象？
-浏览器。render object 的晋升过程？css 和 dom 的融会时机？slp 和 raf 的时机？什么是 rafwithtimeout，存在的意义？vsync 影响了什么？为什么不要为滚动增加事件监听？为什么要 eval(“debugger”)？ -->
+浏览器。render object 的晋升过程？css 和 dom 的融会时机？slp 和 raf 的时机？什么是 rafwithtimeout，存在的意义？vsync 影响了什么？为什么不要为滚动增加事件监听？为什么要 eval(“debugger”)？
 
 全局变量本质上就是一个单例模式，redux 只是在单例模式基础上加了订阅机制、采用 reducer 约束修改，以及加上 middleware 机制保证扩展性。
 
