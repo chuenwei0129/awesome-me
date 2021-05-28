@@ -11,7 +11,7 @@
   - [Vue 的更新粒度](#vue-的更新粒度)
     - [Vue 的组件更新是精确到组件本身的](#vue-的组件更新是精确到组件本身的)
     - [props 的更新触发重渲染](#props-的更新触发重渲染)
-    - [vm.$forceUpdate](#vmforceupdate)
+    - [vm.\$forceUpdate](#vmforceupdate)
 - [API](#api)
   - [Vue.extend](#vueextend)
   - [Vue.component](#vuecomponent)
@@ -35,30 +35,31 @@
 ## 响应式
 
 ### Object.defineProperty
-```js
-let data = { msg: '我是数据' } 
 
-console.log('代理前', data.msg); // 1) 代理前 我是数据
+```js
+let data = { msg: '我是数据' }
+
+console.log('代理前', data.msg) // 1) 代理前 我是数据
 
 const oldVal = data.msg
 
 Object.defineProperty(data, 'msg', {
-	// 代理是为了返回与原值不同值，不改变原值默认返回 undefined，与 value: '42' 区别在 todo...
-	get() {
-		// todo...
-		// 内部因为 this 原因，需要闭包保存代理的值
-		// 内部只能返回代理后的值
-		console.log('数据被代理。。。');
-		return oldVal
-	},
-	set(newVal) {
-		// 🏁 this 是 `.msg` 前的值 data
-		console.log('数据发生了改变。。。')
-		console.log('旧值', oldVal, '新值', newVal);
-	},
+  // 代理是为了返回与原值不同值，不改变原值默认返回 undefined，与 value: '42' 区别在 todo...
+  get() {
+    // todo...
+    // 内部因为 this 原因，需要闭包保存代理的值
+    // 内部只能返回代理后的值
+    console.log('数据被代理。。。')
+    return oldVal
+  },
+  set(newVal) {
+    // 🏁 this 是 `.msg` 前的值 data
+    console.log('数据发生了改变。。。')
+    console.log('旧值', oldVal, '新值', newVal)
+  }
 })
 
-console.log('代理后', data.msg); 
+console.log('代理后', data.msg)
 // 数据被代理。。。
 // 代理后 数据
 
@@ -71,27 +72,27 @@ data.msg = '我是改变后的数据'
 
 ```js
 function reactive(data) {
- // 遍历对象，对对象的每个属性都使用defineProperty
-	for (let [k, v] of Object.entries(data)) {
-		// + if (typeof v === 'object' && v !== null) reactive(v) 处理对象嵌套
-		if (typeof v === 'object' && v !== null) reactive(v)
-		Object.defineProperty(data, k, {
-			get() {
-				console.log(`属性 ${k} 被代理`);
-				// 此处可以做一些对代理前的值做一些个性化处理，这里的 v 只是闭包保存值的变量
-				// v = v + '123'
-				return v
-			},
-			set(newV) {
-				// 执行 set 和 get 毫无关系，互不影响
-				// + if (typeof newV === 'object' && newV !== null) reactive(newV)  对象嵌套，监听的对象重新赋值为新的对象
-				if (typeof newV === 'object' && newV !== null) reactive(newV)
-				console.log(`属性 ${k} 数据发生改变，原值为 ${v}，新值为 ${newV}`);
-				v = newV
-			}
-		})
-	}
-	return data
+  // 遍历对象，对对象的每个属性都使用defineProperty
+  for (let [k, v] of Object.entries(data)) {
+    // + if (typeof v === 'object' && v !== null) reactive(v) 处理对象嵌套
+    if (typeof v === 'object' && v !== null) reactive(v)
+    Object.defineProperty(data, k, {
+      get() {
+        console.log(`属性 ${k} 被代理`)
+        // 此处可以做一些对代理前的值做一些个性化处理，这里的 v 只是闭包保存值的变量
+        // v = v + '123'
+        return v
+      },
+      set(newV) {
+        // 执行 set 和 get 毫无关系，互不影响
+        // + if (typeof newV === 'object' && newV !== null) reactive(newV)  对象嵌套，监听的对象重新赋值为新的对象
+        if (typeof newV === 'object' && newV !== null) reactive(newV)
+        console.log(`属性 ${k} 数据发生改变，原值为 ${v}，新值为 ${newV}`)
+        v = newV
+      }
+    })
+  }
+  return data
 }
 
 let proxyData = reactive(data)
@@ -118,12 +119,12 @@ proxyData.newProperty = '改变新属性'
 // 使用了函数劫持的方式，重写了数组的方法，Vue将data中的数组进行了原型链重写，指向了自己定义的数组原型方法。这样当调用数组api时，可以通知依赖更新。如果数组中包含着引用类型，会对数组中的引用类型再次递归遍历进行监控。这样就实现了监测数组变化。
 const arrMethods = ['push', 'shift', 'unshift']
 // 函数劫持，批量重写数组常用方法
-arrMethods.forEach((method) => {
-	let oldMethod = Array.prototype[method]
-	Array.prototype[method] = function (...args) {
-		console.log('数组数据改变了');
-		oldMethod.call(this, ...args)
-	}
+arrMethods.forEach(method => {
+  let oldMethod = Array.prototype[method]
+  Array.prototype[method] = function(...args) {
+    console.log('数组数据改变了')
+    oldMethod.call(this, ...args)
+  }
 })
 
 // const originArray = Array.prototype
@@ -144,70 +145,67 @@ proxyData.arr.length = 2 // vue 无法处理
 ```html
 <!DOCTYPE html>
 <html lang="en">
+  <body>
+    <div id="app"></div>
+    <button id="btn">+</button>
 
-<body>
-  <div id="app"></div>
-  <button id="btn"> + </button>
+    <script>
+      const el = document.querySelector('#app')
 
-  <script>
-    const el = document.querySelector('#app')
+      const data = { num: 0 }
 
-    const data = { num: 0 }
+      // 渲染页面，死数据
+      // el.innerHTML = `<h1>${data.num}</h1>`
 
-    // 渲染页面，死数据
-    // el.innerHTML = `<h1>${data.num}</h1>`
+      let target
 
-    let target
-
-    function reactive(data) {
-      for (let [k, v] of Object.entries(data)) {
-        let dep = []
-        if (typeof v === 'object' && v !== null) reactive(v)
-        Object.defineProperty(data, k, {
-          get() {
-            // 发生取值操作就会把依赖值的函数传入 dep 中
-            target && dep.push(target)
-            return v
-          },
-          set(newV) {
-            if (typeof newV === 'object' && newV !== null) reactive(newV)
-            v = newV
-            dep.forEach(watcher => watcher())
-          }
-        })
+      function reactive(data) {
+        for (let [k, v] of Object.entries(data)) {
+          let dep = []
+          if (typeof v === 'object' && v !== null) reactive(v)
+          Object.defineProperty(data, k, {
+            get() {
+              // 发生取值操作就会把依赖值的函数传入 dep 中
+              target && dep.push(target)
+              return v
+            },
+            set(newV) {
+              if (typeof newV === 'object' && newV !== null) reactive(newV)
+              v = newV
+              dep.forEach(watcher => watcher())
+            }
+          })
+        }
+        return data
       }
-      return data
-    }
 
-    // 响应式数据
-    const vmData = reactive(data)
+      // 响应式数据
+      const vmData = reactive(data)
 
-    const watcher = (fn) => {
-      target = fn
-      fn()
-      target = null
-    }
+      const watcher = fn => {
+        target = fn
+        fn()
+        target = null
+      }
 
-    // 期望响应式数据变化页面重新渲染，定义一个监控函数，数据一变化就执行页面重新渲染
-    // 第一次 watcher 执行，fn依次执行，并且把 fn 都订阅到 dep 中
-    watcher(() => {
-      el.innerHTML = `<h1>${vmData.num}</h1>`
-    })
+      // 期望响应式数据变化页面重新渲染，定义一个监控函数，数据一变化就执行页面重新渲染
+      // 第一次 watcher 执行，fn依次执行，并且把 fn 都订阅到 dep 中
+      watcher(() => {
+        el.innerHTML = `<h1>${vmData.num}</h1>`
+      })
 
-    watcher(() => {
-      console.log(`当前 num 的值${vmData.num}`)
-    })
+      watcher(() => {
+        console.log(`当前 num 的值${vmData.num}`)
+      })
 
-    const btn = document.querySelector('#btn')
+      const btn = document.querySelector('#btn')
 
-    // 用户点击 数据发生变化，fn 再次依次执行
-    btn.addEventListener('click', () => {
-      vmData.num++
-    })
-
-  </script>
-</body>
-
+      // 用户点击 数据发生变化，fn 再次依次执行
+      btn.addEventListener('click', () => {
+        vmData.num++
+      })
+    </script>
+  </body>
 </html>
 ```
 
@@ -230,13 +228,19 @@ proxyData.arr.length = 2 // vue 无法处理
 > 手动操作 `DOM` 永远是最快的，性能最好的。任何一个项目，如果手动去优化，性能都可以提高很多，但是得不偿失
 
 ### 响应式更新
+
 <!-- 异步更新，同一个 watcher 会去重，渲染节流，同一个组件的不同属性也是同一个 watcher，多次调用同一属性的 set 等于同一个 watcher 会进入更新队列 -->
+
 任何⼀个 `Vue Component` 都有⼀个与之对应的 `Watcher` 实例
 
 `Vue` 的 `data` 上的属性会被添加 `getter` 和 `setter` 属性
+
 <!-- render函数执行，渲染页面 -->
+
 当 `Vue Component render` 函数被执⾏的时候，`data` 上会被触碰(touch)，即被读，`getter` ⽅法会被调⽤，此时 `Vue` 会去记录此 `Vue component` 所依赖的所有 `data`(这⼀过程被称为依赖收集)
+
 <!-- 包括依赖父组件 props 的子组件也会更新，更新组件是通过 dom diff 更新的，依赖收集仅提供通知作用 -->
+
 `data` 被改动时(主要是⽤户操作)，`setter` ⽅法会被调⽤，此时 `Vue` 会**去通知所有依赖于此 `data` 的组件**去调⽤他们的 `render` 函数进⾏更新
 
 ![](../../Images/vue.png)
@@ -277,7 +281,7 @@ proxyData.arr.length = 2 // vue 无法处理
 
 在组件初始化 `props` 的时候，就实现了对于 `props` 上字段变更的劫持。也就是变成了响应式数据，所以只要 `ChildComponent` 在模板里也读取了这个属性，自然也能精确的收集到依赖。
 
-#### vm.$forceUpdate
+#### vm.\$forceUpdate
 
 `vm.$forceUpdate`：迫使 `Vue` 实例重新渲染。
 
@@ -299,9 +303,9 @@ const UserExtend = Vue.extend()
 const extend = new UserExtend({
   name: 'extend',
   el: '.app',
-  mounted(){ 
+  mounted() {
     console.log(this.$root, this.$parent)
-  }, 
+  },
   render(h) {
     return h('h1', {}, 'hello world')
   }
@@ -319,10 +323,17 @@ const extend = new UserExtend({
 
 ```js
 // 注册组件，传入一个扩展过的构造器
-Vue.component('my-component', Vue.extend({ /* ... */ }))
+Vue.component(
+  'my-component',
+  Vue.extend({
+    /* ... */
+  })
+)
 
 // 注册组件，传入一个选项对象 (自动调用 Vue.extend)
-Vue.component('my-component', { /* ... */ })
+Vue.component('my-component', {
+  /* ... */
+})
 
 // 获取注册的组件 (始终返回构造器)
 var MyComponent = Vue.component('my-component')
@@ -353,7 +364,7 @@ Vue.component('my-component', {
   },
   // 为了弥补缺少的实例
   // 提供第二个参数作为上下文
-  render: function (createElement, context) {
+  render: function(createElement, context) {
     // ...
   }
 })
@@ -362,8 +373,7 @@ Vue.component('my-component', {
 在 `2.5.0` 及以上版本中，如果你使用了单文件组件，那么基于模板的函数式组件可以这样声明：
 
 ```html
-<template functional>
-</template>
+<template functional> </template>
 ```
 
 组件需要的一切都是通过 `context` 参数传递，它是一个包括如下字段的对象：
@@ -402,10 +412,11 @@ Vue.component('my-component', {
 ### v-if 和 v-show 的区别
 
 `v-if` 是真正的条件渲染
+
 1. 因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被**销毁和重建**
 2. 也是惰性的：如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。
 
-`v-show` 就简单得多——不管初始条件是什么，元素总是会被渲染，并且只是简单地基于 `CSS` 的 `display: none` 属性进行切换。
+`v-show`  就简单得多——不管初始条件是什么，元素总是会被渲染，并且只是简单地基于 `CSS` 的 `display: none` 属性进行切换。
 
 所以，`v-if` 适用于在运行时很少改变条件，不需要频繁切换条件的场景；`v-show` 则适用于需要非常频繁切换条件的场景。
 
@@ -428,7 +439,9 @@ Vue.component('my-component', {
 ![](../../Images/vue_life.png)
 
 ## 组件通信
+
 <!-- 组件的调用顺序都是先父后子,渲染完成的顺序是先子后父 -->
+
 ## SPA
 
 `SPA`（ single-page application ）仅在 `Web` 页面初始化时加载相应的 `HTML`、`JavaScript` 和 `CSS`。一旦页面加载完成，`SPA` 不会因为用户的操作而进行页面的重新加载或跳转；取而代之的是利用路由机制实现 `HTML` 内容的变换，`UI` 与用户的交互，避免页面的重新加载。
@@ -449,11 +462,11 @@ Vue.component('my-component', {
 
 ```js
 let Vue
-const install = (_Vue) => {
+const install = _Vue => {
   Vue = _Vue
   Vue.mixin({
     beforeCreate() {
-      console.log('当前组件实例', this);
+      console.log('当前组件实例', this)
       // 组件执行顺序 先父后子, mounted 先子后父
       if (this.$options.store) {
         this.$store = this.$options.store
@@ -461,7 +474,7 @@ const install = (_Vue) => {
         // 一层一层往下赋值 $store
         this.$store = this.$parent && this.$parent.$store
       }
-    },
+    }
   })
 }
 
@@ -481,7 +494,7 @@ class Store {
   }
 }
 
-export default {install, Store}
+export default { install, Store }
 ```
 
 ```js
@@ -492,18 +505,18 @@ import Vuex from './vuex'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
-	state: {
-		age: 28
-	}
+  state: {
+    age: 28
+  }
 })
 
 new Vue({
-	mounted() {
-		console.log('vm store', this.$store)
-	},
-	// 注入根 store 然后根据 $parent 递归 注入子 $store
-	store,
-	render: h => h(App)
+  mounted() {
+    console.log('vm store', this.$store)
+  },
+  // 注入根 store 然后根据 $parent 递归 注入子 $store
+  store,
+  render: h => h(App)
 }).$mount('#app')
 ```
 
@@ -514,7 +527,7 @@ new Vue({
 `scoped` 是通过使用 `PostCSS` 来进行转换，给 `DOM` 节点增加一个 `data-v-xxx` 的唯一属性，再利用 `CSS` 的属性选择器，来达到样式隔离的效果。
 
 ```js
-<style scoped> 
+<style scoped>
   .a {
     color: red;
   }
@@ -537,21 +550,23 @@ new Vue({
 我们可以使用 `>>>` 操作符
 
 ```html
-<style scoped> 
+<style scoped>
   .a >>> .b {
     color: red;
   }
 </style>
 ```
-上面代码会被编译为 `.a[data-v-xxx] .b ` 
+
+上面代码会被编译为 `.a[data-v-xxx] .b`
 
 - 不推荐使用 `/deep/`
 - 在 `Sass` 之类的预处理器中使用 `::v-deep`
 - 没有预处理器的情况下使用 `>>>`
-  
-使用上面的操作符，`style` 必须有 `scoped` 属性
 
+使用上面的操作符，`style` 必须有 `scoped` 属性
 
 <!-- 在React + Redux体系中，数据变更与视图变更之间的过程，就是经过了“精确——不精确——精确”这样的步骤。前一步是简单合并，而且是要改变数据引用的合并，后一步是diff。
 
 任何时候对视图进行修改，都应该造成“整个视图被重新渲染”的效果。其它的方面都是在这个效果的基础上进行的优化，而非破坏这个效果 -->
+
+<!-- 如果你在用 Vue 开发应用，那么就要当心内存泄漏的问题。这个问题在单页应用 (SPA) 中尤为重要，因为在 SPA 的设计中，用户使用它时是不需要刷新浏览器的，所以 JavaScript 应用需要自行清理组件来确保垃圾回收以预期的方式生效。 -->
