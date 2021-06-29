@@ -4,8 +4,6 @@
 
 **笔记内容**：[好看是第一生产力](#好看是第一生产力) | [JavaScript](#javascript) | [浏览器](#浏览器) | [构建工具](#构建工具) | [CSS](#CSS) | [前端武器库](#前端武器库)
 
-<!-- | [设计模式](#设计模式) | [算法](#算法) -->
-
 ## 好看是第一生产力
 
 - `[Windows]` [Windows Terminal 完美配置 PowerShell](win/powershell_terminal.md)

@@ -165,3 +165,50 @@ let num = 1 as const
 let arr: readonly [string, number] = ['h', 1]
 let arr1 = ['h', 1] as const
 // 因为是只读的所以字面量类型和基础类型都为 'h', 1 不可变？
+
+unknown
+unknown type 是 TypeScript 中的 Top Type。符号是(⊤)
+
+换句话说，就是任何类型都是 unknown 的子类型，unknown 是所有类型的父类型。
+
+换句最简单的话说，就是 任何值都可以赋值给类型是 unkown 的变量，与其对应的是，我们不能把一个 unkown 类型的值赋值给任意非 unkown 类型的值。
+
+let a: unknown = undefined
+a = Symbol('deep dark fantasy')
+a = {}
+a = false
+a = '114514'
+a = 1919n
+
+let b : bigint = a; // Type 'unknown' is not assignable to type 'bigint'.
+
+never
+never 的行为与 unknown 相反，never 是 TypeScript 中的 Bottom Type。符号是(⊥)
+
+换句话说，就是任何类型都是 never 的父类型，never 是所有类型的子类型。
+
+换句最简单的话说，就是类型是 never 的值都可以赋值给任何类型的变量，与其对应的是，我们不能把一个 unkown 类型的值赋值给任意非 unkown 类型的值。
+
+let a: never = undefined // Type 'undefined' is not assignable to type 'never'
+let b : bigint = a;
+某个变量的类型是 never 一般表示程序不会执行到这里。
+某个函数的返回值类型是 never，一般表示这个函数会 抛出异常，或者永不停机，不会正常返回。
+
+
+any
+any 是 ts 中让人最爱最恨的特性。它是渐进类型系统中的动态类型。
+它的出现意味着这里这一小部分将不会有任何类型检查，你想让它是啥类型，它就是啥类型。
+我们一般用于过于动态的函数的类型声明，比如 eval 之类的函数。
+或者在工程上已有的类型声明错误，我进行强制声明成 any 然后抢救一下。
+这是危险的功能，慎用！
+
+每个字面量类型都只有一个实例，所以它们也是 unit type。
+
+字面量类型
+字面量（Literal Type）主要分为 真值字面量类型（boolean literal types），数字字面量类型（numeric literal types），枚举字面量类型（enum literal types） ，大整数字面量类型（bigInt literal types）和字符串字面量类型（string literal types
+
+子类型关系
+子类型（subtyping）是类型上的二元关系。
+
+在编程语言理论中，子类型（动名词，英语：subtyping）是一种类型多态的形式。这种形式下，子类型（名词，英语：subtype）可以替换另一种相关的数据类型（超类型，英语：supertype）。也就是说，针对超类型元素进行操作的子程序、函数等程序元素，也可以操作相应的子类型。如果 S 是 T 的子类型，这种子类型关系通常写作 S <: T，意思是在任何需要使用 T 类型对象的环境中，都可以安全地使用 S 类型的对象。子类型的准确语义取决于具体的编程语言中“X 环境中，可以安全地使用 Y”的意义。编程语言的类型系统定义了各自不同的子类型关系。 由于子类型关系的存在，某个对象可能同时属于多种类型，因此，子类型（英语：subtyping）是一种类型多态的形式，也被称作子类型多态（英语：subtype polymorphism）或者包含多态（英语：inclusion polymorphism）。在面向对象程序设计中，多态一般仅指这里所说的“子类型多态”，而“参数多态”则一般被称作泛型程序设计。 子类型与面向对象语言中（类或对象）的继承是两个概念。子类型反映了类型（即面向对象中的接口）之间的关系；而继承反映了一类对象可以从另一类对象创造出来，是语言特性的实现。因此，子类型也称接口继承；继承称作实现继承。
+
