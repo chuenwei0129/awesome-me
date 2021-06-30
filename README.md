@@ -25,8 +25,9 @@
 
 ## TypeScript
 
-- `[基础]`[写给自己的 TypeScript 教程(一)](ts/ts_base.md)
-- `[进阶]`[写给自己的 TypeScript 教程(二)](ts/ts_high.md)
+- `[基础]`[写给自己的 TypeScript 教程(一)](ts/ts_1.md)
+- `[进阶]`[写给自己的 TypeScript 教程(二)](ts/ts_2.md)
+<!-- - `[]`[写给自己的 TypeScript 教程(二)](ts/ts_more.md) -->
 
 ## 框架
 
@@ -66,7 +67,7 @@
 - `[Chrome]` [Chrome DevTools 面板全攻略](ts/devTool.md)
 - `[Markdown]` [Markdown 的基本撰写和格式语法](others/markdown.md)
 
-## 技术实践
+## 技术思考
 
 <!-- - `[代码]` [前端面试八股文](js/js_code.md) -->
 <!-- - `[奇技淫巧]` [JavaScript 中的奇技淫巧]() -->
