@@ -178,6 +178,36 @@ type TupleUnshift<T extends any[], X> = [X, ...T]
 type TuplePush<T extends any[], X> = [...T, X]
 连接两个元组
 type TupleConcat<A extends any[], B extends any[]> = [...A, ...B]
+
+不过大概意思是 extends 左边联合类型被拆开判断的情况只会出现在左边是一个类型参数的情况。
+
+大概就是 type F<T> = T extends xxx 的这个左边是会被拆开，而 type F = T|1 extends xxx 的左边就不会被拆开。
+
+一脸懵逼。
+
+type UnionToIntersection<T> = [(T extends unknown ? (p: T) => void : never)] extends [(p: infer P) => void] ? P : never;
+
+这样就没有依赖那个奇怪的行为了
+
+一个不确定会不会改的地方就是只有类型参数联合类型会被拆开，这个地方不放心的话可以在外面套一个[]，变成一个一个元素的元组，这样就稳了
+
+## typescript 已经有模块系统了，为什么还需要 namespace？
+
+ts 和 js 一样需要作用与空间，模块化关键字不写就会当作一个大文件处理
+由于引入了专门的语法，不需要像 AMD 那样依靠函数作用域来隔离代码块，显得更为简洁。
+
+随着 ES2015 出现（以及随之而来的规范演进机制），TypeScript 的定位也发生了转变，不再提供 ES 规范中没有的功能，转而专注于为 ES 代码提供静态类型检查。
+
+所以必然地，TypeScript 放弃了自身的模块系统，转而使用 ES 规范中的模块系统，相应的
+这个问题等价于：
+
+柯南已经有灰原哀了，为什么还需要毛利兰？
+得先分清楚谁是青梅竹马谁是天降。
+
+放到 js 的开发环境下，比如 ts 开源项目的 tsc 编译器，最终是编译（合并）成一个大的 js 文件，所以根本没必要用 es 标准的模块，并且项目有几百个文件，如果都用标准模块去设计，一个文件平均下来得写 50-100 行的 import，并且要设计很多的包索引文件去 export 子模块；这种情况下 ns 方案显然更人性化，反正维护该项目的都是老熟人。
+
+以上就是 namespace 保留的价值，说到底其实就是 js 的原始闭包，不关注代码是同步还是异步加载的，只关注使用体验。
+
 <!-- TypeScript 有哪些设计缺陷？
 最大缺陷也是最大优势就是兼容 js 了
 

@@ -8,11 +8,16 @@
   - [常量枚举](#常量枚举)
 - [Any 类型和 Unknown 类型](#any-类型和-unknown-类型)
 - [Null 和 Undefined 类型](#null-和-undefined-类型)
+- [void 类型](#void-类型)
 - [object, Object 和 {} 类型](#object-object-和--类型)
   - [object 类型](#object-类型)
   - [{} 类型](#-类型)
   - [Object 类型](#object-类型-1)
 - [Never 类型](#never-类型)
+- [模板字面类型](#模板字面类型)
+  - [基础语法](#基础语法)
+  - [新增关键字](#新增关键字)
+  - [配合 infer](#配合-infer)
 - [断言](#断言)
   - [类型断言](#类型断言)
   - [非空断言](#非空断言)
@@ -188,11 +193,19 @@ let n: null = null
 
 默认情况下 `null` 和 `undefined` 是所有类型的子类型。 就是说你可以把 `null` 和 `undefined` 赋值给 `number` 类型的变量。然而，如果你指定了`--strictNullChecks` 标记，`null` 和 `undefined` 只能赋值给 `void` 和它们各自的类型。
 
+## void 类型
+
+对变量赋值为 `void` 类型用途不大，这时候只相当于 `undefined` 类型的别名。
+
+void 一般用于函数的返回值声明。
+
 ## object, Object 和 {} 类型
 
 ### object 类型
 
 `object` 类型是：TypeScript 2.2 引入的新类型，它用于表示非原始类型。
+
+> object is a type that represents the non-primitive type, i.e. any thing that is not number, string, boolean, symbol, null, or undefined.
 
 ### {} 类型
 
@@ -242,7 +255,9 @@ declare var Object: ObjectConstructor
 
 ## Never 类型
 
-`never` 类型表示的是那些永不存在的值的类型。 例如，`never` 类型是那些总是会抛出异常或根本就不会有返回值的函数表达式或箭头函数表达式的返回值类型。
+`never` 类型表示的是那些永不存在的值的类型。
+
+例如，`never` 类型是那些总是会抛出异常或根本就不会有返回值的函数表达式或箭头函数表达式的返回值类型。
 
 ```ts
 // 返回 never 的函数必须存在无法达到的终点
@@ -253,6 +268,59 @@ function error(message: string): never {
 function infiniteLoop(): never {
   while (true) {}
 }
+```
+
+## 模板字面类型
+
+### 基础语法
+
+```ts
+type EventName<T extends string> = `${T}Changed`
+type T0 = EventName<'foo'> // 'fooChanged'
+type T1 = EventName<'foo' | 'bar' | 'baz'> // 'fooChanged' | 'barChanged' | 'bazChanged'
+```
+
+```ts
+type Concat<S1 extends string, S2 extends string> = `${S1}${S2}`
+type T2 = Concat<'Hello', 'World'> // 'HelloWorld'
+```
+
+字符串模板中的联合类型会被展开后排列组合：
+
+```ts
+type T3 = `${'top' | 'bottom'}-${'left' | 'right'}`
+// 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
+```
+
+### 新增关键字
+
+```ts
+type Cases<T extends string> = `${uppercase T} ${lowercase T} ${capitalize T} ${uncapitalize T}`;
+type T11 = Cases<'bar'>;  // 'BAR bar Bar bar'
+```
+
+其实很简单，就是提供了几个处理方法：大写、小写，首字母大写，首字母小写。
+
+### 配合 infer
+
+```ts
+type MatchPair<S extends string> = S extends `[${infer A},${infer B}]` ? [A, B] : unknown
+type T20 = MatchPair<'[1,2]'> // ['1', '2']
+type T21 = MatchPair<'[foo,bar]'> // ['foo', 'bar']
+```
+
+配合 `...` 拓展运算符和 `infer` 递归，甚至可以实现 `Join` 功能：
+
+```ts
+type Join<T extends (string | number | boolean | bigint)[], D extends string> = T extends []
+  ? ''
+  : T extends [unknown]
+  ? `${T[0]}`
+  : T extends [unknown, ...infer U]
+  ? `${T[0]}${D}${Join<U, D>}`
+  : string
+type T30 = Join<[1, 2, 3, 4], '.'> // '1.2.3.4'
+type T31 = Join<['foo', 'bar', 'baz'], '-'> // 'foo-bar-baz'
 ```
 
 ## 断言
