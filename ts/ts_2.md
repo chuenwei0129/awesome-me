@@ -20,6 +20,25 @@
   - [ReturnType](#returntype)
   - [AxiosReturnType](#axiosreturntype)
 - [tsconfig 重要字段](#tsconfig-重要字段)
+- [环境 Ambient Modules](#环境-ambient-modules)
+- [深入类型系统](#深入类型系统)
+  - [基本类型](#基本类型)
+  - [复合类型](#复合类型)
+  - [复合类型间的转换](#复合类型间的转换)
+  - [map 上的操作](#map-上的操作)
+  - [映射类型和同态变换](#映射类型和同态变换)
+  - [常用工具类型](#常用工具类型)
+    - [由 set 生成 map](#由-set-生成-map)
+    - [保留 map 的一部分](#保留-map-的一部分)
+    - [删除 map 的一部分](#删除-map-的一部分)
+    - [保留 set 的一部分](#保留-set-的一部分)
+    - [删除 set 的一部分](#删除-set-的一部分)
+    - [获取函数返回值的类型 ReturnType](#获取函数返回值的类型-returntype)
+    - [类型的递归](#类型的递归)
+    - [never infer typeof 关键字](#never-infer-typeof-关键字)
+  - [实战演练](#实战演练)
+  - [! 断言](#-断言)
+- [注意事项](#注意事项)
 
 ## 泛型
 
@@ -399,3 +418,315 @@ compilerOptions 每个选项的详细说明如下：
   }
 }
 ```
+
+## 环境 Ambient Modules
+
+在实际应用开发时有一种场景，当前作用域下可以访问某个变量，但这个变量并不由开发者控制。例如通过 Script 标签直接引入的第三方库 CDN、一些宿主环境的 API 等。这个时候可以利用 TS 的环境声明功能，来告诉 TS 当前作用域可以访问这些变量，以获得类型提醒。
+
+具体有两种方式，`declare` 和三斜线指令。
+
+```ts
+declare const IS_MOBILE = true // 编译后此行消失
+const wording = IS_MOBILE ? '移动端' : 'PC 端'
+```
+
+用三斜线指令可以一次性引入整个类型声明文件。
+
+```ts
+/// <reference path="../typings/monaco.d.ts" />
+const range = new monaco.Range(2, 3, 6, 7)
+```
+
+## 深入类型系统
+
+### 基本类型
+
+基本类型，也可以理解为原子类型。包括 `number`、`boolean`、`string`、`null`、`undefined`、`function`、`array`、字面量（true，false，1，2，‘a’）等。它们无法再细分。
+
+### 复合类型
+
+`TypeScript` 的复合类型可以分为两类：`set` 和 `map`。`set` 是指一个无序的、无重复元素的集合。而 `map` 则和 `JS` 中的对象一样，是一些没有重复键的键值对。
+
+```ts
+// set
+type Size = 'small' | 'default' | 'big' | 'large'
+
+// map
+interface IA {
+  a: string
+  b: number
+}
+```
+
+### 复合类型间的转换
+
+```ts
+// map => set
+type IAKeys = keyof IA // 'a' | 'b'
+type IAValues = IA[keyof IA] // string | number
+
+// set => map
+type SizeMap = {
+  [k in Size]: number
+}
+// 等价于
+type SizeMap2 = {
+  small: number
+  default: number
+  big: number
+  large: number
+}
+```
+
+### map 上的操作
+
+```ts
+// 索引取值
+type SubA = IA['a'] // string
+
+// 属性修饰符
+type Person = {
+  age: number
+  readonly name: string // 只读属性，初始化时必须赋值
+  nickname?: string // 可选属性，相当于 | undefined
+}
+```
+
+### 映射类型和同态变换
+
+在 TypeScript 中，有以下几种常见的映射类型。它们的共同点是只接受一个传入类型，生成的类型中 `key` 都来自于 `keyof` 传入的类型，`value` 都是传入类型的 `value` 的变种。
+
+```ts
+type Partial<T> = { [P in keyof T]?: T[P] } // 将一个 map 所有属性变为可选的
+type Required<T> = { [P in keyof T]-?: T[P] } // 将一个 map 所有属性变为必选的
+type Readonly<T> = { readonly [P in keyof T]: T[P] } // 将一个 map 所有属性变为只读的
+type Mutable<T> = { -readonly [P in keyof T]: T[P] } // ts 标准库未包含，将一个 map 所有属性变为可写的
+```
+
+此类变换，在 `TS` 中被称为同态变换。在进行同态变换时，`TS` 会先复制一遍传入参数的属性修饰符，再应用定义的变换。
+
+```ts
+interface Fruit {
+  readonly name: string
+  size: number
+}
+type PF = Partial<Fruit> // PF.name 既只读又可选，PF.size 只可选
+```
+
+### 常用工具类型
+
+#### 由 set 生成 map
+
+```ts
+type Record<K extends keyof any, T> = { [P in K]: T }
+
+type Size = 'small' | 'default' | 'big'
+/*
+{
+    small: number
+    default: number
+    big: number
+}
+ */
+type SizeMap = Record<Size, number>
+```
+
+#### 保留 map 的一部分
+
+```ts
+type Pick<T, K extends keyof T> = { [P in K]: T[P] }
+/*
+{
+    default: number
+    big: number
+}
+ */
+type BiggerSizeMap = Pick<SizeMap, 'default' | 'big'>
+```
+
+#### 删除 map 的一部分
+
+```ts
+type Omit<T, K> = Pick<T, Exclude<keyof T, K>>
+/*
+{
+    default: number
+}
+ */
+type DefaultSizeMap = Omit<BiggerSizeMap, 'big'>
+```
+
+#### 保留 set 的一部分
+
+```ts
+type Extract<T, U> = T extends U ? T : never
+
+type Result = 1 | 2 | 3 | 'error' | 'success'
+type StringResult = Extract<Result, string> // 'error' | 'success
+```
+
+#### 删除 set 的一部分
+
+```ts
+type Exclude<T, U> = T extends U ? never : T
+type NumericResult = Exclude<Result, string> // 1 | 2 | 3
+```
+
+#### 获取函数返回值的类型 ReturnType
+
+注意不要滥用这个工具类型，应该尽量多手动标注函数返回值类型。用`ReturnType`是由实现反推手动注解，而实现往往容易变且容易出错，手动注解则相对稳定。另一方面，`ReturnType`过多也会降低代码可读性。
+
+```ts
+type ReturnType<T> = T extends (...args: any[]) => infer R ? R : any
+
+function f() {
+  return { a: 3, b: 2 }
+}
+/*
+{
+    a: number
+    b: number
+}
+ */
+type FReturn = ReturnType<f>
+```
+
+#### 类型的递归
+
+`TS`原生的`Readonly`只会限制一层写入操作，我们可以利用递归来实现深层次的`Readonly`。但要注意，`TS`对最大递归层数做了限制，最多递归 5 层。
+
+```ts
+type DeepReadonly<T> = {
+  readonly [P in keyof T]: DeepReadonly<T[P]>
+}
+
+interface SomeObject {
+  a: {
+    b: {
+      c: number
+    }
+  }
+}
+
+const obj: Readonly<SomeObject> = { a: { b: { c: 2 } } }
+obj.a.b.c = 3 // TS不会报错
+
+const obj2: DeepReadonly<SomeObject> = { a: { b: { c: 2 } } }
+obj2.a.b.c = 3 // Cannot assign to 'c' because it is a read-only property.
+```
+
+#### never infer typeof 关键字
+
+`never` 是 `|` 运算的幺元，即 `x | never = x`。
+
+`infer` 的作用是让`TypeScript`自己推断，并将推断的结果存储到一个临时名字中，并且只能用于`extends`语句中。它与泛型的区别在于，泛型是声明一个“参数”，而`infer`是声明一个“中间变量”。
+
+```ts
+type Unpacked<T> = T extends (infer U)[]
+  ? U
+  : T extends (...args: any[]) => infer U
+  ? U
+  : T extends Promise<infer U>
+  ? U
+  : T
+
+type T0 = Unpacked<string> // string
+type T1 = Unpacked<string[]> // string
+type T2 = Unpacked<() => string> // string
+type T3 = Unpacked<Promise<string>> // string
+type T4 = Unpacked<Promise<string>[]> // Promise<string>
+type T5 = Unpacked<Unpacked<Promise<string>[]>> // string
+```
+
+> `typeof` 用于获取一个“常量”的类型，这里的“常量”是指任何可以在编译期确定的东西，例如`const`、`function`、`class`等。它是从 实际运行代码 通向 类型系统 的单行道。理论上，任何运行时的符号名想要为类型系统所用，都要加上 `typeof`。但是`class` 比较特殊不需要加，因为 `ts` 的 `class` 出现得比 `js` 早，现有的为兼容性解决方案。
+
+在使用 `class` 时，`class` 名表示实例类型，`typeof class` 表示 `class` 本身类型。没错，这个关键字和 `js` 的 `typeof` 关键字重名了 :)。
+
+```ts
+const config = { width: 2, height: 2 }
+function getLength(str: string) {
+  return str.length
+}
+
+type TConfig = typeof config // { width: number, height: number }
+type TGetLength = typeof getLength // (str: string) => number
+```
+
+### 实战演练
+
+我在项目中遇到这样一种场景，需要获取一个类型中所有`value`为指定类型的`key`。例如，已知某个`React`组件的`props`类型，我需要“知道”（编程意义上）哪些参数是`function`类型。
+
+```ts
+interface SomeProps {
+  a: string
+  b: number
+  c: (e: MouseEvent) => void
+  d: (e: TouchEvent) => void
+}
+// 如何得到 'c' | 'd' ？
+```
+
+分析一下这里的思路，我们需要从一个 `map` 得到一个 `set`，而这个 `set` 是 `map` 的 `key` 的子集，筛选子集的条件是 `value` 的类型。要构造 `set` 的子集，需要用到 `never`；要实现条件判断，需要用到 `extends`；而要实现 `key` 到 `value` 的访问，则需要索引取值。经过一些尝试后，解决方案如下。
+
+```ts
+type GetKeyByValueType<T, Condition> = {
+  [K in keyof T]: T[K] extends Condition ? K : never
+}[keyof T]
+
+type FunctionPropNames = GetKeyByValueType<SomeProps, Function> // 'c' | 'd'
+```
+
+这里的运算过程如下：
+
+```ts
+// 开始
+{
+    a: string
+    b: number
+    c: (e: MouseEvent) => void
+    d: (e: TouchEvent) => void
+}
+// 第一步，条件映射
+{
+    a: never
+    b: never
+    c: 'c'
+    d: 'd'
+}
+// 第二步，索引取值
+never | never | 'c' | 'd'
+// never的性质
+'c' | 'd'
+```
+
+### ! 断言
+
+`!` 的作用是断言某个变量不会是 `null / undefined`，告诉编译器停止报错。这里由用户确保断言的正确。它和刚刚进入 `EcmaScript` 语法提案 `stage 3` 的 `Optional Chaining` 特性不同。`Optional Chaining` 特性可以保证访问的安全性，即使在 `undefined` 上访问某个键也不会抛出异常。而 `!` 只是消除编译器报错，不会对运行时行为造成任何影响。
+
+```ts
+// TypeScript
+mightBeUndefined!.a = 2
+// 编译为
+mightBeUndefined.a = 2
+```
+
+## 注意事项
+
+- 🐯 `enum` 在 `TS` 中出现的比较早，它引入了 `JavaScript` 没有的数据结构（编译成一个双向 map），入侵了运行时，与 TypeScript 宗旨不符。用 `string literal union（’small’ | ‘big’ | ‘large’）` 可以做到相同的事，且在 `debug` 时可读性更好。如果很在意条件比较的性能，应该用二进制 `flag` 加位运算。
+
+- 🐒 `// @ts-ignore` 用于忽略下一行的报错，尽量少用。
+
+- 🐯 类型转换的语法为 `<类型名> xxx` 或 `xxx as` 类型名。推荐始终用 `as` 语法，因为第一种语法无法在 `tsx` 文件使用，而且容易和泛型混淆。
+
+- 🐧 一般只有这几种场景需要使用类型转换：
+
+  - 自动推断不准
+  - TS 报错
+  - 想不出更好的类型编写方法，手动抄近
+  - 临时“放飞自我”
+
+- 🐢 在使用类型转换时，应该遵守几个原则：
+  - 若要放松限制，只可放松到能运行的最严格类型上
+  - 如果不知道一个变量的精确类型，只标注到大概类型（例如 `any[]`）也比 `any` 好
+  - 任何一段“放飞自我”（完全没有类型覆盖）区代码不应超过 `2` 行，应在出现第一个可以确定类型的变量时就补上标注
+  - 在编写 `TS` 程序时，我们的目标是让类型覆盖率无限接近 `100%`。

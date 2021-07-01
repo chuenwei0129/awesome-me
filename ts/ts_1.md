@@ -460,16 +460,22 @@ console.log('abc:', abc)
 ## 函数重载
 
 ```ts
+function add(a: number, b: number): number {
+  return a + b
+}
+function add(a: string, b: string): string {
+  return a + b + '!'
+}
+
+// 只能支持函数签名加函数实现的方式重载
 function add(a: number, b: number): number
 function add(a: string, b: string): string
-function add(a: string, b: number): string
-function add(a: number, b: string): string
-function add(a: Combinable, b: Combinable) {
-  // type Combinable = string | number;
-  if (typeof a === 'string' || typeof b === 'string') {
-    return a.toString() + b.toString()
+function add(a: any, b: any) {
+  if (typeof a === 'string') {
+    return a + b + '!'
+  } else {
+    return a + b
   }
-  return a + b
 }
 ```
 
@@ -514,6 +520,7 @@ console.log(hello('hello')) // 'hello'
 ## 参数强校验
 
 ```ts
+// 案例一
 interface Person {
   name: string
   age?: number
@@ -529,6 +536,28 @@ const person = { name: 'chu', sex: 'mail' }
 
 logger(person) // 不会报错
 logger({ name: 'chu', sex: 'mail' }) // 强校验
+
+// 案例二
+interface Point {
+  x: number
+  y: number
+}
+const point: Point = {
+  x: 1,
+  y: 2,
+  z: 3 // 报错，多余的属性
+}
+
+interface Point {
+  x: number
+  y: number
+}
+const tmp = {
+  x: 1,
+  y: 2,
+  z: 3
+}
+const point: Point = tmp // 不报错
 ```
 
 ## 类

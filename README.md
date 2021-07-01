@@ -27,7 +27,8 @@
 
 - `[基础]`[写给自己的 TypeScript 教程(一)](ts/ts_1.md)
 - `[进阶]`[写给自己的 TypeScript 教程(二)](ts/ts_2.md)
-<!-- - `[]`[写给自己的 TypeScript 教程(二)](ts/ts_more.md) -->
+- `[思考]`[写给自己的 TypeScript 教程(三)](ts/ts_3.md)
+- `[实践]`[写给自己的 TypeScript 教程(四)](ts/ts_4.md)
 
 ## 框架
 
