@@ -164,7 +164,7 @@ interface StringArray1 {
 }
 ```
 
-为了同时支持两种索引类型，就得要求数字索引的返回值必须是字符串索引返回值的子类。**其中的原因就是当使用数值索引时，JavaScript 在执行索引操作时，会先把数值索引先转换为字符串索引。**所以 `keyof { [x: string]: Person }` 的结果会返回 `string | number`。
+为了同时支持两种索引类型，就得要求数字索引的返回值必须是字符串索引返回值的子类。**其中的原因就是当使用数值索引时，JavaScript 在执行索引操作时，会先把数值索引先转换为字符串索引。** 所以 `keyof { [x: string]: Person }` 的结果会返回 `string | number`。
 
 ### in 关键字
 
@@ -186,6 +186,8 @@ type ReturnType<T> = T extends (...args: any[]) => infer R ? R : any
 ```
 
 以上代码中 `infer R` 就是声明一个变量来承载传入函数签名的返回值类型，简单说就是用它取到函数返回值的类型方便之后使用。
+
+> 🦶 `infer` 的作用是让 `TypeScript` 自己推断，并将推断的结果存储到一个临时名字中，并且只能用于 `extends` 语句中。它与泛型的区别在于，泛型是声明一个“参数”，而 `infer` 是声明一个“中间变量”。
 
 ### extends 关键字
 
