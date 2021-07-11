@@ -37,10 +37,10 @@ const path = require('path')
 
 // read().then(data => console.log(data))
 
-function * gen() {
-	const name = yield fs.readFile(path.resolve(__dirname, 'test.txt'))
-	const data = yield fs.readFile(path.resolve(__dirname, name.toString()))
-	return data
+function* gen() {
+  const name = yield fs.readFile(path.resolve(__dirname, 'test.txt'))
+  const data = yield fs.readFile(path.resolve(__dirname, name.toString()))
+  return data
 }
 
 // const it = gen()
@@ -57,26 +57,29 @@ function * gen() {
 // 找规律 递归
 
 function co(it) {
-	return new Promise((resolve, reject) => {
-		const next = (data) => {
-			const { value, done } = it.next(data)
-			if (!done) {
-				Promise.resolve(value).then(data => {
-					next(data)
-				}, r => {
-					it.throw(r)
-					reject(r)
-				})
-			} else {
-				resolve(value)
-			}
-		}
-		next()
-	})
+  return new Promise((resolve, reject) => {
+    const next = data => {
+      const { value, done } = it.next(data)
+      if (!done) {
+        Promise.resolve(value).then(
+          data => {
+            next(data)
+          },
+          r => {
+            it.throw(r)
+            reject(r)
+          }
+        )
+      } else {
+        resolve(value)
+      }
+    }
+    next()
+  })
 }
 
 co(gen()).then(data => {
-	console.log(data)
+  console.log(data)
 })
 
 // 完美

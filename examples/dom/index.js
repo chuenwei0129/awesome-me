@@ -17,9 +17,11 @@
 
 // map + reduce
 
-const tagsMap = [...document.querySelectorAll('*')].map(el => el.tagName).reduce((res, cur) => {
-	res[cur] = !res[cur] ? 1 : res[cur] + 1
-	return res
-}, {})
+const tagsMap = [...document.querySelectorAll('*')]
+  .map(el => el.tagName)
+  .reduce((res, cur) => {
+    res[cur] = !res[cur] ? 1 : res[cur] + 1
+    return res
+  }, {})
 
 console.log(tagsMap)

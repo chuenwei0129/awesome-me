@@ -1,43 +1,43 @@
 const context = {
-	next: 0,
-	prev: 0,
-	done: false,
-	stop: function() {
-		this.done = true
-	}
+  next: 0,
+  prev: 0,
+  done: false,
+  stop: function () {
+    this.done = true
+  }
 }
 
 function gen(context) {
-	// while (1) {
-	switch (context.prev = context.next) {
-	case 0:
-		context.next = 2
-		return 'result1'
+  // while (1) {
+  switch ((context.prev = context.next)) {
+    case 0:
+      context.next = 2
+      return 'result1'
 
-	case 2:
-		context.next = 4
-		return 'result2'
+    case 2:
+      context.next = 4
+      return 'result2'
 
-	case 4:
-		context.next = 6
-		return 'result3'
+    case 4:
+      context.next = 6
+      return 'result3'
 
-	case 6:
-		context.stop()
-		return undefined
-	}
-	// }
+    case 6:
+      context.stop()
+      return undefined
+  }
+  // }
 }
 
-const foo = function() {
-	return {
-		next: function() {
-			return {
-				value: gen(context),
-				done: context.done
-			}
-		}
-	}
+const foo = function () {
+  return {
+    next: function () {
+      return {
+        value: gen(context),
+        done: context.done
+      }
+    }
+  }
 }
 
 // 发现它是每生foo()执行一次 ，就会执行一次wrap方法，而在wrap方法里就会new 一个Context对象。这就说明了每个迭代器的context是独立的。
