@@ -14,10 +14,8 @@ let j = 1
 
 while (j <= arr.length - 1) {
   if (arr[i] !== arr[j]) {
-    console.log(`${arr[i]}出现了${j-i}次`);
+    console.log(`${arr[i]}出现了${j - i}次`)
     i = j
   }
   j++
 }
-
-

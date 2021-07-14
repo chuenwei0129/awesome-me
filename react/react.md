@@ -78,11 +78,30 @@ handleClick()
 console.log(`state3: `, state)
 ```
 
-### concurrent 模式
+### startTransition
 
-<iframe src="https://codesandbox.io/embed/react-18-xintexing-djkgs?autoresize=1&expanddevtools=1&fontsize=13&hidenavigation=1&theme=light"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="react 18 新特性"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+startTransition 做的事情很简单，类似这样：
+
+let isInTransition = false
+
+function startTransition(fn) {
+isInTransition = true
+fn()
+isInTransition = false
+}
+也就是说，当调用 startTransition，在其上下文中获取到的全局变量 isInTransition 为 true。
+
+如果 startTransition 的回调函数 fn 中包含更新状态的方法（比如上文 Demo 中的 setTreeLean），
+
+那么这次更新就会被标记为 isTransition，类似这样：
+
+// 调用 setTreeLean 后会执行的方法（伪代码）
+function setState(value) {
+stateQueue.push({
+nextState: value,
+isTransition: isInTransition
+})
+}
+代表这是一个低优先级的过渡更新。
+
+接下来，就是 React 内部的调度、批处理与更新流程了。
