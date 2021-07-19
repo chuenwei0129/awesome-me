@@ -15,7 +15,7 @@ class LinkedList {
   }
 
   // 根据 position 获取链表节点，指针循环线性向下查找，数组可以直接通过下标查找
-  getNode(position) {
+  getNode(position: number) {
     // 下标边界
     if (position < 0 || position >= this._size) throw new Error(`out range`)
     let current = this._head
@@ -36,7 +36,7 @@ class LinkedList {
     this._size++
   }
   // 指定具体位置添加链表
-  appendAt(position, value) {
+  appendAt(position: number, value) {
     if (position < 0 || position > this._size) throw new Error(`下标越界`)
     const newNode = new LinkedNode(value)
     if (position === 0) {
@@ -51,7 +51,7 @@ class LinkedList {
     this._size++
   }
   // 删除
-  removeAt(position) {
+  removeAt(position: number) {
     if (position < 0 || position >= this._size) throw new Error(`下标越界`)
     if (position === 0) {
       this._head = this._head.next
