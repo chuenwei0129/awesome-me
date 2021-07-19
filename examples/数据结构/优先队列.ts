@@ -1,9 +1,6 @@
 // 辅助类
 class QueueItem {
-  constructor(public element: unknown, public priority: number) {
-    this.element = element
-    this.priority = priority
-  }
+  constructor(public element: unknown, public priority: number) {}
 }
 
 class PriorityQueue {
