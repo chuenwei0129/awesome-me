@@ -7,11 +7,9 @@ class CircularLinkedNode {
 
 class CircularLinkedList {
   private _head: null | CircularLinkedNode
-  private _tail: null | CircularLinkedNode
   private _size: number
   constructor() {
     this._head = null
-    this._tail = null
     this._size = 0
   }
 
@@ -34,10 +32,6 @@ class CircularLinkedList {
       const prevNode = this.getNode(position - 1)
       newNode.next = prevNode.next
       prevNode.next = newNode
-
-      if (position === this._size) {
-        this._tail = newNode
-      }
     }
     this._size++
   }
@@ -49,14 +43,12 @@ class CircularLinkedList {
     } else {
       const lastNode = this.getNode(this._size - 1)
       lastNode.next = newNode
-      // 尾节点
-      this._tail = newNode
     }
     this._size++
   }
 
   tail() {
-    return this._tail
+    return this.getNode(this._size - 1)
   }
 
   head() {

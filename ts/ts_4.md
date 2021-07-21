@@ -1,5 +1,8 @@
 # 写给自己的 TypeScript 教程(四)<!-- omit in toc -->
 
+
+
+
 ## Typescript 配合 React 实践备忘录
 
 ## 类型体操 [type-challenges](https://github.com/type-challenges/type-challenges/blob/master/README.zh-CN.md)
@@ -34,3 +37,16 @@ interface Result {
 你只需要在类型层面实现这个功能 - 不需要实现任何 TS/JS 的实际逻辑。
 
 你可以假设 key 只接受字符串而 value 接受任何类型，你只需要暴露它传递的类型而不需要进行任何处理。同样的 key 只会被使用一次。
+
+去除第一个元素
+type TupleTail<T extends any[]> = T extends [x: any, ...other: infer R] ? R : []
+取得最后一个元素
+type TupleLast<T extends any[]> = T extends [x: any, ...other: infer R] ? T[R['length']] : undefined
+去除最后一个元素
+type TupleInit<T extends any[]> = T extends [...f: infer R1, l: infer _R2] ? R1 : undefined
+从头部加入一个元素
+type TupleUnshift<T extends any[], X> = [X, ...T]
+从尾部加入一个元素
+type TuplePush<T extends any[], X> = [...T, X]
+连接两个元组
+type TupleConcat<A extends any[], B extends any[]> = [...A, ...B]

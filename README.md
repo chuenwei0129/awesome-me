@@ -6,7 +6,6 @@
 
 ## 扯点概念
 
-
 ## 好看是第一生产力
 
 - `[Windows]` [Windows Terminal 完美配置 PowerShell](win/powershell_terminal.md)

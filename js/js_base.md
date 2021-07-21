@@ -51,7 +51,6 @@ JavaScript 中有八种基本的数据类型（前七种为基本数据类型，
 - `symbol` 用于唯一的标识符。
 - `object` 用于更复杂的数据结构。
 
-
 ### 值类型和引用类型
 
 值类型：字符串（string）、数值（number）、布尔值（boolean）、undefined、null、symbol、bigInt
@@ -87,9 +86,9 @@ console.log(foo, bar) // { a: 2, b: 2 }, { a: 2, b: 2 }
 
 ```js
 function test(person) {
-	person.name = 'chu'
-	person = { name: 'bar', age: 18 }
-	return person
+  person.name = 'chu'
+  person = { name: 'bar', age: 18 }
+  return person
 }
 const p1 = { name: 'foo', age: 25 }
 const p2 = test(p1)
@@ -109,8 +108,8 @@ console.log(p2) // -> { name: 'bar', age: 18 }
 - 函数形式：`typeof(x)`。
 
 ```js
-console.log(typeof null) // 'object' 
-console.log(typeof Array.isArray) // 'function' 
+console.log(typeof null) // 'object'
+console.log(typeof Array.isArray) // 'function'
 console.log(typeof typeof Array.isArray) // 'string'
 ```
 
@@ -118,17 +117,17 @@ console.log(typeof typeof Array.isArray) // 'string'
 
 ```js
 function myInstanceof(left, right) {
-	//基本数据类型直接返回false
-	if (typeof left !== 'object' || left === null) return false
-	//getProtypeOf 是 Object 对象自带的一个方法，相当于 xxx.__proto__
-	let proto = Object.getPrototypeOf(left)
-	while (true) {
-		//查找到尽头，还没找到
-		if (proto === null) return false
-		//找到相同的原型对象
-		if (proto === right.prototype) return true
-		proto = Object.getPrototypeOf(proto)
-	}
+  //基本数据类型直接返回false
+  if (typeof left !== 'object' || left === null) return false
+  //getProtypeOf 是 Object 对象自带的一个方法，相当于 xxx.__proto__
+  let proto = Object.getPrototypeOf(left)
+  while (true) {
+    //查找到尽头，还没找到
+    if (proto === null) return false
+    //找到相同的原型对象
+    if (proto === right.prototype) return true
+    proto = Object.getPrototypeOf(proto)
+  }
 }
 
 console.log(myInstanceof(Number(1), Number)) // false
@@ -155,7 +154,7 @@ Object.prototype.toString.call(Array.isArray) // "[object Function]"
 ```js
 // Object 方法的参数是一个对象，它总是返回该对象，即不用转换。
 function isObject(value) {
-	return value === Object(value)
+  return value === Object(value)
 }
 ```
 
@@ -163,8 +162,8 @@ function isObject(value) {
 
 ```js
 function isEmptyObject(obj) {
-	if (typeof obj !== 'object' || obj === null) return false
-	return Object.keys(obj).length === 0 ? true : false
+  if (typeof obj !== 'object' || obj === null) return false
+  return Object.keys(obj).length === 0 ? true : false
 }
 
 console.log(isEmptyObject({})) // true
@@ -176,7 +175,7 @@ console.log(isEmptyObject([])) // true 空数组算空对象吗？
 ```js
 // 整数取整还是整数
 function isInteger(num) {
-	return typeof num === 'number' && (num | 0) === num ? true : false
+  return typeof num === 'number' && (num | 0) === num ? true : false
 }
 
 console.log(isInteger(1)) // true
@@ -209,20 +208,20 @@ console.log(Number.isNaN({})) // false
 // 判断素数只要判断到开方就行，false 跳出条件是 num % i === 0
 
 function isPrime(num) {
-	if (typeof num === 'number' && (num | 0) === num) {
-		if (num <= 1) return false
-		const N = Math.floor(Math.sqrt(num))
-		let primeState = true
-		for (let i = 2; i <= N; i++) {
-			if (num % i === 0) {
-				primeState = false
-				break
-			}
-		}
-		return primeState
-	} else {
-		return false
-	}
+  if (typeof num === 'number' && (num | 0) === num) {
+    if (num <= 1) return false
+    const N = Math.floor(Math.sqrt(num))
+    let primeState = true
+    for (let i = 2; i <= N; i++) {
+      if (num % i === 0) {
+        primeState = false
+        break
+      }
+    }
+    return primeState
+  } else {
+    return false
+  }
 }
 
 console.log(isPrime(2)) // true
@@ -270,9 +269,9 @@ console.log(String({})) // "[object Object]"
 
 ```js
 const obj = {
-	toJSON() {
-		return 'hello world'
-	},
+  toJSON() {
+    return 'hello world'
+  }
 }
 
 console.log(JSON.stringify(obj)) // "hello world"
@@ -294,10 +293,10 @@ console.log('hello world'.length) // 11
 
 ```js
 const obj = {
-	value: 3,
-	valueOf: () => 4,
-	toString: () => '5',
-	[Symbol.toPrimitive]: () => 6,
+  value: 3,
+  valueOf: () => 4,
+  toString: () => '5',
+  [Symbol.toPrimitive]: () => 6
 }
 ```
 
@@ -342,13 +341,13 @@ const obj = {
 
 ```js
 const a = {
-	i: 1,
-	toString() {
-		return this.i++
-	},
+  i: 1,
+  toString() {
+    return this.i++
+  }
 }
 if (a == 1 && a == 2 && a == 3) {
-	console.log('success')
+  console.log('success')
 }
 ```
 
@@ -356,13 +355,13 @@ if (a == 1 && a == 2 && a == 3) {
 
 ```js
 const a = {
-	i: [1, 2, 3],
-	valueOf() {
-		return this.i.shift()
-	},
+  i: [1, 2, 3],
+  valueOf() {
+    return this.i.shift()
+  }
 }
 if (a == 1 && a == 2 && a == 3) {
-	console.log('success')
+  console.log('success')
 }
 ```
 
@@ -371,11 +370,11 @@ if (a == 1 && a == 2 && a == 3) {
 ```js
 window.val = 1
 Object.defineProperty(window, 'a', {
-	get: () => this.val++,
+  get: () => this.val++
 })
 
 if (a == 1 && a == 2 && a == 3) {
-	console.log('success')
+  console.log('success')
 }
 ```
 
@@ -402,10 +401,10 @@ add(1)(2)(3)；  // 6
 实现：
 
 ```js
-const add = (sum) => {
-	const fn = (n) => add(n + sum)
-	fn.valueOf = () => sum
-	return fn
+const add = sum => {
+  const fn = n => add(n + sum)
+  fn.valueOf = () => sum
+  return fn
 }
 
 console.log(+add(1)) // 1
@@ -423,13 +422,13 @@ add(1, 2, 3);   // 6
 
 ```js
 const add = (...sums) => {
-	sums = sums.reduce((acc, cur) => acc + cur)
-	const fn = (...args) => {
-		args = args.reduce((acc, cur) => acc + cur)
-		return add(sums + args)
-	}
-	fn.valueOf = () => sums
-	return fn
+  sums = sums.reduce((acc, cur) => acc + cur)
+  const fn = (...args) => {
+    args = args.reduce((acc, cur) => acc + cur)
+    return add(sums + args)
+  }
+  fn.valueOf = () => sums
+  return fn
 }
 
 console.log(+add(1)(2, 3)) // 6
@@ -440,6 +439,7 @@ console.log(+add(1, 2, 3)) // 6
 ## 运算符
 
 ### 二元运算符 + 连接字符串
+
 通常，加号 + 用于求和。但是如果加号 + 被应用于字符串，它将合并（连接）各个字符串：
 
 ```js
@@ -456,6 +456,7 @@ console.log(2 + 2 + '2') // "42"，不是 "222"
 一元运算符加号，或者说，加号 + 应用于单个值，对数字没有任何作用。但是如果运算元不是数字，加号 + 则会将其转化为数字。
 
 例如：
+
 ```js
 // 对数字无效
 let x = 1
@@ -463,7 +464,7 @@ console.log(+x) // 1
 
 // 转化非数字
 console.log(+true) // 1
-console.log(+"")   // 0
+console.log(+'') // 0
 ```
 
 它的效果和 `Number(...)` 相同。
@@ -477,12 +478,12 @@ console.log(+"")   // 0
 1. 在使用 > 或 < 进行比较时，需要注意变量可能为 null/undefined 的情况。比较好的方法是单独检查变量是否等于 null/undefined。
 
 ```js
-console.log( null > 0 )  // false (3)
-console.log( null == 0 ) // false (4)
-console.log( null >= 0 ) // true (3)
-console.log( undefined > 0 ) // false (3)
-console.log( undefined < 0 ) // false (3)
-console.log( undefined == 0 ) // false (4)
+console.log(null > 0) // false (3)
+console.log(null == 0) // false (4)
+console.log(null >= 0) // true (3)
+console.log(undefined > 0) // false (3)
+console.log(undefined < 0) // false (3)
+console.log(undefined == 0) // false (4)
 ```
 
 ### 原地修改 / 自增 / 自减
@@ -490,12 +491,13 @@ console.log( undefined == 0 ) // false (4)
 我们经常需要对一个变量做运算，并将新的结果存储在同一个变量中。
 
 例如：
+
 ```js
 let n = 2
 n += 5 // 现在 n = 7（等同于 n = n + 5）
 n *= 2 // 现在 n = 14（等同于 n = n * 2）
 
-console.log( n ) // 14
+console.log(n) // 14
 ```
 
 这类运算符的优先级与普通赋值运算符的优先级相同，所以它们在大多数其他运算之后执行：
@@ -504,7 +506,7 @@ console.log( n ) // 14
 let n = 2
 n *= 3 + 5
 
-alert( n ) // 16 （右边部分先被计算，等同于 n *= 8）
+alert(n) // 16 （右边部分先被计算，等同于 n *= 8）
 ```
 
 对一个数进行加一、减一是最常见的数学运算符之一。
@@ -516,7 +518,8 @@ alert( n ) // 16 （右边部分先被计算，等同于 n *= 8）
 ```js
 // 以下代码中变量 a、b、c、d 的最终值分别是多少？
 
-let a = 1, b = 1
+let a = 1,
+  b = 1
 let c = ++a // ?
 let d = b++ // ?
 
@@ -526,20 +529,21 @@ let d = b++ // ?
 ### 位运算符
 
 使用 & 运算符判断一个数的奇偶
+
 ```js
 // 偶数 & 1 = 0
 // 奇数 & 1 = 1
-console.log(2 & 1)    // 0
-console.log(3 & 1)    // 1
+console.log(2 & 1) // 0
+console.log(3 & 1) // 1
 ```
 
 使用 ~, >>, <<, >>>, | 来取整
 
 ```js
-console.log(~~ 6.83)    // 6
-console.log(6.83 >> 0)  // 6
-console.log(6.83 << 0)  // 6
-console.log(6.83 | 0)   // 6
+console.log(~~6.83) // 6
+console.log(6.83 >> 0) // 6
+console.log(6.83 << 0) // 6
+console.log(6.83 | 0) // 6
 // >>>不可对负数取整
 console.log(6.83 >>> 0) // 6
 ```
@@ -552,8 +556,8 @@ var b = 8
 a ^= b
 b ^= a
 a ^= b
-console.log(a)   // 8
-console.log(b)   // 5
+console.log(a) // 8
+console.log(b) // 5
 ```
 
 ### 逗号运算符
@@ -594,11 +598,12 @@ JavaScript 中有三个逻辑运算符：||（或），&&（与），!（非）�
 换句话说，**一个或运算 || 的链，将返回第一个真值，如果不存在真值，就返回该链的最后一个值。**
 
 例如：
+
 ```js
-console.log( 1 || 0 ) // 1（1 是真值）
-console.log( null || 1 ) // 1（1 是第一个真值）
-console.log( null || 0 || 1 ) // 1（第一个真值）
-console.log( undefined || null || 0 ) // 0（都是假值，返回最后一个值）
+console.log(1 || 0) // 1（1 是真值）
+console.log(null || 1) // 1（1 是第一个真值）
+console.log(null || 0 || 1) // 1（第一个真值）
+console.log(undefined || null || 0) // 0（都是假值，返回最后一个值）
 ```
 
 #### 与运算寻找第一个假值
@@ -608,43 +613,45 @@ console.log( undefined || null || 0 ) // 0（都是假值，返回最后一个�
 - 从左到右依次计算操作数。
 - 在处理每一个操作数时，都将其转化为布尔值。如果结果是 false，就停止计算，并返回这个操作数的初始值。
 - 如果所有的操作数都被计算过（例如都是真值），则返回最后一个操作数。
-- 
-换句话说，**与运算返回第一个假值，如果没有假值就返回最后一个值。**
+- 换句话说，**与运算返回第一个假值，如果没有假值就返回最后一个值。**
 
 上面的规则和或运算很像。区别就是与运算返回第一个假值，而或运算返回第一个真值。
 
 例如：
+
 ```js
 // 如果第一个操作数是真值，
 // 与运算返回第二个操作数：
-console.log( 1 && 0 ) // 0
-console.log( 1 && 5 ) // 5
+console.log(1 && 0) // 0
+console.log(1 && 5) // 5
 
 // 如果第一个操作数是假值，
 // 与运算将直接返回它。第二个操作数会被忽略
-console.log( null && 5 ) // null
-console.log( 0 && "no matter what" ) // 0
+console.log(null && 5) // null
+console.log(0 && 'no matter what') // 0
 ```
 
 #### 感叹符号 ! 表示布尔非运算符。
 
 逻辑非运算符接受一个参数，并按如下运作：
+
 - 将操作数转化为布尔类型：true/false。
 - 返回相反的值。
 
 例如：
+
 ```js
-console.log( !true ) // false
-console.log( !0 ) // true
+console.log(!true) // false
+console.log(!0) // true
 ```
 
 两个非运算 !! 有时候用来将某个值转化为布尔类型，等同于内置的 Boolean 函数：
 
 ```js
-console.log( !!"non-empty string" ) // true
-console.log( !!null ) // false
-console.log( Boolean("non-empty string") ) // true
-console.log( Boolean(null) ) // false
+console.log(!!'non-empty string') // true
+console.log(!!null) // false
+console.log(Boolean('non-empty string')) // true
+console.log(Boolean(null)) // false
 ```
 
 也就是，第一个非运算将该值转化为布尔类型并取反，第二个非运算再次取反。最后我们就得到了一个任意值到布尔值的转化。
@@ -658,9 +665,9 @@ console.log( Boolean(null) ) // false
 
 ```js
 let user1
-console.log(user1 ?? "Anonymous") // Anonymous
-let user2 = "John"
-console.log(user2 ?? "Anonymous") // John
+console.log(user1 ?? 'Anonymous') // Anonymous
+let user2 = 'John'
+console.log(user2 ?? 'Anonymous') // John
 ```
 
 ### 可选链 "?."
@@ -691,9 +698,9 @@ console.log(user2 ?? "Anonymous") // John
 const arr = [1, 2, 3]
 
 for (let i = 0; i < arr.length; i++) {
-	const i = 'abc'
-	// 循环体中的作用域是括号中作用域的子作用域
-	console.log(i)
+  const i = 'abc'
+  // 循环体中的作用域是括号中作用域的子作用域
+  console.log(i)
 }
 
 console.log(i) // i is not defined

@@ -68,7 +68,7 @@
 
 - 人们可能想对诸如字符串或数字之类的原始类型执行很多操作。最好将它们作为方法来访问。
 - 原始类型必须尽可能的简单轻量。
-  
+
 而解决方案看起来多少有点尴尬，如下：
 
 - 原始类型仍然是原始的。与预期相同，提供单个值
@@ -78,23 +78,23 @@
 “对象包装器”对于每种原始类型都是不同的，它们被称为 String、Number、Boolean 和 Symbol。因此，它们提供了不同的方法。
 
 ```js
-let str = "Hello";
+let str = 'Hello'
 
-str.test = 5; // (*)
+str.test = 5 // (*)
 
-alert(str.test);
+alert(str.test)
 ```
 
 根据你是否开启了严格模式 `use strict`，会得到如下结果：
 
 - undefined（非严格模式）
 - 报错（严格模式）。
- 
-为什么？让我们看看在 (*) 那一行到底发生了什么：
 
->1. 当访问 str 的属性时，一个“对象包装器”被创建了。
->2. 在严格模式下，向其写入内容会报错。
->3. 否则，将继续执行带有属性的操作，该对象将获得 test 属性，但是此后，“对象包装器”将消失，因此在最后一行，str 并没有该属性的踪迹。
+为什么？让我们看看在 (\*) 那一行到底发生了什么：
+
+> 1.  当访问 str 的属性时，一个“对象包装器”被创建了。
+> 2.  在严格模式下，向其写入内容会报错。
+> 3.  否则，将继续执行带有属性的操作，该对象将获得 test 属性，但是此后，“对象包装器”将消失，因此在最后一行，str 并没有该属性的踪迹。
 
 **这个例子清楚地表明，原始类型不是对象。**
 
@@ -103,7 +103,7 @@ alert(str.test);
 ### 使用两个点来调用一个方法
 
 ```js
-alert( 123456..toString(36) ); // 2n9c
+alert((123456).toString(36)) // 2n9c
 ```
 
 请注意 `123456..toString(36)` 中的两个点不是打错了。如果我们想直接在一个数字上调用一个方法，比如上面例子中的 `toString`，那么我们需要在它后面放置两个点 `..`。
@@ -114,7 +114,7 @@ alert( 123456..toString(36) ); // 2n9c
 
 ### 舍入
 
-- [x] `Math.floor` 
+- [x] `Math.floor`
 
 向下舍入：`3.1` 变成 `3`，`-1.1` 变成 `-2`。
 
@@ -135,22 +135,22 @@ alert( 123456..toString(36) ); // 2n9c
 函数 `toFixed(n)` 将数字舍入到小数点后 `n` 位，并以字符串形式返回结果。
 
 ```js
-let num = 12.34;
-alert( num.toFixed(1) ); // "12.3"
+let num = 12.34
+alert(num.toFixed(1)) // "12.3"
 ```
 
 这会向上或向下舍入到最接近的值，类似于 `Math.round`：
 
 ```js
-let num = 12.36;
-alert( num.toFixed(1) ); // "12.4"
+let num = 12.36
+alert(num.toFixed(1)) // "12.4"
 ```
 
 请注意 `toFixed` 的结果是一个字符串。如果小数部分比所需要的短，则在结尾添加零：
 
 ```js
-let num = 12.34;
-alert( num.toFixed(5) ); // "12.34000"，在结尾添加了 0，以达到小数点后五位
+let num = 12.34
+alert(num.toFixed(5)) // "12.34000"，在结尾添加了 0，以达到小数点后五位
 ```
 
 我们可以使用一元加号或 `Number()` 调用，将其转换为数字：`+ num.toFixed(5)`。
@@ -168,15 +168,15 @@ alert( num.toFixed(5) ); // "12.34000"，在结尾添加了 0，以达到小数�
 IEEE-754 数字格式通过将数字舍入到最接近的可能数字来解决此问题。这些舍入规则通常不允许我们看到“极小的精度损失”，但是它确实存在。
 
 ```js
-alert( 1.35.toFixed(1) ); // 1.4
-alert( 6.35.toFixed(1) ); // 6.3
+alert((1.35).toFixed(1)) // 1.4
+alert((6.35).toFixed(1)) // 6.3
 ```
 
 - 在 JS 内部，6.35 的小数部分是一个无限的二进制。在这种情况下，它的存储会造成精度损失。
 - 乘/除法可以减少误差，但不能完全消除误差。
 
 ```js
-alert( Math.round(6.35 * 10) / 10) // 6.35 -> 63.5 -> 64(rounded) -> 6.4
+alert(Math.round(6.35 * 10) / 10) // 6.35 -> 63.5 -> 64(rounded) -> 6.4
 ```
 
 ### 其他数学函数
@@ -199,11 +199,11 @@ alert( Math.round(6.35 * 10) / 10) // 6.35 -> 63.5 -> 64(rounded) -> 6.4
 
 ```js
 function randomInteger(min, max) {
-  let rand = min + Math.random() * (max - min);
-  return Math.round(rand);
+  let rand = min + Math.random() * (max - min)
+  return Math.round(rand)
 }
 
-alert( randomInteger(1, 3) );
+alert(randomInteger(1, 3))
 ```
 
 这个函数是能起作用的，但不正确。获得边缘值 min 和 max 的概率比其他值低两倍。
@@ -227,11 +227,11 @@ values from 2.5  ... to 2.9999999999  become 3
 ```js
 function randomInteger(min, max) {
   // 现在范围是从  (min-0.5) 到 (max+0.5)
-  let rand = min - 0.5 + Math.random() * (max - min + 1);
-  return Math.round(rand);
+  let rand = min - 0.5 + Math.random() * (max - min + 1)
+  return Math.round(rand)
 }
 
-alert( randomInteger(1, 3) );
+alert(randomInteger(1, 3))
 ```
 
 另一种方法是使用 `Math.floor` 来取范围从 `min` 到 `max+1` 的随机数：
@@ -239,11 +239,11 @@ alert( randomInteger(1, 3) );
 ```js
 function randomInteger(min, max) {
   // here rand is from min to (max+1)
-  let rand = min + Math.random() * (max + 1 - min);
-  return Math.floor(rand);
+  let rand = min + Math.random() * (max + 1 - min)
+  return Math.floor(rand)
 }
 
-alert( randomInteger(1, 3) );
+alert(randomInteger(1, 3))
 ```
 
 现在所有间隔都以这种方式映射：
@@ -265,12 +265,14 @@ values from 3  ... to 3.9999999999  become 3
 返回把字符串所有变量替换且对斜杠进行转义的结果
 
 ```js
-console.log(`\n`); // "↵"
-console.log(String.raw`\n`); // "\n"
+console.log(`\n`) // "↵"
+console.log(String.raw`\n`) // "\n"
 ```
+
 ### charAt(x)
 
 `charAt(x)` 返回字符串中 x 位置的字符，下标从 0 开始。
+
 ```js
 const str = 'hello world'
 
@@ -296,18 +298,17 @@ console.log(str, v1, v2, _str) // 'hello world' 'hello' 'world' 'hello world'
 `indexOf` 方法搜索并(如果找到)返回字符串中搜索到的字符或子字符串的索引。如果没有找到，则返回 -1。`Start` 是一个可选参数，指定字符串中开始搜索的位置（包含自身），默认值为 0。
 
 ```js
- const str = 'hello world'
+const str = 'hello world'
 
- console.log(str.indexOf('l')) // 2
- console.log(str.indexOf('f')) // -1
- console.log(str.indexOf('l', 2)) // 2
- console.log(str.indexOf('l', 4)) // 9
+console.log(str.indexOf('l')) // 2
+console.log(str.indexOf('f')) // -1
+console.log(str.indexOf('l', 2)) // 2
+console.log(str.indexOf('l', 4)) // 9
 ```
-   
+
 ### lastIndexOf(substr, [start])
 
 `lastIndexOf()` 方法返回指定文本在字符串中最后一次出现的索引, 如果未找到，则返回-1。 `Start` 是一个可选参数，指定字符串中开始搜索的位置, 默认值为 `string.length - 1`。
-
 
 ### slice(start, [end])
 
@@ -315,7 +316,7 @@ console.log(str, v1, v2, _str) // 'hello world' 'hello' 'world' 'hello world'
 
 ```js
 const str = `hello world`
-    
+
 console.log(str.slice(0)) // 'hello world'
 console.log(str.slice(0, 2)) // 'he'
 ```
@@ -371,6 +372,7 @@ console.log(str.includes('hello')) // true
 console.log(str.startsWith('hello')) // true
 console.log(str.endsWith('world')) // true
 ```
+
 ### repeat()
 
 `repeat()` 构造并返回一个新字符串，该字符串包含被连接在一起的指定数量的字符串的副本。
@@ -424,10 +426,10 @@ let arr = Array.of(3) // [3]
 例如：
 
 ```js
-let arr = [1, 2, 3];
+let arr = [1, 2, 3]
 
-alert( arr ); // 1,2,3
-alert( String(arr) === '1,2,3' ); // true
+alert(arr) // 1,2,3
+alert(String(arr) === '1,2,3') // true
 ```
 
 ### 添加/移除数组元素
@@ -460,6 +462,7 @@ arr.splice(start[, deleteCount, elem1, ..., elemN])
 ```js
 arr.slice([start], [end])
 ```
+
 它会返回一个新数组，将所有从索引 `start` 到 `end`（不包括 `end`）的数组项复制到一个新的数组。`start` 和 `end` 都可以是负数，在这种情况下，从末尾计算索引。
 
 ### concat
@@ -477,16 +480,16 @@ arr.concat(arg1, arg2...)
 - 如果参数 argN 是一个数组，那么其中的所有元素都会被复制。否则，将复制参数本身。
 
 ```js
-let arr = [1, 2];
+let arr = [1, 2]
 
 // create an array from: arr and [3,4]
-alert( arr.concat([3, 4]) ); // 1,2,3,4
+alert(arr.concat([3, 4])) // 1,2,3,4
 
 // create an array from: arr and [3,4] and [5,6]
-alert( arr.concat([3, 4], [5, 6]) ); // 1,2,3,4,5,6
+alert(arr.concat([3, 4], [5, 6])) // 1,2,3,4,5,6
 
 // create an array from: arr and [3,4], then add values 5 and 6
-alert( arr.concat([3, 4], 5, 6) ); // 1,2,3,4,5,6
+alert(arr.concat([3, 4], 5, 6)) // 1,2,3,4,5,6
 ```
 
 ### 遍历：forEach
@@ -494,9 +497,9 @@ alert( arr.concat([3, 4], 5, 6) ); // 1,2,3,4,5,6
 语法：
 
 ```js
-arr.forEach(function(item, index, array) {
+arr.forEach(function (item, index, array) {
   // ... do something with item
-});
+})
 ```
 
 该函数的结果（如果它有返回）会被抛弃和忽略。
@@ -512,9 +515,9 @@ arr.forEach(function(item, index, array) {
 此外，`includes` 的一个非常小的差别是它能正确处理 `NaN`，而不像 i`ndexOf/lastIndexOf`：
 
 ```js
-const arr = [NaN];
-alert( arr.indexOf(NaN) ); // -1（应该为 0，但是严格相等 === equality 对 NaN 无效）
-alert( arr.includes(NaN) );// true（这个结果是对的）
+const arr = [NaN]
+alert(arr.indexOf(NaN)) // -1（应该为 0，但是严格相等 === equality 对 NaN 无效）
+alert(arr.includes(NaN)) // true（这个结果是对的）
 ```
 
 #### find 和 findIndex
@@ -522,10 +525,10 @@ alert( arr.includes(NaN) );// true（这个结果是对的）
 语法如下：
 
 ```js
-let result = arr.find(function(item, index, array) {
+let result = arr.find(function (item, index, array) {
   // 如果返回 true，则返回 item 并停止迭代
   // 对于假值（falsy）的情况，则返回 undefined
-});
+})
 ```
 
 findIndex 和 find 类似，但返回索引而不是值。
@@ -535,10 +538,10 @@ findIndex 和 find 类似，但返回索引而不是值。
 语法与 `find` 大致相同，但是 `filter` 返回的是所有匹配元素组成的数组：
 
 ```js
-let results = arr.filter(function(item, index, array) {
+let results = arr.filter(function (item, index, array) {
   // 如果 true item 被 push 到 results，迭代继续
   // 如果什么都没找到，则返回空数组
-});
+})
 ```
 
 ### 转换数组
@@ -548,15 +551,16 @@ let results = arr.filter(function(item, index, array) {
 语法：
 
 ```js
-let result = arr.map(function(item, index, array) {
+let result = arr.map(function (item, index, array) {
   // 返回新值而不是当前元素
 })
 ```
 
 例如，在这里我们将每个元素转换为它的字符串长度：
+
 ```js
-let lengths = ["Bilbo", "Gandalf", "Nazgul"].map(item => item.length);
-alert(lengths); // 5,7,6
+let lengths = ['Bilbo', 'Gandalf', 'Nazgul'].map(item => item.length)
+alert(lengths) // 5,7,6
 ```
 
 #### reduce
@@ -564,9 +568,12 @@ alert(lengths); // 5,7,6
 语法是：
 
 ```js
-let value = arr.reduce(function(accumulator, item, index, array) {
-  // ...
-}, [initial]);
+let value = arr.reduce(
+  function (accumulator, item, index, array) {
+    // ...
+  },
+  [initial]
+)
 ```
 
 该函数一个接一个地应用于所有数组元素，并将其结果“搬运（carry on）”到下一个调用。
@@ -595,11 +602,12 @@ let value = arr.reduce(function(accumulator, item, index, array) {
 例如：
 
 ```js
-let arr = [1, 2, 3, 4, 5];
-arr.reverse();
+let arr = [1, 2, 3, 4, 5]
+arr.reverse()
 
-alert( arr ); // 5,4,3,2,1
+alert(arr) // 5,4,3,2,1
 ```
+
 它也会返回颠倒后的数组 arr。
 
 #### split/join
@@ -607,19 +615,19 @@ alert( arr ); // 5,4,3,2,1
 拆分字母：
 
 ```js
-let str = "test";
+let str = 'test'
 
-alert( str.split('') ); // t,e,s,t
+alert(str.split('')) // t,e,s,t
 ```
 
 `arr.join(glue)` 与 `split` 相反。它会在它们之间创建一串由 `glue` 粘合的 `arr` 项。
 
 ```js
-let arr = ['Bilbo', 'Gandalf', 'Nazgul'];
+let arr = ['Bilbo', 'Gandalf', 'Nazgul']
 
-let str = arr.join(';'); // 使用分号 ; 将数组粘合成字符串
+let str = arr.join(';') // 使用分号 ; 将数组粘合成字符串
 
-alert( str ); // Bilbo;Gandalf;Nazgul
+alert(str) // Bilbo;Gandalf;Nazgul
 ```
 
 ### 其他
@@ -644,7 +652,7 @@ alert( str ); // Bilbo;Gandalf;Nazgul
 let range = {
   from: 1,
   to: 5
-};
+}
 
 // 我们希望 for..of 这样运行：
 // for(let num of range) ... num=1,2,3,4,5
@@ -663,11 +671,10 @@ let range = {
 let range = {
   from: 1,
   to: 5
-};
+}
 
 // 1. for..of 调用首先会调用这个：
-range[Symbol.iterator] = function() {
-
+range[Symbol.iterator] = function () {
   // ……它返回迭代器对象（iterator object）：
   // 2. 接下来，for..of 仅与此迭代器一起工作，要求它提供下一个值
   return {
@@ -678,17 +685,17 @@ range[Symbol.iterator] = function() {
     next() {
       // 4. 它将会返回 {done:.., value :...} 格式的对象
       if (this.current <= this.last) {
-        return { done: false, value: this.current++ };
+        return { done: false, value: this.current++ }
       } else {
-        return { done: true };
+        return { done: true }
       }
     }
-  };
-};
+  }
+}
 
 // 现在它可以运行了！
 for (let num of range) {
-  alert(num); // 1, 然后是 2, 3, 4, 5
+  alert(num) // 1, 然后是 2, 3, 4, 5
 }
 ```
 
@@ -704,7 +711,7 @@ for (let num of range) {
 - `Iterable` 如上所述，是实现了 `Symbol.iterator` 方法的对象。
 - `Array-like` 是有索引和 `length` 属性的对象，所以它们看起来很像数组。
 
-`Array.from(obj[, mapFn, thisArg])` 将可迭代对象或类数组对象   转化为真正的数组 `Array`，然后我们就可以对它应用数组的方法。
+`Array.from(obj[, mapFn, thisArg])` 将可迭代对象或类数组对象 转化为真正的数组 `Array`，然后我们就可以对它应用数组的方法。
 
 ## Map and Set（映射和集合）
 
@@ -727,9 +734,7 @@ for (let num of range) {
 每一次 `map.set` 调用都会返回 `map` 本身，所以我们可以进行“链式”调用：
 
 ```js
-map.set('1', 'str1')
-  .set(1, 'num1')
-  .set(true, 'bool1');
+map.set('1', 'str1').set(1, 'num1').set(true, 'bool1')
 ```
 
 ### Map 迭代
@@ -742,22 +747,22 @@ map.set('1', 'str1')
 
 ```js
 // 对每个键值对 (key, value) 运行 forEach 函数
-recipeMap.forEach( (value, key, map) => {
-  alert(`${key}: ${value}`); // cucumber: 500 etc
-});
+recipeMap.forEach((value, key, map) => {
+  alert(`${key}: ${value}`) // cucumber: 500 etc
+})
 ```
 
 ### Object.entries：从对象创建 Map
 
 ```js
 let obj = {
-  name: "John",
+  name: 'John',
   age: 30
-};
+}
 
-let map = new Map(Object.entries(obj));
+let map = new Map(Object.entries(obj))
 
-alert( map.get('name') ); // John
+alert(map.get('name')) // John
 ```
 
 `Object.fromEntries` 方法的作用是相反的：给定一个具有 `[key, value] `键值对的数组，它会根据给定数组创建一个对象：
@@ -767,11 +772,11 @@ let prices = Object.fromEntries([
   ['banana', 1],
   ['orange', 2],
   ['meat', 4]
-]);
+])
 
 // 现在 prices = { banana: 1, orange: 2, meat: 4 }
 
-alert(prices.orange); // 2
+alert(prices.orange) // 2
 ```
 
 ### Set
@@ -782,7 +787,7 @@ alert(prices.orange); // 2
 
 - `new Set(iterable)` —— 创建一个 set，如果提供了一个 iterable 对象（通常是数组），将会从数组里面复制值到 set 中。
 - `set.add(value)` —— 添加一个值，返回 set 本身
-`set.delete(value)` —— 删除值，如果 value 在这个方法调用的时候存在则返回 true ，否则返回 false。
+  `set.delete(value)` —— 删除值，如果 value 在这个方法调用的时候存在则返回 true ，否则返回 false。
 - `set.has(value)` —— 如果 value 在 set 中，返回 true，否则返回 false。
 - `set.clear()` —— 清空 set。
 - `set.size` —— 返回元素个数。
@@ -792,14 +797,14 @@ alert(prices.orange); // 2
 我们可以使用 `for..of` 或 `forEach` 来遍历 `Set`：
 
 ```js
-let set = new Set(["oranges", "apples", "bananas"]);
+let set = new Set(['oranges', 'apples', 'bananas'])
 
-for (let value of set) alert(value);
+for (let value of set) alert(value)
 
 // 与 forEach 相同：
 set.forEach((value, valueAgain, set) => {
-  alert(value);
-});
+  alert(value)
+})
 ```
 
 `Map` 中用于迭代的方法在 `Set` 中也同样支持：
@@ -815,25 +820,25 @@ set.forEach((value, valueAgain, set) => {
 `WeakMap` 和 `Map` 的第一个不同点就是，`WeakMap` 的键必须是对象，不能是原始值：
 
 ```js
-let weakMap = new WeakMap();
+let weakMap = new WeakMap()
 
-let obj = {};
+let obj = {}
 
-weakMap.set(obj, "ok"); // 正常工作（以对象作为键）
+weakMap.set(obj, 'ok') // 正常工作（以对象作为键）
 
 // 不能使用字符串作为键
-weakMap.set("test", "Whoops"); // Error，因为 "test" 不是一个对象
+weakMap.set('test', 'Whoops') // Error，因为 "test" 不是一个对象
 ```
 
-现在，如果我们在 `weakMap` 中使用一个对象作为键，并且没有其他对这个对象的引用 —— 该对象将会被从内存（和map）中自动清除。
+现在，如果我们在 `weakMap` 中使用一个对象作为键，并且没有其他对这个对象的引用 —— 该对象将会被从内存（和 map）中自动清除。
 
 ```js
-let john = { name: "John" };
+let john = { name: 'John' }
 
-let weakMap = new WeakMap();
-weakMap.set(john, "...");
+let weakMap = new WeakMap()
+weakMap.set(john, '...')
 
-john = null; // 覆盖引用
+john = null // 覆盖引用
 
 // john 被从内存中删除了！
 ```
@@ -873,15 +878,15 @@ john = null; // 覆盖引用
 let prices = {
   banana: 1,
   orange: 2,
-  meat: 4,
-};
+  meat: 4
+}
 
 let doublePrices = Object.fromEntries(
   // 转换为数组，之后使用 map 方法，然后通过 fromEntries 再转回到对象
   Object.entries(prices).map(([key, value]) => [key, value * 2])
-);
+)
 
-alert(doublePrices.meat); // 8
+alert(doublePrices.meat) // 8
 ```
 
 ## 解构赋值
@@ -889,14 +894,14 @@ alert(doublePrices.meat); // 8
 > 解构赋值的规则是，只要等号右边的值不是对象或数组，就先将其转为对象。由于`undefined` 和 `null` 无法转为对象，所以对它们进行解构赋值，都会报错。
 
 ```js
-let {toString: s} = 123;
+let { toString: s } = 123
 s === Number.prototype.toString // true
 
-let {toString: s} = true;
+let { toString: s } = true
 s === Boolean.prototype.toString // true
 
-let { prop: x } = undefined; // TypeError
-let { prop: y } = null; // TypeError
+let { prop: x } = undefined // TypeError
+let { prop: y } = null // TypeError
 ```
 
 - [x] 数组解构
@@ -919,7 +924,7 @@ let { prop: y } = null; // TypeError
 - 定义函数参数：`Func([1, 2])`
 - 提取 JSON 数据：`const { name, version } = packageJson`
 - 定义函数参数默认值：`function Func({ x = 1, y = 2 } = {}) {}`
-- 遍历Map结构：`for (let [k, v] of Map) {}`
+- 遍历 Map 结构：`for (let [k, v] of Map) {}`
 - 输入模块指定属性和方法：`const { readFile, writeFile } = require("fs")`
 
 > 重点难点
