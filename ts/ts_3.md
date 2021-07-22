@@ -119,6 +119,8 @@ T & never // 结果为 never
 
 以上就是 `namespace` 保留的价值，说到底其实就是 `js` 的原始闭包，不关注代码是同步还是异步加载的，只关注使用体验。
 
+## 如何评价 TypeScript 新特性 template string type?
+
 ## TypeScript 的好处都有啥？和 JavaScript 的区别在哪？TypeScript 有哪些设计缺陷？
 
 - 杜绝手误导致的变量名写错。
