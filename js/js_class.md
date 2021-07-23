@@ -1,4 +1,5 @@
 # JavaScript 基础知识梳理(五)<!-- omit in toc -->
+
 - [Class 基本语法](#class-基本语法)
 - [类继承](#类继承)
   - [extends 关键字](#extends-关键字)
@@ -38,7 +39,7 @@ class MyClass {
 当 `new MyClass()` 被调用：
 
 1. 首先创建一个名为 `MyClass` 的函数，该函数成为类声明的结果。
-2. new 会自动调用 `constructor()` 方法，因此我们可以在 `constructor()` 中初始化属性。（如果我们省略，那么它就被假定为空但存在，依旧会执行）。
+2. `new` 会自动调用 `constructor()` 方法，因此我们可以在 `constructor()` 中初始化属性。（如果我们省略，那么它就被假定为空但存在，依旧会执行）。
 3. 存储类中的方法。
 
 **不仅仅是语法糖**
@@ -58,29 +59,31 @@ class MyClass {
 ```js
 function f(phrase) {
   return class {
-    sayHi() { alert(phrase) }
+    sayHi() {
+      alert(phrase)
+    }
   }
 }
 
-class User extends f("Hello") {}
+class User extends f('Hello') {}
 
 new User().sayHi() // Hello
 ```
 
 ### super 关键字
 
-ES6 新增的关键字`super`，指向当前对象的原型对象。
+`ES6` 新增的关键字`super`，指向当前对象的原型对象。
 
 ```js
 const proto = {
-	foo: 'hello'
+  foo: 'hello'
 }
 
 const obj = {
-	foo: 'world',
-	find() {
-		return super.foo
-	}
+  foo: 'world',
+  find() {
+    return super.foo
+  }
 }
 
 Object.setPrototypeOf(obj, proto)
@@ -100,7 +103,7 @@ obj.find() // "hello"
 class Rabbit extends Animal {
   // 为没有自己的 constructor 的扩展类生成的
   constructor(...args) {
-    super(...args);
+    super(...args)
   }
 }
 ```
@@ -117,48 +120,49 @@ class Rabbit extends Animal {
 
 ```js
 class Animal {
-  name = 'animal';
+  name = 'animal'
 
   constructor() {
-    alert(this.name); // (*)
+    alert(this.name) // (*)
   }
 }
 
 class Rabbit extends Animal {
-  name = 'rabbit';
+  name = 'rabbit'
 }
 
-new Animal(); // animal
-new Rabbit(); // animal
+new Animal() // animal
+new Rabbit() // animal
 ```
 
-这里，Rabbit 继承自 Animal，并且用它自己的值重写了 name 字段。
+这里，`Rabbit` 继承自 `Animal`，并且用它自己的值重写了 `name` 字段。
 
-因为 Rabbit 中没有自己的构造器，所以 Animal 的构造器被调用了。
+因为 `Rabbit` 中没有自己的构造器，所以 `Animal` 的构造器被调用了。
 
-有趣的是在这两种情况下：`new Animal()` 和 `new Rabbit()`，在 (*) 行的 `alert` 都打印了 `animal`。
+有趣的是在这两种情况下：`new Animal()` 和 `new Rabbit()`，在 `(*)` 行的 `alert` 都打印了 `animal`。
 
 换句话说， 父类构造器总是会使用它自己字段的值，而不是被重写的那一个。
 
 ```js
 class Animal {
-  showName() {  // 而不是 this.name = 'animal'
-    alert('animal');
+  showName() {
+    // 而不是 this.name = 'animal'
+    alert('animal')
   }
 
   constructor() {
-    this.showName(); // 而不是 alert(this.name);
+    this.showName() // 而不是 alert(this.name);
   }
 }
 
 class Rabbit extends Animal {
   showName() {
-    alert('rabbit');
+    alert('rabbit')
   }
 }
 
-new Animal(); // animal
-new Rabbit(); // rabbit
+new Animal() // animal
+new Rabbit() // rabbit
 ```
 
 ## 静态属性和静态方法
@@ -168,23 +172,23 @@ new Rabbit(); // rabbit
 ```js
 class User {
   static staticMethod() {
-    alert(this === User);
+    alert(this === User)
   }
 }
 
-User.staticMethod(); // true
+User.staticMethod() // true
 ```
 
 这实际上跟直接将其作为属性赋值的作用相同：
 
 ```js
-class User { }
+class User {}
 
-User.staticMethod = function() {
-  alert(this === User);
-};
+User.staticMethod = function () {
+  alert(this === User)
+}
 
-User.staticMethod(); // true
+User.staticMethod() // true
 ```
 
 **在 `User.staticMethod()` 调用中的 `this` 的值是类构造器 `User` 自身**
@@ -196,38 +200,37 @@ class Animal {}
 class Rabbit extends Animal {}
 
 // 对于静态的
-alert(Rabbit.__proto__ === Animal); // true
+alert(Rabbit.__proto__ === Animal) // true
 
 // 对于常规方法
-alert(Rabbit.prototype.__proto__ === Animal.prototype); // true
+alert(Rabbit.prototype.__proto__ === Animal.prototype) // true
 ```
 
 ## 私有的和受保护的属性和方法
 
 ```js
 class CoffeeMachine {
-  _waterAmount = 0;
+  _waterAmount = 0
 
   set waterAmount(value) {
-    if (value < 0) throw new Error("Negative water");
-    this._waterAmount = value;
+    if (value < 0) throw new Error('Negative water')
+    this._waterAmount = value
   }
 
   get waterAmount() {
-    return this._waterAmount;
+    return this._waterAmount
   }
 
   constructor(power) {
-    this._power = power;
+    this._power = power
   }
-
 }
 
 // 创建咖啡机
-let coffeeMachine = new CoffeeMachine(100);
+let coffeeMachine = new CoffeeMachine(100)
 
 // 加水
-coffeeMachine.waterAmount = -10; // Error: Negative water
+coffeeMachine.waterAmount = -10 // Error: Negative water
 ```
 
 ## Mixin 模式
@@ -236,23 +239,23 @@ coffeeMachine.waterAmount = -10; // Error: Negative water
 // mixin
 let sayHiMixin = {
   sayHi() {
-    alert(`Hello ${this.name}`);
+    alert(`Hello ${this.name}`)
   },
   sayBye() {
-    alert(`Bye ${this.name}`);
+    alert(`Bye ${this.name}`)
   }
-};
+}
 
 // 用法：
 class User {
   constructor(name) {
-    this.name = name;
+    this.name = name
   }
 }
 
 // 拷贝方法
-Object.assign(User.prototype, sayHiMixin);
+Object.assign(User.prototype, sayHiMixin)
 
 // 现在 User 可以打招呼了
-new User("Dude").sayHi(); // Hello Dude!
+new User('Dude').sayHi() // Hello Dude!
 ```

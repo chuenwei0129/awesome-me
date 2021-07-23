@@ -2,403 +2,590 @@
 
 - [回调](#回调)
 - [Promise](#promise)
-	- [Promise.all](#promiseall)
-	- [Promise.finally](#promisefinally)
-	- [Promise.resolve](#promiseresolve)
-	- [Promise.race](#promiserace)
-	- [微任务（Microtask）](#微任务microtask)
-- [co + Generator](#co--generator)
+  - [Promise.prototype.then](#promiseprototypethen)
+  - [Promise.all](#promiseall)
+  - [Promise.prototype.finally](#promiseprototypefinally)
+  - [Promise.allSettled](#promiseallsettled)
+  - [Promise.any](#promiseany)
+  - [Promise.prototype.catch](#promiseprototypecatch)
+  - [Promise.resolve](#promiseresolve)
+  - [Promise.race](#promiserace)
+  - [Promise.resolve](#promiseresolve-1)
+  - [scheduler](#scheduler)
+- [Generator](#generator)
+  - [iterator](#iterator)
+  - [generator 实现原理](#generator-实现原理)
+  - [co](#co)
+  - [promisify](#promisify)
 
 ## 回调
 
-在程序设计中，这种设计叫做回调，即：我们现在开始执行的行为，但它们会在稍后完成。例如，`setTimeout` 函数就是一个这样的函数。
-
 ```js
-function loadScript(src) {
-  // 创建一个 <script> 标签，并将其附加到页面
-  // 这将使得具有给定 src 的脚本开始加载，并在加载完成后运行
-  let script = document.createElement('script');
-  script.src = src;
-  document.head.append(script);
+// 在程序设计中，这种设计叫做回调，即：我们现在开始执行的行为，但它们会在稍后完成。
+
+function func(cb) {
+  setTimeout(() => {
+    console.log('异步执行')
+    cb && cb('异步执行结果')
+  }, 2000)
 }
-```
 
-它将带有给定 `src` 的新动态创建的标签 `<script src="…">` 附加到文档中。浏览器将自动开始加载它，并在加载完成后执行。
-
-我们可以像这样使用这个函数：
-
-```js
-// 在给定路径下加载并执行脚本
-loadScript('/my/script.js');
-```
-
-脚本是“异步”调用的，因为它从现在开始加载，但是在这个加载函数执行完成后才运行。
-
-如果在 `loadScript(…)` 下面有任何其他代码，它们不会等到脚本加载完成才执行。
-
-```js
-loadScript('/my/script.js');
-// loadScript 下面的代码
-// 不会等到脚本加载完成才执行
-// ...
-```
-
-假设我们需要在新脚本加载后立即使用它。它声明了新函数，我们想运行它们
-
-但如果我们在 `loadScript(…)` 调用后立即执行此操作，这将不会有效。
-
-```js
-loadScript('/my/script.js'); // 这个脚本有 "function newFunction() {…}"
-
-newFunction(); // 没有这个函数！
-```
-
-`loadScript` 函数并没有提供跟踪加载完成的方法。
-
-让我们添加一个 `callback` 函数作为 `loadScript` 的第二个参数，该函数应在脚本加载完成时执行：
-
-```js
-function loadScript(src, callback) {
-  let script = document.createElement('script');
-  script.src = src;
-
-  script.onload = () => callback(script);
-
-  document.head.append(script);
+function callback(props) {
+  // 处理异步执行结果
+  console.log(props)
 }
+
+func(callback)
+
+// promise 本质其实就是回调
 ```
-
-现在，如果我们想调用该脚本中的新函数，我们应该将其写在回调函数中：
-
-```js
-loadScript('/my/script.js', function() {
-  // 在脚本加载完成后，回调函数才会执行
-  newFunction(); // 现在它工作了
-  ...
-});
-```
-
-这是我们的想法：第二个参数是一个函数（通常是匿名函数），该函数会在行为（action）完成时运行
-
-这被称为“基于回调”的异步编程风格。异步执行某项功能的函数应该提供一个 `callback` 参数用于在相应事件完成时调用。（译注：上面这个例子中的相应事件是指脚本加载）
-
-这里我们在 `loadScript` 中就是这么做的，但当然这是一种通用方法。
 
 ## Promise
 
-> TIP
+```js
+// Promise 特点
+// 1. 执行器中代码在 new 调用时立即执行
+// 2. 执行器接收两个改变状态的内部方法
+// 3. 执行器抛出错误也会改变状态
+// 4. 同步 resolve 改变状态
+// 5. 异步 resolve 改变状态a，exe 执行后状态还是 pending，发布订阅
+// 6. 一旦 resolve 后就不可再 reject
+// 7. resolve 后 then 方法中执行对应函数，参数传递
+// 8. then 中就是回调，异步执行结束即状态改变后执行
+// 9. 与 tapable 一样，都是回调加发布订阅
+// 10. resolve 传参，同步是通过实例，异步直接发布订阅里函数里传，异步也可以用函数包一层用实例传 () => { onResolved(this.value) }
+
+const RESOLVED = 'RESOLVED'
+const REJECTED = 'REJECTED'
+const PENDING = 'PENDING'
+
+class Promise {
+  constructor(exe) {
+    this.state = PENDING
+    this.value = null
+    this.reason = null
+    this.resolvedCb = []
+    this.rejectedCb = []
+
+    const resolve = value => {
+      if (this.state === PENDING) {
+        this.state = RESOLVED
+        this.value = value
+        this.resolvedCb.forEach(fn => fn(value))
+      }
+    }
+
+    const reject = reason => {
+      if (this.state === PENDING) {
+        this.state = REJECTED
+        this.reason = reason
+        this.resolvedCb.forEach(fn => fn(reason))
+      }
+    }
+
+    try {
+      exe(resolve, reject)
+    } catch (err) {
+      reject(err)
+    }
+  }
+  then(onfullfiled, onrejected) {
+    // 同步
+    if (this.state === RESOLVED) {
+      onfullfiled(this.value)
+    }
+    if (this.state === REJECTED) {
+      onrejected(this.reason)
+    }
+    // 异步
+    if (this.state === PENDING) {
+      // () => { onResolved(this.value) }
+      this.resolvedCb.push(onfullfiled)
+      this.rejectedCb.push(onrejected)
+    }
+  }
+}
+
+module.exports = Promise
+
+// Promise 特点
+// 1. 执行器中代码在 new 调用时立即执行
+// 2. 执行器接收两个改变状态的内部方法
+// 3. 执行器抛出错误也会改变状态
+// 4. 同步 resolve 改变状态
+// 5. 异步 resolve 改变状态a，exe 执行后状态还是 pending，发布订阅
+// 6. 一旦 resolve 后就不可再 reject
+// 7. resolve 后 then 方法中执行对应函数，参数传递
+// 8. then 中就是回调，异步执行结束即状态改变后执行
+// 9. 与 tapable 一样，都是回调加发布订阅
+// 10. resolve 传参，同步是通过实例，异步直接发布订阅里函数里传，异步也可以用函数包一层用实例传 () => { onResolved(this.value) }
+
+// 11. 第一步 then 回调 返回值 没有返回值或者返回非 promise，
+// 12. 第二步 处理值的透传问题，then 不传参数也可以一直传下去
+
+// 7. then没有返回值或者返回非 promise，value 值会一直向下传递，形成 promise 链，终止 promise 的方法是返回 pending状态的promise 即空的promise
+// 8. then 返回 promise，returnPromise的then会立即执行并把val return出去传给promise2的then，内部的错误也会传给外部reject
+// 9. 错误处理，两种情况，内部抛出错误，或者返回的promise2是错误状态
+// 10. 返回的promise是新的promise2
+
+// 外部有 then 方法，promise2.then就是外部的then方法 他的参数传递取决于onfulfilled放回值 传递参数靠resolve promise2.then执行
+// const x = onResolved(this.value)
+// 			return new _Promise((resolve, reject) => {
+// 				resolve(x)
+// 			})
+// 有三种可能 普通 promise object.then
+// 递归调用
+
+// 处理回调的返回值是 x === promise
+// x.then立即执行并且把返回值 resolve(x.then())
+// x 也可能是其他人写的 promise
+// x.then的返回值也可能是 promise 递归
+// onResolved 执行多次
+// 递归过程，不需要处理参数
+// 最终传递的值是 resolve(x)
+
+// then 回调里不传值就会透传下去
+```
+
+### Promise.prototype.then
 
 ```js
-const PENDING = 'PENDING',
-	RESOLVED = 'RESOLVED',
-	REJECTED = 'REJECTED'
+// Promise 特点
+// 1. 执行器中代码在 new 调用时立即执行
+// 2. 执行器接收两个改变状态的内部方法
+// 3. 执行器抛出错误也会改变状态
+// 4. 同步 resolve 改变状态
+// 5. 异步 resolve 改变状态a，exe 执行后状态还是 pending，发布订阅
+// 6. 一旦 resolve 后就不可再 reject
 
-// 处理 then 返回值 promise2 与 x 的关系, x 需要通过 promise2 resolve 下去
-const resolvePromise = (promise2, x, resolve, reject) => {
-	let called
-	if (x === promise2) {
-		return reject(
-			new TypeError('Chaining cycle detected for promise #<Promise>')
-		)
-	}
-	// 处理值透传
-	if ((typeof x === 'object' && x !== null) || typeof x === 'function') {
-		// 取值会出错 defineProperty
-		try {
-			let then = x.then
-			// 判断 x 是否是 promise
-			if (typeof then === 'function') {
-				then.call(
-					x,
-					(y) => {
-						if (called) return
-						called = true
-						resolvePromise(promise2, y, resolve, reject)
-					},
-					(r) => {
-						if (called) return
-						called = true
-						reject(r)
-					}
-				)
-			} else {
-				// x 不是 promise 只是有 then 属性的普通对象
-				resolve(x)
-			}
-		} catch (error) {
-			if (called) return
-			called = true
-			reject(error)
-		}
-	} else {
-		// x 为普通值
-		resolve(x)
-	}
+// 7. then没有返回值或者返回非 promise，value 值会一直向下传递，形成 promise 链，终止 promise 的方法是返回 pending状态的promise 即空的promise
+// 8. then 返回 promise，returnPromise的then会立即执行并把val return出去传给promise2的then，内部的错误也会传给外部reject
+// 9. 错误处理，两种情况，内部抛出错误，或者返回的promise2是错误状态
+// 10. 返回的promise是新的promise2
+
+// 外部有 then 方法，promise2.then就是外部的then方法 他的参数传递取决于onfulfilled放回值 传递参数靠resolve promise2.then执行
+
+const RESOLVED = 'RESOLVED'
+const REJECTED = 'REJECTED'
+const PENDING = 'PENDING'
+
+const resolvePromise2 = (promise2, x, resolve, reject) => {
+  if (promise2 === x) {
+    reject(new TypeError('出错了'))
+  } else if ((typeof x === 'object' && x !== null) || typeof x === 'function') {
+    let called = null
+    try {
+      // 这个 trycatch处理 x.then，由于第三方所以 要开始处理
+      const then = x.then
+      if (typeof then === 'function') {
+        then.call(
+          x,
+          y => {
+            if (called) return
+            called = true
+            resolvePromise2(promise2, y, resolve, reject)
+          },
+          r => {
+            if (called) return
+            called = true
+            reject(r)
+          }
+        )
+      } else {
+        resolve(x)
+      }
+    } catch (err) {
+      if (called) return
+      called = true
+      reject(err)
+    }
+  } else {
+    resolve(x)
+  }
 }
 
 class Promise {
-	constructor(executor) {
-		this.status = PENDING
-		this.value = null
-		this.reason = null
-		this.resolvedCallbacks = []
-		this.rejectedCallbacks = []
+  constructor(exe) {
+    this.state = PENDING
+    this.value = null
+    this.reason = null
+    this.resolvedCb = []
+    this.rejectedCb = []
 
-		const resolve = (value) => {
-			if (this.status === PENDING) {
-				this.status = RESOLVED
-				this.value = value
-				this.resolvedCallbacks.forEach((fn) => fn())
-			}
-		}
+    const resolve = value => {
+      if (this.state === PENDING) {
+        this.state = RESOLVED
+        this.value = value
+        this.resolvedCb.forEach(fn => fn())
+      }
+    }
 
-		const reject = (reason) => {
-			if (this.status === PENDING) {
-				this.status = REJECTED
-				this.reason = reason
-				this.rejectedCallbacks.forEach((fn) => fn())
-			}
-		}
+    const reject = reason => {
+      if (this.state === PENDING) {
+        this.state = REJECTED
+        this.reason = reason
+        this.rejectedCb.forEach(fn => fn())
+      }
+    }
 
-		try {
-			executor(resolve, reject)
-		} catch (error) {
-			reject(error)
-		}
-	}
+    try {
+      exe(resolve, reject)
+    } catch (err) {
+      reject(err)
+    }
+  }
+  then(onfulfilled, onrejected) {
+    onfulfilled = typeof onfulfilled === 'function' ? onfulfilled : value => value
+    onrejected =
+      typeof onrejected === 'function'
+        ? onrejected
+        : err => {
+            throw err
+          }
+    const promise2 = new Promise((resolve, reject) => {
+      // 同步
+      if (this.state === RESOLVED) {
+        setTimeout(() => {
+          try {
+            const x = onfulfilled(this.value)
+            resolvePromise2(promise2, x, resolve, reject)
+          } catch (err) {
+            reject(err)
+          }
+        })
+      }
+      if (this.state === REJECTED) {
+        setTimeout(() => {
+          try {
+            const x = onrejected(this.reason)
+            resolvePromise2(promise2, x, resolve, reject)
+          } catch (err) {
+            reject(err)
+          }
+        })
+      }
+      // 异步
+      if (this.state === PENDING) {
+        this.resolvedCb.push(() => {
+          setTimeout(() => {
+            try {
+              const x = onfulfilled(this.value)
+              resolvePromise2(promise2, x, resolve, reject)
+            } catch (err) {
+              reject(err)
+            }
+          })
+        })
+        this.rejectedCb.push(() => {
+          setTimeout(() => {
+            try {
+              const x = onrejected(this.reason)
+              resolvePromise2(promise2, x, resolve, reject)
+            } catch (err) {
+              reject(err)
+            }
+          })
+        })
+      }
+    })
 
-	then(onResolved, onRejected) {
-		// 此处对应用法 promise.then().then().then(data => data)
-		onResolved = typeof onResolved === 'function' ? onResolved : (data) => data
-		onRejected =
-			typeof onRejected === 'function'
-				? onRejected
-				: (err) => {
-						throw err
-				  }
-
-		let promise2 = new Promise((resolve, reject) => {
-			// 写在 executor 里立即执行
-			if (this.status === RESOLVED) {
-				// 处理 promise2 未定义
-				setTimeout(() => {
-					try {
-						let x = onResolved(this.value)
-						resolvePromise(promise2, x, resolve, reject)
-					} catch (error) {
-						reject(error)
-					}
-				}, 0)
-			}
-			if (this.status === REJECTED) {
-				setTimeout(() => {
-					try {
-						let x = onRejected(this.reason)
-						resolvePromise(promise2, x, resolve, reject)
-					} catch (error) {
-						reject(error)
-					}
-				}, 0)
-			}
-			if (this.status === PENDING) {
-				this.resolvedCallbacks.push(() => {
-					setTimeout(() => {
-						try {
-							let x = onResolved(this.value)
-							resolvePromise(promise2, x, resolve, reject)
-						} catch (error) {
-							reject(error)
-						}
-					}, 0)
-				})
-				this.rejectedCallbacks.push(() => {
-					setTimeout(() => {
-						try {
-							let x = onRejected(this.reason)
-							resolvePromise(promise2, x, resolve, reject)
-						} catch (error) {
-							reject(error)
-						}
-					}, 0)
-				})
-			}
-		})
-
-		return promise2
-	}
+    return promise2
+  }
 }
 
-// 测试代码
 Promise.defer = Promise.deferred = function () {
-	let dfd = {}
-	dfd.promise = new Promise((resolve, reject) => {
-		dfd.resolve = resolve
-		dfd.reject = reject
-	})
-	return dfd
+  const dfd = {}
+  dfd.promise = new Promise((resolve, reject) => {
+    dfd.resolve = resolve
+    dfd.reject = reject
+  })
+  return dfd
 }
 
 module.exports = Promise
 ```
 
-```sh
-promises-aplus-tests Promise.js
-```
-
 ### Promise.all
 
 ```js
-const promise1 = function () {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			resolve('我是 promise1')
-		}, 1000)
-	})
-}
-
-const promise2 = function () {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			resolve('我是 promise2')
-		}, 0)
-	})
-}
-
-const promise3 = function () {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			reject('我是出错的情况')
-		}, 0)
-	})
-}
-
-const arr = [1, 2, 3, 4, promise1(), promise2(), promise3(), 5, 6, 7, 8]
-
-Promise.all(arr)
-	.then((data) => {
-		console.log('Promise.all', data)
-	})
-	.catch((err) => {
-		console.log(err)
-	})
-
-Promise.myAll = (arr) => {
-	return new Promise((resolve, reject) => {
-		// 需要考虑 传入空数组情况 直接 resolve 成功
-		if (arr.length === 0) {
-			return resolve(arr)
-		}
-
-		let res = []
-		let index = 0
-		const resolveData = (i, data) => {
-			// 都成功才能 resolve, res.length === arr.length 异步时此时 data 为 undefined，无法判断结束
-			res[i] = data
-			if (++index === arr.length) {
-				resolve(res)
-			}
-		}
-
-		for (let i = 0; i < arr.length; i++) {
-			const val = arr[i]
-			if (
-				(typeof val === 'object' && val !== null) ||
-				typeof val === 'function'
-			) {
-				if (typeof val.then === 'function') {
-					val.then((data) => {
-						// res[i] = data 这里可以写个方法统一处理
-						// 给个计数器，函数执行了计数器加一
-						resolveData(i, data)
-					}, reject)
-				} else {
-					// res[i] = val
-					resolveData(i, val)
-				}
-			} else {
-				// res[i] = val
-				resolveData(i, val)
-			}
-		}
-	})
-}
-
-Promise.myAll(arr)
-	.then((data) => {
-		console.log('Promise.myAll', data)
-	})
-	.catch((err) => {
-		console.log(err)
-	})
-
-// 需要考虑 传入空数组情况 直接 resolve 成功
-Promise.all([]).then((data) => {
-	console.log('hello')
+const p1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('p1')
+  }, 3000)
 })
 
-Promise.myAll([]).then((data) => {
-	console.log('world')
+const p2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    // reject(new Error('p2'))
+    resolve('p2')
+  }, 2000)
+})
+
+const p3 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    // reject(new Error('p3'))
+    resolve('p3')
+  }, 1000)
+})
+
+const test = [1, 2, 3, p1, p2, p3, 7, 8, 9]
+const set = new Set(test)
+
+Promise.all(set).then(val => console.log('Promise.all', val))
+
+// promise 并发 计数器
+
+Promise._all = function (it) {
+  // 空值
+  // 字符串, iterator
+  // 循环异步问题，循环结束，异步不一定执行✅
+  // 计数器累加
+  // Array.from 和 [...arr]的区别
+  return new Promise((resolve, reject) => {
+    const arr = [...it]
+    if (arr.length === 0) resolve(arr)
+    const ret = []
+    let idx = 0
+    const resolveData = (data, key) => {
+      // 这里输出 [pending, resolved, resolved]
+      // promise 在 task 末尾执行回调
+      ret[key] = data
+      // 这里计数器算完才结束
+      if (++idx === arr.length) resolve(ret)
+    }
+    for (const [key, val] of arr.entries()) {
+      Promise.resolve(val).then(
+        data => resolveData(data, key),
+        r => reject(r)
+      )
+    }
+  })
+}
+
+// 循环 + 异步
+// reduce 本质还是遍历
+// reduce + promise 可以串行，本质还是回调
+// for ... of + await,生成器
+
+Promise._all(new Set([])).then(val => console.log('Promise._all', val))
+
+// Promise.all的完成体应该符合以下特征：
+
+// 输入为Iterator类型的参数，可以是Array，Map， Set，String ，可能也得包括魔改的Iterator（Symbol.iterator）之类
+// 若输入的可迭代数据里不是Promise，则也需要原样输出
+// 返回一个Promise实例，可以调用then和catch方法
+// 输出在then里体现为保持原顺序的数组
+// 输出在catch体现为最早的reject返回值
+// 空 Iterator， resolve返回空数组
+
+// const all = (...promises) => {
+//   const results = [];
+
+//   const merged = promises.reduce(
+//     (acc, p) => acc.then(() => p).then(r => results.push(r)),
+//     Promise.resolve(null));
+
+//   return merged.then(() => results);
+// };
+```
+
+### Promise.prototype.finally
+
+```js
+// 无论当前 Promise 是成功还是失败，调用finally之后都会执行 finally 中传入的函数，并且将值原封不动的往下传。
+
+const p1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('p1')
+  }, 3000)
+})
+
+// 第一步 cb 无论成功与否都执行
+// finally 后面海可以then 所以返回值是一个 promise
+// 第二部 透传值，cb执行后传值
+// 第三部 cb 有返回值 需要等待，cb 是立即执行的 但返回值是一个异步需要等待完成在透传值
+// 最外层函数返回一个promise 里层函数也返回一个promise
+
+Promise.prototype._finally = function (cb) {
+  return this.then(
+    data => {
+      return Promise.resolve(cb()).then(() => data)
+    },
+    r => {
+      // 等待
+      return Promise.resolve(cb()).then(() => {
+        throw r
+      })
+    }
+  )
+}
+
+p1.then()
+  ._finally(() => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve()
+      }, 2000)
+    })
+  })
+  .then(val => console.log(val))
+```
+
+### Promise.allSettled
+
+```js
+// 一旦所指定的 promises 集合中每一个 promise 已经完成，无论是成功的达成或被拒绝，未决议的 Promise将被异步完成。那时，所返回的 promise 的处理器将传入一个数组作为输入，该数组包含原始 promises 集中每个 promise 的结果
+
+const p1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('p1')
+  }, 3000)
+})
+
+const p2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject(new Error('p2'))
+    // resolve('p2')
+  }, 2000)
+})
+
+const p3 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    // reject(new Error('p3'))
+    resolve('p3')
+  }, 1000)
+})
+
+Promise.allSettled([1, 2, 3, p1, p2, p3]).then(data => {
+  console.log(data)
+})
+
+Promise._allSettled = it => {
+  return new Promise(resolve => {
+    const arr = [...it]
+    if (arr.length === 0) resolve(arr)
+    const ret = []
+    let idx = 0
+    for (const [k, v] of arr.entries()) {
+      Promise.resolve(v).then(
+        value => {
+          ret[k] = { status: 'fulfilled', value }
+          ++idx === arr.length && resolve(ret)
+        },
+        reason => {
+          ret[k] = { status: 'rejected', reason }
+          ++idx === arr.length && resolve(ret)
+        }
+      )
+    }
+  })
+}
+
+Promise._allSettled([1, 2, 3, p1, p2, p3]).then(data => {
+  console.log(data)
 })
 ```
 
-### Promise.finally
+### Promise.any
 
 ```js
-const promise = (timeout, data) => {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			resolve(data)
-		}, timeout)
-	})
+// 有成功一个就返回成功的那个，全失败才返回失败，空数组失败，与 race 的区别，race 失败了就会返回失败
+// 注意点 是 all 的反方向
+
+const p1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject(new Error('p1'))
+    // resolve('p1')
+  }, 3000)
+})
+
+const p2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject(new Error('p2'))
+    // resolve('p2')
+  }, 2000)
+})
+
+// 会冒泡
+const p3 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject(new Error('p3'))
+    // resolve('p3')
+  }, 1000)
+})
+
+// const test = [p1, p2, p3]
+
+Promise.any([]).then(
+  val => {
+    console.log(val)
+  },
+  err => console.log(err instanceof Error)
+)
+
+Promise._any = it => {
+  return new Promise((resolve, reject) => {
+    const arr = [...it]
+    const ret = []
+    if (arr.length === 0) reject(ret)
+    let idx = 0
+    for (const [k, v] of arr.entries()) {
+      Promise.resolve(v).then(
+        data => resolve(data),
+        r => {
+          // err 怎么处理，err 子类
+          ret[k] = r
+          if (++idx === arr.length) {
+            reject(ret)
+          }
+        }
+      )
+    }
+  })
 }
 
-promise(1000, 1000)
-	.finally(() => {
-		// 1. finally 回调函数中不接收任何参数，上层数据透传到了下一层 then 中
-		// 2. finally 返回一个 promise，返回其他值会被忽略
-		// 3. 回调函数的返回值无论是什么都会成为成功的 promise
-		console.log('hello world1') // 异步
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
-				resolve(2000)
-			}, 3000)
-		})
-	})
-	.then((data) => {
-		console.log(data)
-	})
+Promise._any([]).then(
+  val => {},
+  err => {
+    console.log(err instanceof Error)
+  }
+)
+```
 
-Promise.prototype._finally = function (cb) {
-	// 注意点1，为了 this 无法用箭头函数
-	// 注意点2，cb 是无论成功失败都执行
-	// 注意点2，cb 可能返回一个 promise，透传的数据需要等待 promise 执行完在传出去，需要 return
-	return this.then(
-		(data) => Promise.resolve(cb()).then(() => data),
-		(err) =>
-			Promise.resolve(cb()).then(() => {
-				throw err
-			})
-	)
+### Promise.prototype.catch
+
+```js
+// 注意点 catch 的返回值是个 promise
+// catch 是包了一层函数的 then，相当于代理了一层
+
+const p = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject(new Error('我是错误'))
+  }, 1000)
+})
+
+p.catch(reason => {
+  console.log(reason)
+})
+
+Promise.prototype._catch = function (onRejected) {
+  return this.then(null, onRejected)
 }
 
-promise(2000, 2000)
-	._finally(() => {
-		console.log('hello world2')
-	})
-	.then((data) => {
-		console.log(data)
-	})
+p._catch(reason => {
+  console.log(reason)
+})
 ```
 
 ### Promise.resolve
 
 ```js
 const promise1 = (function () {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			resolve('我是 promise1，我已经 resolve 了')
-		}, 1000)
-	})
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('我是 promise1，我已经 resolve 了')
+    }, 1000)
+  })
 })()
 
 // promise 实例
@@ -406,495 +593,555 @@ console.log(Promise.resolve(promise1) === promise1) // true
 
 // 即 鸭子类型判断符合 isPromise 的对象
 const thenable = {
-	then(resolve) {
-		resolve('我是thenable对象')
-	},
+  then(resolve) {
+    resolve('我是thenable对象')
+  }
 }
 //  普通类型
-Promise.resolve(1).then((data) => {
-	console.log(data)
+Promise.resolve(1).then(data => {
+  console.log(data)
 })
 
-Promise.resolve(thenable).then((data) => {
-	console.log(data)
+Promise.resolve(thenable).then(data => {
+  console.log(data)
 })
 
 // 三种情况
 // 已经 resolved 的 实例 返回本身
 // thenable 对象调用它自身的 resolve
 // 其余 resolve 包一下
-Promise.myResolve = (promise) => {
-	if (promise instanceof Promise) return promise
-	return new Promise((resolve) => {
-		if (promise && promise.then && typeof promise.then === 'function') {
-			// 传入 promise 的 resolve 方法,相当于 resolve 执行了
-			promise.then(resolve)
-		} else {
-			resolve(promise)
-		}
-	})
+Promise.myResolve = promise => {
+  if (promise instanceof Promise) return promise
+  return new Promise(resolve => {
+    if (promise && promise.then && typeof promise.then === 'function') {
+      // 传入 promise 的 resolve 方法,相当于 resolve 执行了
+      promise.then(resolve)
+    } else {
+      resolve(promise)
+    }
+  })
 }
 
 console.log(Promise.myResolve(promise1) === promise1) // true
 
-Promise.myResolve(thenable).then((data) => {
-	console.log(data)
+Promise.myResolve(thenable).then(data => {
+  console.log(data)
 })
 
-Promise.myResolve(1).then((data) => {
-	console.log(data)
+Promise.myResolve(1).then(data => {
+  console.log(data)
 })
 ```
 
 ### Promise.race
 
 ```js
-const promise1 = function () {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			reject('我是 promise1')
-		}, 1000)
-	})
-}
+// race 只要有一个 promise 执行完，直接 resolve 并停止执行。
 
-const promise2 = function () {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			reject('我是 promise2')
-		}, 0)
-	})
-}
-
-const arr = [promise1(), promise2()]
-
-Promise.race(arr)
-	.then((data) => {
-		console.log(data)
-	})
-	.catch((err) => {
-		console.log(err)
-	})
-
-Promise.race([]).then((data) => {
-	console.log('我执行了')
+const p1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('p1')
+  }, 3000)
 })
 
-// 注意点 1.空数组 直接 return
-// 错误处理
-// 不按顺序来,哪个先完成哪个 return 与 all 不同,返回一个promise
+const p2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    // reject(new Error('p2'))
+    resolve('p2')
+  }, 2000)
+})
 
-Promise.myRace = function (arr) {
-	return new Promise((resolve, reject) => {
-		if (arr.length === 0) return
+const p3 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    // reject(new Error('p3'))
+    resolve('p3')
+  }, 1000)
+})
 
-		arr.forEach((item) => {
-			Promise.resolve(item).then((data) => {
-				resolve(data)
-				return
-			}, reject)
-		})
-	})
+const test = [p1, p2, p3]
+
+Promise.race(test).then(val => {
+  console.log(val)
+})
+
+Promise._race = it => {
+  return new Promise((resolve, reject) => {
+    const promises = [...it]
+    if (promises.length === 0) resolve([])
+    promises.forEach(promise =>
+      Promise.resolve(promise).then(
+        data => resolve(data),
+        r => reject(r)
+      )
+    )
+  })
 }
 
-Promise.myRace(arr)
-	.then((data) => {
-		console.log(data)
-	})
-	.catch((err) => {
-		console.log(err)
-	})
-
-Promise.myRace([]).then((data) => {
-	console.log('我执行了')
+Promise._race(new Set(test)).then(val => {
+  console.log(val)
 })
 ```
 
-### 微任务（Microtask）
-
-## co + Generator
+### Promise.resolve
 
 ```js
-function* gen(data0) {
-	console.log(data0)
-	const data1 = yield '1'
-	console.log(data1)
-	const data2 = yield '2'
-	console.log(data2)
-	const data3 = yield '3'
-	console.log(data3)
-	return '4'
+// 应用
+Promise.resolve(100)
+  .then()
+  .then(() => 1000)
+  .then(val => console.log(val))
+// then 中的值如果不传递，有可能会丢失，resolve成功参数不处理默认会向下传递，不处理，下一次可能丢失
+
+Promise._resolve = function (props) {
+  console.log(props)
+  // 考虑 thenable 对象
+  return new Promise((resolve, reject) => {
+    resolve(props)
+  })
+  // return (props instanceof Promise ? props : new Promise((resolve, reject) => {
+  // 	resolve(props)
+  // }))
 }
 
-const it = gen('0') // 只是生成 iterator 内部 log 不执行
+// 应用
+Promise._resolve(Promise.resolve(100)).then(val => console.log(val))
+```
 
-console.log(it.next()) // '1'
-console.log(it.next('data1')) '2'
-console.log(it.next('data2')) '3'
-console.log(it.next('data3')) '4'
+### scheduler
 
-// for of 消费的 生成器 需要定义在 symbol.iterator函数上 {next() {return value: done }} index 原型链上的对象具有该方法也可）
+```js
+/**
+ * 题目：JS 实现异步调度器
+ * 要求：
+ *  JS 实现一个带并发限制的异步调度器 Scheduler，保证同时运行的任务最多有 2 个
+ *  完善下面代码中的 Scheduler 类，使程序能正确输出
+ */
 
-// yield *
-//   yield * 后面跟的是一个可遍历的结构，它会调用该结构的遍历器接口
+//  当前执行并发大于2时，生成一个暂停的Promise，把resolve添到一个数组中，下面的代码被暂停执行
+//  当前执行并发不大于2,立即执行异步操作并从数组中弹出最先push的resolve改变Promise的状态，
+//  由于Promise被解决，最初被暂停的代码可以继续执行
 
-// return(), throw(), next()
+//  如果Promise的resolve, reject没有执行会怎么样？
+//  在Promise的外部执行resolve, reject可以改变Promise的状态吗？
 
-// Generator 函数可以不用yield表达式，这时就变成了一个单纯的暂缓执行函数
+class Scheduler {
+  constructor(maxNum) {
+    this.taskList = []
+    this.count = 0
+    this.maxNum = maxNum // 最大并发数
+  }
+  async add(promiseCreator) {
+    // 如果当前并发超过最大并发，那就进入任务队列等待
+    if (this.count >= this.maxNum) {
+      await new Promise(resolve => {
+        this.taskList.push(resolve) // 锁
+      })
+    }
+
+    // 次数 + 1（如果前面的没执行完，那就一直添加）
+    this.count++
+
+    // 等待里面内容执行完毕
+    // 阻塞执行
+    const result = await promiseCreator()
+
+    // 次数 - 1
+    this.count--
+
+    if (this.taskList.length) {
+      this.taskList.shift()() // 解锁
+    }
+
+    // 链式调用，将结果值返回出去
+    return result
+  }
+}
+
+const timeout = time => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve()
+    }, time)
+  })
+}
+
+const scheduler = new Scheduler(2)
+const addTack = (time, order) => {
+  return scheduler.add(() => timeout(time)).then(() => console.log(order))
+}
+addTack(1000, '1') // scheduler.add(() => promise|1000)
+addTack(500, '2') // scheduler.add(() => promise|500)
+addTack(300, '3') // scheduler.add(() => promise|300)
+addTack(400, '4') // scheduler.add(() => promise|400)
+
+// 输出：2 3 1 4
+// 一开始，1、2 两个任务进入队列
+// 500ms 时，完成 2，输出 2，任务 3 进队
+// 800ms 时，完成 3，输出 3，任务 4 进队
+// 1000ms 时，完成 1，输出 1，没有下一个进队的
+// 1200ms 时，完成 4，输出 4，没有下一个进队的
+// 进队完成，输出 2 3 1 4
+
+// class Scheduler {
+//   constructor() {
+//     this.queue = [];
+//     this.maxCount = 2;
+//     this.runCounts = 0;
+//   }
+//   add(promiseCreator) {
+//     this.queue.push(promiseCreator);
+//   }
+//   taskStart() {
+//     for (let i = 0; i < this.maxCount; i++) {
+//       this.request();
+//     }
+//   }
+//   request() {
+//     if (!this.queue || !this.queue.length || this.runCounts >= this.maxCount) {
+//       return;
+//     }
+//     this.runCounts++;
+
+//     this.queue.shift()().then(() => {
+//       this.runCounts--;
+//       this.request();
+//     });
+//   }
+// }
+
+// const timeout = time => new Promise(resolve => {
+//   setTimeout(resolve, time);
+// })
+
+// const scheduler = new Scheduler();
+
+// const addTask = (time,order) => {
+//   scheduler.add(() => timeout(time).then(()=>console.log(order)))
+// }
+
+// addTask(1000, '1');
+// addTask(500, '2');
+// addTask(300, '3');
+// addTask(400, '4');
+
+// scheduler.taskStart()
+```
+
+## Generator
+
+```js
+function* gen() {
+  yield '1'
+  yield '2'
+  yield '3'
+  yield '4'
+  return 'ret'
+}
+
+const it = gen()
+
+console.log(it.next()) // {value: '1', done: false}
+console.log(it.next()) // {value: '2', done: false}
+console.log(it.next()) // {value: '3', done: false}
+console.log(it.next()) // {value: '4', done: false}
+// for of 会忽略 'ret'
+console.log(it.next()) // {value: 'ret', done: true}
+// console.log(it.next()) // {value: 'undefined', done: true}
+
+function* _gen(gen) {
+  console.log(gen)
+  const yield1 = yield '1'
+  console.log(yield1)
+  const yield2 = yield '2'
+  console.log(yield2)
+  const yield3 = yield '3'
+  console.log(yield3)
+  const yield4 = yield '4'
+  console.log(yield4)
+  return 'ret'
+}
+
+const _it = _gen('gen') // 生成器函数并不执行
+
+console.log(_it.next()) // 第一次执行遇到 yield 停止 // gen
+console.log(_it.next('yield1')) // '1' 执行，next传参数是
+console.log(_it.next('yield2')) // '2'
+console.log(_it.next('yield3')) // '3'
+console.log(_it.next('yield4')) // '4' 直到结束 返回 'ret'
+
+// 以上就是 gen 特征
+
+// g()并不会执行g函数，返回的也不是函数运行结果，而是一个指向内部状态的指针对象，也就是迭代器对象（Iterator Object）
+
+// 提问：如果g函数没有yield和return语句呢？
+// 答：第一次调用next就返回{value: undefined, done: true}，之后也是{value: undefined, done: true}。
+
+// 每个迭代器之间互不干扰，作用域独立。
+
+// 由于yield永远返回undefined，这时候，如果有了next方法的参数，yield就被赋了值，比如下例，原本a变量的值是0，但是有了next的参数，a变量现在等于next的参数，也就是11。
+
+// 提问：第一个.next()可以有参数么？ 答：设这样的参数没任何意义，因为第一个.next()的前面没有yield语句。
+
+// 以上面代码的return语句返回的6，不包括在for...of循环之中。
+
+// function * fibonacci() {
+// 	let [prev, curr] = [0, 1]
+// 	for (;;) { // 这里请思考：为什么这个循环不设定结束条件？
+// 		[prev, curr] = [curr, prev + curr]
+// 		yield curr
+// 	}
+// }
+
+// for (const n of fibonacci()) {
+// 	if (n > 1000) {
+// 		break
+// 	}
+// 	console.log(n)
+// }
+```
+
+### iterator
+
+```js
+// const arr = [1, 2, 3, 4]
+
+// const iterator = arr[Symbol.iterator]()
+
+// console.log(Object.getPrototypeOf(iterator))
+
+// console.log(iterator.next()) // { value: 1, done: false }
+// console.log(iterator.next()) // { value: 2, done: false }
+// console.log(iterator.next()) // { value: 3, done: false }
+// console.log(iterator.next()) // { value: 4, done: false }
+// console.log(iterator.next()) // { value: undefined, done: true }
+
+// 计数器实现 iterator
+
+// Array.from 和 [...arr]的区别
 
 const arrLike = {
-	[Symbol.iterator]() {
-		let index = 0
-		return {
-			next: () => {
-				return {
-					value: this[index],
-					done: index++ === this.length,
-				}
-			},
-		}
-	},
-	0: 'javascript',
-	1: 'vue',
-	2: 'react',
-	3: 'webpack',
-	length: 4,
+  0: '0',
+  1: '1',
+  2: '2',
+  length: 3
 }
 
-console.log(...arrLike)
+// console.log([...arrLike]) // TypeError: arrLike is not iterable
+// console.log(Array.from(arrLike)) // ['0', '1', '2']
 
-const _arr = {
-	*[Symbol.iterator]() {
-		yield* ['javascript', 'react', 'vue', 'webpack']
-	},
-	length: 4,
+const arrLikeToIt = {
+  0: '0',
+  1: '1',
+  2: '2',
+  length: 3,
+  // [Symbol.iterator]() {
+  // 	let idx = 0
+  // 	return {
+  // 		next: () => ({
+  // 			value: this[idx],
+  // 			done: idx++ === this.length
+  // 		})
+  // 	}
+  // }
+  *[Symbol.iterator]() {
+    for (let i = 0; i < this.length; i++) {
+      yield this[i]
+    }
+  }
 }
 
-console.log(..._arr)
+console.log([...arrLikeToIt])
+```
 
+### generator 实现原理
+
+```js
+const context = {
+  next: 0,
+  prev: 0,
+  done: false,
+  stop: function () {
+    this.done = true
+  }
+}
+
+function gen(context) {
+  // while (1) {
+  switch ((context.prev = context.next)) {
+    case 0:
+      context.next = 2
+      return 'result1'
+
+    case 2:
+      context.next = 4
+      return 'result2'
+
+    case 4:
+      context.next = 6
+      return 'result3'
+
+    case 6:
+      context.stop()
+      return undefined
+  }
+  // }
+}
+
+const foo = function () {
+  return {
+    next: function () {
+      return {
+        value: gen(context),
+        done: context.done
+      }
+    }
+  }
+}
+
+// 发现它是每生foo()执行一次 ，就会执行一次wrap方法，而在wrap方法里就会new 一个Context对象。这就说明了每个迭代器的context是独立的。
+
+// 我们定义的function*生成器函数被转化为以上代码
+
+// 转化后的代码分为三大块：
+
+// gen$(_context)由yield分割生成器函数代码而来
+
+// context对象用于储存函数执行上下文
+
+// 迭代器法定义next()，用于执行gen$(_context)来跳到下一步
+
+// 从中我们可以看出，「Generator实现的核心在于上下文的保存，函数并没有真的被挂起，每一次yield，其实都执行了一遍传入的生成器函数，只是在这个过程中间用了一个context对象储存上下文，使得每次执行生成器函数的时候，都可以从上一个执行结果开始执行，看起来就像函数被挂起了一样」
+```
+
+### co
+
+```js
 const fs = require('fs').promises
 const path = require('path')
 
-fs.readFile('./Toys/filename.md')
-	.then((data) => {
-		return fs.readFile(path.join(data.toString().trimEnd()))
-	})
-	.then((data) => {
-		console.log('promise 串行读取文件', data)
-	})
+// promise 串行 值会透传
+// fs.readFile(path.resolve(__dirname, 'test.txt'))
+// 	.then(data => data.toString())
+// 	.then(data => fs.readFile(path.resolve(__dirname, data)))
+// 	.then(data => console.log(data.toString()))
 
-// 第二次读取依赖第一次读取的结果
+// async
+// async function read() {
+// 	const name = await fs.readFile(path.resolve(__dirname, 'test.txt'))
+// 	const data = await fs.readFile(path.resolve(__dirname, name.toString()))
+// 	return data.toString()
+// }
 
-// 使用 Generator 读取文件
+// read().then(data => {
+// 	console.log(data)
+// })
 
-function* readFile(file1Name) {
-	const file2Name = yield fs.readFile(file1Name)
-	const fileData = yield fs.readFile(file2Name.toString().trimEnd())
-	return fileData
+// generator 串行
+// function read() {
+// 	return new Promise((resolve, reject) => {
+// 		function * gen() {
+// 			const name = yield fs.readFile(path.resolve(__dirname, 'test.txt')).then(data => {
+// 				it.next(data.toString())
+// 			})
+// 			const data = yield fs.readFile(path.resolve(__dirname, name)).then(data => {
+// 				it.next(data.toString())
+// 			})
+// 			resolve(data)
+// 		}
+// 		const it = gen()
+// 		it.next()
+// 	})
+// }
+
+// read().then(data => console.log(data))
+
+function* gen() {
+  const name = yield fs.readFile(path.resolve(__dirname, 'test.txt'))
+  const data = yield fs.readFile(path.resolve(__dirname, name.toString()))
+  return data
 }
+
+// const it = gen()
+// const { value, done } = it.next()
+
+// Promise.resolve(value).then(data => {
+// 	const { value, done } = it.next(data)
+// 	Promise.resolve(value).then(data => {
+// 		const { value, done } = it.next(data)
+// 		console.log(value, done)
+// 	})
+// })
+
+// 找规律 递归
 
 function co(it) {
-	return new Promise((resolve, reject) => {
-		const next = (data) => {
-			let { value, done } = it.next(data)
-			if (!done) {
-				Promise.resolve(value).then((data) => next(data), reject)
-			} else {
-				resolve(data)
-			}
-		}
-		next()
-	})
+  return new Promise((resolve, reject) => {
+    const next = data => {
+      const { value, done } = it.next(data)
+      if (!done) {
+        Promise.resolve(value).then(
+          data => {
+            next(data)
+          },
+          r => {
+            it.throw(r)
+            reject(r)
+          }
+        )
+      } else {
+        resolve(value)
+      }
+    }
+    next()
+  })
 }
 
-const readAsync = readFile('./Toys/filename.md')
-
-co(readAsync).then((data) => {
-	console.log(data)
+co(gen()).then(data => {
+  console.log(data)
 })
+
+// 完美
+// co 执行就会返回一个 resolved 的 promise
+// async 一执行也会返回一个 resolve 的 promise
 ```
 
-Generator 组合
-Generator 组合（composition）是 generator 的一个特殊功能，它允许透明地（transparently）将 generator 彼此“嵌入（embed）”到一起。
+### promisify
 
-例如，我们有一个生成数字序列的函数：
+```js
+const fs = require('fs')
+const path = require('path')
 
-function* generateSequence(start, end) {
-  for (let i = start; i <= end; i++) yield i;
-}
-现在，我们想重用它来生成一个更复杂的序列：
-
-首先是数字 0..9（字符代码为 48…57），
-接下来是大写字母 A..Z（字符代码为 65…90）
-接下来是小写字母 a...z（字符代码为 97…122）
-我们可以对这个序列进行应用，例如，我们可以从这个序列中选择字符来创建密码（也可以添加语法字符），但让我们先生成它。
-
-在常规函数中，要合并其他多个函数的结果，我们需要调用它们，存储它们的结果，最后再将它们合并到一起。
-
-对于 generator 而言，我们可以使用 yield* 这个特殊的语法来将一个 generator “嵌入”（组合）到另一个 generator 中：
-
-组合的 generator 的例子：
-
-function* generateSequence(start, end) {
-  for (let i = start; i <= end; i++) yield i;
-}
-
-function* generatePasswordCodes() {
-
-  // 0..9
-  yield* generateSequence(48, 57);
-
-  // A..Z
-  yield* generateSequence(65, 90);
-
-  // a..z
-  yield* generateSequence(97, 122);
-
-}
-
-let str = '';
-
-for(let code of generatePasswordCodes()) {
-  str += String.fromCharCode(code);
-}
-
-alert(str); // 0..9A..Za..z
-yield* 指令将执行 委托 给另一个 generator。这个术语意味着 yield* gen 在 generator gen 上进行迭代，并将其产出（yield）的值透明地（transparently）转发到外部。就好像这些值就是由外部的 generator yield 的一样。
-
-执行结果与我们内联嵌套 generator 中的代码获得的结果相同：
-
-function* generateSequence(start, end) {
-  for (let i = start; i <= end; i++) yield i;
-}
-
-function* generateAlphaNum() {
-
-  // yield* generateSequence(48, 57);
-  for (let i = 48; i <= 57; i++) yield i;
-
-  // yield* generateSequence(65, 90);
-  for (let i = 65; i <= 90; i++) yield i;
-
-  // yield* generateSequence(97, 122);
-  for (let i = 97; i <= 122; i++) yield i;
-
-}
-
-let str = '';
-
-for(let code of generateAlphaNum()) {
-  str += String.fromCharCode(code);
-}
-
-alert(str); // 0..9A..Za..z
-Generator 组合（composition）是将一个 generator 流插入到另一个 generator 流的自然的方式。它不需要使用额外的内存来存储中间结果。
-
-异步可迭代对象
-当值是以异步的形式出现时，例如在 setTimeout 或者另一种延迟之后，就需要异步迭代。
-
-最常见的场景是，对象需要发送一个网络请求以传递下一个值，稍后我们将看到一个它的真实示例。
-
-要使对象异步迭代：
-
-使用 Symbol.asyncIterator 取代 Symbol.iterator。
-next() 方法应该返回一个 promise（带有下一个值，并且状态为 fulfilled）。
-关键字 async 可以实现这一点，我们可以简单地使用 async next()。
-我们应该使用 for await (let item of iterable) 循环来迭代这样的对象。
-注意关键字 await。
-作为开始的示例，让我们创建一个可迭代的 range 对象，与前面的那个类似，不过现在它将异步地每秒返回一个值。
-
-我们需要做的就是对上面代码中的部分代码进行替换：
-
-let range = {
-  from: 1,
-  to: 5,
-
-  [Symbol.asyncIterator]() { // (1)
-    return {
-      current: this.from,
-      last: this.to,
-
-      async next() { // (2)
-
-        // 注意：我们可以在 async next 内部使用 "await"
-        await new Promise(resolve => setTimeout(resolve, 1000)); // (3)
-
-        if (this.current <= this.last) {
-          return { done: false, value: this.current++ };
-        } else {
-          return { done: true };
-        }
-      }
-    };
+fs.readFile(path.resolve(__dirname, 'test.txt'), 'utf-8', (err, data) => {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log(data)
   }
-};
+})
 
-(async () => {
-
-  for await (let value of range) { // (4)
-    alert(value); // 1,2,3,4,5
-  }
-
-})()
-正如我们所看到的，其结构与常规的 iterator 类似:
-
-为了使一个对象可以异步迭代，它必须具有方法 Symbol.asyncIterator (1)。
-这个方法必须返回一个带有 next() 方法的对象，next() 方法会返回一个 promise (2)。
-这个 next() 方法可以不是 async 的，它可以是一个返回值是一个 promise 的常规的方法，但是使用 async 关键字可以允许我们在方法内部使用 await，所以会更加方便。这里我们只是用于延迟 1 秒的操作 (3)。
-我们使用 for await(let value of range) (4) 来进行迭代，也就是在 for 后面添加 await。它会调用一次 range[Symbol.asyncIterator]() 方法一次，然后调用它的 next() 方法获取值。
-这是一个对比 Iterator 和异步 iterator 之间差异的表格：
-
-Iterator	异步 iterator
-提供 iterator 的对象方法	Symbol.iterator	Symbol.asyncIterator
-next() 返回的值是	任意值	Promise
-要进行循环，使用	for..of	for await..of
-Spread 语法 ... 无法异步工作
-需要常规的同步 iterator 的功能，无法与异步 iterator 一起使用。
-
-例如，spread 语法无法工作：
-
-alert( [...range] ); // Error, no Symbol.iterator
-这很正常，因为它期望找到 Symbol.iterator，而不是 Symbol.asyncIterator。
-
-for..of 的情况和这个一样：没有 await 关键字时，则期望找到的是 Symbol.iterator。
-
-回顾 generator
-现在，让我们回顾一下 generator，它使我们能够写出更短的迭代代码。在大多数时候，当我们想要创建一个可迭代对象时，我们会使用 generator。
-
-简单起见，这里省略了一些解释，即 generator 是“生成（yield）值的函数”。关于此的详细说明请见 Generator 一章。
-
-Generator 是标有 function*（注意星号）的函数，它使用 yield 来生成值，并且我们可以使用 for..of 循环来遍历它们。
-
-下面这例子生成了从 start 到 end 的一系列值：
-
-function* generateSequence(start, end) {
-  for (let i = start; i <= end; i++) {
-    yield i;
+const promisify = readFile => {
+  return (...args) => {
+    return new Promise((resolve, reject) => {
+      readFile(...args, (err, data) => {
+        if (err) reject(err)
+        resolve(data)
+      })
+    })
   }
 }
 
-for(let value of generateSequence(1, 5)) {
-  alert(value); // 1，然后 2，然后 3，然后 4，然后 5
-}
-正如我们所知道的，要使一个对象可迭代，我们需要给它添加 Symbol.iterator。
-
-let range = {
-  from: 1,
-  to: 5,
-  [Symbol.iterator]() {
-    return <带有 next 方法的对象，以使对象 range 可迭代>
-  }
-}
-对于 Symbol.iterator 来说，一个通常的做法是返回一个 generator，这样可以使代码更短，如下所示：
-
-let range = {
-  from: 1,
-  to: 5,
-
-  *[Symbol.iterator]() { // [Symbol.iterator]: function*() 的一种简写
-    for(let value = this.from; value <= this.to; value++) {
-      yield value;
+const promises = fs => {
+  for (const [k, v] of Object.entries(fs)) {
+    if (typeof v === 'function') {
+      fs[k] = promisify(v)
     }
   }
-};
-
-for(let value of range) {
-  alert(value); // 1，然后 2，然后 3，然后 4，然后 5
-}
-如果你想了解更多详细内容，请阅读 Generator 一章。
-
-在常规的 generator 中，我们无法使用 await。所有的值都必须按照 for..of 构造的要求同步地出现。
-
-如果我们想要异步地生成值该怎么办？例如，对于来自网络请求的值。
-
-让我们再回到异步 generator，来使这个需求成为可能。
-
-异步 generator (finally)
-对于大多数的实际应用程序，当我们想创建一个异步生成一系列值的对象时，我们都可以使用异步 generator。
-
-语法很简单：在 function* 前面加上 async。这即可使 generator 变为异步的。
-
-然后使用 for await (...) 来遍历它，像这样：
-
-async function* generateSequence(start, end) {
-
-  for (let i = start; i <= end; i++) {
-
-    // 哇，可以使用 await 了！
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    yield i;
-  }
-
+  return fs
 }
 
-(async () => {
+const _fs = promises(fs)
 
-  let generator = generateSequence(1, 5);
-  for await (let value of generator) {
-    alert(value); // 1，然后 2，然后 3，然后 4，然后 5（在每个 alert 之间有延迟）
-  }
-
-})();
-因为此 generator 是异步的，所以我们可以在其内部使用 await，依赖于 promise，执行网络请求等任务。
-
-引擎盖下的差异
-如果你还记得我们在前面章节中所讲的关于 generator 的细节知识，那你应该知道，从技术上讲，异步 generator 和常规的 generator 在内部是有区别的。
-
-对于异步 generator，generatr.next() 方法是异步的，它返回 promise。
-
-在一个常规的 generator 中，我们使用 result = generator.next() 来获得值。但在一个异步 generator 中，我们应该添加 await 关键字，像这样：
-
-result = await generator.next(); // result = {value: ..., done: true/false}
-这就是为什么异步 generator 可以与 for await...of 一起工作。
-
-异步的可迭代对象 range
-常规的 generator 可用作 Symbol.iterator 以使迭代代码更短。
-
-与之类似，异步 generator 可用作 Symbol.asyncIterator 来实现异步迭代。
-
-例如，我们可以通过将同步的 Symbol.iterator 替换为异步的 Symbol.asyncIterator，来使对象 range 异步地生成值，每秒生成一个：
-
-let range = {
-  from: 1,
-  to: 5,
-
-  // 这一行等价于 [Symbol.asyncIterator]: async function*() {
-  async *[Symbol.asyncIterator]() {
-    for(let value = this.from; value <= this.to; value++) {
-
-      // 在 value 之间暂停一会儿，等待一些东西
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      yield value;
-    }
-  }
-};
-
-(async () => {
-
-  for await (let value of range) {
-    alert(value); // 1，然后 2，然后 3，然后 4，然后 5
-  }
-
-})();
-现在，value 之间的延迟为 1 秒。
-
-请注意：
-从技术上讲，我们可以把 Symbol.iterator 和 Symbol.asyncIterator 都添加到对象中，因此它既可以是同步的（for..of）也可以是异步的（for await..of）可迭代对象。
-
-但是实际上，这将是一件很奇怪的事情。
-
-常规的 iterator 和 generator 可以很好地处理那些不需要花费时间来生成的的数据。
-
-当我们期望异步地，有延迟地获取数据时，可以使用它们的异步版本，并且使用 for await..of 替代 for..of。
-
-异步 iterator 与常规 iterator 在语法上的区别：
-
-Iterable	异步 Iterable
-提供 iterator 的对象方法	Symbol.iterator	Symbol.asyncIterator
-next() 返回的值是	{value:…, done: true/false}	resolve 成 {value:…, done: true/false} 的 Promise
-异步 generator 与常规 generator 在语法上的区别：
-
-Generator	异步 generator
-声明方式	function*	async function*
-next() 返回的值是	{value:…, done: true/false}	resolve 成 {value:…, done: true/false} 的 Promise
+_fs.readFile(path.resolve(__dirname, 'test.txt'), 'utf-8').then(data => {
+  console.log(data)
+})
+```

@@ -2,10 +2,10 @@
 
 - [什么时候使用 new RegExp?](#什么时候使用-new-regexp)
 - [元字符](#元字符)
-  - [量词元字符](#量词元字符)
-  - [特殊元字符](#特殊元字符)
-  - [简写字符集](#简写字符集)
-  - [修饰符](#修饰符)
+	- [量词元字符](#量词元字符)
+	- [特殊元字符](#特殊元字符)
+	- [简写字符集](#简写字符集)
+	- [修饰符](#修饰符)
 - [`[]` 中括号](#-中括号)
 - [`?` 问号](#-问号)
 - [exec](#exec)
@@ -17,11 +17,11 @@
 - [replace](#replace)
 - [先行断言 / 先行否定断言](#先行断言--先行否定断言)
 - [应用](#应用)
-  - [常用正则](#常用正则)
-  - [首字母大写](#首字母大写)
-  - [字符串中字母出现次数最多？](#字符串中字母出现次数最多)
-  - [url 处理](#url-处理)
-  - [千位分隔符](#千位分隔符)
+	- [常用正则](#常用正则)
+	- [首字母大写](#首字母大写)
+	- [字符串中字母出现次数最多？](#字符串中字母出现次数最多)
+	- [url 处理](#url-处理)
+	- [千位分隔符](#千位分隔符)
 
 ## 什么时候使用 new RegExp?
 
@@ -32,11 +32,11 @@
 所以我们可以找出需要搜索的字段，然后根据搜索字段创建 `new RegExp`：
 
 ```js
-let search = prompt("What you want to search?", "love");
-let regexp = new RegExp(search);
+let search = prompt('What you want to search?', 'love')
+let regexp = new RegExp(search)
 
 // 找到用户想要的任何东西
-alert( "I love JavaScript".search(regexp));
+alert('I love JavaScript'.search(regexp))
 ```
 
 ## 元字符
@@ -45,7 +45,7 @@ alert( "I love JavaScript".search(regexp));
 
 | 元字符 |                   描述                   |
 | :----: | :--------------------------------------: |
-|   *    |       匹配前面的子表达式零次或多次       |
+|   \*   |       匹配前面的子表达式零次或多次       |
 |   +    |       匹配前面的子表达式一次或多次       |
 |   ？   |       匹配前面的子表达式零次或一次       |
 |  {n}   |         匹配前面的子表达式 n 次          |
@@ -54,38 +54,38 @@ alert( "I love JavaScript".search(regexp));
 
 ### 特殊元字符
 
-| 元字符 |                                        描述                                        |
-| :----: | :--------------------------------------------------------------------------------: |
-|   \\   | 转义符，它可以还原元字符原来的含义，允许你匹配保留字符 [ ] ( ) { } . \* + ? ^ \$ \ |
-|   ^    |                                    匹配行的开始                                    |
-|   \$   |                                    匹配行的结束                                    |
-|   \|   |                      分支结构，匹配符号之前的字符或后面的字符                      |
-| (xyz)  |                          分组，按照确切的顺序匹配字符 xyz                          |
-| [xyz]  |                        字符类， 匹配方括号中包含的任意字符                         |
-|  [^ ]  |                      否定字符类。匹配方括号中不包含的任意字符                      |
+| 元字符 |                                        描述                                         |
+| :----: | :---------------------------------------------------------------------------------: |
+|   \\   | 转义符，它可以还原元字符原来的含义，允许你匹配保留字符 [ ] ( ) { } . \* + ? ^ \$ \  |
+|   ^    |                                    匹配行的开始                                     |
+|   \$   |                                    匹配行的结束                                     |
+|   \|   |                      分支结构，匹配符号之前的字符或后面的字符                       |
+| (xyz)  |                          分组，按照确切的顺序匹配字符 xyz                           |
+| [xyz]  |                         字符类， 匹配方括号中包含的任意字符                         |
+|  [^ ]  |                      否定字符类。匹配方括号中不包含的任意字符                       |
 
 ### 简写字符集
 
-| 简写  |               描述               |
-| :---: | :------------------------------: |
-|   .   |    匹配除换行符以外的任意字符    |
-|  \n   |            匹配换行符            |
-|  \t   |            匹配制表符            |
-|  \w   | 匹配所有字母、下划线和数字的字符 |
-|  \W   |  匹配非字母、下划线和数字的字符  |
-|  \d   |         匹配数字: [0-9]          |
-|  \D   |        匹配非数字: [^\d]         |
-|  \s   |   匹配空格符: [\t\n\f\r\p{Z}]    |
-|  \S   |       匹配非空格符: [^\s]        |
-|  \b   |          匹配词的边界           |
+| 简写 |               描述               |
+| :--: | :------------------------------: |
+|  .   |    匹配除换行符以外的任意字符    |
+|  \n  |            匹配换行符            |
+|  \t  |            匹配制表符            |
+|  \w  | 匹配所有字母、下划线和数字的字符 |
+|  \W  |  匹配非字母、下划线和数字的字符  |
+|  \d  |         匹配数字: [0-9]          |
+|  \D  |        匹配非数字: [^\d]         |
+|  \s  |   匹配空格符: [\t\n\f\r\p{Z}]    |
+|  \S  |       匹配非空格符: [^\s]        |
+|  \b  |           匹配词的边界           |
 
 ### 修饰符
 
-| 标记  |                   描述                   |
-| :---: | :--------------------------------------: |
-|   i   |  不区分大小写: 将匹配设置为不区分大小写  |
-|   g   | 全局搜索: 搜索整个输入字符串中的所有匹配，**取消正则懒惰性** |
-|   m   |     多行匹配: 会匹配输入字符串每一行，忽略换行匹配    |
+| 标记 |                             描述                             |
+| :--: | :----------------------------------------------------------: |
+|  i   |            不区分大小写: 将匹配设置为不区分大小写            |
+|  g   | 全局搜索: 搜索整个输入字符串中的所有匹配，**取消正则懒惰性** |
+|  m   |        多行匹配: 会匹配输入字符串每一行，忽略换行匹配        |
 
 ## `[]` 中括号
 
@@ -93,7 +93,7 @@ alert( "I love JavaScript".search(regexp));
 
 ```js
 const reg = /[*]/
-const str = "*"
+const str = '*'
 
 console.log(reg.test(str)) // true
 ```
@@ -204,15 +204,15 @@ console.log(reg8.lastIndex) // 0
 ```js
 // execAll
 // 不取消懒惰性情况
-RegExp.prototype.execAll = function(str) {
-	if (!this.global) return this.exec(str)
-	const res = []
-	let item = this.exec(str)
-	while (item) {
-		res.push(item[0])
-		item = this.exec(str)
-	}
-	return res
+RegExp.prototype.execAll = function (str) {
+  if (!this.global) return this.exec(str)
+  const res = []
+  let item = this.exec(str)
+  while (item) {
+    res.push(item[0])
+    item = this.exec(str)
+  }
+  return res
 }
 
 console.log(reg8.execAll('chuenwei0129chuenwei0129chuenwei0129')) // [ '0129', '0129', '0129' ]
@@ -302,7 +302,7 @@ const _time = time.replace(_reg1, '$1年$2月$3日')
 console.log(_time)
 // exec 返回相同加g和不加g与exec表现相同
 time.replace(_reg1, (...args) => {
-	console.log(args)
+  console.log(args)
 })
 ```
 
@@ -339,7 +339,6 @@ time.replace(_reg1, (...args) => {
 // 邮箱 /^\w+((-\w+)|(\.\w+))*@[a-zA-Z0-9]+((\.|-)[a-zA-Z0-9]+)*\.[a-zA-Z0-9]+$/
 ```
 
-
 ### 首字母大写
 
 ```js
@@ -350,7 +349,7 @@ const string = 'good good study, day day up!'
 const regexp = /\b([a-zA-Z])[a-zA-Z]*\b/g
 
 const resStr = string.replace(regexp, (...[word, $1]) => {
-	return $1.toUpperCase() + word.slice(1)
+  return $1.toUpperCase() + word.slice(1)
 })
 
 console.log(resStr)
@@ -367,12 +366,13 @@ console.log(resStr)
 const testStr = 'woshichuenweiwoaininiwoxihuanjavascript'
 
 function showMaxWord(testStr) {
-	return [...testStr].sort((a, b) => a.localeCompare(b))
-		.join('')
-		.match(/([a-zA-Z])\1*/g)
-		.sort((a, b) => b.length - a.length)
-		.filter((val, idx, arr) => val.length === arr[0].length)
-		.map(item => ({ [item[0]]: item.length }))
+  return [...testStr]
+    .sort((a, b) => a.localeCompare(b))
+    .join('')
+    .match(/([a-zA-Z])\1*/g)
+    .sort((a, b) => b.length - a.length)
+    .filter((val, idx, arr) => val.length === arr[0].length)
+    .map(item => ({ [item[0]]: item.length }))
 }
 
 const testRes = showMaxWord(testStr)
@@ -382,15 +382,15 @@ console.log(testRes)
 // { maxCharArr: [ 'e', 'f' ], count: 7 }
 // 对象 + 计数器
 function findMaxWord(str) {
-	const res = {}
-	;[...str].forEach(item => {
-		if (!res[item]) {
-			res[item] = 1
-		} else {
-			res[item]++
-		}
-	})
-	return res
+  const res = {}
+  ;[...str].forEach(item => {
+    if (!res[item]) {
+      res[item] = 1
+    } else {
+      res[item]++
+    }
+  })
+  return res
 }
 
 console.log(findMaxWord(testStr))
@@ -404,10 +404,10 @@ const URL = 'http://www.baidu.com/s?chuenwei=0129&%123=%123&sw=12#html'
 const res = {}
 
 URL.replace(/([^?&#=]+)=([^?&=#]+)/g, (...[, $1, $2]) => {
-	res[$1] = $2
+  res[$1] = $2
 })
 URL.replace(/#([^?&#=]+)/g, (...[ctx]) => {
-	res.hash = ctx.slice(1)
+  res.hash = ctx.slice(1)
 })
 console.log(res)
 ```
@@ -419,21 +419,21 @@ console.log(res)
 const num = '1234567890'
 
 function checkNum(num) {
-	const arr = [...num].reverse()
-	const len = Math.floor(arr.length / 3)
-	const res = []
+  const arr = [...num].reverse()
+  const len = Math.floor(arr.length / 3)
+  const res = []
 
-	for (let i = 0; i < len; i++) {
-		res.push(...arr.splice(0, 3), ',')
-	}
-	return [...res, ...arr].reverse().join('')
+  for (let i = 0; i < len; i++) {
+    res.push(...arr.splice(0, 3), ',')
+  }
+  return [...res, ...arr].reverse().join('')
 }
 
 console.log(checkNum(num))
 
 // 两个量词需要加括号，?=不需要加括号
 function _checkNum(str) {
-	return str.replace(/\d{1,3}(?=(\d{3})+$)/g, ctn => `${ctn},`)
+  return str.replace(/\d{1,3}(?=(\d{3})+$)/g, ctn => `${ctn},`)
 }
 
 console.log(_checkNum(num))

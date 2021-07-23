@@ -24,6 +24,7 @@
 - `[异步]` [JavaScript 基础知识梳理(六)](js/js_promise.md)
 - `[杂项]`[JavaScript 基础知识梳理(七)](js/js_other.md)
 - `[正则]` [JavaScript 基础知识梳理(八)](js/js_regexp.md)
+- `[手写]` [JavaScript 基础知识梳理(九)](js/js_code.md)
 
 ## TypeScript
 

@@ -48,7 +48,7 @@
 
 ```js
 // 对象比较
-const a = {x: 1}
+const a = { x: 1 }
 const b = a
 
 console.log(a === b) // true
@@ -56,17 +56,17 @@ console.log(a === b) // true
 
 ### Object() 工具方法
 
-Object 本身是一个函数，可以当作工具方法使用，将任意值转为对象。
+`Object` 本身是一个函数，可以当作工具方法使用，将任意值转为对象。
 
-- 如果参数为空（或者为 undefined 和 null），Object() 返回一个空对象。
-- 如果参数是原始类型的值，Object 方法将其转为对应的包装对象的实例。如果
-- Object 方法的参数是一个对象，它总是返回该对象，即不用转换。
+- 如果参数为空（或者为 `undefined` 和 `null`），`Object()` 返回一个空对象。
+- 如果参数是原始类型的值，`Object` 方法将其转为对应的包装对象的实例。
+- 如果 `Object` 方法的参数是一个对象，它总是返回该对象，即不用转换。
 
 利用这一点，可以写一个判断变量是否为对象的函数。
 
 ```js
 function isObject(value) {
-	return value === Object(value)
+  return value === Object(value)
 }
 
 isObject([]) // true
@@ -84,7 +84,7 @@ isObject(true) // false
 
 > TIP
 
-> 构造函数内部有 return 语句，并且 return 后面跟着一个对象，new 命令会返回 return 语句指定的对象，后面跟着原始类型，new 命令 return 会忽略，new 命令 默认返回 {} 对象。
+> 构造函数内部有 `return` 语句，并且 `return` 后面跟着一个对象，`new` 命令会返回 `return` 语句指定的对象，后面跟着原始类型，`new` 命令 `return` 会忽略，`new` 命令 默认返回 `{}` 对象。
 
 ```js
 function _new(F, ...args) {
@@ -134,9 +134,9 @@ console.log('修改原型链后的构造器', o.constructor) // F
 
 ```js
 function createObject(proto) {
-	function F() {}
-	F.prototype = proto
-	return new F()
+  function F() {}
+  F.prototype = proto
+  return new F()
 }
 
 const o = { o: 1 }
@@ -154,9 +154,9 @@ console.log(Object.prototype.isPrototypeOf(_instance)) // true
 
 - 每个对象都有 `__proto__` 属性来标识自己所继承的原型，只有函数才有 `prototype` 属性。
 
-- 创建函数时，JS 会为这个函数自动添加 `prototype` 属性，值是空对象。
+- 创建函数时，`JS` 会为这个函数自动添加 `prototype` 属性，值是空对象。
 
-- 函数在当作构造函数（`constructor`）调用（即通过 `new` 关键字调用），那么 JS 就会帮你创建该构造函数的实例，实例继承构造函数 `prototype` 的所有属性和方法（实例通过设置自己的 `__proto__` 指向承构造函数的 `prototype` 来实现这种继承）。
+- 函数在当作构造函数（`constructor`）调用（即通过 `new` 关键字调用），那么 `JS` 就会帮你创建该构造函数的实例，实例继承构造函数 `prototype` 的所有属性和方法（实例通过设置自己的 `__proto__` 指向承构造函数的 `prototype` 来实现这种继承）。
 
 - 实例的 `__proto__` 指向自己构造函数的 prototype。
 
@@ -201,7 +201,7 @@ a.constructor === A // 当获取 a.constructor 时，其实 a 中并没有 const
 
 ### 控制对象状态
 
-有时需要冻结对象的读写状态，防止对象被改变。JavaScript 提供了三种冻结方法，最弱的一种是 `Object.preventExtensions`，其次是 `Object.seal`，最强的是 `Object.freeze`
+有时需要冻结对象的读写状态，防止对象被改变。`JavaScript` 提供了三种冻结方法，最弱的一种是 `Object.preventExtensions`，其次是 `Object.seal`，最强的是 `Object.freeze`
 
 - `Object.preventExtensions` 方法可以使得一个对象无法再添加新的属性。
 - `Object.seal` 方法使得一个对象既无法添加新属性，也无法删除旧属性。
@@ -213,12 +213,12 @@ a.constructor === A // 当获取 a.constructor 时，其实 a 中并没有 const
 
 属性描述对象提供 6 个元属性
 
-- `value` 是该属性的属性值，默认为 undefined
-- `writable` 是一个布尔值，表示属性值（value）是否可改变（即是否可写），默认为 true
-- `enumerable` 是一个布尔值，表示该属性是否可遍历，默认为 true。如果设为 false，会使得某些操作（比如 for...in 循环、Object.keys()）跳过该属性。**TIPS：in 可以读取原型链，enumerable 是为了给 in 打补丁，所以 JS 规定 原型上的属性默认为 false**
-- `configurable` 是一个布尔值，表示可配置性，默认为 true。如果设为 false，将阻止某些操作改写该属性，比如无法删除该属性，也不得改变该属性的属性描述对象（value 属性除外）。也就是说，configurable 属性控制了属性描述对象的可写性。
-- `get` 是一个函数，表示该属性的取值函数（getter），默认为 undefined。**可以直接在对象中书写，使用 defineProperty 修改的不可遍历，直接写的可以遍历**
-- `set` 是一个函数，表示该属性的存值函数（setter），默认为 undefined。
+- `value` 是该属性的属性值，默认为 `undefined`
+- `writable` 是一个布尔值，表示属性值（value）是否可改变（即是否可写），默认为 `true`
+- `enumerable` 是一个布尔值，表示该属性是否可遍历，默认为 `true`。如果设为 `false`，会使得某些操作（比如 `for...in` 循环、`Object.keys()`）跳过该属性。**TIPS：in 可以读取原型链，enumerable 是为了给 in 打补丁，所以 JS 规定 原型上的属性默认为 false**
+- `configurable` 是一个布尔值，表示可配置性，默认为 `true`。如果设为 `false`，将阻止某些操作改写该属性，比如无法删除该属性，也不得改变该属性的属性描述对象（`value` 属性除外）。也就是说，`configurable` 属性控制了属性描述对象的可写性。
+- `get` 是一个函数，表示该属性的取值函数（getter），默认为 `undefined`。**可以直接在对象中书写，使用 defineProperty 修改的不可遍历，直接写的可以遍历**
+- `set` 是一个函数，表示该属性的存值函数（setter），默认为 `undefined`。
 
 `Object.getOwnPropertyDescriptor()` 方法可以获取属性描述对象。它的第一个参数是目标对象，第二个参数是一个字符串，对应目标对象的某个属性名。
 
@@ -238,9 +238,9 @@ Object.defineProperty(object, propertyName, attributesObject)
 
 ```js
 Object.defineProperties(object, {
-	propertyName1: attributesObject1,
-	propertyName2: attributesObject2,
-	// ...
+  propertyName1: attributesObject1,
+  propertyName2: attributesObject2
+  // ...
 })
 ```
 
@@ -251,17 +251,17 @@ Object.defineProperties(object, {
 ```js
 // 第一版
 function Super() {
-	this.super_param = [1, 2, 3]
+  this.super_param = [1, 2, 3]
 }
 Super.prototype.getSuperParam = function () {
-	return this.super_param
+  return this.super_param
 }
 function Sub() {
-	this.sub_param = true
+  this.sub_param = true
 }
 Sub.prototype = new Super()
 Sub.prototype.getSubParam = function () {
-	return this.sub_param
+  return this.sub_param
 }
 var instance1 = new Sub()
 var instance2 = new Sub()
@@ -279,19 +279,19 @@ console.log(instance2.super_param) // [1, 2, 3, 4]
 ```js
 // 第二版
 function Super() {
-	this.super_param = [1, 2, 3]
+  this.super_param = [1, 2, 3]
 }
 Super.prototype.getSuperParam = function () {
-	return this.super_param
+  return this.super_param
 }
 function Sub() {
-	Super.call(this)
-	this.sub_param = true
+  Super.call(this)
+  this.sub_param = true
 }
 Sub.prototype = new Super()
 Sub.prototype.constructor = Sub
 Sub.prototype.getSubParam = function () {
-	return this.sub_param
+  return this.sub_param
 }
 var instance1 = new Sub()
 var instance2 = new Sub()
@@ -307,14 +307,14 @@ console.log(Sub.prototype.constructor === Sub) // true
 ```js
 // 第三版
 function Super() {
-	this.super_param = [1, 2, 3]
+  this.super_param = [1, 2, 3]
 }
 Super.prototype.getSuperParam = function () {
-	return this.super_param
+  return this.super_param
 }
 function Sub() {
-	Super.call(this)
-	this.sub_param = true
+  Super.call(this)
+  this.sub_param = true
 }
 // Sub.prototype = Object.create(Super.prototype) // 重写了 Sub.prototype === {}
 // Sub.prototype.constructor = Sub
@@ -322,7 +322,7 @@ function Sub() {
 Object.setPrototypeOf(Sub.prototype, Super.prototype) // 设置原型链会覆盖默认的原型链关系
 
 Sub.prototype.getSubParam = function () {
-	return this.sub_param
+  return this.sub_param
 }
 var instance1 = new Sub()
 var instance2 = new Sub()
@@ -378,19 +378,19 @@ Reflect.ownKeys 返回一个数组，包含对象自身的（不含继承的）�
 #### 手动实现
 
 ```js
-const copy = (target) => {
-	let res
-	if (typeof target === 'object' && target !== null) {
-		res = Array.isArray(target) ? [] : {}
-		for (let key in target) {
-			if (target.hasOwnProperty(key)) {
-				res[key] = target[key]
-			}
-		}
-	} else {
-		res = target
-	}
-	return res
+const copy = target => {
+  let res
+  if (typeof target === 'object' && target !== null) {
+    res = Array.isArray(target) ? [] : {}
+    for (let key in target) {
+      if (target.hasOwnProperty(key)) {
+        res[key] = target[key]
+      }
+    }
+  } else {
+    res = target
+  }
+  return res
 }
 ```
 
@@ -447,14 +447,14 @@ let newArr = [...arr] // 跟 arr.slice() 是一样的效果
 
 ```js
 const test = {
-	// undefined
-	undefined,
-	// function
-	func() {
-		console.log('我是函数')
-	},
-	// 特殊对象
-	regexp: /\d/,
+  // undefined
+  undefined,
+  // function
+  func() {
+    console.log('我是函数')
+  },
+  // 特殊对象
+  regexp: /\d/
 }
 
 // 循环引用
@@ -463,8 +463,8 @@ test.target = test
 test[Symbol('symbol')] = 'symbol'
 // 不可枚举属性
 Object.defineProperty(test, 'enumObj', {
-	value: 'enumObj',
-	enumerable: false,
+  value: 'enumObj',
+  enumerable: false
 })
 ```
 
@@ -486,30 +486,30 @@ Object.defineProperty(test, 'enumObj', {
 
 ```js
 const test = {
-	// undefined
-	undefined,
-	// function
-	func() {
-		console.log('我是函数')
-	},
-	// 特殊对象
-	regexp: /\d/,
+  // undefined
+  undefined,
+  // function
+  func() {
+    console.log('我是函数')
+  },
+  // 特殊对象
+  regexp: /\d/
 }
 
 // symbol 属性
 test[Symbol('symbol')] = 'symbol'
 // 不可枚举属性
 Object.defineProperty(test, 'enumObj', {
-	enumerable: false,
-	// getter，setter
-	get() {
-		return 20
-	},
+  enumerable: false,
+  // getter，setter
+  get() {
+    return 20
+  }
 })
 // 原型链上的方法
 const F = function () {}
 F.prototype.sayHello = () => {
-	console.log('我是原型链上的方法')
+  console.log('我是原型链上的方法')
 }
 Object.setPrototypeOf(test, F.prototype)
 
@@ -522,25 +522,25 @@ test.target = test
 console.log('原对象', test)
 
 const deepCopy = (target, cache = new WeakMap()) => {
-	let res
-	// 将返回值和循环引用的对象用 map 映射起来 处理循环引用
-	if (cache.has(target)) return cache.get(target)
-	if (typeof target === 'object' && target !== null) {
-		// 处理原型链
-		res = Array.isArray(target) ? [] : new target.constructor()
-		// 处理循环引用
-		cache.set(target, res)
-		// 处理不可枚举属性、symbol 属性
-		for (const key of Reflect.ownKeys(target)) {
-			res[key] =
-				typeof target[key] === 'object' && target[key] !== null
-					? deepCopy(target[key], cache)
-					: target[key]
-		}
-	} else {
-		res = target
-	}
-	return res
+  let res
+  // 将返回值和循环引用的对象用 map 映射起来 处理循环引用
+  if (cache.has(target)) return cache.get(target)
+  if (typeof target === 'object' && target !== null) {
+    // 处理原型链
+    res = Array.isArray(target) ? [] : new target.constructor()
+    // 处理循环引用
+    cache.set(target, res)
+    // 处理不可枚举属性、symbol 属性
+    for (const key of Reflect.ownKeys(target)) {
+      res[key] =
+        typeof target[key] === 'object' && target[key] !== null
+          ? deepCopy(target[key], cache)
+          : target[key]
+    }
+  } else {
+    res = target
+  }
+  return res
 }
 
 const __test = deepCopy(test)

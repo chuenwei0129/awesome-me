@@ -24,7 +24,6 @@
   - [try..catch 同步工作](#trycatch-同步工作)
 - [Eval](#eval)
 - [Reference Type](#reference-type)
-- [柯里化（Currying）](#柯里化currying)
 
 ## 声明
 
@@ -47,10 +46,10 @@
 ```js
 // 暂时性死区：在代码块内使用`const 命令`和`let 命令`声明变量之前，该变量都不可用，`let 命令`不同作用域可以重复声明的副作用。
 let j = 1
-!function () {
+!(function () {
   console.log(j) // Cannot access 'j' before initialization
   let j = 2
-}()
+})()
 
 const foo = {}
 // 为 foo 添加一个属性，可以成功
@@ -70,35 +69,35 @@ foo = {} // TypeError: Assignment to constant variable
 `Symbol` 保证是唯一的。即使我们创建了许多具有相同描述的 `Symbol`，它们的值也是不同。描述只是一个标签，不影响任何东西。
 
 ```js
-let id1 = Symbol("id");
-let id2 = Symbol("id");
+let id1 = Symbol('id')
+let id2 = Symbol('id')
 
-alert(id1 == id2); // false
+alert(id1 == id2) // false
 ```
 
 通常所有的 `Symbol` 都是不同的，即使它们有相同的名字。但有时我们想要名字相同的 `Symbol` 具有相同的实体。例如，应用程序的不同部分想要访问的 `Symbol "id"` 指的是完全相同的属性。为了实现这一点，这里有一个 全局 `Symbol` 注册表。
 
 ```js
 // 从全局注册表中读取
-let id = Symbol.for("id"); // 如果该 Symbol 不存在，则创建它
+let id = Symbol.for('id') // 如果该 Symbol 不存在，则创建它
 
 // 再次读取（可能是在代码中的另一个位置）
-let idAgain = Symbol.for("id");
+let idAgain = Symbol.for('id')
 
 // 相同的 Symbol
-alert( id === idAgain ); // true
+alert(id === idAgain) // true
 ```
 
 对于全局 `Symbol`，不仅有 `Symbol.for(key)` 按名字返回一个 `Symbol`，还有一个反向调用：`Symbol.keyFor(sym)`，它的作用完全反过来：通过全局 `Symbol` 返回一个名字。
 
 ```js
 // 通过 name 获取 Symbol
-let sym = Symbol.for("name");
-let sym2 = Symbol.for("id");
+let sym = Symbol.for('name')
+let sym2 = Symbol.for('id')
 
 // 通过 Symbol 获取 name
-alert( Symbol.keyFor(sym) ); // name
-alert( Symbol.keyFor(sym2) ); // id
+alert(Symbol.keyFor(sym)) // name
+alert(Symbol.keyFor(sym2)) // id
 ```
 
 - `Symbol` 属性不参与 `for..in` 循环。
@@ -124,7 +123,7 @@ alert( Symbol.keyFor(sym2) ); // id
 - CPU 过载。
 - 浏览器页签处于后台模式。
 - 笔记本电脑用的是电池供电（译注：使用电池供电会以降低性能为代价提升续航）。
-  
+
 所有这些因素，可能会将定时器的最小计时器分辨率（最小延迟）增加到 300ms 甚至 1000ms，具体以浏览器及其设置为准。
 
 ### 嵌套的 setTimeout
@@ -134,20 +133,20 @@ alert( Symbol.keyFor(sym2) ); // id
 下面来比较这两个代码片段。第一个使用的是 `setInterval`：
 
 ```js
-let i = 1;
-setInterval(function() {
-  func(i++);
-}, 100);
+let i = 1
+setInterval(function () {
+  func(i++)
+}, 100)
 ```
 
 第二个使用的是嵌套的 `setTimeout`：
 
 ```js
-let i = 1;
+let i = 1
 setTimeout(function run() {
-  func(i++);
-  setTimeout(run, 100);
-}, 100);
+  func(i++)
+  setTimeout(run, 100)
+}, 100)
 ```
 
 ![](setinterval.png)
@@ -198,7 +197,7 @@ setTimeout(function() {...}, 100);
 - `import` 关键字允许从其他模块导入功能。
 
 > ⚠️ 模块只通过 **HTTP(s)** 工作，在本地文件则不行
-如果你尝试通过 **file://** 协议在本地打开一个网页，你会发现 `import/export` 指令不起作用。
+> 如果你尝试通过 **file://** 协议在本地打开一个网页，你会发现 `import/export` 指令不起作用。
 
 浏览器需要使用 `<script type="module">` 以使 `import/export` 可以工作。模块相较于常规脚本有几点差别：
 
@@ -293,15 +292,15 @@ import(modulePath)
 - handler：带有“捕捉器”（“traps”，即拦截操作的方法）的对象。比如 `get` 捕捉器用于读取 `target` 的属性，`set` 捕捉器用于写入 `target` 的属性，等等。
 
 ```js
-let target = {};
-let proxy = new Proxy(target, {}); // 空的 handler 对象
+let target = {}
+let proxy = new Proxy(target, {}) // 空的 handler 对象
 
-proxy.test = 5; // 写入 proxy 对象 (1)
-alert(target.test); // 5，test 属性出现在了 target 中！
+proxy.test = 5 // 写入 proxy 对象 (1)
+alert(target.test) // 5，test 属性出现在了 target 中！
 
-alert(proxy.test); // 5，我们也可以从 proxy 对象读取它 (2)
+alert(proxy.test) // 5，我们也可以从 proxy 对象读取它 (2)
 
-for(let key in proxy) alert(key); // test，迭代也正常工作 (3)
+for (let key in proxy) alert(key) // test，迭代也正常工作 (3)
 ```
 
 可用于添加到 `new Proxy` 的 `handler` 参数中以拦截操作的方法
@@ -335,7 +334,7 @@ for(let key in proxy) alert(key); // test，迭代也正常工作 (3)
 语法为：
 
 ```js
-let {proxy, revoke} = Proxy.revocable(target, handler)
+let { proxy, revoke } = Proxy.revocable(target, handler)
 ```
 
 该调用返回一个带有 `proxy `和 `revoke` 函数的对象以将其禁用。
@@ -344,19 +343,19 @@ let {proxy, revoke} = Proxy.revocable(target, handler)
 
 ```js
 let object = {
-  data: "Valuable data"
-};
+  data: 'Valuable data'
+}
 
-let {proxy, revoke} = Proxy.revocable(object, {});
+let { proxy, revoke } = Proxy.revocable(object, {})
 
 // 将 proxy 传递到其他某处，而不是对象...
-alert(proxy.data); // Valuable data
+alert(proxy.data) // Valuable data
 
 // 稍后，在我们的代码中
-revoke();
+revoke()
 
 // proxy 不再工作（revoked）
-alert(proxy.data); // Error
+alert(proxy.data) // Error
 ```
 
 调用 `revoke()` 会从代理中删除对目标对象的所有内部引用，因此它们之间再无连接。之后可以对目标对象进行垃圾回收。
@@ -391,7 +390,7 @@ alert(proxy.data); // Error
 ```js
 try {
   // 执行此处代码
-} catch(err) {
+} catch (err) {
   // 如果发生错误，跳转至此处
   // err 是一个 error 对象
 } finally {
@@ -415,11 +414,11 @@ try {
 
 ```js
 try {
-  setTimeout(function() {
-    noSuchVariable; // 脚本将在这里停止运行
-  }, 1000);
+  setTimeout(function () {
+    noSuchVariable // 脚本将在这里停止运行
+  }, 1000)
 } catch (e) {
-  alert( "won't work" );
+  alert("won't work")
 }
 ```
 
@@ -428,13 +427,13 @@ try {
 为了捕获到计划的（scheduled）函数中的异常，那么 `try..catch` 必须在这个函数内：
 
 ```js
-setTimeout(function() {
+setTimeout(function () {
   try {
-    noSuchVariable; // try..catch 处理 error 了！
+    noSuchVariable // try..catch 处理 error 了！
   } catch {
-    alert( "error is caught here!" );
+    alert('error is caught here!')
   }
-}, 1000);
+}, 1000)
 ```
 
 ## Eval
@@ -444,14 +443,14 @@ setTimeout(function() {
 语法如下：
 
 ```js
-let result = eval(code);
+let result = eval(code)
 ```
 
 例如：
 
 ```js
-let code = 'alert("Hello")';
-eval(code); // Hello
+let code = 'alert("Hello")'
+eval(code) // Hello
 ```
 
 代码字符串可能会比较长，包含换行符、函数声明和变量等。
@@ -461,10 +460,10 @@ eval(code); // Hello
 例如：
 
 ```js
-let value = eval('1+1');
-alert(value); // 2
-let value = eval('let i = 0; ++i');
-alert(value); // 1
+let value = eval('1+1')
+alert(value) // 2
+let value = eval('let i = 0; ++i')
+alert(value) // 1
 ```
 
 > 🦶 严格模式下，`eval` 有属于自己的词法环境。因此我们不能从外部访问在 `eval` 中声明的函数和变量，如果不启用严格模式，`eval` 没有属于自己的词法环境，因此我们可以从外部访问变量。
@@ -473,24 +472,26 @@ alert(value); // 1
 
 ```js
 let user = {
-  name: "John",
-  hi() { alert(this.name); }
+  name: 'John',
+  hi() {
+    alert(this.name)
+  }
 }
 
 // user.hi(); // 正常运行
 // 把获取方法和调用方法拆成两行
-let hi = user.hi;
-hi(); // 报错了，因为 this 的值是 undefined
+let hi = user.hi
+hi() // 报错了，因为 this 的值是 undefined
 ```
 
 仔细看的话，我们可能注意到 `obj.method()` 语句中的两个操作：
 
-首先，点 **'.'** 取了属性 `obj.method` 的值。
-接着 **()** 执行了它。
+首先，点 `'.'` 取了属性 `obj.method` 的值。
+接着 `()` 执行了它。
 
 这里 `hi = user.hi` 把函数赋值给了一个变量，接下来在最后一行它是完全独立的，所以这里没有 `this`。
 
-**为确保 `user.hi()` 调用正常运行，JavaScript 玩了个小把戏 —— 点 '.' 返回的不是一个函数，而是一个特殊的 `Reference Type` 的值。**
+**为确保 `user.hi()` 调用正常运行，JavaScript 玩了个小把戏 —— 点 `'.'` 返回的不是一个函数，而是一个特殊的 `Reference Type` 的值。**
 
 `Reference Type` 是 ECMA 中的一个“规范类型”。我们不能直接使用它，但它被用在 JavaScript 语言内部。
 
@@ -502,8 +503,6 @@ hi(); // 报错了，因为 this 的值是 undefined
 
 当 `()` 被在 `Reference Type` 上调用时，它们会接收到关于对象和对象的方法的完整信息，然后可以设置正确的 `this`（在此处 = `user`）。
 
-`Reference Type `是一个特殊的“中间人”内部类型，目的是从** . **传递信息给 `() `调用。
+`Reference Type `是一个特殊的“中间人”内部类型，目的是从 `.` 传递信息给 `() `调用。
 
 任何例如赋值 `hi = user.hi` 等其他的操作，都会将 `Reference Type` 作为一个整体丢弃掉，而会取 `user.hi`（一个函数）的值并继续传递。所以任何后续操作都“丢失”了 `this`。
-
-## 柯里化（Currying）
