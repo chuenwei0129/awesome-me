@@ -195,7 +195,7 @@ arch -x86_64 zsh
 /Users/你的用户名/.nvm/versions/node/v10.13.0/bin/node
 ```
 
-如果你想查看所有 `node` 版本的安装文件夹，我们可以在 `访达（finder）` 中使用快捷键 `Command+Shift+G` 输入 `/Users/你的用户名/.nvm/versions` 地址就可以看到。`.nvm` 是个隐藏文件夹在 `访达（finder）` 中默认是不显示隐藏文件夹，在    下显示隐藏文件的快捷键是 `Command+Shift+.`，关闭也是这个快捷键。
+如果你想查看所有 `node` 版本的安装文件夹，我们可以在 `访达（finder）` 中使用快捷键 `Command+Shift+G` 输入 `/Users/你的用户名/.nvm/versions` 地址就可以看到。`.nvm` 是个隐藏文件夹在 `访达（finder）` 中默认是不显示隐藏文件夹，在 下显示隐藏文件的快捷键是 `Command+Shift+.`，关闭也是这个快捷键。
 
 ### 在多环境中，npm 该如何使用呢？
 
@@ -276,13 +276,14 @@ npm config set electron_mirror https://xxxxxx/mirrors/electron/
 
 ```js
 function getBinaryUrl() {
-  const site = getArgument("--sass-binary-site")
-    || process.env.SASS_BINARY_SITE
-    || process.env.npm_config_sass_binary_site
-    || (pkg.nodeSassConfig && pkg.nodeSassConfig.binarySite)
-    || "https://github.com/sass/node-sass/releases/download";
-  const result = [site, "v" + pkg.version, getBinaryName()].join("/");
-  return result;
+  const site =
+    getArgument('--sass-binary-site') ||
+    process.env.SASS_BINARY_SITE ||
+    process.env.npm_config_sass_binary_site ||
+    (pkg.nodeSassConfig && pkg.nodeSassConfig.binarySite) ||
+    'https://github.com/sass/node-sass/releases/download'
+  const result = [site, 'v' + pkg.version, getBinaryName()].join('/')
+  return result
 }
 ```
 
@@ -290,14 +291,14 @@ function getBinaryUrl() {
 
 `node-sass` 版本兼容性好差，必须与 `Node` 版本对应使用才行，详情请参考 `node-sass-version-association`，复用官方文档的版本对照表，如下。
 
-NodeJS|	Minimum node-sass version	|Node Module
-:--:|:--:|:--:
-Node 14	|4.14+|	83
-Node 13 |	4.13+|	79
-Node 12 |	4.12+|	72
-Node 11 |	4.10+|	67
-Node 10 |	4.9+|	64
-Node 8 |	4.5.3+|	57
+| NodeJS  | Minimum node-sass version | Node Module |
+| :-----: | :-----------------------: | :---------: |
+| Node 14 |           4.14+           |     83      |
+| Node 13 |           4.13+           |     79      |
+| Node 12 |           4.12+           |     72      |
+| Node 11 |           4.10+           |     67      |
+| Node 10 |           4.9+            |     64      |
+| Node 8  |          4.5.3+           |     57      |
 
 假如本地使用 `nvm` 或 `n` 进行 `Node` 版本管理，并且已切换了 `Node` 版本，在安装过程中可能会出现 `Windows/OS X/Linux 64-bit with Node.js 12.x` 这样的提示
 
@@ -351,7 +352,7 @@ open https://npm.taobao.org/sync/connect
 
 ### npm init 创建模块
 
-尾缀带 `-f`（代表force）、`-y`（代表yes）
+尾缀带 `-f`（代表 force）、`-y`（代表 yes）
 
 ### npm set 设置环境变量
 
@@ -421,8 +422,8 @@ npm install <tarball url>
 ### npm uninstall 卸载模块
 
 ```sh
-#卸载当前项目或全局模块 
-npm uninstall <name> [-g] 
+#卸载当前项目或全局模块
+npm uninstall <name> [-g]
 # eg: npm uninstall gulp --save-dev
 ```
 
@@ -540,7 +541,7 @@ npx taro build --type weapp
 
 有很多框架的上手教程里会使用 `npx` 来下载脚手架并初始化项目，它们的意思其实是：
 
-> “如果你只是下个demo玩一玩的话，就不污染全局环境给你添麻烦了”
+> “如果你只是下个 demo 玩一玩的话，就不污染全局环境给你添麻烦了”
 
 例如下面的 `npx` 命令，会下载 `create-react-app` 并用其初始化 `my-app` 项目, 用完就将 `create-react-app` 删除。
 
@@ -553,5 +554,5 @@ npx create-react-app my-app
 - 相同点：都是先从 `node_modules/.bin` 路径下寻找执行文件，然后再从全局寻找命令
 
 - 不同点：
-    - 对于 `npx`，当局部和全局都没有找到执行命令会下载安装然后使用
-    - 对于 `package.json下script` 字段配置的命令，如果没有找到就报错了
+  - 对于 `npx`，当局部和全局都没有找到执行命令会下载安装然后使用
+  - 对于 `package.json下script` 字段配置的命令，如果没有找到就报错了

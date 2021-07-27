@@ -30,13 +30,13 @@
 
 ### 添加右键菜单
 
-Github 上面有 powershell 脚本可以用管理员身份运行该脚本 + 某些参数以实现一键配置右键菜单。
+`Github` 上面有 `powershell` 脚本可以用管理员身份运行该脚本 + 某些参数以实现一键配置右键菜单。
 
 [原版 Github 仓库](https://github.com/lextm/windowsterminal-shell/)
 
 [修改后的脚本仓库](https://github.com/LittleNewton/windows_terminal_here)
 
-建议下载修改后的脚本仓库，然后在管理员模式的 powershell 里运行：
+建议下载修改后的脚本仓库，然后在管理员模式的 `powershell` 里运行：
 
 ```sh
 .\install.ps1 mini # 在你下载的脚本仓库目录下运行，类似 C:\...\windows_terminal_here>
@@ -44,11 +44,11 @@ Github 上面有 powershell 脚本可以用管理员身份运行该脚本 + 某�
 
 ### 配置 Windows Terminal
 
-在 Windows Terminal 的下拉菜单中，选择 Settings（或使用快捷键 `Ctrl + ,`），会使用你系统默认的文本编辑器打开 Windows Terminal 的配置文件，按住 `Alt` 键，再选择 Settings，会打开 Windows Terminal 的默认配置文件。
+在 `Windows Terminal` 的下拉菜单中，选择 `Settings`（或使用快捷键 `Ctrl + ,`），会使用你系统默认的文本编辑器打开 `Windows Terminal` 的配置文件，按住 `Alt` 键，再选择 `Settings`，会打开 `Windows Terminal` 的默认配置文件。
 
-配置文件可将 [GUID](https://www.uuidgenerator.net/)（在线生成） 用作唯一标识符。 若要将某个配置文件设置为默认配置文件（打开 Windows Terminal 默认启动），则需要 defaultProfile 全局设置的 GUID。
+配置文件可将 [GUID](https://www.uuidgenerator.net/)（在线生成） 用作唯一标识符。 若要将某个配置文件设置为默认配置文件（打开 `Windows Terminal` 默认启动），则需要 `defaultProfile` 全局设置的 `GUID`。
 
-图标可以在 [icons8](https://icons8.com/icons/set/ubuntu)、[iconfont](https://www.iconfont.cn/) 等网站上进行搜索，96px 的尺寸适合 Windows Terminal
+图标可以在 [icons8](https://icons8.com/icons/set/ubuntu)、[iconfont](https://www.iconfont.cn/) 等网站上进行搜索，`96px` 的尺寸适合 `Windows Terminal`
 
 了解更多，请参阅[官方文档](https://docs.microsoft.com/zh-cn/windows/terminal/customize-settings/profile-settings)。
 
@@ -110,10 +110,10 @@ Github 上面有 powershell 脚本可以用管理员身份运行该脚本 + 某�
 
 > 关于配色方案
 
-Github 上这个仓库 [atomcorp/themes](https://github.com/atomcorp/themes) 提供了解决方案
+`Github` 上这个仓库 [atomcorp/themes](https://github.com/atomcorp/themes) 提供了解决方案
 
 1. 在 https://atomcorp.github.io/themes/ 预览并复制喜欢的主题（Get theme 按钮）
-2. 打开 Windows Terminal settings 复制到 "schemes" 下，然后配置即可。
+2. 打开 `Windows Terminal settings` 复制到 `"schemes"` 下，然后配置即可。
 
 我的配色方案
 
@@ -151,9 +151,9 @@ Github 上这个仓库 [atomcorp/themes](https://github.com/atomcorp/themes) 提
 
 ### 安装 Powershell Core
 
-开源，还是开源。在 https://github.com/PowerShell/PowerShell/releases 这个 GitHub 链接里，有目前 Powershell 的最新版，从 release 里选个最新的 preview 版本安装。经过测试，这些预览版都相当稳定。
+开源，还是开源。在 https://github.com/PowerShell/PowerShell/releases 这个 `GitHub` 链接里，有目前 `Powershell` 的最新版，从 `release` 里选个最新的 `preview` 版本安装。经过测试，这些预览版都相当稳定。
 
-> TIPS：在我的电脑上，preview4 版本中出现如下情况 "--version" 会被显示成 " -version"
+> TIPS：在我的电脑上，`preview4` 版本中出现如下情况 "--version" 会被显示成 " -version"
 >
 > 在 vscode 测试，没有问题，奇怪，不懂，猜测是 Windows 字符编码问题 😳，头疼！！！
 >
@@ -165,9 +165,9 @@ Github 上这个仓库 [atomcorp/themes](https://github.com/atomcorp/themes) 提
 
 #### 准备工作
 
-首先需要注意的是，oh-my-posh 主题使用了一些非 Powerline 字体不支持的字符，因此如果你使用默认的等宽字体（比如 Consolas），在显示过程中就会出现乱码、字符显示不全的现象。
+首先需要注意的是，`oh-my-posh` 主题使用了一些非 `Powerline` 字体不支持的字符，因此如果你使用默认的等宽字体（比如 Consolas），在显示过程中就会出现乱码、字符显示不全的现象。
 
-Powerline 字体在 GitHub 开源，我们可以在这里：[powerline/fonts](https://github.com/powerline/fonts) 下载支持相关字符的字体。
+`Powerline` 字体在 `GitHub` 开源，我们可以在这里：[powerline/fonts](https://github.com/powerline/fonts) 下载支持相关字符的字体。
 
 #### 安装 Powershell 模块
 
@@ -192,7 +192,7 @@ Install-Module oh-my-posh -Scope CurrentUser -Verbose
 code $Profile # 生成的 PowerShell 的用户配置文件在 C:\Users\<用户名>\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 中
 ```
 
-这个 Profile 配置文件与 .zshrc / .bashrc 文件一样，都是控制启动前参数的，接下来定制的过程，就修改这个文件来配置即可。
+这个 `Profile` 配置文件与 `.zshrc` / `.bashrc` 文件一样，都是控制启动前参数的，接下来定制的过程，就修改这个文件来配置即可。
 
 输入下面这一长串代码：
 
@@ -225,7 +225,7 @@ $ThemeSettings # take a look at your oh-my-posh's profile
 
 从 `CurrentThemeLocation` 可以看出主题的目录位置，在该目录下新建一个 xxxx.psm1，之后按照其他主题的写法进行修改就可以了，具体写法查看 [oh-my-posh](https://github.com/JanDeDobbeleer/oh-my-posh#themes) 这个库。使用 `Set-Theme xxxx` 这个命令来让你的自定义主题生效。
 
-Github 上比较好看的一个自定义主题：[spencerwooo/dotfiles](https://github.com/spencerwooo/dotfiles)，自定义主题中涉及到一些 Powerline 字体不支持的字符，需要在这里 [ryanoasis/nerd-fonts](https://github.com/ryanoasis/nerd-fonts) 下载 Nerd Fonts 来正常使用。
+`Github` 上比较好看的一个自定义主题：[spencerwooo/dotfiles](https://github.com/spencerwooo/dotfiles)，自定义主题中涉及到一些 `Powerline` 字体不支持的字符，需要在这里 [ryanoasis/nerd-fonts](https://github.com/ryanoasis/nerd-fonts) 下载 `Nerd Fonts` 来正常使用。
 
 输入命令 `theme` 可查看所有主题。
 
@@ -263,9 +263,9 @@ If (-Not (Test-Path Variable:PSise)) {
 
 #### Screenfetch
 
-Linux 装机以后必晒图之一就是 screenfetch 了，想不到在 Windows 下也有这种东西。
+`Linux` 装机以后必晒图之一就是 `screenfetch` 了，想不到在 `Windows` 下也有这种东西。
 
-因为 [windows-screenfetch](https://github.com/JulianChow94/Windows-screenFetch) 这个模块在 powershell core 有 bug （有命名冲突 ：Get-Uptime），所以从 github 搜到了其他的类似模块 [SystemSplash](https://github.com/mmillar-bolis/SystemSplash)
+因为 [windows-screenfetch](https://github.com/JulianChow94/Windows-screenFetch) 这个模块在 `powershell core` 有 `bug` （有命名冲突 ：Get-Uptime），所以从 `github` 搜到了其他的类似模块 [SystemSplash](https://github.com/mmillar-bolis/SystemSplash)
 
 输入命令：
 
@@ -285,7 +285,7 @@ Set-Alias sf Get-SystemSplash
 Set-Alias sfg screenSystem
 ```
 
-windows powershell（系统自带 5.1）执行以下命令安装 screenfetch（此版本无 bug）：
+windows powershell（系统自带 5.1）执行以下命令安装 `screenfetch`（此版本无 bug）：
 
 ```sh
 Install-Module windows-screenfetch -Scope CurrentUser # 经测试当前版本在 powershell core 下有 bug
@@ -297,17 +297,17 @@ Install-Module windows-screenfetch -Scope CurrentUser # 经测试当前版本在
 
 ### PowerShell 脚本执行策略
 
-为防止恶意脚本的执行，PowerShell 中设计了一个叫做执行策略 (Execution Policy) 的东西。我们可以在不同的应用场景中设置不同的策略来防止恶意脚本的执行。
+为防止恶意脚本的执行，`PowerShell` 中设计了一个叫做执行策略 (Execution Policy) 的东西。我们可以在不同的应用场景中设置不同的策略来防止恶意脚本的执行。
 
-PowerShell 提供了 Restricted、AllSigned、RemoteSigned、Unrestricted、Bypass、Undefined 六种类型的执行策略，接下来我们一一介绍。
+`PowerShell` 提供了 `Restricted`、`AllSigned`、`RemoteSigned`、`Unrestricted`、`Bypass`、`Undefined` 六种类型的执行策略，接下来我们一一介绍。
 
 #### Restricted
 
-单词 Restricted 的意思是 "受限制的"，所以这种执行策略主要是限制脚本的执行。说简单点就是：可以执行单个的命令，但是不能执行脚本。
+单词 `Restricted` 的意思是 "受限制的"，所以这种执行策略主要是限制脚本的执行。说简单点就是：可以执行单个的命令，但是不能执行脚本。
 
 #### AllSigned
 
-Signed 在这里指有数字签名的脚本，也就是说 AllSigned 执行策略允许执行所有具有数字签名的脚本。当然我们也可以换个角度说：只能运行具有数字签名的脚本。据我所知我们能见到的绝大多数的 PowerShell 脚本是没有数字签名的。
+`Signed` 在这里指有数字签名的脚本，也就是说 `AllSigned` 执行策略允许执行所有具有数字签名的脚本。当然我们也可以换个角度说：只能运行具有数字签名的脚本。据我所知我们能见到的绝大多数的 `PowerShell` 脚本是没有数字签名的。
 
 #### RemoteSigned
 
@@ -323,26 +323,26 @@ Signed 在这里指有数字签名的脚本，也就是说 AllSigned 执行策�
 
 #### Bypass
 
-Bypass 执行策略对脚本的执行不设任何的限制，任何脚本都可以执行，并且不会有安全性提示。
+`Bypass` 执行策略对脚本的执行不设任何的限制，任何脚本都可以执行，并且不会有安全性提示。
 
 #### Undefined
 
-Undefined 表示没有设置脚本策略。当然此时会发生继承或应用默认的脚本策略。
+`Undefined` 表示没有设置脚本策略。当然此时会发生继承或应用默认的脚本策略。
 
 #### Execution Policy Scope
 
-Scope 指执行策略的应用范围。原来我们可以给不同的应用范围设置执行策略。比如进程、当前用户和本机。
+`Scope` 指执行策略的应用范围。原来我们可以给不同的应用范围设置执行策略。比如进程、当前用户和本机。
 
 ![](../Images/scope_list.png)
 
-Get-ExecutionPolicy 和 Set-ExecutionPolicy 命令默认操作的都是本机的脚本执行策略。
-如果要获得当前用户的执行策略可以使用 -Scope 选项：
+`Get-ExecutionPolicy` 和 `Set-ExecutionPolicy` 命令默认操作的都是本机的脚本执行策略。
+如果要获得当前用户的执行策略可以使用 `-Scope` 选项：
 
 ```sh
 Get-ExecutionPolicy -Scope CurrentUser
 ```
 
-同样如果仅修改当前用户的执行策略可以在 Set-ExecutionPolicy 命令中使用 scope 参数。
+同样如果仅修改当前用户的执行策略可以在 `Set-ExecutionPolicy` 命令中使用 `scope` 参数。
 
 ```sh
 Set-ExecutionPolicy -ExecutionPolicy <PolicyName> -Scope CurrentUser
@@ -354,15 +354,15 @@ Set-ExecutionPolicy -ExecutionPolicy <PolicyName> -Scope CurrentUser
 
 - 查看已经设定的所有别名：`Get-Alias` 或 `gal`
 
-- 查看某别名的原命令，如 ls 的原命令：`Get-Alias ls`
+- 查看某别名的原命令，如 `ls` 的原命令：`Get-Alias ls`
 
-- 查看某原命令的别名，如 Get-ChildItem 的别名：`Get-Alias -Definition Get-ChildItem`
+- 查看某原命令的别名，如 `Get-ChildItem` 的别名：`Get-Alias -Definition Get-ChildItem`
 
 #### 创建或更改别名
 
 ##### 创建不带参数的别名
 
-使用 Set-Alias 命令创建或更改别名。如为 `Get-ChildItem` 命令设定别名 `list`：
+使用 `Set-Alias` 命令创建或更改别名。如为 `Get-ChildItem` 命令设定别名 `list`：
 
 ```sh
 Set-Alias -Name list -Value get-childitem
@@ -376,11 +376,11 @@ Set-Alias list get-childitem
 
 注意：对于系统默认设定的别名，不可在删除此别名之前重新对这个别名赋值。
 
-另外，PowerShell 中还有一个命令 New-Alias，该命令和 Set-Alias 基本功能一样，只是前者不能更改别名，只能创建别名。
+另外，`PowerShell` 中还有一个命令 `New-Alias`，该命令和 `Set-Alias` 基本功能一样，只是前者不能更改别名，只能创建别名。
 
 ##### 创建或更改带参数的别名
 
-如果命令带参数，如想为 `Get-ChildItem -Name` 设定别名为 ls 则我们需要两步：第一步为这个带参数原命令设定一个中间 function，第二步为这个 function 指定别名：
+如果命令带参数，如想为 `Get-ChildItem -Name` 设定别名为 ls 则我们需要两步：第一步为这个带参数原命令设定一个中间 `function`，第二步为这个 `function` 指定别名：
 
 ```sh
 function getlist {Get-ChildItem -Name}
@@ -389,7 +389,7 @@ Set-Alias ls getlist
 
 ##### 删除别名
 
-使用 Remove-Item alias 命令删除已设定的别名。如删除别名 ls
+使用 `Remove-Item alias` 命令删除已设定的别名。如删除别名 `ls`
 
 ```sh
 Remove-Item alias:\ls

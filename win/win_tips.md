@@ -1,4 +1,5 @@
 # Windows 日常使用的技巧<!-- omit in toc -->
+
 - [重装系统](#重装系统)
   - [制作 U 盘启动盘](#制作-u-盘启动盘)
   - [通过 U 盘启动电脑](#通过-u-盘启动电脑)
@@ -41,8 +42,8 @@
 
 ### 制作 U 盘启动盘
 
-准备大于等于 8G 的空白 U 盘，去 [微软官方](https://www.microsoft.com/zh-cn/software-download/windows10) 下载制作工具，
-点击 exe 文件，根据提示无脑下一步即可。
+准备大于等于 `8G` 的空白 `U` 盘，去 [微软官方](https://www.microsoft.com/zh-cn/software-download/windows10) 下载制作工具，
+点击 `exe` 文件，根据提示无脑下一步即可。
 
 ![下载地址](../Images/system_re.png)
 
@@ -52,13 +53,13 @@
 
 ### 通过 U 盘启动电脑
 
-1. 电脑不能启动： 插入制作好的 win10 安装 U 盘，开机狂按 F12 修改 BIOS 为 U 盘启动即可（不同品牌启动项快捷键不同，此处为联想笔记本）。
+1. 电脑不能启动： 插入制作好的 `win10` 安装 `U` 盘，开机狂按 `F12` 修改 `BIOS` 为 `U` 盘启动即可（不同品牌启动项快捷键不同，此处为联想笔记本）。
 
-2. 电脑能启动：插入制作好的 win10 安装 U 盘，win + i 打开 windows 设置 ---> 更新和安全 ---> 恢复 ---> 高级启动 ---> 高级选项 ---> 点击 UEFI 固件设置即可。
+2. 电脑能启动：插入制作好的 `win10` 安装 `U` 盘，`win + i` 打开 `windows` 设置 ---> 更新和安全 ---> 恢复 ---> 高级启动 ---> 高级选项 ---> 点击 `UEFI` 固件设置即可。
 
    ![UEFI](../Images/uefi.jpg)
 
-3. 不出意外，win10 就会进入一个安装界面，无脑下一步。
+3. 不出意外，`win10` 就会进入一个安装界面，无脑下一步。
 
    ![win10](../Images/win10.jpg)
 
@@ -66,7 +67,7 @@
 
    ![自定义](../Images/custom.jpg)
 
-5. 删除系统盘（系统分区所在的驱动器）的所有分区，如图所示为：驱动器 0 ，此时驱动器 0 为一整块未分配分区，开始新建硬盘分区，系统会自动重新分区。
+5. 删除系统盘（系统分区所在的驱动器）的所有分区，如图所示为：驱动器 `0` ，此时驱动器 `0` 为一整块未分配分区，开始新建硬盘分区，系统会自动重新分区。
 
    ![分区](../Images/disk.jpg)
 
@@ -92,15 +93,15 @@ Win + R
 
 ### 准备工作
 
-登录 Gmail 邮箱，点击右上角的图标进入设置界面
+登录 `Gmail` 邮箱，点击右上角的图标进入设置界面
 
 ![](../Images/gmail_1.jpg)
 
-点击“转发和 POP / IMAP 并启用 IMAP 服务”
+点击“转发和 `POP / IMAP` 并启用 `IMAP` 服务”
 
 ![](../Images/gmail_2.jpg)
 
-启用两步验证后，进入 google 账户，选择“登录 google”，进入“应用专用密码”子栏。
+启用两步验证后，进入 `google` 账户，选择“登录 `google`”，进入“应用专用密码”子栏。
 
 ![](../Images/gmail_3.jpg)
 
@@ -124,7 +125,7 @@ Win + R
 
 ## Windows 为当前用户添加开机自启项
 
-下面是 Windows 当前用户的自启动目录的路径
+下面是 `Windows` 当前用户的自启动目录的路径
 
 ```sh
 C:\Users\{你的用户名}\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
@@ -184,7 +185,7 @@ DISM /Online /Cleanup-image /RestoreHealth
 
 ### Windows 设置共享文件夹
 
-Windows 在 **文件管理器 => 在文件夹上右键 => 属性** 中可以看到共享，接下来，设置该文件夹为共享文件夹，那么 Ipad 便能下载 / 上传文件到该目录中了。
+Windows 在 **文件管理器 => 在文件夹上右键 => 属性** 中可以看到共享，接下来，设置该文件夹为共享文件夹，那么 `Ipad` 便能下载 / 上传文件到该目录中了。
 
 1. 点击共享
 2. 选择共享的用户
@@ -194,7 +195,7 @@ Windows 在 **文件管理器 => 在文件夹上右键 => 属性** 中可以看�
 
 ### Ipad 上访问局域网
 
-打开文件 app ，点击左上角三个点，弹出对话框，点击连接服务器，输入主机 IP 、主机用户名、密码即可。
+打开文件 `app` ，点击左上角三个点，弹出对话框，点击连接服务器，输入主机 `IP` 、主机用户名、密码即可。
 
 ![](../Images/share_file_1.png)
 
@@ -202,17 +203,17 @@ Windows 在 **文件管理器 => 在文件夹上右键 => 属性** 中可以看�
 
 ## Windows 软件包管理工具
 
-> WinGet 和 Scoop 在安装软件过程，都是先去各自维护的软件 Manifest 库，寻找相应的软件安装 Manifest 清单文件，这一文件就像说明书一样指导软件包管理工具安装软件的具体过程。WinGet 和 Scoop 等 Windows 包管理工具就会依据软件相应的 Manifest 文件：准备、下载、安装、善后。
+> `WinGet` 和 `Scoop` 在安装软件过程，都是先去各自维护的软件 `Manifest` 库，寻找相应的软件安装 `Manifest` 清单文件，这一文件就像说明书一样指导软件包管理工具安装软件的具体过程。`WinGet` 和 `Scoop` 等 `Windows` 包管理工具就会依据软件相应的 `Manifest` 文件：准备、下载、安装、善后。
 
 ### WinGet
 
 #### 安装
 
-在 WinGet 的官方 GitHub 仓库 [Release](https://github.com/microsoft/winget-cli/releases) 页面下，手动下载 WinGet 的安装程序进行手动安装。
+在 `WinGet` 的官方 `GitHub` 仓库 [Release](https://github.com/microsoft/winget-cli/releases) 页面下，手动下载 `WinGet` 的安装程序进行手动安装。
 
 #### 仓库
 
-可用应用程序的完整 Manifest 文件列表可以在 GitHub 上面开源的 [microsoft / winget-pkgs](https://github.com/microsoft/winget-pkgs/tree/master/manifests) 仓库找到。
+可用应用程序的完整 `Manifest` 文件列表可以在 `GitHub` 上面开源的 [microsoft / winget-pkgs](https://github.com/microsoft/winget-pkgs/tree/master/manifests) 仓库找到。
 
 #### 操作和命令
 
@@ -238,20 +239,20 @@ winget install wechat --rainbow # --rainbow 进度条花里胡哨
 
 基本信息
 
-安装的是 exe 文件，安装后在桌面自动创建快捷方式，默认的安装路径是在 C 盘的 Program Flies(x86) 里面，当然安装位置在安装时可以添加命令修改，目前 winget 还不支持卸载文件。
+安装的是 `exe` 文件，安装后在桌面自动创建快捷方式，默认的安装路径是在 `C` 盘的 `Program Flies(x86)` 里面，当然安装位置在安装时可以添加命令修改，目前 `winget` 还不支持卸载文件。
 
 常用命令
 
 ![](../Images/winget_2.png)
 
-**PS:** WinGet 提供了一个 source 的命令，利用 winget source <command>，我们就可以方便地管理不同的 WinGet 软件 Manifest 仓库，比如：
+**PS:** `WinGet` 提供了一个 `source` 的命令，利用 `winget source <command>`，我们就可以方便地管理不同的 `WinGet` 软件 `Manifest` 仓库，比如：
 
-- winget source add <软件源>：添加新的软件源
-- winget source list：列出当前已添加的软件源
-- winget source update：更新当前全部添加的软件源
-- winget source remove：移除当前使用的软件源 ……
+- `winget source add <软件源>`：添加新的软件源
+- `winget source list`：列出当前已添加的软件源
+- `winget source update`：更新当前全部添加的软件源
+- `winget source remove`：移除当前使用的软件源 ……
 
-当然，由于 WinGet 还处于预览版，所以还没有出现除了官方仓库外可用的软件仓库。
+当然，由于 `WinGet` 还处于预览版，所以还没有出现除了官方仓库外可用的软件仓库。
 
 #### 官方文档
 
@@ -259,7 +260,7 @@ https://docs.microsoft.com/zh-cn/windows/package-manager/
 
 ### Scoop
 
-> 安装前，强烈建议将自己手动配的环境变量清除，比如 $HOME，$PYTHONPATH 等，既然选择试用 scoop，那就用 scoop 自己处理环境变量，否则可能会与其他软件冲突。
+> 安装前，强烈建议将自己手动配的环境变量清除，比如 `$HOME`，`$PYTHONPATH` 等，既然选择试用 `scoop`，那就用 `scoop` 自己处理环境变量，否则可能会与其他软件冲突。
 
 #### 安装 Scoop
 
@@ -276,7 +277,7 @@ iwr -useb get.scoop.sh | iex
 
 #### 自定义软件安装的位置
 
-自定义 Scoop 安装软件的位置，需要指定 \$SCOOP 环境变量，在 powershell 里可以用几条命令完成。
+自定义 `Scoop` 安装软件的位置，需要指定 `$SCOOP` 环境变量，在 `powershell` 里可以用几条命令完成。
 
 ```sh
 $env:SCOOP='D:\Applications\Scoop'
@@ -291,15 +292,15 @@ $env:SCOOP='D:\Applications\Scoop'
 scoop config proxy [username:password@]host:port
 ```
 
-这会将相关配置写入 Scoop 的配置文件，一般在 \$HOME/.config/scoop/config.json 里配置。
+这会将相关配置写入 `Scoop` 的配置文件，一般在 `$HOME/.config/scoop/config.json` 里配置。
 
 #### aria2 多线程下载
 
-aria2 多线程下载替换默认下载方式：`scoop install aria2`
+`aria2` 多线程下载替换默认下载方式：`scoop install aria2`
 
 #### 添加仓库
 
-Scoop 自带的 main bucket 软件过少，我们需要添加常用仓库 extras bucket：
+`Scoop` 自带的 `main bucket` 软件过少，我们需要添加常用仓库 `extras bucket`：
 
 ```sh
  scoop bucket add extras
@@ -311,9 +312,9 @@ Scoop 自带的 main bucket 软件过少，我们需要添加常用仓库 extras
 scoop bucket add Ash258 'https://github.com/Ash258/scoop-Ash258.git'
 ```
 
-前者是官方的，后者是个人维护的，有许多有用的但无法进入官方标准的软件，比如 potplayer
+前者是官方的，后者是个人维护的，有许多有用的但无法进入官方标准的软件，比如 `potplayer`
 
-社区提供的可用源列表 github 地址如下：https://github.com/lukesampson/scoop/blob/master/buckets.json
+社区提供的可用源列表 `github` 地址如下：https://github.com/lukesampson/scoop/blob/master/buckets.json
 
 其他原团队或者个人维护的资源库列表参考地址：[scoop-directory](https://rasa.github.io/scoop-directory/)
 
@@ -331,23 +332,23 @@ scoop bucket add Ash258 'https://github.com/Ash258/scoop-Ash258.git'
 
 #### 备份
 
-Scoop 有一个功能可以导出所安装的软件至文本文件，但目前我还没找到如何导入…… 幸运的是，有一款叫[scoop-backup](https://github.com/KNOXDEV/scoop-backup) 的软件可以把当前所安装的软件都导出成一个 .ps1 文件或者 .bat 文件。双击该文件可以恢复整个 Scoop 软件列表。不过 persist 文件夹的设置文件目前还需要手动拷贝粘贴。
+`Scoop` 有一个功能可以导出所安装的软件至文本文件，但目前我还没找到如何导入…… 幸运的是，有一款叫[scoop-backup](https://github.com/KNOXDEV/scoop-backup) 的软件可以把当前所安装的软件都导出成一个 `.ps1` 文件或者 `.bat` 文件。双击该文件可以恢复整个 `Scoop` 软件列表。不过 `persist` 文件夹的设置文件目前还需要手动拷贝粘贴。
 
 #### 基本信息
 
-Scoop 在你的用户根目录（一般是 C:\Users\用户名）下创建了一个名为 scoop 的文件夹，并默认将软件下载安装到这个文件夹下
+`Scoop` 在你的用户根目录（一般是 `C:\Users\用户名`）下创建了一个名为 `scoop` 的文件夹，并默认将软件下载安装到这个文件夹下
 
-Scoop 将软件安装到一个相对隔离的环境下（Each program you install is isolated and independent），从而保证环境的统一和路径不被污染
+`Scoop` 将软件安装到一个相对隔离的环境下（Each program you install is isolated and independent），从而保证环境的统一和路径不被污染
 
-scoop 是通过 shim 来软链接一些应用，这样的设计让应用之间不会互相干扰，十分方便。
+`scoop` 是通过 `shim` 来软链接一些应用，这样的设计让应用之间不会互相干扰，十分方便。
 
 进阶命令和使用方法可以参考 [Github](https://github.com/lukesampson/scoop)，[Wiki](https://github.com/lukesampson/scoop/wiki)。
 
 #### 小技巧
 
-强制安装，像 vscode-portable-nightly 这种 nightly 的软件如果有更新，其指向的链接通常没有变化，但 Scoop 无法检测到的时候可以通过 `scoop update vscode-portable-nightly -kf` 来强制更新。
+强制安装，像 `vscode-portable-nightly` 这种 `nightly` 的软件如果有更新，其指向的链接通常没有变化，但 `Scoop` 无法检测到的时候可以通过 `scoop update vscode-portable-nightly -kf` 来强制更新。
 
-Scoop 路径下 \$SCOOP\persist 是持续存在的目录，通常用来放配置文件，即使软件更新也可以保持老的配置。但有时你想完全重装某个软件的时候，就需要删除该目录下对应的软件文件夹，以达到完全重装的目的。
+`Scoop` 路径下 `$SCOOP\persist` 是持续存在的目录，通常用来放配置文件，即使软件更新也可以保持老的配置。但有时你想完全重装某个软件的时候，就需要删除该目录下对应的软件文件夹，以达到完全重装的目的。
 
 ## 快速保存图片 && 放大镜 && 图片批量编号
 
@@ -355,7 +356,7 @@ Scoop 路径下 \$SCOOP\persist 是持续存在的目录，通常用来放配置
 
 ![](<../Images/win_tips%20(3).gif>)
 
-使用 Win + "+"，快速打开系统自带的放大镜，继续 Win + "+"，可以对屏幕进行放大，而 Win+ "-"，则可以对屏幕进行缩小。
+使用 `Win + "+"`，快速打开系统自带的放大镜，继续 `Win + "+"`，可以对屏幕进行放大，而 `Win+ "-"`，则可以对屏幕进行缩小。
 
 ![](<../Images/win_tips%20(2).gif>)
 
@@ -367,7 +368,7 @@ Scoop 路径下 \$SCOOP\persist 是持续存在的目录，通常用来放配置
 
 ### 单个文件重命名
 
-需求：將 C:\Users\Gakki\Pictures\Saved Pictures 文件夾下的 test.jpg 文件重命名为 TEST.jpg
+需求：將 `C:\Users\Gakki\Pictures\Saved Pictures` 文件夾下的 `test.jpg` 文件重命名为 `TEST.jpg`
 
 ![](../Images/posh_rename_1.png)
 
@@ -379,7 +380,7 @@ Rename-Item 'C:\Users\Gakki\Pictures\Saved Pictures\test.jpg' -NewName 'TEST.jpg
 
 ### 批量改文件扩展名
 
-需求：將 C:\Users\Gakki\Pictures\TEST 文件夾下的所有的 png 文件改为 jpg 文件，即 .png 改为 .jpg
+需求：將 `C:\Users\Gakki\Pictures\TEST` 文件夾下的所有的 `png` 文件改为 `jpg` 文件，即 `.png` 改为 `.jpg`
 
 ![](../Images/posh_rename_3.png)
 
@@ -387,13 +388,13 @@ Rename-Item 'C:\Users\Gakki\Pictures\Saved Pictures\test.jpg' -NewName 'TEST.jpg
 get-childItem 'C:\Users\Gakki\Pictures\TEST' *.png | rename-item -newname { $_.name -replace '\.png','.jpg' }
 ```
 
-PS：由于 replace 的模式匹配字符串参数支持正则，'.png' 要转义成 '\.png' 。
+PS：由于 `replace` 的模式匹配字符串参数支持正则，`'.png'` 要转义成 `'\.png'` 。
 
 ![](../Images/posh_rename_4.png)
 
 ### 批量为文件加前缀
 
-需求：將 C:\Users\Gakki\Pictures\Saved Pictures 文件夾下的所有的 jpg 文件加上一个 "Test\_" 的前缀
+需求：將 `C:\Users\Gakki\Pictures\Saved Pictures` 文件夾下的所有的 `jpg` 文件加上一个 `"Test\_"` 的前缀
 
 ![](../Images/posh_rename_5.png)
 
@@ -405,7 +406,7 @@ get-childItem 'C:\Users\Gakki\Pictures\Saved Pictures' -r *.jpg | rename-Item -
 
 ### 批量重命名并编号
 
-需求：將 C:\Users\Gakki\Pictures\Saved Pictures 文件夾下的所有的 jpg 文件重命名为 win_wallpaper_1.jpg、win_wallpaper_2.jpg 这样的形式
+需求：將 `C:\Users\Gakki\Pictures\Saved Pictures` 文件夾下的所有的 `jpg` 文件重命名为 `win_wallpaper_1.jpg`、`win_wallpaper_2.jpg` 这样的形式
 
 ![](../Images/posh_rename_7.png)
 

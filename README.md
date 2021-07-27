@@ -4,15 +4,13 @@
 
 **笔记内容**：[好看是第一生产力](#好看是第一生产力) | [JavaScript](#javascript) | [浏览器](#浏览器) | [构建工具](#构建工具) | [CSS](#CSS) | [前端武器库](#前端武器库)
 
-## 扯点概念
-
 ## 好看是第一生产力
 
-- `[Windows]` [Windows Terminal 完美配置 PowerShell](win/powershell_terminal.md)
-- `[Windows]` [打造完美的、纯净的 Windows 开发环境](win/win_dev.md)
-- `[Windows]` [Windows 日常使用的技巧](win/some-tips.md)
-- `[Windows]` [我的 Windows 工具清单](win/tool_list.md)
-- `[MacOS]` [我的 MacOS 工具清单](mac/macOs.md)
+- `[Windows]` [Windows Terminal 完美配置 PowerShell](win/win_terminal.md)
+- `[Windows]` [打造完美的、纯净的 Windows 开发环境](win/win_env.md)
+- `[Windows]` [Windows 日常使用的技巧](win/win_tips.md)
+- `[Windows]` [我的 Windows 工具清单](win/win_tools.md)
+- `[MacOS]` [我的 MacOS 工具清单](mac/mac_tools.md)
 
 ## JavaScript
 
@@ -73,7 +71,13 @@
 
 ## 技术思考
 
-<!-- - `[代码]` [前端面试八股文](js/js_code.md) -->
+<!-- 命名 - 让人秒懂
+变量 - 使用合理，不多不少
+嵌套 - 越少越好
+行数 - 合理即可。即不是奇技淫巧的 one-line 怪，又不是像整天操心你安全的妈妈，各种唠叨
+原理 - 通俗易懂，最好使用大家都明白的数据结构和算法知识
+写法 - 最好是 language-agnostic，即可以方便的迁移到主流编程语言 -->
+
 <!-- - `[奇技淫巧]` [JavaScript 中的奇技淫巧]() -->
 <!-- 开发技巧 -->
 

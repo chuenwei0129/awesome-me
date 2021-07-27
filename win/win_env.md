@@ -1,9 +1,10 @@
 # 打造完美的、纯净的 Windows 开发环境<!-- omit in toc -->
+
 - [安装适用于 Linux 的 Windows 子系统](#安装适用于-linux-的-windows-子系统)
 - [Ubuntu 创建 root 用户](#ubuntu-创建-root-用户)
-- [更换 /etc/apt/sources.list 文件里的源](#更换-etcaptsourceslist-文件里的源)
-  - [备份源列表文件 sources.list](#备份源列表文件-sourceslist)
-  - [sources.list 文件修改](#sourceslist-文件修改)
+- [更换 `/etc/apt/sources.list` 文件里的源](#更换-etcaptsourceslist-文件里的源)
+  - [备份源列表文件 `sources.list`](#备份源列表文件-sourceslist)
+  - [`sources.list` 文件修改](#sourceslist-文件修改)
   - [刷新列表](#刷新列表)
   - [其他源](#其他源)
 - [安装中文语言包](#安装中文语言包)
@@ -11,7 +12,7 @@
 - [环境变量](#环境变量)
 - [代理](#代理)
   - [windows 终端](#windows-终端)
-  - [wsl](#wsl)
+  - [WSL](#wsl)
 - [开发环境](#开发环境)
   - [lua](#lua)
     - [windows](#windows)
@@ -27,19 +28,19 @@
 
 ## 安装适用于 Linux 的 Windows 子系统
 
-必须先启用“适用于 Linux 的 Windows 子系统”可选功能，然后才能在 Windows 上安装 Linux 分发版。
+必须先启用 **“适用于 Linux 的 Windows 子系统”** 可选功能，然后才能在 `Windows` 上安装 `Linux` 分发版。
 
-以管理员身份打开 PowerShell 并运行：
+以管理员身份打开 `PowerShell` 并运行：
 
 ```sh
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 ```
 
-> 如只需要 WSL 此时可重启，然后在商店安装 Linux 分发版即可。
+> 如只需要 `WSL` 此时可重启，然后在商店安装 `Linux` 分发版即可。
 
-安装 WSL 2 之前，必须启用“虚拟机平台”可选功能。
+安装 `WSL 2` 之前，必须启用 **“虚拟机平台”** 可选功能。
 
-以管理员身份打开 PowerShell 并运行：
+以管理员身份打开 `PowerShell` 并运行：
 
 ```sh
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
@@ -47,13 +48,13 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 
 重新启动计算机。
 
-查看 WSL 版本，请运行：
+查看 `WSL` 版本，请运行：
 
 ```sh
 wsl --list --verbose
 ```
 
-若要将 WSL 升级为 WSL 2 版本支持，请运行：
+若要将 `WSL` 升级为 `WSL 2` 版本支持，请运行：
 
 ```sh
 wsl --set-version <distribution name> <versionNumber>
@@ -61,11 +62,11 @@ wsl --set-version <distribution name> <versionNumber>
 
 弹出信息：
 
-WSL 2 需要更新其内核组件。有关信息，请访问 https://aka.ms/wsl2kernel
+> `WSL 2` 需要更新其内核组件。有关信息，请访问 https://aka.ms/wsl2kernel
 
-下载链接提供的 Linux 内核更新包，安装即可。
+下载链接提供的 `Linux` 内核更新包，安装即可。
 
-若要将分发版设置为默认 WSL 2 版本，请运行：
+若要将分发版设置为默认 `WSL 2` 版本，请运行：
 
 ```sh
 wsl --set-default-version 2
@@ -79,40 +80,41 @@ wsl --set-default-version 2
 
 `Enter new UNIX password:`
 
-设置 root 用户密码，按 Enter
+设置 `root` 用户密码，按 `Enter`
 
 终端显示
 
 `Retype new UNIX password:`
 
 再输入一遍
+
 确定之后终端会显示
 
 `passwd: password updated successfully`
 
-表示 root 用户成功创建并设置密码
+表示 `root` 用户成功创建并设置密码
 
-## 更换 /etc/apt/sources.list 文件里的源
+## 更换 `/etc/apt/sources.list` 文件里的源
 
-Ubuntu 配置的默认源并不是国内的服务器，下载更新软件都比较慢。
+`Ubuntu` 配置的默认源并不是国内的服务器，下载更新软件都比较慢。
 
-### 备份源列表文件 sources.list
+### 备份源列表文件 `sources.list`
 
 ```sh
 sudo cp /etc/apt/sources.list /etc/apt/sources.list_backup
 ```
 
-### sources.list 文件修改
+### `sources.list` 文件修改
 
 选择合适的源，替换原文件的内容，保存编辑好的文件, 以阿里云更新服务器为例（可以分别测试阿里云、清华、中科大、163 源的速度，选择最快的）
 
-打开 sources.list 文件：
+打开 `sources.list` 文件：
 
 ```sh
 sudo nano /etc/apt/sources.list
 ```
 
-编辑 **/etc/apt/sources.list** 文件, 在文件最前面添加阿里云镜像源：
+编辑 `/etc/apt/sources.list` 文件, 在文件最前面添加阿里云镜像源：
 
 ```sh
 # 阿里源
@@ -197,13 +199,13 @@ sudo apt-get install language-pack-zh-hans
 
 然后添加中文支持
 
-1. 备份 locale 文件
+1. 备份 `locale` 文件
 
 ```sh
 sudo cp /etc/default/locale /etc/default/locale_backup
 ```
 
-2. 修改 locale 文件，配置中文
+2. 修改 `locale` 文件，配置中文
 
 ```sh
 sudo nano /etc/default/locale
@@ -253,27 +255,27 @@ LC_ALL=en_US.UTF-8
 
 ## 环境变量
 
-> Windows 系统中有两种环境变量：用户变量和系统变量
+> `Windows` 系统中有两种环境变量：用户变量和系统变量
 
-1. 环境变量不区分大小写，例如 path 跟 PATH 是一样的
+1. 环境变量不区分大小写，例如 `path` 跟 `PATH` 是一样的
 
 2. 系统变量对所有用户有效，用户变量只对当前用户有效
 
 3. 用户变量与系统变量，名称是变量，值是里面的内容，也就是通过变量存储了想要存储的内容，方便调用
 
-4. 系统变量与用户变量的 PATH：告诉系统可执行文件放在什么路径（平常执行程序的路径，要放在 PATH 里面，不能建一个变量，CMD 会提示“不是内部或外部命令，或者不是可执行程序”）
+4. 系统变量与用户变量的 `PATH`：告诉系统可执行文件放在什么路径（平常执行程序的路径，要放在 `PATH` 里面，不能建一个变量，`CMD` 会提示“不是内部或外部命令，或者不是可执行程序”）
 
-5. windows 系统在执行用户命令时，若用户未给出文件的绝对路径，则首先在当前目录下寻找相应的可执行文件、批处理文件等
+5. `windows` 系统在执行用户命令时，若用户未给出文件的绝对路径，则首先在当前目录下寻找相应的可执行文件、批处理文件等
 
-6. 若果当前目录找不到对应文件名的程序，在系统变量的 PATH 的路径中，依次寻找对应的可执行程序文件（查找顺序是按照路径的录入顺序从左往右寻找的，最前面一条的优先级最高，如果找到程序就停止寻找，后面的路径不再执行）
+6. 若果当前目录找不到对应文件名的程序，在系统变量的 `PATH` 的路径中，依次寻找对应的可执行程序文件（查找顺序是按照路径的录入顺序从左往右寻找的，最前面一条的优先级最高，如果找到程序就停止寻找，后面的路径不再执行）
 
-7. 如果系统变量的 PATH 的路径找不到，再到用户变量的 PATH 路径中寻找（如果系统变量和用户变量的 PATH 中同时包含了同一个命令，则优先执行系统变量 PATH 中的命令）
+7. 如果系统变量的 `PATH` 的路径找不到，再到用户变量的 `PATH` 路径中寻找（如果系统变量和用户变量的 `PATH` 中同时包含了同一个命令，则优先执行系统变量 `PATH` 中的命令）
 
-8. 新加了环境变量以后，要确定保存后，再重启 CMD，否则命令不生效
+8. 新加了环境变量以后，要确定保存后，再重启 `CMD`，否则命令不生效
 
 ## 代理
 
-机场：[苏媚云](http://smyun-a.xyz)
+机场：[百草云](https://nsfwcloud.com/auth/login#)
 
 订阅：[订阅转换](https://acl4ssr.netlify.app/)
 
@@ -308,7 +310,7 @@ LC_ALL=en_US.UTF-8
   curl cip.cc
   ```
 
-- PowerShell 可以通过配置 \$profile 初始化启动代理
+- `PowerShell` 可以通过配置 `$profile` 初始化启动代理
 
   ```sh
   #-----------  Set Proxy BEGIN  ---------------------
@@ -325,9 +327,9 @@ LC_ALL=en_US.UTF-8
   #------------ Set Proxy END ------------------------
   ```
 
-### wsl
+### WSL
 
-1. powershell 输入 `ipconfig` 或 在 clash 客户端均可获取到主机 IP
+1. `powershell` 输入 `ipconfig` 或在 `clash` 客户端均可获取到主机 `IP`
 
    ![](../Images/ipconfig.png)
 
@@ -335,7 +337,7 @@ LC_ALL=en_US.UTF-8
 
    ![](../Images/clash_wsl.png)
 
-3. 通过 alias（别名）加入 ~/.zshrc 中，方便快速输入。在 ~/.zshrc 中添加如下内容：
+3. 通过 `alias`（别名）加入 `~/.zshrc` 中，方便快速输入。在 `~/.zshrc` 中添加如下内容：
 
    ```sh
    # 墙外
@@ -346,7 +348,7 @@ LC_ALL=en_US.UTF-8
    alias myip="curl ipinfo.io"
    ```
 
-   然后执行 source ~/.zshrc 加载配置文件。
+   然后执行 `source ~/.zshrc` 加载配置文件。
 
 ## 开发环境
 
@@ -359,15 +361,15 @@ LC_ALL=en_US.UTF-8
 
    ![](../Images/lua_win.png)
 
-   把存放 Lua 文件夹的路径写入如下位置即可。
+   把存放 `Lua` 文件夹的路径写入如下位置即可。
 
-3. powershell 输入 `lua` 输出如下即成功。
+3. `powershell` 输入 `lua` 输出如下即成功。
 
    ![](../Images/lua_sucess.png)
 
 #### ubuntu
 
-在 Ubuntu 系统上使用以下命令编译安装 Lua：
+在 `Ubuntu` 系统上使用以下命令编译安装 `Lua`：
 
 安装依赖库：
 
@@ -390,9 +392,9 @@ sudo make linux install
 
 #### [z.lua](https://github.com/skywind3000/z.lua)
 
-快速路径切换工具（类似 [z.sh](https://github.com/rupa/z) / autojump / fasd），兼容 Windows 和所有 Posix Shell 以及 Fish Shell，同时包含了众多改进。
+快速路径切换工具（类似 [z.sh](https://github.com/rupa/z) / autojump / fasd），兼容 `Windows` 和所有 `Posix Shell` 以及 `Fish Shell`，同时包含了众多改进。
 
-前面安装 lua 环境就是为了这个工具。
+前面安装 `lua` 环境就是为了这个工具。
 
 首先下载该项目
 
@@ -400,7 +402,7 @@ sudo make linux install
 git clone https://github.com/skywind3000/z.lua.git
 ```
 
-然后编辑 `$profile`，安装了 vscode 使用 `code $profile` 打开文件添加语句如下。
+然后编辑 `$profile`，安装了 `vscode` 使用 `code $profile` 打开文件添加语句如下。
 
 ```sh
 # 添加快速路径切换工具
@@ -425,9 +427,9 @@ z -b foo    # 跳转到父目录中名称以 foo 开头的那一级
 
 #### [PSReadLine](https://github.com/PowerShell/PSReadLine)
 
-设置类似于 Bash 的菜单选择功能
+设置类似于 `Bash` 的菜单选择功能
 
-在 \$profile 文件增加一行
+在 `$profile` 文件增加一行
 
 ```sh
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
@@ -437,7 +439,7 @@ Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
 设置类似于 `zsh-autosuggestions` 基于输入历史的自动命令提示
 
-在 \$profile 文件增加
+在 `$profile` 文件增加
 
 ```sh
 Set-PSReadLineOption -HistorySearchCursorMovesToEnd
@@ -451,15 +453,15 @@ Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 #### Git Bash 工具包
 
-因为 Git 的 usr\bin 下所有 GNU 工具都是 exe 可执行文件，所以 Powershell 完全可以直接运行这些工具。要在 Powershell 下使用这个工具，只需要将 Git 的 usr\bin 目录添加到 PATH 中即可。
+因为 `Git` 的 `usr\bin` 下所有 `GNU` 工具都是 `exe` 可执行文件，所以 `Powershell` 完全可以直接运行这些工具。要在 `Powershell` 下使用这个工具，只需要将 `Git` 的 `usr\bin` 目录添加到 `PATH` 中即可。
 
 ![](../Images/git_gnu.png)
 
-Powershell 自带的命令别名会把 GNU 的同名工具命令覆盖。
+`Powershell` 自带的命令别名会把 `GNU` 的同名工具命令覆盖。
 
-利用 Get-Alias 命令就可以查看 Powershell 中设置的·命令别名，这样我们就可以很方便的找出冲突的命令，并取消对应的命令别名。
+利用 `Get-Alias` 命令就可以查看 `Powershell` 中设置的·命令别名，这样我们就可以很方便的找出冲突的命令，并取消对应的命令别名。
 
-找出冲突的别名后就可以用 Remove-Item alias:\<command> 删除命令别名了，比如我删除了以下的命令别名：
+找出冲突的别名后就可以用 `Remove-Item alias:\<command>` 删除命令别名了，比如我删除了以下的命令别名：
 
 ```sh
 Remove-Item alias:\rm
@@ -470,19 +472,19 @@ Remove-Item alias:\cp
 
 #### 安装、配置
 
-查看当前发行版可以使用的 shell
+查看当前发行版可以使用的 `shell`
 
 ```sh
 cat /etc/shells
 ```
 
-查看当前 shell
+查看当前 `shell`
 
 ```sh
 echo $SHELL
 ```
 
-切换 shell
+切换 `shell`
 
 ```sh
 chsh -s /bin/bash
@@ -490,13 +492,13 @@ chsh -s /bin/bash
 
 ![](../Images/linux_shell.png)
 
-安装 zsh
+安装 `zsh`
 
 ```sh
 sudo apt install zsh
 ```
 
-下载安装 oh-my-zsh
+下载安装 `oh-my-zsh`
 
 运行命令下载安装
 
@@ -510,7 +512,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 
 ![](../Images/zsh_plugin.png)
 
-- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)：为 zsh 提供基于输入历史的自动命令提示
+- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)：为 `zsh `提供基于输入历史的自动命令提示
 
   ```sh
   git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -534,7 +536,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 
 不对文件系统的权限进行修改
 
-可以在 .zshrc 最尾部添加如下代码
+可以在 `.zshrc` 最尾部添加如下代码
 
 ```sh
 # Change ls colours
@@ -546,6 +548,6 @@ autoload -Uz compinit
 compinit
 ```
 
-加载设置：source ~/.zshrc
+加载设置：`source ~/.zshrc`
 
 现在觉得没啥必要。

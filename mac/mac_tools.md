@@ -1,6 +1,6 @@
 # 我的 MAC 工具清单<!-- omit in toc -->
 
-> 本文内容：**mac** 好用的软件、**iterm2** 配置、谷歌插件、油猴脚本、网站导航、Homebrew 不完全指南
+> 本文内容：**mac** 好用的软件、**iterm2** 配置、谷歌插件、油猴脚本、网站导航、`Homebrew` 不完全指南
 
 - [mac 好用的软件](#mac-好用的软件)
   - [iMobie M1 App Checker：M1 Mac 应用检测工具](#imobie-m1-app-checkerm1-mac-应用检测工具)
@@ -49,7 +49,7 @@
 
 1. 点击 https://t.me/setlanguage/classic-zh-cn
 
-2. 然后 点击 CHANGE
+2. 然后 点击 `CHANGE`
 
 3. 重启即可完成汉化操作
 
@@ -59,7 +59,7 @@
 
 - `macOS` 电脑桌面客户端：**设置 → 隐私安全 → 开启** "显示含有敏感内容的媒体"
 
-- 网页版：手机或电脑浏览器访问官方网页版地址：https://web.telegram.org，**对话列表 → 左上角 / 右上角三短线 → Settings → 打开** "Show Sensitive Content"
+- 网页版：手机或电脑浏览器访问官方网页版地址：https://web.telegram.org，**对话列表 → 左上角 / 右上角三短线 → Settings → 打开 "Show Sensitive Content"\*\*
 
 - [x] 频道或群组分享
 
@@ -90,17 +90,17 @@
 | [ClashX](https://github.com/yichengchen/clashX)    | 基于 clash 的一款支持规则过滤的科学上网工具                                                        |
 | [Motrix](https://github.com/agalwood/Motrix)       | 全能的下载工具，支持下载 HTTP、FTP、BT、磁力链、百度网盘等资源                                     |
 | [Bob](https://github.com/ripperhe/Bob)             | 简小好用的翻译工具，支持语言自动检测，截图翻译                                                     |
-| [Gifski](https://github.com/sindresorhus/Gifski)   | 在 Mac 上将视频转换为高质量的 GIF                                                                               |
-| [LyricsX](https://github.com/ddddxxx/LyricsX)   | 功能完备的歌词工具                                                                               |
-| [OpenEmu](https://github.com/OpenEmu/OpenEmu)   | macOS 老游戏模拟器                                                                               |
-| [PicGo](https://github.com/Molunerfinn/PicGo)   | 图床管理工具                                                                               |
-| [Maccy](https://github.com/p0deje/Maccy)   | 轻量级的剪贴板管理工具                                                                               |
+| [Gifski](https://github.com/sindresorhus/Gifski)   | 在 Mac 上将视频转换为高质量的 GIF                                                                  |
+| [LyricsX](https://github.com/ddddxxx/LyricsX)      | 功能完备的歌词工具                                                                                 |
+| [OpenEmu](https://github.com/OpenEmu/OpenEmu)      | macOS 老游戏模拟器                                                                                 |
+| [PicGo](https://github.com/Molunerfinn/PicGo)      | 图床管理工具                                                                                       |
+| [Maccy](https://github.com/p0deje/Maccy)           | 轻量级的剪贴板管理工具                                                                             |
 
 ## iterm2
 
 ### 安装字体 Nerd Fonts
 
-通过 brew 来安装：
+通过 `brew` 来安装：
 
 ```sh
 brew tap homebrew/cask-fonts
@@ -137,11 +137,11 @@ brew cask install font-hack-nerd-font
 
 ### 即时回放
 
->除了窗口划分，Term2 的另一杀手锏就是回放。不仅可以查看剪切板的历史记录，还能像视频一样回放窗口内的历史记录！
+> 除了窗口划分，`Term2` 的另一杀手锏就是回放。不仅可以查看剪切板的历史记录，还能像视频一样回放窗口内的历史记录！
 
 #### 历史剪切板
 
-对于普通文本编辑器来说，每次复制后都会覆盖之前的剪切板，非常不好用。而 iTerm2 提供了和 IDEA 一样查看历史剪切板功能，对于 CV 工程师来说是相当友好了！
+对于普通文本编辑器来说，每次复制后都会覆盖之前的剪切板，非常不好用。而 `iTerm2` 提供了和 `IDEA` 一样查看历史剪切板功能，对于 `CV` 工程师来说是相当友好了！
 
 快捷键：`Command + Shift + h`
 
@@ -171,7 +171,7 @@ brew cask install font-hack-nerd-font
 
 #### 智能复制
 
-在 item 中选中即复制，被选择的文本会自动保存在剪切板中。**双击选中**，**三击选中整行**，四击智能选择，可以智能的选中你想要的数据，如网址，邮箱，括号或引号中的数据等。
+在 `item` 中选中即复制，被选择的文本会自动保存在剪切板中。**双击选中**，**三击选中整行**，四击智能选择，可以智能的选中你想要的数据，如网址，邮箱，括号或引号中的数据等。
 
 同样也支持快速粘贴，鼠标选中复制后，可以通过鼠标中键或者 `Command + v` 进行粘贴。同时，选中后也可以通过拖拽实现快速的复制和粘贴。
 
@@ -181,7 +181,7 @@ brew cask install font-hack-nerd-font
 
 `Command` 既可以和其他按键组合成快捷键，也可以搭配鼠标实现一些快捷功能。只需要按下 `Command` 在搭配一下操作即可。
 
-- 点击 url，调用默认浏览器访问该网址
+- 点击 `url`，调用默认浏览器访问该网址
 - 点击文件，调用默认程序打开文件。如果选中的是文件名:数字，且默认文本编辑器是 `Vim` 将会直接打开到这一行。
 - 点击文件夹，在 `Finder` 中打开该文件夹
 - 配合 `Option` 键，使用鼠标可以选择矩形区域内容
@@ -210,7 +210,7 @@ brew cask install font-hack-nerd-font
 
 [图片助手](https://chrome.google.com/webstore/detail/imageassistant-batch-imag/dbjbempljhcmhlfpfacalomonjpalpko)：批量图片下载器
 
-[Web for TikTok](https://chrome.google.com/webstore/detail/web-for-tiktok/dedphjedjalglppdfpmmibdbbkmifnbb)：用 Chrome 刷海外版抖音 TikTok，下载 Tiktok 短视频
+[Web for TikTok](https://chrome.google.com/webstore/detail/web-for-tiktok/dedphjedjalglppdfpmmibdbbkmifnbb)：用 `Chrome` 刷海外版抖音 `TikTok`，下载 `TikTok` 短视频
 
 [Listen1](https://chrome.google.com/webstore/detail/listen-1/indecfegkejajpaipjipfkkbedgaodbp)：支持多平台的音乐播放器
 
@@ -228,7 +228,7 @@ brew cask install font-hack-nerd-font
 
 [OneTab Plus](https://chrome.google.com/webstore/detail/onetab-plustab-manage-pro/lepdjbhbkpfenckechpdfohdmkhogojf)：标签效率管理扩展
 
-[Open In IINA](https://chrome.google.com/webstore/detail/open-in-iina/pdnojahnhpgmdhjdhgphgdcecehkbhfo)：在 IINA 中打开视频和音频
+[Open In IINA](https://chrome.google.com/webstore/detail/open-in-iina/pdnojahnhpgmdhjdhgphgdcecehkbhfo)：在 `IINA` 中打开视频和音频
 
 [Search by Image](https://chrome.google.com/webstore/detail/search-by-image/cnojnbdhbhnkbcieeekonklommdnndci)：图像搜索工具，支持各种搜索引擎
 
@@ -240,11 +240,11 @@ brew cask install font-hack-nerd-font
 
 [loom](https://chrome.google.com/webstore/detail/loom-for-chrome/liecbddmkiiihnedobmlmillhodjkdmb)：翻录网页视频神器
 
-[chrono](https://chrome.google.com/webstore/detail/chrono-download-manager/mciiogijehkdemklbdcbfkefimifhecn)：让 Chrome 下载资源更容易
+[chrono](https://chrome.google.com/webstore/detail/chrono-download-manager/mciiogijehkdemklbdcbfkefimifhecn)：让 `Chrome` 下载资源更容易
 
 [Downie](https://github.com/charlieMonroe/DownieExtensions)：在浏览器中打开 downie 链接
 
-[扩展管理器](https://chrome.google.com/webstore/detail/extension-manager/gjldcdngmdknpinoemndlidpcabkggco)： 管理你的 Chrome 扩展
+[扩展管理器](https://chrome.google.com/webstore/detail/extension-manager/gjldcdngmdknpinoemndlidpcabkggco)： 管理你的 `Chrome` 扩展
 
 [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)：油猴脚本，给浏览器开个挂！
 
@@ -262,17 +262,17 @@ brew cask install font-hack-nerd-font
 
 [知乎网页助手](https://greasyfork.org/zh-CN/scripts/384172-%E7%9F%A5%E4%B9%8E%E7%BD%91%E9%A1%B5%E5%8A%A9%E6%89%8B)：最全面的知乎助手了
 
-[超级视频助手](https://greasyfork.org/zh-CN/scripts/418804-%E8%B6%85%E7%BA%A7%E8%A7%86%E9%A2%91%E5%8A%A9%E6%89%8B-%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9%E8%A7%A3%E9%94%81%E5%A4%A7%E4%BC%9A%E5%91%98-b%E7%AB%99%E8%A7%86%E9%A2%91%E8%A7%A3%E6%9E%90%E4%B8%8B%E8%BD%BD-a%E7%AB%99%E8%A7%86%E9%A2%91%E8%A7%A3%E6%9E%90%E4%B8%8B%E8%BD%BD-%E7%88%B1%E5%A5%87%E8%89%BA-%E8%85%BE%E8%AE%AF-%E4%BC%98%E9%85%B7-%E8%8A%92%E6%9E%9C%E7%AD%89%E5%85%A8%E7%BD%91vip%E8%A7%86%E9%A2%91%E5%85%8D%E8%B4%B9%E7%9C%8B%E7%A0%B4%E8%A7%A3%E5%8E%BB%E5%B9%BF%E5%91%8A-%E5%85%8D%E8%B7%B3%E7%9B%B4%E6%8E%A5%E7%9C%8B-youtube-facebook%E7%AD%89%E8%A7%86%E9%A2%91%E8%A7%A3%E6%9E%90%E4%B8%8B%E8%BD%BD)：全网 VIP 视频免费看
+[超级视频助手](https://greasyfork.org/zh-CN/scripts/418804-%E8%B6%85%E7%BA%A7%E8%A7%86%E9%A2%91%E5%8A%A9%E6%89%8B-%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9%E8%A7%A3%E9%94%81%E5%A4%A7%E4%BC%9A%E5%91%98-b%E7%AB%99%E8%A7%86%E9%A2%91%E8%A7%A3%E6%9E%90%E4%B8%8B%E8%BD%BD-a%E7%AB%99%E8%A7%86%E9%A2%91%E8%A7%A3%E6%9E%90%E4%B8%8B%E8%BD%BD-%E7%88%B1%E5%A5%87%E8%89%BA-%E8%85%BE%E8%AE%AF-%E4%BC%98%E9%85%B7-%E8%8A%92%E6%9E%9C%E7%AD%89%E5%85%A8%E7%BD%91vip%E8%A7%86%E9%A2%91%E5%85%8D%E8%B4%B9%E7%9C%8B%E7%A0%B4%E8%A7%A3%E5%8E%BB%E5%B9%BF%E5%91%8A-%E5%85%8D%E8%B7%B3%E7%9B%B4%E6%8E%A5%E7%9C%8B-youtube-facebook%E7%AD%89%E8%A7%86%E9%A2%91%E8%A7%A3%E6%9E%90%E4%B8%8B%E8%BD%BD)：全网 `VIP` 视频免费看
 
 [拒绝二维码登陆](https://greasyfork.org/zh-CN/scripts/27183-%E6%8B%92%E7%BB%9D%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%99%BB%E5%BD%95-%E6%B7%98%E5%AE%9D-%E4%BA%AC%E4%B8%9C%E7%AD%89%E7%BD%91%E7%AB%99%E9%BB%98%E8%AE%A4%E5%87%BA%E7%8E%B0%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2)：淘宝、京东、阿里云等网站默认使用账号密码登录，不出现二维码登录界面
 
-[解除 B 站区域限制](https://greasyfork.org/zh-CN/scripts/25718-%E8%A7%A3%E9%99%A4b%E7%AB%99%E5%8C%BA%E5%9F%9F%E9%99%90%E5%88%B6)：解除 B 站 区域限制; 只对 HTML5 播放器生效
+[解除 B 站区域限制](https://greasyfork.org/zh-CN/scripts/25718-%E8%A7%A3%E9%99%A4b%E7%AB%99%E5%8C%BA%E5%9F%9F%E9%99%90%E5%88%B6)：解除 `B` 站 区域限制; 只对 `HTML5` 播放器生效
 
 [HTML5 视频截图器](https://greasyfork.org/zh-CN/scripts/370819-html5%E8%A7%86%E9%A2%91%E6%88%AA%E5%9B%BE%E5%99%A8)：基于 HTML5 的简单原生视频截图，可控制快进/逐帧/视频调速，支持自定义快捷键
 
 ## 为 Chrome 设置搜索引擎关键词
 
-Chrome 的搜索栏同时支持多种搜索：
+`Chrome` 的搜索栏同时支持多种搜索：
 
 1. 进入设置搜索引擎的界面：为百度搜索设置 关键字 `bd`
 
@@ -343,6 +343,7 @@ $ brew list wget
 ```
 
 - [x] 升级
+
 ```sh
 # 显示可以升级的包
 $ brew outdated
@@ -353,6 +354,7 @@ youtube-dl (2019.03.09) < 2019.03.18
 # 进行升级
 $ brew upgrade cmake
 ```
+
 - [x] 删除
 
 ```sh
@@ -360,11 +362,12 @@ $ brew uninstall wget
 ```
 
 - [x] 安装桌面程序
+
 ```sh
 $ brew cask install google-chrome
 ```
 
->`Homebrew` 会把软件安装到 `/usr/local/Cellar`，并且通过软链链接到 `/usr/local/bin`。我们可以通过 `brew unlink` 和 `brew link` 删除或创建链接。
+> `Homebrew` 会把软件安装到 `/usr/local/Cellar`，并且通过软链链接到 `/usr/local/bin`。我们可以通过 `brew unlink` 和 `brew link` 删除或创建链接。
 
 ### Taps
 
@@ -411,6 +414,7 @@ $ brew install heroku
 `Homebrew` 从字面意思上翻译，就是自酿啤酒的意思。比如在安装好一个包的时候，命令行中会出现一个啤酒表情：🍺 ，包的安装位置：`/usr/local/Cellar`。`Cellar` 这个词是酒窖的意思。
 
 ### Services
+
 `Homebrew-services` 是 `Homebrew` 的后台服务程序扩展，它基于 `macOS` 的 `launchctl`。后台服务类程序的安装依旧使用 `Homebrew`，在管理时可以使用 `Homebrew-services` 进行启动、重启和停止等操作。
 
 ```sh
@@ -419,6 +423,7 @@ $ brew services start mysql
 ```
 
 ### Cask
+
 `Homebrew-cask` 是 `Homebrew` 的 `macOS Native` 应用扩展，通过 `cask` 可以安装各类应用程序。
 
 搜索 Cask 的方法和搜索普通包一样，但安装时需要加上 `cask` 指令：
@@ -435,7 +440,7 @@ $ brew tap homebrew/cask-versions
 $ brew cask install dash3
 ```
 
-Homebrew 官方的字体源，比如 Mozilla 的开源字体 Fira Code：
+`Homebrew` 官方的字体源，比如 `Mozilla` 的开源字体 `Fira Code`：
 
 ```sh
 $ brew tap homebrew/cask-fonts
