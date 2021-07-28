@@ -1,13 +1,14 @@
 const arr = [0, 1, 2, 3]
 
-// 代替map：[0, 2, 4, 6]
-const a = arr.map(v => v * 2)
-const b = arr.reduce((t, v) => [...t, v * 2], [])
+// 遇到 [], {}, acc可以用 ... 处理
 
-// 代替filter：[2, 3]
-const c = arr.filter(v => v > 1)
-const d = arr.reduce((t, v) => (v > 1 ? [...t, v] : t), [])
+const _arr = arr.reduce<number[]>((acc, cur) => [...acc, cur], [])
 
-// 代替map和filter：[4, 6]
-const e = arr.map(v => v * 2).filter(v => v > 2)
-const f = arr.reduce((t, v) => (v * 2 > 2 ? [...t, v * 2] : t), [])
+// map
+console.log(_arr)
+
+// filter
+console.log(arr.reduce((acc, cur) => (cur > 1 ? [...acc, cur] : acc), []))
+
+// map + filter
+console.log(arr.reduce((acc, cur) => (cur * 2 > 2 ? [...acc, cur * 2] : acc), []))
