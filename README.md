@@ -12,6 +12,11 @@
 - `[Windows]` [我的 Windows 工具清单](win/win_tools.md)
 - `[MacOS]` [我的 MacOS 工具清单](mac/mac_tools.md)
 
+<!-- ## 计算机基础知识
+
+- `[位运算]]` [我的 Windows 工具清单](win/win_tools.md)
+- `[数据结构]` [我的 MacOS 工具清单](mac/mac_tools.md) -->
+
 ## JavaScript
 
 - `[基础]` [JavaScript 基础知识梳理(一)](js/js_base.md)
