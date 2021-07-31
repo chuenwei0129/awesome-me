@@ -55,6 +55,7 @@ console.log(
 function composeReduce(mids) {
   return (...args) => {
     return mids.reduceRight((prev, curr) => {
+      console.log(prev, curr)
       // 第一个函数要特殊处理
       return typeof prev === 'function' ? curr(prev(...args)) : curr(prev)
     })
@@ -62,7 +63,7 @@ function composeReduce(mids) {
 }
 
 console.log(
-  composeReduce([minus, square, add])(2, 1) // 8
+  composeReduce([minus])(2, 1) // 8
 )
 
 // compose 3.0 异步
