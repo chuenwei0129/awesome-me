@@ -1,4 +1,7 @@
-# JavaScript 基础知识梳理(一)<!-- omit in toc -->
+<!-- markdown="1" is required for GitHub Pages to render the TOC properly. -->
+
+<details markdown="1">
+  <summary>目录</summary>
 
 - [数据类型](#数据类型)
   - [值类型和引用类型](#值类型和引用类型)
@@ -38,6 +41,10 @@
   - [运算符优先级](#运算符优先级)
 - [循环](#循环)
 
+</details>
+
+# JavaScript 基础知识梳理(一)<!-- omit in toc -->
+
 ## 数据类型
 
 JavaScript 中有八种基本的数据类型（前七种为基本数据类型，也称为原始类型，而 `object` 为复杂数据类型）。
@@ -53,7 +60,7 @@ JavaScript 中有八种基本的数据类型（前七种为基本数据类型，
 
 ### 值类型和引用类型
 
-值类型：字符串（string）、数值（number）、布尔值（boolean）、undefined、null、symbol、bigInt
+**值类型**：字符串（string）、数值（number）、布尔值（boolean）、undefined、null、symbol、bigInt
 
 > 值类型保存在栈中，值类型赋值之后两个变量互不影响
 
@@ -65,7 +72,7 @@ bar = 2
 console.log(foo, bar) // 1, 2
 ```
 
-引用类型：对象（Object）、数组（Array）、函数（Function）...
+**引用类型**：对象（Object）、数组（Array）、函数（Function）...
 
 > 引用类型保存在堆中，栈中保存的是引用类型的指针，引用类型赋值之后，两个变量具有相同的引用，指向同一个对象，相互之间有影响
 

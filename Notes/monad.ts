@@ -73,6 +73,15 @@ const interpolation = (rangeA: AnimateRange, rangeB: AnimateRange) => {
   }
 }
 
-// class Animation {
-//   static of() {}
-// }
+class Animated<T> {
+  value: number = 0
+  mapF: (value: number) => T
+  getValue() {
+    return this.mapF(this.value)
+  }
+  private constructor() {}
+  static of(from: number, to: number): Animated<number> {
+    const mapFunc = interpolation([0, 1], [from, to])
+    return new Animated()
+  }
+}
