@@ -23,6 +23,7 @@ const get = url => {
   }
 }
 
+// Promise的任务是立刻执行的,Task是在调用的时候才开始执行
 const request = url => Task(resolve => get(url).then(resolve))
 
 // execute 是 resolve => get(url).then(resolve)
@@ -36,3 +37,13 @@ request('data')
   .flatMap(request)
   .map(JSON.parse)
   .execute(console.log)
+
+// 本质上就是 把值用容器包起来做映射
+// 映射 函数就是操作
+//其他都是辅助
+// 其实还是输入输出
+
+// yield 模型用作惰性求值挺好用的
+
+// 龘西安
+// 间隔 回车建
