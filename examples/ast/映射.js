@@ -8,15 +8,15 @@ const flat = (arr, ret = []) => {
   return ret
 }
 
-console.log({children: flat(arr)});
+console.log({ children: flat(arr) })
 
 // 映射，考虑最外层，传入的可能是 数组也可能是 普通值
 // [] === {children: []} item === {value: item}
 const flatMap = item => {
   // 每一项在递归
-  return Array.isArray(item) ? {children: item.map(x => flatMap(x))} : {value: item}
+  return Array.isArray(item) ? { children: item.map(x => flatMap(x)) } : { value: item }
 }
 
-console.log(flatMap(arr));
+console.log(flatMap(arr))
 
 // 第二种比第一种好理解

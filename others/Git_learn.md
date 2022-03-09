@@ -12,3 +12,6 @@ git config --global user.name "xxx"
 git config --global user.email "xxx@xx.com"
 复制代码
 完成以上四步，你就可以愉快 pull 代码开发了。和 https 拉取方式不同的是，https 方式需要每次提交前都手动输入用户名和密码，ssh 的方式配置完毕后 Git 都会使用你本地的私钥和远程仓库的公钥进行验证是否是一对秘钥，从而简化了操作流程。
+
+## todo
+

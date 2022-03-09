@@ -51,19 +51,19 @@ _你也 **组合** 这些符号_
 ### 无序列表
 
 ```md
-- Item 1
-- Item 2
-  - Item 2a
-  - Item 2b
+-   Item 1
+-   Item 2
+-   Item 2a
+-   Item 2b
 ```
 
 ### 有序列表
 
 ```md
-1. Item 1
-2. Item 2
-   1. Item 3a
-   2. Item 3b
+1.  Item 1
+2.  Item 2
+3.  Item 3a
+4.  Item 3b
 ```
 
 ## 图片
@@ -77,7 +77,7 @@ Format: ![Alt Text](url)
 
 ```md
 http://github.com - automatic!
-[GitHub](http://github.com)
+ [GitHub](http://github.com)
 章节: [链接](#链接)
 ```
 
@@ -92,26 +92,26 @@ As Kanye West said:
 
 ## 代码
 
-将 `Math.max()` 与扩展运算符 (`...`) 结合使用以获取数组中的最大值。
+将 `Math.max ( )` 与扩展运算符 ( `...` ) 结合使用以获取数组中的最大值。
 
 ````md
     ```js
-    const arrayMax = arr => Math.max(...arr);
-    // arrayMax([10, 1, 5]) -> 10
+    const arrayMax = arr => Math.max ( ...arr ) ;
+    // arrayMax ( [10,1, 5] ) -> 10
     ```
 ````
 
 ## 任务列表
 
 ```md
-- [x] 完成更改
-- [x] 推送提交到 GitHub
-- [x] 打开拉取请求
+-   [x] 完成更改
+-   [x] 推送提交到 GitHub
+-   [x] 打开拉取请求
 ```
 
 ## 使用表情符号
 
-:+1: 通过键入 `:EMOJICODE:` 可在您的写作中添加表情符号。
+:+1: 通过键入 `: EMOJICODE: ` 可在您的写作中添加表情符号。
 
 ```md
 @octocat :+1: 这个 PR 看起来很棒 - 可以合并了！
@@ -144,10 +144,10 @@ As Kanye West said:
 
 ## VS Code 插件
 
-- `[Markdown All in One]` [增强 VS Code 中书写 Markdown 的能力](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
-- `[Markdown Preview Github Styling]` [使 Markdown 的预览效果保持 github 风格](https://marketplace.visualstudio.com/items?itemName=bierner.github-markdown-preview)
+-   `[Markdown All in One]` [增强 VS Code 中书写 Markdown 的能力](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
+-   `[Markdown Preview Github Styling]` [使 Markdown 的预览效果保持 github 风格](https://marketplace.visualstudio.com/items?itemName=bierner.github-markdown-preview)
 
-> 使用插件后，打开命令面板 `Markdown All in one 创建目录` 可以自动生成目录，可使用 `<!-- omit in toc -->` 来忽略不需要的生成目录的标题。
+> 使用插件后，打开命令面板 `Markdown All in one 创建目录 ` 可以自动生成目录，可使用 `<!-- omit in toc -->` 来忽略不需要的生成目录的标题。
 
 ## 常用快捷键
 
@@ -155,8 +155,8 @@ As Kanye West said:
 | :------------------: | :--------------------------: |
 |     Ctrl/Cmd + B     |         Toggle bold          |
 |     Ctrl/Cmd + I     |        Toggle italic         |
-| Ctrl/Cmd + Shift + ] |   Toggle heading (uplevel)   |
-| Ctrl/Cmd + Shift + [ |  Toggle heading (downlevel)  |
+| Ctrl/Cmd + Shift + ] |  Toggle heading ( uplevel )  |
+| Ctrl/Cmd + Shift + [ | Toggle heading ( downlevel ) |
 |     Ctrl/Cmd + M     |   Toggle math environment    |
 |       Alt + C        | Check/Uncheck task list item |
 | Ctrl/Cmd + Shift + V |        Toggle preview        |
