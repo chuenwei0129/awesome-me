@@ -361,6 +361,14 @@ npm set init-author-name 'my name jerry'
 npm set init-author-email '12345@qq.com'
 npm set init-author-url 'http://yourdomain.com'
 npm set init-license 'MIT'
+
+# 设置代理
+npm config set proxy http://server:port
+npm config set https-proxy http://server:port
+
+# 恢复
+npm config delete proxy
+npm config delete https-proxy
 ```
 
 执行了以上的修改，此时 `Package.json` 并没有发生变化
