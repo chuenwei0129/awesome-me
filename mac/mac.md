@@ -70,7 +70,119 @@ M1 芯片的 Mac 进入恢复模式很简单，就是先关机，然后长按电
 
 ![](v2-627d8b2b676b9b639fd1fe0954d4bc35_b.jpg)
 
-## 安装
+## Clash 代理
+
+### Clash
+
+- [Clash](https://github.com/Dreamacro/clash)：一个 Go 语言开发的多平台代理客户端
+- [ClashX](https://github.com/yichengchen/clashX)：Clash 的一个简单轻量化的代理客户端
+- [Clash for Windows](https://github.com/Fndroid/clash_for_windows_pkg)：Clash 的 Windows/macOS 跨平台可定制化的图形客户端
+
+### 机场
+
+- https://nsfwcloud.com/
+- https://baicao.link/
+
+### terminal 使用代理
+
+通过设置 http_proxy、https_proxy，可以让终端走指定的代理。
+
+```sh
+export http_proxy=http://127.0.0.1:7890
+export https_proxy=http://127.0.0.1:7890
+```
+
+> 7890 是 http 代理对应的端口，根据实际情况修改。
+
+这里提供一个便捷脚本，里面包含打开、关闭功能：
+
+```sh
+function nogfw() {
+    export http_proxy=http://127.0.0.1:1080
+    export https_proxy=$http_proxy
+    echo -e "终端代理已开启。"
+}
+
+function gfw(){
+    unset http_proxy https_proxy
+    echo -e "终端代理已关闭。"
+}
+```
+
+通过 `nogfw` 启动代理，`gfw` 关闭代理。
+
+接下来需要把脚本写入 `.zshrc`，`source ~/.zshrc` 就可以永久生效。
+
+可以执行 `curl cip.cc` 验证
+
+![](Snipaste_2022-03-17_14-19-38.png)
+
+### 其他代理设置
+
+#### git
+
+```sh
+# 设置
+git config --global http.proxy 'socks5://127.0.0.1:1080' 
+git config --global https.proxy 'socks5://127.0.0.1:1080'
+```
+
+```sh
+# 恢复
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+```
+
+#### npm
+
+```sh
+# 设置
+npm config set proxy http://server:port
+npm config set https-proxy http://server:port
+```
+
+```sh
+# 恢复
+npm config delete proxy
+npm config delete https-proxy
+```
+
+### 常见问题
+
+#### macOS 中“安全性与隐私”没有允许任何来源
+
+为了安全，macOS 新版本已经默认屏蔽未知开发者选项，需要用命令手动开启
+
+```sh
+sudo spctl --master-disable
+```
+
+如果以后想撤消它，则可以返回 Terminal 并运行以下命令：
+
+```sh
+sudo spctl --master-enable
+```
+
+#### macOS DMG 安装后无法打开，提示损坏
+
+网络下载应用被 Apple 添加隔离标识，终端输入命令解除即可：
+
+```sh
+# sudo xattr -r -d com.apple.quarantine
+
+sudo xattr -r -d com.apple.quarantine <应用路径>
+
+# 比如我装 M1 版本的语雀
+sudo xattr -rd com.apple.quarantine /Applications/语雀.app
+```
+
+#### macOS 版本启动要求授权
+
+在第一次或更新 APP 后打开软件会提示用户授权，这是因为需要安装/更新用于设置系统代理的工具，如果不进行授权，General 中的 System Proxy 开关将无法打开。一般情况下，除非工具更新，否则除了第一次启动外不会重复需要授权。
+
+## homebrew 包管理
+
+
 
 一些常用命令
 1. 安装卸载软件
