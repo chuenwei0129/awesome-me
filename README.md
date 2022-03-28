@@ -8,7 +8,7 @@
 
 - `[Mac]` [我是如何使用 Mac 的](others/mac.md)
 - `[Windows]` [我是如何使用 Windows 的](others/win.md)
-- `[Switch]` [我是如何使用 Switch 的](mac/mac.md)
+- `[Switch]` [我是如何使用 Switch 的](others/switch.md)
 - `[Terminal]` [我是如何使用 Terminal 的](mac/mac.md)
 - `[VsCode]` [我是如何使用 VsCode 的](mac/mac.md)
 
