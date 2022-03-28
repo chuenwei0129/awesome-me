@@ -4,13 +4,25 @@
 
 **笔记内容**：[好看是第一生产力](#好看是第一生产力) | [JavaScript](#javascript) | [浏览器](#浏览器) | [构建工具](#构建工具) | [CSS](#CSS) | [前端武器库](#前端武器库)
 
-## 好看是第一生产力
+## 工具用的好，下班回家早！
 
-- `[Windows]` [Windows Terminal 完美配置 PowerShell](win/win_terminal.md)
-- `[Windows]` [打造完美的、纯净的 Windows 开发环境](win/win_env.md)
-- `[Windows]` [Windows 日常使用的技巧](win/win_tips.md)
-- `[Windows]` [我的 Windows 工具清单](win/win_tools.md)
-- `[MacOS]` [我的 MacOS 工具清单](mac/mac_tools.md)
+- `[Mac]` [我是如何使用 Mac 的](mac/mac.md)
+- `[Windows]` [我是如何使用 Windows 的](mac/mac.md)
+- `[Switch]` [我是如何使用 Switch 的](mac/mac.md)
+- `[Terminal]` [我是如何使用 Terminal 的](mac/mac.md)
+- `[VsCode]` [我是如何使用 VsCode 的](mac/mac.md)
+
+## 基础打的牢，代码写的好！
+## 框架用的好，摸鱼时间满！
+## 笔记要做好，技术要思考！
+
+## ~~好看是第一生产力~~
+
+- ~~`[Windows]` [Windows Terminal 完美配置PowerShell](win/win_terminal.md)~~
+- ~~`[Windows]` [打造完美的、纯净的 Windows 开发环境](win/win_env.md)~~
+- ~~`[Windows]` [Windows 日常使用的技巧](win/win_tips.md)~~
+- ~~`[Windows]` [我的 Windows 工具清单](win/win_tools.md)~~
+- ~~`[Mac]` [我的 MacOS 工具清单](mac/mac_tools.md)~~
 
 <!-- ## 计算机基础知识
 
@@ -221,8 +233,8 @@ NGP游戏平台社区相关业务
 前者因为是静态的，所以可以一口气把需要的全都检测到并加载完再同步执行，因此只对于顶层模块外部而言整体是异步运行的，而在模块内部，静态加载就仿佛是同步的一般，可直接使用。 -->
 
 <!-- 4294967295 的 2147483647 次方 -->
-> 拓展：Linux 链接概念
+<!-- > 拓展：Linux 链接概念
 
 Linux 链接分两种，一种被称为硬链接（Hard Link），另一种被称为符号链接（Symbolic Link）。
 
-情况下，**ln** 命令产生硬链接。
+情况下，**ln** 命令产生硬链接。 -->
