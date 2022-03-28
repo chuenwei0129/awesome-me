@@ -33,6 +33,9 @@
     - [清理未完成的下载](#清理未完成的下载)
     - [cleanup 工具](#cleanup-工具)
   - [用 Homebrew 来卸载](#用-homebrew-来卸载)
+- [m1 查询硬盘写入](#m1-查询硬盘写入)
+  - [安装 smartctl](#安装-smartctl)
+  - [查看硬盘使用量](#查看硬盘使用量)
 - [用自带工具快速判断 macOS 的网络质量](#用自带工具快速判断-macos-的网络质量)
 - [更改启动台应用程序显示数目](#更改启动台应用程序显示数目)
 - [macOS 软件清单](#macos-软件清单)
@@ -486,6 +489,28 @@ rm ~/Library/Caches/Homebrew/downloads/*.incomplete
 > ⚠️ May remove files which are shared between applications.
 
 具体讨论：[Mac Os 各位同学都用什么卸载软件？或者有什么好的卸载软件推荐？](https://v2ex.com/t/834735)
+
+## m1 查询硬盘写入
+
+### 安装 smartctl
+
+在终端中输入如下代码，即可进行安装：
+
+```sh
+brew install smartmontools
+```
+
+### 查看硬盘使用量
+
+在终端中输入如下代码，即可进行看查硬盘使用量。
+
+```sh
+smartctl -a disk0
+```
+
+结果如下，里面的 `Percentage Used` 就是损耗值，`Data Units Written` 就是写入量。
+
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/SCR-20220328-wth.png)
 
 ## 用自带工具快速判断 macOS 的网络质量
 
