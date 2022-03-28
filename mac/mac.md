@@ -49,7 +49,7 @@
 
 m1 芯片的 Mac 进入恢复模式很简单，就是先关机，然后长按电源键一直按住不动，直到出现图中这个 `⚙️` 的图标就算进入恢复模式了。
 
-![Mac恢复模式](macos-monterey-as-recovery-options-selected.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/macos01.png)
 
 选择“选项”，然后点按“继续”。
 
@@ -59,57 +59,57 @@ m1 芯片的 Mac 进入恢复模式很简单，就是先关机，然后长按电
 
 接下来会提示 Mac 需要激活，所以必须连接网线或者 WiFi，这个界面没有出现 WiFi 的选项，实际在右上角，点击图标后就可以选择 WiFi，连接成功后点击下一步。Mac 会自动转圈显示激活成功。
 
-![](macos-refactor-wifi.jpg)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/macos02.jpg)
 
 然后在这个界面会弹出熟悉的几个选项，这里先不要点击第二个重新安装 macOS 。
 
-![](v2-29309a7989e2540f53a6a2df5c1cd20b_b.jpg)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/mac08.jpg)
 
 点击左上角的实用工具-终端。
 
-![](v2-a1aa6b7e0ed6662fb0e11b27647d4a1e_b.jpg)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/mac11.jpg)
 
 输入 `resetpassword`， 回车。
 
-![](v2-9135394786d6ffcdcecbcc4c45b6766a_b.jpg)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/mac09.jpg)
 
 在弹出的重设密码界面，不管显示啥不用去管，直接点击左上角的恢复助理-抹掉 Mac...
 
-![](v2-f8d4fa70e04f7fe4e3196cd246c93841_b.jpg)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/mac14.jpg)
 
 弹出的抹掉 Mac 界面，继续点下面的**小蓝字**，抹掉 Mac...
 
-![](v2-31f4da3d9f685a2c85c33308c134148b_b.jpg)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/mac04.jpg)
 
 在弹出的警告图标选择抹掉 Mac 就可以了。
 
-![](v2-c8cb18fe8160f0e94a5982587dc6e798_b.jpg)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/mac12.jpg)
 
 然后就是耐心得等待进度条加载完毕，就算抹掉成功了，不会太久。抹掉后可以看到和一开始的页面很像，这个页面就是提示激活 Mac，WiFi 图标还是右上角。
 
-![](v2-28c9fbf107d276dac10e9fb1279cee31_b.jpg)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/mac03.jpg)
 
 显示联网激活成功，点击下面的退出到恢复界面。
 
-![](v2-026637987676f06150d8fd0b85e9d5c9_b.jpg)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/mac10.jpg)
 
 这个时候 Mac 就是干干净净的了，可以点击第二个选项开始重装系统了。
 
-![](v2-64d677c2cba9435d8ef4ae0739e3f120_b.jpg)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/mac06.jpg)
 
 点击继续 Continue。
 
-![](v2-e25a684239f7cebe66bd6506fb8c146f_b.jpg)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/mac13.jpg)
 
 点击同意 Agree。
 
-![](v2-37c337d99cbb935efc78e70eb8d4107e_b.jpg)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/mac05.jpg)
 
 接下来就是就是纯粹的联网下载安装了。
 
-![](v2-2f869cb38468c98f4fbcbb75649d89cd_b.jpg)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/mac.jpg)
 
-![](v2-627d8b2b676b9b639fd1fe0954d4bc35_b.jpg)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/mac07.jpg)
 
 ## Clash 代理
 
@@ -126,7 +126,7 @@ m1 芯片的 Mac 进入恢复模式很简单，就是先关机，然后长按电
 ### Terminal 使用代理
 
 > TIPS: Socks5 是一个代理协议，它在使用 TCP/IP 协议通讯的前端机器和服务器机器之间扮演一个中介角色，使得内部网中的前端机器变得能够访问 Internet 网中的服务器，或者使通讯更加安全。
-> 
+>
 > Socks5 代理工作在会话层，不要求应用程序遵循特定的操作系统平台，Socks5 代理只是简单地传递数据包，而不必关心是何种应用协议（比如 FTP、HTTP 和 NNTP 请求）。
 
 > socks5 包含 https，https 又包含 http，socks5 代理工作在 osi 七层模型中的会话层（第五层），https/http 代理工作在 osi 七层模型的应用层（第七层）,所以说 socks 代理更加底层。
@@ -163,7 +163,7 @@ function gfw(){
 
 可以执行 `curl cip.cc` 验证
 
-![](Snipaste_2022-03-17_14-19-38.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/ip.png)
 
 ### 其他代理设置（补充）
 
@@ -266,7 +266,7 @@ defaults write com.apple.finder AppleShowAllFiles No && killall Finder
 
 然后还需设置环境变量，具体操作步骤如图所示，一定要仔细阅读。
 
-![](homebrew1.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/homebrew.png)
 
 #### 跑题：为什么 ARM 版 Mac 要使用 /opt 路径？
 
@@ -348,7 +348,7 @@ alias ibrew='arch -x86_64 /usr/local/bin/brew' # X86 Homebrew
 
 在命令行中，你可以直接使用 `brew search [关键词]` 来进行搜索
 
-![](homebrew2.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/install.png)
 
 输入你想要的关键词，来搜索即可得到结果。
 
@@ -358,31 +358,31 @@ alias ibrew='arch -x86_64 /usr/local/bin/brew' # X86 Homebrew
 
 除了使用命令行搜索以外，你可以使用网页端的搜索工具来辅助你进行搜索。在 Homebrew 的[官网](https://formulae.brew.sh/cask/)，你可以找到 casks 的链接，或者直接访问 https://formulae.brew.sh/ 来进行搜索 formula。你只需要在界面的输入框中输入你要搜索的命令，然后就会出现对应的候选命令
 
-![](homebrew3.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/search.png)
 
 ### Homebrew 常用命令
 
 #### 安装卸载软件
 
-1.  `brew --version` 或者 `brew -v` 显示 brew 版本信息
+1. `brew --version` 或者 `brew -v` 显示 brew 版本信息
 
-2.  `brew install <formula>` 安装指定软件
+2. `brew install <formula>` 安装指定软件
 
-3.  `brew uninstall <formula>` 卸载指定软件
+3. `brew uninstall <formula>` 卸载指定软件
 
-4.  `brew list` 显示所有的已安装的软件
+4. `brew list` 显示所有的已安装的软件
 
-5.  `brew search text` 搜索本地远程仓库的软件，**已安装会显示绿色的勾**
+5. `brew search text` 搜索本地远程仓库的软件，**已安装会显示绿色的勾**
 
-6.  `brew search /text/` 使用正则表达式搜软件
+6. `brew search /text/` 使用正则表达式搜软件
 
-7.  `brew info <formula>` 显示指定软件信息
+7. `brew info <formula>` 显示指定软件信息
 
-8.  `brew reinstall <formula>` 重新安装指定软件，先卸载后安装
+8. `brew reinstall <formula>` 重新安装指定软件，先卸载后安装
 
-9.  `brew install <formula> --build-from-source` 源码安装指定软件，可以给定指定参数
+9. `brew install <formula> --build-from-source` 源码安装指定软件，可以给定指定参数
 
-10.  `brew commands` 列出所有可用命令
+10. `brew commands` 列出所有可用命令
 
 #### 升级软件相关
 
@@ -406,11 +406,11 @@ alias ibrew='arch -x86_64 /usr/local/bin/brew' # X86 Homebrew
 
 10. `brew tap <user/repo>` 添加[第三方仓库](https://docs.brew.sh/Taps)，命名的规则按照 github 来定的。
 
-11.  `brew untap <user/repo>` 删除仓库
+11. `brew untap <user/repo>` 删除仓库
 
-12.  `brew deps <formula>` 查看指定软件依赖于哪些软件
+12. `brew deps <formula>` 查看指定软件依赖于哪些软件
 
-13.  `brew uses <formula>` 查看指定软件被哪些软件所依赖
+13. `brew uses <formula>` 查看指定软件被哪些软件所依赖
 
 ### 检查 Homebrew 环境
 
@@ -422,12 +422,12 @@ alias ibrew='arch -x86_64 /usr/local/bin/brew' # X86 Homebrew
 
 诸如 Nginx、MySQL 等软件，都是有一些服务端软件在后台运行，如果你希望对这些软件进行管理，可以使用 `brew services` 命令来进行管理
 
-*  `brew services list`： 查看所有服务。
-*  `brew services run [服务名]`: 单次运行某个服务（仅启动不注册）。
-*  `brew services start [服务名]`: 运行某个服务，并设置开机自动运行（启动服务，并注册）。
-*  `brew services stop [服务名]`：停止某个服务（停止服务，并取消注册）。
-*  `brew services restart`：重启某个服务（重启服务，并注册）。
-* brew services cleanup：清除已卸载应用的无用的配置。
+* `brew services list`： 查看所有服务。
+* `brew services run [服务名]`: 单次运行某个服务（仅启动不注册）。
+* `brew services start [服务名]`: 运行某个服务，并设置开机自动运行（启动服务，并注册）。
+* `brew services stop [服务名]`：停止某个服务（停止服务，并取消注册）。
+* `brew services restart`：重启某个服务（重启服务，并注册）。
++ `brew services cleanup`：清除已卸载应用的无用的配置。
 
 ### 👀 Tips：访问应用官网
 
@@ -447,7 +447,7 @@ HomeBrew 缓存目录下存放了数个索引文件，以及指向所有 HomeBre
 
 > 软链接，或者叫符号链接，是文件系统中指向其他位置的一种特殊文件。不同于 macOS 中的「替身」和 Windows 中的「快捷方式」，对软链接的访问将直接指向原始文件或目录，因此可以通过软链接访问原始目录内的文件。值得一提的是「访达」会将软链接显示为「替身」，不过二者实际上有很大的不同。
 
-![](16172800482896.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/cleanup.png)
 
 HomeBrew 虽然提供了 `brew cleanup` 工具来回收空间，但它默认只会清理 120 天以前的下载缓存。各种软件包可能堆积在这个目录中，一点一点蚕食 Mac 宝贵的硬盘空间。
 
@@ -491,7 +491,7 @@ rm ~/Library/Caches/Homebrew/downloads/*.incomplete
 
 在打开的终端窗口中，输入 `networkQuality`（注意大小写），然后回车。
 
-![](network.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/network.png)
 
 「responsiveness」，是指上传和下载的综合「响应能力」，根据 Apple 的[支持文档](https://support.apple.com/zh-cn/HT212313)，它的衡量指标是每分钟往返次数 (RPM)，即在正常工作条件下，网络能够在一分钟内完成的连续往返次数或事务数量。
 
@@ -512,7 +512,7 @@ rm ~/Library/Caches/Homebrew/downloads/*.incomplete
 
 默认情况下，启动台应用的显示数目为每行 7 个图标，总共有 5 行。
 
-![](SCR-20220328-kg5.jpeg)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/launchpad.jpeg)
 
 我们可以通过命令行的方式对显示效果进行更改。
 
@@ -546,7 +546,7 @@ rm ~/Library/Caches/Homebrew/downloads/*.incomplete
 
 ## macOS 软件清单
 
-![](SCR-20220328-l03.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/casks.png)
 
 |                           软件                            |                                                  功能简述                                                  |                       相关                       |
 | :-------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------: | :----------------------------------------------: |
@@ -584,7 +584,7 @@ rm ~/Library/Caches/Homebrew/downloads/*.incomplete
 
 ### 浏览器插件
 
-![](SCR-20220328-odh.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/plug.png)
 
 ### 油猴脚本
 
