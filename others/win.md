@@ -1412,7 +1412,7 @@ winfr E: D: /x /n *.pdf
 
 ### 其他
 
-- [WOX](https://github.com/Wox-launcher/Wox)：快速启动
+- [WOX](https://github.com/Wox-launcher/Wox)：快速启动（[Wox 主题样式基础的自定义](https://blog.csdn.net/weixin_36872950/article/details/100028325)）
 
 - [Clash for Windows](https://github.com/Fndroid/clash_for_windows_pkg/releases)：科学上网
 
