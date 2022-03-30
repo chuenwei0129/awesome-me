@@ -1,5 +1,22 @@
 # 我是如何使用 Terminal 的<!-- omit in toc -->
 
+- [iTerm2 配置](#iterm2-配置)
+  - [安装字体 Nerd Fonts](#安装字体-nerd-fonts)
+  - [自定义配色方案](#自定义配色方案)
+  - [调整 Status Bar](#调整-status-bar)
+  - [窗口管理](#窗口管理)
+    - [普通 Window](#普通-window)
+    - [选项卡 Tab](#选项卡-tab)
+    - [窗格 Panes](#窗格-panes)
+  - [即时回放](#即时回放)
+    - [历史剪切板](#历史剪切板)
+    - [历史命令提示](#历史命令提示)
+    - [即时回放](#即时回放-1)
+  - [快捷功能](#快捷功能)
+    - [智能复制](#智能复制)
+    - [妙用 Command](#妙用-command)
+  - [常用快捷键](#常用快捷键)
+
 ## iTerm2 配置
 
 [iTerm2](https://iterm2.com/index.html) 是默认终端的替代品，也是目前 Mac 系统下最好用的终端工具，集颜值和效率于一身。
@@ -137,3 +154,5 @@ iTerm2 主题的 GitHub 仓库位于：[mbadolato/iTerm2-Color-Schemes](https://
 - 交换光标处文本：`ctrl + t`
 - 光标移动导行首：`ctrl + a`
 - 光标移动到行尾：`ctrl + e`
+
+<!-- TODO: vim -->

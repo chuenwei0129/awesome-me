@@ -8,13 +8,14 @@
 
 - `[Mac]` [我是如何使用 Mac 的](others/mac.md)
 - `[Windows]` [我是如何使用 Windows 的](others/win.md)
+- `[Terminal]` [我是如何使用 Terminal 的](others/terminal.md)
+- `[VsCode]` [我是如何使用 VsCode 的](others/code.md)
+- `[Git]` [我是如何使用 Git 的](others/git.md)
 <!-- - `[Switch]` [我是如何使用 Switch 的](others/switch.md) -->
-- `[Terminal]` [我是如何使用 Terminal 的](mac/mac.md)
-- `[VsCode]` [我是如何使用 VsCode 的](mac/mac.md)
 
-## 基础打的牢，代码写的好！
+<!-- ## 基础打的牢，代码写的好！
 ## 框架用的好，摸鱼时间满！
-## 笔记要做好，技术要思考！
+## 笔记要做好，技术要思考！ -->
 
 ## ~~好看是第一生产力~~
 
