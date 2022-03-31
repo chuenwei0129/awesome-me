@@ -1,5 +1,7 @@
 # 我是如何使用 Windows 的<!-- omit in toc -->
 
+> ## 目录
+
 - [重装系统](#重装系统)
   - [事先准备](#事先准备)
   - [通过 U 盘启动电脑](#通过-u-盘启动电脑)
@@ -93,7 +95,7 @@
   - [Dism++：Windows 的一个集中式的系统管理工具](#dismwindows-的一个集中式的系统管理工具)
   - [其他](#其他)
 
-## 重装系统
+## [重装系统](#目录)
 
 ### 事先准备
 
@@ -131,7 +133,7 @@
 
    ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/win/win_start.jpg)
 
-## Windows 快速检查修复系统
+## [Windows 快速检查修复系统](#目录)
 
 这个是系统自检命令，用来检查当前系统是否存在问题。
 
@@ -166,7 +168,7 @@ DISM /Online /Cleanup-image /RestoreHealth
 
 这条命令的作用就是把和官方不同的系统文件直接还原成源文件，简单粗暴。
 
-## 利用 Windows 系统评估工具测试硬盘速度
+## [利用 Windows 系统评估工具测试硬盘速度](#目录)
 
 - 以管理员模式输入命令 `winsat disk` 并回车，此时为默认扫描系统盘，一般也就是 `C` 盘。
 
@@ -180,7 +182,7 @@ DISM /Online /Cleanup-image /RestoreHealth
 
   ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/win/winsat_help.png)
 
-## 系统邮件添加并同步 Gmail
+## [系统邮件添加并同步 Gmail](#目录)
 
 ### 准备工作
 
@@ -214,7 +216,7 @@ DISM /Online /Cleanup-image /RestoreHealth
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/win/gmail_8.jpg)
 
-## 局域网内 Windows / Ipad 传输文件
+## [局域网内 Windows / Ipad 传输文件](#目录)
 
 ### 第一步：Windows 设置共享文件夹
 
@@ -234,7 +236,7 @@ Windows 在 **文件管理器 => 在文件夹上右键 => 属性** 中可以看�
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/win/share_file_2.png)
 
-## Windows Terminal 完美配置 PowerShell
+## [Windows Terminal 完美配置 PowerShell](#目录)
 
 ### Windows Terminal 添加到右键菜单
 
@@ -590,7 +592,7 @@ Remove-Item alias:\rm
 Remove-Item alias:\cp
 ```
 
-## 适用于 Linux 的 Windows 子系统（WSL）
+## [适用于 Linux 的 Windows 子系统（WSL）](#目录)
 
 ### 安装 wsl
 
@@ -896,7 +898,7 @@ compinit
 
 加载设置：`source ~/.zshrc`
 
-## 代理
+## [代理](#目录)
 
 机场：[百草云](https://nsfwcloud.com/auth/login#)
 
@@ -963,7 +965,7 @@ compinit
 
    然后执行 `source ~/.zshrc` 加载配置文件。
 
-## 环境变量（知识拓展）
+## [环境变量（知识拓展）](#目录)
 
 > `Windows` 系统中有两种环境变量：用户变量和系统变量
 
@@ -983,7 +985,7 @@ compinit
 
 8. 新加了环境变量以后，要确定保存后，再重启 `CMD`，否则命令不生效
 
-## PowerShell 脚本执行策略（知识拓展）
+## [PowerShell 脚本执行策略（知识拓展）](#目录)
 
 为防止恶意脚本的执行，`PowerShell` 中设计了一个叫做执行策略 (Execution Policy) 的东西。我们可以在不同的应用场景中设置不同的策略来防止恶意脚本的执行。
 
@@ -1036,7 +1038,7 @@ Get-ExecutionPolicy -Scope CurrentUser
 Set-ExecutionPolicy -ExecutionPolicy <PolicyName> -Scope CurrentUser
 ```
 
-## PowerShell 设置命令别名 Alias（知识拓展）
+## [PowerShell 设置命令别名 Alias（知识拓展）](#目录)
 
 ### 查看别名
 
@@ -1083,7 +1085,7 @@ Set-Alias ls getlist
 Remove-Item alias:\ls
 ```
 
-## Powershell 对文件批量重命名
+## [Powershell 对文件批量重命名](#目录)
 
 ### 单个文件重命名
 
@@ -1135,7 +1137,7 @@ get-childItem 'C:\Users\Gakki\Pictures\Saved Pictures' -r *.jpg | foreach-Object
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/win/posh_rename_8.png)
 
-## 快速保存图片 && 图片批量编号
+## [快速保存图片 && 图片批量编号](#目录)
 
 当在网上看到喜欢的图片，不需要再右键另存了，直接拖拽到要存放的位置即可！
 
@@ -1145,7 +1147,7 @@ get-childItem 'C:\Users\Gakki\Pictures\Saved Pictures' -r *.jpg | foreach-Object
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/win/win_tips1.gif)
 
-## Windows 软件包管理工具
+## [Windows 软件包管理工具](#目录)
 
 ### WinGet
 
@@ -1292,7 +1294,7 @@ scoop bucket add Ash258 'https://github.com/Ash258/scoop-Ash258.git'
 
 `Scoop` 路径下 `$SCOOP\persist` 是持续存在的目录，通常用来放配置文件，即使软件更新也可以保持老的配置。但有时你想完全重装某个软件的时候，就需要删除该目录下对应的软件文件夹，以达到完全重装的目的。
 
-## Windows 软件清单
+## [Windows 软件清单](#目录)
 
 ### [PowerToys](https://github.com/microsoft/PowerToys/releases)：系统增强工具
 
