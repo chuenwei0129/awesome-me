@@ -125,14 +125,13 @@ m1 芯片的 Mac 进入恢复模式很简单，就是先关机，然后长按电
 
 ### 机场
 
-- https://baicao.link/
+- <https://baicao.link/>
 
 ### Terminal 使用代理
 
 > TIPS: Socks5 是一个代理协议，它在使用 TCP/IP 协议通讯的前端机器和服务器机器之间扮演一个中介角色，使得内部网中的前端机器变得能够访问 Internet 网中的服务器，或者使通讯更加安全。
 >
 > Socks5 代理工作在会话层，不要求应用程序遵循特定的操作系统平台，Socks5 代理只是简单地传递数据包，而不必关心是何种应用协议（比如 FTP、HTTP 和 NNTP 请求）。
-
 > socks5 包含 https，https 又包含 http，socks5 代理工作在 osi 七层模型中的会话层（第五层），https/http 代理工作在 osi 七层模型的应用层（第七层）,所以说 socks 代理更加底层。
 
 通过设置 http_proxy、https_proxy、all_proxy，可以让终端走指定的代理。
@@ -238,7 +237,7 @@ sudo xattr -r -d com.apple.quarantine <应用路径>
 sudo xattr -rd com.apple.quarantine /Applications/语雀.app
 ```
 
-##  Mac 下显示 / 隐藏文件
+## Mac 下显示 / 隐藏文件
 
 同 Windows 一样，macOS 会将重要文件隐藏起来，以防止意外删除这些文件而损坏系统。但是，有时候我们需要显示隐藏文件。则需要使用如下方法。
 
@@ -284,9 +283,11 @@ defaults write com.apple.finder AppleShowAllFiles No && killall Finder
 **显然，在如今的 macOS 使用场景下，用户很少会需要自行编译软件包，`/usr/local` 和 `/opt` 的区分一定程度上已经成为名义上的了。Homebrew 启用 `/opt` 作为 ARM 版的安装路径，可能更多是出于确保与 `X86` 版相互区隔的考虑**
 
 > TIPS: 其实，注意到在任何命令前增加 `arch -x86_64`，就可以以 X86 模式运行该命令。因此，运行：
+>
 > ```sh
-> arch -x86_64 $SHELL
+>   arch -x86_64 $SHELL
 > ```
+>
 > 就可以启动一个 X86 模式终端，使得之后运行的命令都在 X86 模式下运行。
 
 #### 安装 X86 版 Homebrew (可选)
@@ -319,6 +320,7 @@ alias ibrew='arch -x86_64 /usr/local/bin/brew' # X86 Homebrew
 **至于应该使用哪个版本的 Homebrew 安装软件包，需要区别考虑：**
 
 对于命令行（CLI）程序：可以优先尝试使用 ARM 版 Homebrew 安装，保证获得针对新架构编译的版本，实现最佳的运行效果。但注意：
+
 1. 有的软件包已经兼容新架构、但还没有发布相应的编译版，需要安装的过程中在本地编译，耗时会相对很长；
 2. 如果软件包还没有兼容新架构，使用 ARM 版 Homebrew 安装会报错，此时可以换用 X86 版 Homebrew 安装。另外，值得一提的是，现在的 Homebrew 已再不需要额外使用 `--cask` 参数安装 Cask 程序，所以直接使用 `brew install maccy` 就好了。
 3. 对于图形界面（GUI）程序，即通过 Homebrew Cask 安装的 .app 程序：对于这类软件，Homebrew 起的作用只是从官方渠道下载这些软件的安装包，然后安装到 `/Applications` 路径（及执行安装脚本，如果有）。因此无论其是否针对新架构优化，通过任一版本 Homebrew 都可以安装。考虑到日后维护方便，建议直接用 ARM 版 Homebrew 安装即可。
@@ -327,8 +329,8 @@ alias ibrew='arch -x86_64 /usr/local/bin/brew' # X86 Homebrew
 
 安装 homebrew 过程遇到解决不了的问题，先删除 `homebrew` 目录再重新运行脚本安装。
 
-* x86 上安装目录： `/usr/local/Homebrew/`
-* arm 上安装目录： `/opt/homebrew`
+- x86 上安装目录： `/usr/local/Homebrew/`
+- arm 上安装目录： `/opt/homebrew`
 
 ### Homebrew 的几个核心概念
 
@@ -360,7 +362,7 @@ alias ibrew='arch -x86_64 /usr/local/bin/brew' # X86 Homebrew
 
 #### 使用网页搜索
 
-除了使用命令行搜索以外，你可以使用网页端的搜索工具来辅助你进行搜索。在 Homebrew 的[官网](https://formulae.brew.sh/cask/)，你可以找到 casks 的链接，或者直接访问 https://formulae.brew.sh/ 来进行搜索 formula。你只需要在界面的输入框中输入你要搜索的命令，然后就会出现对应的候选命令
+除了使用命令行搜索以外，你可以使用网页端的搜索工具来辅助你进行搜索。在 Homebrew 的[官网](https://formulae.brew.sh/cask/)，你可以找到 casks 的链接，或者直接访问 <https://formulae.brew.sh/> 来进行搜索 formula。你只需要在界面的输入框中输入你要搜索的命令，然后就会出现对应的候选命令
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/search.png)
 
@@ -426,12 +428,12 @@ alias ibrew='arch -x86_64 /usr/local/bin/brew' # X86 Homebrew
 
 诸如 Nginx、MySQL 等软件，都是有一些服务端软件在后台运行，如果你希望对这些软件进行管理，可以使用 `brew services` 命令来进行管理
 
-* `brew services list`： 查看所有服务。
-* `brew services run [服务名]`: 单次运行某个服务（仅启动不注册）。
-* `brew services start [服务名]`: 运行某个服务，并设置开机自动运行（启动服务，并注册）。
-* `brew services stop [服务名]`：停止某个服务（停止服务，并取消注册）。
-* `brew services restart`：重启某个服务（重启服务，并注册）。
-+ `brew services cleanup`：清除已卸载应用的无用的配置。
+- `brew services list`： 查看所有服务。
+- `brew services run [服务名]`: 单次运行某个服务（仅启动不注册）。
+- `brew services start [服务名]`: 运行某个服务，并设置开机自动运行（启动服务，并注册）。
+- `brew services stop [服务名]`：停止某个服务（停止服务，并取消注册）。
+- `brew services restart`：重启某个服务（重启服务，并注册）。
+- `brew services cleanup`：清除已卸载应用的无用的配置。
 
 ### 👀 Tips：访问应用官网
 
@@ -486,7 +488,6 @@ rm ~/Library/Caches/Homebrew/downloads/*.incomplete
 ```
 
 > 必须是存在这个 cask formula 才能通过 force 卸载；而且 zap 是写在 formula 里的。
-
 > ⚠️ May remove files which are shared between applications.
 
 具体讨论：[Mac Os 各位同学都用什么卸载软件？或者有什么好的卸载软件推荐？](https://v2ex.com/t/834735)
@@ -522,15 +523,16 @@ smartctl -a disk0
 「responsiveness」，是指上传和下载的综合「响应能力」，根据 Apple 的[支持文档](https://support.apple.com/zh-cn/HT212313)，它的衡量指标是每分钟往返次数 (RPM)，即在正常工作条件下，网络能够在一分钟内完成的连续往返次数或事务数量。
 
 根据 RPM 的高低数值不同，`networkQuality` 对响应能力的评价也分为「低」「中」「高」三个等级。这可以大致反映当前网络的拥堵程度，从而帮助间接估测视频通话、游戏等应用的效果：
-* 评价为「Low」（低），说明同一网络的设备会互相影响，导致其他设备的网络连接不可靠；
-* 评价为「Medium」（中），则表明多设备共享网络时会造成短暂卡顿；
-* 评价为「High」（高）则最为理想，表明网络通畅，多设备并行联网也能和平共处，保持良好连通。
+
+- 评价为「Low」（低），说明同一网络的设备会互相影响，导致其他设备的网络连接不可靠；
+- 评价为「Medium」（中），则表明多设备共享网络时会造成短暂卡顿；
+- 评价为「High」（高）则最为理想，表明网络通畅，多设备并行联网也能和平共处，保持良好连通。
 
 此外，`networkQuality` 命令可以接受一些参数。
 
-* `-c` 会输出 json 格式的测速详情；
-* `-s` 会分开测试下载和上传，而非像默认那样对两者同时测试（同时测试更能反映通话等真实应用的场景）；
-* `-I` 可以测试特定网络接口的速度，例如，命令 `networkQuality -I en0` 是指测试内建 Wi-Fi 网络的速度。
+- `-c` 会输出 json 格式的测速详情；
+- `-s` 会分开测试下载和上传，而非像默认那样对两者同时测试（同时测试更能反映通话等真实应用的场景）；
+- `-I` 可以测试特定网络接口的速度，例如，命令 `networkQuality -I en0` 是指测试内建 Wi-Fi 网络的速度。
 
 更多参数和说明，可以用如下命令查阅手册页面 `networkQuality(8)`：`man networkQuality`
 
@@ -546,15 +548,15 @@ smartctl -a disk0
 >
 > 打开「应用程序」-\>「实用工具」-\>「终端」，输入下面的命令，点击回车。
 
-+ 更改每行显示应用程序的个数的命令：
+- 更改每行显示应用程序的个数的命令：
 
-  ```
+  ```sh
   defaults write com.apple.dock springboard-columns -int 5
   ```
 
-+ 更改应用程序总共显示的行数的命令：
+- 更改应用程序总共显示的行数的命令：
 
-  ```
+  ```sh
   defaults write com.apple.dock springboard-rows -int 3
   ```
 
@@ -564,9 +566,9 @@ smartctl -a disk0
 >
 > **在重新启动「启动台（Launchpad）」之后，所有的应用程序图标排列方式都会被重置，包括文件夹显示，图标排列顺序等等。请慎重操作。**
 
-+ 更改设置，重启启动台的命令：
+- 更改设置，重启启动台的命令：
 
-  ```
+  ```sh
   defaults write com.apple.dock ResetLaunchPad -bool TRUE; killall Dock
   ```
 
