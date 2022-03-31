@@ -1,6 +1,7 @@
 # 我是如何使用 Windows 的<!-- omit in toc -->
 
 - [重装系统](#重装系统)
+  - [事先准备](#事先准备)
   - [通过 U 盘启动电脑](#通过-u-盘启动电脑)
 - [Windows 快速检查修复系统](#windows-快速检查修复系统)
 - [利用 Windows 系统评估工具测试硬盘速度](#利用-windows-系统评估工具测试硬盘速度)
@@ -8,16 +9,20 @@
   - [准备工作](#准备工作)
   - [向 win10 邮件 app 添加 Gmail 账户](#向-win10-邮件-app-添加-gmail-账户)
 - [局域网内 Windows / Ipad 传输文件](#局域网内-windows--ipad-传输文件)
+  - [第一步：Windows 设置共享文件夹](#第一步windows-设置共享文件夹)
+  - [第二步：Ipad 上访问局域网](#第二步ipad-上访问局域网)
 - [Windows Terminal 完美配置 PowerShell](#windows-terminal-完美配置-powershell)
   - [Windows Terminal 添加到右键菜单](#windows-terminal-添加到右键菜单)
   - [配置 Windows Terminal](#配置-windows-terminal)
   - [安装 Powershell Core](#安装-powershell-core)
   - [安装 Powershell 插件](#安装-powershell-插件)
-    - [准备工作](#准备工作-1)
+    - [安装字体](#安装字体)
     - [安装 Powershell 模块](#安装-powershell-模块)
     - [定制自己的主题](#定制自己的主题)
     - [美化 ls 输出](#美化-ls-输出)
     - [安装 z.lua 插件](#安装-zlua-插件)
+      - [安装 lua 环境](#安装-lua-环境)
+      - [z.lua](#zlua)
     - [PSReadLine](#psreadline)
     - [Screenfetch](#screenfetch)
   - [Git Bash 工具包](#git-bash-工具包)
@@ -26,6 +31,9 @@
   - [子系统 ubuntu 创建 root 用户](#子系统-ubuntu-创建-root-用户)
   - [更换 `/etc/apt/sources.list` 文件里的源](#更换-etcaptsourceslist-文件里的源)
   - [子系统安装中文语言包](#子系统安装中文语言包)
+    - [首先查看是否安装了中文语言包](#首先查看是否安装了中文语言包)
+    - [然后添加中文支持](#然后添加中文支持)
+    - [修改回英文](#修改回英文)
   - [zsh](#zsh)
     - [安装、配置](#安装配置)
     - [插件、主题](#插件主题)
@@ -35,6 +43,13 @@
   - [WSL](#wsl)
 - [环境变量（知识拓展）](#环境变量知识拓展)
 - [PowerShell 脚本执行策略（知识拓展）](#powershell-脚本执行策略知识拓展)
+  - [**Restricted**](#restricted)
+  - [**AllSigned**](#allsigned)
+  - [**RemoteSigned**](#remotesigned)
+  - [**Unrestricted**](#unrestricted)
+  - [**Bypass**](#bypass)
+  - [**Undefined**](#undefined)
+  - [**Execution Policy Scope**](#execution-policy-scope)
 - [PowerShell 设置命令别名 Alias（知识拓展）](#powershell-设置命令别名-alias知识拓展)
   - [查看别名](#查看别名)
   - [创建或更改别名](#创建或更改别名)
@@ -57,7 +72,7 @@
     - [安装 Scoop](#安装-scoop)
     - [帮助文档](#帮助文档)
     - [自定义软件安装的位置](#自定义软件安装的位置)
-    - [代理](#代理-1)
+    - [配置代理](#配置代理)
     - [aria2 多线程下载](#aria2-多线程下载)
     - [添加仓库](#添加仓库)
     - [常用操作和命令](#常用操作和命令)
@@ -79,6 +94,8 @@
   - [其他](#其他)
 
 ## 重装系统
+
+### 事先准备
 
 准备大于等于 `8G` 的空白 `U` 盘，去 [微软官方](https://www.microsoft.com/zh-cn/software-download/windows10) 下载制作工具，
 
@@ -131,7 +148,6 @@ Dism /Online /Cleanup-Image /ScanHealth
 进行修复。
 
 > TIPS：这条命令会扫描系统文件并和官方服务器上文件进行对比，找到问题。
-
 > 为什么会出现系统会和官方不一致的情况：被第三方软件篡改（含优化、安全管理）、系统使用过程中死机造成的文件丢失、下载补丁网络闪断造成文件缺失等，所以呢，扫描出问题是很正常的事情。
 
 如果发现了有问题，想要修复的话，使用
@@ -163,7 +179,6 @@ DISM /Online /Cleanup-image /RestoreHealth
 - 更多功能可以输入命令 `winsat -help` 查看。
 
   ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/win/winsat_help.png)
-
 
 ## 系统邮件添加并同步 Gmail
 
@@ -201,7 +216,7 @@ DISM /Online /Cleanup-image /RestoreHealth
 
 ## 局域网内 Windows / Ipad 传输文件
 
-**第一步：Windows 设置共享文件夹**
+### 第一步：Windows 设置共享文件夹
 
 Windows 在 **文件管理器 => 在文件夹上右键 => 属性** 中可以看到共享，接下来，设置该文件夹为共享文件夹，那么 `Ipad` 便能下载 / 上传文件到该目录中了。
 
@@ -211,7 +226,7 @@ Windows 在 **文件管理器 => 在文件夹上右键 => 属性** 中可以看�
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/win/share_file.png)
 
-**第二步：Ipad 上访问局域网**
+### 第二步：Ipad 上访问局域网
 
 打开文件 `app` ，点击左上角三个点，弹出对话框，点击连接服务器，输入主机 `IP` 、主机用户名、密码即可。
 
@@ -305,7 +320,7 @@ Windows 在 **文件管理器 => 在文件夹上右键 => 属性** 中可以看�
 
 `Github` 上这个仓库 [atomcorp/themes](https://github.com/atomcorp/themes) 提供了解决方案
 
-1. 在 https://atomcorp.github.io/themes/ 预览并复制喜欢的主题（Get theme 按钮）
+1. 在 <https://atomcorp.github.io/themes/> 预览并复制喜欢的主题（Get theme 按钮）
 2. 打开 `Windows Terminal settings` 复制到 `"schemes"` 下，然后配置即可。
 
 我的配色方案
@@ -342,7 +357,7 @@ Windows 在 **文件管理器 => 在文件夹上右键 => 属性** 中可以看�
 
 ### 安装 Powershell Core
 
-开源，还是开源。在 https://github.com/PowerShell/PowerShell/releases 这个 `GitHub` 链接里，有目前 `Powershell` 的最新版，从 `release` 里选个最新的 `preview` 版本安装。经过测试，这些预览版都相当稳定。
+开源，还是开源。在 <https://github.com/PowerShell/PowerShell/releases> 这个 `GitHub` 链接里，有目前 `Powershell` 的最新版，从 `release` 里选个最新的 `preview` 版本安装。经过测试，这些预览版都相当稳定。
 
 > TIPS：在我的电脑上，`preview4` 版本中出现如下情况 "--version" 会被显示成 " -version"
 >
@@ -354,7 +369,7 @@ Windows 在 **文件管理器 => 在文件夹上右键 => 属性** 中可以看�
 
 ### 安装 Powershell 插件
 
-#### 准备工作
+#### 安装字体
 
 首先需要注意的是，`oh-my-posh` 主题使用了一些非 `Powerline` 字体不支持的字符，因此如果你使用默认的等宽字体（比如 Consolas），在显示过程中就会出现乱码、字符显示不全的现象。
 
@@ -456,7 +471,7 @@ If (-Not (Test-Path Variable:PSise)) {
 
 > 快速路径切换工具（类似 [z.sh](https://github.com/rupa/z) / autojump / fasd），兼容 `Windows` 和所有 `Posix Shell` 以及 `Fish Shell`，同时包含了众多改进。
 
-**安装 lua 环境**
+##### 安装 lua 环境
 
 1. 下载安装 [lua](http://joedf.ahkscript.org/LuaBuilds/)
 2. 配置环境变量
@@ -469,7 +484,7 @@ If (-Not (Test-Path Variable:PSise)) {
 
    ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/win/lua_sucess.png)
 
-**下载 [z.lua](https://github.com/skywind3000/z.lua) 项目**
+##### [z.lua](https://github.com/skywind3000/z.lua)
 
 ```sh
 git clone https://github.com/skywind3000/z.lua.git
@@ -613,7 +628,7 @@ wsl --set-version <distribution name> <versionNumber>
 
 弹出信息：
 
-> `WSL 2` 需要更新其内核组件。有关信息，请访问 https://aka.ms/wsl2kernel
+> `WSL 2` 需要更新其内核组件。有关信息，请访问 <https://aka.ms/wsl2kernel>
 
 下载链接提供的 `Linux` 内核更新包，安装即可。
 
@@ -681,14 +696,7 @@ deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted univer
 deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
 ```
 
-**刷新列表**
-
-```sh
-sudo apt update
-sudo apt upgrade
-```
-
-**其他源**
+> 其他源
 
 中科大源：
 
@@ -740,7 +748,7 @@ deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restri
 
 ### 子系统安装中文语言包
 
-**首先查看是否安装了中文语言包**
+#### 首先查看是否安装了中文语言包
 
 输入命令 `locale -a` 查看是否有：`zh_CN.utf8`，如果没有，首先需要安装中文语言包，输入以下命令：
 
@@ -748,7 +756,7 @@ deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restri
 sudo apt-get install language-pack-zh-hans
 ```
 
-**然后添加中文支持**
+#### 然后添加中文支持
 
 1. 备份 `locale` 文件
 
@@ -756,7 +764,7 @@ sudo apt-get install language-pack-zh-hans
 sudo cp /etc/default/locale /etc/default/locale_backup
 ```
 
-2. 修改 `locale` 文件，配置中文
+1. 修改 `locale` 文件，配置中文
 
 ```sh
 sudo nano /etc/default/locale
@@ -779,7 +787,7 @@ LC_MEASUREMENT="zh_CN.UTF-8"
 LC_ALL=zh_CN.UTF-8
 ```
 
-**修改回英文**
+#### 修改回英文
 
 如果没安装英文语言包可以安装：
 
@@ -850,7 +858,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/win/zsh_plugin.png)
 
-- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)：为 `zsh `提供基于输入历史的自动命令提示
+- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)：为 `zsh` 提供基于输入历史的自动命令提示
 
   ```sh
   git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -981,19 +989,19 @@ compinit
 
 `PowerShell` 提供了 `Restricted`、`AllSigned`、`RemoteSigned`、`Unrestricted`、`Bypass`、`Undefined` 六种类型的执行策略，接下来我们一一介绍。
 
-**Restricted**
+### **Restricted**
 
 单词 `Restricted` 的意思是 "受限制的"，所以这种执行策略主要是限制脚本的执行。说简单点就是：可以执行单个的命令，但是不能执行脚本。
 
-**AllSigned**
+### **AllSigned**
 
 `Signed` 在这里指有数字签名的脚本，也就是说 `AllSigned` 执行策略允许执行所有具有数字签名的脚本。当然我们也可以换个角度说：只能运行具有数字签名的脚本。据我所知我们能见到的绝大多数的 `PowerShell` 脚本是没有数字签名的。
 
-**RemoteSigned**
+### **RemoteSigned**
 
 这个执行策略的意思是：当执行从网络上下载的脚本时，需要脚本具有数字签名，否则不会运行这个脚本。如果是在本地创建的脚本则可以直接执行，不要求脚本具有数字签名。
 
-**Unrestricted**
+### **Unrestricted**
 
 这是一种比较宽容的策略，允许运行未签名的脚本。对于从网络上下载的脚本，在运行前会进行安全性提示
 
@@ -1001,15 +1009,15 @@ compinit
 
 但这仅仅是个提示，还是允许脚本执行的。
 
-**Bypass**
+### **Bypass**
 
 `Bypass` 执行策略对脚本的执行不设任何的限制，任何脚本都可以执行，并且不会有安全性提示。
 
-**Undefined**
+### **Undefined**
 
 `Undefined` 表示没有设置脚本策略。当然此时会发生继承或应用默认的脚本策略。
 
-**Execution Policy Scope**
+### **Execution Policy Scope**
 
 `Scope` 指执行策略的应用范围。原来我们可以给不同的应用范围设置执行策略。比如进程、当前用户和本机。
 
@@ -1190,7 +1198,7 @@ winget install wechat --rainbow # --rainbow 进度条花里胡哨
 
 #### 官方文档
 
-https://docs.microsoft.com/zh-cn/windows/package-manager/
+<https://docs.microsoft.com/zh-cn/windows/package-manager/>
 
 ### Scoop
 
@@ -1218,7 +1226,7 @@ $env:SCOOP='D:\Applications\Scoop'
 [Environment]::SetEnvironmentVariable('SCOOP', $env:SCOOP, 'User')
 ```
 
-#### 代理
+#### 配置代理
 
 由于某些程序网站的网络环境的问题，如果有代理可以配置一下代理
 
@@ -1248,7 +1256,7 @@ scoop bucket add Ash258 'https://github.com/Ash258/scoop-Ash258.git'
 
 前者是官方的，后者是个人维护的，有许多有用的但无法进入官方标准的软件，比如 `potplayer`
 
-社区提供的可用源列表 `github` 地址如下：https://github.com/lukesampson/scoop/blob/master/buckets.json
+社区提供的可用源列表 `github` 地址如下：<https://github.com/lukesampson/scoop/blob/master/buckets.json>
 
 其他原团队或者个人维护的资源库列表参考地址：[scoop-directory](https://rasa.github.io/scoop-directory/)
 
@@ -1402,9 +1410,9 @@ winfr E: D: /x /n *.pdf
 
 全网热门 [BitTorrent Tracker](https://github.com/XIU2/TrackersListCollection) 列表！
 
-- 精选列表：https://trackerslist.com/best.txt
+- 精选列表：<https://trackerslist.com/best.txt>
 
-- 完整列表：https://trackerslist.com/all.txt
+- 完整列表：<https://trackerslist.com/all.txt>
 
 ### Dism++：Windows 的一个集中式的系统管理工具
 
