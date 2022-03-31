@@ -9,7 +9,7 @@
 - `[Mac]` [Mac 这种操作系统简直比 Siri 还智障所以就去写了个笔记](others/mac.md)
 - `[Windows]` [最傻逼的用户，被 Win 10 百般折磨后，努力至今终尝回报，突然得到了最强使用技巧](others/win.md)
 - `[Terminal]` [只用命令行就能覆盖所有操作而且能提升工作效率的终端使用技巧你喜欢吗](others/terminal.md)
-- `[VsCode]` [我是如何使用 VsCode 的](others/code.md)
+- `[VsCode]` [VSCode 因为插件丰富、功能强大被大家喜欢，真是令人烦恼啊](others/code.md)
 - `[Git]` [我是如何使用 Git 的](others/git.md)
 <!-- - `[Switch]` [我是如何使用 Switch 的](others/switch.md) -->
 
