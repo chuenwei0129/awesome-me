@@ -58,6 +58,8 @@ iTerm2 主题的 GitHub 仓库位于：[mbadolato/iTerm2-Color-Schemes](https://
 
 打开 iTerm2 的设置：**Preferences → Profiles → Colors → Color Presets**。点击 **import** 选择你想要的主题（.itermcolors 文件）导入。
 
+> [Honukai theme and colors for Oh My ZSH and iTerm](https://github.com/oskarkrawczyk/honukai-iterm-zsh)
+
 ### 调整 Status Bar
 
 >  将 iTerm2 自带 theme 修改为 Minimal （ Preferences-Appearance-General-Theme ） 以达到顶栏沉浸式的效果

@@ -10,8 +10,8 @@
 - `[Windows]` [最傻逼的用户，被 Win 10 百般折磨后，努力至今终尝回报，突然得到了最强使用技巧](others/win.md)
 - `[Terminal]` [只用命令行就能覆盖所有操作而且能提升工作效率的终端使用技巧你喜欢吗](others/terminal.md)
 - `[VsCode]` [VSCode 因为插件丰富、功能强大被大家喜欢，真是令人烦恼啊](others/code.md)
-- `[Git]` [我是如何使用 Git 的](others/git.md)
-<!-- - `[Switch]` [我是如何使用 Switch 的](others/switch.md) -->
+- `[Git]` [怕遗忘 Git 的我，把相关知识点都记录下来就对了](others/git.md)
+- `[Switch]` [关于我破解了 Switch 并且装满了游戏依然吃灰这件事](others/switch.md)
 
 <!-- ## 基础打的牢，代码写的好！
 ## 框架用的好，摸鱼时间满！

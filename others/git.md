@@ -1,4 +1,6 @@
-上面的案例引申出一个问题，入职一家新公司，你的 leader 给你分配了仓库的权限后，如何配置本地的 Git 环境并拉取代码？莫慌，按照下面我讲的四个步骤走，保证你可以顺利使用 Git 进行拉取代码！
+怕遗忘 Git 的我，把相关知识点都记录下来就对了
+
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/terminal/613861755_1618028580119_014AA794B8DE2B0593F9F6C4BE7243D9.png)
 
 下载 Git 下载地址 ，选择自己系统对应的版本下载即可。
 
