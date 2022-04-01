@@ -7,13 +7,30 @@
 > ## 目录
 
 - [ssh](#ssh)
-  - [使用 ssh 原因](#使用-ssh-原因)
+  - [生成一个 ssh-key](#生成一个-ssh-key)
+  - [复制 `id_rsa.pub` 的内容](#复制-id_rsapub-的内容)
+  - [全局配置 Git 的用户名和邮箱](#全局配置-git-的用户名和邮箱)
+  - [No.1 的小秘籍](#no1-的小秘籍)
+    - [查看是否有权限](#查看是否有权限)
+    - [代理问题](#代理问题)
+- [Git 的工作区域和流程](#git-的工作区域和流程)
+- [Git 文件状态](#git-文件状态)
+- [Git 基本操作](#git-基本操作)
+  - [配置命令](#配置命令)
+  - [分支管理](#分支管理)
+  - [git pull](#git-pull)
+  - [git fetch](#git-fetch)
+  - [git add](#git-add)
+  - [git commit](#git-commit)
+- [参考资料](#参考资料)
 
 ## [ssh](#目录)
 
 虽然 git 可以工作在 ssh 与 https 两种协议上，但为了安全性，更多时候会选择 ssh。
 
 ### 生成一个 ssh-key
+
+执行命令
 
 ```sh
 ssh-keygen -t rsa -C "example@qq.mail"
@@ -22,99 +39,205 @@ ssh-keygen -t rsa -C "example@qq.mail"
 - `-t`: 可选择 dsa | ecdsa | ed25519 | rsa | rsa1，代表加密方式
 - `-C`: 注释，一般写自己的邮箱
 
-:::tips
-sss
-:::
-
-:::details
-sss
-:::
+如果执行成功，切换到 `~/.ssh` 目录下，此时目录应该如下所示。
 
 ```sh
-$ git clone git@github.com:chuenwei0129/my-picgo-repo.git
-Cloning into 'my-picgo-repo'...
-Warning: Permanently added the RSA host key for IP address '13.229.188.59' to the list of known hosts.
-Permission denied (publickey). fatal: Could not read from remote repository.
-Please make sure you have the correct access rights and the repository exists.
+authorized_keys config id_rsa id_rsa.pub known_hosts
 ```
 
-不过有一个更直接的命令去查看是否有权限
+> id_rsa / id_rsa.pub: 配对的私钥与公钥
 
-$ ssh -T git@github.com
-Permission denied (publickey).
-生成一个新的 ssh key
+### 复制 `id_rsa.pub` 的内容
 
-使用 ssh-keygen 可以生成配对的 id_rsa 与 id_rsa.pub 文件
+以 Github 为例，进入 `settings -> SSH and GPG keys` 通过 `cat` 命令查看文件 `id_rsa.pub` 的内容，然后复制过来，点击 `add ssh key`，这一步等于说把你的公钥放到了 Github 上进行托管。
 
-# 生成 id_rsa/id_rsa.pub: 配对的私钥与公钥 $ ls ~/.ssh authorized_keys config id_rsa id_rsa.pub known_hosts
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/terminal/-k3u1fbpfcp.webp)
+
+### 全局配置 Git 的用户名和邮箱
+
+```sh
+git config --global user.name "xxx"
+git config --global user.email "xxx@xx.com"
+```
+
+完成以上步骤，就可以愉快 pull 代码开发了。
+
+> 和 https 拉取方式不同的是，https 方式需要每次提交前都手动输入用户名和密码，ssh 的方式配置完毕后 Git 都会使用你本地的私钥和远程仓库的公钥进行验证是否是一对秘钥，从而简化了操作流程。
+
+### No.1 的小秘籍
+
+#### 查看是否有权限
+
+```sh
+ssh -T git@github.com
+# Hi chuenwei0129! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
+#### 代理问题
+
+```sh
+
+# 这个提示是主要提示是不允许你代理这个 ip 登录 ssh
+kex_exchange_identification: Connection closed by remote host
+Connection closed by 127.0.0.1 port 7890
+```
+
+解决方案就是用 Github 的 443 端口 <https://docs.github.com/en/authentication/troubleshooting-ssh/using-ssh-over-the-https-port> 或者把代理关了
+
+更多讨论：[ssh远程登陆有时候正常，有时候显示：ssh_exchange_identification: Connection closed by remote host，这是什么原因？](https://www.zhihu.com/question/20023544)
+
+## [Git 的工作区域和流程](#目录)
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/terminal/613861755_1618028580119_014AA794B8DE2B0593F9F6C4BE7243D9.png)
 
-之前遇到过同样的问题，某些节点使用 ssh 22 端口 push 代码会被拒绝
-解决方案就是用 Github 的 443 端口
-https://docs.github.com/en/authentication/troubleshooting-ssh/using-ssh-over-the-https-port
+- **Workspace**：工作区，就是平时进行开发改动的地方，是当前看到最新的内容，在开发的过程也就是对工作区的操作。
 
-kex_exchange_identification: Connection closed by remote host
-Connection closed by 127.0.0.1 port 7890
+- **Index**：暂存区，当执行 `git add` 的命令后，工作区的文件就会被移入暂存区，暂存区标记了当前工作区中那些内容是被 Git 管理的，当完成某个需求或者功能后需要提交代码，第一步就是通过 `git add` 先提交到暂存区。
 
-https://www.zhihu.com/question/20023544
+- **Repository**：本地仓库，位于自己的电脑上，通过 `git commit` 提交暂存区的内容，会进入本地仓库。
 
-把代理关了，这个提示是主要提示是不允许你代理这个ip登录ssh
+- **Remote**：远程仓库，用来托管代码的服务器，远程仓库的内容能够被分布在多个地点的处于协作关系的本地仓库修改，本地仓库修改完代码后通过 `git push` 命令同步代码到远程仓库。
 
+## [Git 文件状态](#目录)
 
-@IvanLi-CN 这个要看你的电脑系统了，我只能给你提供Mac的，如果你是使用Mac的话，改用电脑端Clash X或者Clash X Pro，然后复制终端代理命令，把http和https的代理都改为socks5的代理，就好了，如果是软路由也可以根据这个思路改成路由器的socks的代理
+通常我们需要查看一个文件的状态
 
-https://github.com/vernesong/OpenClash/issues/1960
+```sh
+git status
+```
 
-关键信息就是Executing proxy command: exec nc -X 5 -x 127.0.0.1:1080 github.com 22, 原来是我之前有配置过命令行git clone代理加速，然后代理挂掉了，导致服务异常。
+- `Changes not staged for commit`
 
-注释命令行代理配置
-编辑~/.ssh/config文件，注释其中的代理配置
+  表示得大概就是工作区有该内容，但是缓存区没有，需要我们 git add
 
+- `Changes to be committed`
 
+  一般而言，这个时候，文件放在缓存区了，我们需要 git commit
 
-ssh远程登陆有时候正常，有时候显示：ssh_exchange_identification: Connection closed by remote host，这是什么原因？
+- `nothing to commit, working tree clean`
 
-刚刚自己也遇到了，记录一下
+  这个时候，我们将本地的代码推送到远端即可
 
-原因是ss开了全局模式
+## [Git 基本操作](#目录)
 
-下载 Git 下载地址 ，选择自己系统对应的版本下载即可。
+### 配置命令
 
-在你的电脑上生成 ssh 秘钥，打开终端，执行 ssh-keygen -t rsa -C "你公司内部邮箱地址"，如果执行成功，切换到 ~/.ssh 目录下，此时目录应该如下所示。复制 id_rsa.pub 的内容。
+```sh
+# 列出当前配置
+git config --list
+# 列出本地 Repository 配置
+git config --local --list
+# 列出全局配置
+git config --global --list
+# 列出系统配置
+git config --system --list
+```
 
-这里以 Github 为例，如下图所示，进入 settings -> SSH and GPG keys 通过 cat 命令查看文件 id_rsa.pub 的内容，然后复制过来，点击 add ssh key，这一步等于说把你的公钥放到了 Github 上进行托管。
+### 分支管理
 
-全局配置 Git 的用户名和邮箱
+```sh
+# 查看本地分支
+git branch
+# 查看远程分支
+git branch -r
+# 查看本地和远程分支
+git branch -a
 
-git config --global user.name "xxx"
-git config --global user.email "xxx@xx.com"
-复制代码
-完成以上四步，你就可以愉快 pull 代码开发了。和 https 拉取方式不同的是，https 方式需要每次提交前都手动输入用户名和密码，ssh 的方式配置完毕后 Git 都会使用你本地的私钥和远程仓库的公钥进行验证是否是一对秘钥，从而简化了操作流程。
+# 创建并切换到新建分支
+git checkout -b <branch-name>
+# 从当前分支，切换到其他分支
+git switch <branch-name>
+# 与 switch 命令相同
+git checkout <branch-name>
 
-## todo
+# 删除分支
+git branch -d <branch-name>
+# 删除远程分支
+git push origin -d <branch-name>
 
-1. git 的 add ，是一个容易引起疑问的命令。在 subversion 中的 svn add 动作是将某个文件加入版本控制，而 git add的意义完全不同。
+# 当前分支与指定分支合并
+git merge <branch-name>
+# 查看哪些分支已经合并到当前分支
+git branch --merged
 
-同时， git diff --cached 是比较 stage 的文件的差异的，也是一个不直观的命令。
+# 重命名分支
+git branch -m <old-branch-name> <new-branch-name>
+```
 
-github 2008年的blog中，也提到，容易引起混淆：
+### git pull
 
-https://github.com/blog/196-gittogether-2008
+```sh
+# 从远程仓库拉取代码并合并到本地，可简写为 git pull 等同于 git fetch && git merge
+git pull <远程主机名> <远程分支名>:<本地分支名>
+# 使用 rebase 的模式进行合并
+git pull --rebase <远程主机名> <远程分支名>:<本地分支名>
+```
 
-http://learn.github.com/p/normal.html
+### git fetch
 
-things like making use of the term ‘stage’ for things that happen in the index (such as using ‘git diff —staged’ instead of ‘git diff —cached’) is being worked on. I’m excited that staging files may soon be done via ‘git stage’ rather-than/in-addition-to ‘git add’. This is nice for new users who often have a hard time seeing why you have to keep ‘git add’ing to stage your changes.
+与 `git pull` 不同的是 `git fetch` 操作仅仅只会拉取远程的更改，不会自动进行 merge 操作。对你当前的代码没有影响
+
+```sh
+# 获取远程仓库特定分支的更新
+git fetch <远程主机名> <分支名>
+# 当你想将某个远程分支的内容取回到本地下某个分支的话
+git fetch origin <branch-name>:<local-branch-name>
+
+# 获取远程仓库所有分支的更新
+git fetch --all
+```
+
+### git add
+
+添加文件到暂存区
+
+```sh
+# 添加某个文件到暂存区，后面可以跟多个文件，以空格区分
+git add xxx
+# 添加当前更改的所有文件到暂存区。
+git add .
+```
+
+> git 的 add，是一个容易引起疑问的命令。同时，`git diff --cached` 是比较 stage 的文件的差异的，也是一个不直观的命令。
+
+github 2008 年的 blog 中，也提到，容易引起混淆：
+
+> things like making use of the term ‘stage’ for things that happen in the index (such as using ‘git diff —staged’ instead of ‘git diff —cached’) is being worked on. I’m excited that staging files may soon be done via ‘git stage’ rather-than/in-addition-to ‘git add’. This is nice for new users who often have a hard time seeing why you have to keep ‘git add’ing to stage your changes.
 
 事实上，在 git 的后续版本中，就做了两个修改：
 
-git stage 作为 git add 的一个同义词
+`git stage` 作为 `git add` 的一个同义词
 
-git diff --staged 作为 git diff --cached 的相同命令
+`git diff --staged` 作为 `git diff --cached` 的相同命令
 
-为了容易理解，推荐大家使用 git stage 和 git diff --staged 这两个命令，而git add 和 git diff --cached 这两个命令，仅仅为了保持和以前的兼容做保留。
+为了容易理解，推荐大家使用 `git stage` 和 `git diff --staged` 这两个命令，而 `git add` 和 `git diff --cached` 这两个命令，仅仅为了保持和以前的兼容做保留。
 
-2. 增加 stage 的带来的好处是什么？
+### git commit
+
+```sh
+# 提交暂存的更改，会新开编辑器进行编辑
+git commit
+# 提交暂存的更改，并记录下备注
+git commit -m "you message"
+# 等同于 git add . && git commit -m
+git commit -am
+# 对最近一次的提交的信息进行修改,此操作会修改commit的hash值
+git commit --amend
+```
+
+## 参考资料
+
+[为什么要先 git add 才能 git commit ？](https://www.zhihu.com/question/19946553)
+
+[「一劳永逸」一张脑图带你掌握Git命令](https://juejin.cn/post/6869519303864123399)
+
+[我在工作中是如何使用 Git 的](https://juejin.cn/post/6974184935804534815)
+
+[Git 常用命令（巨详细）](https://juejin.cn/post/6976816225191985189)
+
+[高频 Git 面试题](https://zhuanlan.zhihu.com/p/101954895)
+
+<!-- ### 增加 stage 的带来的好处是什么？
 
 主要有两个好处，一个是分批、分阶段递交，一个是进行快照，便于回退
 
@@ -150,7 +273,7 @@ http://learn.github.com/p/normal.html
 
 git checkout -- hello.py
 
-3. git diff ， git diff --staged 和 git diff HEAD的差别
+1. git diff ， git diff --staged 和 git diff HEAD的差别
 
 当一个文件做了stage，然后又做了一些修改，则：
 
@@ -188,31 +311,4 @@ git checkout hello.py
 
 递交之前，使用 git status，git diff HEAD 仔细查看是否需要的递交
 
-git commit -a ，保证递交了所有内容
-
-1.  下载 Git [下载地址](https://link.juejin.cn?target=https%3A%2F%2Fgit-scm.com%2Fdownloads) ，选择自己系统对应的版本下载即可。
-    
-2.  在你的电脑上生成 ssh 秘钥，打开终端，执行 `ssh-keygen -t rsa -C "你公司内部邮箱地址"`，如果执行成功，切换到 `~/.ssh` 目录下，此时目录应该如下所示。复制 `id_rsa.pub` 的内容。
-    
-    ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0deb58d91310414f80eff364c694af9c~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp)
-    
-3.  这里以 Github 为例，如下图所示，进入 `settings -> SSH and GPG keys` 通过 `cat` 命令查看文件 `id_rsa.pub` 的内容，然后复制过来，点击 `add ssh key`，这一步等于说把你的公钥放到了 Github 上进行托管。
-    
-    ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1ff633573cc946bab9a13f014a099d7b~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp)
-    
-4.  全局配置 Git 的用户名和邮箱
-    
-
-    git config --global user.name "xxx"
-    git config --global user.email "xxx@xx.com"
-    复制代码
-
-完成以上四步，你就可以愉快 pull 代码开发了。和 https 拉取方式不同的是，https 方式需要每次提交前都手动输入用户名和密码，ssh 的方式配置完毕后 Git 都会使用你本地的私钥和远程仓库的公钥进行验证是否是一对秘钥，从而简化了操作流程。
-
-  
-作者：政采云前端团队  
-链接：https://juejin.cn/post/6974184935804534815  
-来源：稀土掘金  
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-
-[为什么要先 git add 才能 git commit ？](https://www.zhihu.com/question/19946553) -->
+git commit -a ，保证递交了所有内容 -->
