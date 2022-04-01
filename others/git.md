@@ -1,6 +1,83 @@
-怕遗忘 Git 的我，把相关知识点都记录下来就对了
+# 怕遗忘 Git 的我，把相关知识点都记录下来就对了<!-- omit in toc -->
+
+***👀 TIPS: 二级标题可返回目录***
+
+---
+
+> ## 目录
+
+- [ssh](#ssh)
+  - [使用 ssh 原因](#使用-ssh-原因)
+
+## [ssh](#目录)
+
+虽然 git 可以工作在 ssh 与 https 两种协议上，但为了安全性，更多时候会选择 ssh。
+
+### 生成一个 ssh-key
+
+```sh
+ssh-keygen -t rsa -C "example@qq.mail"
+```
+
+- `-t`: 可选择 dsa | ecdsa | ed25519 | rsa | rsa1，代表加密方式
+- `-C`: 注释，一般写自己的邮箱
+
+:::tips
+sss
+:::
+
+:::details
+sss
+:::
+
+```sh
+$ git clone git@github.com:chuenwei0129/my-picgo-repo.git
+Cloning into 'my-picgo-repo'...
+Warning: Permanently added the RSA host key for IP address '13.229.188.59' to the list of known hosts.
+Permission denied (publickey). fatal: Could not read from remote repository.
+Please make sure you have the correct access rights and the repository exists.
+```
+
+不过有一个更直接的命令去查看是否有权限
+
+$ ssh -T git@github.com
+Permission denied (publickey).
+生成一个新的 ssh key
+
+使用 ssh-keygen 可以生成配对的 id_rsa 与 id_rsa.pub 文件
+
+# 生成 id_rsa/id_rsa.pub: 配对的私钥与公钥 $ ls ~/.ssh authorized_keys config id_rsa id_rsa.pub known_hosts
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/terminal/613861755_1618028580119_014AA794B8DE2B0593F9F6C4BE7243D9.png)
+
+之前遇到过同样的问题，某些节点使用 ssh 22 端口 push 代码会被拒绝
+解决方案就是用 Github 的 443 端口
+https://docs.github.com/en/authentication/troubleshooting-ssh/using-ssh-over-the-https-port
+
+kex_exchange_identification: Connection closed by remote host
+Connection closed by 127.0.0.1 port 7890
+
+https://www.zhihu.com/question/20023544
+
+把代理关了，这个提示是主要提示是不允许你代理这个ip登录ssh
+
+
+@IvanLi-CN 这个要看你的电脑系统了，我只能给你提供Mac的，如果你是使用Mac的话，改用电脑端Clash X或者Clash X Pro，然后复制终端代理命令，把http和https的代理都改为socks5的代理，就好了，如果是软路由也可以根据这个思路改成路由器的socks的代理
+
+https://github.com/vernesong/OpenClash/issues/1960
+
+关键信息就是Executing proxy command: exec nc -X 5 -x 127.0.0.1:1080 github.com 22, 原来是我之前有配置过命令行git clone代理加速，然后代理挂掉了，导致服务异常。
+
+注释命令行代理配置
+编辑~/.ssh/config文件，注释其中的代理配置
+
+
+
+ssh远程登陆有时候正常，有时候显示：ssh_exchange_identification: Connection closed by remote host，这是什么原因？
+
+刚刚自己也遇到了，记录一下
+
+原因是ss开了全局模式
 
 下载 Git 下载地址 ，选择自己系统对应的版本下载即可。
 
@@ -138,4 +215,4 @@ git commit -a ，保证递交了所有内容
 来源：稀土掘金  
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
-[为什么要先 git add 才能 git commit ？](https://www.zhihu.com/question/19946553)
+[为什么要先 git add 才能 git commit ？](https://www.zhihu.com/question/19946553) -->
