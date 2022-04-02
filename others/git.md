@@ -640,9 +640,13 @@ Saved working directory and index state WIP on stash: 22e561c feat: add 1.js
 git config --global alias.co checkout
 git config --global alias.ci commit
 git config --global alias.br branch
+
+# git config --global --unset alias.ci 取消别名
 ```
 
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/terminal/SCR-20220403-7do.png)
 
+这些命令其实是更新你全局的 `.gitconfig` 文件，该文件用来保存全局的 git 配置，你可以直接 `code ~/.gitconfig` 手动添加
 
 ```sh
 [alias]
@@ -650,7 +654,7 @@ st = status -sb
 co = checkout
 br = branch
 mg = merge
-ci = commit
+cm = commit -m
 ds = diff --staged
 dt = difftool
 mt = mergetool
