@@ -50,6 +50,7 @@
   - [为 Chrome 设置搜索引擎关键词](#为-chrome-设置搜索引擎关键词)
   - [浏览器插件](#浏览器插件)
   - [油猴脚本](#油猴脚本)
+- [有用的链接](#有用的链接)
 
 ## [给 Mac 硬件做健康检查](#目录)
 
@@ -631,3 +632,7 @@ smartctl -a disk0
 - ~~[拒绝二维码登陆](https://greasyfork.org/zh-CN/scripts/27183-%E6%8B%92%E7%BB%9D%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%99%BB%E5%BD%95-%E6%B7%98%E5%AE%9D-%E4%BA%AC%E4%B8%9C%E7%AD%89%E7%BD%91%E7%AB%99%E9%BB%98%E8%AE%A4%E5%87%BA%E7%8E%B0%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2)：淘宝、京东、阿里云等网站默认使用账号密码登录，不出现二维码登录界面~~
 
 - [解除 B 站区域限制](https://greasyfork.org/zh-CN/scripts/25718-%E8%A7%A3%E9%99%A4b%E7%AB%99%E5%8C%BA%E5%9F%9F%E9%99%90%E5%88%B6)：解除 `B` 站 区域限制; 只对 `HTML5` 播放器生效
+
+## [有用的链接](#目录)
+
+- <https://github.com/jaywcjlove/awesome-mac/blob/master/README-zh.md>
