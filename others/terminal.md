@@ -26,6 +26,19 @@
   - [注意](#注意)
   - [下载](#下载)
   - [开始使用](#开始使用)
+- [vim](#vim)
+  - [入门笔记](#入门笔记)
+    - [vim 的四种模式](#vim-的四种模式)
+    - [普通模式下光标移动](#普通模式下光标移动)
+    - [操作符](#操作符)
+  - [插件管理器 vim-plug](#插件管理器-vim-plug)
+    - [安装 vim-plug](#安装-vim-plug)
+    - [安装插件](#安装插件)
+    - [更新插件](#更新插件)
+    - [删除插件](#删除插件)
+    - [升级 vim-plug](#升级-vim-plug)
+    - [我的配置文件](#我的配置文件)
+- [vscode vim 插件](#vscode-vim-插件)
 
 ## [iTerm2 配置](#目录)
 
@@ -44,7 +57,7 @@ brew cask install font-hack-nerd-font
 
 我们可以这样：
 
-打开 https://github.com/ryanoasis/nerd-fonts/releases
+打开 <https://github.com/ryanoasis/nerd-fonts/releases>
 
 我们只要下载心仪的字体包，然后**打开启动台 -> 搜索"字体册"并打开 -> 然后添加下载好的字体中的一个或多个即可**。
 
@@ -62,7 +75,7 @@ iTerm2 主题的 GitHub 仓库位于：[mbadolato/iTerm2-Color-Schemes](https://
 
 ### 调整 Status Bar
 
->  将 iTerm2 自带 theme 修改为 Minimal （ Preferences-Appearance-General-Theme ） 以达到顶栏沉浸式的效果
+> 将 iTerm2 自带 theme 修改为 Minimal （ Preferences-Appearance-General-Theme ） 以达到顶栏沉浸式的效果
 
 可以在 Profiles 选项卡，Session 页面最底部看到开启选项。Status bar enabled 选项，勾选上即可打开。点击右边的 **Configure Status Bar** 按钮可设置显示的内容。
 
@@ -260,4 +273,244 @@ Commands:
   logintv  通过APP扫描二维码以登录您的TV账号
 ```
 
-<!-- TODO: vim -->
+## [vim](#目录)
+
+> 临时用来线上编辑
+
+### 入门笔记
+
+> 更多内容：[精通 vim ，此文就够了](https://zhuanlan.zhihu.com/p/68111471)
+
+#### vim 的四种模式
+
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/terminal/SCR-20220404-883.png)
+
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/terminal/SCR-20220404-8ab.png)
+
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/terminal/SCR-20220404-8be.png)
+
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/terminal/SCR-20220404-8be.png)
+
+> **补充**
+
+- `s` 删除光标所在处的字符然后插入需要录入的文本。
+
+- `S` 删除光标所在行，在当前行的行首开始插入需要录入的文本。
+
+- `n <Enter>` n 为数字。光标向下移动 n 行
+
+- `n <space>` 光标会向右移动这一行的 n 个字符，**与 nl 区别是可跨行**
+
+- `:n` 定位到 n 行。
+
+- 进行关键字的查找 `:/{目标字符串}`
+
+  如：`/zempty` 会在文本中匹配 `zempty` 的地方高亮。
+  查找文本中匹配的目标字符串，查到以后，输入键盘上的 `n` 会去寻找下一个匹配，`N` 会去寻找上一个匹配。
+
+- **删除多行文本** `:n1,n2d`
+
+  n1 和 n2 指的是起始行号和结束行号，d 是删除关键字
+
+- **处理文本的替换** `:{作用范围}s/{目标}/{替换}/{替换的标志}`
+
+  作用范围分为当前行、全文、选区等等。
+
+  - `:s/zempty/handsome/g` 将会把当前光标所在行的 zempty 替换成 handsome
+
+  - `:%s/zempty/handsome/g` 将会把全文中的 zempty 替换成 handsome
+
+  - `:n1,n2s/zempty/handsome/g` 这里的 n1 和 n2 值得是行号，将会替换掉 n1 到 n2 的所有 zempty 为 handsome.
+
+- **执行 Linux 命令** `:!command`
+
+#### 普通模式下光标移动
+
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/terminal/SCR-20220404-8cl.png)
+
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/terminal/SCR-20220404-8em.png)
+
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/terminal/SCR-20220404-8f6.png)
+
+> **补充**
+
+- `nfa` 移动到本行光标处开始的第 n 个 字符为 a 的地方（n 是 1，2，3，4 ... 数字）
+
+- `zz` 把当前行移动到当前屏幕的中间
+
+- `ctrl+f` 查看下一页内容
+
+- `ctrl+b` 查看上一页内容
+
+#### 操作符
+
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/terminal/SCR-20220404-8ge.png)
+
+```sh
+dw # 删除一个单词
+dnw # 删除 n 个单词，
+dfa # 删除光标处到下一个 a 的字符处（ fa 定位光标到 a 处 ）
+dnfa # 删除光标处到第 n 个 a 的字符处
+dd # 删除一整行
+ndd # 删除光标处开始的 n 行
+d$ # 删除光标到本行的结尾
+dH # 删除屏幕显示的第一行文本到光标所在的行
+dG # 删除光标所在行到文本的结束
+
+yy # 复制一行，还有 nyy
+
+p # 在光标后开始黏贴
+P # 大写的 P 光标前开始粘贴
+
+u # 撤销刚才的操作
+ctrl + r # 恢复撤销操作
+
+~ # 将光标下的字母改变大小写
+3~ # 将光标位置开始的3个字母改变其大小写
+g~~ # 改变当前行字母的大小写
+gUU # 将当前行的字母改成大写
+guu # 将当前行的字母全改成小写
+3gUU # 将从光标开始到下面3行字母改成大写
+```
+
+还有一个可能经常用到的就是 `cw` ，删除从光标处开始到该单词结束的所有字符，然后插入需要录入的文本（这个命令是两个字符的合体 `cw` ）
+
+> **补充**
+
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/terminal/SCR-20220404-8h8.png)
+
+```js
+// <title>Document</title>
+dit // 删除 Document
+dit // 删除 整个 tag title
+cs" // 双引号变单引号
+```
+
+### 插件管理器 vim-plug
+
+> 推荐一个插件网址：[VimAwesome](https://vimawesome.com/) 这里拥有很多好用的插件
+
+#### 安装 [vim-plug](https://github.com/junegunn/vim-plug)
+
+```sh
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
+#### 安装插件
+
+要安装插件，必须首先在 Vim 配置文件中声明它们。一般 Vim 的配置文件是 `~/.vimrc`，Neovim 的配置文件是 `~/.config/nvim/init.vim`。
+
+在配置文件中声明插件时，列表应该以 `call plug#begin(PLUGIN_DIRECTORY)` 开始，并以 `plug#end()` 结束。
+
+例如，我们安装 “nerdtree” 插件。为此，请在 `~/.vimrc` 的顶部添加以下行。
+
+```sh
+call plug#begin('~/.vim/plugged')
+
+Plug 'scrooloose/nerdtree'
+
+call plug#end()
+```
+
+在 vim 配置文件中添加上面的行后，
+
+通过输入以下命令重新加载：
+
+```sh
+source ~/.vimrc
+```
+
+或者，重新加载 Vim 编辑器。
+
+然后输入下面的命令，然后按回车键安装之前在配置文件中声明的插件。
+
+```sh
+:PlugInstall
+```
+
+#### 更新插件
+
+要更新插件，请运行：
+
+```sh
+:PlugUpdate
+```
+
+更新插件后，按下 d 查看更改。或者，你可以之后输入 `:PlugDiff`。
+
+#### 删除插件
+
+删除一个插件删除或注释掉你以前在你的 vim 配置文件中添加的 plug 命令。然后，运行 `source ~/.vimrc` 或重启 Vim 编辑器。最后，运行以下命令卸载插件：
+
+```vim
+:PlugClean
+```
+
+该命令将删除 vim 配置文件中所有未声明的插件。
+
+#### 升级 vim-plug
+
+要升级 vim-plug 本身，请输入：
+
+```sh
+:PlugUpgrade
+```
+
+#### 我的配置文件
+
+我的配置文件配置如下:
+
+```vim
+call plug#begin('~/.vim/plugged')
+
+Plug 'scrooloose/nerdtree'
+Plug 'mhinz/vim-startify'
+Plug 'rakr/vim-one'
+
+call plug#end()
+
+let g:airline_theme='one'
+colorscheme one
+set background=dark
+
+set number
+
+let mapleader = ","  
+nnoremap <silent> <leader>n :NERDTreeToggle<CR>
+```
+
+> **nerdtree 插件**
+
+使用 nerdtree 通常需要在 .vimrc 中配置一个出发快捷键如下:
+
+```vim
+let mapleader = ","  
+nnoremap <silent> <leader>n :NERDTreeToggle<CR>
+```
+
+上述配置意思就是通过 `,n` 快捷键来激活插件 nerdtree.
+
+> **vim-startify 插件**
+
+这是一个使用起来非常简单的插件，方便我们浏览最近打开的文件，终端输入 vim ，我们就会进入该插件，输入相应文件对应的数字键就可以快速打开文件了。
+
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/terminal/SCR-20220404-80e.png)
+
+> **vim-one 主题**
+
+[Light and dark vim colorscheme, shamelessly stolen from atom (another excellent text editor).](https://github.com/rakr/vim-one)
+
+> **设置 vim 永久显示行号**
+
+在打开的 .vimrc 文件中输入 `set number`，然后保存退出。再次用 vim 打开文件时，就会显示行号了。
+
+> **使用 map 自定义快捷键**
+
+<https://blog.csdn.net/JasonDing1354/article/details/45372007>
+
+## vscode vim 插件
+
+- `gd` 跳转到函数定义
+- `gh` 函数 hover
+- `4gt` 跳转到第 4 个 tab
