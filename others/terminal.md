@@ -22,6 +22,18 @@
     - [智能复制](#智能复制)
     - [妙用 Command](#妙用-command)
   - [常用快捷键](#常用快捷键)
+- [aria2](#aria2)
+  - [aria2 配置](#aria2-配置)
+    - [第一种模式](#第一种模式)
+    - [第二种模式](#第二种模式)
+  - [aria2 命令行基本使用](#aria2-命令行基本使用)
+  - [Mac 中配置 Aria2 RPC Server](#mac-中配置-aria2-rpc-server)
+  - [通过 brew 和 brew services 安装管理 aria2](#通过-brew-和-brew-services-安装管理-aria2)
+- [yt-dlp](#yt-dlp)
+  - [yt-dlp 安装和升级](#yt-dlp-安装和升级)
+  - [使用方法](#使用方法)
+  - [使用配置文件配置下载参数](#使用配置文件配置下载参数)
+  - [常见用法示例](#常见用法示例)
 - [BBDown](#bbdown)
   - [注意](#注意)
   - [下载](#下载)
@@ -212,6 +224,217 @@ iTerm2 主题的 GitHub 仓库位于：[mbadolato/iTerm2-Color-Schemes](https://
 - 交换光标处文本：`ctrl + t`
 - **光标移动导行首：`ctrl + a`**
 - 光标移动到行尾：`ctrl + e`
+
+## [aria2](#目录)
+
+### aria2 配置
+
+#### 第一种模式
+
+**命令行模式**：直接在命令行下载，比如 `aria2c ‘http://host/file.tar.gz’` 这种，然后当下载完成后，就自动退出了，就和 `wget` 的工作方式一样。
+
+#### 第二种模式
+
+Daemon 模式：另一种就是 `rpc server` 模式，特点就是，它启动之后什么都不干，然后等着从 rpc 接口添加任务，下载完也不退出，而是一直等着。对，就像迅雷干的那样，当然，它不会上传你硬盘上的数据。一般启动命令是
+
+```sh
+aria2c –enable-rpc –rpc-listen-all=true –rpc-allow-origin-all -c -D
+```
+
+但是，其实这个命令是不好的！不要使用这种启动方式。默认情况下是没有保存设定的功能的，重启服务或服务器，配置都会丢失。
+
+首先，用命令方式导致配置不方便修改保存，`-D` 导致无法看到出错信息。推荐启动方式是使用配置文件
+
+```sh
+$HOME/.aria2/aria2.conf
+```
+
+或者
+
+```sh
+/etc/aria2/aria2.conf
+```
+
+或者你可以放到别的地方，然后
+
+```sh
+aria2c --conf-path=<PATH> -D
+```
+
+注意：**填完整路径**，因为鬼知道这个程序是从那个路径启动的。-D (用于后台执行，daemon 模式, 这样 ssh 断开连接后程序不会退出）
+
+> [默认情况下 aria2 会主动去读取 `~/.aria2/aria2.conf` 作为启动配置](https://aria2.github.io/manual/en/html/aria2c.html#aria2-conf)
+
+### aria2 命令行基本使用
+
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/terminal/SCR-20220407-571.png)
+
+> 注意：当源地址存在诸如 `&`, `*` 等 shell 的特殊字符，请使用单引号或双引号把 URI 包含起来。
+
+```sh
+# 下载单个文件
+aria2c -c -s 5 --max-download-limit=500k -o owncloud.zip http://example.org/mylinux.iso
+#-c : 断点续传
+#-s : 使用线程数
+#-max-download-limit : 默认情况下，aria2 会利用全部带宽来下载文件，在文件下载完成之前，我们在服务器就什么也做不了（这将会影响其他服务访问带宽）
+#-o : 在初始化下载的时候，我们可以使用 -o（小写）选项在保存文件的时候使用不同的名字
+
+# 下载多个文件
+# 下面的命令将会从指定位置下载超过一个的文件并保存到当前目录
+aria2c http://a/f.iso ftp://b/f.iso
+
+# 每个主机使用两个连接来下载
+# 默认情况，每次下载连接到一台服务器的最大数目，对于一条主机只能建立一条。我们可以通过 aria2 命令行添加 -x2（2 表示两个连接）来创建到每台主机的多个连接，以加快下载速度
+aria2c -x2 http://a/f.iso
+
+# 下载 BitTorrent 磁力链接
+aria2c 'magnet:?xt=urn:btih:248D0A1CD08284299DE78D5C1ED359BB46717D8C'
+
+# 下载 BitTorrent Metalink 种子
+aria2c http://example.org/mylinux.metalink
+
+# 从文件获取输入
+# 就像 wget 可以从一个文件获取输入的 URL 列表来下载一样。我们需要创建一个文件，将每一个 URL 存储在单独的行中。
+aria2c -i uris.txt
+
+# 下载 BitTorrent 种子文件
+aria2c /tmp/CentOS-6.3-i386-bin-DVD1to2.torrent
+aria2c http://mirrors.163.com/centos/6.6/isos/x86_64/CentOS-6.6-x86_64-minimal.torrent
+```
+
+> 断点续传
+
+```sh
+# 只需要重新运行一次同样的下载命令即可
+aria2c -c http://mirrors.kernel.org/gnu/gcc/gcc-5.1.0/gcc-5.1.0.tar.gz
+```
+
+aria2 在下载过程中，我们按下 `Ctrl + C` 中断进程的执行，那么我们会在此目录下发现 `gcc-5.1.0.tar.gz` 以及 g`cc-5.1.0.tar.gz.aria2` 这两个文件。
+
+其中 `gcc-5.1.0.tar.gz.aria2` 保存这下载的进度信息，当 aria2 使用同样的命令重新运行时，它会读取这个文件并继续原来的下载。当然，aria2 并不要求一定要是使用完全一直的参数：用户需要指定那些可以找到.aria2 文件的参数，所有 -d 选项是很重要的，而 URI 却不一定与上次相同，只要保证他们指向了同样的文件即可。
+
+### Mac 中配置 Aria2 RPC Server
+
+> [Mac 下配置 Aria2](https://gist.github.com/maboloshi/a4b1f27567319d4a42352aadd036a578#file-download-complete-hook-sh)
+
+### 通过 brew 和 brew services 安装管理 aria2
+
+一些说明
+目前并不能直接将 aria2 安装成 brew services 可以直接使用的样子。不过我们可以手动修改添加一些配置文件，使其支持
+
+> **新版 M1 aria2 的目录变成了 `/opt/homebrew/opt/aria2`**
+
+创建一些必须文件
+
+```sh
+touch /opt/homebrew/opt/aria2/homebrew.mxcl.aria2.plist
+```
+
+修改配置文件
+
+```sh
+vim /opt/homebrew/opt/aria2/homebrew.mxcl.aria2.plist
+```
+
+```xml
+<plist version="1.0">
+    <dict>
+        <key>Label</key>
+        <string>homebrew.mxcl.aria2</string>
+        <key>ProgramArguments</key>
+        <array>
+            <string>/opt/homebrew/opt/aria2/bin/aria2c</string>
+        </array>
+        <key>RunAtLoad</key>
+        <true/>
+        <key>KeepAlive</key>
+        <true/>
+    </dict>
+</plist>
+```
+
+> 启动服务
+
+- 查看所有服务及状态：`brew services list`
+- 启动 aria2: `brew services start aria2`
+- 停止 aria2: `brew services stop aria2`
+- 重启 aria2: `brew services restart aria2`
+
+## [yt-dlp](#目录)
+
+### [yt-dlp](https://github.com/yt-dlp/yt-dlp) 安装和升级
+
+```sh
+brew install yt-dlp/taps/yt-dlp
+brew upgrade yt-dlp/taps/yt-dlp
+```
+
+### 使用方法
+
+```sh
+yt-dlp -F [视频链接]
+# -F 查看视频格式构成
+```
+
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/terminal/SCR-20220407-wx8.png)
+
+从结果中可知最佳画质视频 ID 为 mp4 格式的 137 和 webm 格式的 248（纯视频无音轨），最佳音轨 ID 为 m4a 格式的 140 和 webm 格式的 251（纯音轨无视频）。如果你认为 720p 已经满足需求，则只下载 ID 22 也可（已经包含视频和音轨）。这里我们先选择 mp4 的视频和 m4a 的音轨进行合并。
+
+```sh
+# yt-dlp -f [下载ID] [代理配置] [视频链接] [合并语句] [外部下载器选择] [下载器参数]
+yt-dlp -f 137+140 --proxy socks5://127.0.0.1:7890 https://www.youtube.com/watch?v=rrQJvPaPbFM --merge-output-format mp4 --external-downloader aria2c --downloader-args aria2c:"-x 16"
+# -f [id] 选择下载内容，注意和 -F 区分。例子中使用 137+140，如果你只下载 720p 则填写 22 就好，后面的合并语句可不填写。
+# --proxy 代理配置 填写你的系统代理设置，如果使用全局模式可不使用此语句
+# --merge-output-format [合并输出格式] 例子中选择 mp4 作为输出格式
+# --external-downloader [下载器名称] 下载器选择 例子中选择 aria2c
+# --downloader-args [下载器名称]:"[下载器配置]" 下载器配置语句
+```
+
+### [使用配置文件配置下载参数](https://github.com/yt-dlp/yt-dlp#configuration)
+
+> 注意 `yt-dlp.conf` 这个配置文件中，不能输入中文，包括中文注释。
+
+```conf
+# The path and name of the download file saved
+--output "~/youtube/%(uploader)s/%(title)s-%(resolution)s.%(ext)s"
+
+# Convert the downloaded video to MP4 format
+--merge-output-format mp4
+
+# Download only English and Chinese subtitles
+--sub-langs "en.*,zh-Hans"
+
+# Embed subtitles, thumbnails, video descriptions and other information into video files
+--embed-subs
+--embed-thumbnail
+--embed-metadata
+--convert-subs srt
+
+# shell
+# --exec 'sh xxx.sh'
+```
+
+这样 `yt-dlp.conf` 配置文件就算写好，这样每次执行下载的时候，它都会选择最高清晰度下载。
+
+### 常见用法示例
+
+```sh
+# 打印出可用的格式和信息
+yt-dlp --list-formats  https://www.youtube.com/watch?v=8wXuSnFmbWU
+# 查询这个视频支持的字幕
+yt-dlp --list-subs https://www.youtube.com/watch?v=8wXuSnFmbWU
+# 打印视频和音频流的 JSON 信息
+yt-dlp --dump-json https://www.youtube.com/watch?v=8wXuSnFmbWU
+# 将最佳音频转换为 mp3 文件：
+yt-dlp -f 'ba' -x --audio-format mp3 https://www.youtube.com/watch?v=8wXuSnFmbWU -o '%(id)s.mp3'
+# 下载分辨率等于或大于 720p 的最佳格式（视频 + 音频）。并将此文件另存为 video_id.extension (1La4QzGeaaQ.mp4)：
+yt-dlp -f "best[height>=720]" https://www.youtube.com/watch?v=8wXuSnFmbWU -o '%(id)s.%(ext)s'
+# 下载播放列表的所有视频
+# 其实这个功能，api 直接就支持，注意播放列表形如：https://www.youtube.com/watch?v=f8yA1jGhpfk&list=PL8mPWv3h4qJeg6iH5yt92jB5jT6kfLg2r
+yt-dlp https://www.youtube.com/watch?v=f8yA1jGhpfk&list=PL8mPWv3h4qJeg6iH5yt92jB5jT6kfLg2r
+# 下载包含 1080p 视频和最佳音频的 YouTube 播放列表。将视频保存到 channel\_id/playlist\_id 目录中，并将视频添加到存档文本文件中：
+yt-dlp -f 'bv*[height=1080]+ba' --download-archive videos.txt  https://www.youtube.com/playlist?list=PLQ_PIlf6OzqI34ZPxXk4HGnqADpiF9rcV -o '%(channel_id)s/%(playlist_id)s/%(id)s.%(ext)s'
+```
 
 ## [BBDown](#目录)
 
@@ -549,6 +772,8 @@ nnoremap <silent> <leader>n :NERDTreeToggle<CR>
 - `4gt` 跳转到第 4 个 tab
 
 ## [Linux 学习笔记](#目录)
+
+> [The Linux Command Line 中文版](https://www.kancloud.cn/thinkphp/linux-command-line/39431)
 
 ### 什么是 Shell
 
@@ -976,7 +1201,7 @@ export PATH=/usr/local/bin:$PATH
 |          ln -s file1 link1          |                                         创建指向文件/目录的软链接                                          |
 |            ln file1 lnk1            |                                        创建指向文件/目录的物理链接                                         |
 |        find /dir -name *.bin        |                                    在目录 /dir 中搜带有 .bin 后缀的文件                                    |
-|              which git              |                                             查找二进制文件位置                                             |
+|              which git              |                                          显示会执行哪个可执行程序                                          |
 |        grep [0-9] hello.txt         |                    grep 的全写是 global regular expression print （全局正则表达式打印）                    |
 |   tar -cf archive.tar file1 file2   |                           将 file1 和 file2 打包成一个名为 archive.tar 的档案包                            |
 |   tar -xf archive.tar -C 目录路径   |                                             提取文件到指定目录                                             |

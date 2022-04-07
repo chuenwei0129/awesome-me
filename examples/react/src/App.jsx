@@ -15,6 +15,9 @@ const App = () => {
 
   const [count, updateCount] = useState(0)
 
+  /**
+   * It updates the count by 1 every second.
+   */
   const add = () => {
     setTimeout(() => {
       updateCount(count + 1) // -> 执行 count = newCount 5 次，由于定时器，count的值变化比较慢，所以可能为 1，2

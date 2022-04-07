@@ -746,3 +746,10 @@ lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s
 [Git refusing to merge unrelated histories on rebase](https://stackoverflow.com/questions/37937984/git-refusing-to-merge-unrelated-histories-on-rebase)
 
 [不建议在没有为偏离分支指定合并策略时执行pull 操作](https://blog.csdn.net/wq6ylg08/article/details/114106272)
+
+<!--
+## Mac 中 Git 大小写问题的解决方案
+
+> **Git 不会发现大小写的变化**
+
+使用 `git mv -f` 和 `mv` 同时更改文件名，避免本地文件系统与仓库中代码不一致。 -->
