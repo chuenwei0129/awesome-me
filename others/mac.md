@@ -606,6 +606,7 @@ smartctl -a disk0
 |               [shottr](https://shottr.cc/)                |         方便好用的截图工具。功能包括：窗口截图 / 滚动截图 / 取色器功能 / 贴图功能 / 丰富的标注功能         |        [#](https://sspai.com/post/71485)         |
 |      [wechat](https://mac.weixin.qq.com/?lang=zh_CN)      |                                             Mac 下微信客户端。                                             |
 |       [picgo](https://github.com/Molunerfinn/PicGo)       |                                                图床管理工具                                                | [#](https://picgo.github.io/PicGo-Doc/zh/guide/) |
+|         [squirrel](https://github.com/ssnhd/rime)         |                                                   输入法                                                   |     [#](https://ssnhd.com/2022/01/06/rime/)      |
 
 ## [浏览器](#目录)
 

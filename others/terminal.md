@@ -1207,3 +1207,5 @@ export PATH=/usr/local/bin:$PATH
 |   tar -xf archive.tar -C 目录路径   |                                             提取文件到指定目录                                             |
 | tar -czf archive.tar.gz file1 file2 |                          这就像是先创建了一个 tar 档案包，再运行 gzip 来压缩它。                           |
 |                 tar                 | c 参数是 create（创建） 的简写。f 参数则用来将合成的档案包写入一个文件。参数 x 是 extract（提取） 的简写。 |
+|           lsof -i :27017            |                                             查看指定端口的进程                                             |
+|             kill -9 859             |                                               根据PID杀进程                                                |
