@@ -119,6 +119,8 @@ decodeURI('http://www.example.com/q=%E6%98%A5%E8%8A%82') // "http://www.example.
 
 - `decodeURIComponent()` 用于 `URL` 片段的解码。它是 `encodeURIComponent()` 方法的逆运算。它接受一个参数，就是转码后的 `URL` 片段。
 
+多核 CPU 和多个 CPU 有何区别？
+
 ## 网页渲染原理
 
 ### Chrome 的多进程架构
