@@ -973,7 +973,7 @@ A 和 B 通信，A 收到由证书认证机构 C 颁发的 B 的证书后认定�
 
 ## QUIC
 
-- [QUIC 是如何解决TCP 性能瓶颈的？](https://mp.weixin.qq.com/s/6SIA_YZSEu1K2yJDhB56Kw)
+- [QUIC 是如何解决 TCP 性能瓶颈的？](https://mp.weixin.qq.com/s/6SIA_YZSEu1K2yJDhB56Kw)
 - [TCP拥塞控制的问题？](https://www.zhihu.com/question/58517416)
 
 ## Websocket
