@@ -1,4 +1,4 @@
-# 计算机知识图谱（二）<!-- omit in toc -->
+# 计算机基础知识图谱（二）<!-- omit in toc -->
 
 ***👀 TIPS: 二级标题可返回目录***
 
@@ -6,7 +6,66 @@
 
 > ## 目录
 
-## 基础概念
+- [[基础概念]](#基础概念)
+- [如果让你来设计网络](#如果让你来设计网络)
+- [TCP](#tcp)
+- [HTTP](#http)
+  - [什么是 HTTP](#什么是-http)
+  - [URI 和 URL](#uri-和-url)
+  - [TCP/IP 协议栈](#tcpip-协议栈)
+  - [DNS 协议](#dns-协议)
+    - [域名的层级结构](#域名的层级结构)
+    - [域名解析](#域名解析)
+    - [DNS 缓存](#dns-缓存)
+    - [DNS 的完整解析](#dns-的完整解析)
+  - [HTTP 报文格式](#http-报文格式)
+    - [请求报文格式](#请求报文格式)
+    - [响应报文格式](#响应报文格式)
+    - [请求和响应头](#请求和响应头)
+  - [HTTP 缓存管理](#http-缓存管理)
+  - [HTTP 连接管理](#http-连接管理)
+    - [短连接和长连接](#短连接和长连接)
+  - [对头阻塞](#对头阻塞)
+  - [HTTP 2.0](#http-20)
+    - [头部压缩](#头部压缩)
+    - [二进制格式](#二进制格式)
+    - [服务端推送](#服务端推送)
+  - [GET 和 POST 和 OPTIONS](#get-和-post-和-options)
+    - [POST 是否比 GET 安全](#post-是否比-get-安全)
+    - [GET 相对 POST 的优势是什么](#get-相对-post-的优势是什么)
+    - [OPTIONS](#options)
+    - [简单请求](#简单请求)
+    - [复杂请求](#复杂请求)
+  - [HTTP 的明文传输](#http-的明文传输)
+  - [HTTP 状态码](#http-状态码)
+    - [1xx](#1xx)
+    - [2xx](#2xx)
+    - [3xx](#3xx)
+    - [4xx](#4xx)
+    - [5xx](#5xx)
+  - [HTTP 无状态](#http-无状态)
+  - [HTTP 请求头必传的字段](#http-请求头必传的字段)
+  - [代理](#代理)
+    - [正向代理](#正向代理)
+    - [反向代理](#反向代理)
+  - [HTTPS 简述](#https-简述)
+    - [对称加密（天王盖地虎）](#对称加密天王盖地虎)
+    - [非对称加密](#非对称加密)
+    - [HTTPS 加密方式](#https-加密方式)
+    - [HTTPS 通讯方式](#https-通讯方式)
+    - [HTTPS 的缺点](#https-的缺点)
+    - [HTTPS 握手](#https-握手)
+- [HTTPS](#https)
+- [QUIC](#quic)
+- [Websocket](#websocket)
+  - [典型的 Websocket 握手](#典型的-websocket-握手)
+  - [Websocket 的作用](#websocket-的作用)
+    - [ajax 轮询](#ajax-轮询)
+    - [long poll](#long-poll)
+    - [Websocket 和 HTTP 对比](#websocket-和-http-对比)
+- [参考资料](#参考资料)
+
+## [基础概念](#目录)
 
 - **主机：** 计算机网络上任何一种能够连接网络的设备都被称为主机或者说是端系统，比如手机、平板电脑、电视、游戏机、汽车等，随着 5G 的到来，将会有越来越多的终端设备接入网络。
 
@@ -98,7 +157,7 @@
 
   ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/computer/socket.jpg)
 
-## 如果让你来设计网络
+## [如果让你来设计网络](#目录)
 
 **你是一台电脑，你的名字叫 A**，你希望与另一台电脑 B 建立通信，于是你们各开了**一个网口**，用**一根网线**连接了起来。
 
@@ -439,11 +498,11 @@ NAT 为了节省 IP 资源，往往采用端口映射的方式
 
 这样的话，请求除了公网地址变了，端口地址也变了，但请求回来的时候也会把公网的 IP 和端口转成内网的 IP+端口，也就解决了响应包找不到主机的问题
 
-## TCP
+## [TCP](#目录)
 
 > [你管这破玩意儿叫 TCP？](https://mp.weixin.qq.com/s?__biz=Mzk0MjE3NDE0Ng==&mid=2247491962&idx=1&sn=aa4414483edaba487c080e91ad0efb93&chksm=c2c59bd7f5b212c12231394c585f3b063b0b2d5b05d6f05fddccdb4e856875e7ee1127bb30a7&cur_album_id=1700901576128643073&scene=189#wechat_redirect)
 
-## HTTP
+## [HTTP](#目录)
 
 ### 什么是 HTTP
 
@@ -963,20 +1022,24 @@ NAT 为了节省 IP 资源，往往采用端口映射的方式
 
 `TLS 1.3` 握手时间从以前的 `2RTT` 缩短到 `1RTT`，通过 `Pre shared-key` 减少了单独的 `ServerKeyExchange` 与 `ClientKeyExchange` 消耗的一个 `RTT`
 
-## HTTPS
+## [HTTPS](#目录)
 
 > [西方机构吊销了俄罗斯的HTTPS证书有什么影响吗？](https://www.zhihu.com/question/523817733/answer/2440936723)
 
 A 和 B 通信，A 收到由证书认证机构 C 颁发的 B 的证书后认定自己确实是在和 B 通信，而不是和 D 冒充的 B 通信，这是证书的作用。打个比方，你作为普通用户在淘宝上经过淘宝官方认证的苹果官方旗舰店买 iPhone，你相信这家店是真的苹果官方旗舰店，这是因为你相信淘宝的认证。要是哪天淘宝和华强北串通，华强北在淘宝上也开一家叫“苹果官方旗舰店”的店而且得到淘宝官方认证，你就有可能在“官方旗舰店”买到假 iPhone
 
-[破玩意 | 用 HTTPS 传纸条](https://mp.weixin.qq.com/s?__biz=Mzk0MjE3NDE0Ng==&mid=2247497199&idx=1&sn=d4cdcfe5449f62f1a32feb7336da8d3f&chksm=c2c58f42f5b20654107f77cc84aafd73963a48bac37834aeab43ecc7747b2989459e2373b25e&scene=178&cur_album_id=1703494881072955395#rd)
+> [破玩意 | 用 HTTPS 传纸条](https://mp.weixin.qq.com/s?__biz=Mzk0MjE3NDE0Ng==&mid=2247497199&idx=1&sn=d4cdcfe5449f62f1a32feb7336da8d3f&chksm=c2c58f42f5b20654107f77cc84aafd73963a48bac37834aeab43ecc7747b2989459e2373b25e&scene=178&cur_album_id=1703494881072955395#rd)
 
-## QUIC
+**公钥加密，私钥解密，这个叫加密**，是为了保证内容安全，因为私钥只有自己知道，是为了保证这个信息不被中间人解开。
+
+**私钥加密，公钥解密，这个叫签名**，是为了防止内容被篡改，因为公钥所有人都知道，所有人都能看到这个信息做验证。
+
+## [QUIC](#目录)
 
 - [QUIC 是如何解决 TCP 性能瓶颈的？](https://mp.weixin.qq.com/s/6SIA_YZSEu1K2yJDhB56Kw)
 - [TCP拥塞控制的问题？](https://www.zhihu.com/question/58517416)
 
-## Websocket
+## [Websocket](#目录)
 
 首先，`Websocket` 是一个持久化的协议，相对于 `HTTP` 这种非持久的协议来说。
 
@@ -1079,7 +1142,7 @@ Connection: Upgrade
 
 同时由客户主动询问，转换为服务器（推送）有信息的时候就发送（当然客户端还是等主动发送信息过来的。。），没有信息的时候就交给接线员（Nginx），不需要占用本身速度就慢的客服（Handler）了
 
-## 参考资料
+## [参考资料](#目录)
 
 - [计算机网络的166个核心概念，你知道吗？](https://zhuanlan.zhihu.com/p/492051760)
 - [如果让你来设计网络](https://mp.weixin.qq.com/s?__biz=Mzk0MjE3NDE0Ng==&mid=2247489907&idx=1&sn=a296cb42467cab6f0a7847be32f52dae&chksm=c2c663def5b1eac84b664c8c1cadf1c8ec23ea2e57e48e04add9b833c841256fc9449b62c0ec&scene=178&cur_album_id=1700901576128643073#rd)
@@ -1093,3 +1156,4 @@ Connection: Upgrade
 - [WebSocket 是什么原理？为什么可以实现持久连接？](https://www.zhihu.com/question/20215561/answer/40316953)
 - [非对称加密](https://www.bilibili.com/video/BV1YL411p7bb)
 - [数学不好也能听懂的算法 - RSA加密和解密原理和过程](https://www.bilibili.com/video/BV1XP4y1A7Ui)
+- [课堂上传纸条如何防范中间人攻击？](https://www.zhihu.com/question/22558998/answer/21803111)
