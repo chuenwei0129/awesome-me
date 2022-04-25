@@ -1,4 +1,4 @@
-<!-- markdown="1" is required for GitHub Pages to render the TOC properly. -->
+# JavaScript 从零单排(一)<!-- omit in toc -->
 
 <details markdown="1">
   <summary>目录</summary>
@@ -43,7 +43,6 @@
 
 </details>
 
-# JavaScript 基础知识梳理(一)<!-- omit in toc -->
 
 ## 数据类型
 
