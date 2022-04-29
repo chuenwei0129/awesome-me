@@ -1,7 +1,10 @@
 # JavaScript 从零单排(一)<!-- omit in toc -->
 
+<!-- markdown="1" is required for GitHub Pages to render the TOC properly. -->
+
 <details markdown="1">
-  <summary>目录</summary>
+  <summary>🌳 <strong>目录</strong></summary>
+<br>
 
 - [数据类型](#数据类型)
   - [值类型和引用类型](#值类型和引用类型)
@@ -24,7 +27,7 @@
   - [对象转换成原始类型](#对象转换成原始类型)
   - [面试题：如何让 `if(a == 1 && a == 2 && a == 3)` 条件成立？](#面试题如何让-ifa--1--a--2--a--3-条件成立)
   - [面试题：为什么 `['1', '2', '3'].map(parseInt)` 返回 `[1,NaN,NaN]` ？](#面试题为什么-1-2-3mapparseint-返回-1nannan-)
-  - [面试题：请实现一个 add 函数，满足以下功能。](#面试题请实现一个-add-函数满足以下功能)
+  - [面试题：请实现一个 add 函数，满足以下功能](#面试题请实现一个-add-函数满足以下功能)
 - [运算符](#运算符)
   - [二元运算符 + 连接字符串](#二元运算符--连接字符串)
   - [数字转化，一元运算符 +](#数字转化一元运算符-)
@@ -35,7 +38,7 @@
   - [逻辑运算符](#逻辑运算符)
     - [或运算寻找第一个真值](#或运算寻找第一个真值)
     - [与运算寻找第一个假值](#与运算寻找第一个假值)
-    - [感叹符号 `!` 表示布尔非运算符。](#感叹符号--表示布尔非运算符)
+    - [感叹符号 `!` 表示布尔非运算符](#感叹符号--表示布尔非运算符)
   - [空值合并运算符 '??'](#空值合并运算符-)
   - [可选链 "?."](#可选链-)
   - [运算符优先级](#运算符优先级)
@@ -43,19 +46,18 @@
 
 </details>
 
-
 ## 数据类型
 
-JavaScript 中有八种基本的数据类型（前七种为基本数据类型，也称为原始类型，而 `object` 为复杂数据类型）。
+**JavaScript** 中有八种基本的数据类型（前七种为基本数据类型，也称为原始类型，而 `object` 为复杂数据类型）。
 
-- `number` 用于任何类型的数字：整数或浮点数，在 `±(2^53-1)` 范围内的整数。
-- `bigint` 用于任意长度的整数。
-- `string` 用于字符串：一个字符串可以包含 `0` 个或多个字符，所以没有单独的单字符类型。
-- `boolean` 用于 `true` 和 `false`。
-- `null` 用于未知的值 —— 只有一个 `null` 值的独立类型。
-- `undefined` 用于未定义的值 —— 只有一个 `undefined` 值的独立类型。
-- `symbol` 用于唯一的标识符。
-- `object` 用于更复杂的数据结构。
+- **Number：** 用于任何类型的数字：整数或浮点数，在 `±(2^53-1)` 范围内的整数。在 JavaScript 里，数字均为[基于 IEEE 754 标准的双精度 64 位的浮点数](https://link.juejin.cn/?target=https%3A%2F%2Fzh.wikipedia.org%2Fwiki%2F%25E9%259B%2599%25E7%25B2%25BE%25E5%25BA%25A6%25E6%25B5%25AE%25E9%25BB%259E%25E6%2595%25B8)
+- **Bigint：** 用于任意长度的整数。
+- **String：** 用于字符串：一个字符串可以包含 `0` 个或多个字符，所以没有单独的单字符类型。
+- **Boolean：** 用于 `true` 和 `false`。
+- **Null：** 用于未知的值 —— 只有一个 `null` 值的独立类型。
+- **Undefined：** 用于未定义的值 —— 只有一个 `undefined` 值的独立类型。
+- **Symbol：** 用于唯一的标识符。
+- **Object：** 用于更复杂的数据结构。
 
 ### 值类型和引用类型
 
@@ -86,9 +88,7 @@ console.log(foo, bar) // { a: 2, b: 2 }, { a: 2, b: 2 }
 
 ### 函数参数按值传递
 
-> 在向参数传递基本类型的值时，被传递的值会被复制给一个局部变量
->
-> 在向参数传递引用类型的值时，会把这个引用类型的地址复制给一个局部变量，因此在函数内部修改参数，将会影响到原始值
+> 在向参数传递基本类型的值时，被传递的值会被复制给一个局部变量；在向参数传递引用类型的值时，会把这个引用类型的地址复制给一个局部变量，因此在函数内部修改参数，将会影响到原始值。
 
 ```js
 function test(person) {
@@ -158,7 +158,9 @@ Object.prototype.toString.call(Array.isArray) // "[object Function]"
 ### isObject
 
 ```js
-// Object 方法的参数是一个对象，它总是返回该对象，即不用转换。
+// Object 方法的参数是一个对象，它总是返回该对象，对对象自身使用不发生类型转换。
+Object(null) === null // false
+
 function isObject(value) {
   return value === Object(value)
 }
@@ -169,11 +171,11 @@ function isObject(value) {
 ```js
 function isEmptyObject(obj) {
   if (typeof obj !== 'object' || obj === null) return false
-  return Object.keys(obj).length === 0 ? true : false
+  return Object.keys(obj).length === 0
 }
 
 console.log(isEmptyObject({})) // true
-console.log(isEmptyObject([])) // true 空数组算空对象吗？
+console.log(isEmptyObject([])) // true 空数组算空对象
 ```
 
 ### isInteger
@@ -181,7 +183,7 @@ console.log(isEmptyObject([])) // true 空数组算空对象吗？
 ```js
 // 整数取整还是整数
 function isInteger(num) {
-  return typeof num === 'number' && (num | 0) === num ? true : false
+  return typeof num === 'number' && (num | 0) === num
 }
 
 console.log(isInteger(1)) // true
@@ -193,6 +195,11 @@ console.log(isInteger(1.1)) // false
 ```js
 console.log(Object.is(+0, -0)) // false
 console.log(Object.is(NaN, NaN)) // true
+
+const foo = { a: 1 };
+const bar = { a: 1 };
+Object.is(foo, foo);         // true
+Object.is(foo, bar);         // false
 
 console.log(Array.isArray([])) // true
 console.log(Array.isArray({})) // false
@@ -392,15 +399,15 @@ if (a == 1 && a == 2 && a == 3) {
 - 二进制只能转换含有'0'、'1'的字符串，其他进制也类似。
 - `parseInt` 的返回值只有两种可能，要么是一个十进制整数，要么是 NaN。
 
-### 面试题：请实现一个 add 函数，满足以下功能。
+### 面试题：请实现一个 add 函数，满足以下功能
 
 分析：链式调用的实现？链式操作，操作返回自身
 
 小试牛刀：
 
 ```js
-add(1); 	// 1
-add(1)(2);  	// 3
+add(1);  // 1
+add(1)(2);   // 3
 add(1)(2)(3)；  // 6
 ```
 
@@ -420,7 +427,7 @@ console.log(+add(1)(2)(3)) // 6
 
 扩展：
 
-```
+```js
 add(1)(2, 3);   // 6
 add(1, 2)(3);   // 6
 add(1, 2, 3);   // 6
@@ -637,7 +644,7 @@ console.log(null && 5) // null
 console.log(0 && 'no matter what') // 0
 ```
 
-#### 感叹符号 `!` 表示布尔非运算符。
+#### 感叹符号 `!` 表示布尔非运算符
 
 逻辑非运算符接受一个参数，并按如下运作：
 
@@ -697,7 +704,7 @@ console.log(user2 ?? 'Anonymous') // John
 - 通常条件为假时，循环会终止。但我们随时都可以使用 break 指令强制退出。
 - `continue` 指令是 `break` 的“轻量版”。它不会停掉整个循环。而是停止当前这一次迭代，并强制启动新一轮循环（如果条件允许的话）。
 - `switch` 语句有至少一个 `case` 代码块和一个可选的 `default` 代码块。如果没有 `break`，程序将不经过任何检查就会继续执行下一个 `case`。
-- `switch/case` 有通过 `case` 进行“分组”的能力，其实是 `switch `语句没有 `break` 时的副作用。
+- `switch/case` 有通过 `case` 进行“分组”的能力，其实是 `switch`语句没有 `break` 时的副作用。
 - for 循环还有一个特别之处，就是设置循环变量的那部分是一个父作用域，而循环体内部是一个单独的子作用域。
 
 ```js

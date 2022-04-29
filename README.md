@@ -21,22 +21,22 @@
 
 - `[基础知识]` [计算机基础知识图谱（一）](computer/base.md)
 - `[计算机网络]` [计算机基础知识图谱（二）](computer/net.md)
-- `[数据结构]` [计算机基础知识图谱（三）](computer/struck.md)
+- `[数据结构]` [计算机基础知识图谱（三）](computer/data.md)
 - `[浏览器]` [计算机基础知识图谱（四）](computer/web.md)
 
-## JavaScript
+## JavaScript 从零单排
 
-- `[基础]` [JavaScript 基础知识梳理(一)](js/js_base.md)
-- `[函数]` [JavaScript 基础知识梳理(二)](js/js_function.md)
-- `[对象]` [JavaScript 基础知识梳理(三)](js/js_object.md)
-- `[数据结构]` [JavaScript 基础知识梳理(四)](js/js_data_structure.md)
-- `[类]` [JavaScript 基础知识梳理(五)](js/js_class.md)
-- `[异步]` [JavaScript 基础知识梳理(六)](js/js_promise.md)
-- `[杂项]`[JavaScript 基础知识梳理(七)](js/js_other.md)
-- `[正则]` [JavaScript 基础知识梳理(八)](js/js_regexp.md)
-- `[手写]` [JavaScript 基础知识梳理(九)](js/js_code.md)
+- `[基础]` [JavaScript 从零单排(一)](js/js_base.md)
+- `[函数]` [JavaScript 从零单排(二)](js/js_function.md)
+- `[对象]` [JavaScript 从零单排(三)](js/js_object.md)
+- `[数据结构]` [JavaScript 从零单排(四)](js/js_data_structure.md)
+- `[类]` [JavaScript 从零单排(五)](js/js_class.md)
+- `[异步]` [JavaScript 从零单排(六)](js/js_promise.md)
+- `[杂项]`[JavaScript 从零单排(七)](js/js_other.md)
+- `[正则]` [JavaScript 从零单排(八)](js/js_regexp.md)
+- `[手写]` [JavaScript 从零单排(九)](js/js_code.md)
 
-## TypeScript
+## TypeScript 提高班
 
 - `[基础]`[写给自己的 TypeScript 教程(一)](ts/ts_1.md)
 - `[进阶]`[写给自己的 TypeScript 教程(二)](ts/ts_2.md)
@@ -45,13 +45,15 @@
 
 ## 框架
 
+<!-- React is not reactive.Vue is not only view.[思考] -->
+
 - `[vue]`[vue 知识点梳理](web/vue.md)
 - `[axios]`[axios 学习指南](web/axios.md)
 - `[Node]` [Node 版本及源管理](others/nvm.md)
 - `[react]` [关于 React 的一切（一）](web/react1.md)
 - `[react]` [关于 React 的一切（二）](web/react.md)
 
-## 浏览器
+## WEB API
 
 - `[DOM]` [DOM 基础知识整理](web/dom.md)
 - `[HTML]`[网页元素](web/element.md)
