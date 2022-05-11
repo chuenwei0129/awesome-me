@@ -1,4 +1,4 @@
-# 前端面试手写八股文<!-- omit in toc -->
+# JavaScript 从零单排(九)<!-- omit in toc -->
 
 ## call / apply
 
@@ -123,18 +123,18 @@ console.log(typeof _f, F.prototype === Object.getPrototypeOf(_f), _f.age, _f.fn(
 
 // 注释版
 // function _new() {
-// 	// 处理参数
-// 	const constructor = [].shift.call(arguments)
-// 	// 创建一个新的实例对象
-// 	// 把实例的 __proto__ 指向构造函数的 prototype
-// 	const instance = Object.create(constructor.prototype)
-// 	// 改变 this 指向，处理传参
-// 	// 构造函数如果有返回值是对象的情况下，会返回该对象 new 出的实例就是该对象，其他返回实例对象
-// 	// res 储存构造函数的返回值，apply 和 call 都相当于函数执行了一次，只是函数执行环境变化
-// 	const res = constructor.apply(instance, arguments)
-// 	// 返回实例对象
-// 	console.log(typeof res)
-// 	return typeof res === 'object' && res !== null ? res : instance
+//  // 处理参数
+//  const constructor = [].shift.call(arguments)
+//  // 创建一个新的实例对象
+//  // 把实例的 __proto__ 指向构造函数的 prototype
+//  const instance = Object.create(constructor.prototype)
+//  // 改变 this 指向，处理传参
+//  // 构造函数如果有返回值是对象的情况下，会返回该对象 new 出的实例就是该对象，其他返回实例对象
+//  // res 储存构造函数的返回值，apply 和 call 都相当于函数执行了一次，只是函数执行环境变化
+//  const res = constructor.apply(instance, arguments)
+//  // 返回实例对象
+//  console.log(typeof res)
+//  return typeof res === 'object' && res !== null ? res : instance
 // }
 ```
 
@@ -256,11 +256,11 @@ function loop(n) {
 console.log(loop(6))
 
 // function fib(n){
-// 	function fib_(n,a,b){
-// 			if(n==0)  return a
-// 			else return fib_(n-1,b,a+b)
-// 	}
-// 	return fib_(n,0,1)
+//  function fib_(n,a,b){
+//    if(n==0)  return a
+//    else return fib_(n-1,b,a+b)
+//  }
+//  return fib_(n,0,1)
 // }
 ```
 
@@ -483,8 +483,8 @@ console.log(deepClone(test))
 // f(5) // 执行..
 
 // const curry = fn => {
-// 	const g = (...allArgs) => allArgs.length >= fn.length ? fn(...allArgs) : (...args) => g(...allArgs, ...args)
-// 	return g
+//  const g = (...allArgs) => allArgs.length >= fn.length ? fn(...allArgs) : (...args) => g(...allArgs, ...args)
+//  return g
 // }
 
 // 维基百科上的解释是，把接受多个参数的函数转换成接受一个单一参数的函数
@@ -675,17 +675,17 @@ console.log(composeAsync([fn1, fn2, fn3])())
 // 入栈顺序有序，出栈顺序可以改变
 
 // function compose(...fns) {
-// 	let len = fns.length
-// 	let res = null
-// 	return function fn(...arg) {
-// 			res = fns[len - 1].apply(null, arg) // 每次函数运行的结果
-// 			if(len > 1) {
-// 					len --
-// 					return fn.call(null, res) // 将结果递归传给下一个函数
-// 			} else {
-// 					return res //返回结果
-// 			}
-// 	}
+//  let len = fns.length
+//  let res = null
+//  return function fn(...arg) {
+//    res = fns[len - 1].apply(null, arg) // 每次函数运行的结果
+//    if(len > 1) {
+//      len --
+//      return fn.call(null, res) // 将结果递归传给下一个函数
+//    } else {
+//      return res //返回结果
+//    }
+//  }
 // }
 ```
 

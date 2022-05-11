@@ -10,7 +10,7 @@
   - [Promise.prototype.catch](#promiseprototypecatch)
   - [Promise.resolve](#promiseresolve)
   - [Promise.race](#promiserace)
-  - [Promise.resolve](#promiseresolve-1)
+  - [resolve](#resolve)
   - [scheduler](#scheduler)
 - [Generator](#generator)
   - [iterator](#iterator)
@@ -130,9 +130,9 @@ module.exports = Promise
 
 // 外部有 then 方法，promise2.then就是外部的then方法 他的参数传递取决于onfulfilled放回值 传递参数靠resolve promise2.then执行
 // const x = onResolved(this.value)
-// 			return new _Promise((resolve, reject) => {
-// 				resolve(x)
-// 			})
+//     return new _Promise((resolve, reject) => {
+//       resolve(x)
+//  })
 // 有三种可能 普通 promise object.then
 // 递归调用
 
@@ -682,7 +682,7 @@ Promise._race(new Set(test)).then(val => {
 })
 ```
 
-### Promise.resolve
+### resolve
 
 ```js
 // 应用
@@ -699,7 +699,7 @@ Promise._resolve = function (props) {
     resolve(props)
   })
   // return (props instanceof Promise ? props : new Promise((resolve, reject) => {
-  // 	resolve(props)
+  //  resolve(props)
   // }))
 }
 
@@ -883,20 +883,20 @@ console.log(_it.next('yield4')) // '4' 直到结束 返回 'ret'
 // 提问：第一个.next()可以有参数么？ 答：设这样的参数没任何意义，因为第一个.next()的前面没有yield语句。
 
 // 以上面代码的return语句返回的6，不包括在for...of循环之中。
-
-// function * fibonacci() {
-// 	let [prev, curr] = [0, 1]
-// 	for (;;) { // 这里请思考：为什么这个循环不设定结束条件？
-// 		[prev, curr] = [curr, prev + curr]
-// 		yield curr
-// 	}
+// function* fibonacci() {
+//   let [prev, curr] = [0, 1]
+//   for (;;) {
+//     // 这里请思考：为什么这个循环不设定结束条件？
+//     ;[prev, curr] = [curr, prev + curr]
+//     yield curr
+//   }
 // }
 
 // for (const n of fibonacci()) {
-// 	if (n > 1000) {
-// 		break
-// 	}
-// 	console.log(n)
+//   if (n > 1000) {
+//     break
+//   }
+//   console.log(n)
 // }
 ```
 
@@ -935,13 +935,13 @@ const arrLikeToIt = {
   2: '2',
   length: 3,
   // [Symbol.iterator]() {
-  // 	let idx = 0
-  // 	return {
-  // 		next: () => ({
-  // 			value: this[idx],
-  // 			done: idx++ === this.length
-  // 		})
-  // 	}
+  //  let idx = 0
+  //  return {
+  //   next: () => ({
+  //    value: this[idx],
+  //    done: idx++ === this.length
+  //   })
+  //  }
   // }
   *[Symbol.iterator]() {
     for (let i = 0; i < this.length; i++) {
@@ -1021,36 +1021,36 @@ const path = require('path')
 
 // promise 串行 值会透传
 // fs.readFile(path.resolve(__dirname, 'test.txt'))
-// 	.then(data => data.toString())
-// 	.then(data => fs.readFile(path.resolve(__dirname, data)))
-// 	.then(data => console.log(data.toString()))
+//  .then(data => data.toString())
+//  .then(data => fs.readFile(path.resolve(__dirname, data)))
+//  .then(data => console.log(data.toString()))
 
 // async
 // async function read() {
-// 	const name = await fs.readFile(path.resolve(__dirname, 'test.txt'))
-// 	const data = await fs.readFile(path.resolve(__dirname, name.toString()))
-// 	return data.toString()
+//  const name = await fs.readFile(path.resolve(__dirname, 'test.txt'))
+//  const data = await fs.readFile(path.resolve(__dirname, name.toString()))
+//  return data.toString()
 // }
 
 // read().then(data => {
-// 	console.log(data)
+//  console.log(data)
 // })
 
 // generator 串行
 // function read() {
-// 	return new Promise((resolve, reject) => {
-// 		function * gen() {
-// 			const name = yield fs.readFile(path.resolve(__dirname, 'test.txt')).then(data => {
-// 				it.next(data.toString())
-// 			})
-// 			const data = yield fs.readFile(path.resolve(__dirname, name)).then(data => {
-// 				it.next(data.toString())
-// 			})
-// 			resolve(data)
-// 		}
-// 		const it = gen()
-// 		it.next()
-// 	})
+//  return new Promise((resolve, reject) => {
+//   function * gen() {
+//    const name = yield fs.readFile(path.resolve(__dirname, 'test.txt')).then(data => {
+//     it.next(data.toString())
+//    })
+//    const data = yield fs.readFile(path.resolve(__dirname, name)).then(data => {
+//     it.next(data.toString())
+//    })
+//    resolve(data)
+//   }
+//   const it = gen()
+//   it.next()
+//  })
 // }
 
 // read().then(data => console.log(data))
@@ -1065,11 +1065,11 @@ function* gen() {
 // const { value, done } = it.next()
 
 // Promise.resolve(value).then(data => {
-// 	const { value, done } = it.next(data)
-// 	Promise.resolve(value).then(data => {
-// 		const { value, done } = it.next(data)
-// 		console.log(value, done)
-// 	})
+//  const { value, done } = it.next(data)
+//  Promise.resolve(value).then(data => {
+//   const { value, done } = it.next(data)
+//   console.log(value, done)
+//  })
 // })
 
 // 找规律 递归

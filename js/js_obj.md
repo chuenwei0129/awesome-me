@@ -1,26 +1,26 @@
-# JavaScript 基础知识梳理(三)<!-- omit in toc -->
+# JavaScript 从零单排(三)<!-- omit in toc -->
 
 - [面向对象编程](#面向对象编程)
-	- [对象基础知识](#对象基础知识)
-	- [Object() 工具方法](#object-工具方法)
-	- [new 关键字](#new-关键字)
-	- [Object.create](#objectcreate)
-	- [原型与原型链](#原型与原型链)
-	- [控制对象状态](#控制对象状态)
-	- [属性描述对象](#属性描述对象)
-	- [继承](#继承)
-		- [原型链继承](#原型链继承)
-		- [原型链继承优化](#原型链继承优化)
+  - [对象基础知识](#对象基础知识)
+  - [Object() 工具方法](#object-工具方法)
+  - [new 关键字](#new-关键字)
+  - [Object.create](#objectcreate)
+  - [原型与原型链](#原型与原型链)
+  - [控制对象状态](#控制对象状态)
+  - [属性描述对象](#属性描述对象)
+  - [继承](#继承)
+    - [原型链继承](#原型链继承)
+    - [原型链继承优化](#原型链继承优化)
 - [浅拷贝与深拷贝](#浅拷贝与深拷贝)
-	- [浅拷贝](#浅拷贝)
-		- [手动实现](#手动实现)
-		- [Object.assign](#objectassign)
-		- [concat 浅拷贝数组](#concat-浅拷贝数组)
-		- [slice 浅拷贝](#slice-浅拷贝)
-		- [...展开运算符](#展开运算符)
-	- [深拷贝](#深拷贝)
-		- [JSON.parse(JSON.stringify(target));](#jsonparsejsonstringifytarget)
-		- [手写实现](#手写实现)
+  - [浅拷贝](#浅拷贝)
+    - [手动实现](#手动实现)
+    - [Object.assign](#objectassign)
+    - [concat 浅拷贝数组](#concat-浅拷贝数组)
+    - [slice 浅拷贝](#slice-浅拷贝)
+    - [...展开运算符](#展开运算符)
+  - [深拷贝](#深拷贝)
+    - [JSON.parse(JSON.stringify(target))](#jsonparsejsonstringifytarget)
+    - [手写实现](#手写实现)
 
 ## 面向对象编程
 
@@ -83,28 +83,28 @@ isObject(true) // false
 1. 开始执行构造函数内部的代码。
 
 > TIP
-
+>
 > 构造函数内部有 `return` 语句，并且 `return` 后面跟着一个对象，`new` 命令会返回 `return` 语句指定的对象，后面跟着原始类型，`new` 命令 `return` 会忽略，`new` 命令 默认返回 `{}` 对象。
 
 ```js
 function _new(F, ...args) {
-	const instance = Object.create(F.prototype)
-	const res = F.call(instance, ...args)
-	return typeof res === 'object' && res !== null ? res : instance
+ const instance = Object.create(F.prototype)
+ const res = F.call(instance, ...args)
+ return typeof res === 'object' && res !== null ? res : instance
 }
 
 // 构造函数默认返回 this
 function Person(name, age) {
-	this.name = name
-	this.age = age,
-	// return {
-	// 	name: name,
-	// 	age: age,
-	// }
+ this.name = name
+ this.age = age,
+ // return {
+ //  name: name,
+ //  age: age,
+ // }
 }
 
 Person.prototype.sayName = function () {
-	console.log(`我的名字：${this.name}，我的年龄：${this.age}。`)
+ console.log(`我的名字：${this.name}，我的年龄：${this.age}。`)
 }
 
 const student = new Person('xiaoming', 23)
@@ -436,14 +436,14 @@ let newArr = [...arr] // 跟 arr.slice() 是一样的效果
 ### 深拷贝
 
 > 在计算机程序设计中，弱引用与强引用相对， 是指不能确保其引用的对象不会被垃圾回收器回收的引用。 一个对象若只被弱引用所引用，则被认为是不可访问（或弱可访问）的，并因此可能在任何时刻被回收。 --百度百科
-
+>
 > 说的有一点绕，我用大白话解释一下，被弱引用的对象可以在任何时候被回收，而对于强引用来说，只要这个强引用还在，那么对象无法被回收。
 
-#### JSON.parse(JSON.stringify(target));
+#### JSON.parse(JSON.stringify(target))
 
 > 谈到深拷贝，我第一个想到的也是它。但是实际上，对于某些严格的场景来说，这个方法是有巨大的坑的。问题如下：
 
-**测试对象**
+**测试对象：**
 
 ```js
 const test = {
@@ -470,7 +470,7 @@ Object.defineProperty(test, 'enumObj', {
 
 1. `test.target = test` 循环引用的问题。拷贝 test 会出现系统栈溢出，因为出现了无限递归的情况。
 
-   `js Uncaught TypeError: Converting circular structure to JSON --> starting at object with constructor 'Object' --- property 'target' closes the circle `
+   `js Uncaught TypeError: Converting circular structure to JSON --> starting at object with constructor 'Object' --- property 'target' closes the circle`
 
 2. 无法拷贝 `undefined`
 3. 无法拷贝 `symbol` 属性

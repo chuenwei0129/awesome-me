@@ -1,4 +1,4 @@
-# JavaScript 基础知识梳理(七)<!-- omit in toc -->
+# JavaScript 从零单排(七)<!-- omit in toc -->
 
 - [声明](#声明)
 - [Symbol 类型](#symbol-类型)
@@ -14,13 +14,13 @@
   - [动态导入](#动态导入)
   - [重点难点](#重点难点)
 - [Proxy](#proxy)
-  - [概述](#概述-1)
-  - [局限性：](#局限性)
+  - [简述](#简述)
+  - [局限性](#局限性)
   - [可撤销 `Proxy`](#可撤销-proxy)
   - [应用场景](#应用场景)
 - [Reflect](#reflect)
 - [错误处理，"try..catch"](#错误处理trycatch)
-  - [概述](#概述-2)
+  - [简介](#简介)
   - [try..catch 同步工作](#trycatch-同步工作)
 - [Eval](#eval)
 - [Reference Type](#reference-type)
@@ -149,9 +149,9 @@ setTimeout(function run() {
 }, 100)
 ```
 
-![](setinterval.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/js/setinterval.png)
 
-使用 `setInterval `时，`func` 函数的实际调用间隔要比代码中设定的时间间隔要短！
+使用 `setInterval` 时，`func` 函数的实际调用间隔要比代码中设定的时间间隔要短！
 
 这也是正常的，因为 `func` 的执行所花费的时间“消耗”了一部分间隔时间。
 
@@ -161,7 +161,7 @@ setTimeout(function run() {
 
 极端情况下，如果函数每次执行时间都超过 `delay` 设置的时间，那么每次调用之间将完全没有停顿。
 
-![](settimeout.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/js/settimeout.png)
 
 嵌套的 `setTimeout` 就能确保延时的固定（这里是 100 毫秒）。
 
@@ -244,7 +244,7 @@ setTimeout(function() {...}, 100);
 - `UMD`：用于浏览器和服务器(动态化依赖)
 - `ESM`：用于浏览器和服务器(静态化依赖)
 
-`CommonJS` 和 `ESM`的区别：`CommonJS `输出值的拷贝，`ESM` 输出值的引用
+`CommonJS` 和 `ESM`的区别：`CommonJS` 输出值的拷贝，`ESM` 输出值的引用
 
 - `CommonJS` 一旦输出一个值，模块内部的变化就影响不到这个值
 - `ESM` 是动态引用且不会缓存值，模块里的变量绑定其所在的模块，等到脚本真正执行时，再根据这个只读引用到被加载的那个模块里去取值
@@ -282,7 +282,7 @@ import(modulePath)
 
 ## Proxy
 
-### 概述
+### 简述
 
 - [x] 定义：修改某些操作的默认行为
 - [x] 声明：`const proxy = new Proxy(target, handler)`
@@ -319,12 +319,12 @@ for (let key in proxy) alert(key) // test，迭代也正常工作 (3)
 - `apply()`：拦截 `Proxy` 实例作为函数调用 `proxy()`、`proxy.apply()`、`proxy.call()`
 - `construct()`：拦截 `Proxy` 实例作为构造函数调用 `new proxy()`
 
-### 局限性：
+### 局限性
 
 许多内建对象，例如 `Map`，`Set`，`Date`，`Promise` 等，都使用了所谓的“内部插槽”。在类似这样的内建对象被代理后，代理对象没有这些内部插槽，因此内建方法将会失败。私有类字段也是如此，因为它们也是在内部使用插槽实现的。
 
 > ⚠️ 一个值得注意的例外：内建 `Array` 没有使用内部插槽。那是出于历史原因，因为它出现于很久以前。所以，代理数组时没有这种问题。
-
+>
 > 对象的严格相等性检查 === 无法被拦截。
 
 ### 可撤销 `Proxy`
@@ -337,7 +337,7 @@ for (let key in proxy) alert(key) // test，迭代也正常工作 (3)
 let { proxy, revoke } = Proxy.revocable(target, handler)
 ```
 
-该调用返回一个带有 `proxy `和 `revoke` 函数的对象以将其禁用。
+该调用返回一个带有 `proxy` 和 `revoke` 函数的对象以将其禁用。
 
 这是一个例子：
 
@@ -381,7 +381,7 @@ alert(proxy.data) // Error
 
 ## 错误处理，"try..catch"
 
-### 概述
+### 简介
 
 `try..catch` 结构允许我们处理执行过程中出现的 `error`。从字面上看，它允许“尝试”运行代码并“捕获”其中可能发生的错误。
 
@@ -402,7 +402,7 @@ try {
 
 `Error` 对象包含下列属性：
 
-- `message `— 人类可读的 `error` 信息。
+- `message` — 人类可读的 `error` 信息。
 - `name` — 具有 `error` 名称的字符串（`Error` 构造器的名称）。
 - `stack`（没有标准，但得到了很好的支持）— `Error` 发生时的调用栈。
 
@@ -503,6 +503,6 @@ hi() // 报错了，因为 this 的值是 undefined
 
 当 `()` 被在 `Reference Type` 上调用时，它们会接收到关于对象和对象的方法的完整信息，然后可以设置正确的 `this`（在此处 = `user`）。
 
-`Reference Type `是一个特殊的“中间人”内部类型，目的是从 `.` 传递信息给 `() `调用。
+`Reference Type` 是一个特殊的“中间人”内部类型，目的是从 `.` 传递信息给 `()` 调用。
 
 任何例如赋值 `hi = user.hi` 等其他的操作，都会将 `Reference Type` 作为一个整体丢弃掉，而会取 `user.hi`（一个函数）的值并继续传递。所以任何后续操作都“丢失”了 `this`。

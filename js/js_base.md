@@ -1,11 +1,5 @@
 # JavaScript 从零单排(一)<!-- omit in toc -->
 
-<!-- markdown="1" is required for GitHub Pages to render the TOC properly. -->
-
-<details markdown="1">
-  <summary>🌳 <strong>目录</strong></summary>
-<br>
-
 - [数据类型](#数据类型)
   - [值类型和引用类型](#值类型和引用类型)
   - [函数参数按值传递](#函数参数按值传递)
@@ -43,8 +37,6 @@
   - [可选链 "?."](#可选链-)
   - [运算符优先级](#运算符优先级)
 - [循环](#循环)
-
-</details>
 
 ## 数据类型
 
@@ -697,7 +689,7 @@ console.log(user2 ?? 'Anonymous') // John
 
 ### 运算符优先级
 
-![运算符优先级](operator.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/js/operator-1.png)
 
 ## 循环
 

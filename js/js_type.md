@@ -1,4 +1,4 @@
-# JavaScript 基础知识梳理(四)<!-- omit in toc -->
+# JavaScript 从零单排(四)<!-- omit in toc -->
 
 - [包装对象](#包装对象)
 - [数字类型](#数字类型)
@@ -92,9 +92,9 @@ alert(str.test)
 
 为什么？让我们看看在 `(*)` 那一行到底发生了什么：
 
-> 1.  当访问 str 的属性时，一个“对象包装器”被创建了。
-> 2.  在严格模式下，向其写入内容会报错。
-> 3.  否则，将继续执行带有属性的操作，该对象将获得 test 属性，但是此后，“对象包装器”将消失，因此在最后一行，str 并没有该属性的踪迹。
+> 1. 当访问 str 的属性时，一个“对象包装器”被创建了。
+> 2. 在严格模式下，向其写入内容会报错。
+> 3. 否则，将继续执行带有属性的操作，该对象将获得 test 属性，但是此后，“对象包装器”将消失，因此在最后一行，str 并没有该属性的踪迹。
 
 **这个例子清楚地表明，原始类型不是对象。**
 
@@ -593,7 +593,7 @@ let value = arr.reduce(
 
 它还返回排序后的数组，但是返回值通常会被忽略，因为修改了 `arr` 本身。
 
-对于许多字母，最好使用 `str.localeCompare `方法正确地对字母进行排序，
+对于许多字母，最好使用 `str.localeCompare` 方法正确地对字母进行排序，
 
 #### reverse
 
@@ -633,7 +633,7 @@ alert(str) // Bilbo;Gandalf;Nazgul
 ### 其他
 
 - [x] `arr.some(fn)/arr.every(fn)` 检查数组。这两个方法的行为类似于 `||` 和 `&&` 运算符：如果 `fn` 返回一个真值，`arr.some()` 立即返回 `true` 并停止迭代其余数组项；如果 `fn` 返回一个假值，`arr.every()` 立即返回 `false` 并停止对其余数组项的迭代。
-- [x] `arr.fill(value, start, end)` —— 从索引 `start` 到 `end`，用重复的 `value `填充数组。
+- [x] `arr.fill(value, start, end)` —— 从索引 `start` 到 `end`，用重复的 `value` 填充数组。
 - [x] `arr.flat(depth)/arr.flatMap(fn)` 从多维数组创建一个新的扁平数组。
 
 ## Iterable object（可迭代对象）
@@ -725,7 +725,7 @@ for (let num of range) {
 - `map.set(key, value)` —— 根据键存储值。
 - `map.get(key)` —— 根据键来返回值，如果 map 中不存在对应的 key，则返回 undefined。
 - `map.has(key)` —— 如果 key 存在则返回 true，否则返回 false。
-- `map.delete(key) `—— 删除指定键的值。
+- `map.delete(key)` —— 删除指定键的值。
 - `map.clear()` —— 清空 map。
 - `map.size` —— 返回当前元素个数。
 
@@ -765,7 +765,7 @@ let map = new Map(Object.entries(obj))
 alert(map.get('name')) // John
 ```
 
-`Object.fromEntries` 方法的作用是相反的：给定一个具有 `[key, value] `键值对的数组，它会根据给定数组创建一个对象：
+`Object.fromEntries` 方法的作用是相反的：给定一个具有 `[key, value]` 键值对的数组，它会根据给定数组创建一个对象：
 
 ```js
 let prices = Object.fromEntries([
