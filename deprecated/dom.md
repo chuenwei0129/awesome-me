@@ -42,7 +42,6 @@
   - [Element.focus，Element.blur](#elementfocuselementblur)
   - [elem.matches(css)，elem.closest(css)](#elemmatchescsselemclosestcss)
 - [Attributes](#attributes)
-- [DOMContentLoaded，load，beforeunload，unload](#domcontentloadedloadbeforeunloadunload)
 - [CSS](#css)
   - [行内样式](#行内样式)
     - [设置元素节点的 style 属性](#设置元素节点的-style-属性)
@@ -640,29 +639,6 @@ document.body.attributes['ONLOAD']
 - **`hasAttribute(key)`** 方法返回一个布尔值，表示当前元素节点是否包含指定属性
 - **`hasAttributes()`** 方法返回一个布尔值，表示当前元素是否有属性，如果没有任何属性，就返回 `false`，否则返回 `true`
 - **`removeAttribute(key)`** 方法移除指定属性。该方法没有返回值
-
-## DOMContentLoaded，load，beforeunload，unload
-
-HTML 页面的生命周期包含三个重要事件：
-
-- **`DOMContentLoaded`** —— 浏览器已完全加载 HTML，并构建了 DOM 树，但像 `<img>` 和样式表之类的外部资源可能尚未加载完成。
-- **`load`** —— 浏览器不仅加载完成了 HTML，还加载完成了所有外部资源：图片，样式等。
-- **`beforeunload/unload`** —— 当用户正在离开页面时。
-  1. **`beforeunload`** 事件 —— 用户正在离开：我们可以检查用户是否保存了更改，并询问他是否真的要离开。
-  2. **`unload`** 事件 —— 用户几乎已经离开了，但是我们仍然可以启动一些操作，例如发送统计数据。
-
-> ⚠️ **不会阻塞 DOMContentLoaded 的脚本**
-
-- 具有 `async` 特性（attribute）的脚本不会阻塞 `DOMContentLoaded`
-- 使用 `document.createElement('script')` 动态生成并添加到网页的脚本也不会阻塞 `DOMContentLoaded`。
-
-`document.readyState` 是文档的当前状态，可以在 `readystatechange` 事件中跟踪状态更改：
-
-- **`loading`** —— 文档正在被加载。
-- **`interactive`** —— 文档已被解析完成，与 `DOMContentLoaded` 几乎同时发生，但是在 `DOMContentLoaded` 之前发生。
-- **`complete`** —— 文档和资源均已加载完成，与 `window.onload` 几乎同时发生，但是在 `window.onload` 之前发生。
-
-**`readystatechange`** 事件也适用于资源，但很少被使用，因为 `load / error` 事件更简单。
 
 ## CSS
 
