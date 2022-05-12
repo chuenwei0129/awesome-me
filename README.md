@@ -69,16 +69,15 @@
 
 ## WEB API
 
-- `[DOM]` [DOM 基础知识整理](web/dom.md)
-- `[HTML]`[网页元素](web/element.md)
+- `[DOM]` [DOM 基础知识梳理](web/dom.md)
+- `[HTML]`[HTML 网页元素](web/html.md)
 - `[坐标]` [窗口、坐标和滚动](web/scroll.md)
 - `[事件]` [事件和表单](web/event.md)
 - `[渲染原理]` [浏览器渲染原理](web/browser.md)
 - `[二进制]` [前端操作文件和二进制数据](web/data.md)
 - `[HTTP]` [什么是 HTTP](web/http.md)
 - `[Cookies]` [数据存储、安全和鉴权](web/cookie.md)
-- `[网络请求]`[网络请求](web/xhr.md)
-<!-- - `[Web components]`[浅尝 Web components](web/component.md) -->
+- `[网络请求]`[网络请求](web/xhr.md)`
 
 ## 构建工具
 

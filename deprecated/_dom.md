@@ -50,7 +50,7 @@
 
 ## 层次结构
 
-`DOM` 的根节点是 `EventTarget`，`Node` 继承自它，其他 `DOM` 节点继承自 `Node`。`DOM` 节点是常规的 `JavaScript` 对象。它们使用基于原型的类进行继承。
+`DOM` 的根节点是 [EventTarget](https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget)，`Node` 继承自它，其他 `DOM` 节点继承自 `Node`。`DOM` 节点是常规的 `JavaScript` 对象。它们使用基于原型的类进行继承。
 
 类如下所示：
 
