@@ -35,7 +35,7 @@
 - [拓展安全知识](#拓展安全知识)
   - [XSS](#xss)
   - [CSP](#csp)
-  - [XSRF](#xsrf-1)
+  - [XSRF 跨站请求伪造](#xsrf-跨站请求伪造)
   - [HTTP 劫持](#http-劫持)
   - [DNS 劫持](#dns-劫持)
   - [点击劫持](#点击劫持)
@@ -46,7 +46,7 @@
 
 `Cookie` 通常是由 `Web` 服务器使用响应 `Set-Cookie` `HTTP-header` 设置的。然后浏览器使用 `Cookie` `HTTP-header` 将它们自动添加到（几乎）每个对相同域的请求中。
 
-![](../Images/http-22.jpg)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/http-22.jpg)
 
 我们还可以使用 `document.cookie` 属性从浏览器访问 `cookie`。
 
@@ -94,9 +94,9 @@ document.cookie = "user=John; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT"
 
 #### path=/mypath
 
-`url` 路径前缀，该路径下的页面可以访问该 `cookie`。必须是绝对路径。默认为当前路径。
+**`url`** 路径前缀，该路径下的页面可以访问该 `cookie`。必须是绝对路径。默认为当前路径。
 
-如果一个 `cookie` 带有 `path=/admin` 设置，那么该 `cookie` 在 `/admin` 和 `/admin/something` 下都是可见的，但是在 `/home` 或 `/adminpage` 下不可见。
+如果一个 `cookie` 带有 `path=/admin` 设置，**那么该 `cookie` 在 `/admin` 和 `/admin/something` 下都是可见的**，但是在 `/home` 或 `/adminpage` 下不可见。
 
 通常，我们应该将 `path` 设置为根目录：`path=/`，以使 `cookie` 对此网站的所有页面可见。
 
@@ -106,7 +106,7 @@ document.cookie = "user=John; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT"
 
 默认情况下，`cookie` 只有在设置的域下才能被访问到。所以，如果 `cookie` 设置在 `site.com` 下，我们在 `other.com` 下就无法获取它。我们在子域 `forum.site.com` 下也无法获取它！
 
-`domain` 选项允许设置一个可以在子域访问的 `cookie`。
+**`domain` 选项允许设置一个可以在子域访问的 `cookie`。**
 
 #### expires，max-age
 
@@ -115,10 +115,9 @@ document.cookie = "user=John; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT"
 为了让 `cookie` 在浏览器关闭后仍然存在，我们可以设置 `expires` 或 `max-age` 选项中的一个。
 
 ```js
+// cookie 的到期日期，那时浏览器会自动删除它。
 expires=Tue, 19 Jan 2038 03:14:07 GMT
 ```
-
-`cookie` 的到期日期，那时浏览器会自动删除它。
 
 如果我们将 `expires` 设置为过去的时间，则 `cookie` 会被删除。
 
@@ -142,7 +141,7 @@ document.cookie = "user=John; max-age=0";
 
 默认情况下，如果我们在 `http://site.com` 上设置了 `cookie`，那么该 `cookie` 也会出现在 `https://site.com` 上，反之亦然。
 
-也就是说，`cookie` 是基于域的，它们不区分协议。
+**也就是说，`cookie` 是基于域的，它们不区分协议。**
 
 使用此选项，如果一个 `cookie` 是通过 `https://site.com` 设置的，那么它不会在相同域的 `HTTP` 环境下出现，例如 `http://site.com`。
 
@@ -160,23 +159,23 @@ document.cookie = "user=John; secure";
 
 想象一下，你登录了 `bank.com` 网站。此时：**你有了来自该网站的身份验证 `cookie`。你的浏览器会在每次请求时将其发送到 `bank.com`，以便识别你**，并执行所有敏感的财务上的操作。
 
-现在，在另外一个窗口中浏览网页时，你不小心访问了另一个网站 `evil.com`。该网站具有向 `bank.com` 网站提交一个具有启动与黑客账户交易的字段的表单 `<form action="https://bank.com/pay">` 的 `JavaScript` 代码。
+现在，在另外一个窗口中浏览网页时，你不小心访问了另一个网站 `evil.com`。该网站具有向 `bank.com` 网站提交一个具有启动与黑客账户交易的字段的表单 `<form action="https://bank.com/pay">` 的 JavaScript 代码。
 
 你每次访问 `bank.com` 时，浏览器都会发送 `cookie`，即使该表单是从 `evil.com` 提交过来的。因此，银行会识别你的身份，并执行真实的付款。
 
-这就是“跨网站请求伪造（Cross-Site Request Forgery，简称 XSRF）”攻击。
+这就是“**跨网站请求伪造**（Cross-Site Request Forgery，简称 XSRF）”攻击。
 
-![](../Images/xsrf.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/xsrf.png)
 
 > 当然，实际的银行会防止出现这种情况。所有由 `bank.com` 生成的表单都具有一个特殊的字段，即所谓的 “XSRF 保护 token”，恶意页面既不能生成，也不能从远程页面提取它（它可以在那里提交表单，但是无法获取数据）。并且，网站 `bank.com` 会对收到的每个表单都进行这种 `token` 的检查。
 
-但是，实现这种防护需要花费时间：我们需要确保每个表单都具有   字段，并且还必须检查所有请求。
+但是，实现这种防护需要花费时间：我们需要确保每个表单都具有 `token` 字段，并且还必须检查所有请求。
 
 ##### samesite=strict（和没有值的 samesite 一样)
 
-如果用户来自同一网站之外，那么设置了 `samesite=strict` 的 `cookie` 永远不会被发送。
+**如果用户来自同一网站之外**，那么设置了 `samesite=strict` 的 `cookie` 永远不会被发送。
 
-当用户通过合法的链接访问 `bank.com` 时，例如从他们自己的笔记，他们会感到惊讶，`bank.com` 无法识别他们的身份。实际上，在这种情况下不会发送 `samesite=strict` `cookie`。
+当用户通过合法的链接访问 `bank.com` 时，例如从他们自己的笔记，他们会感到惊讶，`bank.com` 无法识别他们的身份。实际上，在这种情况下不会发送设置了 `samesite=strict`的`cookie`。
 
 我们可以通过使用两个 `cookie` 来解决这个问题：一个 `cookie` 用于“一般识别”，仅用于说 “Hello, John”，另一个带有 `samesite=strict` 的 `cookie` 用于进行数据更改的操作。
 
@@ -188,15 +187,15 @@ document.cookie = "user=John; secure";
 
 1. HTTP 方法是“安全的”（例如 GET 方法，而不是 POST）。
 
-2. 操作执行顶级导航（更改浏览器地址栏中的 URL）。
+2. **操作执行顶级导航**（更改浏览器地址栏中的 URL）。
 
-这通常是成立的，但是如果导航是在一个 `<iframe>` 中执行的，那么它就不是顶级的。此外，用于网络请求的 `JavaScript` 方法不会执行任何导航，因此它们不适合。
+这通常是成立的，但是如果导航是在一个 `<iframe>` 中执行的，那么它就不是顶级的。此外，用于网络请求的 JavaScript 方法不会执行任何导航，因此它们不适合。
 
 ### httpOnly
 
 `Web` 服务器使用 `Set-Cookie` `header` 来设置 `cookie`。并且，它可以设置 `httpOnly` 选项。
 
-如果 `cookie` 设置了 `httpOnly`，那么 `document.cookie` 则看不到 `cookie`，所以它受到了保护。可以有效防止 `XSS` 攻击
+如果 `cookie` 设置了 `httpOnly`，那么 `document.cookie` 则看不到 `cookie`，所以它受到了保护。可以有效防止 `XSS` 攻击。
 
 但是可以通过 `Application` 中手动修改 `cookie`
 
@@ -210,10 +209,10 @@ document.cookie = "user=John; secure";
 - 它们不会过期。
 - 数据绑定到源（域/端口/协议）。
 
-localStorage|	sessionStorage
-:--:|:--:
-在同源的所有标签页和窗口之间共享数据|	在当前浏览器标签页中可见，包括同源的 iframe
-浏览器重启后数据仍然保留|	页面刷新后数据仍然保留（但标签页关闭后数据则不再保留）
+|             localStorage             |                     sessionStorage                     |
+| :----------------------------------: | :----------------------------------------------------: |
+| 在同源的所有标签页和窗口之间共享数据 |      在当前浏览器标签页中可见，包括同源的 iframe       |
+|       浏览器重启后数据仍然保留       | 页面刷新后数据仍然保留（但标签页关闭后数据则不再保留） |
 
 ### API
 
@@ -234,9 +233,9 @@ localStorage|	sessionStorage
 
 `session` 是一种记录服务器和客户端会话状态的机制
 
-`session` 是基于 `cookie` 实现的，`session`存储在服务器端，`sessionId` 会被存储到客户端的 `cookie` 中
+`session` 是基于 `cookie` 实现的，`session`存储在服务器端，`sessionId` 会被存储到客户端的 `cookie` 中。
 
-在服务器端使用 `sessions` 存储键值对
+在服务器端使用 `sessions` 存储键值对。
 
 ```js
 const sessions = {
@@ -253,11 +252,11 @@ function getUserIdByToken (sessionId) {
 }
 ```
 
-![](../Images/session-2.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/session-2.png)
 
 ### session 认证流程
 
-![](../Images/session.jpg)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/session.jpg)
 
 1. 用户第一次请求服务器的时候，服务器根据用户提交的相关信息，创建对应的 `Session`
 
@@ -265,17 +264,17 @@ function getUserIdByToken (sessionId) {
 
 3. 浏览器接收到服务器返回的 `SessionID` 信息后，会将此信息存入到 `Cookie` 中，同时 `Cookie` 记录此 `SessionID` 属于哪个域名
 
-3. 当用户第二次访问服务器的时候，请求会自动判断此域名下是否存在 `Cookie` 信息，如果存在自动将 `Cookie` 信息也发送给服务端，服务端会从 `Cookie` 中获取 `SessionID`，再根据 `SessionID` 查找对应的 `Session` 信息，如果没有找到说明用户没有登录或者登录失效，如果找到 `Session` 证明用户已经登录可执行后面操作。
+4. 当用户第二次访问服务器的时候，请求会自动判断此域名下是否存在 `Cookie` 信息，如果存在自动将 `Cookie` 信息也发送给服务端，服务端会从 `Cookie` 中获取 `SessionID`，再根据 `SessionID` 查找对应的 `Session` 信息，如果没有找到说明用户没有登录或者登录失效，如果找到 `Session` 证明用户已经登录可执行后面操作。
 
 ### 使用 session 时需要考虑的问题
 
-- 将 `session` 存储在服务器里面，当用户同时在线量比较多时，这些 `session` 会占据较多的内存，需要在服务端定期的去清理过期的 `session`
+- 将 `session` 存储在服务器里面，**当用户同时在线量比较多时，这些 `session` 会占据较多的内存**，需要在服务端定期的去清理过期的 `session`
 
 - 当网站采用集群部署的时候，会遇到多台 `web` 服务器之间如何做 `session` 共享的问题。因为 `session` 是由单个服务器创建的，但是处理用户请求的服务器不一定是那个创建 `session` 的服务器，那么该服务器就无法拿到之前已经放入到 `session` 中的登录凭证之类的信息了。
 
 - 当多个应用要共享 `session` 时，除了以上问题，还会遇到跨域问题，因为不同的应用可能部署的主机不一样，需要在各个应用做好 `cookie` 跨域的处理。
 
-- `sessionId` 是存储在 `cookie` 中的，假如浏览器禁止 `cookie` 或不支持 `cookie` 怎么办？ 一般会把 `sessionId` 跟在 `url` 参数后面即重写 `url`，所以 `session` 不一定非得需要靠 `cookie` 实现
+- `sessionId` 是存储在 `cookie` 中的，假如浏览器禁止 `cookie` 或不支持 `cookie` 怎么办？一般会把 `sessionId` 跟在 `url` 参数后面即重写 `url`，**所以 `session` 不一定非得需要靠 `cookie` 实现。**
 
 ## JWT
 
@@ -291,11 +290,11 @@ function getUserIdByToken (sessionId) {
 
 服务端对 `user_id` 进行对称加密后，作为 `token` 返回客户端，作为用户状态凭证。比上边略微强点，但由于对称加密，选择合适的算法以及密钥比较重要
 
-**改进**： 对 `user_id` 不需要加密，只需要进行签名，保证不被篡改
+**改进**： 对 `user_id` 不需要加密，只需要**进行签名，保证不被篡改**。
 
 这便是 `jwt` 的思想：`user_id`，加密算法和签名组成 `token` 一起存储到客户端，每当客户端请求接口时携带 `token`，服务器根据 `token` 解析出加密算法与 `user_id` 来判断签名是否一致。
 
-JSON Web Token（简称 JWT）是目前最流行的**跨域**认证解决方案。通过客户端保存数据，而服务器根本不保存会话数据，每个请求都被发送回服务器。 
+JSON Web Token（简称 JWT）是目前最流行的**跨域**认证解决方案。通过客户端保存数据，而服务器根本不保存会话数据，每个请求都被发送回服务器。
 
 ### JWT 的原则
 
@@ -310,7 +309,7 @@ JWT 的原则是在服务器身份验证之后，将生成一个 JSON 对象并�
 ```
 
 之后，当用户与服务器通信时，客户在请求中发回 `JSON` 对象。服务器仅依赖于这个 `JSON` 对象来标识用户。为了防止用户篡改数据，服务器将在生成对象时添加签名。
-服务器不保存任何会话数据，即服务器变为无状态，使其更容易扩展。
+服务器不保存任何会话数据，即**服务器变为无状态**，使其更容易扩展。
 
 ### JWT 的数据结构
 
@@ -322,8 +321,8 @@ JWT 的原则是在服务器身份验证之后，将生成一个 JSON 对象并�
 
 ```json
 {
-    "alg":"HS256",
-    "typ":"JWT"
+  "alg":"HS256",
+  "typ":"JWT"
 }
 ```
 
@@ -351,7 +350,7 @@ JWT 的原则是在服务器身份验证之后，将生成一个 JSON 对象并�
 }
 ```
 
-请注意，默认情况下 `JWT` 是未加密的，任何人都可以解读其内容，因此不要构建隐私信息字段，存放保密信息，以防止信息泄露。
+请注意，默认情况下 `JWT` 是未加密的，任何人都可以解读其内容，**因此不要构建隐私信息字段，存放保密信息，以防止信息泄露。**
 
 #### 签名哈希
 
@@ -368,16 +367,18 @@ secret)
 
 ### JWT 认证流程
 
-![](../Images/jwt.jpg)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/jwt.jpg)
 
 1. 用户输入用户名/密码登录，服务端认证成功后，会返回给客户端一个 `JWT`
 
 2. 客户端将 `token` 保存到本地（通常使用 `localstorage`，也可以使用 `cookie`）
 
-3. 当用户希望访问一个受保护的路由或者资源的时候，需要请求头的 `Authorization` 字段中使用 `Bearer` 模式添加 `JWT`，其内容看起来是下面这样
+3. 当用户希望访问一个**受保护的路由或者资源的时候**，需要请求头的 `Authorization` 字段中使用 `Bearer` 模式添加 `JWT`，其内容看起来是下面这样
+
     ```js
     Authorization: Bearer <token>
     ```
+
 4. 服务端的保护路由将会检查请求头 `Authorization` 中的 `JWT` 信息，如果合法，则允许用户的行为
 
 5. 因为 `JWT` 是自包含的（内部包含了一些会话信息），因此减少了需要查询数据库的需要———因为 `JWT` 自包含了用户信息和加密的数据。
@@ -466,9 +467,9 @@ secret)
 
 ## SSO
 
-单点登录英文全称 `Single Sign On`，简称就是 `SSO`。它的解释是：在多个应用系统中，只需要登录一次，就可以访问其他相互信任的应用系统。
+**单点登录** 英文全称 `Single Sign On`，简称就是 `SSO`。它的解释是：在多个应用系统中，只需要登录一次，就可以访问其他相互信任的应用系统。
 
-![](../Images/sso.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/sso.png)
 
 图中有 4 个系统，分别是 `Application1`、`Application2`、`Application3`、和 `SSO`。
 
@@ -535,9 +536,9 @@ style-src cdn.example.org third-party.org; child-src https:
 
 启用后，不符合 `CSP` 的外部资源就会被阻止加载。
 
-### XSRF
+### XSRF 跨站请求伪造
 
-跨站请求伪造。它利用用户已登录的身份，在第三方域（网站），以用户的名义（用户 cookie）完成非法操作。
+**跨站请求伪造**。它利用用户已登录的身份，在第三方域（网站），以用户的名义（用户 cookie）完成非法操作。
 
 ### HTTP 劫持
 

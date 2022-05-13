@@ -6,40 +6,34 @@
 - [事件的传播](#事件的传播)
 - [Event 对象](#event-对象)
 - [鼠标事件](#鼠标事件)
-	- [事件顺序](#事件顺序)
-	- [鼠标按钮](#鼠标按钮)
-	- [组合键：shift，alt，ctrl，meta](#组合键shiftaltctrlmeta)
-	- [禁用复制粘贴](#禁用复制粘贴)
-	- [坐标：clientX/Y，pageX/Y](#坐标clientxypagexy)
-	- [防止在鼠标按下时的选择](#防止在鼠标按下时的选择)
-	- [事件 mouseover/mouseout，relatedTarget](#事件-mouseovermouseoutrelatedtarget)
-	- [当移动到一个子元素时 mouseout](#当移动到一个子元素时-mouseout)
-	- [事件 mouseenter 和 mouseleave](#事件-mouseenter-和-mouseleave)
+  - [事件顺序](#事件顺序)
+  - [鼠标按钮 button 属性](#鼠标按钮-button-属性)
+  - [组合键：shift，alt，ctrl，meta](#组合键shiftaltctrlmeta)
+  - [禁用复制粘贴](#禁用复制粘贴)
+  - [坐标：clientX/Y，pageX/Y](#坐标clientxypagexy)
+  - [防止在鼠标按下时的选择](#防止在鼠标按下时的选择)
+  - [事件 mouseover/mouseout，relatedTarget](#事件-mouseovermouseoutrelatedtarget)
+  - [当移动到一个子元素时 mouseout](#当移动到一个子元素时-mouseout)
+  - [事件 mouseenter 和 mouseleave](#事件-mouseenter-和-mouseleave)
 - [指针事件](#指针事件)
-	- [指针事件类型](#指针事件类型)
-	- [指针事件属性](#指针事件属性)
-	- [事件：pointercancel](#事件pointercancel)
-	- [指针捕获](#指针捕获)
+  - [指针事件类型](#指针事件类型)
+  - [指针事件属性](#指针事件属性)
+  - [事件：pointercancel](#事件pointercancel)
+  - [指针捕获](#指针捕获)
 - [键盘事件](#键盘事件)
-- [表单（form）元素事件](#表单form元素事件)
-	- [document.forms](#documentforms)
-	- [Fieldset 作为“子表单”](#fieldset-作为子表单)
-	- [更简短的表示方式：form.name](#更简短的表示方式formname)
-	- [反向引用：element.form](#反向引用elementform)
-	- [input 和 textarea](#input-和-textarea)
-	- [select 和 option](#select-和-option)
-	- [focus/blur 事件](#focusblur-事件)
-	- [允许在任何元素上聚焦：tabindex](#允许在任何元素上聚焦tabindex)
-	- [事件：change](#事件change)
-	- [事件：input](#事件input)
-	- [事件：cut，copy，paste](#事件cutcopypaste)
-	- [事件：submit](#事件submit)
-
-`JavaScript` 有三种方法，可以为事件绑定监听函数。
-
-- HTML 的 `on-` 属性
-- 元素节点的事件属性
-- `EventTarget.addEventListener()`
+- [表单元素事件](#表单元素事件)
+  - [document.forms](#documentforms)
+  - [Fieldset 作为“子表单”](#fieldset-作为子表单)
+  - [更简短的表示方式：form.name](#更简短的表示方式formname)
+  - [反向引用：element.form](#反向引用elementform)
+  - [input 和 textarea](#input-和-textarea)
+  - [select 和 option](#select-和-option)
+  - [focus/blur 事件](#focusblur-事件)
+  - [允许在任何元素上聚焦：tabindex](#允许在任何元素上聚焦tabindex)
+  - [事件：change](#事件change)
+  - [事件：input](#事件input)
+  - [事件：cut，copy，paste](#事件cutcopypaste)
+  - [事件：submit](#事件submit)
 
 ## HTML 的 on- 属性
 
@@ -49,12 +43,10 @@ HTML 语言允许在元素的属性中，直接定义某些事件的监听代码
 <div onclick="console.log('触发事件')"></div>
 ```
 
-使用这个方法指定的监听代码，只会在冒泡阶段触发。
+使用这个方法指定的监听代码，**只会在冒泡阶段触发**。
 
 ```html
-<div onclick="console.log(2)">
-	<button onclick="console.log(1)">点击</button>
-</div>
+<div onclick="console.log(2)"><button onclick="console.log(1)">点击</button></div>
 ```
 
 由于 `on-` 属性的监听代码，只在冒泡阶段触发，所以点击结果是先输出 `1`，再输出 `2`，即事件从子元素开始冒泡到父元素。
@@ -65,11 +57,11 @@ HTML 语言允许在元素的属性中，直接定义某些事件的监听代码
 
 ```js
 div.onclick = function (event) {
-	console.log('触发事件')
+  console.log('触发事件')
 }
 ```
 
-使用这个方法指定的监听函数，也是只会在冒泡阶段触发。
+使用这个方法指定的监听函数，也是只会在**冒泡阶段触发**。
 
 ## EventTarget.addEventListener
 
@@ -81,27 +73,27 @@ target.addEventListener(type, listener[, useCapture])
 
 该方法接受三个参数。
 
-- `type`：事件名称，大小写敏感。
-- `listener`：监听函数。事件发生时，会调用该监听函数。
-- `useCapture`：布尔值，表示监听函数是否在捕获阶段（capture）触发，默认为 `false`（监听函数只在冒泡阶段被触发）。该参数可选。
+- **`type`**：事件名称，大小写敏感。
+- **`listener`**：监听函数。事件发生时，会调用该监听函数。
+- **`useCapture`**：布尔值，表示监听函数是否在捕获阶段（capture）触发，默认为 `false`（监听函数只在冒泡阶段被触发）。该参数可选。
 
 首先，第二个参数除了监听函数，还可以是一个具有 `handleEvent` 方法的对象。
 其次，第三个参数除了布尔值 `useCapture`，还可以是一个属性配置对象。该对象有以下属性。
 
-- `capture`：布尔值，表示该事件是否在捕获阶段触发监听函数。
-- `once`：布尔值，表示监听函数是否只触发一次，然后就自动移除。
-- `passive`：布尔值，表示监听函数不会调用事件的 `preventDefault` 方法。如果监听函数调用了，浏览器将忽略这个要求，并在监控台输出一行警告。
+- **`capture`**：布尔值，表示该事件是否在捕获阶段触发监听函数。
+- **`once`**：布尔值，表示监听函数是否只触发一次，**然后就自动移除**。
+- **`passive`**：布尔值，表示监听函数不会调用事件的 `preventDefault` 方法。如果监听函数调用了，浏览器将忽略这个要求，并在监控台输出一行警告。
 
 ```js
 buttonElement.addEventListener(
-	'click',
-	{
-		handleEvent: function (event) {
-			// 只执行一次的代码
-			console.log('click')
-		},
-	},
-	{ once: true }
+ 'click',
+ {
+  handleEvent: function (event) {
+   // 只执行一次的代码
+   console.log('click')
+  },
+ },
+ { once: true }
 )
 ```
 
@@ -113,9 +105,9 @@ buttonElement.addEventListener(
 - 第二阶段：在目标节点上触发，称为“目标阶段”（target phase）。
 - 第三阶段：从目标节点传导回 `window` 对象（从底层传回上层），称为“冒泡阶段”（bubbling phase）。
 
-这种三阶段的传播模型，使得同一个事件会在多个节点上触发。
+这种三阶段的传播模型，使得**同一个事件会在多个节点上触发**。
 
-![事件的传播](../Images/bubble.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/bubble.png)
 
 由于事件会在冒泡阶段向上传播到父节点，因此可以把子节点的监听函数定义在父节点上，由父节点的监听函数统一处理多个子元素的事件。这种方法叫做事件的代理（delegation）。
 
@@ -123,9 +115,9 @@ buttonElement.addEventListener(
 var ul = document.querySelector('ul')
 
 ul.addEventListener('click', function (event) {
-	if (event.target.tagName.toLowerCase() === 'li') {
-		// some code
-	}
+ if (event.target.tagName.toLowerCase() === 'li') {
+  // some code
+ }
 })
 ```
 
@@ -134,34 +126,34 @@ ul.addEventListener('click', function (event) {
 ```js
 // 事件传播到 p 元素后，就不再向下传播了
 p.addEventListener(
-	'click',
-	function (event) {
-		event.stopPropagation()
-	},
-	true
+ 'click',
+ function (event) {
+  event.stopPropagation()
+ },
+ true
 )
 
 // 事件冒泡到 p 元素后，就不再向上冒泡了
 p.addEventListener(
-	'click',
-	function (event) {
-		event.stopPropagation()
-	},
-	false
+ 'click',
+ function (event) {
+  event.stopPropagation()
+ },
+ false
 )
 ```
 
-但是，`stopPropagation` 方法只会阻止事件的传播，不会阻止该事件触发 `<p>` 节点的其他 `click` 事件的监听函数。也就是说，不是彻底取消 `click` 事件。
+但是，`stopPropagation` 方法**只会阻止事件的传播**，不会阻止该事件触发 `<p>` 节点的其他 `click` 事件的监听函数。也就是说，**不是彻底取消 `click` 事件**。
 
 ```js
 p.addEventListener('click', function (event) {
-	event.stopPropagation()
-	console.log(1)
+ event.stopPropagation()
+ console.log(1)
 })
 
 p.addEventListener('click', function (event) {
-	// 会触发
-	console.log(2)
+ // 会触发
+ console.log(2)
 })
 ```
 
@@ -169,13 +161,13 @@ p.addEventListener('click', function (event) {
 
 ```js
 p.addEventListener('click', function (event) {
-	event.stopImmediatePropagation()
-	console.log(1)
+ event.stopImmediatePropagation()
+ console.log(1)
 })
 
 p.addEventListener('click', function (event) {
-	// 不会被触发
-	console.log(2)
+ // 不会被触发
+ console.log(2)
 })
 ```
 
@@ -194,60 +186,59 @@ event = new Event(type, options)
 
 ```js
 var ev = new Event('look', {
-	bubbles: true,
-	cancelable: false,
+ bubbles: true,
+ cancelable: false,
 })
 document.dispatchEvent(ev)
 ```
 
-`Event.currentTarget` 属性返回事件当前所在的节点，即事件当前正在通过的节点，也就是当前正在执行的监听函数所在的那个节点。随着事件的传播，这个属性的值会变。
+- **`Event.currentTarget`** 属性返回**事件当前所在的节点**，即事件当前正在通过的节点，也就是当前正在执行的监听函数所在的那个节点。随着事件的传播，这个属性的值会变。
 
-`Event.target` 属性返回原始触发事件的那个节点，即事件最初发生的节点。这个属性不会随着事件的传播而改变。
+- **`Event.target`** 属性返回**原始触发事件的那个节点**，即事件最初发生的节点。这个属性不会随着事件的传播而改变。
 
-`Event.eventPhase` —— 当前阶段（capturing=1，target=2，bubbling=3）
+- **`Event.eventPhase`** —— 当前阶段（capturing=1，target=2，bubbling=3）
 
-`Event.composedPath()` 返回一个数组，成员是事件的最底层节点和依次冒泡经过的所有上层节点。
+- **`Event.composedPath`** 方法返回一个数组，成员是事件的最底层节点和依次冒泡经过的所有上层节点。
 
-`Event.preventDefault` 方法取消浏览器对当前事件的默认行为。
-利用这个方法，可以为文本输入框设置校验条件。如果用户的输入不符合条件，就无法将字符输入文本框。
+- **`Event.preventDefault`** 方法取消浏览器对当前事件的默认行为。利用这个方法，可以为文本输入框设置校验条件。如果用户的输入不符合条件，就无法将字符输入文本框。
 
-```js
-// HTML 代码为
-// <input type="text" id="my-input" />
-var input = document.getElementById('my-input')
-input.addEventListener('keypress', checkName, false)
+  ```js
+  // HTML 代码为
+  // <input type="text" id="my-input" />
+  var input = document.getElementById('my-input')
+  input.addEventListener('keypress', checkName, false)
 
-function checkName(e) {
-	if (e.charCode < 97 || e.charCode > 122) {
-		e.preventDefault()
-	}
-}
-```
+  function checkName(e) {
+  if (e.charCode < 97 || e.charCode > 122) {
+    e.preventDefault()
+  }
+  }
+  ```
 
-上面代码为文本框的 `keypress` 事件设定监听函数后，将只能输入小写字母，否则输入事件的默认行为（写入文本框）将被取消，导致不能向文本框输入内容。
+  上面代码为文本框的 `keypress` 事件设定监听函数后，将只能输入小写字母，否则输入事件的默认行为（写入文本框）将被取消，导致不能向文本框输入内容。
 
 ## 鼠标事件
 
-- `mousedown/mouseup` 在元素上点击/释放鼠标按钮。
-- `mouseover/mouseout` 鼠标指针从一个元素上移入/移出。
-- `mousemove` 鼠标在元素上的每个移动都会触发此事件。
-- `click` 如果使用的是鼠标左键，则在同一个元素上的 `mousedown` 及 `mouseup` 相继触发后，触发该事件。
-- `dblclick` 在短时间内双击同一元素后触发。如今已经很少使用了。
-- `contextmenu` 在鼠标右键被按下时触发。还有其他打开上下文菜单的方式，例如使用特殊的键盘按键，在这种情况下它也会被触发，因此它并不完全是鼠标事件。
+- **`mousedown/mouseup`** 在元素上点击/释放鼠标按钮。
+- **`mouseover/mouseout`** 鼠标指针从一个元素上移入/移出。
+- **`mousemove`** 鼠标在元素上的每个移动都会触发此事件。
+- **`click`** 如果使用的是鼠标左键，则在同一个元素上的 **`mousedown`** 及 **`mouseup`** 相继触发后，触发该事件。
+- **`dblclick`** 在短时间内双击同一元素后触发。如今已经很少使用了。
+- **`contextmenu`** 在鼠标右键被按下时触发。还有其他打开上下文菜单的方式，例如使用特殊的键盘按键，在这种情况下它也会被触发，因此它并不完全是鼠标事件。
 
 ### 事件顺序
 
 **一个用户操作可能会触发多个事件**。例如，点击鼠标左键，在鼠标左键被按下时，会首先触发 `mousedown`，然后当鼠标左键被释放时，会触发 `mouseup` 和 `click`。
 
-在单个动作触发多个事件时，事件的顺序是固定的。也就是说，会遵循 `mousedown → mouseup → click` 的顺序调用处理程序。
+**在单个动作触发多个事件时，事件的顺序是固定的**。也就是说，会遵循 `mousedown → mouseup → click` 的顺序调用处理程序。
 
-### 鼠标按钮
+### 鼠标按钮 button 属性
 
 与点击相关的事件始终具有 `button` 属性，该属性允许获取确切的鼠标按钮。
 
 通常我们不在 `click` 和 `contextmenu` 事件中使用这一属性，因为前者只在单击鼠标左键时触发，后者只在单击鼠标右键时触发。
 
-不过，在 `mousedown` 和 `mouseup` 事件中则可能需要用到 `event.button`，因为这两个事件在任何按键上都会触发，所以我们可以使用 `button` 属性来区分是左键单击还是右键单击。
+不过，在 `mousedown` 和 `mouseup` 事件中则可能需要用到 `event.button`，因为这两个事件在任何按键上都会触发，所以我们可以使用 `button` 属性来**区分是左键单击还是右键单击**。
 
 `event.button` 的所有可能值如下：
 
@@ -265,10 +256,10 @@ function checkName(e) {
 
 事件属性：
 
-- `shiftKey`：`Shift`
-- `altKey`：`Alt`（或对于 `Mac` 是 `Opt`）
-- `ctrlKey`：`Ctrl`
-- `metaKey`：对于 `Mac` 是 `Cmd`
+- **`shiftKey`**：`Shift`
+- **`altKey`**：`Alt`（或对于 `Mac` 是 `Opt`）
+- **`ctrlKey`**：`Ctrl`
+- **`metaKey`**：对于 `Mac` 是 `Cmd`
 
 如果在事件期间按下了相应的键，则它们为 `true`。
 
@@ -287,7 +278,7 @@ function checkName(e) {
 
 ### 禁用复制粘贴
 
-如果我们想禁用选择以保护我们页面的内容不被复制粘贴，那么我们可以使用另一个事件：`oncopy`。
+如果我们想禁用选择以保护我们页面的内容不被复制粘贴，那么我们可以使用另一个事件：**`oncopy`**。
 
 ```html
 <div oncopy="alert('Copying forbidden!');return false">
@@ -334,7 +325,7 @@ Before...
 
 当鼠标指针移到某个元素上时，`mouseover` 事件就会发生，而当鼠标离开该元素时，`mouseout` 事件就会发生。
 
-![mouseover](../Images/mouseover.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/mouseover.png)
 
 这些事件很特别，因为它们具有 `relatedTarget` 属性。此属性是对 `target` 的补充。当鼠标从一个元素离开并去往另一个元素时，其中一个元素就变成了 `target`，另一个就变成了 `relatedTarget`。
 
@@ -348,14 +339,14 @@ Before...
 - `event.target` —— 是鼠标离开的元素。
 - `event.relatedTarget` —— 是鼠标移动到的，当前指针位置下的元素（target → relatedTarget）。
 
-> ⚠️ `relatedTarget` 属性可以为 `null`。
+> ⚠️ **`relatedTarget` 属性可以为 `null`**。
 > 如果 `mouseover` 被触发了，则必须有 `mouseout`
 
-![relatedTarget](../Images/relatedTarget.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/relatedTarget.png)
 
 **在鼠标快速移动的情况下，中间元素可能会被忽略**。
 
-![mousemove](../Images/mousemove.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/mousemove.png)
 
 ### 当移动到一个子元素时 mouseout
 
@@ -369,11 +360,11 @@ Before...
 
 如果我们在 `#parent` 上，然后将鼠标指针更深入地移入 `#child`，但是在 `#parent` 上会得到 `mouseout`！
 
-![](../Images/mouseover-1.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/mouseover-1.png)
 
-后代的 `mouseover` 事件会冒泡。因此，如果 `#parent` 具有 `mouseover` 处理程序，它将被触发：
+**后代的 `mouseover` 事件会冒泡。** 因此，如果 `#parent` 具有 `mouseover` 处理程序，它将被触发：
 
-![](../Images/mouseover-2.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/mouseover-2.png)
 
 ### 事件 mouseenter 和 mouseleave
 
@@ -382,9 +373,9 @@ Before...
 但是有两个重要的区别：
 
 1. 元素内部与后代之间的转换不会产生影响。
-1. 事件 `mouseenter/mouseleave` 不会冒泡。
+1. **事件 `mouseenter/mouseleave` 不会冒泡**。
 
-事件 `mouseenter/leave` 非常简单且易用。但它们不会冒泡。因此，我们不能使用它们来进行事件委托。
+事件 `mouseenter/leave` 非常简单且易用。**但它们不会冒泡。因此，我们不能使用它们来进行事件委托。**
 
 ## 指针事件
 
@@ -392,31 +383,31 @@ Before...
 
 ### 指针事件类型
 
-![指针事件](../Images/pointer.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/pointer.png)
 
 我们可以把代码中的 `mouse<event>` 都替换成 `pointer<event>`，程序仍然正常兼容鼠标设备。
 
 ### 指针事件属性
 
-指针事件具备和鼠标事件完全相同的属性，包括 `clientX/Y` 和 `target` 等，以及一些其他属性：
+**指针事件具备和鼠标事件完全相同的属性**，包括 `clientX/Y` 和 `target` 等，以及一些其他属性：
 
 - [x] `pointerId` —— 触发当前事件的指针唯一标识符。
 
-浏览器生成的。使我们能够处理多指针的情况，例如带有触控笔和多点触控功能的触摸屏（下文会有相关示例）。
+  浏览器生成的。使我们能够处理多指针的情况，例如带有触控笔和多点触控功能的触摸屏（下文会有相关示例）。
 
-- [x] `pointerType `—— 指针的设备类型。必须为字符串，可以是：“mouse”、“pen” 或 “touch”。
+- [x] `pointerType`—— 指针的设备类型。必须为字符串，可以是：“mouse”、“pen” 或 “touch”。
 
-我们可以使用这个属性来针对不同类型的指针输入做出不同响应。
+  我们可以使用这个属性来针对不同类型的指针输入做出不同响应。
 
 - [x] `isPrimary` —— 当指针为首要指针（多点触控时按下的第一根手指）时为 `true`。
 
-有些指针设备会测量接触面积和点按压力（例如一根手指压在触屏上），对于这种情况可以使用以下属性：
+  有些指针设备会测量接触面积和点按压力（例如一根手指压在触屏上），对于这种情况可以使用以下属性：
 
-- `width` —— 指针（例如手指）接触设备的区域的宽度。对于不支持的设备（如鼠标），这个值总是 `1`。
-- `height` —— 指针（例如手指）接触设备的区域的长度。对于不支持的设备，这个值总是 `1`。
-- `pressure` —— 触摸压力，是一个介于 `0` 到 `1` 之间的浮点数。对于不支持压力检测的设备，这个值总是 `0.5`（按下时）或 `0`。
-- `tangentialPressure` —— 归一化后的切向压力（tangential pressure）。
-- `tiltX`, `tiltY`, `twist` —— 针对触摸笔的几个属性，用于描述笔和屏幕表面的相对位置。
+  - `width` —— 指针（例如手指）接触设备的区域的宽度。对于不支持的设备（如鼠标），这个值总是 `1`。
+  - `height` —— 指针（例如手指）接触设备的区域的长度。对于不支持的设备，这个值总是 `1`。
+  - `pressure` —— 触摸压力，是一个介于 `0` 到 `1` 之间的浮点数。对于不支持压力检测的设备，这个值总是 `0.5`（按下时）或 `0`。
+  - `tangentialPressure` —— 归一化后的切向压力（tangential pressure）。
+  - `tiltX`, `tiltY`, `twist` —— 针对触摸笔的几个属性，用于描述笔和屏幕表面的相对位置。
 
 ### 事件：pointercancel
 
@@ -456,24 +447,24 @@ Before...
 
 `Keydown 和 keyup` 当一个按键被按下时，会触发 `keydown` 事件，而当按键被释放时，会触发 `keyup` 事件。
 
-`event.code` 和 `event.key` 事件对象的 `key` 属性允许获取字符，而事件对象的 `code` 属性则允许获取“物理按键代码”。
+`event.code` 和 `event.key` 事件对象的 `key` 属性允许获取字符，而**事件对象的 `code` 属性则允许获取“物理按键代码”**。
 
 例如，同一个按键 `Z`，可以与或不与 `Shift` 一起按下。我们会得到两个不同的字符：小写的 `z` 和大写的 `Z`。
 
-`event.key` 正是这个字符，并且它将是不同的。但是，`event.code` 是相同的：
+**`event.key` 正是这个字符，并且它将是不同的。但是，`event.code` 是相同的：**
 
-Key	|event.key|	event.code
-:--:|:--:|:--:
-Z	|z（小写）|	KeyZ
-Shift+Z	|Z（大写）|	KeyZ
+|   Key   | event.key | event.code |
+| :-----: | :-------: | :--------: |
+|    Z    | z（小写） |    KeyZ    |
+| Shift+Z | Z（大写） |    KeyZ    |
 
 如果用户使用不同的语言，那么切换到另一种语言将产生完全不同的字符，而不是 "Z"。它将成为 `event.key` 的值，而 `event.code` 则始终都是一样的："KeyZ"。
 
-如果按下一个键足够长的时间，它就会开始“自动重复”：`keydown` 会被一次又一次地触发，然后当按键被释放时，我们最终会得到 `keyup`。因此，有很多 `keydown` 却只有一个 `keyup` 是很正常的。
+**如果按下一个键足够长的时间，它就会开始“自动重复”**：`keydown` 会被一次又一次地触发，然后当按键被释放时，我们最终会得到 `keyup`。因此，有很多 `keydown` 却只有一个 `keyup` 是很正常的。
 
 对于由自动重复触发的事件，`event` 对象的 `event.repeat` 属性被设置为 `true`
 
-## 表单（form）元素事件
+## 表单元素事件
 
 ### document.forms
 
@@ -492,19 +483,19 @@ document.forms[0]  // 文档中的第一个表单
 <form name="my">
   <input name="one" value="1">
   <input name="two" value="2">
-	<input type="radio" name="age" value="10">
+  <input type="radio" name="age" value="10">
   <input type="radio" name="age" value="20">
 </form>
 
 <script>
   // 获取表单 等同于 let form = document.forms[0]
   let form = document.forms.my; // <form name="my"> 元素
-	
+
   // 获取表单中的元素
   let elem = form.elements.one; // <input name="one"> 元素
-	let ageElems = form.elements.age; // 元素集合
+ let ageElems = form.elements.age; // 元素集合
 
-	alert(ageElems[0]); // [object HTMLInputElement]
+ alert(ageElems[0]); // [object HTMLInputElement]
   alert(elem.value); // 1
 </script>
 ```
@@ -547,7 +538,7 @@ document.forms[0]  // 文档中的第一个表单
 
 <script>
   alert(form.elements.login == form.login); // true，与 <input> 相同
-	
+
   form.login.name = "username"; // 修改 input 的 name
 
   // form.elements 更新了 name：
@@ -561,7 +552,7 @@ document.forms[0]  // 文档中的第一个表单
 
 ### 反向引用：element.form
 
-![form](../Images/form.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/form.png)
 
 ```html
 <form id="form">
@@ -591,16 +582,16 @@ input.checked = true; // 对于复选框（checkbox）或单选按钮（radio bu
 ```
 
 > ⚠️ **使用 textarea.value 而不是 textarea.innerHTML**
-> 
+>
 >请注意，即使 `<textarea>...</textarea>` 将它们的 `value` 作为嵌套的 `HTML` 标签来保存，我们也绝不应该使用 `textarea.innerHTML` 来访问它。它仅存储最初在页面上的 `HTML`，而不是存储的当前 `value`。
 
 ### select 和 option
 
 一个 `<select>` 元素有 `3` 个重要的属性：
 
-- `select.options` —— `<option>` 的子元素的集合，
-- `select.value` —— 当前所选择的 `<option>` 的 value，
-- `select.selectedIndex` —— 当前所选择的 `<option>` 的编号。
+- **`select.options`** —— `<option>` 的子元素的集合，
+- **`select.value`** —— 当前所选择的 `<option>` 的 value，
+- **`select.selectedIndex`** —— 当前所选择的 `<option>` 的编号。
 
 它们提供了三种为 `<select>` 设置 `value` 的不同方式：
 
@@ -625,9 +616,9 @@ input.checked = true; // 对于复选框（checkbox）或单选按钮（radio bu
 
 `<option>` 元素具有以下属性：
 
-- `option.selected` —— `<option>` 是否被选择。
-- `option.index` —— `<option>` 在其所属的 `<select>` 中的编号。
-- `option.text` —— `<option>` 的文本内容（可以被访问者看到）。
+- **`option.selected`** —— `<option>` 是否被选择。
+- **`option.index`** —— `<option>` 在其所属的 `<select>` 中的编号。
+- **`option.text`** —— `<option>` 的文本内容（可以被访问者看到）。
 
 ### focus/blur 事件
 
@@ -635,8 +626,8 @@ input.checked = true; // 对于复选框（checkbox）或单选按钮（radio bu
 
 ```html
 <style>
-	.invalid { border-color: red; }
-	#error { color: red; }
+ .invalid { border-color: red; }
+ #error { color: red; }
 </style>
 
 Your email please: <input type="email" id="input">
@@ -667,9 +658,9 @@ input.onfocus = function() {
 
 ```html
 <style>
-	.error {
-		background: red;
-	}
+ .error {
+  background: red;
+ }
 </style>
 
 Your email please: <input type="email" id="input">
@@ -691,7 +682,7 @@ Your email please: <input type="email" id="input">
 
 请注意，我们无法通过在 `onblur` 事件处理程序中调用 `event.preventDefault()` 来“阻止失去焦点”，因为 `onblur` 事件处理程序是在元素失去焦点之后运行的。
 
-**focus 和 blur 事件不会向上冒泡**
+**focus 和 blur 事件不会向上冒泡。**
 
 这里有两个解决方案。
 
@@ -707,7 +698,7 @@ Your email please: <input type="email" id="input">
 
 切换顺序为：从 `1` 开始的具有 `tabindex` 的元素排在前面（按 `tabindex` 顺序），然后是不具有 `tabindex` 的元素（例如常规的 `<input>`）。
 
-具有 `tabindex `的元素按文档源顺序（默认顺序）切换。
+具有 `tabindex`的元素按文档源顺序（默认顺序）切换。
 
 这里有两个特殊的值：
 
@@ -731,14 +722,14 @@ Your email please: <input type="email" id="input">
 
 ### 事件：cut，copy，paste
 
-这些事件发生于剪切/拷贝/粘贴一个值的时候。可以使用 `event.preventDefault()` 来中止行为，然后什么都不会被复制/粘贴。
+这些事件发生于剪切/拷贝/粘贴一个值的时候。**可以使用 `event.preventDefault()` 来中止行为**，然后什么都不会被复制/粘贴。
 
 ### 事件：submit
 
 提交表单主要有两种方式：
 
 第一种 —— 点击 `<input type="submit">` 或 `<input type="image">`。
-第二种 —— 在 `input` 字段中按下` Enter` 键。
+第二种 —— 在 `input` 字段中按下`Enter` 键。
 
 这两个行为都会触发表单的 `submit` 事件。处理程序可以检查数据，如果有错误，就显示出来，并调用 `event.preventDefault()`，这样表单就不会被发送到服务器了。
 

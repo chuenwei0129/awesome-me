@@ -40,11 +40,11 @@
 
 ### ASCII 字符集
 
-背景：**因为计算机只能处理数字，如果要处理文本，就必须先把文本转换为数字才能处理。** 最早的计算机在设计时采用 8 个比特（bit）作为一个字节（byte）。一个字节能表示的最大的整数就是 `255（2^8-1=255）`，而 `ASCII` 编码，占用 `0 - 127` 用来表示大小写英文字母、数字和一些符号，这个编码表被称为 `ASCII` 编码。
+背景：**因为计算机只能处理数字，如果要处理文本，就必须先把文本转换为数字才能处理。** 最早的计算机在设计时采用 8 个比特（bit）作为一个字节（byte）。一个字节能表示的最大的整数就是 `255（2^8-1=255`，而 `ASCII` 编码，占用 `0 - 127` 用来表示大小写英文字母、数字和一些符号，这个编码表被称为 `ASCII` 编码。
 
-![](../Images/ascii.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/ascii.png)
 
-组成：26 个字母的大小写、数字、特殊符号、美式英语中的控制字符。在英语中，用 128 个符号编码便可以表示所有。`32～126`(共 95 个)是字符(32 是空格），其中 `48～57` 为 0 到 9 十个阿拉伯数字，`65～90` 为 26 个大写英文字母，`97～122` 号为 26 个小写英文字母，其余为一些标点符号、运算符号等。
+**组成：** 26 个字母的大小写、数字、特殊符号、美式英语中的控制字符。在英语中，用 128 个符号编码便可以表示所有。`32～126`(共 95 个)是字符(32 是空格），其中 `48～57` 为 0 到 9 十个阿拉伯数字，`65～90` 为 26 个大写英文字母，`97～122` 号为 26 个小写英文字母，其余为一些标点符号、运算符号等。
 
 大小规则：`0-9 < A-Z < a-z`。
 
@@ -52,7 +52,7 @@
 
 因为 `ASCII` 编码无法表示多国语言的编码，为了统一所有文字的编码，`Unicode` 应运而生。`Unicode` 把所有语言都统一到一套编码里，这样就不会再有乱码问题了。
 
-对于 `Unicode` 有一些误解，它仅仅只是一个字符集，规定了符合对应的二进制代码，至于这个二进制代码如何存储则没有任何规定。
+对于 `Unicode` 有一些误解，**它仅仅只是一个字符集**，规定了符合对应的二进制代码，**至于这个二进制代码如何存储则没有任何规定**。
 
 它从 `0` 开始，为每个符号指定一个编号，这叫做"码点"（code point）。比如，码点 `0` 的符号就是 `null`（表示所有二进制位都是 0 ）。
 
@@ -65,13 +65,13 @@ U+597D = 好
 
 `Unicode` 编码共有三种具体实现，分别为 `utf-8`,`utf-16`,`utf-32`
 
-`UTF-8 `是目前互联网上使用最广泛的一种 `Unicode` 编码方式，它的最大特点就是可变长。它可以使用 `1 - 4` 个字节表示一个字符，根据字符的不同变换长度。
+`UTF-8` 是目前互联网上使用最广泛的一种 `Unicode` 编码方式，它的最大特点就是可变长。它可以使用 `1 - 4` 个字节表示一个字符，根据字符的不同变换长度。
 
 ### JavaScript 使用哪一种编码
 
-> ⚠️ ES6 以后 `JavaScript` 内部，字符以 `UTF-16` 的格式储存，每个字符固定为 2 个字节。对于那些需要 4 个字节储存的字符（Unicode 码点大于 `0xFFFF` 的字符），`JavaScript` 会认为它们是两个字符。ES6 可以自动识别 4 字节的码点。
+> ⚠️ ES6 以后 JavaScript 内部，字符以 `UTF-16` 的格式储存，每个字符固定为 2 个字节。对于那些需要 4 个字节储存的字符（Unicode 码点大于 `0xFFFF` 的字符），JavaScript 会认为它们是两个字符。ES6 可以自动识别 4 字节的码点。
 
-`JavaScript` 允许直接用码点表示 `Unicode` 字符，写法是"反斜杠+u+码点"。
+JavaScript 允许直接用码点表示 `Unicode` 字符，写法是"反斜杠+u+码点"。
 
 ```js
 '好' === '\u597D' // true
@@ -79,7 +79,7 @@ U+597D = 好
 
 但是，这种表示法对 4 字节的码点无效。ES6 修正了这个问题，只要将码点放在大括号内，就能正确识别。
 
-![](../Images/unicode.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/unicode.png)
 
 #### 字符串处理函数
 
@@ -95,28 +95,30 @@ String.prototype.at() // 返回字符串给定位置的字符
 
 ES6 提供了 `u` 修饰符，对正则表达式添加 4 字节码点的支持。
 
-![](../Images/unicode-1.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/unicode-1.png)
 
 ### Base64 编码规则
 
-`Base64` 是一组相似的二进制到文本（binary-to-text）的编码规则，使得二进制数据在解释成 `radix-64` 的表现形式后能够用 `ASCII` 字符串的格式表示出来。`Base64` 这个词出自一种 `MIME` 数据传输编码。 
+**`Base64`** 是一组相似的二进制到文本（binary-to-text）的编码规则，使得二进制数据在解释成 `radix-64` 的表现形式后能够**用 `ASCII` 字符串的格式表示出来。**`Base64` 这个词出自一种 `MIME` 数据传输编码。
 
-`Base64` 编码普遍应用于需要通过被设计为处理文本数据的媒介上储存和传输二进制数据而需要编码该二进制数据的场景。这样是为了保证数据的完整并且不用在传输过程中修改这些数据。
+`Base64` 编码普遍**应用于需要通过被设计为处理文本数据的媒介上储存和传输二进制数据而需要编码该二进制数据的场景**。这样是为了保证数据的完整并且不用在传输过程中修改这些数据。
 
-在 `JavaScript` 中，有两个函数被分别用来处理解码和编码 `base64` 字符串：
+在 JavaScript 中，有两个函数被分别用来处理解码和编码 `base64` 字符串：
 
 - `atob()` 函数能够解码通过 `base-64` 编码的字符串数据。
 - 相反地，`btoa()` 函数能够从二进制数据“字符串”创建一个 `base-64` 编码的 `ASCII` 字符串。
 
-`atob()` 和 `btoa()` 均使用字符串。
+**`atob()` 和 `btoa()` 均使用字符串**。
 
-由于 `DOMString` 是 16 位编码的字符串，所以如果有字符超出了 8 位 `ASCII` 编码的字符范围时，在大多数的浏览器中对 `Unicode` 字符串调用 `window.btoa` 将会造成一个 `Character Out Of Range` 的异常。
+由于 `DOMString` 是 16 位编码的字符串，所以如果有字符超出了 8 位 `ASCII` 编码的字符范围时，**在大多数的浏览器中对 `Unicode` 字符串调用 `window.btoa` 将会造成一个 `Character Out Of Range` 的异常**。
+
+> [atob 和 btoa 的方法名是不是反了？](https://www.zhihu.com/question/264459351/answer/282820566)
 
 ## MIME 类型
 
 媒体类型（通常称为 Multipurpose Internet Mail Extensions 或 MIME 类型 ）是一种标准，用来表示文档、文件或字节流的性质和格式。
 
-> 重要：浏览器通常使用 MIME 类型（而不是文件扩展名）来确定如何处理 URL，因此 Web 服务器在响应头中添加正确的 MIME 类型非常重要。如果配置不正确，浏览器可能会曲解文件内容，网站将无法正常工作，并且下载的文件也会被错误处理。
+> 重要：浏览器通常使用 MIME 类型（而不是文件扩展名）来确定如何处理 URL，**因此 Web 服务器在响应头中添加正确的 MIME 类型非常重要。** 如果配置不正确，浏览器可能会曲解文件内容，网站将无法正常工作，并且下载的文件也会被错误处理。
 
 ### 通用结构
 
@@ -130,7 +132,7 @@ MIME 的组成结构非常简单；由类型与子类型两个字符串中间用
 
 ### 独立类型
 
-```md
+```sh
 text/plain
 text/html
 image/jpeg
@@ -231,6 +233,8 @@ Simple file.
 
 ## URL 对象
 
+> [手机端的浏览器 url 长度经常超长，最大长度具体是多上，哪里可以查？](https://www.zhihu.com/question/391726099)
+
 ### 创建 `URL` 对象
 
 创建一个新 URL 对象的语法：
@@ -239,8 +243,8 @@ Simple file.
 new URL(url, [base])
 ```
 
-- `url` —— 完整的 `URL`，或者仅路径（如果设置了 base），
-- `base` —— 可选的 `base URL`：如果设置了此参数，且参数 `url` 只有路径，则会根据这个 `base` 生成 `URL`。
+- **`url`** —— 完整的 `URL`，或者仅路径（如果设置了 base），
+- **`base`** —— 可选的 `base URL`：如果设置了此参数，且参数 `url` 只有路径，则会根据这个 `base` 生成 `URL`。
 
 例如：
 
@@ -248,7 +252,7 @@ new URL(url, [base])
 let url = new URL('https://javascript.info/profile/admin');
 ```
 
-![](../Images/url.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/url.png)
 
 - `href` 是完整的 `URL`，与 `url.toString()` 相同
 - `protocol` 以冒号字符 : 结尾
@@ -267,11 +271,11 @@ let url = new URL('https://javascript.info/profile/admin');
 new URL('https://google.com/search?query=JavaScript')
 ```
 
-如果参数中包含空格，非拉丁字母等（具体参见下文），参数就需要被编码。
+**如果参数中包含空格，非拉丁字母等（具体参见下文），参数就需要被编码。**
 
 因此，有一个 `URL` 属性用于解决这个问题：`url.searchParams`。
 
-它为搜索参数提供了简便的方法：
+它为搜索参数提供了简便的方法（自动处理编解码）：
 
 - `append(name, value)` —— 按照 `name` 添加参数
 - `delete(name)` —— 按照 `name` 移除参数
@@ -281,7 +285,7 @@ new URL('https://google.com/search?query=JavaScript')
 - `set(name, value)` —— `set/replace` 参数
 - `sort()` —— 按 `name` 对参数进行排序，很少使用
 
-……并且它是可迭代的，类似于 `Map`。
+……并且它是**可迭代的**，类似于 `Map`。
 
 包含空格和标点符号的参数的示例：
 
@@ -307,10 +311,10 @@ for(let [name, value] of url.searchParams) {
 
 下面是用于编码/解码 URL 的内建函数：
 
-- `encodeURI` —— 编码整个 `URL`。
-- `decodeURI` —— 解码为编码前的状态。
-- `encodeURIComponent` —— 编码 `URL` 组件，例如搜索参数，或者 `hash`，或者 `pathname`。
-- `decodeURIComponent` —— 解码为编码前的状态。
+- **`encodeURI`** —— 编码整个 `URL`。
+- **`decodeURI`** —— 解码为编码前的状态。
+- **`encodeURIComponent`** —— 编码 `URL` 组件，例如搜索参数，或者 `hash`，或者 `pathname`。
+- **`decodeURIComponent`** —— 解码为编码前的状态。
 
 `encodeURIComponent` 和 `encodeURI` 之间的区别
 
@@ -331,7 +335,7 @@ https://site.com:8080/path/page?p1=v1&p2=v2#hash
 
 `ArrayBuffer` 对象代表储存二进制数据的一段内存，它不能直接读写，只能通过视图（TypedArray 视图和 DataView 视图)来读写，视图的作用是以指定格式解读二进制数据。
 
-`ArrayBuffer` 也是一个构造函数，可以分配一段可以存放数据的连续内存区域。
+`ArrayBuffer` 也是一个构造函数，**可以分配一段可以存放数据的连续内存区域。**
 
 ```js
 const buf = new ArrayBuffer(32);
@@ -521,14 +525,14 @@ alert(uint8Array); // 72,101,108,108,111
 
 `Blob` 由一个可选的字符串 `type`（通常是 `MIME` 类型）和 `blobParts` 组成 —— 其他 `Blob` 对象，字符串和 `BufferSource`。
 
-![](../Images/blob.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/blob.png)
 
 ```js
 new Blob(blobParts, options);
 ```
 
-- `blobParts` 是 `Blob/BufferSource/String` 类型的值的数组。
-- `options` 可选对象：`type` —— `Blob` 类型，通常是 `MIME` 类型，例如 `image/png`，`endings` —— 是否转换换行符，使 `Blob` 对应于当前操作系统的换行符（\r\n 或 \n）。默认为 "transparent"（啥也不做），不过也可以是 "native"（转换）。
+- **`blobParts`** 是 `Blob/BufferSource/String` 类型的值的**数组**。
+- **`options`** 可选对象：`type` —— `Blob` 类型，通常是 `MIME` 类型，例如 `image/png`，`endings` —— 是否转换换行符，使 `Blob` 对应于当前操作系统的换行符（\r\n 或 \n）。默认为 "transparent"（啥也不做），不过也可以是 "native"（转换）。
 
 例如：
 
@@ -560,7 +564,7 @@ blob:https://javascript.info/1e67e00e-860d-40a5-89ae-6ab0cbee6273
 
 生成的 `URL`（即其链接）仅在当前文档打开的状态下才有效。它允许引用 `<img>`、`<a>` 中的 Blob，以及基本上任何其他期望 `URL` 的对象。
 
-不过它有个副作用。虽然这里有 `Blob` 的映射，但 `Blob` 本身只保存在内存中的。浏览器无法释放它。
+不过它有个副作用。虽然这里有 `Blob` 的映射，**但 `Blob` 本身只保存在内存中的。浏览器无法释放它。**
 
 在文档退出时（unload），该映射会被自动清除，因此 `Blob` 也相应被释放了。但是，如果应用程序寿命很长，那这个释放就不会很快发生。
 
@@ -608,10 +612,12 @@ reader.onload = function() {
 这两种从 `Blob` 创建 `URL` 的方法都可以用。但通常 `URL.createObjectURL(blob)` 更简单快捷。
 
 URL.createObjectURL(blob)
+
 - 如果介意内存，我们需要撤销（revoke）它们
 - 直接访问 Blob，无需“编码/解码”
 
 Blob 转换为 data url
+
 - 无需撤销（revoke）任何操作。
 - 对大的 Blob 进行编码时，性能和内存会有损耗。
 
@@ -719,7 +725,7 @@ function showFile(input) {
 ```
 
 > ⚠️ **请注意**：
-> 
+>
 > 输入（input）可以选择多个文件，因此 `input.files` 是一个类数组对象。这里我们只有一个文件，所以我们只取 `input.files[0]`。
 
 ### FileReader
@@ -790,24 +796,22 @@ function readFile(input) {
 
 1. 如何上传本地图片并在网页上展示
 
-```js
-本地上传图片 -> Blob -> Object URL
-```
+    ```js
+    本地上传图片 -> Blob -> Object URL
+    ```
 
 2. 如何拼接两个音频文件
-  
-```js
-fetch请求音频资源 -> ArrayBuffer -> TypedArray -> 拼接成一个 TypedArray -> ArrayBuffer -> Blob -> Object URL
-```
+
+    ```js
+    fetch 请求音频资源 -> ArrayBuffer -> TypedArray -> 拼接成一个 TypedArray -> ArrayBuffer -> Blob -> Object URL
+    ```
 
 3. 如何把 `json` 数据转化为 `demo.json` 并下载文件
 
-```js
-Text -> DataURL
-```
+    ```js
+    Text -> DataURL
+    ```
 
 ## 扩展知识
 
 多线程共享内存，最大的问题就是如何防止两个线程同时修改某个地址，或者说，当一个线程修改共享内存以后，必须有一个机制让其他线程同步。`SharedArrayBuffer API` 提供 `Atomics` 对象，保证所有共享内存的操作都是“原子性”的，并且可以在所有线程内同步。
-
-什么叫“原子性操作”呢？
