@@ -63,7 +63,6 @@
 
 - `[vue]`[vue 知识点梳理](web/vue.md)
 - `[axios]`[axios 学习指南](web/axios.md)
-- `[Node]` [Node 版本及源管理](others/nvm.md)
 - `[react]` [关于 React 的一切（一）](web/react1.md)
 - `[react]` [关于 React 的一切（二）](web/react.md)
 
@@ -79,6 +78,8 @@
 
 ## 构建工具
 
+- `[Node]` [Node 版本及源管理](others/nvm.md)
+
 - `[基础配置]` [渐进式的学习 Webpack](webpack/webpack_base.md)
 - `[进阶原理]` [Webpack 从入门到入土](webpack/webpack_high.md)
 
@@ -92,4 +93,3 @@
 - `[Vscode]` [Vscode 使用指北](web/code.md)
 - `[ESLint]` [搞懂 ESLint 和 Prettier](ts/eslint.md)
 - `[Chrome]` [Chrome DevTools 面板全攻略](ts/devTool.md)
-- `[Markdown]` [Markdown 的基本撰写和格式语法](others/markdown.md)
