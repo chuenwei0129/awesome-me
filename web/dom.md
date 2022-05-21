@@ -58,11 +58,11 @@
 
 **是一个概念。**
 
-DOM 并不属于 JavaScript 语言的一部分。DOM 是 JavaScript 的运行平台（浏览器）提供的，比如在 **nodejs** 中就没有 DOM。
+DOM 并不属于 JavaScript 语言的一部分。DOM 是 JavaScript 的运行平台（浏览器）提供的，比如在 Node 中就没有 DOM。
 
-JavaScript 类型分为 2 大类：原生类型和对象类型。而 DOM 是对象类型。
+JavaScript 类型分为 2 大类：**原生类型**和**对象类型**。而 DOM 是对象类型。
 
-**所有的 DOM 没有任何特殊之处，都是一个 Object 的子类**。
+> **所有的 DOM 没有任何特殊之处，都是一个 Object 的子类**。
 
 当我们创建了一个 DOM Object 后，我们就可以把这个 DOM Object 当作一个普通的 JavaScript 对象来使用。
 
@@ -84,7 +84,7 @@ let obj = {}
 
 > **⚠️ 注意：**
 
-**问：** 直接把一个 DOM 对象当作 JS 对象那样读写非 API 属性，会像 DOM 一样慢，还是像操作普通 JS 对象一样快呢？
+**问：** 直接把一个 DOM 对象当作 JS 对象那样**读写非 API 属性**，会像 DOM 一样慢，还是像操作普通 JS 对象一样快呢？
 
 **答：** 因为 JS 访问的 DOM 对象实际上是 DOM 引擎中的对象在 JS 引擎的包装对象，**理论上访问其非 API 属性应该和 JS 对象一样快**。
 
