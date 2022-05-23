@@ -1,4 +1,4 @@
-# 写给自己的 TypeScript 教程(一)<!-- omit in toc -->
+# 🔖 TypeScript 备忘录：基础语法<!-- omit in toc -->
 
 - [基础类型和对象类型](#基础类型和对象类型)
 - [Enum 类型](#enum-类型)
@@ -119,7 +119,7 @@ enum Enum {
 }
 ```
 
-以上代码对于的 ES5 代码如下：
+以上代码编译后的 ES5 代码如下：
 
 ```js
 'use strict'
