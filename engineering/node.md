@@ -1,5 +1,58 @@
 # 前端工程化：前置知识<!-- omit in toc -->
 
+- [Node 版本管理：nvm](#node-版本管理nvm)
+  - [windows](#windows)
+    - [nvm-windows 安装](#nvm-windows-安装)
+    - [常用命令](#常用命令)
+    - [使用淘宝镜像](#使用淘宝镜像)
+    - [windows 下 npm 全局包设置](#windows-下-npm-全局包设置)
+    - [nrm 管理 npm 镜像](#nrm-管理-npm-镜像)
+  - [MacOS](#macos)
+    - [第一步：安装](#第一步安装)
+    - [第二步：设置 nvm 的环境变量](#第二步设置-nvm-的环境变量)
+    - [MacOS 下 常用 nvm 命令](#macos-下-常用-nvm-命令)
+    - [M1 芯片 Mac 管理 `v14` 及以下的老版本 Node](#m1-芯片-mac-管理-v14-及以下的老版本-node)
+    - [Node 被安装在哪里？](#node-被安装在哪里)
+    - [MacOS：在多环境中，npm 该如何使用呢？](#macos在多环境中npm-该如何使用呢)
+- [包管理：npm](#包管理npm)
+  - [基础命令](#基础命令)
+  - [npm init 创建模块](#npm-init-创建模块)
+  - [npm set 设置环境变量](#npm-set-设置环境变量)
+  - [npm search 搜索模块](#npm-search-搜索模块)
+  - [npm list 查看模块](#npm-list-查看模块)
+  - [npm install 安装模块](#npm-install-安装模块)
+  - [npm uninstall 卸载模块](#npm-uninstall-卸载模块)
+  - [npm update 更新模块](#npm-update-更新模块)
+  - [npm run 执行脚本](#npm-run-执行脚本)
+  - [npm publish 发布模块](#npm-publish-发布模块)
+  - [npm-link](#npm-link)
+  - [npm 网络问题](#npm-网络问题)
+    - [npm 镜像](#npm-镜像)
+    - [镜像设置](#镜像设置)
+    - [node-gyp](#node-gyp)
+    - [node-sass](#node-sass)
+    - [Node 版本与 node-sass 版本不兼容](#node-版本与-node-sass-版本不兼容)
+    - [npm 安装失败后重新安装](#npm-安装失败后重新安装)
+    - [总结](#总结)
+- [npx](#npx)
+  - [用于简化在终端中对 node_modules 下 .bin 文件的直接执行](#用于简化在终端中对-node_modules-下-bin-文件的直接执行)
+  - [避免污染全局环境](#避免污染全局环境)
+  - [npx 执行命令和 package.json/script 执行命令的区别](#npx-执行命令和-packagejsonscript-执行命令的区别)
+- [面试官：听说你对 package.json 很熟？](#面试官听说你对-packagejson-很熟)
+  - [基础版的 package.json](#基础版的-packagejson)
+  - [scripts（快捷脚本）](#scripts快捷脚本)
+  - [dependencies & devDependencies（项目依赖）](#dependencies--devdependencies项目依赖)
+  - [main（主要入口）](#main主要入口)
+  - [bin（自定义命令）](#bin自定义命令)
+  - [package.json 和 package-lock.json 有哪些区别和作用？](#packagejson-和-package-lockjson-有哪些区别和作用)
+  - [npm 与 yarn 对 peerDependencies 处理的差异](#npm-与-yarn-对-peerdependencies-处理的差异)
+- [实现一个简易的 npm install](#实现一个简易的-npm-install)
+  - [依赖分析](#依赖分析)
+  - [解决版本冲突](#解决版本冲突)
+  - [解决循环依赖](#解决循环依赖)
+  - [依赖分析和下载分离](#依赖分析和下载分离)
+  - [全局缓存](#全局缓存)
+
 ## Node 版本管理：nvm
 
 ### windows
@@ -661,5 +714,37 @@ npx create-react-app my-app
 ### [npm 与 yarn 对 peerDependencies 处理的差异](https://zhuanlan.zhihu.com/p/237532427)
 
 1. 如果希望供 npm 使用，且你只是一个 npm 包而不是依赖链终点的实际 app，那么不要“帮用户”安装 peer 依赖，而是在自己的 package.json 中加上相同的 peerDependencies，请最终用户来满足这些依赖。
+
 2. 如果仅供 yarn 使用，你可以放心地帮用户把 peer 依赖全部搞定，保持对用户封装效果，减少用户的使用成本。
+
 3. 由于这种情况出现的概率其实很小，且 npm 7.x 会解决这一问题，因此推荐帮用户装上 peer 依赖，真出了意外可以推荐用户安装 npm 7.x。
+
+## [实现一个简易的 npm install](https://zhuanlan.zhihu.com/p/373511155)
+
+### 依赖分析
+
+我们首先梳理了不同环境（浏览器、node、跨端引擎）对于第三方包的处理方式不同，浏览器需要打包，node 是运行时查找，**跨端引擎也是运行时查找**，但是用自己实现的一套机制。
+
+通过分析项目根目录的 `bundle.json` 作为入口，下载每一个依赖，分析 `bundle.json`，然后继续下载每一个依赖项，**递归这个过程**。这就是依赖分析的过程。
+
+但是这种思路存在问题，比如：版本冲突怎么办？循环依赖怎么办？版本冲突时的冗余下载？多个项目的公共依赖的重复下载？
+
+### 解决版本冲突
+
+版本冲突是多个包依赖了同一个包，但是依赖的版本不同，这时候就要选择一个版本来安装，我们可以简单的把规则定为使用高版本的那个。
+
+### 解决循环依赖
+
+包之间是可能有循环依赖的（这也是为什么叫做依赖图，而不是依赖树），这种问题的解决方式就是记录下处理过的包，如果同个版本的包被分析过，那么久不再进行分析，直接拿缓存。
+
+### 依赖分析和下载分离
+
+版本冲突时会下载版本最高的包，但是这时候之前的低版本的包已经下载过了，那么就多了没必要的下载，能不能把这部分冗余下载去掉。
+
+多下载了一些低版本的包的原因是我们在依赖分析的过程中进行了下载，那么能不能依赖分析的时候只下载 bundle.json 来做分析，分析完确定了依赖图之后再去批量下载依赖？
+
+这样我们在依赖分析的时候只下载一个 bundle.json 到临时目录，分析依赖、解决冲突，确定了依赖图之后，再去批量下载，最后要把临时目录删除。
+
+### 全局缓存
+
+为了避免多个项目的公共依赖的重复下载，我们实现了全局缓存，先下载到全局目录，然后再复制到本地。

@@ -17,6 +17,12 @@
 - `[Git]` [怕遗忘 Git 的我，把相关知识点都记录下来就对了](others/git.md)
 - `[Switch]` [关于我破解了 Switch 并且装满了游戏依然吃灰这件事](others/switch.md)
 
+## 前端工程化
+
+- `[前置知识]` [前端工程化：前置知识](engineering/node.md)
+- `[转译器]` [前端工程化：转译器](engineering/ast.md)
+- `[webpack]` [前端工程化：打包工具](engineering/webpack.md)
+
 ## 计算机基础知识图谱
 
 - `[基础知识]` [计算机基础知识图谱（一）](computer/base.md)
