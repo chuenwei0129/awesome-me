@@ -62,6 +62,7 @@
       - [方法二：cache.version](#方法二cacheversion)
       - [方法三：cache.name](#方法三cachename)
   - [长期缓存优化](#长期缓存优化)
+  - [模块联邦](#模块联邦)
 
 ## 安装 [webpack](https://webpack.docschina.org/)
 
@@ -1338,3 +1339,7 @@ module.exports = {
 ### 长期缓存优化
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/fe-engineering/SCR-20220525-ofr.png)
+
+### 模块联邦
+
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/fe-engineering/SCR-20220525-pfd.png)
