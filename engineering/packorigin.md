@@ -66,6 +66,8 @@ function a(this_module, webpack_exports, webpack_require) {
 runtime([b, a]); // 数组下标顺序和 module 编号一致
 ```
 
+> [手写一个 JavaScript 打包器](https://github.com/chuenwei0129/build-my-own-x/blob/main/packages/build-my-own-pack/README.md)
+
 ## [Webpack HMR 原理解析](https://zhuanlan.zhihu.com/p/30669007)
 
 <!-- webpack done、hash、EventSource、jsonp -->
@@ -89,10 +91,8 @@ if(module.hot) {
 }
 ```
 
-## [Tapable](https://github.com/webpack/tapable)
-
-## Create React App
-
 ## 🔗 链接
 
 - [webpack 自己也有 ast，babel 也有 ast 解析 有何不同，为何不整合？](https://www.zhihu.com/question/309893645)
+
+<!-- ## [Tapable](https://github.com/webpack/tapable) -->
