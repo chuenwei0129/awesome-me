@@ -1,5 +1,7 @@
 # 前端工程化：webpack 原理分析<!-- omit in toc -->
 
+> 不要专注于流程的配置和调参。因为流程终会简化，参数（API）终会升级。
+
 ## [前端有必要学习 webpack 吗？](https://www.zhihu.com/question/472006458)
 
 **对于「Webpack 到底是如何工作的」这样的问题，倒很容易一段话说清楚：**
@@ -94,5 +96,4 @@ if(module.hot) {
 ## 🔗 链接
 
 - [webpack 自己也有 ast，babel 也有 ast 解析 有何不同，为何不整合？](https://www.zhihu.com/question/309893645)
-
-<!-- ## [Tapable](https://github.com/webpack/tapable) -->
+- [webpack 易混淆知识点](https://www.cnblogs.com/skychx/tag/Webpack/)
