@@ -21,7 +21,8 @@
 
 - `[前置知识]` [前端工程化：前置知识](engineering/node.md)
 - `[转译器]` [前端工程化：转译器](engineering/ast.md)
-- `[webpack]` [前端工程化：打包工具](engineering/webpack.md)
+- `[webpack]` [前端工程化：webpack 配置](engineering/webpack.md)
+- `[webpack]` [前端工程化：webpack 原理分析](engineering/webpack.md)
 
 ## 计算机基础知识图谱
 

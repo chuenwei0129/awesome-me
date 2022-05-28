@@ -1,4 +1,4 @@
-# 前端工程化：webpack<!-- omit in toc -->
+# 前端工程化：webpack 配置<!-- omit in toc -->
 
 - [安装 webpack](#安装-webpack)
 - [基础配置](#基础配置)
