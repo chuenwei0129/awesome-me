@@ -18,127 +18,136 @@ const REJECTED = 'REJECTED'
 const PENDING = 'PENDING'
 
 const resolvePromise2 = (promise2, x, resolve, reject) => {
-	if (promise2 === x) {
-		reject(new TypeError('出错了'))
-	} else if ((typeof x === 'object' && x !== null) || typeof x === 'function') {
-		let called = null
-		try {
-			// 这个 trycatch处理 x.then，由于第三方所以 要开始处理
-			const then = x.then
-			if (typeof then === 'function') {
-				then.call(x, y => {
-					if (called) return
-					called = true
-					resolvePromise2(promise2, y, resolve, reject)
-				}, r => {
-					if (called) return
-					called = true
-					reject(r)
-				})
-			} else {
-				resolve(x)
-			}
-		} catch (err) {
-			if (called) return
-			called = true
-			reject(err)
-		}
-	} else {
-		resolve(x)
-	}
+  if (promise2 === x) {
+    reject(new TypeError('出错了'))
+  } else if ((typeof x === 'object' && x !== null) || typeof x === 'function') {
+    let called = null
+    try {
+      // 这个 trycatch处理 x.then，由于第三方所以 要开始处理
+      const then = x.then
+      if (typeof then === 'function') {
+        then.call(
+          x,
+          y => {
+            if (called) return
+            called = true
+            resolvePromise2(promise2, y, resolve, reject)
+          },
+          r => {
+            if (called) return
+            called = true
+            reject(r)
+          }
+        )
+      } else {
+        resolve(x)
+      }
+    } catch (err) {
+      if (called) return
+      called = true
+      reject(err)
+    }
+  } else {
+    resolve(x)
+  }
 }
 
 class Promise {
-	constructor(exe) {
-		this.state = PENDING
-		this.value = null
-		this.reason = null
-		this.resolvedCb = []
-		this.rejectedCb = []
+  constructor(exe) {
+    this.state = PENDING
+    this.value = null
+    this.reason = null
+    this.resolvedCb = []
+    this.rejectedCb = []
 
-		const resolve = (value) => {
-			if (this.state === PENDING) {
-				this.state = RESOLVED
-				this.value = value
-				this.resolvedCb.forEach(fn => fn())
-			}
-		}
+    const resolve = value => {
+      if (this.state === PENDING) {
+        this.state = RESOLVED
+        this.value = value
+        this.resolvedCb.forEach(fn => fn())
+      }
+    }
 
-		const reject = (reason) => {
-			if (this.state === PENDING) {
-				this.state = REJECTED
-				this.reason = reason
-				this.rejectedCb.forEach(fn => fn())
-			}
-		}
+    const reject = reason => {
+      if (this.state === PENDING) {
+        this.state = REJECTED
+        this.reason = reason
+        this.rejectedCb.forEach(fn => fn())
+      }
+    }
 
-		try {
-			exe(resolve, reject)
-		} catch (err) {
-			reject(err)
-		}
-	}
-	then(onfulfilled, onrejected) {
-		onfulfilled = typeof onfulfilled === 'function' ? onfulfilled : value => value
-		onrejected = typeof onrejected === 'function' ? onrejected : err => { throw err }
-		const promise2 = new Promise((resolve, reject) => {
-			// 同步
-			if (this.state === RESOLVED) {
-				setTimeout(() => {
-					try {
-						const x = onfulfilled(this.value)
-						resolvePromise2(promise2, x, resolve, reject)
-					} catch (err) {
-						reject(err)
-					}
-				})
-			}
-			if (this.state === REJECTED) {
-				setTimeout(() => {
-					try {
-						const x = onrejected(this.reason)
-						resolvePromise2(promise2, x, resolve, reject)
-					} catch (err) {
-						reject(err)
-					}
-				})
-			}
-			// 异步
-			if (this.state === PENDING) {
-				this.resolvedCb.push(() => {
-					setTimeout(() => {
-						try {
-							const x = onfulfilled(this.value)
-							resolvePromise2(promise2, x, resolve, reject)
-						} catch (err) {
-							reject(err)
-						}
-					})
-				})
-				this.rejectedCb.push(() => {
-					setTimeout(() => {
-						try {
-							const x = onrejected(this.reason)
-							resolvePromise2(promise2, x, resolve, reject)
-						} catch (err) {
-							reject(err)
-						}
-					})
-				})
-			}
-		})
+    try {
+      exe(resolve, reject)
+    } catch (err) {
+      reject(err)
+    }
+  }
+  then(onfulfilled, onrejected) {
+    onfulfilled = typeof onfulfilled === 'function' ? onfulfilled : value => value
+    onrejected =
+      typeof onrejected === 'function'
+        ? onrejected
+        : err => {
+            throw err
+          }
+    const promise2 = new Promise((resolve, reject) => {
+      // 同步
+      if (this.state === RESOLVED) {
+        setTimeout(() => {
+          try {
+            const x = onfulfilled(this.value)
+            resolvePromise2(promise2, x, resolve, reject)
+          } catch (err) {
+            reject(err)
+          }
+        })
+      }
+      if (this.state === REJECTED) {
+        setTimeout(() => {
+          try {
+            const x = onrejected(this.reason)
+            resolvePromise2(promise2, x, resolve, reject)
+          } catch (err) {
+            reject(err)
+          }
+        })
+      }
+      // 异步
+      if (this.state === PENDING) {
+        this.resolvedCb.push(() => {
+          setTimeout(() => {
+            try {
+              const x = onfulfilled(this.value)
+              resolvePromise2(promise2, x, resolve, reject)
+            } catch (err) {
+              reject(err)
+            }
+          })
+        })
+        this.rejectedCb.push(() => {
+          setTimeout(() => {
+            try {
+              const x = onrejected(this.reason)
+              resolvePromise2(promise2, x, resolve, reject)
+            } catch (err) {
+              reject(err)
+            }
+          })
+        })
+      }
+    })
 
-		return promise2
-	}
+    return promise2
+  }
 }
 
-Promise.defer = Promise.deferred = function() {
-	const dfd = {}
-	dfd.promise = new Promise((resolve, reject) => {
-		dfd.resolve = resolve
-		dfd.reject = reject
-	})
-	return dfd
+Promise.defer = Promise.deferred = function () {
+  const dfd = {}
+  dfd.promise = new Promise((resolve, reject) => {
+    dfd.resolve = resolve
+    dfd.reject = reject
+  })
+  return dfd
 }
 
 module.exports = Promise

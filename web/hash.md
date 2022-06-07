@@ -158,14 +158,3 @@ console.log('history end: ', window.history) // length
 
 </html>
 ```
-
-## react-router
-
-router容器 route规则
-
-匹配qianzui
-
-exact
-
-方法是实力伤的不再原型上
-

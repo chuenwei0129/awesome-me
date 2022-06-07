@@ -171,4 +171,5 @@ dispatch({type:'fetchUser', payload: fetchUserPromise() })
 完。
 
 
+n2 双指针碰撞
 
