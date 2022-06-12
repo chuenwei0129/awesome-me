@@ -30,7 +30,7 @@
     - [一些扩展](#一些扩展)
     - [一些插件](#一些插件)
   - [Prettier 配置项解析](#prettier-配置项解析)
-- [Husky + lint-staged 打造合格的代码检查工作流](#husky--lint-staged-打造合格的代码检查工作流)
+- [Husky + lint-staged 打造合格的代码检查工作流（已过时）](#husky--lint-staged-打造合格的代码检查工作流已过时)
 - [参考资料](#参考资料)
 
 ## 前端领域需要哪些转译器
@@ -339,10 +339,7 @@ npm i eslint-config-prettier eslint-plugin-prettier -D
 {
   "extends": [
     "plugin:prettier/recommended"
-  ],
-  "rules": {
-    "prettier/prettier": "error",
-  }
+  ]
 }
 ```
 
@@ -568,7 +565,7 @@ module.exports = {
 }
 ```
 
-## Husky + lint-staged 打造合格的代码检查工作流
+## Husky + lint-staged 打造合格的代码检查工作流（已过时）
 
 首先，安装依赖：
 
@@ -581,7 +578,7 @@ npm install -D husky
 ```sh
 {
   "scripts": {
-    "precommit": "eslint src/**/*.js"
+    "precommit": "eslint src/*.js"
   }
 }
 ```
@@ -609,14 +606,15 @@ npm install -D lint-staged
   }
 },
 "lint-staged": {
-  "src/**/*.{js,vue}": ["prettier --write", "eslint --cache --fix", "git add"]
+  "src/*.{js,vue}": ["prettier --write", "eslint --cache --fix", "git add"]
 }
 ```
 
 在进行 `git commit` 的时候会触发到 `git hook` 进而执行 `precommit`，而`precommit` 脚本引用了 `lint-staged` 配置表明只对 `git add` 到 `stage` 区的文件进行扫描，具体 `lint-staged` 做了三件事情：
 
-执行 `Prettier` 脚本，这是对代码进行格式化的;
-执行 `eslint --fix` 操作，进行扫描，对 `eslint` 问题进行修复；
+- 执行 `Prettier` 脚本，这是对代码进行格式化的;
+- 执行 `eslint --fix` 操作，进行扫描，对 `eslint` 问题进行修复；
+
 上述两项任务完成后将代码重新 `add` 进 `stage` 区，然后执行 `commit`。
 
 ## 参考资料

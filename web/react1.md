@@ -1,7 +1,7 @@
 # 关于 React 的一切（一）<!-- omit in toc -->
 
 - [如何优雅地处理使用 React Context 导致的不必要渲染问题？](#如何优雅地处理使用-react-context-导致的不必要渲染问题)
-- [React 在 Dev mode 下会刻意执行两次渲染](#react-在-dev-mode-下会刻意执行两次渲染)
+- [React.StrictMode](#reactstrictmode)
 - [vue 和 react 的区别](#vue-和-react-的区别)
 - [React 更新粒度](#react-更新粒度)
 - [batchedUpdates](#batchedupdates)
@@ -69,7 +69,7 @@
 
 useContextSelector 实现的就是一个 provider 里面搞依赖收集，然后用 ref 来做状态，dispatch 后触发对应 selector 的 context 更新嘛。而 new context 本来就是一个这种实现了，只是它没有做 selector 的精确更新，但这不是重新在这套体系里面再实现一个用户层面的依赖更新的理由啊（纯粹就是利用现有的 context 再重复实现了一个 context，完全没必要嘛。）
 
-## React 在 Dev mode 下会刻意执行两次渲染
+## React.StrictMode
 
 对于 react 而言，它推崇的是渲染结果只与 state 和 props 有关，也就是说，`result = f(props, state)`。
 
@@ -91,11 +91,11 @@ function App() {
 export default App
 ```
 
-在开发模式下的两次重复渲染，传的 state 和 props 是一样的，因此渲染结果应该是一致的。如果不一致的话，那么可能你代码里存在了副作用，比如题主例子中，依赖了外部的 count，这就可能导致重复渲染的结果不一致。而 react 这种做法就是想在开发者在开发的时候就发现这个隐患并解决。
+React 在开发模式下会刻意执行两次渲染，如果传的 state 和 props 是一样的，渲染结果应该是一致的。如果不一致的话，那么可能你代码里存在了副作用，比如例子中，依赖了外部的 count，这就可能导致重复渲染的结果不一致。而 react 这种做法就是想在开发者在开发的时候就发现这个隐患并解决。
 
-这就跟 get 请求一样，同样参数的两次 get 请求，返回的结果应该是一样的，叫做幂等原则。render 函数应该也是幂等的
+这就跟 get 请求一样，同样参数的两次 get 请求，返回的结果应该是一样的，叫做幂等原则。render 函数应该也是幂等的。
 
-只有启用了 react strict mode 了话才会有这样的行为
+只有启用了 React.StrictMode 才会有这样的行为。
 
 ## vue 和 react 的区别
 

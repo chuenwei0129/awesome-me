@@ -17,12 +17,20 @@
 - `[Git]` [怕遗忘 Git 的我，把相关知识点都记录下来就对了](others/git.md)
 - `[Switch]` [关于我破解了 Switch 并且装满了游戏依然吃灰这件事](others/switch.md)
 
+## 框架
+
+> React is not reactive. Vue is not only view.
+
+- `[react]` [我学过的 React 知识点，都在这了](framework/react.md)
+<!-- TODO: vue -->
+
 ## 前端工程化
 
-- `[前置知识]` [前端工程化：前置知识](engineering/node.md)
-- `[转译器]` [前端工程化：转译器](engineering/ast.md)
-- `[webpack]` [前端工程化：webpack 配置](engineering/webpack.md)
-- `[webpack]` [前端工程化：webpack 原理分析](engineering/packorigin.md)
+- `[前置知识]` [Node 版本管理和 npm 包管理](engineering/node.md)
+- `[转译器]` [前端领域需要哪些转译器](engineering/ast.md)
+- `[webpack]` [webpack 配置备忘录](engineering/webpack.md)
+- `[webpack]` [webpack 原理分析与思考](engineering/packorigin.md)
+- `[create-react-app]` [记录一次 react 环境配置](engineering/cra.md)
 
 ## 计算机基础知识图谱
 
@@ -64,15 +72,25 @@
 - `[思考]`[写给自己的 TypeScript 教程(三)](ts/ts_3.md)
 - `[实践]`[写给自己的 TypeScript 教程(四)](ts/ts_4.md)
 
-## 框架
+## WEB API
+
+- `[DOM]` [DOM 基础知识梳理](web/dom.md)
+- `[HTML]`[HTML 网页元素](web/html.md)
+- `[坐标]` [窗口、坐标和滚动](web/scroll.md)
+- `[事件]` [事件和表单](web/event.md)
+- `[二进制]` [前端操作文件和二进制数据](web/data.md)
+- `[Cookies]` [数据存储、安全和鉴权](web/cookie.md)
+- `[网络请求]`[网络请求](web/xhr.md)`
+
+<!-- ## 框架
 
 <!-- React is not reactive.Vue is not only view.[思考] -->
-
+<!--
 - `[vue]`[vue 知识点梳理](web/vue.md)
 - `[axios]`[axios 学习指南](web/axios.md)
 - `[react]` [关于 React 的一切（一）](web/react1.md)
-- `[react]` [关于 React 的一切（二）](web/react.md)
-
+- `[react]` [关于 React 的一切（二）](web/react.md) -->
+<!--
 ## WEB API
 
 - `[DOM]` [DOM 基础知识梳理](web/dom.md)
@@ -99,4 +117,4 @@
 
 - `[Vscode]` [Vscode 使用指北](web/code.md)
 - `[ESLint]` [搞懂 ESLint 和 Prettier](ts/eslint.md)
-- `[Chrome]` [Chrome DevTools 面板全攻略](ts/devTool.md)
+- `[Chrome]` [Chrome DevTools 面板全攻略](ts/devTool.md) -->
