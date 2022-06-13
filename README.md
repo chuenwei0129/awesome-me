@@ -22,6 +22,8 @@
 > React is not reactive. Vue is not only view.
 
 - `[react]` [我学过的 React 知识点，都在这了](framework/react.md)
+<!-- - `[react]` [我学过的 React 知识点，都在这了](framework/react.md) -->
+<!-- - `[base]` [文艺复兴：谈谈 DOM](framework/dom.md) -->
 <!-- TODO: vue -->
 
 ## 前端工程化
@@ -118,3 +120,9 @@
 - `[Vscode]` [Vscode 使用指北](web/code.md)
 - `[ESLint]` [搞懂 ESLint 和 Prettier](ts/eslint.md)
 - `[Chrome]` [Chrome DevTools 面板全攻略](ts/devTool.md) -->
+
+<!-- - vue 好还是 react 好，我选 angular！
+- vue、react、angular 选哪个？，我选 jQuery。
+- umi这种到处都是约定，增加心智负担的，真不想用
+
+-  -->

@@ -19,7 +19,7 @@ touch .prettierignore
 # yarn prettier --write .
 ```
 
-**我的 `.prettierrc.js` 配置：**
+**`.prettierrc.js` 配置：**
 
 ```js
 module.exports = {
@@ -61,7 +61,7 @@ module.exports = {
 }
 ```
 
-**我的 `.prettierignore` 配置：**
+**`.prettierignore` 配置：**
 
 ```sh
 # Ignore artifacts:

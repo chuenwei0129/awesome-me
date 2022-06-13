@@ -4,6 +4,7 @@
 - [JSX 是什么？](#jsx-是什么)
 - [REACT 15](#react-15)
 - [React 为什么需要并发](#react-为什么需要并发)
+  - [任务时长超过一帧怎么处理？](#任务时长超过一帧怎么处理)
   - [浏览器的一帧里做了什么？](#浏览器的一帧里做了什么)
   - [React 15 的问题](#react-15-的问题)
   - [如何解决这个问题呢？](#如何解决这个问题呢)
@@ -58,6 +59,11 @@
   - [更容易书写 key](#更容易书写-key)
 - [Profiler](#profiler)
 - [双缓存 Fiber 树](#双缓存-fiber-树)
+- [ErrorBoundary](#errorboundary)
+  - [ErrorBoundary 实现原理](#errorboundary-实现原理)
+  - [getDerivedStateFromError 原理](#getderivedstatefromerror-原理)
+  - [componentDidCatch 原理](#componentdidcatch-原理)
+  - [没有定义 `ErrorBoundary`](#没有定义-errorboundary)
 
 ## 从 DOM 谈起：前端为什么操作 DOM 是最耗性能的呢？
 
@@ -94,6 +100,35 @@ DOM 是一个树形结构，这个树形结构对应的就是我们的 HTML tag�
 > [温故知新：手写迷你 react 15](https://github.com/chuenwei0129/build-my-own-x/blob/main/packages/build-my-own-react-15/README.md)
 
 ## React 为什么需要并发
+
+### 任务时长超过一帧怎么处理？
+
+帧是画面的意思，浏览器页面就像视频一样，每一秒会绘制很多帧，**每一帧的耗时是不定的，可以是任意的时间**。
+
+如果用户不操作页面，也没有什么定时任务，每一帧耗时大概 16 ms，也就是 60 fps。
+
+```js
+let lastTime = Date.now()
+requestAnimationFrame(function cb() {
+  console.log("这一帧耗时：", Date.now() - lastTime)
+  lastTime = Date.now()
+  requestAnimationFrame(cb)
+})
+```
+
+如果有耗时的代码，比如：
+
+```js
+document.addEventListener("click", function () {
+  var now = Date.now()
+  requestAnimationFrame(() => console.log("这一帧持续了" + (Date.now() - now)))
+  while (Date.now() < now + 1000)
+})
+```
+
+那么这一帧耗时就会至少 1 秒钟，1 fps。**任务耗时的后果是让一帧耗时变长，帧率变低，任务不会被跳过。**
+
+> for 循环里有个 await 也很容易让一个任务耗时变的很长很长，因为每个任务都需要执行完它所引起的所有的微任务才算完。这叫微任务阻塞渲染。
 
 ### 浏览器的一帧里做了什么？
 
@@ -858,7 +893,7 @@ do {
 当使用 `render props` 的开发模式，获得 `ref` 的组件实例可能与预期不同。
 
 ```js
-// 使用方式：this.refs.['input']
+// 使用方式：this.refs.['input-']
 class App extends React.Component {
   renderRow = index => {
     // this.refs -> this 会绑定到 DataTable 组件实例，而不是 App 组件实例上
@@ -889,6 +924,7 @@ function createRef() {
 对于 mount 与 update，useRef 分别对应两个函数。
 
 ```js
+// mount
 function mountRef<T>(initialValue: T) {
   // 获取当前 useRef hook
   const hook = mountWorkInProgressHook()
@@ -898,6 +934,7 @@ function mountRef<T>(initialValue: T) {
   return ref
 }
 
+// update
 function updateRef<T>(initialValue: T) {
   // 获取当前 useRef hook
   const hook = updateWorkInProgressHook()
@@ -908,10 +945,13 @@ function updateRef<T>(initialValue: T) {
 
 可以看到，ref 对象确实仅仅是包含 current 属性的对象。
 
-> React.createRef 与 useRef 的返回值一个会被缓存，一个不会被缓存
-> 创建 useRef 时候，会创建一个原始对象，只要函数组件不被销毁，原始对象就会一直存在，那么我们可以利用这个特性，来通过 useRef 保存一些数据。
+> **注意：**
+>
+> 1. React.createRef 与 useRef 的返回值一个会被缓存，一个不会被缓存
+>
+> 2. **创建 useRef 时候，会创建一个原始对象，只要函数组件不被销毁，原始对象就会一直存在，那么我们可以利用这个特性，来通过 useRef 保存一些数据。**
 
-那么我们可以利用这个特性，来通过 useRef 保存一些数据。
+通过 useRef 保存一些数据：
 
 ```jsx
 const DemoUseRef = () => {
@@ -934,15 +974,23 @@ const DemoUseRef = () => {
 
 ### function ref
 
-所有 ref 的生命周期都可以分为两个大阶段：
+在 React 中，HostComponent、ClassComponent、ForwardRef 可以赋值 ref 属性。
+
+> 这个属性在 ref 生命周期的不同阶段会被执行（对于function）或赋值（对于 `{current: any}`）。
+
+生命周期可以分为两个大阶段：
 
 - render 阶段为含有 ref 属性的 fiber 添加 Ref effectTag
 - commit 阶段为包含 Ref effectTag 的 fiber 执行对应操作
 
 ```js
-// 如果 ref 变化，在 commit 阶段会先执行 ref 删除再执行 ref 更新。
-// 内联函数会被调用两次，commitDetachRef（删除 ref） 一次，commitAttachRef（更新 ref） 一次，第一次 dom 的值为 null，第二次为更新的 DOM。
 // function 与 {current: any} 类型的 ref 没有什么不同，只是一种函数会被调用，一种会被赋值。
+
+// render 阶段执行 ref 变化，在 commit 阶段会先删除旧 ref，再执行 ref 更新。
+
+// 内联函数会被调用两次，commitDetachRef（删除 ref） 一次，commitAttachRef（更新 ref） 一次
+
+// 第一次 dom 的值删除后赋值为 null，第二次为更新的 DOM。
 <input ref={input => (this.input = input)} />
 ```
 
@@ -1495,3 +1543,67 @@ workInProgressFiber.alternate === currentFiber
 > **update-commit：**
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/fe-engineering/currentTreeUpdate.png)
+
+## ErrorBoundary
+
+> [为什么 Hook 没有 ErrorBoundary？](https://zhuanlan.zhihu.com/p/528040023)
+
+### ErrorBoundary 实现原理
+
+`ErrorBoundary` 可以捕获子孙组件中 **「React工作流程」** 内的错误。
+
+**「React工作流程」**：
+
+- render 阶段，即 **「组件render」**、**「Diff算法」** 发生的阶段
+- commit 阶段，即 **「渲染DOM」**、**「componentDidMount/Update执行」**的阶段
+
+这也是为什么 **「事件回调中发生的错误」** 无法被`ErrorBoundary`捕获 —— 事件回调并不属于 **「React工作流程」**。
+
+### getDerivedStateFromError 原理
+
+当捕获错误后，即：
+
+- 对于 **「render阶段」**，handleError 执行后
+- 对于 **「commit阶段」**，captureCommitPhaseError
+
+会在 ErrorBoundary 对应组件中触发类似如下更新：
+
+```js
+// 同 this.setState(num => num + 1)
+this.setState(
+  // 获取从 error 派生的 state
+  getDerivedStateFromError.bind(null, error)
+)
+```
+
+getDerivedStateFromError 要求开发者返回 **「新的 state」** —— **本质来说，就是触发一次新的更新**。
+
+### componentDidCatch 原理
+
+生命周期函数 —— `componentDidCatch` 的实现原理：
+
+`ClassComponent` 中 `this.setState` 的第二个参数，可以接收 **「回调函数」** 作为参数：
+
+```js
+this.setState(newState, () => {
+  // ...回调
+})
+```
+
+**当触发的更新渲染到页面后，回调会触发。**
+
+当捕获错误后，会在 ErrorBoundary 对应组件中触发类似如下更新：
+
+```js
+this.setState(this.state, componentDidCatch.bind(this, error))
+```
+
+### 没有定义 `ErrorBoundary`
+
+可以发现，**「React运行流程」** 中的错误，都已经被 `React` 自身捕获了，再交由 `ErrorBoundary` 处理。
+
+如果没有定义 `ErrorBoundary`，这些 **「被捕获的错误」** 需要重新抛出，营造 **「错误未被捕获的感觉」**。
+
+`ReactDOM.render(element, container[, callback])` 第三个参数能接收 **「回调函数」**。
+
+如果开发者没有定义 `ErrorBoundary`，那么 `React` **最终会在 `ReactDOM.render` 的回调中抛出错误**。
