@@ -1555,7 +1555,7 @@ workInProgressFiber.alternate === currentFiber
 **「React工作流程」**：
 
 - render 阶段，即 **「组件render」**、**「Diff算法」** 发生的阶段
-- commit 阶段，即 **「渲染DOM」**、**「componentDidMount/Update执行」**的阶段
+- commit 阶段，即 **「渲染DOM」**、**「componentDidMount/Update执行」** 的阶段
 
 这也是为什么 **「事件回调中发生的错误」** 无法被`ErrorBoundary`捕获 —— 事件回调并不属于 **「React工作流程」**。
 

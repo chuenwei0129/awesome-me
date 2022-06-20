@@ -17,9 +17,19 @@
 - `[Git]` [怕遗忘 Git 的我，把相关知识点都记录下来就对了](others/git.md)
 - `[Switch]` [关于我破解了 Switch 并且装满了游戏依然吃灰这件事](others/switch.md)
 
+## 浏览器
+
+- `[浏览器]` [到达前端最高城 ——— 浏览器](computer/web.md)
+- `[JavaScript]` [太美丽啦前端，哎呀这不是 JavaScript 吗](computer/web.md)
+- `[TypeScript]` [再看看远处的 TypeScript 吧，家人们](ts/ts.md)
+
 ## 框架
 
 > React is not reactive. Vue is not only view.
+
+<!-- - `[浏览器]` [到达前端最高城 ——— 浏览器](computer/web.md) -->
+<!-- - `[浏览器]` [太美丽啦前端，哎呀这不是 JavaScript 吗](computer/web.md) -->
+<!-- - `[浏览器]` [再看看远处的 TypeScript 吧，家人们](computer/web.md) -->
 
 - `[react]` [我学过的 React 知识点，都在这了](framework/react.md)
 <!-- - `[react]` [我学过的 React 知识点，都在这了](framework/react.md) -->
@@ -39,7 +49,6 @@
 - `[基础知识]` [计算机基础知识图谱（一）](computer/base.md)
 - `[计算机网络]` [计算机基础知识图谱（二）](computer/net.md)
 - `[数据结构]` [计算机基础知识图谱（三）](computer/data.md)
-- `[浏览器]` [计算机基础知识图谱（四）](computer/web.md)
 
 ## JavaScript 提高班
 
@@ -67,12 +76,12 @@
 - `[正则]` [JavaScript 从零单排(八)](js/js_reg.md)
 - `[手写]` [JavaScript 从零单排(九)](js/js_code.md)
 
-## TypeScript 提高班
+<!-- ## TypeScript 提高班 -->
 
-- `[基础]`[写给自己的 TypeScript 教程(一)](ts/ts_1.md)
+<!-- - `[基础]`[写给自己的 TypeScript 教程(一)](ts/ts_1.md)
 - `[进阶]`[写给自己的 TypeScript 教程(二)](ts/ts_2.md)
 - `[思考]`[写给自己的 TypeScript 教程(三)](ts/ts_3.md)
-- `[实践]`[写给自己的 TypeScript 教程(四)](ts/ts_4.md)
+- `[实践]`[写给自己的 TypeScript 教程(四)](ts/ts_4.md) -->
 
 ## WEB API
 

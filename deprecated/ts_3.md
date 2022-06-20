@@ -1,6 +1,6 @@
 # 写给自己的 TypeScript 教程(三)<!-- omit in toc -->
 
-## 写 TypeScript 时，什么时候用 any？什么时候用 unknown？有没有规律或准则？
+## [写 TypeScript 时，什么时候用 any？什么时候用 unknown？有没有规律或准则？](https://www.zhihu.com/question/355283769)
 
 `any` 是被视为 `union` 的 `unknown` 不是
 

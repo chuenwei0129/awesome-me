@@ -52,8 +52,10 @@ const sym: symbol = Symbol()
 
 ```ts
 // 对象类型（包含数组、类、函数等）
+
 // 对象字面量
 const obj: { x: number; y: string } = { x: 1, y: 'hello world' }
+
 // 箭头函数
 const fn: (str: string) => number = str => Number.parseInt(str, 10)
 // class 类型
@@ -728,15 +730,15 @@ console.log(p1, p2, p1 === p2)
 abstract class Geom {
   constructor(readonly width: number) {}
   abstract getArea(): string
-  // 抽象类可以和普通类一样实现属性方法
   sayHi(): void {
     console.log('hi')
   }
 }
 
 // 抽象类不可以被 new 只可以继承
-// 抽象方法必须实现，相当于必须实现的公有方法
 // const geom = new Geom() // 会报错
+
+// 抽象方法必须实现，相当于必须实现的公有方法
 
 class Circle extends Geom {
   getArea() {
