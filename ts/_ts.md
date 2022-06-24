@@ -11,7 +11,7 @@
 
 > ⚠️ 注意：`any` 是被视为 `union` 的，`unknown` 不是。
 
-## TypeScript 中的 never 类型具体有什么用？
+## [TypeScript 中的 never 类型具体有什么用？](https://www.zhihu.com/question/354601204)
 
 举个具体点的例子，当你有一个 `union type`:
 
@@ -95,4 +95,8 @@ T & never // 结果为 never
 
 **`NameSpace` 本质是 `JS` 的原始闭包，不关注代码是同步还是异步加载的，只关注使用体验。**
 
-## 
+## 逆变、协变、双向协变、不变
+
+> [快速理解 TypeScript 的逆变、协变、双向协变、不变](https://zhuanlan.zhihu.com/p/500762226)
+
+## 模式匹配做提取
