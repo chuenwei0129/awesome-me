@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .grid-container {
+        display: grid;
+        gap: 20px 40px;
+        min-height: 100vh;
+        /* 内容映射 */
+        /* none 和 . 区别一个是空网格一个是不存在网格 */
+        /* grid-template-areas:
+          'header  .'
+          'sidebar content'
+          'footer  footer'; */
+        /* 三行两列 */
+        /* grid-template-columns: 200px 1fr;
+        grid-template-rows: 80px 1fr 80px; */
+
+        /* 整合写法 */
+        grid-template:
+          'header  header' 80px
+          'content sidebar' 1fr
+          'footer  footer' 80px
+          /* / 必须 */
+          /1fr 100px;
+      }
+      .grid-item {
+        border-radius: 10px;
+        padding: 20px;
+      }
+      /* 子项 */
+      .header {
+        grid-area: header;
+        background-color: #009688;
+      }
+      .content {
+        grid-area: content;
+        background-color: #c34721;
+      }
+      .sidebar {
+        grid-area: sidebar;
+        background-color: #f5511e;
+      }
+      .footer {
+        grid-area: footer;
+        background: #9c27b0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="grid-item header">header</div>
+      <div class="grid-item content">content</div>
+      <div class="grid-item sidebar">sidebar</div>
+      <div class="grid-item footer">footer</div>
+    </div>
+  </body>
+</html>

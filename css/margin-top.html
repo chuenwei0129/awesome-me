@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 子容器的 margin-top 会传递到父容器上 */
+      /* margin-left 表现正常，不会发生传递 */
+      .father {
+        /* overflow: hidden; */
+        width: 200px;
+        height: 200px;
+        background: skyblue;
+        margin-top: 30px;
+        margin-left: 30px;
+      }
+
+      .child {
+        margin-top: 50px;
+        margin-left: 50px;
+        width: 100px;
+        height: 100px;
+        background: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="father">
+      <div class="child"></div>
+    </div>
+  </body>
+</html>

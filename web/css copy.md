@@ -287,7 +287,21 @@ p { font-size: 2em; }
 
 ### 清除浮动
 
+`clear` 属性不允许被清除浮动的元素的左边/右边挨着浮动元素，底层原理是在被清除浮动的元素上边或者下边添加足够的清除空间。
 
+> ⚠️ 不要在浮动元素上清除浮动，浮动元素脱离了文档流，就算给浮动元素上下加了清除空间，也是没有任何意义的。
+
+```css
+/* before 处理器 margin 重叠 */
+.clearfix::before,
+.clearfix::after {
+	display: table;
+	content: " ";
+}
+.clearfix::after {
+	clear: both;
+}
+```
 
 ### table 布局
 

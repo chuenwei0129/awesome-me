@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        --theme-color: red;
+      }
+      body {
+        background-color: var(--theme-color);
+      }
+    </style>
+  </head>
+  <body>
+    <button type="button" id="red-btn">一键换肤：红</button>
+    <button type="button" id="blue-btn">一键换肤：蓝</button>
+    <button type="button" id="green-btn">一键换肤：绿</button>
+    <!-- 一键换肤 -->
+    <script>
+      ;['red', 'blue', 'green'].forEach(color => {
+        const btn = document.querySelector(`#${color}-btn`)
+        btn.addEventListener('click', () => document.body.style.setProperty('--theme-color', color))
+      })
+    </script>
+  </body>
+</html>
