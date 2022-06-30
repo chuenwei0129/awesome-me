@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 自动过渡 */
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: #09f;
+        /* backwards：播放完回到起点 */
+        /* forwards：停在 100% */
+        animation: a 5s ease-in 1s 1 normal forwards;
+      }
+
+      /* 多个状态之间过渡 */
+      @keyframes a {
+        0% {
+          width: 100px;
+        }
+        50% {
+          width: 400px;
+        }
+        100% {
+          width: 200px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>

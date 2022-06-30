@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .s-line-container {
+        width: 300px;
+        height: 24px;
+        line-height: 24px;
+        border: 2px solid rgb(10, 8, 8);
+        /* 处理溢出，联合使用 */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .m-line-container {
+        width: 300px;
+        height: 72px;
+        line-height: 24px;
+        border: 2px solid rgb(10, 8, 8);
+        overflow: hidden;
+        /* 处理多行文本溢出 */
+        position: relative;
+      }
+      .m-line-container::after {
+        content: '...';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        /* after padding 背景填充渐变即可 */
+        padding-left: 40px;
+        padding-right: 10px;
+        background: linear-gradient(to right, transparent, #fff 50%);
+      }
+    </style>
+  </head>
+  <body>
+    <p class="s-line-container">
+      单行文本溢出，单行文本溢出，单行文本溢出，单行文本溢出，单行文本溢出，单行文本溢出。
+    </p>
+    <div class="m-line-container">
+      多行文本溢出，多行文本溢出，多行文本溢出，多行文本溢出，多行文本溢出，多行文本溢出。
+      多行文本溢出，多行文本溢出，多行文本溢出，多行文本溢出，多行文本溢出，多行文本溢出。
+      多行文本溢出，多行文本溢出，多行文本溢出，多行文本溢出，多行文本溢出，多行文本溢出。
+    </div>
+  </body>
+</html>

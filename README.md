@@ -20,8 +20,8 @@
 ## 浏览器
 
 - `[浏览器]` [到达前端最高城 ——— 浏览器](computer/web.md)
-- `[JavaScript]` [太美丽啦前端，哎呀这不是 JavaScript 吗](computer/web.md)
-- `[TypeScript]` [再看看远处的 TypeScript 吧，家人们](ts/ts.md)
+- `[CSS]` [太美丽啦前端，哎呀这不是 CSS 吗](css/css.md)
+- `[JavaScript]` [再看看远处的 JavaScript 吧，家人们](ts/ts.md)
 
 ## 框架
 
