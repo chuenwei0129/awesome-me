@@ -17,6 +17,10 @@
 - `[Git]` [怕遗忘 Git 的我，把相关知识点都记录下来就对了](others/git.md)
 - `[Switch]` [关于我破解了 Switch 并且装满了游戏依然吃灰这件事](others/switch.md)
 
+## 他山之石
+
+> [React Status 中文周刊](https://docschina.org/weekly/react/)
+
 ## 浏览器
 
 - `[浏览器]` [到达前端最高城 ——— 浏览器](computer/web.md)

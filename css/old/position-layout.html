@@ -9,25 +9,26 @@
       * {
         box-sizing: border-box;
       }
+      .container {
+        position: relative;
+      }
       .left {
-        float: left;
-        margin-left: -100%;
+        position: absolute;
+        left: 0;
+        top: 0;
         border: 10px solid red;
         width: 200px;
         height: 300px;
         background-color: #ccc;
       }
       .right {
-        float: left;
-        margin-left: -250px;
+        position: absolute;
+        right: 0;
+        top: 0;
         border: 10px solid black;
         width: 250px;
         height: 300px;
         background-color: #bf0;
-      }
-      .content {
-        float: left;
-        width: 100%;
       }
       .main {
         margin-left: 220px;
@@ -41,9 +42,7 @@
 
   <body>
     <div class="container">
-      <div class="content">
-        <div class="main">main</div>
-      </div>
+      <div class="main">main</div>
       <div class="left">left</div>
       <div class="right">right</div>
     </div>
