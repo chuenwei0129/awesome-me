@@ -8,7 +8,8 @@
 
 - [SX OS 拥抱大气层](#sx-os-拥抱大气层)
 - [USB 安装游戏](#usb-安装游戏)
-- [USB 升级系统](#usb-升级系统)
+- [离线升降级系统](#离线升降级系统)
+- [模拟器](#模拟器)
 - [小插曲](#小插曲)
 - [白嫖网站](#白嫖网站)
 
@@ -22,11 +23,16 @@ Mac 下用 USB 连接 Switch 需要 [Android File Transfer](https://www.android.
 
 [Switch DBI 图文使用教程](https://shipengliang.com/games/switch-dbi-%e5%9b%be%e6%96%87%e4%bd%bf%e7%94%a8%e6%95%99%e7%a8%8b.html)
 
-## USB 升级系统
+## 离线升降级系统
 
-[Switch 大气层 Hekate 下的 USB 传输](https://shipengliang.com/games/switch-%e5%a4%a7%e6%b0%94%e5%b1%82-hekate%e4%b8%8b%e7%9a%84usb%e4%bc%a0%e8%be%93.html)
+1. 文件传输方式推荐参考：[Switch 大气层 Hekate 下的 USB 传输](https://shipengliang.com/games/switch-%e5%a4%a7%e6%b0%94%e5%b1%82-hekate%e4%b8%8b%e7%9a%84usb%e4%bc%a0%e8%be%93.html) 或用读卡器（DBI 不支持大气层核心文件传输）。
+2. 下载最新大气层引导文件：[Atmosphere](https://github.com/Atmosphere-NX/Atmosphere/releases) 并覆盖更新到 TF 卡根目录。
+3. 下载目标版本固件包：[Switch Firmware 固件](https://github.com/THZoria/NX_Firmware/releases)，并将固件包解压后传输到 TF 卡根目录。
+4. [启动系统后，进入相册，运行 Daybreak](https://shipengliang.com/games/switch-%e5%a4%a7%e6%b0%94%e5%b1%82-atmosphere-%e5%a6%82%e4%bd%95%e7%a6%bb%e7%ba%bf%e5%8d%87%e7%ba%a7%e7%b3%bb%e7%bb%9f.html))
 
-[Switch 大气层 Atmosphere 如何离线升降级系统](https://shipengliang.com/games/switch-%e5%a4%a7%e6%b0%94%e5%b1%82-atmosphere-%e5%a6%82%e4%bd%95%e7%a6%bb%e7%ba%bf%e5%8d%87%e7%ba%a7%e7%b3%bb%e7%bb%9f.html)
+## 模拟器
+
+> TODO
 
 ## 小插曲
 

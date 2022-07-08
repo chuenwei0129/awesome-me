@@ -1,5 +1,6 @@
 # CSS 备忘录<!-- omit in toc -->
 
+- [为什么 CSS 这么难学？](#为什么-css-这么难学)
 - [盒模型](#盒模型)
 - [块级元素与行内元素](#块级元素与行内元素)
   - [块级元素](#块级元素)
@@ -15,6 +16,7 @@
     - [em/rem 区别](#emrem-区别)
     - [视窗比例单位](#视窗比例单位)
     - [动态声明 font-size](#动态声明-font-size)
+- [媒体查询](#媒体查询)
 - [布局方式](#布局方式)
   - [flex 布局](#flex-布局)
     - [概述](#概述)
@@ -87,6 +89,20 @@
   - [1px 边框](#1px-边框)
   - [自动打字器](#自动打字器)
   - [渐变背景](#渐变背景)
+
+## [为什么 CSS 这么难学？](https://www.zhihu.com/question/66167982)
+
+> 设计 api 或者框架的时候，一定要注意一个 api 影响的范围足够小，尽量一个 api 只干一件事。
+
+**CSS 完美的破坏了这个规则，CSS 里面潜规则多如牛毛。**
+
+**🌰 例子：**
+
+- `inline-block` 的基线是最后一行文字的底部，`flex` 里面的基线是第一行文字的底部，只有一个元素属于 `inline` 或是 `inline-block` 水平，其身上的 `vertical-align` 属性才会起作用。
+
+- 在不设置 `width` 和边距的情况下，块级元素的 `width` 和边距默认值是 `auto`，此时 `width` 会尽可能宽，`height` 在设置为 `auto` 的时候不是尽可能高而是恰好包含其所有垂直方向上的元素在计算浮动定位和边距合并之后的值，所以设置高度加百分比边距也可以做到垂直居中。
+
+- ...
 
 ## 盒模型
 
@@ -307,6 +323,10 @@ AutoResponse();
 ```html
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
 ```
+
+## 媒体查询
+
+> [媒体查询](media.html)
 
 ## 布局方式
 

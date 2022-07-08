@@ -9,8 +9,6 @@ function isPlainObject(obj) {
     proto = Object.getPrototypeOf(proto)
   }
 
-  // proto === Object.prototype
-
   return Object.getPrototypeOf(obj) === proto
 }
 

@@ -8,7 +8,6 @@ export default class State extends Component {
   updateNum = () => {
     console.log('before setState', this.state.num)
     this.setState({ num: this.state.num + 1 })
-    // js 中没有什么是闭包解决不了的，缓存值就用闭包
     this.setState({ num: this.state.num + 1 })
     this.setState({ num: this.state.num + 1 })
     console.log('after setState', this.state.num)

@@ -11,33 +11,27 @@
 ## 何为差生文具多，看完这个你就清楚了
 
 - `[Mac]` [Mac 这种操作系统简直比 Siri 还智障所以就去写了个笔记](others/mac.md)
-- `[Windows]` [最傻逼的用户，被 Win 10 百般折磨后，努力至今终尝回报，突然得到了最强使用技巧](others/win.md)
+- `[Windows]` [最傻逼的用户，被 Win10 百般折磨后，努力至今终尝回报，突然得到了最强使用技巧](others/win.md)
 - `[Terminal]` [只用命令行就能覆盖所有操作而且能提升工作效率的终端使用技巧你喜欢吗](others/terminal.md)
 - `[VsCode]` [VSCode 因为插件丰富、功能强大被大家喜欢，真是令人烦恼啊](others/code.md)
 - `[Git]` [怕遗忘 Git 的我，把相关知识点都记录下来就对了](others/git.md)
 - `[Switch]` [关于我破解了 Switch 并且装满了游戏依然吃灰这件事](others/switch.md)
 
-## 他山之石
+## 前端三剑客（Old School）
 
-> [React Status 中文周刊](https://docschina.org/weekly/react/)
-
-## 浏览器
-
-- `[浏览器]` [到达前端最高城 ——— 浏览器](computer/web.md)
-- `[CSS]` [太美丽啦前端，哎呀这不是 CSS 吗](css/css.md)
-- `[JavaScript]` [再看看远处的 JavaScript 吧，家人们](ts/ts.md)
+<!-- https://csstriggers.com -->
+- `[CSS]` [是煮，是煮在又一次严重酗酒后创造了这个奇迹。](css/css.md)
+- `[Browser]` [到达前端最高城 ——— 浏览器](computer/web.md)
+- `[JavaScript]` [太美丽啦前端，哎呀这不是 JavaScript 吗](css/css.md)
+- `[TypeScript]` [还是看看远处的 TypeScript 吧，家人们](ts/ts.md)
 
 ## 框架
 
 > React is not reactive. Vue is not only view.
 
-<!-- - `[浏览器]` [到达前端最高城 ——— 浏览器](computer/web.md) -->
-<!-- - `[浏览器]` [太美丽啦前端，哎呀这不是 JavaScript 吗](computer/web.md) -->
-<!-- - `[浏览器]` [再看看远处的 TypeScript 吧，家人们](computer/web.md) -->
-
-- `[react]` [我学过的 React 知识点，都在这了](framework/react.md)
+- `[Dom]` [积跬步，至千里，始于 DOM](framework/dom.md)
+- `[React]` [我学过的 React 知识点，都在这了](framework/react.md)
 <!-- - `[react]` [我学过的 React 知识点，都在这了](framework/react.md) -->
-<!-- - `[base]` [文艺复兴：谈谈 DOM](framework/dom.md) -->
 <!-- TODO: vue -->
 
 ## 前端工程化
@@ -45,7 +39,7 @@
 - `[前置知识]` [Node 版本管理和 npm 包管理](engineering/node.md)
 - `[转译器]` [前端领域需要哪些转译器](engineering/ast.md)
 - `[webpack]` [webpack 配置备忘录](engineering/webpack.md)
-- `[webpack]` [webpack 原理分析与思考](engineering/packorigin.md)
+- `[webpack]` [webpack 原理分析与思考](engineering/pack-origin.md)
 - `[create-react-app]` [记录一次 react 环境配置](engineering/cra.md)
 
 ## 计算机基础知识图谱
@@ -96,6 +90,13 @@
 - `[二进制]` [前端操作文件和二进制数据](web/data.md)
 - `[Cookies]` [数据存储、安全和鉴权](web/cookie.md)
 - `[网络请求]`[网络请求](web/xhr.md)`
+
+## 他山之石
+
+- [React Status 中文周刊](https://docschina.org/weekly/react/)
+- [Hello Github 有趣、入门级的开源项目](https://hellogithub.com/)
+- [为了不折腾而去折腾的那些事](https://www.zhihu.com/column/funny)
+- [前端新鲜事](https://www.zhihu.com/column/mm-fe)
 
 <!-- ## 框架
 
