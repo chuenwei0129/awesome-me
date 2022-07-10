@@ -23,3 +23,14 @@ console.log(getMonthCountDay(2021, 0)) // 31
 // 解构获取数据最后一个元素
 const { length: len, [len - 1]: last, ...rest } = [1, 2, 3]
 console.log(len, last, rest) // 3 3 {0: 1, 1: 2}
+
+const original = { name: 'MDN' }
+original.itself = original
+
+// Clone it
+const clone = structuredClone(original)
+
+// true true true
+console.log(clone !== original) // the objects are not the same (not same identity)
+console.log(clone.name === 'MDN') // they do have the same values
+console.log(clone.itself === clone)
