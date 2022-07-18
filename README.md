@@ -21,9 +21,9 @@
 
 <!-- https://csstriggers.com -->
 - `[Browser]` [到达前端最高城 ——— 浏览器](computer/web.md)
-- `[JavaScript]` [太美丽啦前端，哎呀这不是 JavaScript 吗](css/css.md)
+- `[JavaScript]` [太美丽啦浏览器，哎呀这不是 JavaScript 吗](css/css.md)
 - `[TypeScript]` [还是看看远处的 TypeScript 吧，家人们](ts/ts.md)
-- `[CSS]` [是煮，是煮在又一次严重酗酒后创造了这个奇迹。](css/css.md)
+- `[CSS]` [是煮，是煮在又一次严重酗酒后创造了这个奇迹](css/css.md)
 
 ## Make Web Great Again
 
@@ -33,13 +33,12 @@
 
 - `[Dom]` [积跬步，至千里，始于 DOM](framework/dom.md)
 - `[React]` [我学过的 React 知识点，都在这了](framework/react.md)
-<!-- - `[react]` [我学过的 React 知识点，都在这了](framework/react.md) -->
 <!-- TODO: vue -->
 
-## 崔颢题诗在上头
+<!-- ## 崔颢题诗在上头
 
 [为什么汇编语言的功能在高级语言中一部分成为了关键字，一部分封装成了函数？](https://www.zhihu.com/question/352289969)
-[JavaScript凭什么不是面向对象的语言？](https://www.zhihu.com/question/506559729/answer/2276185739)
+[JavaScript凭什么不是面向对象的语言？](https://www.zhihu.com/question/506559729/answer/2276185739) -->
 
 ## 前端工程化
 
@@ -61,7 +60,7 @@
 - `[对象]` [JavaScript 提高班(二)](js/es_object.md)
 - `[v8]` [JavaScript 提高班(三)](js/es_v8.md)
 - `[拓展]` [浮点数之谜](js/es_float.md)
-- `[正则]` [滚蛋吧，正则表达式！]
+- `[正则]` [滚蛋吧，正则表达式]
 
 ## 读书笔记
 
@@ -97,7 +96,7 @@
 - `[事件]` [事件和表单](web/event.md)
 - `[二进制]` [前端操作文件和二进制数据](web/data.md)
 - `[Cookies]` [数据存储、安全和鉴权](web/cookie.md)
-- `[网络请求]`[网络请求](web/xhr.md)`
+- `[网络请求]`[网络请求](web/xhr.md)
 
 ## 他山之石
 

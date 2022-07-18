@@ -13,22 +13,22 @@
 - [为什么 Vue 3 里没有时间分片？](#为什么-vue-3-里没有时间分片)
 - [Fiber 架构](#fiber-架构)
 - [虚拟 DOM 转 Fiber](#虚拟-dom-转-fiber)
-- [并发调度](#并发调度)
-  - [更新优先级](#更新优先级)
-  - [Automatic batching](#automatic-batching)
-  - [tearing](#tearing)
 - [React 组件更新策略](#react-组件更新策略)
   - [React 组件 render 需要满足的条件](#react-组件-render-需要满足的条件)
   - [bailout 需要满足的条件](#bailout-需要满足的条件)
   - [优化 fiber 树](#优化-fiber-树)
   - [Demo 分析](#demo-分析)
+- [并发调度](#并发调度)
+  - [更新优先级](#更新优先级)
+  - [Automatic batching](#automatic-batching)
+  - [tearing](#tearing)
 - [如何优雅处理使用 React Context 导致的不必要渲染？](#如何优雅处理使用-react-context-导致的不必要渲染)
   - [新 Context 内部实现](#新-context-内部实现)
   - [方案一：Split contexts](#方案一split-contexts)
   - [方案二：使用「泛 memo」方案](#方案二使用泛-memo方案)
   - [方案三：context selector —— ObservedBits](#方案三context-selector--observedbits)
   - [方案四：在 provider 和 context 之间做 client 级别的依赖订阅更新](#方案四在-provider-和-context-之间做-client-级别的依赖订阅更新)
-- [Hooks](#hooks)
+- [Hooks 原理](#hooks-原理)
 - [关于 useState 的一切](#关于-usestate-的一切)
   - [两个问题](#两个问题)
   - [hooks 状态的保存和更新](#hooks-状态的保存和更新)
@@ -40,6 +40,7 @@
   - [function ref](#function-ref)
   - [forwardRef](#forwardref)
   - [useImperativeHandle](#useimperativehandle)
+- [函数组件](#函数组件)
 - [闭包陷阱](#闭包陷阱)
 - [React 合成事件](#react-合成事件)
 - [受控组件](#受控组件)
@@ -179,7 +180,7 @@ document.addEventListener("click", function () {
 
 ### 如何解决这个问题呢？
 
-如何解决这个问题呢？React18 给出的答案就是：并发。
+如何解决这个问题呢？React18 给出的答案就是：**并发**。
 
 我们可以将 react 更新看作一个任务，click 事件看作一个任务。**在并发的情况下，react 更新到一半的时候，进来了 click 任务，这个时候先去执行 click 任务。等 click 任务执行完成后，接着继续执行剩余的 react 更新。** 这样就保证了即使在耗时更新的情况下，用户依旧是可以进行交互的。
 
@@ -400,95 +401,6 @@ function completeWork(workingInProgressFiber) {
 requestIdleCallback(workloop)
 ```
 
-## 并发调度
-
-### 更新优先级
-
-React 通过 lane 的方式为每个更新分配了相关优先级。lane 可以简单理解为一些数字，数值越小，表明优先级越高。
-
-假如有两个更新，他们同时对 App 组件的一个 count 属性更新：
-
-```jsx
-<p>You clicked {count} times</p>
-<button onClick={() => setCount(count + 1)}>
-  A按钮
-</button>
-<button onClick={() => startTransition(() => { setCount(count + 1) })}>
-  B按钮
-</button>
-```
-
-- 一个是 `A` 按钮：`click` 事件触发的更新，叫做 `A更新`，对应于 `SyncLane`。
-- 一个是 `B` 按钮：`startTransition` 触发的更新，叫做 `B更新`，对应于 `TransitionLane1`。
-
-假设 `B` 按钮先点击，`B更新`开始，按照之前提到时间切片的形式进行更新。中途触发了 `A` 按钮点击，进而触发 `A更新`。那么此时就会通过 `lane` 进行对比，发现 `DefaultLane` 优先级高于 `TransitionLane1`。此时会中断 `B更新`，开始 `A更新`。直到 `A` 更新完成时，再重新开始 `B` 更新。
-
-**那么 React 是如何区分 B 更新对 App 的 count 的更改和 A 更新中对 count 的更改呢？**
-
-实际上，在每次更新时，更新 state 的操作会被创建为一个 Update，放到循环链表当中
-
-在更新的时候就会依次去执行这个链表上的操作，从而计算出最终的 state。
-
-每个 Update 里都有一个 lane 属性。该属性标识了当前的这个 Update 的更新优先级，属于哪个更新任务中的操作。
-
-因此当 A 更新在执行的时候，我们在计算 state 的时候，只需要去计算与 A 更新相同 lane 的 update 即可。同样，B 更新开始，也只更新具有同等 lane 级别的 Update，从而达到不同更新的状态互不干扰的效果。
-
-### Automatic batching
-
-> [给女朋友讲 React18 新特性：Automatic batching](https://zhuanlan.zhihu.com/p/382216973)
-
-批处理：**React 会尝试将同一上下文中触发的更新合并为一个更新**
-
-在 v18 之前，只有事件回调、生命周期回调中的更新会批处理，而在 promise、setTimeout 等异步回调中不会批处理。
-
-```js
-onClick() {
-  setTimeout(() => {
-    // ReactDOM 中使用 unstable_batchedUpdates 方法手动批处理。
-    ReactDOM.unstable_batchedUpdates(() => {
-      this.setState({a: 3});
-      this.setState({a: 4});
-    })
-  })
-}
-```
-
-v18 后，批处理是以更新的「优先级」为依据：
-
-```js
-onClick() {
-  // 属于同一优先级
-  this.setState({a: 3});
-  this.setState({a: 4});
-}
-
-onClick() {
-  setTimeout(() => {
-  // 属于同一优先级
-    this.setState({a: 3});
-    this.setState({a: 4});
-  })
-}
-```
-
-### tearing
-
-[撕裂](https://en.wikipedia.org/wiki/Screen_tearing)（tearing）是图形编程中的一个传统术语，是指视觉上的不一致。
-
-**撕裂通常是由于 React 使用了外部的状态导致的。React 在并发渲染过程中，这些外部的状态会发生变化，但是 React 却无法感知到变化。**
-
-假设我们有一个外部 store，初始颜色是蓝色。在我们的应用中组件树中有多个组件都依赖于 store 的值。
-
-假设组件树的渲染需要 400 ms，在渲染到 100 ms 时，假设一个用户点击了按钮，将 store 的颜色由蓝色改为红色。
-
-在非并发渲染场景下，不会发生任何处理。因为组件树的渲染是同步的。用户的点击事件会在视图渲染完成后执行。
-
-![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/fe-engineering/0c371a43388a4ce29eba5a7deb888c85_tplv-k3u1fbpfcp-zoom-in-crop-mark_1304_0_0_0.webp)
-
-但是在并发渲染场景下，React 可以让点击发生反应，打断视图渲染。此时很有可能因为时间分片的原因，前 100ms 有一些组件已经完成了渲染，引用的 store 值是蓝色，剩下 300ms 渲染的组件引用的 store 值是红色，这些组件虽然读取同一个数据却显示出不同的值，这种边缘情况就是 “撕裂”。
-
-![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/fe-engineering/e758382e98814f5ab364e85ec3524ef9_tplv-k3u1fbpfcp-zoom-in-crop-mark_1304_0_0_0.webp)
-
 ## React 组件更新策略
 
 ### React 组件 render 需要满足的条件
@@ -657,6 +569,95 @@ React.createElement(Child, null)
 
 可以看到，`Child` 满足 `bailout` 的所有条件，所以不会 `render`。
 
+## 并发调度
+
+### 更新优先级
+
+React 通过 lane 的方式为每个更新分配了相关优先级。lane 可以简单理解为一些数字，数值越小，表明优先级越高。
+
+假如有两个更新，他们同时对 App 组件的一个 count 属性更新：
+
+```jsx
+<p>You clicked {count} times</p>
+<button onClick={() => setCount(count + 1)}>
+  A按钮
+</button>
+<button onClick={() => startTransition(() => { setCount(count + 1) })}>
+  B按钮
+</button>
+```
+
+- 一个是 `A` 按钮：`click` 事件触发的更新，叫做 `A更新`，对应于 `SyncLane`。
+- 一个是 `B` 按钮：`startTransition` 触发的更新，叫做 `B更新`，对应于 `TransitionLane1`。
+
+假设 `B` 按钮先点击，`B更新`开始，按照之前提到时间切片的形式进行更新。中途触发了 `A` 按钮点击，进而触发 `A更新`。那么此时就会通过 `lane` 进行对比，发现 `DefaultLane` 优先级高于 `TransitionLane1`。此时会中断 `B更新`，开始 `A更新`。直到 `A` 更新完成时，再重新开始 `B` 更新。
+
+**那么 React 是如何区分 B 更新对 App 的 count 的更改和 A 更新中对 count 的更改呢？**
+
+实际上，在每次更新时，更新 state 的操作会被创建为一个 Update，放到循环链表当中
+
+在更新的时候就会依次去执行这个链表上的操作，从而计算出最终的 state。
+
+每个 Update 里都有一个 lane 属性。该属性标识了当前的这个 Update 的更新优先级，属于哪个更新任务中的操作。
+
+因此当 A 更新在执行的时候，我们在计算 state 的时候，只需要去计算与 A 更新相同 lane 的 update 即可。同样，B 更新开始，也只更新具有同等 lane 级别的 Update，从而达到不同更新的状态互不干扰的效果。
+
+### Automatic batching
+
+> [给女朋友讲 React18 新特性：Automatic batching](https://zhuanlan.zhihu.com/p/382216973)
+
+批处理：**React 会尝试将同一上下文中触发的更新合并为一个更新**
+
+在 v18 之前，只有事件回调、生命周期回调中的更新会批处理，而在 promise、setTimeout 等异步回调中不会批处理。
+
+```js
+onClick() {
+  setTimeout(() => {
+    // ReactDOM 中使用 unstable_batchedUpdates 方法手动批处理。
+    ReactDOM.unstable_batchedUpdates(() => {
+      this.setState({a: 3});
+      this.setState({a: 4});
+    })
+  })
+}
+```
+
+v18 后，批处理是以更新的「优先级」为依据：
+
+```js
+onClick() {
+  // 属于同一优先级
+  this.setState({a: 3});
+  this.setState({a: 4});
+}
+
+onClick() {
+  setTimeout(() => {
+  // 属于同一优先级
+    this.setState({a: 3});
+    this.setState({a: 4});
+  })
+}
+```
+
+### tearing
+
+[撕裂](https://en.wikipedia.org/wiki/Screen_tearing)（tearing）是图形编程中的一个传统术语，是指视觉上的不一致。
+
+**撕裂通常是由于 React 使用了外部的状态导致的。React 在并发渲染过程中，这些外部的状态会发生变化，但是 React 却无法感知到变化。**
+
+假设我们有一个外部 store，初始颜色是蓝色。在我们的应用中组件树中有多个组件都依赖于 store 的值。
+
+假设组件树的渲染需要 400 ms，在渲染到 100 ms 时，假设一个用户点击了按钮，将 store 的颜色由蓝色改为红色。
+
+在非并发渲染场景下，不会发生任何处理。因为组件树的渲染是同步的。用户的点击事件会在视图渲染完成后执行。
+
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/fe-engineering/0c371a43388a4ce29eba5a7deb888c85_tplv-k3u1fbpfcp-zoom-in-crop-mark_1304_0_0_0.webp)
+
+但是在并发渲染场景下，React 可以让点击发生反应，打断视图渲染。此时很有可能因为时间分片的原因，前 100ms 有一些组件已经完成了渲染，引用的 store 值是蓝色，剩下 300ms 渲染的组件引用的 store 值是红色，这些组件虽然读取同一个数据却显示出不同的值，这种边缘情况就是 “撕裂”。
+
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/fe-engineering/e758382e98814f5ab364e85ec3524ef9_tplv-k3u1fbpfcp-zoom-in-crop-mark_1304_0_0_0.webp)
+
 ## 如何优雅处理使用 React Context 导致的不必要渲染？
 
 > [如何优雅地处理使用 React Context 导致的不必要渲染问题？](https://www.zhihu.com/question/450047614/answer/1788226254)
@@ -761,7 +762,7 @@ const Demo = () => {
 
 > [use-context-selector](https://github.com/dai-shi/use-context-selector)
 
-## Hooks
+## Hooks 原理
 
 <!-- React 的 hooks 是在 fiber 之后出现的特性，所以很多人误以为 hooks 是必须依赖 fiber 才能实现的，其实并不是，它们俩没啥必然联系。 -->
 
@@ -1091,6 +1092,24 @@ export default function ImperativeHandleDemo() {
   )
 }
 ```
+
+## 函数组件
+
+> [React 推荐函数组件是纯函数，但是组件有状态就不可能是纯函数，怎么理解有状态的纯函数？](https://www.zhihu.com/question/537538929)
+
+hooks 在 mental model 上只是组件函数的参数的另一种写法，函数组件只是一个接受参数 `(props, [state1, setState1], [state2, setState2], ...restHooks)` 然后返回 jsx 的纯函数。
+
+那 hooks 不能放 if 里面就是自然而然的了 —— 一个函数有多少个参数、各个参数的顺序是什么，这应当是永远不会变的，不能允许它在每次调用时都可能不同。
+
+函数组件并不会调用 `setState`，调用 `setState` 的是用户行为触发的回调函数，它已经脱离了函数组件本身的作用域了。
+
+```js
+function pure() {
+  return () => console.log(...)
+}
+```
+
+不能说因为 `pure` 返回的回调函数有副作用，所以 `pure` 本身有副作用。
 
 ## 闭包陷阱
 
