@@ -19,7 +19,6 @@
 
 ## 前端三剑客（Old School）
 
-<!-- https://csstriggers.com -->
 - `[Browser]` [到达前端最高城 ——— 浏览器](computer/web.md)
 - `[JavaScript]` [太美丽啦浏览器，哎呀这不是 JavaScript 吗](css/css.md)
 - `[TypeScript]` [还是看看远处的 TypeScript 吧，家人们](ts/ts.md)
@@ -83,6 +82,7 @@
 - `[手写]` [JavaScript 从零单排(九)](js/js_code.md)
 
 <!-- ## TypeScript 提高班 -->
+<!-- https://csstriggers.com -->
 
 <!-- - `[基础]`[写给自己的 TypeScript 教程(一)](ts/ts_1.md)
 - `[进阶]`[写给自己的 TypeScript 教程(二)](ts/ts_2.md)

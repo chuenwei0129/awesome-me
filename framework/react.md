@@ -62,6 +62,7 @@
 - [Profiler](#profiler)
 - [双缓存 Fiber 树](#双缓存-fiber-树)
 - [ErrorBoundary](#errorboundary)
+- [Portals](#portals)
 
 ## 从 DOM 谈起：前端为什么操作 DOM 是最耗性能的呢？
 
@@ -1585,3 +1586,7 @@ workInProgressFiber.alternate === currentFiber
 ## ErrorBoundary
 
 > [为什么 Hook 没有 ErrorBoundary？](https://zhuanlan.zhihu.com/p/528040023)
+
+## Portals
+
+> [react 中的神器-- 渲染到父组件之外的 dom 用什么？](https://www.bilibili.com/video/BV15R4y1x75Y?spm_id_from=333.999.0.0&vd_source=c4234488bc8659e17c631716b9036762)
