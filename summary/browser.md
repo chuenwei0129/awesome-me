@@ -1,4 +1,4 @@
-# 计算机基础知识图谱（四）<!-- omit in toc -->
+# 到达前端最高城 —— 浏览器<!-- omit in toc -->
 
 ***👀 TIPS: 二级标题可返回目录***
 
@@ -38,7 +38,7 @@
   - [相关概念](#相关概念)
     - [1.（重排）更新了元素的几何属性](#1重排更新了元素的几何属性)
     - [2.（重绘）更新元素的绘制属性](#2重绘更新元素的绘制属性)
-    - [3. 直接（合成）阶段](#3-直接合成阶段)
+    - [3.（合成）阶段](#3合成阶段)
     - [如何触发重排和重绘](#如何触发重排和重绘)
     - [如何避免重绘或者重排](#如何避免重绘或者重排)
 - [用户输入行为与合成器](#用户输入行为与合成器)
@@ -50,15 +50,21 @@
     - [降低往主线程发送事件的频率](#降低往主线程发送事件的频率)
     - [使用 `getCoalescedEvents` 获取帧内事件](#使用-getcoalescedevents-获取帧内事件)
 - [事件循环](#事件循环)
-- [V8 引擎](#v8-引擎)
-- [浏览器多进程架构](#浏览器多进程架构-1)
-- [浏览器多进程架构](#浏览器多进程架构-2)
-- [浏览器多进程架构](#浏览器多进程架构-3)
-- [浏览器多进程架构](#浏览器多进程架构-4)
-- [科普](#科普)
+- [setTimeout](#settimeout)
+- [垃圾回收](#垃圾回收)
+- [XMLHttpRequest](#xmlhttprequest)
+- [同源策略](#同源策略)
+- [安全策略](#安全策略)
+  - [`＜a＞` 标签属性](#a-标签属性)
+    - [`<a>` 标签中 rel="noopener noreferrer"](#a-标签中-relnoopener-noreferrer)
+    - [`<a>` 标签中 `target="_blank"` 安全漏洞](#a-标签中-target_blank-安全漏洞)
+    - [设置 rel="noopener noreferrer" 堵住钓鱼安全漏洞](#设置-relnoopener-noreferrer-堵住钓鱼安全漏洞)
+  - [跨站脚本攻击（XSS）](#跨站脚本攻击xss)
+  - [CSRF 攻击](#csrf-攻击)
+- [拓展知识](#拓展知识)
   - [为什么 Chrome 的 navigator 属性值里会看到AppleWebkit ？](#为什么-chrome-的-navigator-属性值里会看到applewebkit-)
-  - [现在的浏览器可以同时打开多个页签，他们端口一样吗？如果一样，数据怎么知道去哪个页签？](#现在的浏览器可以同时打开多个页签他们端口一样吗如果一样数据怎么知道去哪个页签)
-  - [tcp 传送数据时 浏览器端就做渲染处理了么？如果前面数据包丢了 后面数据包先来是要等么？类似的那种实时渲染怎么处理？针对数据包的顺序性？](#tcp-传送数据时-浏览器端就做渲染处理了么如果前面数据包丢了-后面数据包先来是要等么类似的那种实时渲染怎么处理针对数据包的顺序性)
+  - [现在的浏览器可以同时打开同一网站多个页签，他们端口一样吗？如果一样，数据怎么知道去哪个页签？](#现在的浏览器可以同时打开同一网站多个页签他们端口一样吗如果一样数据怎么知道去哪个页签)
+  - [tcp 传送数据时，浏览器端就做渲染处理了么？如果前面数据包丢了，后面数据包先来是要等么？类似的那种实时渲染怎么处理？针对数据包的顺序性？](#tcp-传送数据时浏览器端就做渲染处理了么如果前面数据包丢了后面数据包先来是要等么类似的那种实时渲染怎么处理针对数据包的顺序性)
   - [同一个域名同时最多只能建立 6 个 TCP 连接 是不是意思是同一域名同时只能发送6个 AJAX 请求吗？](#同一个域名同时最多只能建立-6-个-tcp-连接-是不是意思是同一域名同时只能发送6个-ajax-请求吗)
 - [参考资料](#参考资料-1)
 
@@ -233,29 +239,35 @@ Chrome 正在经历架构变革，它转变为将浏览器程序的每一模块�
 
 与强缓存相关的 `header` 字段有两个：
 
-> 有 Cache-Control，则 Expires 失效。
+- Cache-Control
+- Expires
 
-**expires：** 这是 http1.0 时的规范；它的值为一个绝对时间的 GMT 格式的时间字符串，如 `Mon, 10 Jun 2015 21:31:12 GMT`，如果发送请求的时间在  expires 之前，那么本地缓存始终有效，否则就会发送请求到服务器来获取资源
+> Cache-Control 存在，则 Expires 失效。
 
+<!-- 理解成闹钟 -->
+**⏰ Expires**：这是 http 1.0 时的规范；它的值为一个绝对时间的 GMT 格式的时间字符串，如 `Mon, 10 Jun 2015 21:31:12 GMT`，如果发送请求的时间在 Expires 之前，那么本地缓存始终有效，否则就会发送请求到服务器来获取资源。
+
+<!-- 理解成租房合同，max-age 指租房期限 -->
 另一个请求头为 `Cache-Control`。**这个缓存指令是单向的**，也就是说请求中设置的指令，不一定包含在响应中，请求中如果没有传 `Cache-Control`，`server` 也可以返回 `Cache-Control`。
 
-**客户端发起请求后，服务器返回 `Cache-Control： max-age=30`，代表资源在客户端可以缓存 30 秒，30 秒内客户端的请求可以直接从缓存获取，超过 30 秒后需要向服务器发起网络请求。**
+**客户端发起请求后，服务器返回 `Cache-Control：max-age=30`，代表资源在客户端可以缓存 30 秒，30 秒内客户端的请求可以直接从缓存获取，超过 30 秒后需要向服务器发起网络请求。**
 
-`max-age` 是 `HTTP` 缓存控制最常用的属性，表示资源存储的最长时间，需要注意的是，时间的计算起点是响应报文的创建时刻（即 `Date` 字段，也就是离开服务器的时刻），超过后客户端需要重新发起请求
+`max-age` 是 `HTTP` 缓存控制最常用的属性，表示资源存储的最长时间，需要注意的是，时间的计算起点是响应报文的创建时刻（即 `Date` 字段，也就是离开服务器的时刻），超过后客户端需要重新发起请求。
 
 除此之外，还有其它属性值如下:
 
-- `no-cache`: **缓存但重新验证**服务器端会验证请求中所描述的缓存是否过期，若未过期（注：实际就是返回 304），则缓存才使用本地缓存副本。
+- `no-cache`: **缓存但重新验证**。服务器端会验证请求中所描述的缓存是否过期，若未过期（注：实际就是返回 304），则使用本地缓存副本。
 
-- `no-store`: 这才是真正的不允许缓存，比如秒杀页面这样变化非常频繁的页面就不适合缓存
+- `no-store`: 这才是真正的不允许缓存，比如秒杀页面这样变化非常频繁的页面就不适合缓存。
 
-- `must-revalidate`：一旦资源过期（比如已经超过 max-age），在成功向原始服务器验证之前，缓存不能用该资源响应后续请求。
+- `must-revalidate`：一旦资源过期（比如已经超过 max-age），在成功向原始服务器验证之前，不能使用缓存。
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/browser/http-11.jpg)
 
-`Cache-Control` 只能刷新数据，但不能很好地利用缓存，又因为缓存会失效，使用前还必须要去服务器验证是否是最新版，存在一定的性能问题，所以 `HTTP` 又引入了条件缓存（协商缓存）。
+<!-- max-age 过期后，服务器资源没改动就使用缓存 -->
+`Cache-Control`只能刷新数据，但不能很好地利用缓存，又因为缓存会失效，使用前还必须要去服务器验证是否是最新版，存在一定的性能问题，所以 `HTTP` 又引入了条件缓存（协商缓存）。
 
-条件请求以 `If` 开头，有「If-Match」，「If-Modified-Since」，「If-None-Match」,「If-Range」,「If-Unmodified-Since」五个头字段，我们最常用的是「if-Modified-Since」和「If-None-Match」这两个头字段，所以重点介绍一下。
+条件请求以 `If` 开头，有「If-Match」、「If-Modified-Since」、「If-None-Match」、「If-Range」、「If-Unmodified-Since」五个头字段，我们最常用的是「if-Modified-Since」和「If-None-Match」这两个头字段，所以重点介绍一下。
 
 - `if-Modified-Since`：指的是文件最后修改时间，服务器只在所请求的资源**在给定的日期时间之后对内容进行过修改的情况下**才会将资源返回，如果请求的资源从那时起未经修改，那么**返回一个不带有消息主体的 `304` 响应**，需要第一次请求提供「Last-modified」，只能精确到一秒，第二次请求就可以在 「if-Modified-Since」首部带上此值了
 
@@ -311,7 +323,7 @@ DOM 和 HTML 内容几乎是一样的，**但是和 HTML 不同的是，DOM 是�
 
 在 `<script>` 加 `async` 或 `defer` 属性，浏览器异步加载和运行 `JS`，不阻止解析。
 
-1. `async`：指示浏览器尽可能异步加载脚本，默认同步加载脚本(async=false)
+1. `async`：指示浏览器尽可能异步加载脚本，默认同步加载脚
 2. `defer`：指示脚本要在解析文档之后但在触发 `DOMContentLoaded` 之前执行。
 3. `async` 特性意味着脚本是完全独立的，`DOMContentLoaded` 和异步脚本不会彼此等待，其他脚本不会等待 `async` 脚本加载完成，同样，`async` 脚本也不会等待其他脚本。
 
@@ -358,6 +370,8 @@ styleSheets有两个作用：
 > **CSS 会阻塞 JS 脚本执行**
 
 如果脚本的内容是获取元素的样式，宽高等 `CSS` 控制的属性，浏览器是需要计算的，也就是依赖于 `CSS`。浏览器也无法感知脚本内容到底是什么，为避免样式获取，因而只好等前面所有的样式下载完后，再执行 `JS`。
+
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/20210511110517723.png)
 
 #### 布局（Layout）
 
@@ -466,7 +480,7 @@ Chrome 在布局阶段需要完成两个任务：创建布局树和布局计算�
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/browser/20210317112739339.png)
 
-#### 3. 直接（合成）阶段
+#### 3.（合成）阶段
 
 > 那如果你更改一个既不要布局也不要绘制的属性，渲染引擎将跳过布局和绘制，只执行后续的合成操作，我们把这个过程叫做**合成**。
 
@@ -605,18 +619,102 @@ window.addEventListener('pointermove', event => {
 
 ## [事件循环](#目录)
 
-[事件循环](https://www.bilibili.com/video/BV1K4411D7Jb)
+- [事件循环](https://www.bilibili.com/video/BV1K4411D7Jb)
+- [JavaScript 的 DOM 事件回调不是宏任务吗，为什么在本次微任务队列触发？](https://www.zhihu.com/question/362096226/answer/2026663593)
 
-## [V8 引擎](#目录)
+## setTimeout
 
-## [浏览器多进程架构](#目录)
-## [浏览器多进程架构](#目录)
-## [浏览器多进程架构](#目录)
-## [浏览器多进程架构](#目录)
+- [为什么 setTimeout 有最小时延 4ms ?](https://zhuanlan.zhihu.com/p/385003833)
+- [JS 中 setTimeout 的实现机理是什么？](https://www.zhihu.com/question/463446982)
+- [使用 setTimeout 的注意事项](https://blog.csdn.net/kaimo313/article/details/115631674)
+- [调度：setTimeout 和 setInterval](https://zh.javascript.info/settimeout-setinterval)
+- [有了 setTimeOut，为什么还要使用 requestAnimationFrame？](https://blog.csdn.net/kaimo313/article/details/118159117)
 
-## [科普](#目录)
+## [垃圾回收](#目录)
+
+> [V8 垃圾回收机制和内存泄露分析](https://www.bilibili.com/video/BV1cR4y1F7ba)
+
+## [XMLHttpRequest](#目录)
+
+**工作流程：**
+
+- 渲染进程会将请求发送给网络进程
+- 然后网络进程负责资源的下载
+- 等网络进程接收到数据之后，就会利用 IPC 来通知渲染进程
+- 渲染进程接收到消息之后，会将 xhr 的回调函数封装成任务并添加到消息队列中
+- 等主线程循环系统执行到该任务的时候，就会根据相关的状态来调用对应的回调函数。
+
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/20210414100531877.png)
+
+**参考：**[WebAPI：XMLHttpRequest 是怎么实现的](https://blog.csdn.net/kaimo313/article/details/115664250)
+
+**拓展：**[Chromium 对 XMLHttpRequest 的实现](https://chromium.googlesource.com/chromium/src/+/refs/heads/main/third_party/blink/renderer/core/xmlhttprequest)
+
+## [同源策略](#目录)
+
+**同源**：
+
+如果两个 URL 的**协议**、**域名**和**端口**都相同，就称这两个 URL 同源。
+
+**同源策略**：
+
+浏览器默认两个相同的源之间是可以相互访问资源和操作 DOM 的。两个不同的源之间若想要相互访问资源或者操作 DOM，那么会有一套基础的安全策略的制约，把这称为同源策略。
+
+- **DOM 层面**：同源策略限制了来自不同源的 JavaScript 脚本对当前 DOM 对象读和写的操作。
+- **数据层面**：同源策略限制了不同源的站点读取当前站点的 Cookie、IndexDB、LocalStorage 等数据。
+- **网络层面**：同源策略限制了通过 XMLHttpRequest 等方式将站点的数据发送给不同源的站点。
+
+**内容安全策略（CSP）**：
+
+**CSP 的核心思想是让服务器决定浏览器能够加载哪些资源，让服务器决定浏览器是否能够执行内联 JavaScript 代码。**
+
+> [Content Security Policy 入门教程](https://www.ruanyifeng.com/blog/2016/09/csp.html)
+
+**跨域资源共享（CORS）**：
+
+> [跨域资源共享 CORS 详解](https://www.ruanyifeng.com/blog/2016/04/cors.html)
+
+**跨文档消息机制**：
+
+通过 [window.postMessage](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/postMessage) 接口来和不同源的 DOM 进行通信。
+
+## [安全策略](#目录)
+
+### `＜a＞` 标签属性
+
+#### `<a>` 标签中 rel="noopener noreferrer"
+
+- `<a>` 标签的 rel 属性用于指定当前文档与被链接文档的关系。
+- 只有在使用了 href 属性后才能使用 rel 属性。
+- 使用了 `target="_blank"` 后需要增加 `rel="noopener noreferrer"` 来保证安全。
+
+#### `<a>` 标签中 `target="_blank"` 安全漏洞
+
+在 `<a>` 标签中给链接加上 `target="_blank"` 后，目标网页会在新的标签页中打开，此时在新打开的页面中可通过 `window.opener` 获取到源页面的 `window` 对象，这就埋下了安全隐患。
+
+- 假设一个网页 A 中有超链接指向网页 B。
+- B 网页可以通过 `window.opener` 获取到 A 的 `window` 对象，进而网络钓鱼者可以控制 A 网页跳转到一个钓鱼网页(`window.opener.location.href ="fishing.com"`)，用户不知道页面已经跳转，在该页面输入了用户名密码后则发生信息泄露。
+
+#### 设置 rel="noopener noreferrer" 堵住钓鱼安全漏洞
+
+- 设置 rel="noopener" 的链接，`window.opener` 会为 null，这样新打开的页面便获取不到来源页面的 window 对象了。
+- 设置 `rel="noreferrer"` 的链接，新打开的页面也获取不到来源页面的 `window` 对象。同时，新打开页面中还无法获取 `document.referrer` 信息，该信息包含了来源页面的地址。
+
+> [关于淘宝网前端网页的 a 标签跳转新窗口的安全性问题的探讨?](https://www.zhihu.com/question/267580521)
+
+### 跨站脚本攻击（XSS）
+
+> [为什么 Cookie 中有 HttpOnly 属性？](https://blog.csdn.net/kaimo313/article/details/117788978)
+
+### CSRF 攻击
+
+> [为什么 Cookie 中有 SameSite 属性？](https://blog.csdn.net/kaimo313/article/details/117920763)
+
+## [拓展知识](#目录)
 
 ### 为什么 Chrome 的 navigator 属性值里会看到AppleWebkit ？
+
+> [如何看待华为浏览器上的 UA 新增鸿蒙 OS？](https://www.zhihu.com/question/472331294/answer/2553244539)
 
 `UA` 是浏览器的身份证，通常，在发送 HTTP 请求时，UA 会附带在 HTTP 的请求头中 user-agent 字段中，这样服务器就会知道浏览器的基础信息，然后服务器会根据不同的 UA 返回不同的页面内容，比如手机上返回手机的样式，PC 就返回 PC 的样式。
 
@@ -636,19 +734,19 @@ window.addEventListener('pointermove', event => {
 
 服务器会根据不同的 UA 来针性的设计不同页面，所以当出了一款新浏览器时，他如果使用自己独一无二的 UA，那么之前的很多服务器还需要针对他来做页面适配，这显然是不可能的。
 
-比如 Chrome 发布时他会在他的 UA 中使用 “Mozilla” ，“AppleWebKit”，等关键字段，用来表示他同时支持 Mozilla 和 AppleWebKit，然后再在最后加上他自己的标示，如 Chrome/xxx。
+比如 Chrome 发布时他会在他的 UA 中使用 “Mozilla” ，“AppleWebKit”，等关键字段，用来表示他同时支持 `Mozilla` 和 `AppleWebKit`，然后再在最后加上他自己的标示，如 `Chrome/xxx`。
 
-### 现在的浏览器可以同时打开多个页签，他们端口一样吗？如果一样，数据怎么知道去哪个页签？
+### 现在的浏览器可以同时打开同一网站多个页签，他们端口一样吗？如果一样，数据怎么知道去哪个页签？
 
-端口一样的，网络进程知道每个 tcp 链接所对应的标签是那个，所以接收到数据后，会把数据分发给对应的渲染进程
+端口一样的，网络进程知道每个 tcp 链接所对应的标签是那个，所以接收到数据后，会把数据分发给对应的渲染进程。
 
-### tcp 传送数据时 浏览器端就做渲染处理了么？如果前面数据包丢了 后面数据包先来是要等么？类似的那种实时渲染怎么处理？针对数据包的顺序性？
+### tcp 传送数据时，浏览器端就做渲染处理了么？如果前面数据包丢了，后面数据包先来是要等么？类似的那种实时渲染怎么处理？针对数据包的顺序性？
 
 接收到 http 响应头中的 content-type 类型时就开始准备渲染进程了，响应体数据一旦接受到便开始做 DOM 解析了！基于 http 不用担心数据包丢失的问题，因为丢包和重传都是在 tcp 层解决的。http 能保证数据按照顺序接收的！
 
 ### 同一个域名同时最多只能建立 6 个 TCP 连接 是不是意思是同一域名同时只能发送6个 AJAX 请求吗？
 
-”同一个域名同时最多只能建立 6 个 TCP 连接“ 指的不光是指Ajax，还包括页面中的资源加载，只要是一个域名下的资源，浏览器同一时刻最多只支持6个并行请求。不过这是 HTTP/1.1 的规则，HTTP/2 已经不用这套规则了。
+”同一个域名同时最多只能建立 6 个 TCP 连接“ 指的不光是指 Ajax，还包括页面中的资源加载，只要是一个域名下的资源，浏览器同一时刻最多只支持 6 个并行请求。不过这是 HTTP/1.1 的规则，HTTP/2 已经不用这套规则了。
 
 ## [参考资料](#目录)
 
