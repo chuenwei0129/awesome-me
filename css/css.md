@@ -334,6 +334,8 @@ AutoResponse();
 
 #### 概述
 
+> [`flex: 1` 到底代表什么?](https://zhuanlan.zhihu.com/p/136223806)
+
 flex 的核心的概念就是**容器**和**轴**。容器包括外层的**父容器**和内层的**子项**，轴包括**主轴**和**交叉轴**。
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/css/flex_1.webp)

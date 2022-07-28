@@ -24,6 +24,11 @@
     - [Map 上的操作](#map-上的操作)
   - [循环实现思路](#循环实现思路)
 - [其他](#其他)
+  - [类](#类)
+    - [基础写法](#基础写法)
+    - [get / set](#get--set)
+    - [单例模式](#单例模式)
+    - [抽象类](#抽象类)
   - [断言](#断言)
     - [类型断言](#类型断言)
     - [! 断言](#-断言)
@@ -539,6 +544,148 @@ type IntSeq<N, S extends any[] = []> = S['length'] extends N ? S : IntSeq<N, [..
 
 ## 其他
 
+### 类
+
+#### 基础写法
+
+```ts
+// private public protected
+// 类内部 类内外部 类和继承类
+class Person {
+  // ts 声明类属性
+  // public name: string
+  // constructor(name: string) {
+  //   this.name = name
+  // }
+  // 简化写法，相当于上面四行
+  constructor(public name: string) {}
+  getName() {
+    return this.name
+  }
+}
+
+const person = new Person('chu')
+console.log(person.name)
+
+// 子类
+class Teacher extends Person {
+  constructor(public age: number) {
+    super('gu')
+  }
+}
+
+const teacher = new Teacher(28)
+console.log(teacher.name, teacher.age)
+```
+
+#### get / set
+
+```ts
+class Person {
+  // private name: string
+  // constructor(name: string) {
+  //   this.name = name
+  // }
+  // 简化写法，相当于上面四行
+  constructor(private _name: string) {}
+  // get 可以获取类内部的属性值，写作函数，读取时以属性方式读取
+  get name() {
+    return this._name
+  }
+  set name(next: string) {
+    // 对受保护的属性进行操作
+    // 此处可以做的更多
+    this._name = next
+  }
+}
+
+const person = new Person('chu')
+// person._name 类外面拿不到
+console.log('原始值', person.name)
+person.name = 'hello'
+console.log('修改后', person.name)
+```
+
+#### 单例模式
+
+```ts
+class Person {
+  private static instance: Person
+  private constructor(public name: string) {}
+  static getInstance(name: string) {
+    // Person.getInstance() 调用 this 指向 Person
+    if (!this.instance) {
+      // 只执行一次，所以 name 只赋值一次
+      this.instance = new Person(name)
+    }
+    // 每次调用 getInstance() 返回的都是同一个 instance
+    return this.instance
+  }
+}
+
+// 按引用比较
+const person1 = Person.getInstance('chu')
+const person2 = Person.getInstance('gu')
+
+console.log(person1, person2, person1 === person2)
+
+// 单例模式 上面代码相当于下面代码
+const o = { name: 'chu' }
+const p1 = o
+const p2 = o
+p1.name = 'chu'
+
+console.log(p1, p2, p1 === p2)
+```
+
+#### 抽象类
+
+```ts
+abstract class Geom {
+  constructor(readonly width: number) {}
+  abstract getArea(): string
+  sayHi(): void {
+    console.log('hi')
+  }
+}
+
+// 抽象类不可以被 new 只可以继承
+// const geom = new Geom() // 会报错
+
+// 抽象方法必须实现，相当于必须实现的公有方法
+
+class Circle extends Geom {
+  getArea() {
+    return 'Circle'
+  }
+}
+
+class Square extends Geom {
+  getArea() {
+    return 'Square'
+  }
+}
+
+// 只读属性
+const square = new Square(100)
+console.log(square.width)
+// square.width = 200 // 会报错
+
+// 接口抽象
+interface Person {
+  name: string
+  age: number
+}
+
+interface Teacher extends Person {
+  teach(): string
+}
+
+interface Student extends Person {
+  learn(): string
+}
+```
+
 ### 断言
 
 #### 类型断言
@@ -854,7 +1001,6 @@ compilerOptions 每个选项的详细说明如下：
 - **类型空间在运行时会被彻底擦除**，因此你哪怕完全不懂不碰它也能写出业务逻辑，这时就相当于回退到了 `JavaScript`。
 
 - **运行时的错误需要运行的时候你才知道错了**，比如从后端返回的 `data`数据里到底有哪些字段，显然不可能在编译期的类型空间里用 `keyof` 获知。不要尝试表演超出生理极限的体操动作。
-
 
 ## [写 TypeScript 时，什么时候用 any？什么时候用 unknown？有没有规律或准则？](https://www.zhihu.com/question/355283769)
 

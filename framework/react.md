@@ -34,10 +34,6 @@
   - [hooks 状态的保存和更新](#hooks-状态的保存和更新)
 - [关于 useEffect 的一切](#关于-useeffect-的一切)
 - [关于 ref 的一切](#关于-ref-的一切)
-  - [string ref](#string-ref)
-  - [React.createRef](#reactcreateref)
-  - [useRef](#useref)
-  - [function ref](#function-ref)
   - [forwardRef](#forwardref)
   - [useImperativeHandle](#useimperativehandle)
 - [函数组件](#函数组件)
@@ -229,6 +225,8 @@ React 传统的 Reconciler 是通过类似于虚拟 DOM 的方式来进行对比
 如果节点 2 发生中断，普通树结构由于只保存了 3，4 的索引，恢复中断时，其它节点信息就会丢失，而链表树就能够指针把其它节点的信息都找回来。
 
 ## 虚拟 DOM 转 Fiber
+
+<!-- **重点：** `effectList` 构建的顺序 -->
 
 **DOM 结构：**
 
@@ -907,119 +905,34 @@ do {
 
 > [关于 useEffect 的一切](https://zhuanlan.zhihu.com/p/208546124)
 
+**useEffect 工作原理：**
+
+1. 触发更新时，**FunctionComponent** 被执行，执行到 `useEffect` 时会判断他的第二个参数 `deps` 是否有变化。
+
+2. 如果 `deps` 变化，则 `useEffect` 对应 **FunctionComponent** 的 fiber 会被打上 Passive（即：需要执行 useEffect）的标记。
+
+3. 在渲染器中，遍历 `effectList` 过程中遍历到该 `fiber` 时，发现 `Passive` 标记，则依次执行该 `useEffect` 的 `destroy`（即  `useEffect` 回调函数的返回值函数）与 `create`（即 `useEffect` 回调函数）。
+
+其中，前两步发生在协调器中。
+
+**`effectList` 构建：**
+
+**协调器的工作流程是使用遍历实现的递归**。所以可以分为递与归两个阶段。
+
+**递**是从根节点向下一直到叶子节点，**归**是从叶子节点一路向上到根节点。
+
+- `effectList` 的构建发生在归阶段。所以，`effectList` 的顺序也是从叶子节点一路向上。
+- `useEffect` 对应 `fiber` 作为 `effectList` 中的一个节点，他的调用逻辑也遵循归的流程。
 - `effectList` 构建的顺序就是 `useEffect` 的执行顺序。
+
+**`effectList 的执行`：**
+
 - `useLayoutEffect` 是在 UI 绘制之前（虚拟 DOM 准备完成）同步调用，会阻塞 UI 绘制。
-- 处理 `Passive effect` 是在渲染完成后异步执行，而`componentDidMount` 是在渲染完成后同步执行，所以他们是不同的。
+- `useEffect` 是在渲染完成后异步执行，而类组件   `componentDidMount` 是在渲染完成后同步执行，所以他们是不同的。
 
 ## 关于 ref 的一切
 
 > [关于 ref 的一切](https://zhuanlan.zhihu.com/p/215745959)
-
-### string ref
-
-当使用 `render props` 的开发模式，获得 `ref` 的组件实例可能与预期不同。
-
-```js
-// 使用方式：this.refs.['input-']
-class App extends React.Component {
-  renderRow = index => {
-    // this.refs -> this 会绑定到 DataTable 组件实例，而不是 App 组件实例上
-    return <input ref={'input-' + index} />
-
-    // 如果使用 function 类型 ref，则不会有这个问题
-    // return <input ref={input => this['input-' + index] = input} />;
-  }
-
-  render() {
-    return <DataTable data={this.props.data} renderRow={this.renderRow} />
-  }
-}
-```
-
-### React.createRef
-
-`React.createRef()` 返回 `ref` 对象，该对象仅仅是包含 `current` 属性的普通对象。
-
-```js
-function createRef() {
-  return { current: null }
-}
-```
-
-### useRef
-
-对于 mount 与 update，useRef 分别对应两个函数。
-
-```js
-// mount
-function mountRef<T>(initialValue: T) {
-  // 获取当前 useRef hook
-  const hook = mountWorkInProgressHook()
-  // 创建 ref
-  const ref = { current: initialValue }
-  hook.memoizedState = ref
-  return ref
-}
-
-// update
-function updateRef<T>(initialValue: T) {
-  // 获取当前 useRef hook
-  const hook = updateWorkInProgressHook()
-  // 返回保存的数据
-  return hook.memoizedState
-}
-```
-
-可以看到，ref 对象确实仅仅是包含 current 属性的对象。
-
-> **注意：**
->
-> 1. React.createRef 与 useRef 的返回值一个会被缓存，一个不会被缓存
->
-> 2. **创建 useRef 时候，会创建一个原始对象，只要函数组件不被销毁，原始对象就会一直存在，那么我们可以利用这个特性，来通过 useRef 保存一些数据。**
-
-通过 useRef 保存一些数据：
-
-```jsx
-const DemoUseRef = () => {
-  const dom = useRef(null)
-  // 渲染时为 null
-  // console.log(dom.current)
-  const handle = () => {
-    /*  点击时打印 <div>div</div> dom 节点 */
-    console.log(dom.current)
-  }
-  return (
-    <div>
-      {/* ref 标记当前 div 节点 */}
-      <div ref={dom}>div</div>
-      <button onClick={() => handle()}>点击</button>
-    </div>
-  )
-}
-```
-
-### function ref
-
-在 React 中，HostComponent、ClassComponent、ForwardRef 可以赋值 ref 属性。
-
-> 这个属性在 ref 生命周期的不同阶段会被执行（对于function）或赋值（对于 `{current: any}`）。
-
-生命周期可以分为两个大阶段：
-
-- render 阶段为含有 ref 属性的 fiber 添加 Ref effectTag
-- commit 阶段为包含 Ref effectTag 的 fiber 执行对应操作
-
-```js
-// function 与 {current: any} 类型的 ref 没有什么不同，只是一种函数会被调用，一种会被赋值。
-
-// render 阶段执行 ref 变化，在 commit 阶段会先删除旧 ref，再执行 ref 更新。
-
-// 内联函数会被调用两次，commitDetachRef（删除 ref） 一次，commitAttachRef（更新 ref） 一次
-
-// 第一次 dom 的值删除后赋值为 null，第二次为更新的 DOM。
-<input ref={input => (this.input = input)} />
-```
 
 ### forwardRef
 

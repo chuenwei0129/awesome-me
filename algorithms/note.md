@@ -1,8 +1,44 @@
-# JavaScript 算法与数据结构
+# 我接触过的前端数据结构与算法
 
-> https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md
+## 双指针
 
-## 数据结构
+**前置知识：**[算法一招鲜——双指针问题](https://zhuanlan.zhihu.com/p/71643340)
+
+**刷题：**
+
+- **对撞指针：**[LeetCode 881](https://leetcode.cn/problems/boats-to-save-people/)
+
+子串/子数组/子序列
+
+例如：长度最小的子数组
+
+滑动窗使用思路（寻找最长）
+
+——核心：左右双指针(L，R)在起始点，R向右逐位滑动循环
+
+—每次滑动过程中
+
+如果：窗内元素满足条件，R向右扩大窗口，井更新最优结果如果：窗内元素不满足条件，L向右缩小窗口
+
+—R到达结尾
+
+滑动窗使用思路（寻找最短）
+
+——核心：左右双指针(L，R)在起始点，R向右逐位滑动循环
+
+—每次滑动过程中
+
+如果：窗内元素满足条件，L向右缩小窗口，井更新最优结果如果：窗内元素不满足条件，R向右扩大窗口
+
+——R到达结尾
+
+## 前端相关
+
+### 递归
+
+## 基础知识
+
+
 
 ### 数组
 
@@ -147,3 +183,6 @@ render 就是存的
 ref就相当于违背了存函数，也就是不存了
 
 ### 图
+
+> https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md
+
