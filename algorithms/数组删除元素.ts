@@ -20,13 +20,13 @@ const removeElement = (nums: number[], val: number) => {
     fast++
   }
 
-  // 删除原数组剩下的值，更新新数组
-  for (let i = 0; i < len - slow; i++) {
-    nums.pop()
-  }
+  // 更新新数组长度
+  nums.length = slow
 
-  // 或者
-  // nums.length = slow
+  // 或者依次清理原数组剩余的空间
+  // for (let i = 0; i < len - slow; i++) {
+  //   nums.pop()
+  // }
 
   return slow
 }

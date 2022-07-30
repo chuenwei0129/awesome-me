@@ -1,13 +1,13 @@
-class LinkedNode {
-  public next: null | LinkedNode
+class MyLinkNode {
+  public next: null | MyLinkNode
   constructor(public value: any) {
     this.next = null
   }
 }
 
 // 链表有 index
-class LinkedList {
-  private _head: null | LinkedNode
+class MyLinkedList {
+  private _head: null | MyLinkNode
   private _size: number
   constructor() {
     this._head = null
@@ -20,33 +20,33 @@ class LinkedList {
     if (position < 0 || position >= this._size) throw new Error(`out range`)
     let current = this._head
     for (let i = 0; i < position; i++) {
-      current = current.next
+      current = current!.next
     }
     return current
   }
   // 添加节点
-  append(value) {
-    const newNode = new LinkedNode(value)
+  append(value: any) {
+    const newNode = new MyLinkNode(value)
     if (this._head === null) {
       this._head = newNode
     } else {
       const lastNode = this.getNode(this._size - 1)
-      lastNode.next = newNode
+      lastNode!.next = newNode
     }
     this._size++
   }
   // 指定具体位置添加链表
-  appendAt(position: number, value) {
+  appendAt(position: number, value: any) {
     if (position < 0 || position > this._size) throw new Error(`下标越界`)
-    const newNode = new LinkedNode(value)
+    const newNode = new MyLinkNode(value)
     if (position === 0) {
       // 新节点 next 指向旧的头
       newNode.next = this._head
       this._head = newNode
     } else {
       const prevNode = this.getNode(position - 1)
-      newNode.next = prevNode.next
-      prevNode.next = newNode
+      newNode.next = prevNode!.next
+      prevNode!.next = newNode
     }
     this._size++
   }
@@ -54,21 +54,20 @@ class LinkedList {
   removeAt(position: number) {
     if (position < 0 || position >= this._size) throw new Error(`下标越界`)
     if (position === 0) {
-      this._head = this._head.next
+      this._head = this._head!.next
     } else {
-      // 突破点前一个节点
       let prevNode = this.getNode(position - 1)
-      prevNode.next = prevNode.next.next
+      prevNode!.next = prevNode!.next!.next
     }
     this._size--
   }
   // 链表下标
-  indexOf(value) {
+  indexOf(value: any) {
     // 循环链表
     let current = this._head
     for (let i = 0; i < this._size; i++) {
-      if (value === current.value) return i
-      current.next = current
+      if (value === current!.value) return i
+      current!.next = current
     }
     return -1
   }
@@ -81,7 +80,7 @@ class LinkedList {
   }
 }
 
-const ll = new LinkedList()
+const ll = new MyLinkedList()
 
 ll.append(1)
 ll.append(3)
