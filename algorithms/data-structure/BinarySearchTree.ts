@@ -33,14 +33,20 @@ export class BinarySearchTree {
   }
 
   // 递归
-  private _traverse(currNode: TreeNode | null, callback: (value: number) => void) {
+  private _traverse(
+    currNode: TreeNode | null,
+    callback: (value: number) => void,
+    order: 'pre' | 'mid' | 'post'
+  ) {
     if (currNode === null) return
 
     // 前序：中左右
     // 函数调用栈决定遍历顺序
-    callback(currNode.value)
-    this._traverse(currNode.left, callback)
-    this._traverse(currNode.right, callback)
+    order === 'pre' && callback(currNode.value)
+    this._traverse(currNode.left, callback, order)
+    order === 'mid' && callback(currNode.value)
+    this._traverse(currNode.right, callback, order)
+    order === 'post' && callback(currNode.value)
   }
 
   // 层序遍历，执行顺序看调用栈与队列
@@ -48,7 +54,7 @@ export class BinarySearchTree {
     // 队列
     const q = [currNode]
     while (q.length > 0) {
-      // q.shift() 一定非空，是 TreeNode
+      // q.shift() 一定非空
       currNode = q.shift() as TreeNode
       callback(currNode.value)
       currNode.left && q.push(currNode.left)
@@ -74,7 +80,7 @@ export class BinarySearchTree {
     return isFound
   }
 
-  // 只在 root = null 时返回 null
+  // 只在 root = null 时 currNode === null
   private _getMin(currNode: TreeNode | null) {
     // currNode.left 来判断跳出循环
     while (currNode && currNode.left) {
@@ -83,37 +89,39 @@ export class BinarySearchTree {
     return currNode?.value ?? null
   }
 
-  private _getMax(currNode: TreeNode | null) {
+  private _getMax(currNode: TreeNode) {
+    // 先判断 _root === null 的情况
     while (currNode && currNode.right) {
       currNode = currNode.right
     }
-    // 不先判断 _root === null 的情况
-    return currNode?.value ?? null
+    return currNode.value
   }
 
-  // 删除原理是重新构造树
+  // 删除是构造新树的过程
   private _remove(currNode: TreeNode | null, value: number) {
+    // 这行代码有两个作用，一是处理空树
+    // 二是做为递归终止条件
     if (currNode === null) return null
     if (value < currNode.value) {
-      // 向左查找
+      // 重新构建处理过删除的左子节点
       currNode.left = this._remove(currNode.left, value)
-      // 归阶段构建新的树
+      // 把处理过删除的当前节点做为 _remove 的返回值
+      // 这里是构建新树的除根的最上层
       return currNode
     } else if (value > currNode.value) {
       // 向右查找
       currNode.right = this._remove(currNode.right, value)
       return currNode
     } else {
-      // 执行删除过程
+      // 真正处理删除的地方
+      // 叶子节点，删除叶子节点或者查找不到会走这
       if (currNode.left === null && currNode.right === null) {
-        // 第一种情况：当前节点为叶子节点
         currNode = null
         return currNode
       } else if (currNode.left === null && currNode.right) {
         currNode = currNode.right
         return currNode
       } else if (currNode.right === null && currNode.left) {
-        //删除只有左节点的节点 => 将左节点替换需删除节点
         currNode = currNode.left
         return currNode
       } else {
@@ -142,12 +150,21 @@ export class BinarySearchTree {
     }
   }
 
-  // 遍历
-  traverse(callback: (value: number) => void) {
-    this._traverse(this._root, callback)
+  // 中序遍历
+  midOrder(callback: (value: number) => void) {
+    this._traverse(this._root, callback, 'mid')
   }
 
-  levelOrderTraverse(callback: (value: number) => void) {
+  preOrder(callback: (value: number) => void) {
+    this._traverse(this._root, callback, 'pre')
+  }
+
+  postOrder(callback: (value: number) => void) {
+    this._traverse(this._root, callback, 'post')
+  }
+
+  // 层序遍历
+  levelOrder(callback: (value: number) => void) {
     if (this._root === null) return
     this._levelOrderTraverse(this._root, callback)
   }
@@ -160,11 +177,12 @@ export class BinarySearchTree {
     return this._search(this._root, value)
   }
 
-  min() {
+  max() {
+    if (this._root === null) return null
     return this._getMax(this._root)
   }
 
-  max() {
+  min() {
     return this._getMin(this._root)
   }
 }

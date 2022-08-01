@@ -1,4 +1,4 @@
-import { LinkedList } from './data-struct/linkedList'
+import { LinkedList } from './data-structure/linkedList'
 
 const ll = new LinkedList<number>()
 

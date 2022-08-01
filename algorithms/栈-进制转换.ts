@@ -1,4 +1,4 @@
-import { Stack } from './栈'
+import { Stack } from '../deprecated/数据结构/栈'
 
 const Decimal2Binary = (num: number): string => {
   const s = new Stack()

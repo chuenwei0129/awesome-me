@@ -1,4 +1,4 @@
-import { Queue } from './队列'
+import { Queue } from '../deprecated/数据结构/队列'
 const PassTheFlower = (players: string[], num: number): string[] => {
   const q = new Queue()
 

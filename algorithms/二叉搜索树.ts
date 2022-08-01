@@ -1,48 +1,70 @@
 import { BinarySearchTree } from './data-structure/BinarySearchTree'
 
-const t = new BinarySearchTree()
+// 构造树
+const bst = new BinarySearchTree()
 
-// console.log(t.min())
+bst.insert(5)
+bst.insert(3)
+bst.insert(6)
+bst.insert(0)
+bst.insert(4)
+bst.insert(8)
 
-// t.insert(11)
-// t.insert(8)
-// t.insert(16)
-// t.insert(4)
-// t.insert(9)
-// t.insert(13)
-// t.insert(17)
-// t.insert(3)
-// t.insert(5)
+console.log('二叉树:', bst.root())
+console.log('最大值:', bst.max())
+console.log('最小值:', bst.min())
 
-//          11
-//     8           16
-//  4    9     13      17
-// 3 5
+const callback = (val: number) => {
+  console.log(val)
+}
 
-// const printValue = (value: number) => {
-//   console.log(`value= `, value)
-// }
+console.log('-- 前序遍历 --')
+bst.preOrder(callback) // 5 3 0 4 6 8
 
-// 前序遍历 中 左子树 右子树
-// 11 8 4 3 5 9 16 13 17
-// 中序遍历 左子树 中 右子树
-// 3 4 5 8 9 11 13 16 17
-// 后序遍历 左子树 右子树 中
-// 3 5 4 9 8 13 17 16 11
-// t.traverse(printValue)
+console.log('-- 中序遍历 --')
+bst.midOrder(callback) // 0 3 4 5 6 8
 
-// 11 8 16 4 9 13 17 3 5
-// t.levelOrderTraverse(printValue)
+console.log('-- 后序遍历 --')
+bst.postOrder(callback) // 0 4 3 8 6 5
 
-// console.log(t.search(3))
-// console.log(t.search(1))
+console.log('-- 层序遍历 --')
+bst.levelOrder(callback) // 5 3 6 0 4 8
 
-// console.log(t.min())
-// console.log(t.max())
+console.log('查找 0', bst.search(0))
+console.log('查找 10', bst.search(10))
 
-t.insert(8)
-t.insert(2)
-t.insert(3)
-t.insert(9)
+// 删除节点测试
+const listToTree = (list: number[]) => {
+  const bst = new BinarySearchTree()
+  list.forEach(item => bst.insert(item))
+  return bst
+}
 
-console.dir(t.remove(100), { depth: 100 })
+const tree = listToTree([41, 20, 65, 11, 29, 50, 91, 28, 32, 72])
+
+// 删除前
+console.dir(tree.root(), { depth: 10 })
+// 要删除的节点有左、右孩子节点
+tree.remove(20)
+
+// 删除前
+console.dir(tree.root(), { depth: 10 })
+// 要删除的节点有左孩子节点
+tree.remove(29)
+
+// 删除前
+console.dir(tree.root(), { depth: 10 })
+// 要删除的节点有右孩子节点
+tree.remove(91)
+// 删除后
+console.dir(tree.root(), { depth: 10 })
+
+// 要删除的节点无孩子节点是叶子节点
+tree.remove(11)
+// 删除后
+console.dir(tree.root(), { depth: 10 })
+
+// 要删除的节点不在二叉树中
+tree.remove(100)
+// 删除后
+console.dir(tree.root(), { depth: 10 })

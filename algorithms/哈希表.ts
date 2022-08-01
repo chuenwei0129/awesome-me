@@ -5,7 +5,7 @@ class HashTable {
   }
 
   // 散列函数，散列值，工号
-  // key => number => items[number]
+  // 缩小数组下标，缩小空间，连续空间够大就 O(1)
   // 分离链接 链表
   // 线性探查 向下探查
   losesHashCode(key: string) {
