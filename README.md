@@ -26,6 +26,7 @@
 - `[Hacker]` 都什么年代了，还再写传统 JS
 - `[Component]` 组件库，但无 UI —— Headless UI
 - `[Base]` 永远不要低估用户的智障程度 —— 编程术语祛魅
+- `技术思考` [浮点数 —— 从惊讶到思考](summary/float.md)
 
 ## 计算机基础知识图谱
 
