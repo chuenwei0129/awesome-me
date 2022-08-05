@@ -30,7 +30,11 @@
 - [队列](#队列)
 - [哈希表](#哈希表)
 - [递归](#递归)
-- [刷题准备](#刷题准备)
+- [算法](#算法)
+  - [位运算](#位运算)
+  - [时间复杂度](#时间复杂度)
+  - [排序](#排序)
+  - [查找表](#查找表)
 
 ## 学习数据结构有什么用？
 
@@ -351,8 +355,25 @@ V8 中对数组做了一层封装，使其有两种实现方式：快数组和�
 
 > [递归思想](recursion.md)
 
-## 刷题准备
+## 算法
+
+### 位运算
+
+> V8 represents objects and numbers with 32 bits. It uses a bit to know if it is an object (flag = 1) or an integer (flag = 0) called SMI (SMall Integer) because of its 31 bits. Then, if a numeric value is bigger than 31 bits, V8 will box the number, turning it into a double and creating a new object to put the number inside. Try to use 31 bit signed numbers whenever possible to avoid the expensive boxing operation into a JS object.
+
+- [JavaScript 的位操作应该避免吗？](https://www.zhihu.com/question/65747485/answer/234725511)
+- [搞明白位运算、补码、反码、原码](bits.md)
+
+### 时间复杂度
 
 - [时间复杂度 O(log n) 意味着什么？](https://juejin.cn/post/6844903481191432206)
+
+### 排序
+
+- [排序算法](https://www.zhihu.com/column/developer1024)
 - [透过 v8 源码看 sort 方法的实现原理](https://github.com/qufei1993/blog/issues/4)
-- [堆排序](https://github.com/sisterAn/JavaScript-Algorithms/issues/60)
+- [堆排序、Top K、中位数](https://github.com/sisterAn/JavaScript-Algorithms/issues/60)
+
+### 查找表
+
+- [查找表超全总结：解决查找问题](https://zhuanlan.zhihu.com/p/142482079)

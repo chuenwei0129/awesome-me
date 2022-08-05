@@ -52,6 +52,7 @@
   - [解决循环依赖](#解决循环依赖)
   - [依赖分析和下载分离](#依赖分析和下载分离)
   - [全局缓存](#全局缓存)
+- [pnpm](#pnpm)
 
 ## Node 版本管理：nvm
 
@@ -748,3 +749,8 @@ npx create-react-app my-app
 ### 全局缓存
 
 为了避免多个项目的公共依赖的重复下载，我们实现了全局缓存，先下载到全局目录，然后再复制到本地。
+
+## pnpm
+
+- [Pnpm: 最先进的包管理工具](https://zhuanlan.zhihu.com/p/404784010)
+- [pnpm 是凭什么对 npm 和 yarn 降维打击的](https://zhuanlan.zhihu.com/p/549189023)

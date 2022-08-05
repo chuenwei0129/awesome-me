@@ -40,7 +40,7 @@ const search = (nums: number[], target: number) => {
   }
 
   while (L < R) {
-    M = Math.floor(L + (R - L) / 2)
+    M = (L + (R - L)) >> 1
     if (target === nums[M]) {
       return M
     } else if (target < nums[M]) {
@@ -53,4 +53,6 @@ const search = (nums: number[], target: number) => {
   return -1
 }
 
+console.time('1')
 console.log(search([-1, 0, 3, 5, 9, 12], 0))
+console.timeEnd('1')

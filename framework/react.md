@@ -750,7 +750,7 @@ const Demo = () => {
 
 <!-- bit 计算最多支持 31 个不够用，可以改为在 createContext 第二个回调参数里派发事件通知并 return 0，以上实践完美解决了 context 按需触发更新 -->
 
-- [位运算基础](bits.md)
+- [搞明白位运算、补码、反码、原码](bits.md)
 - [ObservedBits: React Context 的秘密功能](https://zhuanlan.zhihu.com/p/51073183)
 
 ### 方案四：在 provider 和 context 之间做 client 级别的依赖订阅更新
