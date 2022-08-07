@@ -35,6 +35,12 @@
   - [时间复杂度](#时间复杂度)
   - [排序](#排序)
   - [查找表](#查找表)
+  - [滑动窗口问题](#滑动窗口问题)
+  - [双指针](#双指针)
+  - [KMP 算法](#kmp-算法)
+  - [递归与回溯](#递归与回溯)
+  - [动态规划](#动态规划)
+  - [综合](#综合)
 
 ## 学习数据结构有什么用？
 
@@ -377,3 +383,29 @@ V8 中对数组做了一层封装，使其有两种实现方式：快数组和�
 ### 查找表
 
 - [查找表超全总结：解决查找问题](https://zhuanlan.zhihu.com/p/142482079)
+
+### 滑动窗口问题
+
+- [精心总结滑动窗口代码模板, 直接搞定 80 道 Leetcode 算法题](https://www.bilibili.com/video/BV1V44y1s7zJ)
+
+### 双指针
+
+- [算法一招鲜——双指针问题](https://zhuanlan.zhihu.com/p/71643340)
+
+### KMP 算法
+
+- [帮你把 KMP 算法学个通透](https://www.bilibili.com/video/BV1PD4y1o7nd)
+
+### 递归与回溯
+
+- [带你学透回溯算法](https://www.bilibili.com/video/BV1cy4y167mM)
+
+### 动态规划
+
+- [听懂不翻车系列之 —— 背包问题](https://www.bilibili.com/video/BV1C7411K79w)
+
+### 综合
+
+- [准备程序员面试？你需要了解这 14 种编程面试模式](https://zhuanlan.zhihu.com/p/68916567)
+- [WEB 前端程序员 —— 必学数据结构与算法（完结）](https://www.bilibili.com/video/BV1Pt4y1q7nD)
+- [前端进阶算法](https://github.com/sisterAn/JavaScript-Algorithms)

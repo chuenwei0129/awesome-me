@@ -416,7 +416,7 @@ NAT 为了节省 IP 资源，往往采用端口映射的方式
 
 ### 什么是 HTTP
 
-`HTTP` 全称 `HyperText Transfer Protocol`「超文本传输协议」,拆成三个部分来看，即「超文本」,「传输」,「协议」
+`HTTP` 全称 `HyperText Transfer Protocol`「超文本传输协议」,拆成三个部分来看，即「超文本」,「传输」,「协议」。
 
 **超文本**：即「超越了普通文本的文本」，即音视频，图片，文件的混合体，除了这些超文本内容外，最关键的是超文本中含有**超链接**，超链接意味着网页等文件内容的超文本上可以点击链接到其他页面上，**互联网就是通过这样的超链接构成的**。
 
@@ -486,9 +486,9 @@ NAT 为了节省 IP 资源，往往采用端口映射的方式
 
 全世界的设备多如牛毛，如果每发一次请求都要按上面的 DNS 解析来获取 IP，那估计 DNS 解析系统就要炸了，如何缓解这种压力呢，答案是用缓存
 
-- 非权威域名服务器（类似 Google 的 `8.8.8.8` DNS 解析服务器）
-- 操作系统缓存（`/etc/hosts` 就是操作系统 DNS 缓存的一种）
 - 浏览器缓存
+- 操作系统缓存（`/etc/hosts` 就是操作系统 DNS 缓存的一种）
+- 非权威域名服务器（类似 Google 的 `8.8.8.8` DNS 解析服务器）
 
 #### DNS 的完整解析
 
@@ -934,7 +934,7 @@ NAT 为了节省 IP 资源，往往采用端口映射的方式
 
 ## [HTTPS](#目录)
 
-> [西方机构吊销了俄罗斯的HTTPS证书有什么影响吗？](https://www.zhihu.com/question/523817733/answer/2440936723)
+> [西方机构吊销了俄罗斯的 HTTPS 证书有什么影响吗？](https://www.zhihu.com/question/523817733/answer/2440936723)
 
 A 和 B 通信，A 收到由证书认证机构 C 颁发的 B 的证书后认定自己确实是在和 B 通信，而不是和 D 冒充的 B 通信，这是证书的作用。打个比方，你作为普通用户在淘宝上经过淘宝官方认证的苹果官方旗舰店买 iPhone，你相信这家店是真的苹果官方旗舰店，这是因为你相信淘宝的认证。要是哪天淘宝和华强北串通，华强北在淘宝上也开一家叫“苹果官方旗舰店”的店而且得到淘宝官方认证，你就有可能在“官方旗舰店”买到假 iPhone
 
@@ -1145,9 +1145,9 @@ Connection: Upgrade
 
 ## [参考资料](#目录)
 
-- [计算机网络的166个核心概念，你知道吗？](https://zhuanlan.zhihu.com/p/492051760)
+- [计算机网络的 166 个核心概念，你知道吗？](https://zhuanlan.zhihu.com/p/492051760)
 - [如果让你来设计网络](https://mp.weixin.qq.com/s?__biz=Mzk0MjE3NDE0Ng==&mid=2247489907&idx=1&sn=a296cb42467cab6f0a7847be32f52dae&chksm=c2c663def5b1eac84b664c8c1cadf1c8ec23ea2e57e48e04add9b833c841256fc9449b62c0ec&scene=178&cur_album_id=1700901576128643073#rd)
-- [IPv4地址和子网掩码](https://www.bilibili.com/video/BV1xu411f7UW)
+- [IPv4 地址和子网掩码](https://www.bilibili.com/video/BV1xu411f7UW)
 - [半小时看懂<计算机网络>](https://www.bilibili.com/video/BV124411k7uV)
 - [你管这破玩意儿叫 TCP？](https://mp.weixin.qq.com/s?__biz=Mzk0MjE3NDE0Ng==&mid=2247491962&idx=1&sn=aa4414483edaba487c080e91ad0efb93&chksm=c2c59bd7f5b212c12231394c585f3b063b0b2d5b05d6f05fddccdb4e856875e7ee1127bb30a7&cur_album_id=1700901576128643073&scene=189#wechat_redirect)
 - [一个数据包的互联网之旅](https://zhuanlan.zhihu.com/p/393701792)

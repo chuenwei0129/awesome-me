@@ -26,16 +26,8 @@
 - `[Hacker]` 都什么年代了，还再写传统 JS
 - `[Component]` 组件库，但无 UI —— Headless UI
 - `[Base]` 永远不要低估用户的智障程度 —— 编程术语祛魅
-- `技术思考` [浮点数 —— 从惊讶到思考](summary/float.md)
-
-## 计算机基础知识图谱
-
-> TODO
-
-- `[Crash Course]` [谁还不是个科班出身了](summary/base.md)
-- `[Computer Network]` [计算机网络基础知识总结](summary/net.md)
-- `[Data structure]` [救救孩子，数据结构自学攻略](summary/data-structure.md)
-- `[Algorithms]` [程序员界的《五年高考，三年模拟》—— LeetCode](summary/leetcode.md)
+- `TODO` [浮点数 —— 从惊讶到思考](summary/float.md)
+- `TODO` [搞明白位运算、补码、反码、原码](framework/bits.md)
 
 ## 前端三剑客
 
@@ -64,6 +56,15 @@
 - `[Webpack]` [webpack 配置指北](engineering/webpack.md)
 - `[Webpack]` [webpack 原理分析与思考](engineering/pack-origin.md)
 - `[Create React App]` [记录一次 react 环境配置](engineering/cra.md)
+
+## 计算机基础知识图谱
+
+> TODO
+
+- `[Crash Course]` [谁还不是个科班出身了](summary/base.md)
+- `[Computer Network]` [计算机网络基础知识总结](summary/net.md)
+- `[Data structure]` [救救孩子，数据结构自学攻略](summary/data-structure.md)
+- `[Algorithms]` [程序员界的《五年高考，三年模拟》—— LeetCode](summary/leetcode.md)
 
 ## 醍醐灌顶
 

@@ -386,5 +386,6 @@ IEEE 754 中最终存储如下：
 
 - [从科学记数法到浮点数标准 IEEE 754](https://mp.weixin.qq.com/s/mf1mH-aGWgcC6v2R8ijE8A)
 - [IEEE754 标准：浮点数在内存中的存储方式](https://zhuanlan.zhihu.com/p/343033661)
+- [为什么 8bit 限制是 -128 到 127 而不是 -127 到 128?](https://www.zhihu.com/question/405701348)
 - [JavaScript 浮点数之迷：0.1 + 0.2 为什么不等于 0.3？](https://github.com/qufei1993/blog/issues/9)
 - [JavaScript 浮点数之迷：大数危机](https://github.com/qufei1993/blog/issues/10)
