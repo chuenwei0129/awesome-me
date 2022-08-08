@@ -1,75 +1,69 @@
 # 前端操作文件和二进制数据<!-- omit in toc -->
 
-- [编码知识](#编码知识)
-  - [ASCII 字符集](#ascii-字符集)
-  - [Unicode 字符集](#unicode-字符集)
-  - [JavaScript 使用哪一种编码](#javascript-使用哪一种编码)
-    - [字符串处理函数](#字符串处理函数)
-    - [正则表达式](#正则表达式)
-  - [Base64 编码规则](#base64-编码规则)
-- [MIME 类型](#mime-类型)
-  - [通用结构](#通用结构)
-  - [独立类型](#独立类型)
-  - [Multipart 类型](#multipart-类型)
-- [URL 对象](#url-对象)
-  - [创建 `URL` 对象](#创建-url-对象)
-  - [SearchParams](#searchparams)
-  - [编码字符串](#编码字符串)
-- [ArrayBuffer，二进制数组](#arraybuffer二进制数组)
-  - [ArrayBuffer 实例](#arraybuffer-实例)
-  - [ArrayBuffer.prototype.byteLength](#arraybufferprototypebytelength)
-  - [ArrayBuffer.prototype.slice()](#arraybufferprototypeslice)
-  - [DataView 视图](#dataview-视图)
-  - [TypedArray 视图](#typedarray-视图)
-  - [溢出](#溢出)
-  - [复合视图](#复合视图)
-  - [ArrayBuffer 与字符串的互相转换](#arraybuffer-与字符串的互相转换)
-    - [TextDecoder](#textdecoder)
-    - [TextEncoder](#textencoder)
-- [Blob](#blob)
-  - [Blob 用作 URL](#blob-用作-url)
-  - [Blob 转换为 base64](#blob-转换为-base64)
-  - [Image 转换为 blob](#image-转换为-blob)
-  - [Blob 转换为 ArrayBuffer](#blob-转换为-arraybuffer)
-- [File 对象](#file-对象)
-  - [FileReader](#filereader)
-- [实践](#实践)
-- [扩展知识](#扩展知识)
+## ASCII 字符集
 
-## 编码知识
+因为计算机只能存储 `0` 和 `1` 这些二进制数字。所以，无论是我们存储的数字，字母，汉字，emoji 等各种文字都需要由某种方式转换成二进制数字进行储存，需要的时候在读出来。
 
-### ASCII 字符集
+最早的计算机在设计时采用 8 个 bit 作为一个 byte。一个字节一共可以用来表示 `2^8` 种不同的状态，每一个状态对应一个字符，就是 256 个字符，从 `00000000` 到 `11111111`。
 
-背景：**因为计算机只能处理数字，如果要处理文本，就必须先把文本转换为数字才能处理。** 最早的计算机在设计时采用 8 个比特（bit）作为一个字节（byte）。一个字节能表示的最大的整数就是 `255（2^8-1=255）`，而 `ASCII` 编码，占用 `0 - 127` 用来表示大小写英文字母、数字和一些符号，这个编码表被称为 `ASCII` 编码。
+1963 年 ANSI（美国国家标准协会）推出了 ASCII（文本字符编码标准）码表。规定了文字与数字的一一对应。ASCII 支持的字符包含 0-9 的阿拉伯数字，小写英文字母，大写英文字母，常用英文符号，控制字符（换行、回车等特殊的控制功能）。如下图：
 
-![](../Images/ascii.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/js/ascii.png)
 
-组成：26 个字母的大小写、数字、特殊符号、美式英语中的控制字符。在英语中，用 128 个符号编码便可以表示所有。`32～126`(共 95 个)是字符(32 是空格），其中 `48～57` 为 0 到 9 十个阿拉伯数字，`65～90` 为 26 个大写英文字母，`97～122` 号为 26 个小写英文字母，其余为一些标点符号、运算符号等。
+**每个字符都有一个对应的数字，叫做码点（code point），也称为码位。**
 
-大小规则：`0-9 < A-Z < a-z`。
+ASCII 字符的码点是 0-127 之间的数字。比如大写字母 A 对应数字 65，大写字母 B 对应数字 66。**所有字符和对应码点的集合就叫做字符集**。也可以理解为一个字符与一个数字一一对应的一个映射表。
 
-### Unicode 字符集
+计算机内部使用的是二进制运算。所以 **编号（也就是码点）** 并不是最终存储在计算机中的结果。计算机需要把码点转换为二进制存储起来。计算机底层的二进制码点通过字符集转换成屏幕上有意义的字符。
 
-因为 `ASCII` 编码无法表示多国语言的编码，为了统一所有文字的编码，`Unicode` 应运而生。`Unicode` 把所有语言都统一到一套编码里，这样就不会再有乱码问题了。
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/js/SCR-20220808-kw2.png)
 
-对于 `Unicode` 有一些误解，它仅仅只是一个字符集，规定了符合对应的二进制代码，至于这个二进制代码如何存储则没有任何规定。
+**我们将码点转换为计算机里存储的二进制码点（也称字节序列）的规则就称为字符编码。**
 
-它从 `0` 开始，为每个符号指定一个编号，这叫做"码点"（code point）。比如，码点 `0` 的符号就是 `null`（表示所有二进制位都是 0 ）。
+## Unicode 字符集
 
-```js
-U+0000 = null
-U+597D = 好
-```
+因为 `ASCII` 编码无法表示多国语言的编码，每个国家为了使计算机能够显示当地语言和字符，也纷纷设计出了各种字符集和字符编码规则。当标准不统一的时候，乱码问题也就随之产生了。因为计算机内存里的同一个二进制数字在不同的字符集里代表的可能是完全不同的字符。如下图：
+
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/js/SCR-20220808-kxz.png)
+
+为了统一所有文字的编码，`Unicode` 应运而生。`Unicode` 把所有语言都统一到一套编码里，这样就不会再有乱码问题了。
+
+**对于 `Unicode` 有一些误解，它仅仅只是一个字符集，规定了符合对应的二进制代码，至于这个二进制代码如何存储则没有任何规定。**
 
 `Unicode` 只规定了每个字符的码点，到底用什么样的字节序表示这个码点，就涉及到编码方法。
 
-`Unicode` 编码共有三种具体实现，分别为 `utf-8`,`utf-16`,`utf-32`
+`Unicode` 编码共有三种具体实现，分别为 `utf-8`，`utf-16`，`utf-32`。
 
-`UTF-8 `是目前互联网上使用最广泛的一种 `Unicode` 编码方式，它的最大特点就是可变长。它可以使用 `1 - 4` 个字节表示一个字符，根据字符的不同变换长度。
+**整个 Unicode 字符集的大小现在是 `2^21`。**
 
-### JavaScript 使用哪一种编码
+最直观的编码方法是，每个码点使用四个字节（2^32）表示，字节内容一一对应码点。
 
-> ⚠️ ES6 以后 `JavaScript` 内部，字符以 `UTF-16` 的格式储存，每个字符固定为 2 个字节。对于那些需要 4 个字节储存的字符（Unicode 码点大于 `0xFFFF` 的字符），`JavaScript` 会认为它们是两个字符。ES6 可以自动识别 4 字节的码点。
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/js/SCR-20220808-m84.png)
+
+<!-- 这个缺点很致命，导致实际上没有人使用这种编码方法，HTML 5 标准就明文规定，网页不得编码成 UTF-32。 -->
+这种编码方法就叫做 `utf-32`。比如，码点 `0` 就用四个字节的 `0` 表示，码点 `597D` 就在前面加两个字节的 `0`。
+
+```sh
+# 码点 <=> 字节序
+U+0000 = 0x0000 0000
+U+597D = 0x0000 597D
+```
+
+`utf-32` 的优点在于，转换规则简单直观，查找效率高。缺点在于浪费空间。
+
+`utf-8` 是目前互联网上使用最广泛的一种 `Unicode` 编码方式，它的最大特点就是可变长。它可以使用 `1 - 4` 个字节表示一个字符，根据字符的不同变换长度。
+
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/js/SCR-20220808-m4g.png)
+
+`utf-16` 编码介于 `utf-32` 与 `utf-8` 之间，同时结合了定长和变长两种编码方法的特点。
+
+它的编码规则很简单：基本平面的字符占用 2 个字节，辅助平面的字符占用 4 个字节。**也就是说，utf-16 的编码长度要么是 2 个字节（U+0000 到 U+FFFF），要么是 4 个字节（U+010000 到 U+10FFFF）。**
+
+## JavaScript 使用哪一种编码
+
+> ⚠️ ES6 以后 JavaScript 内部，字符以 `UTF-16` 的格式储存，每个字符固定为 2 个字节。对于那些需要 4 个字节储存的字符（Unicode 码点大于 `0xFFFF` 的字符），`JavaScript` 会认为它们是两个字符。ES6 可以自动识别 4 字节的码点。
+
+### 码点表示法
 
 `JavaScript` 允许直接用码点表示 `Unicode` 字符，写法是"反斜杠+u+码点"。
 
@@ -79,27 +73,27 @@ U+597D = 好
 
 但是，这种表示法对 4 字节的码点无效。ES6 修正了这个问题，只要将码点放在大括号内，就能正确识别。
 
-![](../Images/unicode.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/js/unicode.png)
 
-#### 字符串处理函数
+### 字符串处理函数
 
-ES6 新增了几个专门处理 4 字节码点的函数。
+ES6 新增了几个可以处理 4 字节码点的函数。
 
 ```js
-String.fromCodePoint() // 从Unicode码点返回对应字符
+String.fromCodePoint() // 从 Unicode 码点返回对应字符
 String.prototype.codePointAt() // 从字符返回对应的码点
 String.prototype.at() // 返回字符串给定位置的字符
 ```
 
-#### 正则表达式
+### 正则表达式
 
 ES6 提供了 `u` 修饰符，对正则表达式添加 4 字节码点的支持。
 
-![](../Images/unicode-1.png)
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/js/unicode-1.png)
 
 ### Base64 编码规则
 
-`Base64` 是一组相似的二进制到文本（binary-to-text）的编码规则，使得二进制数据在解释成 `radix-64` 的表现形式后能够用 `ASCII` 字符串的格式表示出来。`Base64` 这个词出自一种 `MIME` 数据传输编码。 
+`Base64` 是一组相似的二进制到文本（binary-to-text）的编码规则，使得二进制数据在解释成 `radix-64` 的表现形式后能够用 `ASCII` 字符串的格式表示出来。`Base64` 这个词出自一种 `MIME` 数据传输编码。
 
 `Base64` 编码普遍应用于需要通过被设计为处理文本数据的媒介上储存和传输二进制数据而需要编码该二进制数据的场景。这样是为了保证数据的完整并且不用在传输过程中修改这些数据。
 

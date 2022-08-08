@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>esm</title>
+  </head>
+  <body>
+    <script type="module">
+      // 导出的是接口的概念
+      import { foo, bar, baz } from './esm-export.js'
+      import { x, y, z } from './esm-export.js'
+      // import { default as d } from './esm-export.js'
+      // 下面是上面的缩写
+      import d from './esm-export.js'
+
+      // 上面都是接口，下面是整个模块的导出
+      import * as all from './esm-export.js'
+
+      // 转发
+      import { n } from './esm-export-import.js'
+
+      console.log(foo, bar, baz)
+      console.log(x, y, z)
+      console.log(d)
+      console.log(all)
+
+      console.log(n)
+    </script>
+  </body>
+</html>

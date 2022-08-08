@@ -19,6 +19,15 @@
 - `[Git]` [怕遗忘 Git 的我，把相关知识点都记录下来就对了](others/git.md)
 - `[Switch]` [关于我破解了 Switch 并且装满了游戏依然吃灰这件事](others/switch.md)
 
+## 前端三剑客
+
+> js 是世界上最好的语言，php 是比 js 还要好的语言
+
+- `[WEB]` [到达前端最高城 ——— 浏览器](summary/browser.md)
+- `[JS]` [太美丽啦浏览器，哎呀这不是 JavaScript 吗](js/js.md)
+- `[TS]` [还是看看远处的 TypeScript 吧，家人们](ts/ts.md)
+- `[CSS]` [是煮，是煮在又一次严重酗酒后创造了这个奇迹](css/css.md)
+
 ## Make Web Great Again
 
 > TODO
@@ -28,15 +37,6 @@
 - `[Base]` 永远不要低估用户的智障程度 —— 编程术语祛魅
 - `TODO` [浮点数 —— 从惊讶到思考](summary/float.md)
 - `TODO` [搞明白位运算、补码、反码、原码](framework/bits.md)
-
-## 前端三剑客
-
-> TODO
-
-- `[WEB]` [到达前端最高城 ——— 浏览器](summary/browser.md)
-- `[JS]` [太美丽啦浏览器，哎呀这不是 JavaScript 吗](css/css.md)
-- `[TS]` [还是看看远处的 TypeScript 吧，家人们](ts/ts.md)
-- `[CSS]` [是煮，是煮在又一次严重酗酒后创造了这个奇迹](css/css.md)
 
 ## 框架
 
