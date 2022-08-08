@@ -1,6 +1,16 @@
-# JavaScript 中至少 90% 匪夷所思的问题，都是历史遗留问题
+# JavaScript 中至少 90% 匪夷所思的问题，都是历史遗留问题<!-- omit in toc -->
 
 > 避免 JavaScript 语言中毒瘤和糟粕
+
+- [Object.prototype 下的属性为啥能在控制台直接访问？](#objectprototype-下的属性为啥能在控制台直接访问)
+- [为什么 Function.prototype 可以直接执行?](#为什么-functionprototype-可以直接执行)
+- [为什么 Object.entries 和 Array.prototype.entries 的返回值类型不同?](#为什么-objectentries-和-arrayprototypeentries-的返回值类型不同)
+- [为什么 Array.prototype.reduce 没有提供 thisArg 参数?](#为什么-arrayprototypereduce-没有提供-thisarg-参数)
+- [包装类](#包装类)
+- [隐式类型转换](#隐式类型转换)
+- [this](#this)
+- [arguments](#arguments)
+- [严格模式](#严格模式)
 
 ## [Object.prototype 下的属性为啥能在控制台直接访问？](https://www.zhihu.com/question/346847436/answer/829975038)
 
@@ -35,11 +45,17 @@ RegExp.prototype // /(?:)/
 
 ## 包装类
 
+> [对象包装器](js-wrapper.md)
+
 ## 隐式类型转换
+
+> [类型转换](js-type-change.md)
 
 ## this
 
 JavaScript 的 `this` 在它自己无法自圆其说的时候就会 fallback 到 `globalThis`，在浏览器环境下即 `window`，严格模式下修正为了 `undefined`。
+
+> [this](js-this.md)
 
 ## arguments
 

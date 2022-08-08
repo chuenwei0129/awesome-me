@@ -1,4 +1,13 @@
-# class 基本语法和继承
+# class 基本语法和继承<!-- omit in toc -->
+
+- [类](#类)
+- [ES6 继承](#es6-继承)
+- [new.target 属性](#newtarget-属性)
+- [super](#super)
+- [原生构造函数的继承](#原生构造函数的继承)
+- [ES5 继承](#es5-继承)
+  - [原型链继承](#原型链继承)
+  - [原型链继承优化](#原型链继承优化)
 
 ## 类
 
@@ -98,7 +107,7 @@ console.log(OuterA.name) // InnerA
 
 如果类的内部没用到的话，可以省略 `InnerA`。
 
-## 继承
+## ES6 继承
 
 ES5 的继承机制，是先创造一个独立的子类的实例对象，然后再将父类的方法添加到这个对象上面，即“实例在前，继承在后”。
 
@@ -165,7 +174,7 @@ const aChild = new AChild()
 `super` 这个关键字，既可以当作函数使用，也可以当作对象使用。在这两种情况下，它的用法完全不同。
 
 第一种情况，`super` 作为函数调用时，代表父类的构造函数。ES6 要求，子类的构造函数必须执行一次 `super` 函数。
-注意，super虽然代表了父类A的构造函数，但是返回的是子类 `B` 的实例，即 `super` 内部的 `this` 指的是 B 的实例，因此 `super()` 在这里相当于 `Parent.prototype.constructor.call(this)`。
+注意，`super` 虽然代表了父类 `A` 的构造函数，但是返回的是子类 `B` 的实例，即 `super` 内部的 `this` 指的是 `B` 的实例，因此 `super()` 在这里相当于 `Parent.prototype.constructor.call(this)`。
 
 作为函数时，`super()` **只能用在子类的构造函数之中，用在其他地方就会报错**。
 

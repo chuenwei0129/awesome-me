@@ -1,4 +1,4 @@
-# Module 的语法
+# Module 的语法<!-- omit in toc -->
 
 ES6 的**模块自动采用严格模式**，不管你有没有在模块头部加上 `"use strict";`。
 
@@ -11,6 +11,14 @@ require('core-js/modules/es6.symbol')
 require('core-js/modules/es6.promise')
 import React from 'React'
 ```
+
+- [静态加载](#静态加载)
+- [export](#export)
+- [import](#import)
+- [模块的整体加载](#模块的整体加载)
+- [default](#default)
+- [export 与 import 的复合写法](#export-与-import-的复合写法)
+- [import()](#import-1)
 
 ## 静态加载
 

@@ -1,4 +1,20 @@
-# 对象
+# 对象<!-- omit in toc -->
+
+- [对象基础知识](#对象基础知识)
+- [属性的简洁表示法和属性名表达式](#属性的简洁表示法和属性名表达式)
+- [方法的 name 属性](#方法的-name-属性)
+- [属性描述对象](#属性描述对象)
+- [属性的可枚举性](#属性的可枚举性)
+- [属性的遍历](#属性的遍历)
+- [super 关键字](#super-关键字)
+- [对象的扩展运算符](#对象的扩展运算符)
+- [Object.create](#objectcreate)
+- [控制对象状态](#控制对象状态)
+- [对象的新增方法](#对象的新增方法)
+- [new 关键字](#new-关键字)
+- [原型与原型链](#原型与原型链)
+- [为什么 Function.prototype 可以直接执行?](#为什么-functionprototype-可以直接执行)
+- [为什么 Object.entries 和 Array.prototype.entries 的返回值类型不同?](#为什么-objectentries-和-arrayprototypeentries-的返回值类型不同)
 
 ## 对象基础知识
 

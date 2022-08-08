@@ -1,4 +1,17 @@
-# 类型转换
+# 类型转换<!-- omit in toc -->
+
+- [强制类型转换](#强制类型转换)
+- [隐式类型转换](#隐式类型转换)
+- [对象转换成原始类型](#对象转换成原始类型)
+- [类型检测](#类型检测)
+  - [typeof](#typeof)
+  - [instanceof](#instanceof)
+  - [Object.prototype.toString](#objectprototypetostring)
+  - [isObject](#isobject)
+  - [isEmptyObject](#isemptyobject)
+  - [isInteger](#isinteger)
+  - [Array.isArray](#arrayisarray)
+- [值类型和引用类型](#值类型和引用类型)
 
 ## 强制类型转换
 

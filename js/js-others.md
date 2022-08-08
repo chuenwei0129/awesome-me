@@ -1,4 +1,14 @@
-# 重要概念
+# 重要概念<!-- omit in toc -->
+
+- [现代浏览器生成一个 JS 函数的开销多大？](#现代浏览器生成一个-js-函数的开销多大)
+- [Lodash 严重安全漏洞背后 你不得不知道的 JavaScript 知识](#lodash-严重安全漏洞背后-你不得不知道的-javascript-知识)
+- [ES6 class 不是语法糖](#es6-class-不是语法糖)
+- [JavaScript 里 Function 也是对象？](#javascript-里-function-也是对象)
+- [JS 里的 Array 属于构造函数还是类？](#js-里的-array-属于构造函数还是类)
+- [JavaScript 里听说区分函数和方法，而 Java 里只听说过方法，到底有什么区别？](#javascript-里听说区分函数和方法而-java-里只听说过方法到底有什么区别)
+- [下列代码为什么会产生 'super' keyword unexpected here 的错误？](#下列代码为什么会产生-super-keyword-unexpected-here-的错误)
+- [为什么 Redux 判断 PlainObject 的写法这么复杂？](#为什么-redux-判断-plainobject-的写法这么复杂)
+- [JavaScript 语句后应该加分号么？](#javascript-语句后应该加分号么)
 
 ## [现代浏览器生成一个 JS 函数的开销多大？](https://www.zhihu.com/question/345689944/answer/943385371)
 

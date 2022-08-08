@@ -1,4 +1,10 @@
-# [Symbol](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
+# [Symbol](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol)<!-- omit in toc -->
+
+- [概述](#概述)
+- [内置的 Symbol 值](#内置的-symbol-值)
+  - [Symbol.hasInstance](#symbolhasinstance)
+  - [Symbol.iterator](#symboliterator)
+  - [Symbol.toPrimitive](#symboltoprimitive)
 
 ## 概述
 

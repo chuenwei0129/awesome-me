@@ -1,6 +1,21 @@
-# this, call, apply 和 bind
+# this, call, apply 和 bind<!-- omit in toc -->
 
 > JavaScript 语言之中运行环境也是对象，所以函数都是在某个对象之中运行，this 就是**函数运行时所在的对象（环境）**。
+
+- [this 隐式绑定的场景讨论](#this-隐式绑定的场景讨论)
+  - [全局环境](#全局环境)
+  - [对象方法](#对象方法)
+  - [立即执行函数](#立即执行函数)
+  - [高阶函数 / 回调函数](#高阶函数--回调函数)
+  - [setTimeout / setInterval](#settimeout--setinterval)
+  - [DOM 事件绑定](#dom-事件绑定)
+  - [箭头函数没有 this](#箭头函数没有-this)
+  - [构造函数](#构造函数)
+  - [JavaScript：怎么理解 object 中的 this 也是 window？](#javascript怎么理解-object-中的-this-也是-window)
+- [显示绑定 this](#显示绑定-this)
+  - [手写 call / apply](#手写-call--apply)
+  - [手写 bind](#手写-bind)
+- [this 链式调用](#this-链式调用)
 
 ## this 隐式绑定的场景讨论
 

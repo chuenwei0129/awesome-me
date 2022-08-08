@@ -1,4 +1,12 @@
-# [Number](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number)
+# [Number](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number)<!-- omit in toc -->
+
+- [为什么在 JavaScript 中 NaN 不能是一个独立的类型？](#为什么在-javascript-中-nan-不能是一个独立的类型)
+- [JavaScript 里最大的安全的整数为什么是 2 的 53 次方减一？](#javascript-里最大的安全的整数为什么是-2-的-53-次方减一)
+- [JavaScript 著名面试题: 0.1 + 0.2 !== 0.3，即将成为过去](#javascript-著名面试题-01--02--03即将成为过去)
+- [`Number.NaN`](#numbernan)
+- [`Number.isNaN()`](#numberisnan)
+- [`Number.POSITIVE_INFINITY`](#numberpositive_infinity)
+- [`Number.parseInt()`](#numberparseint)
 
 ## [为什么在 JavaScript 中 NaN 不能是一个独立的类型？](https://www.zhihu.com/question/379014728)
 

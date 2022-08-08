@@ -1,4 +1,8 @@
-# Null / Undefined
+# Null / Undefined<!-- omit in toc -->
+
+- [为什么 `typeof null` 的结果是 'object'?](#为什么-typeof-null-的结果是-object)
+- [`undefined` 不是保留字，可以作为标识符（变量名）使用](#undefined-不是保留字可以作为标识符变量名使用)
+- [在现代 JavaScript 代码中，应该推荐使用 undefined 还是 null？](#在现代-javascript-代码中应该推荐使用-undefined-还是-null)
 
 ## [为什么 `typeof null` 的结果是 'object'?](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof#typeof_null)
 

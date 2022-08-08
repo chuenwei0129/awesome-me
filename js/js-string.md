@@ -1,4 +1,21 @@
-# String
+# String<!-- omit in toc -->
+
+- [前置知识](#前置知识)
+  - [ASCII 字符集](#ascii-字符集)
+  - [Unicode 字符集](#unicode-字符集)
+  - [JavaScript 使用哪一种编码](#javascript-使用哪一种编码)
+    - [码点表示法](#码点表示法)
+    - [字符串处理函数](#字符串处理函数)
+    - [正则表达式](#正则表达式)
+- [String](#string)
+  - [字符的 Unicode 表示法](#字符的-unicode-表示法)
+  - [直接输入 U+2028 和 U+2029](#直接输入-u2028-和-u2029)
+  - [JSON.stringify 的改造](#jsonstringify-的改造)
+  - [模板字符串](#模板字符串)
+  - [实例方法：codePointAt()](#实例方法codepointat)
+  - [String.fromCodePoint()](#stringfromcodepoint)
+  - [String.raw()](#stringraw)
+- [参考资料](#参考资料)
 
 ## 前置知识
 

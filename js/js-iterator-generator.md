@@ -1,4 +1,12 @@
-# Iterator 和 Generator
+# Iterator 和 Generator<!-- omit in toc -->
+
+- [Iterator](#iterator)
+- [Generator 函数](#generator-函数)
+  - [简介](#简介)
+  - [next 方法的参数](#next-方法的参数)
+  - [next()、throw()、return()](#nextthrowreturn)
+  - [yield* 表达式](#yield-表达式)
+  - [总结](#总结)
 
 ## Iterator
 
