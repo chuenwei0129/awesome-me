@@ -27,7 +27,7 @@
 
 **代码辅助理解：**
 
-> [浮点数相关代码实现](doubleToBinary.ts)
+> [浮点数相关代码实现](../code/doubleToBinary.ts)
 
 **什么是浮点数：**
 
