@@ -7,6 +7,7 @@
     - [码点表示法](#码点表示法)
     - [字符串处理函数](#字符串处理函数)
     - [正则表达式](#正则表达式)
+- [拓展：Base64 编码](#拓展base64-编码)
 - [String](#string)
   - [字符的 Unicode 表示法](#字符的-unicode-表示法)
   - [直接输入 U+2028 和 U+2029](#直接输入-u2028-和-u2029)
@@ -109,6 +110,11 @@ String.prototype.at() // 返回字符串给定位置的字符
 ES6 提供了 `u` 修饰符，对正则表达式添加 4 字节码点的支持。
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/js/unicode-1.png)
+
+## 拓展：Base64 编码
+
+<!-- 保证传输数据不乱码，正常码点拆分成 6 bit 每组的小码点，然后对应 ascii 的 64 个字符，编码数据，base64 和 utf-8 一个范畴，拆分后体积会膨胀  -->
+> [丢人了，我居然不知道 Base64 编码的原理](https://www.bilibili.com/video/BV1xy4y187MF)
 
 ## [String](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String)
 

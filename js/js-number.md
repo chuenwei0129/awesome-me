@@ -143,7 +143,10 @@ function compareTwo(n1, n2) {
 compareTwo(0.1 + 0.2, 0.3)
 ```
 
-> **拓展知识**：[浮点数 —— 从惊讶到思考](../summary/float.md)
+> **拓展知识**：
+>
+- [浮点数 —— 从惊讶到思考](../summary/float.md)
+- [从 min 到 max 的随机整数](https://zh.javascript.info/number#cong-min-dao-max-de-sui-ji-zheng-shu)
 
 ## [`Number.NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/NaN)
 

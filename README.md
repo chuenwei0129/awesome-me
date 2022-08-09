@@ -21,7 +21,7 @@
 
 ## 前端三剑客
 
-> js 是世界上最好的语言，php 是比 js 还要好的语言
+> Always bet on JavaScript, Because there is only JavaScript.
 
 - `[WEB]` [到达前端最高城 ——— 浏览器](summary/browser.md)
 - `[JS]` [太美丽啦浏览器，哎呀这不是 JavaScript 吗](js/js.md)
@@ -30,7 +30,7 @@
 
 ## Make Web Great Again
 
-> TODO
+> js 是世界上最好的语言，php 是比 js 还要好的语言
 
 - `[Hacker]` 都什么年代了，还再写传统 JS
 - `[Component]` 组件库，但无 UI —— Headless UI
@@ -49,7 +49,7 @@
 
 ## 前端工程化
 
-> TODO
+> 无意跌池塘，醒来满辰光
 
 - `[Node]` [Node 版本管理和 npm 包管理](engineering/node.md)
 - `[Babel]` [前端领域需要哪些转译器](engineering/ast.md)
@@ -59,7 +59,7 @@
 
 ## 计算机基础知识图谱
 
-> TODO
+> 看不到前方，不是因为前路漆黑，未来总是光芒四射的。因为过于耀眼，所以才刺眼得让人看不见。
 
 - `[Crash Course]` [谁还不是个科班出身了](summary/base.md)
 - `[Computer Network]` [计算机网络基础知识总结](summary/net.md)
