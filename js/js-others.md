@@ -7,6 +7,7 @@
 - [JS 里的 Array 属于构造函数还是类？](#js-里的-array-属于构造函数还是类)
 - [JavaScript 里听说区分函数和方法，而 Java 里只听说过方法，到底有什么区别？](#javascript-里听说区分函数和方法而-java-里只听说过方法到底有什么区别)
 - [下列代码为什么会产生 'super' keyword unexpected here 的错误？](#下列代码为什么会产生-super-keyword-unexpected-here-的错误)
+- [ES6 提出 class 关键字是希望解决什么问题？它是不是鸡肋？](#es6-提出-class-关键字是希望解决什么问题它是不是鸡肋)
 - [为什么 Redux 判断 PlainObject 的写法这么复杂？](#为什么-redux-判断-plainobject-的写法这么复杂)
 - [JavaScript 语句后应该加分号么？](#javascript-语句后应该加分号么)
 
@@ -218,6 +219,8 @@ Object.setPrototypeOf(obj2, obj1)
 
 obj2.method2() // method 1
 ```
+
+## [ES6 提出 class 关键字是希望解决什么问题？它是不是鸡肋？](https://www.zhihu.com/question/432832293)
 
 ## [为什么 Redux 判断 PlainObject 的写法这么复杂？](https://www.zhihu.com/question/299783862/answer/518704408)
 

@@ -8,6 +8,7 @@
 - [属性的遍历](#属性的遍历)
 - [super 关键字](#super-关键字)
 - [对象的扩展运算符](#对象的扩展运算符)
+- [Object() 工具方法](#object-工具方法)
 - [Object.create](#objectcreate)
 - [控制对象状态](#控制对象状态)
 - [对象的新增方法](#对象的新增方法)
@@ -297,6 +298,25 @@ console.log(clone) // { p: 12 }
 // 等同于 console.log({ ...clone, ...{ q: 13 } })
 Object.assign(clone, { q: 13 })
 console.log(clone) // { p: 12, q: 13 }
+```
+
+## Object() 工具方法
+
+`Object` 本身是一个函数，可以当作工具方法使用，将任意值转为对象。
+
+- 如果参数为空（或者为 `undefined` 和 `null`），`Object()` 返回一个空对象。
+- 如果参数是原始类型的值，`Object` 方法将其转为对应的包装对象的实例。
+- 如果 `Object` 方法的参数是一个对象，它总是返回该对象，即不用转换。
+
+利用这一点，可以写一个判断变量是否为对象的函数。
+
+```js
+function isObject(value) {
+  return value === Object(value)
+}
+
+isObject([]) // true
+isObject(true) // false
 ```
 
 ## Object.create

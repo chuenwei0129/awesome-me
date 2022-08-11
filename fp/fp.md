@@ -1,4 +1,4 @@
-# 函数式编程扫盲
+# 人类高质量函数式编程学习指南
 
 ## 编程范式
 
@@ -9,9 +9,9 @@
 由于存在很多需要控制的步骤，所以命令式编程普遍存在以下特点：
 
 - **控制语句**
-  - 循环语句：while、for
-  - 条件分支语句：if else、switch
-  - 无条件分支语句：return、break、continue
+  - 循环语句：`while`、`for`
+  - 条件分支语句：`if else`、`switch`
+  - 无条件分支语句：`return`、`break`、`continue`
 - **变量**
   - 赋值语句
 
@@ -22,18 +22,18 @@
 
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 // 步骤 1：定义执行结果变量
-const ret = []
+const res = []
 // 步骤 2：控制程序循环调用
 for (let i = 0; i < arr.length; i++) {
   // 步骤 3：判断筛选条件
   if (arr[i] % 2 !== 0) {
     // 步骤 4：加入执行结果
-    ret.push(arr[i])
+    res.push(arr[i])
   }
 }
 
-console.log(ret) // [1, 3, 5, 7, 9]
-// 步骤5：得到最终的结果 ret
+// 步骤 5：得到最终的结果 res
+console.log(res) // [1, 3, 5, 7, 9]
 ```
 
 **优点：**
@@ -57,55 +57,38 @@ const result = array.filter(item => item % 2 !== 0)
 console.log(result) // [1, 3, 5, 7, 9]
 ```
 
-典型的声明式编程的案例：HTML 用来声明网页的内容。
-
-声明式编程的优缺点：
+**声明式编程的优缺点：**
 
 - 声明式编程的具体操作都是底层统一管理，可以降低重复工作。
 - 声明式编程底层实现的逻辑并不可控，不适合做更精细化的优化。
+
+典型的声明式编程的案例：HTML 标签声明网页的内容。
 
 ### 函数式编程
 
 **函数式编程** 属于声明式编程中的一种，它的主要思想是：**将计算机运算看作为函数的计算，也就是把程序问题抽象成数学问题去解决。**
 
-**函数式编程中，所有的变量都是唯一的值**，就像是数学中的代数 x、y，它们要么还未解出来，要么已经被解出为固定值，所以对于：`x=x+1` 这样的自增是不合法的，因为修改了代数值，不符合数学逻辑。
+**函数式编程中，所有的变量都是唯一的值**，就像是数学中的代数 `x`、`y`，它们要么还未解出来，要么已经被解出为固定值，所以对于：`x = x+1` 这样的自增是不合法的，因为修改了代数值，不符合数学逻辑。
 
-除此之外，严格意义上的函数式编程也不包括循环、条件判断等控制语句，如果需要条件判断，可以使用三元运算符代替。
+除此之外，**严格意义上的函数式编程也不包括循环、条件判断等控制语句**，如果需要条件判断，可以使用三元运算符代替。
 
-函数式编程有以下几个特点：
+**函数式编程有以下几个特点：**
 
 - **函数是一等公民**：函数可以和变量一样，可以赋值给其他变量，也可以作为参数，传入一个函数，或者作为别的函数返回值。
 
 - **只用表达式，不用语句**：表达式是一段单纯的运算过程，总是有返回值。语句是执行某种操作，没有返回值。**函数式编程中的每一步都是单纯的运算**，而且都有返回值。
+
 - **无副作用**：不会产生除运算以外的其他结果。同一个输入永远得到同一个输出。
+
 - **不可变性**：不修改变量，返回一个新的值。
+
 - **引用透明**：函数的运行不依赖于外部变量，只依赖于输入的参数。
 
-<!-- - 纯函数：同样的输入得到同样的输出，无副作用。
-- 函数组合：将多个依次调用的函数，组合成一个大函数，简化操作步骤。
-- 高阶函数：可以加工函数的函数，接收一个或多个函数作为输入、输出一个函数。
-- 闭包：函数作用域嵌套，实现的不同作用域变量共享。
-- 柯里化：将一个多参数函数转化为多个嵌套的单参数函数。
-- 偏函数：缓存一部分参数，然后让另一些参数在使用时传入。
-- 惰性求值：预先定义多个操作，但不立即求值，在需要使用值时才去求值，可以避免不必要的求值，提升性能。
-- 递归：控制函数循环调用的一种方式。
-- 尾递归：避免多层级函数嵌套导致的内存溢出的优化。
-- 链式调用：让代码更加优雅。 -->
+## 函数式编程术语
 
-## [函数式编程术语](https://github.com/hemanth/functional-programming-jargon)
+> 笔记来源 [functional-programing-jargon](https://github.com/hemanth/functional-programming-jargon)
 
-### Arity
-
-函数形参的个数。
-
-```js
-const sum = (a, b) => a + b
-const arity = sum.length
-
-console.log(arity) // 2
-```
-
-### 高阶函数 (Higher-Order Function)
+### 高阶函数 (Higher Order Function)
 
 以函数为参数或返回值。
 
@@ -118,12 +101,12 @@ filter(is(Number), [0, '1', 2, null]) // 0, 2
 
 ### 偏函数 (Partial Function)
 
-偏函数应用通过对复杂的函数填充一部分数据来构成一个简单的函数。
+"部分地"应用一个函数，即预设原始函数的部分参数来创建一个新的函数。
 
 **使用 `Function.prototype.bind` 实现偏函数：**
 
 ```js
-const add = (a, b, c) => a + b + c
+const add = (a, b, c) => a + b + c // (c) => 2 + 3 + c
 const addMore = add.bind(null, 1, 2)
 
 console.log(addMore(3)) // 6
@@ -136,8 +119,8 @@ const add = (a, b, c) => a + b + c
 
 const partial =
   (f, ...args) =>
-  (...moreArgs) =>
-    f(...args, ...moreArgs)
+  (...rest) =>
+    f(...args, ...rest)
 
 const addMore = partial(add, 1, 2)
 
@@ -157,29 +140,34 @@ const add2 = curriedSum(2)
 add2(10) // 12
 ```
 
-**自动柯里化：**
-
-`lodash` 和 `ramda` 有 `curry` 函数可以自动完成柯里化。
+**使用 `Function.prototype.bind` 实现 curry 函数：**
 
 ```js
-const add = (x, y) => x + y
-
-// lodash
-const curriedAdd = _.curry(add)
-curriedAdd(1, 2) // 3
-curriedAdd(1) // (y) => 1 + y
-curriedAdd(1)(2) // 3
+const curry = f => {
+  return (...args) => {
+    // curriedF 每次调用都会使 f.length - args.length
+    // 最后 f.length === 0
+    if (args.length < f.length) {
+      return curry(f.bind(null, ...args))
+    } else {
+      return f(...args)
+    }
+  }
+}
 ```
 
 **手写 curry 函数：**
 
 ```js
 const curry = f => {
-  const R = (...args) =>
-    args.length >= f.length ? f(...args) : (...moreArgs) => R(...moreArgs, ...args)
+  // curriedF 每次调用都会收集当前传递的参数，利用 accArgs 闭包收集参数，收集齐了就调用原函数
+  const R = (...accArgs) =>
+    accArgs.length >= f.length ? f(...accArgs) : (...restArgs) => R(...restArgs, ...accArgs)
   return R
 }
 ```
+
+> [示例](../fp/curry.js)
 
 ### 函数组合 (Function Composing)
 
@@ -194,13 +182,31 @@ floorAndToString(12.12) // '12'
 **手写 compose 函数：**
 
 ```js
-const compose = (...arrF) => {
-  return (...args) => {
-    return arrF.reduceRight((acc, cur) => {
-      return typeof acc === 'function' ? cur(acc(...args)) : cur(acc)
-    })
-  }
-}
+const compose =
+  fns =>
+  (...args) =>
+    fns.reduceRight((acc, f) =>
+      // reduceRight 第二个参数不传，第一次 acc 为数组 fns 最后一项，第二次以后就为函数返回值参数，直到循环结束。
+      typeof acc === 'function' ? f(acc(...args)) : f(acc)
+    )
+```
+
+> [示例](../fp/compose.js)
+
+### 副作用 (Side effects)
+
+如果一个函数或者表达式除了返回一个值之外，还与外部可变状态进行了交互（读取或写入），则它是有副作用的。
+
+```js
+console.log('IO is a side effect!')
+```
+
+### 幂等性 (Idempotent)
+
+如果一个函数执行多次皆返回相同的结果，则它是幂等性的。
+
+```js
+f(f(x)) ≍ f(x)
 ```
 
 ### 纯函数 (Purity)
@@ -212,7 +218,7 @@ const greet = name => `hello, ${name}`
 greet('world')
 ```
 
-以下代码不是纯函数：
+**以下代码不是纯函数：**
 
 ```js
 window.name = 'Brianna'
@@ -231,42 +237,86 @@ const greet = name => {
 }
 
 greet('Brianna')
-greeting // "Hi, Brianna"
+
+console.log(greeting)  // "Hi, Brianna"
 ```
 
 以上实例中，函数修改了外部状态。
 
-### 副作用 (Side effects)
 
-如果函数与外部可变状态进行交互，则它是有副作用的。
+### 值 (Value)
+
+任何可以赋给变量的东西叫做值。
 
 ```js
-const differentEveryTime = new Date()
+5
+Object.freeze({name: 'John', age: 30})
+;(a) => a
+;[1]
+undefined
 ```
 
+### 常量 (Constant)
+
+一旦被定义之后就不可以被重新赋值。
+
+**常量是引用透明的**，也就是说，它们可以被它们所代表的值替代而不影响结果。
+
 ```js
-console.log('IO is a side effect!')
+const five = 5
+const john = Object.freeze({name: 'John', age: 30})
+
+// 对于以上两个常量，以下语句总会返回 true。
+john.age + five === ({name: 'John', age: 30}).age + (5)
 ```
 
-### 幂等性 (Idempotent)
+### 引用透明性 (Referential Transparency)
 
-如果一个函数执行多次皆返回相同的结果，则它是幂等性的。
+一个表达式能够被它的值替代而不改变程序的行为成为引用透明。
 
 ```js
-f(f(x)) ≍ f(x)
+const greet = () => 'hello, world！'
 ```
 
-```js
-Math.abs(Math.abs(10))
-```
+任何对 `greet()` 的调用都可以替换为 `Hello World！` 因此，`greet` 是引用透明的。
+
+### Lambda
+
+一种可以被视作一个值的匿名函数。
 
 ```js
-sort(sort(sort([2, 1])))
+;(function (a) {
+    return a + 1
+})
+
+;(a) => a + 1
+```
+
+Lambda 通常作为参数被传递给高阶函数。
+
+```js
+[1, 2].map((a) => a + 1)
+```
+
+可以把 Lambda 赋值给一个变量。
+
+```js
+const add1 = (a) => a + 1
+```
+
+### 谓词 (断定 Predicate)
+
+根据输入返回 `true` 或 `false`。通常用在 `Array.prototype.filter` 的回调函数中。
+
+```js
+const predicate = a => a > 2
+
+;[1, 2, 3, 4].filter(predicate)
 ```
 
 ### Point-Free 风格 (Point-Free Style)
 
-定义函数时，不显式地指出函数所带参数。这种风格通常需要柯里化或者高阶函数。也叫 Tacit programming。
+定义函数时，不显式地指出函数所带参数。这种风格通常需要柯里化或者高阶函数。也叫 `Tacit programming`。
 
 ```js
 const _map = fn => list => list.map(fn)
@@ -285,28 +335,6 @@ console.log(incrementAll2([1, 2, 3])) // [2, 3, 4]
 `incrementAll` 识别并且使用了 `numbers` 参数，因此它不是 `Point-Free` 风格的。 `incrementAll2` 连接函数与值，并不提及它所使用的参数，因为它是 `Point-Free` 风格的。
 
 `Point-Free` 风格的函数就像平常的赋值，不使用 `function` 或者 `=>`。
-
-### 谓词 (Predicate)
-
-根据输入返回 `true` 或 `false`。通常用在 `Array.prototype.filter` 的回调函数中。
-
-```js
-const predicate = a => a > 2
-
-;[1, 2, 3, 4].filter(predicate)
-```
-
-### 范畴 (Category)
-
-在范畴论中，范畴是指对象集合及它们之间的态射 (morphism)。在编程中，数据类型作为对象，函数作为态射。
-
-一个有效的范畴遵从以下三个原则：
-
-1. 必有一个 `identity` 态射，使得 `map` 一个对象是它自身。`a` 是范畴里的一个对象时，必有一个函数使 `a -> a`。
-2. 态射必是可组合的。`a，b，c` 是范畴里的对象，`f` 是态射 `a -> b`，`g` 是 `b -> c` 态射。`g(f(x))` 一定与 `(g ● f)(x)` 是等价的。
-3. 组合满足结合律。`f ● (g ● h)` 与 `(f ● g) ● h` 是等价的。
-
-这些准则是非常抽象的，范畴论对与发现组合的新方法是伟大的。
 
 ### 函子 (Functor)
 
@@ -334,9 +362,9 @@ const g = x => x * 2
 ;[1, 2, 3].map(g).map(f)
 ```
 
-#### Pointed Functor
+### 指向函子 (Pointed Functor)
 
-一个实现了 `of` 函数的对象
+一个实现了 `of` 函数的对象，可以将一个任何值放入它自身。
 
 `ES2015` 添加了 `Array.of`，使 `Array` 成为了 `Pointed Functor`
 
@@ -344,33 +372,9 @@ const g = x => x * 2
 Array.of(1)
 ```
 
-### 引用透明性 (Referential Transparency)
-
-一个表达式能够被它的值替代而不改变程序的行为成为引用透明。
-
-```js
-const greet = () => 'hello, world！'
-```
-
-任何对 `greet()` 的调用都可以替换为 `Hello World！` 因此，`greet` 是引用透明的。
-
-### 匿名函数 (Lambda)
-
-匿名函数通常作为高阶函数的参数
-
-```js
-;[1, 2].map(a => a + 1)
-```
-
-可以把 `Lambda` 赋值给一个变量
-
-```js
-const add1 = a => a + 1
-```
-
 ### 惰性求值 (Lazy evaluation)
 
-按需求值机制，只有当需要计算所得值时才会计算。
+惰性求值是一种按需调用的求值机制，它将表达式的求值延迟到需要它的值为止，在函数式语言中，允许类似无限列表这样的结构存在，而这在非常重视命令顺序的命令式语言中通常是不可用的。
 
 ```js
 const rand = function* () {
@@ -380,7 +384,7 @@ const rand = function* () {
 }
 
 const randIter = rand()
-randIter.next()
+randIter.next() // 每次执行产生一个随机值，表达式会在需要时求值。
 ```
 
 ### 幺半群 (Monoid)
@@ -538,3 +542,34 @@ map: Functor f => (a -> b) -> f a -> f b
 
 1. `Functor` 是 `Array<T>`
 2. `Functor` 函子：范畴间的同态（说人话：带泛型的类型 `Array<T>`, `Promise<T>` ）
+
+### 范畴 (Category)
+
+在范畴论中，范畴是指对象集合及它们之间的态射 (morphism)。在编程中，数据类型作为对象，函数作为态射。
+
+一个有效的范畴遵从以下三个原则：
+
+1. 必有一个 `identity` 态射，使得 `map` 一个对象是它自身。`a` 是范畴里的一个对象时，必有一个函数使 `a -> a`。
+2. 态射必是可组合的。`a，b，c` 是范畴里的对象，`f` 是态射 `a -> b`，`g` 是 `b -> c` 态射。`g(f(x))` 一定与 `(g ● f)(x)` 是等价的。
+3. 组合满足结合律。`f ● (g ● h)` 与 `(f ● g) ● h` 是等价的。
+
+这些准则是非常抽象的，范畴论对与发现组合的新方法是伟大的。
+
+
+### 契约 (Contracts)
+
+契约规定了函数或表达式在运行时的行为的职责和保障。它表现为一组规则，这些规则是对函数或表达式的输入和输出的期望。当违反契约时，将抛出一个错误。
+
+```js
+// typescript
+// 定义的 contract: int -> boolean
+const contract = (input) => {
+  if (typeof input === 'number') return true
+  throw new Error('Contract Violated: expected int -> int')
+}
+
+const addOne = (num) => contract(num) && num + 1
+
+addOne(2) // 3
+addOne('hello') // 违反了contract: int -> boolean
+```

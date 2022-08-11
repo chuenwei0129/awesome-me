@@ -46,7 +46,6 @@ const throttle = (fn: ThrottleFN, interval = 16) => {
   }
 }
 
-// 科利华的存在，可以不带考虑多参数
 type CombineFN<A, B> = (input: A) => B
 
 const combine = <A, B, C>(leftFn: CombineFN<B, C>, rightFn: CombineFN<A, B>) => {
