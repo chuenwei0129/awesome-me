@@ -30,7 +30,7 @@
 
 ## Make Web Great Again
 
-> js 是世界上最好的语言，php 是比 js 还要好的语言
+> Do not go gentle into that good night.
 
 - `[Hacker]` 都什么年代了，还再写传统 JS
 - `[Component]` 组件库，但无 UI —— Headless UI
@@ -49,7 +49,7 @@
 
 ## 前端工程化
 
-> 无意跌池塘，醒来满辰光
+> js 是世界上最好的语言，php 是比 js 还要好的语言
 
 - `[Node]` [Node 版本管理和 npm 包管理](engineering/node.md)
 - `[Babel]` [前端领域需要哪些转译器](engineering/ast.md)

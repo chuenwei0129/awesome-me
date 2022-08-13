@@ -50,6 +50,7 @@ console.log(fib(10))
 
 // 数组展平
 function* flat(arr) {
+  // yield* 循环代替递归
   for (let i = 0; i < arr.length; i++) {
     Array.isArray(arr[i]) ? yield* flat(arr[i]) : yield arr[i]
   }

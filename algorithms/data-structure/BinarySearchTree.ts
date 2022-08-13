@@ -186,3 +186,9 @@ export class BinarySearchTree {
     return this._getMin(this._root)
   }
 }
+
+export const listToTree = (list: number[]) => {
+  const bst = new BinarySearchTree()
+  list.forEach(item => bst.insert(item))
+  return bst
+}
