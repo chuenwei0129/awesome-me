@@ -35,6 +35,7 @@
 - `[Hacker]` 都什么年代了，还再写传统 JS
 - `[Component]` 组件库，但无 UI —— Headless UI
 - `[Base]` 永远不要低估用户的智障程度 —— 编程术语祛魅
+- `TODO` [人类高质量函数式编程学习笔记](summary/fp.md)
 - `TODO` [浮点数 —— 从惊讶到思考](summary/float.md)
 - `TODO` [搞明白位运算、补码、反码、原码](framework/bits.md)
 
