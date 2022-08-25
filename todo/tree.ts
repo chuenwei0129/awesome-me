@@ -89,7 +89,7 @@ function* traverse(tree: Tree, ord = 0): Generator<Tree> {
 
 // 使用
 // for of 遍历 或者 [...]
-;[...traverse(bst)].map(node => node.val).forEach(v => console.log(v))
+;[...traverse(bst, 1)].map(node => node.val).forEach(v => console.log('通用', v))
 
 // 树的查找
 const treeFind = (tree: Tree, predication: (node: Tree) => boolean) => {

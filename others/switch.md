@@ -9,8 +9,8 @@
 - [SX OS 拥抱大气层](#sx-os-拥抱大气层)
 - [USB 安装游戏](#usb-安装游戏)
 - [离线升降级系统](#离线升降级系统)
-- [模拟器](#模拟器)
 - [小插曲](#小插曲)
+- [模拟器](#模拟器)
 - [白嫖网站](#白嫖网站)
 
 ## SX OS 拥抱大气层
@@ -25,14 +25,12 @@ Mac 下用 USB 连接 Switch 需要 [Android File Transfer](https://www.android.
 
 ## 离线升降级系统
 
+> [图解更新大气层文件和升级 Switch 系统方法](http://www.265xh.com/nszhinan/4464.html)
+
 1. 文件传输方式推荐参考：[Switch 大气层 Hekate 下的 USB 传输](https://shipengliang.com/games/switch-%e5%a4%a7%e6%b0%94%e5%b1%82-hekate%e4%b8%8b%e7%9a%84usb%e4%bc%a0%e8%be%93.html) 或用读卡器（DBI 不支持大气层核心文件传输）。
-2. 下载最新大气层引导文件：[Atmosphere](https://github.com/Atmosphere-NX/Atmosphere/releases) 并覆盖更新到 TF 卡根目录。
+2. 下载最新大气层整合包：[Atmosphere](https://github.com/AK478BB/AK-Atmosphere/releases) 并覆盖更新到 TF 卡根目录。
 3. 下载目标版本固件包：[Switch Firmware 固件](https://github.com/THZoria/NX_Firmware/releases)，并将固件包解压后传输到 TF 卡根目录。
-4. [启动系统后，进入相册，运行 Daybreak](https://shipengliang.com/games/switch-%e5%a4%a7%e6%b0%94%e5%b1%82-atmosphere-%e5%a6%82%e4%bd%95%e7%a6%bb%e7%ba%bf%e5%8d%87%e7%ba%a7%e7%b3%bb%e7%bb%9f.html))
-
-## 模拟器
-
-> TODO
+4. [启动系统后，进入相册，运行 Daybreak](https://shipengliang.com/games/switch-%e5%a4%a7%e6%b0%94%e5%b1%82-atmosphere-%e5%a6%82%e4%bd%95%e7%a6%bb%e7%ba%bf%e5%8d%87%e7%ba%a7%e7%b3%bb%e7%bb%9f.html)
 
 ## 小插曲
 
@@ -67,7 +65,11 @@ The problem is, MacOS is setting an “archive flag” on every sd-card mounted 
 
 > 解决方案来自：[如何优雅地在 macOS 上管理 NS](https://blog.dov.moe/posts/52726/)
 
+## 模拟器
+
+> TODO
+
 ## 白嫖网站
 
-- <https://switch520.com/>
+- <https://fourpetal.com/>
 - <https://www.vgter.com/>
