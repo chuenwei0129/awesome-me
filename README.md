@@ -25,7 +25,7 @@
 
 - `[WEB]` [到达前端最高城 ——— 浏览器](summary/browser.md)
 - `[JS]` [太美丽啦浏览器，哎呀这不是 JavaScript 吗](js/js.md)
-- `[TS]` [还是看看远处的 TypeScript 吧，家人们](ts/ts.md)
+- `[TS]` [还是看看远处的 TypeScript 吧，家人们](https://github.com/chuenwei0129/build-my-own-x/blob/main/packages/build-my-own-brainfuck/ts.md)
 - `[CSS]` [是煮，是煮在又一次严重酗酒后创造了这个奇迹](css/css.md)
 
 ## Make Web Great Again
