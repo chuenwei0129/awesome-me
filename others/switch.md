@@ -7,30 +7,48 @@
 > ## 目录
 
 - [SX OS 拥抱大气层](#sx-os-拥抱大气层)
+- [大气层离线升降级系统](#大气层离线升降级系统)
 - [USB 安装游戏](#usb-安装游戏)
-- [离线升降级系统](#离线升降级系统)
 - [小插曲](#小插曲)
-- [模拟器](#模拟器)
 - [白嫖网站](#白嫖网站)
 
 ## SX OS 拥抱大气层
 
 [SX 完整拥抱大气层 图文教程](https://shipengliang.com/games/sx-%e5%ae%8c%e6%95%b4%e6%8b%a5%e6%8a%b1%e5%a4%a7%e6%b0%94%e5%b1%82-%e5%9b%be%e6%96%87%e6%95%99%e7%a8%8b.html)
 
+## 大气层离线升降级系统
+
+> Switch 有真实系统和虚拟系统，真实系统进真实正版系统联网升级，虚拟破解系统用 Daybreak 离线升级。
+
+💡 更新大气层和升级 Switch 系统是两步，因为大气层向下兼容，所以先更新大气层，再升级 Switch 系统。
+
+**🕒 准备工作：**
+
+文件传输方式参考：[Switch 大气层 Hekate 下的 USB 传输](https://shipengliang.com/games/switch-%e5%a4%a7%e6%b0%94%e5%b1%82-hekate%e4%b8%8b%e7%9a%84usb%e4%bc%a0%e8%be%93.html) 或用**读卡器**（DBI 不支持大气层核心文件传输）。
+
+**📋 注意事项：**
+
+1. **emuMMC** 目录是大气层虚拟系统所在的位置，虚拟系统里的游戏和存档都在里面，所以不能删。
+2. **Nintendo** 目录是真实系统所在的位置真实系统里的游戏都在里面，所以不能删
+3. 所以最稳定的大气层更新方法：**保留 SD 卡上 emuMMC 和 Nintendo 两个目录后删除其它文件，再覆盖最新的大气层整合包。**
+
+**🕹️ 更新步骤：**
+
+1. 下载最新大气层整合包：[Atmosphere](https://github.com/AK478BB/AK-Atmosphere/releases) 并覆盖更新到 TF 卡根目录。
+2. 下载 Switch 版本固件包：[Switch Firmware 固件](https://github.com/THZoria/NX_Firmware/releases)，并将固件包解压后传输到 TF 卡根目录。
+3. [启动系统后，进入相册，运行 Daybreak](https://shipengliang.com/games/switch-%e5%a4%a7%e6%b0%94%e5%b1%82-atmosphere-%e5%a6%82%e4%bd%95%e7%a6%bb%e7%ba%bf%e5%8d%87%e7%ba%a7%e7%b3%bb%e7%bb%9f.html)
+
+**🚗 图文教程：**
+
+![20221119133546](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/20221119133546.png)
+
 ## USB 安装游戏
 
-Mac 下用 USB 连接 Switch 需要 [Android File Transfer](https://www.android.com/filetransfer/)
+Mac 下用 USB 连接 Switch 需要 [Android File Transfer](https://www.android.com/filetransfer/) 支持。
 
-[Switch DBI 图文使用教程](https://shipengliang.com/games/switch-dbi-%e5%9b%be%e6%96%87%e4%bd%bf%e7%94%a8%e6%95%99%e7%a8%8b.html)
+![20221119140511](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/20221119140511.png)
 
-## 离线升降级系统
-
-> [图解更新大气层文件和升级 Switch 系统方法](http://www.265xh.com/nszhinan/4464.html)
-
-1. 文件传输方式推荐参考：[Switch 大气层 Hekate 下的 USB 传输](https://shipengliang.com/games/switch-%e5%a4%a7%e6%b0%94%e5%b1%82-hekate%e4%b8%8b%e7%9a%84usb%e4%bc%a0%e8%be%93.html) 或用读卡器（DBI 不支持大气层核心文件传输）。
-2. 下载最新大气层整合包：[Atmosphere](https://github.com/AK478BB/AK-Atmosphere/releases) 并覆盖更新到 TF 卡根目录。
-3. 下载目标版本固件包：[Switch Firmware 固件](https://github.com/THZoria/NX_Firmware/releases)，并将固件包解压后传输到 TF 卡根目录。
-4. [启动系统后，进入相册，运行 Daybreak](https://shipengliang.com/games/switch-%e5%a4%a7%e6%b0%94%e5%b1%82-atmosphere-%e5%a6%82%e4%bd%95%e7%a6%bb%e7%ba%bf%e5%8d%87%e7%ba%a7%e7%b3%bb%e7%bb%9f.html)
+> 💾 参考资料：[Switch DBI 图文使用教程](https://shipengliang.com/games/switch-dbi-%e5%9b%be%e6%96%87%e4%bd%bf%e7%94%a8%e6%95%99%e7%a8%8b.html)
 
 ## 小插曲
 
@@ -56,6 +74,18 @@ The problem is, MacOS is setting an “archive flag” on every sd-card mounted 
 
 在将 SD 卡插入 Mac，并复制、修改完文件后，macOS 系统会在 SD 卡内产生例如 .DS_Store 等垃圾文件，我们可以下载 [CleanEject](https://www.javawa.nl/cleaneject_en.html) 进行清理，会自动清理完并弹出 SD 卡。
 
+> 关于 CleanEject 启动时提示，未获得授权将 Apple 事件发送给 Finder。
+
+![20221119160829](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/20221119160829.png)
+
+原因是 Mac 更新后，自动化无法手动添加，我们可以使用 Terminal 方式来运行软件。
+
+![20221119183904](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/20221119183904.png)
+
+运行终端，把 iTerm 添加到自动化中即可。
+
+![20221119183650](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/20221119183650.png)
+
 **步骤二**、修复 archive flag 问题
 
 其实这个功能在 Hekate 中就内置了，可以通过以下步骤来解决：
@@ -65,11 +95,7 @@ The problem is, MacOS is setting an “archive flag” on every sd-card mounted 
 
 > 解决方案来自：[如何优雅地在 macOS 上管理 NS](https://blog.dov.moe/posts/52726/)
 
-## 模拟器
-
-> TODO
-
 ## 白嫖网站
 
-- <https://fourpetal.com/>
+- <https://xxxxx520.com//>
 - <https://www.vgter.com/>
