@@ -1,7 +1,5 @@
 # 最傻逼的用户，被 macOS 百般折磨后，努力至今终尝回报，突然得到了最强使用技巧<!-- omit in toc -->
 
-## 目录<!-- omit in toc -->
-
 - [1. 给 Mac 硬件做健康检查](#1-给-mac-硬件做健康检查)
 - [2. m1 芯片 Mac 重装系统](#2-m1-芯片-mac-重装系统)
 - [3. 在 Mac 上安装软件前需要做的准备](#3-在-mac-上安装软件前需要做的准备)
@@ -35,16 +33,16 @@
 - [8. macOS 使用技巧](#8-macos-使用技巧)
   - [Mac 下显示 / 隐藏文件](#mac-下显示--隐藏文件)
   - [m1 Mac 查询硬盘写入](#m1-mac-查询硬盘写入)
-  - [安装 smartctl](#安装-smartctl)
-  - [查看硬盘使用量](#查看硬盘使用量)
-- [用自带工具快速判断 macOS 的网络质量](#用自带工具快速判断-macos-的网络质量)
-- [更改启动台应用程序显示数目](#更改启动台应用程序显示数目)
-- [浏览器](#浏览器)
+    - [安装 smartctl](#安装-smartctl)
+    - [查看硬盘使用量](#查看硬盘使用量)
+  - [更改启动台应用程序显示数目](#更改启动台应用程序显示数目)
+  - [其他](#其他)
+- [9. 浏览器](#9-浏览器)
   - [管理书签](#管理书签)
   - [为 Chrome 设置搜索引擎关键词](#为-chrome-设置搜索引擎关键词)
   - [浏览器插件](#浏览器插件)
   - [油猴脚本](#油猴脚本)
-- [有用的链接](#有用的链接)
+- [10. 有用的链接](#10-有用的链接)
 
 ## 1. 给 Mac 硬件做健康检查
 
@@ -488,10 +486,10 @@ rm ~/Library/Caches/Homebrew/downloads/*.incomplete
 |            [raycast](https://www.raycast.com/)            |                   效率神器。应用与文件搜索、剪贴板管理、快捷短语输入，丰富全面的插件功能                   | [#](https://www.youtube.com/watch?v=KL0unqxkcDA) |
 |          [thor](https://github.com/gbammc/Thor)           |         Mac 应用程序开启 /切换工具，通过它，给应用程序设定快捷键，即可使用快捷键迅速打开或切换应用         |
 | [google-chrome](https://www.google.cn/intl/zh-CN/chrome/) |                                       谷歌浏览器，基于 Chromium 内核                                       |
-|               [iterm2](https://iterm2.com/)               |                           专为 macOS 用户打造的命令行应用。可替代原生的 Terminal                           | [#](https://juejin.cn/post/6917659162025394183)  |
+|               [iterm2](https://iterm2.com/)               |                           专为 macOS 用户打造的命令行应用。可替代原生的 Terminal                           |             [#](terminal.md#iterm2)              |
 |         [maccy](https://github.com/p0deje/Maccy)          |                                           轻量级的剪贴板管理工具                                           |
 |    [rectangle](https://github.com/rxhanson/Rectangle)     |     开源的窗口管理器，基于 Spectacle 应用，用 Swift 语言编写，让用户使用键盘快捷键来移动和调整窗口大小     |
-|   [visual-studio-code](https://code.visualstudio.com/)    | 微软公司出品的一个运行于 Mac OSX、Windows 和 Linux 之上的，针对于编写现代 Web 和云应用的跨平台源代码编辑器 |
+|   [visual-studio-code](https://code.visualstudio.com/)    | 微软公司出品的一个运行于 Mac OSX、Windows 和 Linux 之上的，针对于编写现代 Web 和云应用的跨平台源代码编辑器 |                   [#](code.md)                   |
 |     [hiddenbar](https://github.com/dwarvesf/hidden/)      |                                               菜单栏管理工具                                               |
 |           [keka](https://github.com/aonez/Keka)           |                                            简单好用的解压缩工具                                            |
 |       [motrix](https://github.com/agalwood/Motrix)        |                       全能的下载工具，支持下载 HTTP、FTP、BT、磁力链、百度网盘等资源                       |
@@ -520,7 +518,7 @@ defaults write com.apple.finder AppleShowAllFiles No && killall Finder
 
 ### m1 Mac 查询硬盘写入
 
-### 安装 smartctl
+#### 安装 smartctl
 
 在终端中输入如下代码，即可进行安装：
 
@@ -528,7 +526,7 @@ defaults write com.apple.finder AppleShowAllFiles No && killall Finder
 brew install smartmontools
 ```
 
-### 查看硬盘使用量
+#### 查看硬盘使用量
 
 在终端中输入如下代码，即可进行看查硬盘使用量。
 
@@ -540,29 +538,7 @@ smartctl -a disk0
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/SCR-20220328-wth.png)
 
-## [用自带工具快速判断 macOS 的网络质量](#目录)
-
-在打开的终端窗口中，输入 `networkQuality`（注意大小写），然后回车。
-
-![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/network.png)
-
-「responsiveness」，是指上传和下载的综合「响应能力」，根据 Apple 的[支持文档](https://support.apple.com/zh-cn/HT212313)，它的衡量指标是每分钟往返次数 (RPM)，即在正常工作条件下，网络能够在一分钟内完成的连续往返次数或事务数量。
-
-根据 RPM 的高低数值不同，`networkQuality` 对响应能力的评价也分为「低」「中」「高」三个等级。这可以大致反映当前网络的拥堵程度，从而帮助间接估测视频通话、游戏等应用的效果：
-
-- 评价为「Low」（低），说明同一网络的设备会互相影响，导致其他设备的网络连接不可靠；
-- 评价为「Medium」（中），则表明多设备共享网络时会造成短暂卡顿；
-- 评价为「High」（高）则最为理想，表明网络通畅，多设备并行联网也能和平共处，保持良好连通。
-
-此外，`networkQuality` 命令可以接受一些参数。
-
-- `-c` 会输出 json 格式的测速详情；
-- `-s` 会分开测试下载和上传，而非像默认那样对两者同时测试（同时测试更能反映通话等真实应用的场景）；
-- `-I` 可以测试特定网络接口的速度，例如，命令 `networkQuality -I en0` 是指测试内建 Wi-Fi 网络的速度。
-
-更多参数和说明，可以用如下命令查阅手册页面 `networkQuality(8)`：`man networkQuality`
-
-## [更改启动台应用程序显示数目](#目录)
+### 更改启动台应用程序显示数目
 
 默认情况下，启动台应用的显示数目为每行 7 个图标，总共有 5 行。
 
@@ -598,7 +574,16 @@ smartctl -a disk0
   defaults write com.apple.dock ResetLaunchPad -bool TRUE; killall Dock
   ```
 
-## [浏览器](#目录)
+### 其他
+
+- [打造一个高效的开发终端【Mac 篇】](https://zhuanlan.zhihu.com/p/438124776)
+- [UTM：开源的多面手 macOS 虚拟机（更新到 2023.1.8）](https://zhuanlan.zhihu.com/p/526352487)
+- [macOS defaults list](https://macos-defaults.com/)
+- [Mac 自动填充验证码的探索](https://www.v2ex.com/t/851374)
+- [一日一技 | 用自带工具快速判断 macOS 和 iOS 的网络质量](https://sspai.com/post/69966)
+- [Mac 安装 man 中文手册](https://learnku.com/articles/28016)
+
+## 9. 浏览器
 
 ### 管理书签
 
@@ -628,6 +613,8 @@ smartctl -a disk0
 
 - [解除 B 站区域限制](https://greasyfork.org/zh-CN/scripts/25718-%E8%A7%A3%E9%99%A4b%E7%AB%99%E5%8C%BA%E5%9F%9F%E9%99%90%E5%88%B6)：解除 `B` 站 区域限制; 只对 `HTML5` 播放器生效
 
-## [有用的链接](#目录)
+## 10. 有用的链接
 
+- <https://appstorrent.ru/>
+- <https://macosicons.com/#/>
 - <https://github.com/jaywcjlove/awesome-mac/blob/master/README-zh.md>
