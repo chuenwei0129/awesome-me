@@ -1,19 +1,12 @@
 # 前端工程化：前置知识<!-- omit in toc -->
 
-- [Node 版本管理：nvm](#node-版本管理nvm)
-  - [windows](#windows)
-    - [nvm-windows 安装](#nvm-windows-安装)
-    - [常用命令](#常用命令)
-    - [使用淘宝镜像](#使用淘宝镜像)
-    - [windows 下 npm 全局包设置](#windows-下-npm-全局包设置)
-    - [nrm 管理 npm 镜像](#nrm-管理-npm-镜像)
-  - [MacOS](#macos)
-    - [第一步：安装](#第一步安装)
-    - [第二步：设置 nvm 的环境变量](#第二步设置-nvm-的环境变量)
-    - [MacOS 下 常用 nvm 命令](#macos-下-常用-nvm-命令)
-    - [M1 芯片 Mac 管理 `v14` 及以下的老版本 Node](#m1-芯片-mac-管理-v14-及以下的老版本-node)
-    - [Node 被安装在哪里？](#node-被安装在哪里)
-    - [MacOS：在多环境中，npm 该如何使用呢？](#macos在多环境中npm-该如何使用呢)
+- [nvm](#nvm)
+  - [第一步：安装](#第一步安装)
+  - [第二步：设置 nvm 的环境变量](#第二步设置-nvm-的环境变量)
+  - [macOS 下 常用 nvm 命令](#macos-下-常用-nvm-命令)
+  - [m1 芯片 Mac 管理 `v14` 及以下的老版本 Node](#m1-芯片-mac-管理-v14-及以下的老版本-node)
+  - [Node 被安装在哪里？](#node-被安装在哪里)
+  - [macOS：在多环境中，npm 该如何使用呢？](#macos在多环境中npm-该如何使用呢)
 - [包管理：npm](#包管理npm)
   - [基础命令](#基础命令)
   - [npm init 创建模块](#npm-init-创建模块)
@@ -29,19 +22,20 @@
   - [npm 网络问题](#npm-网络问题)
     - [npm 镜像](#npm-镜像)
     - [镜像设置](#镜像设置)
+    - [nrm 管理 npm 镜像](#nrm-管理-npm-镜像)
     - [node-gyp](#node-gyp)
     - [node-sass](#node-sass)
     - [Node 版本与 node-sass 版本不兼容](#node-版本与-node-sass-版本不兼容)
     - [npm 安装失败后重新安装](#npm-安装失败后重新安装)
     - [总结](#总结)
 - [npx](#npx)
-  - [用于简化在终端中对 node_modules 下 .bin 文件的直接执行](#用于简化在终端中对-node_modules-下-bin-文件的直接执行)
+  - [用于简化在终端中对 node\_modules 下 .bin 文件的直接执行](#用于简化在终端中对-node_modules-下-bin-文件的直接执行)
   - [避免污染全局环境](#避免污染全局环境)
   - [npx 执行命令和 package.json/script 执行命令的区别](#npx-执行命令和-packagejsonscript-执行命令的区别)
 - [面试官：听说你对 package.json 很熟？](#面试官听说你对-packagejson-很熟)
   - [基础版的 package.json](#基础版的-packagejson)
   - [scripts（快捷脚本）](#scripts快捷脚本)
-  - [dependencies & devDependencies（项目依赖）](#dependencies--devdependencies项目依赖)
+  - [dependencies \& devDependencies（项目依赖）](#dependencies--devdependencies项目依赖)
   - [main（主要入口）](#main主要入口)
   - [bin（自定义命令）](#bin自定义命令)
   - [package.json 和 package-lock.json 有哪些区别和作用？](#packagejson-和-package-lockjson-有哪些区别和作用)
@@ -53,90 +47,14 @@
   - [依赖分析和下载分离](#依赖分析和下载分离)
   - [全局缓存](#全局缓存)
 - [pnpm](#pnpm)
+- [nvm-windows](#nvm-windows)
+  - [常用命令](#常用命令)
+  - [使用淘宝镜像](#使用淘宝镜像)
+  - [windows 下 npm 全局包设置](#windows-下-npm-全局包设置)
 
-## Node 版本管理：nvm
+## nvm
 
-### windows
-
-#### nvm-windows 安装
-
-下载 [nvm-windows](https://github.com/coreybutler/nvm-windows/releases)，下载完成，解压文件之后，双击进行安装即可。
-
-安装完成，在命令行输入：`nvm v`，查看到对应的版本号，说明 nvm 安装成功了。
-
-#### 常用命令
-
-|         命令          |                            功能                            |
-| :-------------------: | :--------------------------------------------------------: |
-|  nvm list available   | 列出所有远程服务器的 nodejs 版本（官方 node version list） |
-|  nvm install latest   |                   安装最新的 nodejs 版本                   |
-|  nvm install 12.18.1  |                   安装对应的 nodejs 版本                   |
-|    nvm use 12.18.1    |                   使用对应的 nodejs 版本                   |
-| nvm uninstall 12.18.1 |                   卸载对应的 nodejs 版本                   |
-|       nvm list        |                 列出已经安装的 nodejs 版本                 |
-
-更多命令在命令行输入 `nvm` 即可查看。
-
-#### 使用淘宝镜像
-
-在 nvm 安装目录下找到 `settings.txt` 文件，添加下面两行代码：
-
-```sh
-node_mirror: https://npm.taobao.org/mirrors/node/
-npm_mirror: https://npm.taobao.org/mirrors/npm/
-```
-
-或者在命令行输入：
-
-```sh
-nvm node_mirror https://npm.taobao.org/mirrors/node/  # 默认地址：https://nodejs.org/dist/.
-nvm npm_mirror https://npm.taobao.org/mirrors/npm/  # 默认地址：https://github.com/npm/cli/archive/.
-```
-
-#### windows 下 npm 全局包设置
-
-**解决 nvm 切换版本后，全局安装的包，需要重新安装一遍的问题**，如下：
-
-1. 设置 npm 全局包的安装路径，执行命令：`npm config set prefix 全局包安装路径`
-2. 配置环境变量：变量名为：`NPM_HOME`，变量值为：**全局包安装路径**
-3. 在 path 中，在 `%NVM_SYMLINK%` 之前，添加 `%NPM_HOME%`
-
-#### nrm 管理 npm 镜像
-
-**全局安装 nrm：**
-
-```sh
-npm install nrm -g
-```
-
-安装完成后，输入命令 `nrm ls`，可以看到默认的 6 个源（带 `*` 号的为当前使用的源）
-
-```sh
-* npm ---- https://registry.npmjs.org/
-  cnpm --- http://r.cnpmjs.org/
-  taobao - https://registry.npm.taobao.org/
-  nj ----- https://registry.nodejitsu.com/
-  npmMirror  https://skimdb.npmjs.com/registry/
-  edunpm - http://registry.enpmjs.org/
-```
-
-输入 `nrm use taobao`，即切换 registry 到 taobao，即可使用淘宝的源进行下载了。
-
-**nrm 常用命令：**
-
-|              命令               |                     功能                      |
-| :-----------------------------: | :-------------------------------------------: |
-|             nrm ls              |        查看所有配置好的源以及对应名称         |
-| nrm add xxx <http://npm.xxx.cn> | 添加源，xxx 是自定义名称，后面是源的 url 地址 |
-|           nrm del xxx           |                 删除对应的源                  |
-|          nrm test xxx           |   测试源的速度，不加名称，测试所有源的速度    |
-|           nrm use xxx           |         切换源，即可使用对应名称的源          |
-
-更多命令在命令行输入 `nrm` 即可查看。
-
-### MacOS
-
-#### 第一步：安装
+### 第一步：安装
 
 **homebrew 安装：**
 
@@ -150,7 +68,7 @@ brew install nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 ```
 
-#### 第二步：设置 nvm 的环境变量
+### 第二步：设置 nvm 的环境变量
 
 安装好 nvm 后，需要将环境变量写入我们的 shell 配置文件中。
 
@@ -163,7 +81,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 至此 nvm 已经安装好，可以尝试在命令行中输入 `nvm`，你可以看到 nvm 已经正常工作了。
 
-#### MacOS 下 常用 nvm 命令
+### macOS 下 常用 nvm 命令
 
 - **`nvm ls-remote`：** 列出所有可安装的版本。
 
@@ -185,9 +103,9 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
   > nvm 默认是不能删除被设定为 default 版本的 node，特别是只安装了一个 node 的时候，这个时候我们需要先解除当前版本绑定，然后再使用 `nvm uninstall <version>` 删除。
 
-#### M1 芯片 Mac 管理 `v14` 及以下的老版本 Node
+### m1 芯片 Mac 管理 `v14` 及以下的老版本 Node
 
-**低版本的 Node 并不是基于 `arm64` 架构的，不适配 `M1` 芯片**。
+**低版本的 Node 并不是基于 `arm64` 架构的，不适配 `m1` 芯片**。
 
 在终端中，输入：
 
@@ -201,7 +119,7 @@ arch -x86_64 zsh
 
 > 在此之后，可以不用在 Rosetta2 中就可以使用安装的可执行文件，也就是说，可以将 `Node v15` 与其他节点版本互换使用。
 
-#### Node 被安装在哪里？
+### Node 被安装在哪里？
 
 在终端我们可以使用 `which node` 来查看我们的 Node 被安装到了哪里，这里终端打印出来的地址其实是你当前使用的 Node 版本快捷方式的地址。
 
@@ -213,7 +131,7 @@ arch -x86_64 zsh
 
 > **.nvm** 是个隐藏文件夹在**访达**中默认是不显示隐藏文件夹，显示隐藏文件的快捷键是 `Command+Shift+.`，关闭也是这个快捷键。
 
-#### MacOS：在多环境中，npm 该如何使用呢？
+### macOS：在多环境中，npm 该如何使用呢？
 
 每个版本的 Node 都会自带一个不同版本的 npm，可以用 `npm -v` 来查看 npm 的版本。全局安装的 npm 包并不会在不同的 `Node` 环境中共享，因为这会引起兼容问题。
 
@@ -421,6 +339,39 @@ npm config set registry https://registry.npm.taobao.org/
 ```
 
 手动设置不够灵活推荐使用 npm 镜像管理工具 nrm
+
+#### nrm 管理 npm 镜像
+
+**全局安装 nrm：**
+
+```sh
+npm install nrm -g
+```
+
+安装完成后，输入命令 `nrm ls`，可以看到默认的 6 个源（带 `*` 号的为当前使用的源）
+
+```sh
+* npm ---- https://registry.npmjs.org/
+  cnpm --- http://r.cnpmjs.org/
+  taobao - https://registry.npm.taobao.org/
+  nj ----- https://registry.nodejitsu.com/
+  npmMirror  https://skimdb.npmjs.com/registry/
+  edunpm - http://registry.enpmjs.org/
+```
+
+输入 `nrm use taobao`，即切换 registry 到 taobao，即可使用淘宝的源进行下载了。
+
+**nrm 常用命令：**
+
+|              命令               |                     功能                      |
+| :-----------------------------: | :-------------------------------------------: |
+|             nrm ls              |        查看所有配置好的源以及对应名称         |
+| nrm add xxx <http://npm.xxx.cn> | 添加源，xxx 是自定义名称，后面是源的 url 地址 |
+|           nrm del xxx           |                 删除对应的源                  |
+|          nrm test xxx           |   测试源的速度，不加名称，测试所有源的速度    |
+|           nrm use xxx           |         切换源，即可使用对应名称的源          |
+
+更多命令在命令行输入 `nrm` 即可查看。
 
 #### node-gyp
 
@@ -633,14 +584,13 @@ npx create-react-app my-app
 
 ### bin（自定义命令）
 
-<!-- TODO -->
-
-<!-- 很多包都有一个或多个他们想要安装到 PATH 中的可执行文件。npm 使这变得非常简单（实际上，它使用此功能来安装“npm”可执行文件。）
+很多包都有一个或多个他们想要安装到 PATH 中的可执行文件。npm 使这变得非常简单（实际上，它使用此功能来安装 “npm” 可执行文件。）
 
 要使用它，请 `bin` 在 package.json 中提供一个字段，它是命令名到本地文件名的映射。在安装时，npm 会将该文件符号链接到 `prefix/bin` 全局安装或 `./node_modules/.bin/` 本地安装。
 
 给大家看看我自己做一个简单的 demo：
 
+```perl
 {
   "name": "react-cli-library",
   "version": "0.0.2",
@@ -649,18 +599,19 @@ npx create-react-app my-app
     "react-cli": "./bin/index.js"
   },
 }
+```
 
-我的名称叫做react-cli-library。
+我的名称叫做 react-cli-library。
 
 所以，`npm i react-cli-library`
 
 ![](https://pic2.zhimg.com/80/v2-6777e0ac0b1d8514f8e755de0c05e77d_1440w.jpg)
 
-安装完成之后，执行react-cli就会有一些命令，他会执行我的根目录底下`./bin/index.js`这个文件。
+安装完成之后，执行 react-cli 就会有一些命令，他会执行我的根目录底下 `./bin/index.js` 这个文件。
 
 ![](https://pic2.zhimg.com/80/v2-90bb4956b588876b561e5dfaf0f8d629_1440w.jpg)
 
-虽然我的项目名称是：`react-cli-library`。但是我执行的内容却是`react-cli`，这个取决于bin的内容 -->
+虽然我的项目名称是：`react-cli-library`。但是我执行的内容却是 `react-cli`，这个取决于 bin 的内容
 
 ### package.json 和 package-lock.json 有哪些区别和作用？
 
@@ -754,3 +705,46 @@ npx create-react-app my-app
 
 - [Pnpm: 最先进的包管理工具](https://zhuanlan.zhihu.com/p/404784010)
 - [pnpm 是凭什么对 npm 和 yarn 降维打击的](https://zhuanlan.zhihu.com/p/549189023)
+
+## nvm-windows
+
+下载 [nvm-windows](https://github.com/coreybutler/nvm-windows/releases)，下载完成，解压文件之后，双击进行安装即可。
+
+安装完成，在命令行输入：`nvm v`，查看到对应的版本号，说明 nvm 安装成功了。
+
+### 常用命令
+
+|         命令          |                            功能                            |
+| :-------------------: | :--------------------------------------------------------: |
+|  nvm list available   | 列出所有远程服务器的 nodejs 版本（官方 node version list） |
+|  nvm install latest   |                   安装最新的 nodejs 版本                   |
+|  nvm install 12.18.1  |                   安装对应的 nodejs 版本                   |
+|    nvm use 12.18.1    |                   使用对应的 nodejs 版本                   |
+| nvm uninstall 12.18.1 |                   卸载对应的 nodejs 版本                   |
+|       nvm list        |                 列出已经安装的 nodejs 版本                 |
+
+更多命令在命令行输入 `nvm` 即可查看。
+
+### 使用淘宝镜像
+
+在 nvm 安装目录下找到 `settings.txt` 文件，添加下面两行代码：
+
+```sh
+node_mirror: https://npm.taobao.org/mirrors/node/
+npm_mirror: https://npm.taobao.org/mirrors/npm/
+```
+
+或者在命令行输入：
+
+```sh
+nvm node_mirror https://npm.taobao.org/mirrors/node/  # 默认地址：https://nodejs.org/dist/.
+nvm npm_mirror https://npm.taobao.org/mirrors/npm/  # 默认地址：https://github.com/npm/cli/archive/.
+```
+
+### windows 下 npm 全局包设置
+
+**解决 nvm 切换版本后，全局安装的包，需要重新安装一遍的问题**，如下：
+
+1. 设置 npm 全局包的安装路径，执行命令：`npm config set prefix 全局包安装路径`
+2. 配置环境变量：变量名为：`NPM_HOME`，变量值为：**全局包安装路径**
+3. 在 path 中，在 `%NVM_SYMLINK%` 之前，添加 `%NPM_HOME%`

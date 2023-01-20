@@ -1,7 +1,5 @@
 # Auto Rename Tag 配置
 
-> 这条笔记创建于: 2022 年 10 月 24 日，星期一，20: 39。
-
 ## Extension
 
 - [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag) (3.3M downloads): “Automatically rename paired HTML/XML tag, same as Visual Studio IDE does.”

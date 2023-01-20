@@ -468,8 +468,8 @@ rm ~/Library/Caches/Homebrew/downloads/*.incomplete
 
 ## 6. 编程相关
 
-1. [怕遗忘 Git 的我，把相关知识点都记录下来就对了！](git.md)
-2. [只用命令行就能覆盖所有操作，而且能提升工作效率的终端使用技巧你喜欢吗？](terminal.md)
+1. [只用命令行就能覆盖所有操作，而且能提升工作效率的终端使用技巧你喜欢吗？](terminal.md)
+2. [怕遗忘 Git 的我，把相关知识点都记录下来就对了！](git.md)
 3. [VSCode 因为插件丰富、功能强大被大家喜欢，真是令人烦恼啊？](code.md)
 4. [前端工程化：Node 相关知识点](../engineering/node.md)
 
@@ -597,9 +597,6 @@ smartctl -a disk0
   ```sh
   defaults write com.apple.dock ResetLaunchPad -bool TRUE; killall Dock
   ```
-
-
-
 
 ## [浏览器](#目录)
 

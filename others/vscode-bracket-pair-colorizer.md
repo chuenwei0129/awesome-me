@@ -1,7 +1,5 @@
 # VSCode 原生高性能括号着色无缝迁移方案
 
-> 这条笔记创建于: 2022 年 10 月 24 日，星期一，20: 40。
-
 VSCode 在最新的 v1.60 版本中原生支持了**高性能**的多层级括号对着色。
 
 > We implemented this feature to address performance issues of the famous [Bracket Pair Colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2) extension by [CoenraadS](https://github.com/CoenraadS).

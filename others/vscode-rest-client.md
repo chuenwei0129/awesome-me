@@ -1,6 +1,4 @@
-# VSCode REST Client 插件测试接口
-
-> 这条笔记创建于: 2022 年 10 月 24 日，星期一，20: 36。
+# REST Client —— 接口测试插件
 
 ```js
 // 获取 users 数据

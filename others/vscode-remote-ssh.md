@@ -1,7 +1,5 @@
 # VSCode Remote SSH 配置
 
-> 这条笔记创建于: 2022 年 10 月 24 日，星期一，20: 36。
-
 ## 插件安装
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/terminal/v2-59303a4d9b36ff521a09bee473d95736_1440w.png)

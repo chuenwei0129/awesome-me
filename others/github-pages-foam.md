@@ -1,7 +1,5 @@
 # 通过 Github Pages 发布 Foam 笔记
 
-> 这条笔记创建于: 2022 年 10 月 24 日，星期一，20: 38。
-
 ## 配置
 
 > 笔记库基于 [foam-template-gatsby-kb](https://github.com/hikerpig/foam-template-gatsby-kb) 模版创建，有关更多配置信息，请查看 [gatsby-theme-kb](https://gatsby-project-kb.vercel.app/)。

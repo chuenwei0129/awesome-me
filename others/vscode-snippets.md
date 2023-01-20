@@ -1,6 +1,4 @@
-# VSCode 使用 Snippets 设置代码块
-
-> 这条笔记创建于: 2022 年 10 月 24 日，星期一，16: 22。
+# VSCode Snippets 设置代码块
 
 ## Snippet 设置
 
