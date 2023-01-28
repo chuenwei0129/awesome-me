@@ -6,7 +6,7 @@
 
 **怀揣着这种不确定感继续学习，不要有知识包袱，不要假装自己很聪明**。这个世界本身就是抽象又复杂的。这没什么大不了。
 
-**笔记内容**：[工具用的好，下班回家早](#工具用的好下班回家早) | [前端三剑客](#前端三剑客) | [Make Web Great Again](#make-web-great-again) | [框架](#框架) | [前端工程化](#前端工程化) | [计算机基础知识](#计算机基础知识)
+**笔记内容**：[工具用的好，下班回家早](#工具用的好下班回家早) | [这就是前端](#这就是前端) | [Make Web Great Again](#make-web-great-again) | [框架](#框架) | [前端工程化](#前端工程化) | [计算机基础知识](#计算机基础知识)
 
 ## 工具用的好，下班回家早
 
@@ -19,14 +19,14 @@
 - `[Git]` [怕遗忘 Git 的我，把相关知识点都记录下来就对了](others/git.md)
 - `[Switch]` [关于我破解了 Switch 并且装满了游戏依然吃灰这件事](others/switch.md)
 
-## 前端三剑客
+## 这就是前端
 
 > Always bet on JavaScript, Because there is only JavaScript.
 
-- `[WEB]` [到达前端最高城 ——— 浏览器](summary/browser.md)
-- `[JS]` [太美丽啦浏览器，哎呀这不是 JavaScript 吗](js/js.md)
-- `[TS]` [还是看看远处的 TypeScript 吧，家人们](https://github.com/chuenwei0129/build-my-own-x/blob/main/packages/build-my-own-brainfuck/ts.md)
+- `[JS]` [JS 这个语言设计的每一个特性都实在漂亮](js/js.md)
 - `[CSS]` [是煮，是煮在又一次严重酗酒后创造了这个奇迹](css/css.md)
+- `[Browser]` [到达前端最高城 ——— 浏览器](summary/browser.md)
+- `[TS]` [警惕后端社区打类型安全牌](https://github.com/chuenwei0129/build-my-own-x/blob/main/packages/build-my-own-brainfuck/ts.md)
 
 ## Make Web Great Again
 
