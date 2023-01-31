@@ -48,7 +48,6 @@
 - [React.cloneElement](#reactcloneelement)
 - [isValidElement](#isvalidelement)
 - [React.children.map](#reactchildrenmap)
-- [Immutable](#immutable)
 - [拓展：Record 和 Tuple](#拓展record-和-tuple)
   - [语法](#语法)
   - [更容易使用的 useMemo](#更容易使用的-usememo)
@@ -749,7 +748,7 @@ const Demo = () => {
 
 ## Hooks 原理
 
-<!-- React 的 hooks 是在 fiber 之后出现的特性，所以很多人误以为 hooks 是必须依赖 fiber 才能实现的，其实并不是，它们俩没啥必然联系。 -->
+React 的 hooks 是在 fiber 之后出现的特性，所以很多人误以为 hooks 是必须依赖 fiber 才能实现的，其实并不是，它们俩没啥必然联系。
 
 > [29 行代码深入 React Hooks 原理](https://zhuanlan.zhihu.com/p/127255755)
 
@@ -1204,7 +1203,7 @@ export { Father, Son }
 
 ## React.children.map
 
-React.Children 提供了用于处理 this.props.children 不透明数据结构的实用方法。
+React.Children 提供了用于处理 this.props.children 不透明数据结构（意思就是 props.children 可以是任何类型，比如 array, function, object 等等。因为什么都可以传，所以你也不能确定传过来了什么东西）的实用方法。
 
 ```js
 import React from 'react'
@@ -1233,21 +1232,6 @@ export const LucencyMap = props => {
 ```
 
 如果 children 是一个 Fragment 对象，它将被视为单一子节点的情况处理，而不会被遍历。
-
-## Immutable
-
-Immutable 不是 React 的任何一部分，更不是核心。React 唯一需要的是知道 state 何时改变了，但 React 无法监控深层次的 state 对象变化。那如何避免程序员不小心改变了深层次的对象但 React 不知道呢？训练程序员使用 Immutable，使得程序员不能修改对象，只能创建新对象，这样就能保证 React 一定能监控到变化。
-
-```js
-// 手写 react 15 源码
-// 核心：更新状态
-this._instanceComponent.state = { ...this._instanceComponent.state, ...nextState }
-
-// 使用方
-// 训练程序员使用 Immutable
-this.state = { count: 0 }
-this.setState({ count: this.state.count + 1 })
-```
 
 ## 拓展：Record 和 Tuple
 
