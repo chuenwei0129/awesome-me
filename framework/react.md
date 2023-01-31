@@ -96,19 +96,11 @@ DOM 是一个树形结构，这个树形结构对应的就是我们的 HTML tag�
 
 ## [为什么说 immutable 是 React 的核心，如何理解这一概念？](https://www.zhihu.com/question/446377023)
 
-> **一层有一层的抽象：**
+虚拟 DOM 计算的是最终 DOM 结构的差异，即如何**判断两个对象所有属性是否相等**？
 
-**虚拟 DOM 计算的是最终 DOM 结构的差异，即如何判断两个对象所有属性是否相等？**
+本质上你可以认为，让 state 的对象树仅接受 immutable 对象子树合并和替换，**是一种避免深度 diff 的技巧。替换的位置就是改动的起始检查位置**。
 
-React 底层的逻辑是：**检查修改处 state 的 reference 有没有变来可确定 state 有没有变。**
-
-如果 React 使用方以 mutable 方式改变 state，改动 state 里任意层次的数据，那么在 React 底层定位变化时，**不得不进行深度比较才能发现变化的地方。**
-
-那么以 React 底层视角来看：**只比较修改处 state 的引用，那么就很大可能漏掉变化的跟踪导致没有重新渲染。**
-
-本质上你可以认为，让 state 的对象树仅接受 immutable 对象子树合并和替换，是一种避免深度 diff 的技巧。替换的位置就是改动的起始检查位置。
-
-如果是 state 对象树是 mutable，那么可以随时赋值，但是定位到变化就需要遍历了，时间复杂度就上去了。
+如果是 state 对象树是 mutable，那么可以随时赋值（即不手动调用 setState），但是定位到变化就需要遍历了，不得不进行深度比较才能发现变化的地方。时间复杂度就上去了。
 
 **总结：**
 
@@ -200,8 +192,6 @@ document.addEventListener("click", function () {
 ## [为什么 Vue 3 里没有时间分片？](https://mp.weixin.qq.com/s?__biz=MzIxNzUzOTk1MQ==&mid=2247484011&idx=1&sn=4e989038cc078729fbfd436780176e81&chksm=97f9766ba08eff7dbd54f698293dc0d032de8460bccc6f1c5ce8e5f44012ae084d889dcafff1&cur_album_id=2291981265736302593&scene=189#wechat_redirect)
 
 Fiber 只是递归改循环，树变链表。用的是 requestAnimationFrame 来调度， requestAnimationFrame 和 setTimeout 其实差不多的，**本质都是化同步为异步的渲染方式**。
-
-<!-- 类似 setState 异步调度更新组件：在决定更新之前，如何合并及去重多次小量更新？ -->
 
 Vue 的渲染是走[异步更新队列](https://cn.vuejs.org/v2/guide/reactivity.html#%E5%BC%82%E6%AD%A5%E6%9B%B4%E6%96%B0%E9%98%9F%E5%88%97)，简单说就是所有 setter 的更新会被推入 watchers 队列，等 nextTick（早期原理是 Promise > MutationObserver > setTimeout 看浏览器支持程度优先级实现）的时候再执行 Render Function。
 
