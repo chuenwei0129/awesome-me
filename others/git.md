@@ -1,5 +1,6 @@
 # 怕遗忘 Git 的我，把相关知识点都记录下来就对了<!-- omit in toc -->
 
+- [github 工作流](#github-工作流)
 - [Git 命令备忘录](#git-命令备忘录)
 - [Git 配置 ssh 协议](#git-配置-ssh-协议)
   - [操作步骤](#操作步骤)
@@ -29,8 +30,6 @@
 - [git rebase](#git-rebase)
   - [git rebase 作用于分支合并](#git-rebase-作用于分支合并)
   - [git rebase 交互模式](#git-rebase-交互模式)
-  - [git merge 和 git rebase 的区别](#git-merge-和-git-rebase-的区别)
-  - [解决 git rebase 操作后推送远端分支不成功的问题](#解决-git-rebase-操作后推送远端分支不成功的问题)
 - [git cherry-pick](#git-cherry-pick)
 - [git stash](#git-stash)
 - [git switch](#git-switch)
@@ -44,6 +43,27 @@
   - [工作区域](#工作区域)
   - [工作流程](#工作流程)
 - [参考资料](#参考资料)
+
+## github 工作流
+
+> [十分钟学会正确的 github 工作流，和开源作者们使用同一套流程](https://www.bilibili.com/video/BV19e4y1q7JJ)
+
+1. `git clone`
+2. `git switch -c xxx` 切换至新分支 xxx
+3. 修改代码
+4. `git diff` 查看自己对代码做出的改变
+5. `git stage .` 上传更新后的代码至暂存区
+6. `git commit -m 'xxxxxx'` 可以将暂存区里更新后的代码更新到本地 git
+7. `git push origin xxx` 将本地的 xxx 分支上传至 github
+8. 假设远端 GitHub 上 main 代码出现改变，若无改变则跳过 9 - 11 步
+9. `git switch main` 切换回本地 `main` 分支
+10. `git pull origin main` 将远端修改过的代码再更新到本地
+11. `git switch xxx` 回到 xxx 分支
+12. `git rebase main` 手动 merge main 分支代码
+13. `git push -f origin xxx` 把 rebase 后并且更新过的代码再 push 到远端 github 上
+14. github 仓库 pull request 合并 commit 完成远端代码更新，并且删除远端的 xxx 分支
+15. `git branch -d xxx` 删除本地的 git 分支
+16. `git pull origin main` 再把远端的最新代码拉至本地
 
 ## Git 命令备忘录
 
@@ -469,6 +489,18 @@ github 2008 年的 blog 中，也提到，容易引起混淆：
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/terminal/b169721a6bfc42a7b4754f7c5d65672d_tplv-k3u1fbpfcp-zoom-in-crop-mark_1304_0_0_0.webp)
 
+1. git merge 和 git rebase 的区别
+
+    不同于 `git rebase` 的是，`git merge` 在不是 fast-forward（快速合并）的情况下，会产生一条额外的合并记录，类似 `Merge branch 'xxx' into 'xxx'` 的一条提交信息。
+
+    另外，在解决冲突的时候，用 merge 只需要解决一次冲突即可，简单粗暴，而用 rebase 的时候 ，需要依次解决每次的冲突，才可以提交。
+
+2. 解决 git rebase 操作后推送远端分支不成功的问题
+
+    ```perl
+    git push -f
+    ```
+
 ### git rebase 交互模式
 
 在开发中，常会遇到在一个分支上产生了很多的无效的提交，这种情况下使用 rebase 的交互式模式可以把已经发生的多次提交压缩成一次提交，得到了一个干净的提交历史，例如某个分支的提交历史情况如下：
@@ -500,18 +532,6 @@ git rebase -i 8061e866
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/terminal/SCR-20220403-1be.png)
 
 > 特别注意，只能在自己使用的 feature 分支上进行 rebase 操作，不允许在集成分支上进行 rebase，因为这种操作会修改集成分支的历史记录。
-
-### git merge 和 git rebase 的区别
-
-不同于 `git rebase` 的是，`git merge` 在不是 fast-forward（快速合并）的情况下，会产生一条额外的合并记录，类似 `Merge branch 'xxx' into 'xxx'` 的一条提交信息。
-
-另外，在解决冲突的时候，用 merge 只需要解决一次冲突即可，简单粗暴，而用 rebase 的时候 ，需要依次解决每次的冲突，才可以提交。
-
-### 解决 git rebase 操作后推送远端分支不成功的问题
-
-```perl
-git push -f
-```
 
 ## git cherry-pick
 
