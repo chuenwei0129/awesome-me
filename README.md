@@ -27,6 +27,7 @@
 - `[CSS]` [是煮，是煮在又一次严重酗酒后创造了这个奇迹](css/css.md)
 - `[Browser]` [到达前端最高城 ——— 浏览器](summary/browser.md)
 - `[TS]` [警惕后端社区打类型安全牌](https://github.com/chuenwei0129/build-my-own-x/blob/main/packages/build-my-own-brainfuck/ts.md)
+- `[Promise]` [免费承包 Promise 相关问题](https://github.com/chuenwei0129/build-my-own-x/blob/main/build-my-own-promise/README.md)
 
 ## Make Web Great Again
 
