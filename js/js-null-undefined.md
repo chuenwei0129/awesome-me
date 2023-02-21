@@ -91,6 +91,8 @@ console.log(await) // 2
 **小知识：**
 
 ```js
+// 语义化 undefined 未定义
+// 语义化 null 已定义但为空
 const a = { foo: null }
 const b = { foo: undefined }
 const c = {}

@@ -10,7 +10,7 @@
 6. [BigInt](js-bigint.md)
 7. [包装对象](js-wrapper.md)
 8. [类型转换](js-type-change.md)
-9. [Promise](https://github.com/chuenwei0129/build-my-own-x/blob/main/packages/build-my-own-promise/README.md)
+9. [Promise](https://github.com/chuenwei0129/build-my-own-x/blob/main/build-my-own-promise/README.md)
 10. [let 和 const](js-let-const.md)
 11. [数组](js-array.md)
 12. [函数](js-function.md)
