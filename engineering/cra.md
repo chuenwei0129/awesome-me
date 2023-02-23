@@ -2,24 +2,24 @@
 
 ## create-react-app
 
-```sh
+```perl
 npx create-react-app my-app --template typescript
 ```
 
 ## prettier
 
-```sh
-# prettier 依赖
-yarn add --dev --exact prettier
-# 配置文件
-echo {}> .prettierrc.js
-# 忽略文件
+```perl
+# 安装 prettier 依赖
+npm i --save-dev --save-exact prettier
+# 生成配置文件
+echo {}> .prettierrc.cjs
+# 生成忽略文件
 touch .prettierignore
-# 手动格式化
+# 手动格式化项目
 # yarn prettier --write .
 ```
 
-**`.prettierrc.js` 配置：**
+**`.prettierrc.cjs` 配置：**
 
 ```js
 module.exports = {
@@ -63,33 +63,40 @@ module.exports = {
 
 **`.prettierignore` 配置：**
 
-```sh
+```perl
 # Ignore artifacts:
 build
-public
+coverage
 ```
 
 ## eslint
 
-**交互式配置 eslint：**
-
-```sh
-npm init @eslint/config
-```
+> Create React App 默认集成了 eslint，但是默认的配置并没有集成 prettier，所以我们需要自己配置一下。
 
 **解决与 prettier 冲突：**
 
-```sh
+```perl
 npm i eslint-config-prettier eslint-plugin-prettier -D
 ```
 
 **[推荐配置](https://github.com/prettier/eslint-plugin-prettier#recommended-configuration)：**
 
-```js
-// 配置
-{
-  "extends": ["plugin:prettier/recommended"]
-}
+```json
+"eslintConfig": {
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {}
+},
+```
+
+**小知识：**
+
+```perl
+# 交互式配置 eslint
+npm init @eslint/config
 ```
 
 ## git hooks
@@ -140,14 +147,45 @@ npx husky add .husky/pre-commit "npx lint-staged"
 
 ```json
 {
-  "*.{js,jsx,ts,tsx}": ["prettier --write .", "eslint --fix"],
+  "*.{js,jsx,ts,tsx}": ["prettier --write", "eslint --fix"],
   "*.md": ["prettier --write"]
 }
 ```
 
 > 更多操作：[Eslint + Prettier + Husky + Commitlint + Lint-staged 规范前端工程代码规范](https://juejin.cn/post/7038143752036155428)
 
+## 路径简写
+
+在 `tsconfig.json` 里指定 `baseUrl` 和 `paths` 路径：
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "utils/*": ["src/utils/*"]
+    }
+  }
+}
+```
+
+解释一下，**所谓的 “路径简写” 本质上只是路径映射。所以 `tsconfig.json` 里的 `paths` 就是把 `utils/xxx` 映射成 `src/utils/xxx`。**
+
+也可以不这么写，而是用别名作为路径开头：`import sum from "@/utils/sum"`。这依旧是路径匹配，`tsconfig.json` 的配置相当简单：
+
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
+}
+```
+
 ## 配置 eslint 规则
+
+> 已过期
 
 **首次提交可能会遇到如下情况：**
 
