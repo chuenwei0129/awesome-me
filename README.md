@@ -24,6 +24,7 @@
 > Always bet on JavaScript, Because there is only JavaScript.
 
 - `[JavaScript]` [JavaScript 这个语言设计的每一个特性都实在漂亮](js/js.md)
+- `[DOM]` [积跬步，至千里，始于 DOM](dom/dom.md)
 - `[CSS]` [是煮，是煮在又一次严重酗酒后创造了这个奇迹](css/css.md)
 - `[Browser]` [到达前端最高城 ——— 浏览器](summary/browser.md)
 - `[TypeScript]` [警惕后端社区打类型安全牌](ts/ts.md)
@@ -44,7 +45,6 @@
 
 > React is not reactive. Vue is not only view.
 
-- `[DOM]` [积跬步，至千里，始于 DOM](framework/dom.md)
 - `[API]` [我学过的 React 知识点，都在这了](framework/react.md)
 - `[Usage]` [React 文档摆烂不是一天两天了](framework/react-use.md)
 

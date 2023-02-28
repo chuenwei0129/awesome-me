@@ -219,6 +219,8 @@ gen.next(1); // Object {value: 1, done: true}
 
 **`throw()` 是将 `yield` 表达式替换成一个 `throw` 语句。**
 
+> 应用：[`await` 会把 `rejected promise` 转变成了一个 `throw`。](https://www.zhihu.com/question/522726685)
+
 ```js
 gen.throw(new Error('出错了')); // Uncaught Error: 出错了
 // 相当于将 let result = yield x + y

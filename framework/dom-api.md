@@ -1,14 +1,14 @@
 # DOM API<!-- omit in toc -->
 
-- [层次结构](#层次结构)
+- [DOM 树层次结构](#dom-树层次结构)
 - [节点类型](#节点类型)
+- [document 节点](#document-节点)
 - [Node 接口](#node-接口)
   - [属性](#属性)
     - [nodeType、nodeName、nodeValue](#nodetypenodenamenodevalue)
     - [textContent](#textcontent)
     - [nextSibling、previousSibling、firstChild、lastChild、childNodes](#nextsiblingprevioussiblingfirstchildlastchildchildnodes)
     - [parentNode](#parentnode)
-    - [parentElement](#parentelement)
     - [isConnected](#isconnected)
   - [方法](#方法)
     - [appendChild](#appendchild)
@@ -43,28 +43,55 @@
   - [行内样式](#行内样式)
     - [设置元素节点的 style 属性](#设置元素节点的-style-属性)
     - [驼峰直接读写](#驼峰直接读写)
-    - [elem.style.cssText](#elemstylecsstext)
+    - [elem.style.cssText（不重要）](#elemstylecsstext不重要)
     - [className 和 classList](#classname-和-classlist)
   - [CAN I USE](#can-i-use)
   - [window.getComputedStyle](#windowgetcomputedstyle)
 - [补充](#补充)
 
-## 层次结构
+## DOM 树层次结构
 
 **每个标签都有自己的类，这些类可以提供特定的属性和方法。因此，给定节点的全部属性和方法都是继承的结果。**
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/Node.png)
 
-- **EventTarget** —— 是根的**抽象类**。该类的对象从未被创建。它作为一个基础，以便**让所有 `DOM` 节点都支持所谓的事件**。
+**类如下所示：**
 
-- **Node** —— 也是一个抽象类，充当 **DOM 节点的基础**。它提供了树的核心功能：`parentNode`，`nextSibling`，`childNodes` 等（它们都是 getter ）。**Node 类的对象从未被创建**。但是有一些**继承自它的具体的节点类**，例如：文本节点的 **Text**，元素节点的 **Element**，以及更多异域（ exotic ）类，例如注释节点的 **Comment**。
+- [EventTarget](https://dom.spec.whatwg.org/#eventtarget) —— 是一切的根“抽象（abstract）”类。
 
-- **Element** —— 是 **DOM 元素的基本类**。它提供了元素级的导航（ navigation ），例如 `nextElementSibling`，`children`，以及像 `getElementsByTagName` 和 `querySelector` 这样的搜索方法。**浏览器中不仅有 HTML，还会有 XML 和 SVG。Element 类充当更多特定类的基本类**：SVGElement，XMLElement 和 HTMLElement。
+  该类的对象从未被创建。它作为一个基础，以便让所有 DOM 节点都支持所谓的“事件（event）”，我们会在之后学习它。
 
-- **HTMLElement** — 最终是所有 HTML 元素的基本类。各种 HTML 元素均继承自它：
-  - HTMLInputElement — `<input>` 元素的类，
-  - HTMLBodyElement — `<body>` 元素的类，
-  - HTMLAnchorElement — `<a>` 元素的类，……等。
+- [Node](http://dom.spec.whatwg.org/#interface-node) —— 也是一个“抽象”类，充当 DOM 节点的基础。
+
+  它提供了树的核心功能：`parentNode`，`nextSibling`，`childNodes` 等（它们都是 getter）。`Node` 类的对象从未被创建。但是还有一些继承自它的其他类（因此继承了 `Node` 的功能）。
+
+- [Document](https://dom.spec.whatwg.org/#interface-document) 由于历史原因通常被 `HTMLDocument` 继承（尽管最新的规范没有规定）—— 是一个整体的文档。
+
+  全局变量 `document` 就是属于这个类。它作为 DOM 的入口。
+
+- [CharacterData](https://dom.spec.whatwg.org/#interface-characterdata) —— 一个“抽象”类，被下述类继承：
+
+  - [Text](https://dom.spec.whatwg.org/#interface-text) —— 对应于元素内部文本的类，例如 `<p>Hello</p>` 中的 `Hello`。
+  - [Comment](https://dom.spec.whatwg.org/#interface-comment) —— 注释类。它们不会被展示出来，但每个注释都会成为 DOM 中的一员。
+
+- [Element](http://dom.spec.whatwg.org/#interface-element) —— 是 DOM 元素的基础类。
+
+  它提供了元素级导航（navigation），如 `nextElementSibling`，`children`，以及搜索方法，如 `getElementsByTagName` 和 `querySelector`。
+
+  浏览器不仅支持 HTML，还支持 XML 和 SVG。因此，`Element` 类充当的是更具体的类的基础：`SVGElement`，`XMLElement`（我们在这里不需要它）和 `HTMLElement`。
+
+- 最后，[HTMLElement](https://html.spec.whatwg.org/multipage/dom.html#htmlelement) —— 是所有 HTML 元素的基础类。我们大部分时候都会用到它。
+
+  它会被更具体的 HTML 元素继承：
+
+  - [HTMLInputElement](https://html.spec.whatwg.org/multipage/forms.html#htmlinputelement) —— `<input>` 元素的类，
+  - [HTMLBodyElement](https://html.spec.whatwg.org/multipage/semantics.html#htmlbodyelement) —— `<body>` 元素的类，
+  - [HTMLAnchorElement](https://html.spec.whatwg.org/multipage/semantics.html#htmlanchorelement) —— `<a>` 元素的类，
+  - ……等。
+
+还有很多其他标签具有自己的类，可能还具有特定的属性和方法，而一些元素，如 `<span>`、`<section>`、`<article>` 等，没有任何特定的属性，所以它们是 `HTMLElement` 类的实例。
+
+因此，给定节点的全部属性和方法都是继承链的结果。
 
 **🌰 举个例子：**
 
@@ -91,7 +118,7 @@
 - **`Comment`**：注释
 - **`DocumentFragment`**：文档的片段
 
-![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/dom.png)
+## document 节点
 
 浏览器原生提供 **document** 节点，代表整个文档。
 
@@ -145,20 +172,20 @@ document.getElementById('foo').textContent = '<h1>Hello World</h1>'
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/SCR-20220512-pvx.png)
 
-对于文本节点（text）、注释节点（comment）和属性节点（attr），`textContent` 属性的值与 `nodeValue` 属性相同。对于其他类型的节点，该属性会将每个子节点（不包括注释节点）的内容连接在一起返回。如果一个节点没有子节点，则返回空字符串。
+对于文本节点（text）、注释节点（comment）和属性节点（attr），`textContent` 属性的值与 `nodeValue` 属性相同。
 
-文档节点（document）和文档类型节点（doctype）的 `textContent` 属性为 `null`。如果要读取整个文档的内容，可以使用 `document.documentElement.textContent`。
+对于其他类型的节点，该属性会将每个子节点（不包括注释节点）的内容连接在一起返回。如果一个节点没有子节点，则返回空字符串。
+
+文档节点（document）和文档类型节点（doctype）的 `textContent` 属性为 `null`。
+
+如果要读取整个文档的内容，可以使用 `document.documentElement.textContent`。
 
 #### nextSibling、previousSibling、firstChild、lastChild、childNodes
 
 - **`nextSibling`** 属性返回紧跟在当前节点后面的第一个同级节点。如果当前节点后面没有同级节点，则返回 `null`
-
 - **`previousSibling`** 属性返回当前节点前面的、距离最近的一个同级节点。如果当前节点前面没有同级节点，则返回 `null`
-
 - **`firstChild`** 属性返回当前节点的第一个子节点，如果当前节点没有子节点，则返回 `null`
-
 - **`lastChild`** 属性返回当前节点的最后一个子节点，如果当前节点没有子节点，则返回 `null`
-
 - **`childNodes`** 属性返回一个**类似数组的对象**（`NodeList`集合），成员包括当前节点的所有子节点，**除了元素节点，`childNodes`属性的返回值还包括文本节点和注释节点**
 
 ```html
@@ -205,10 +232,6 @@ while (el !== null) {
 `parentNode` 属性返回当前节点的父节点。对于一个节点来说，它的父节点只可能是三种类型：元素节点（ element ）、文档节点（ document ）和文档片段节点（ documentFragment ）。
 
 文档节点（ document ）和文档片段节点（ documentFragment ）的父节点都是 `null`。另外，**对于那些生成后还没插入 DOM 树的节点，父节点也是 `null`**。
-
-#### parentElement
-
-`parentElement` 属性返回当前节点的父元素节点。如果当前节点没有父节点，或者父节点类型不是元素节点，则返回 `null`。
 
 #### isConnected
 
@@ -419,13 +442,9 @@ document.images.pic === pic // true
 
 - `document.images` 属性返回页面所有 <`img>` 图片节点
 
-- `document.embeds` 属性和 `document.plugins` 属性，都返回所有 `<embed>` 节点
-
 - `document.scripts` 属性返回所有 `<script>` 节点
 
 - `document.hidden` 属性返回一个布尔值，表示当前页面是否可见。如果窗口最小化、浏览器切换了 Tab，都会导致导致页面不可见，使得 `document.hidden` 返回 `true`
-
-- `document.documentURI` 属性和 `document.URL` 属性都返回一个字符串，表示当前文档的网址。不同之处是它们继承自不同的接口，`documentURI` 继承自 Document 接口，可用于所有文档；`URL` 继承自 HTMLDocument 接口，只能用于 HTML 文档
 
 - `document.write()` 会当作 HTML 代码解析，不会转义。
 
@@ -435,6 +454,7 @@ document.images.pic === pic // true
 
 ### 常用属性
 
+- **`parentElement`** 属性返回当前节点的父元素节点。如果当前节点没有父节点，或者父节点类型不是元素节点，则返回 `null`。
 - **`children`** 属性返回一个 `HTMLCollection` 实例，成员是当前节点的所有元素子节点。该属性只读。
 - **`firstElementChild`** 属性返回当前节点的第一个元素子节点。如果没有任何元素子节点，则返回 `null`
 - **`lastElementChild`** 属性返回当前节点的最后一个元素子节点，如果不存在任何元素子节点，则返回 `null`
@@ -630,7 +650,7 @@ divStyle.backgroundColor = 'red'
 divStyle.fontSize = '10em'
 ```
 
-#### elem.style.cssText
+#### elem.style.cssText（不重要）
 
 `CSSStyleDeclaration.cssText` 属性用来读写当前规则的所有样式声明文本。
 
