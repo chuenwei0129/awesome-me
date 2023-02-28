@@ -5,7 +5,7 @@
   - [简介](#简介)
   - [next 方法的参数](#next-方法的参数)
   - [next()、throw()、return()](#nextthrowreturn)
-  - [yield* 表达式](#yield-表达式)
+  - [yield\* 表达式](#yield-表达式)
   - [总结](#总结)
 
 ## Iterator
@@ -162,7 +162,6 @@ function* gen() {
 
 const it = gen()
 console.log(it.next()) // { value: 1, done: false }
-
 console.log(it.next()) // { value: 2, done: false }
 console.log(it.next()) // { value: 3, done: false }
 // 最后一次调用会把 value 值设置为 return 的值

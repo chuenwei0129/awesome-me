@@ -130,9 +130,10 @@ console.log(len2) // TypeError: Cannot destructure property 'length' of 'undefin
 let x = [...[,]]
 let y = [,]
 
-// 数组支持尾逗号
+// 解释
 // x = [undefined]
 // y = [,]
 // in 会跳过数组空位
+// 0 in x 为 true，因为 x[0] 为 undefined
 console.log(0 in x, 0 in y, x) // true, false, [undefined]
 ```

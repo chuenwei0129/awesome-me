@@ -1,6 +1,7 @@
 const MyReact = (function () {
   let hooks = [],
     currentHook = 0 // hooks数组 和 当前hook的索引
+
   return {
     render(Component) {
       const Comp = Component() // 执行 effects
@@ -8,6 +9,7 @@ const MyReact = (function () {
       currentHook = 0 // 为下一次render重置hook索引
       return Comp
     },
+
     useEffect(callback, depArray) {
       const hasNoDeps = !depArray
       const deps = hooks[currentHook] // type: array | undefined
@@ -20,9 +22,10 @@ const MyReact = (function () {
       }
       currentHook++ // 当前hook处理完毕
     },
+
     useState(initialValue) {
-      hooks[currentHook] = hooks[currentHook] || initialValue // type: any
-      const setStateHookIndex = currentHook // 为了setState引用正确的闭包
+      hooks[currentHook] = hooks[currentHook] || initialValue
+      const setStateHookIndex = currentHook
       const setState = (newState) => (hooks[setStateHookIndex] = newState)
       return [hooks[currentHook++], setState]
     },
@@ -33,8 +36,11 @@ function Counter() {
   const [count, setCount] = MyReact.useState(0)
   const [text, setText] = MyReact.useState('foo') // 第二个 state hook!
   MyReact.useEffect(() => {
-    console.log('effect', count, text)
+    console.log('effect1', count, text)
   }, [count, text])
+  MyReact.useEffect(() => {
+    console.log('effect2')
+  }, [])
   return {
     click: () => setCount(count + 1),
     type: (txt) => setText(txt),
@@ -42,8 +48,9 @@ function Counter() {
     render: () => console.log('render', { count, text }),
   }
 }
+
 let App
 App = MyReact.render(Counter)
 
-App.click()
-App = MyReact.render(Counter)
+// App.click()
+// App = MyReact.render(Counter)

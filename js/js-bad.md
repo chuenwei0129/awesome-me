@@ -16,6 +16,14 @@
 
 JavaScript 里有两大查找过程是链式的，一个是变量的查找，是沿着作用域链向上查。一个是对象属性的查找，是沿着对象的原型链向上查。
 
+> **the global `this` inherit from `Object.prototype` Luckily**, more modern JavaScript engines all seem to agree that the global `this` must have `Object.prototype` in its prototype chain.
+
+```js
+globalThis === window // in browser is true
+globalThis.__proto__ === Window.prototype // true
+Window.prototype.__proto__ === Object.prototype // true
+```
+
 本来这两个领域是互不相关的，但因为全局对象和 `with` 语句的存在，它俩可以联系在一起，那就是变量查找转变成属性的查找，也就是说变量都可能会查找到 `Object.prototype`上，**`Object.prototype` 上的属性都是全局变量**。
 
 ## [为什么 Function.prototype 可以直接执行?](https://www.zhihu.com/question/323462380)
@@ -32,6 +40,16 @@ Date.prototype // new Date(NaN)
 Error.prototype // new Error("")
 RegExp.prototype // /(?:)/
 ```
+
+**兼容性：**
+
+ES6 中把除 `Function.prototype`，`Array.prorotype` 之外的其它 6 个类型的内置类型的原型对象也改为普通对象。
+
+在 ES7 里回滚了对 `Number.prototype` 的改动 ，同时保险起见，也把 `String.prototype` 和 `Boolean.prototype` 也都回滚了。
+
+又过了一段时间，发现有些网站会调用 `RegExp.prototype.toString()`，会报错，所以 ES8 又不得不进行了兼容，让 `RegExp.prototype` 保持是一个普通对象的同时，对它进行特殊处理，让 `toString()` 返回 `"/(?:)/"`
+
+![20230228153235](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/others/20230228153235.png)
 
 ## [为什么 Object.entries 和 Array.prototype.entries 的返回值类型不同?](https://www.zhihu.com/question/465364604/answer/1945950621)
 
@@ -53,7 +71,7 @@ RegExp.prototype // /(?:)/
 
 ## this
 
-JavaScript 的 `this` 在它自己无法自圆其说的时候就会 fallback 到 `globalThis`，在浏览器环境下即 `window`，严格模式下修正为了 `undefined`。
+**JavaScript 的 `this` 在它自己无法自圆其说的时候就会 fallback 到 `globalThis`，在浏览器环境下即 `window`，严格模式下修正为了 `undefined`。**
 
 > [this](js-this.md)
 

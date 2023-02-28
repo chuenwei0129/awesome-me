@@ -1,13 +1,8 @@
 # Set 和 Map 数据结构<!-- omit in toc -->
 
-如果把一个对象放入到数组中，那么只要这个数组存在，那么这个对象也就存在，即使没有其他对该对象的引用。
-
-类似的，**如果我们使用对象作为常规 Map 的键，那么当 Map 存在时，该对象也将存在。它会占用内存**，并且应该不会被（垃圾回收机制）回收。
-
 - [Set](#set)
-- [WeakSet](#weakset)
 - [Map](#map)
-- [WeakMap](#weakmap)
+- [WeakMap 和 WeakSet](#weakmap-和-weakset)
 - [WeakRef](#weakref)
 - [拓展知识](#拓展知识)
 
@@ -36,20 +31,7 @@ console.log(s) // Set(3) { 'a', 'b', 'c' }
 
 向 `Set` 加入值的时候，**不会发生类型转换**，`Set` 内部判断两个值是否不同，使用的算法叫做“Same-value-zero equality”，它类似于精确相等运算符（===），主要的区别是**向 `Set` 加入值时认为 NaN 等于自身，而精确相等运算符认为 NaN 不等于自身。**
 
-```js
-let a = NaN
-let b = NaN
-
-console.log(a === b) // false
-console.log(Object.is(a, b)) // true
-
-// add 只接受第一个参数
-s.add(a)
-s.add(b)
-s.add('d')
-
-console.log(s) // Set(4) { 'a', 'b', 'c', NaN ,'d' }
-```
+![20230228165227](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/others/20230228165227.png)
 
 **Set 实例的属性和方法：**
 
@@ -68,21 +50,6 @@ console.log(s) // Set(4) { 'a', 'b', 'c', NaN ,'d' }
 // Set 结构的实例默认可遍历，它的默认遍历器生成函数就是它的 values 方法。
 Set.prototype[Symbol.iterator] === Set.prototype.values // true
 ```
-
-## WeakSet
-
-`WeakSet` 结构与 `Set` 类似，也是不重复的值的集合。但是，它与 `Set` 有两个区别。
-
-首先，`WeakSet` 的成员只能是对象，而不能是其他类型的值。
-其次，`WeakSet` 中的对象都是弱引用，即垃圾回收机制不考虑 `WeakSet` 对该对象的引用。
-
-**`WeakSet` 没有 `size` 属性，没有办法遍历它的成员。**
-
-`WeakSet` 结构有以下三个方法。
-
-- **WeakSet.prototype.add(value)**：向 `WeakSet` 实例添加一个新成员。
-- **WeakSet.prototype.delete(value)**：清除 `WeakSet` 实例的指定成员。
-- **WeakSet.prototype.has(value)**：返回一个布尔值，表示某个值是否在 `WeakSet` 实例之中。
 
 ## Map
 
@@ -145,14 +112,70 @@ for (const it of m1.keys()) {
 }
 ```
 
-## WeakMap
+## WeakMap 和 WeakSet
 
-WeakMap与Map的区别有两点。
+JavaScript 引擎在值“可达”和可能被使用时会将其保持在内存中。
 
-首先，`WeakMap` 只接受对象作为键名，不接受其他类型的值作为键名。
-其次，`WeakMap` 的键名所指向的对象，不计入垃圾回收机制。
+```js
+let john = { name: "John" };
+// 该对象能被访问，john 是它的引用
+// 覆盖引用
+john = null;
+// 该对象将会被从内存中清除
+```
+
+如果把一个对象放入到数组中，那么只要这个数组存在，那么这个对象也就存在，即使没有其他对该对象的引用。
+
+```js
+let john = { name: "John" };
+let array = [ john ];
+john = null; // 覆盖引用
+
+// 前面由 john 所引用的那个对象被存储在了 array 中
+// 所以它不会被垃圾回收机制回收
+// 我们可以通过 array[0] 获取到它
+```
+
+类似的，**如果我们使用对象作为常规 Map 的键，那么当 Map 存在时，该对象也将存在。它会占用内存**，并且应该不会被（垃圾回收机制）回收。
+
+```js
+let john = { name: "John" };
+let map = new Map();
+map.set(john, "...");
+john = null; // 覆盖引用
+// john 被存储在了 map 中，
+// 我们可以使用 map.keys() 来获取它
+```
+
+`WeakMap` 在这方面有着根本上的不同。它不会阻止垃圾回收机制对作为键的对象（key object）的回收。
+
+```js
+let john = { name: "John" };
+let weakMap = new WeakMap();
+weakMap.set(john, "...");
+john = null; // 覆盖引用
+// john 被从内存中删除了！
+```
+
+WeakMap 与 Map 的区别有两点。
+
+1. 首先，`WeakMap` 只接受对象作为键名，不接受其他类型的值作为键名。
+2. 其次，`WeakMap` 的键名所指向的对象，不计入垃圾回收机制。
 
 `WeakMap` 与 `Map` 在 API 上的区别主要是两个，一是没有遍历操作（即没有 `keys()`、`values()` 和 `entries()` 方法），也没有 `size` 属性。二是无法清空，即不支持 `clear` 方法。因此，`WeakMap` 只有四个方法可用：`get()`、`set()`、`has()`、`delete()`。
+
+`WeakSet` 结构与 `Set` 类似，也是不重复的值的集合。但是，它与 `Set` 有两个区别。
+
+1. 首先，`WeakSet` 的成员只能是对象，而不能是其他类型的值。
+2. 其次，`WeakSet` 中的对象都是弱引用，即垃圾回收机制不考虑 `WeakSet` 对该对象的引用。
+
+**`WeakSet` 没有 `size` 属性，没有办法遍历它的成员。**
+
+`WeakSet` 结构有以下三个方法。
+
+- **WeakSet.prototype.add(value)**：向 `WeakSet` 实例添加一个新成员。
+- **WeakSet.prototype.delete(value)**：清除 `WeakSet` 实例的指定成员。
+- **WeakSet.prototype.has(value)**：返回一个布尔值，表示某个值是否在 `WeakSet` 实例之中。
 
 ## WeakRef
 

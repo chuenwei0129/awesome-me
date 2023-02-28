@@ -100,7 +100,7 @@ console.log(0 in Array(1)) // false
 ES6 则是明确将空位转为 `undefined`，拷贝和遍历都不会忽略。
 
 - `Array.from()` 方法会将数组的空位，转为 `undefined`，也就是说，这个方法不会忽略空位。
-- 扩展运算符（`...`）也会将空位转为`undefined`。
+- **扩展运算符（`...`）也会将空位转为`undefined`**。
 - `copyWithin()` 会连空位一起拷贝。
 - `fill()` 会将空位视为正常的数组位置。
 - `for...of` 循环也会遍历空位。

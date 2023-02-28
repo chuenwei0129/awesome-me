@@ -14,8 +14,6 @@
 - [对象的新增方法](#对象的新增方法)
 - [new 关键字](#new-关键字)
 - [原型与原型链](#原型与原型链)
-- [为什么 Function.prototype 可以直接执行?](#为什么-functionprototype-可以直接执行)
-- [为什么 Object.entries 和 Array.prototype.entries 的返回值类型不同?](#为什么-objectentries-和-arrayprototypeentries-的返回值类型不同)
 
 ## 对象基础知识
 
@@ -534,26 +532,3 @@ A.prototype.constructor = A // 原型的构造器
 
 a.constructor === A // 当获取 a.constructor 时，其实 a 中并没有 constructor 属性,当不能读取到constructor 属性时，会从 a 的原型也就是 A.prototype 中读取，正好原型中有该属性
 ```
-
-## [为什么 Function.prototype 可以直接执行?](https://www.zhihu.com/question/323462380)
-
-**历史原因：** 函数的 `prototype` 属性都是引擎自动添加的，如果是用户自定义的函数，它的 `prototype` 属性就是个普通对象，**如果是内置类型的构造函数的话，它的 `prototype` 属性会是该类型的第一个实例**
-
-```js
-Number.prototype // Object(0)
-String.prototype // Object("")
-Boolean.prototype // Object(false)
-Array.prototype // []
-Function.prototype // function(){}
-Date.prototype // new Date(NaN)
-Error.prototype // new Error("")
-RegExp.prototype // /(?:)/
-```
-
-## [为什么 Object.entries 和 Array.prototype.entries 的返回值类型不同?](https://www.zhihu.com/question/465364604/answer/1945950621)
-
-**API 应该有一致性**。所以所有的 `实例.prototype.keys/values/entries` （Array、Map、Set，还有 Web APIs 的集合类）返回的都是迭代器。
-
-只有 `Object.keys/values/entries` 是例外，返回的是数组。原因其实很简单，就是这组 API 是 ES5 时代加入的，那个时候还没有迭代器（ES6 加入的）。
-
-当然你可以追问，为啥 ES6 加入 `实例.prototype.entries` 时不保持跟 `Object.entries` 一致，返回数组？那只能说 ES6 的设计者认为这组 API 本来就应该用迭代器。其中一个重要理由可能是，对于大集合，分配一个很大的数组，性能会很差，而迭代器则没有这个负担。

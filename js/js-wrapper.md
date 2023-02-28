@@ -2,7 +2,7 @@
 
 - [对象包装器](#对象包装器)
 - [symbol为什么没有包装类型?](#symbol为什么没有包装类型)
-  - [对于 JavaScript 的 new Object() 的疑问？](#对于-javascript-的-new-object-的疑问)
+- [对于 JavaScript 的 new Object() 的疑问？](#对于-javascript-的-new-object-的疑问)
 - [使用两个点来调用一个方法](#使用两个点来调用一个方法)
 
 ## 对象包装器
@@ -59,7 +59,7 @@ s = Symbol()
 
 未来的第七种原始类型 `BigInt()`，因为同样的原因，也不能被 `new`。
 
-### [对于 JavaScript 的 new Object() 的疑问？](https://www.zhihu.com/question/285068799)
+## [对于 JavaScript 的 new Object() 的疑问？](https://www.zhihu.com/question/285068799)
 
 ```js
 const a = { age: 20 }

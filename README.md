@@ -23,10 +23,10 @@
 
 > Always bet on JavaScript, Because there is only JavaScript.
 
-- `[JS]` [JS 这个语言设计的每一个特性都实在漂亮](js/js.md)
+- `[JavaScript]` [JavaScript 这个语言设计的每一个特性都实在漂亮](js/js.md)
 - `[CSS]` [是煮，是煮在又一次严重酗酒后创造了这个奇迹](css/css.md)
 - `[Browser]` [到达前端最高城 ——— 浏览器](summary/browser.md)
-- `[TS]` [警惕后端社区打类型安全牌](https://github.com/chuenwei0129/build-my-own-x/blob/main/packages/build-my-own-brainfuck/ts.md)
+- `[TypeScript]` [警惕后端社区打类型安全牌](ts/ts.md)
 - `[Promise]` [免费承包 Promise 相关问题](https://github.com/chuenwei0129/build-my-own-x/blob/main/build-my-own-promise/README.md)
 
 ## Make Web Great Again
@@ -34,8 +34,8 @@
 > Do not go gentle into that good night.
 
 - `[Hacker]` 都什么年代了，还再写传统 JS
-- `[Component]` 组件库，但无 UI —— Headless UI
-- `[Base]` 永远不要低估用户的智障程度 —— 编程术语祛魅
+- `[Component]` 组件库，但无 UI
+- `[Base]` 编程术语祛魅
 - `TODO` [人类高质量函数式编程学习笔记](summary/fp.md)
 - `TODO` [浮点数 —— 从惊讶到思考](summary/float.md)
 - `TODO` [搞明白位运算、补码、反码、原码](framework/bits.md)
