@@ -64,8 +64,6 @@ console.log(getMonthCountDay(2021, 0)) // 31
 
 ## Structured Clone
 
-https://justjavac.com/javascript/2018/02/02/deep-copy.html
-
 ## 数组
 
 ## pointer-events: none
@@ -74,13 +72,7 @@ pointer-events: none;表示鼠标事件“穿透”该元素并且指定该元�
 
 例：红色块上面有一个蓝色块(z-index)，如果蓝色块设置了 pointer-events: none; 。点击蓝色块将无效，红色块能捕获到鼠标事件，虽然蓝色块“罩住”了红色块。
 
-## [对象解构应用在数组上](https://github.com/justjavac/the-front-end-knowledge-you-may-not-know/issues/20)
 
-```js
-// 解构获取数据最后一个元素
-const { length: len, [len - 1]: last, ...rest } = [1, 2, 3]
-console.log(len, last, rest) // 3 3 {0: 1, 1: 2}
-```
 
 setTimeout
 
@@ -122,11 +114,6 @@ const arr = Array.from(Array(100), (v, k) => k + 1)
 // ... + array.keys() 评论区大佬指出 生成的是0-99的数组
 const ary = [...Array(100).keys()] 
 复制代码new Array(100) 会生成一个有100空位的数组，这个数组是不能被map()，forEach(), filter(), reduce(), every() ，some()遍历的，因为空位会被跳过（for of不会跳过空位，可以遍历）。 [...new Array(4)] 可以给空位设置默认值undefined，从而使数组可以被以上方法遍历。
-
-作者：幻灵尔依
-链接：https://juejin.cn/post/6844904194919366669
-来源：稀土掘金
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 [js如何把一个含有多个元素的数组按要求变成新的数组？](https://www.zhihu.com/question/532350167/answer/2481113702)
 

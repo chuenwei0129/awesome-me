@@ -7,6 +7,7 @@
 - [JS 里的 Array 属于构造函数还是类？](#js-里的-array-属于构造函数还是类)
 - [JavaScript 里听说区分函数和方法，而 Java 里只听说过方法，到底有什么区别？](#javascript-里听说区分函数和方法而-java-里只听说过方法到底有什么区别)
 - [下列代码为什么会产生 'super' keyword unexpected here 的错误？](#下列代码为什么会产生-super-keyword-unexpected-here-的错误)
+- [JSON 方法](#json-方法)
 - [ES6 提出 class 关键字是希望解决什么问题？它是不是鸡肋？](#es6-提出-class-关键字是希望解决什么问题它是不是鸡肋)
 - [为什么 Redux 判断 PlainObject 的写法这么复杂？](#为什么-redux-判断-plainobject-的写法这么复杂)
 - [JavaScript 语句后应该加分号么？](#javascript-语句后应该加分号么)
@@ -212,6 +213,80 @@ var obj2 = {
 Object.setPrototypeOf(obj2, obj1)
 
 obj2.method2() // method 1
+```
+
+## JSON 方法
+
+JSON 是语言无关的纯数据规范，因此一些特定于 JavaScript 的对象属性会被 JSON.stringify 跳过。
+
+即：
+
+- 函数属性（方法）。
+- Symbol 类型的键和值。
+- 存储 `undefined` 的属性。
+
+```js
+let user = {
+  sayHi() { // 被忽略
+    alert("Hello");
+  },
+  [Symbol("id")]: 123, // 被忽略
+  something: undefined // 被忽略
+};
+
+alert( JSON.stringify(user) ); // {}（空对象
+```
+
+重要的限制：不得有循环引用。
+
+```js
+let room = {
+  number: 23
+};
+
+let meetup = {
+  title: "Conference",
+  participants: ["john", "ann"]
+};
+
+meetup.place = room;       // meetup 引用了 room
+room.occupiedBy = meetup; // room 引用了 meetup
+
+JSON.stringify(meetup); // Error: Converting circular structure to JSON
+```
+
+JSON.stringify 的完整语法是：`let json = JSON.stringify(value[, replacer, space])`
+
+```js
+// 去除导致循环引用的 room.occupiedBy
+let room = {
+  number: 23
+};
+
+let meetup = {
+  title: "Conference",
+  participants: [{name: "John"}, {name: "Alice"}],
+  place: room // meetup 引用了 room
+};
+
+room.occupiedBy = meetup; // room 引用了 meetup
+
+alert( JSON.stringify(meetup, function replacer(key, value) {
+  return (key == 'occupiedBy') ? undefined : value;
+}));
+
+/* key:value pairs that come to replacer:
+:             [object Object]
+title:        Conference
+participants: [object Object],[object Object]
+0:            [object Object]
+name:         John
+1:            [object Object]
+name:         Alice
+place:        [object Object]
+number:       23
+occupiedBy: [object Object]
+*/
 ```
 
 ## [ES6 提出 class 关键字是希望解决什么问题？它是不是鸡肋？](https://www.zhihu.com/question/432832293)

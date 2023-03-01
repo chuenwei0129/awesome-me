@@ -55,7 +55,7 @@
 5. `git stage .` 上传更新后的代码至暂存区
 6. `git commit -m 'xxxxxx'` 可以将暂存区里更新后的代码更新到本地 git
 7. `git push origin xxx` 将本地的 xxx 分支上传至 github
-8. 假设远端 GitHub 上 main 代码出现改变，若无改变则跳过 9 - 11 步
+8. 假设远端 GitHub 上 main 代码出现改变
 9. `git switch main` 切换回本地 `main` 分支
 10. `git pull origin main` 将远端修改过的代码再更新到本地
 11. `git switch xxx` 回到 xxx 分支
