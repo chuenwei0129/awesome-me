@@ -1,6 +1,6 @@
 # TypeScript 备忘录<!-- omit in toc -->
 
-- [小抄](#小抄)
+- [TL;DR](#tldr)
   - [5.0](#50)
   - [4.9](#49)
   - [4.8](#48)
@@ -57,7 +57,7 @@
 - [TypeScript 中的 never 类型具体有什么用？](#typescript-中的-never-类型具体有什么用)
 - [TS 已经有模块系统了，为什么还需要 NameSpace？](#ts-已经有模块系统了为什么还需要-namespace)
 
-## 小抄
+## TL;DR
 
 ### 5.0
 

@@ -23,30 +23,27 @@
 
 > Always bet on JavaScript, Because there is only JavaScript.
 
-- `[JavaScript]` [JavaScript 这个语言设计的每一个特性都实在漂亮](js/js.md)
-- `[DOM]` [积跬步，至千里，始于 DOM](dom/dom.md)
-- `[CSS]` [是煮，是煮在又一次严重酗酒后创造了这个奇迹](css/css.md)
-- `[Browser]` [到达前端最高城 ——— 浏览器](summary/browser.md)
-- `[TypeScript]` [警惕后端社区打类型安全牌](ts/ts.md)
-- `[Promise]` [免费承包 Promise 相关问题](https://github.com/chuenwei0129/build-my-own-x/blob/main/build-my-own-promise/README.md)
+- `[CS]` [谁还不是个科班出身了？](computer/computer.md)
+- `[Network]` [计算机网络怎么学？](computer/network.md)
+- `[Browser]` [到达前端最高城 ——— 浏览器！](computer/browser.md)
+- `[HTML]` [积跬步，至千里，始于 DOM。](dom/dom.md)
+- `[CSS]` [是煮，是煮在又一次严重酗酒后创造了这个奇迹。](css/css.md)
+- `[JavaScript]` [JavaScript 这个语言设计的每一个特性都实在漂亮。](js/js.md)
+- `[Promise]` [免费承包 Promise 相关问题。](https://github.com/chuenwei0129/build-my-own-x/blob/main/build-my-own-promise/README.md)
+- `[TypeScript]` [警惕后端社区打类型安全牌。](ts/ts.md)
+- `Algorithms` [我接触过的前端数据结构与算法](computer/data.md)
+- `LeetCode` [程序员界的《五年高考，三年模拟》](algorithms/leetcode.md)
+- `[React]` [我学过的 React 知识点，都在这了。](framework/react.md)
+- `[React]` [React 文档摆烂不是一天两天了。](framework/react-use.md)
 
 ## Make Web Great Again
 
-> Do not go gentle into that good night.
+> React is not reactive. Vue is not only view.
 
 - `[Hacker]` 都什么年代了，还再写传统 JS
 - `[Component]` 组件库，但无 UI
 - `[Base]` 编程术语祛魅
 - `TODO` [人类高质量函数式编程学习笔记](summary/fp.md)
-- `TODO` [浮点数 —— 从惊讶到思考](summary/float.md)
-- `TODO` [搞明白位运算、补码、反码、原码](framework/bits.md)
-
-## 框架
-
-> React is not reactive. Vue is not only view.
-
-- `[API]` [我学过的 React 知识点，都在这了](framework/react.md)
-- `[Usage]` [React 文档摆烂不是一天两天了](framework/react-use.md)
 
 ## 前端工程化
 
@@ -62,8 +59,6 @@
 
 > 看不到前方，不是因为前路漆黑，未来总是光芒四射的。因为过于耀眼，所以才刺眼得让人看不见。
 
-- `[Crash Course]` [谁还不是个科班出身了](summary/base.md)
-- `[Computer Network]` [计算机网络基础知识总结](summary/net.md)
 - `[Data structure]` [救救孩子，数据结构自学攻略](summary/data-structure.md)
 - `[Algorithms]` [程序员界的《五年高考，三年模拟》—— LeetCode](summary/leetcode.md)
 
