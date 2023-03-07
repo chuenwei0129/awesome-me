@@ -14,8 +14,8 @@ const removeArrayItem = (array: number[], item: number) => {
     //   fast++
     // }
     // 简化后
-    if (array[fast] !== val) {
-      nums[slow++] = nums[fast]
+    if (array[fast] !== item) {
+      array[slow++] = array[fast]
     }
     fast++
   }
@@ -30,7 +30,3 @@ const removeArrayItem = (array: number[], item: number) => {
 
   return slow
 }
-
-const nums = [1, 2, 3, 4, 3]
-
-console.log(removeElement(nums, 3), nums)

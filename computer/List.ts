@@ -1,19 +1,14 @@
-export class LinkedNode<T> {
-  public next: null | LinkedNode<T>
-  constructor(public value: T) {
-    this.next = null
-  }
+class Node<T> {
+  public next: Node<T> | null = null
+  constructor(public value: T) {}
 }
 
-export class LinkedList<T> {
-  private _head: null | LinkedNode<T>
-  private _size: number
-  constructor() {
-    this._head = null
-    this._size = 0
-  }
+export class List<T> {
+  private _head: null | Node<T> = null
+  private _size: number = 0
 
-  _getNode(index: number) {
+  _getNodeFromIndex(index: number) {
+    if (this._head === null && index === 0) return null
     if (index < 0 || index >= this._size) throw new Error(`下标越界`)
     let current = this._head
     for (let i = 0; i < index; i++) {
@@ -22,30 +17,43 @@ export class LinkedList<T> {
     return current
   }
 
-  get(index: number) {
-    return this._getNode(index)?.value
+  at(index: number) {
+    return this._getNodeFromIndex(index)?.value ?? null
+  }
+
+  get size() {
+    return this._size
+  }
+
+  get head() {
+    return this._head
+  }
+
+  get tail() {
+    if (this._head === null) return null
+    return this._getNodeFromIndex(this._size - 1)
   }
 
   addAtTail(value: T) {
-    const newNode = new LinkedNode(value)
-    // 头节点为空，即链表未创建，初始化链表
+    const newNode = new Node(value)
     if (this._head === null) {
       this._head = newNode
     } else {
-      const tailNode = this._getNode(this._size - 1)
-      tailNode!.next = newNode
+      const tail = this._getNodeFromIndex(this._size - 1)
+      tail!.next = newNode
     }
     this._size++
   }
 
   addAtIndex(index: number, value: T) {
     if (index < 0 || index > this._size) throw new Error(`下标越界`)
-    const newNode = new LinkedNode(value)
+    const newNode = new Node(value)
     if (index === 0) {
+      // 头节点插入
       newNode.next = this._head
       this._head = newNode
     } else {
-      const prevNode = this._getNode(index - 1)
+      const prevNode = this._getNodeFromIndex(index - 1)
       newNode.next = prevNode!.next
       prevNode!.next = newNode
     }
@@ -62,7 +70,7 @@ export class LinkedList<T> {
     if (index === 0) {
       this._head = this._head!.next
     } else {
-      let prevNode = this._getNode(index - 1)
+      let prevNode = this._getNodeFromIndex(index - 1)
       // 边界: [head, head.next] head.next 非空
       prevNode!.next = prevNode!.next!.next
     }
@@ -76,17 +84,5 @@ export class LinkedList<T> {
       current!.next = current
     }
     return -1
-  }
-
-  size() {
-    return this._size
-  }
-
-  head() {
-    return this._head
-  }
-
-  tail() {
-    return this._getNode(this._size - 1)
   }
 }

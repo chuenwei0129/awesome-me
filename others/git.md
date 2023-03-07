@@ -1,6 +1,7 @@
 # 怕遗忘 Git 的我，把相关知识点都记录下来就对了<!-- omit in toc -->
 
-- [github 工作流](#github-工作流)
+- [Git 飞行规则](#git-飞行规则)
+- [Github 工作流](#github-工作流)
 - [Git 命令备忘录](#git-命令备忘录)
 - [Git 配置 ssh 协议](#git-配置-ssh-协议)
   - [操作步骤](#操作步骤)
@@ -44,9 +45,13 @@
   - [工作流程](#工作流程)
 - [参考资料](#参考资料)
 
-## github 工作流
+## Git 飞行规则
 
-> [十分钟学会正确的 github 工作流，和开源作者们使用同一套流程](https://www.bilibili.com/video/BV19e4y1q7JJ)
+> [Git 飞行规则](https://github.com/k88hudson/git-flight-rules/blob/master/README_zh-CN.md)
+
+## Github 工作流
+
+> [十分钟学会正确的 Github 工作流，和开源作者们使用同一套流程](https://www.bilibili.com/video/BV19e4y1q7JJ)
 
 1. `git clone`
 2. `git switch -c xxx` 切换至新分支 xxx

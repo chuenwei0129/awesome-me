@@ -1,14 +1,17 @@
 // JS 通常用数组来表示堆。
-// 左侧节点的位置是 2*index+1 。
-// 右侧节点的位置是 2*index+2 。
+// 左侧节点的位置是 2*index + 1 。
+// 右侧节点的位置是 2*index + 2 。
 // 父节点位置是 (index - 1) / 2 | 0
 // 只考虑数字
 
-export class MinHeap {
+class MinHeap {
   private _heap: number[] = []
 
   private _swap(index1: number, index2: number) {
-    ;[this._heap[index1], this._heap[index2]] = [this._heap[index2], this._heap[index1]]
+    ;[this._heap[index1], this._heap[index2]] = [
+      this._heap[index2],
+      this._heap[index1],
+    ]
   }
 
   private _getParentIndex(index: number) {

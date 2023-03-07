@@ -1,37 +1,40 @@
-export type StackProps<T> = {
+type Stack<T> = {
   _items: Array<T>
-  getItems: () => StackProps<T>['_items']
+  items: Stack<T>['_items']
   push: (item: T) => void
   pop: () => T | undefined
-  peek: () => T | undefined
-  size: () => number
-  isEmpty: () => boolean
+  peek: T | undefined
+  size: number
+  isEmpty: boolean
   clear: () => void
 }
 
-export const stack = <T>(): StackProps<T> => ({
+export const stack = <T>(): Stack<T> => ({
   _items: [],
-  getItems() {
+  get items() {
     return this._items
   },
+  // 入栈
   push(item) {
     this._items.push(item)
   },
+  // 出栈
   pop() {
     if (this._items.length === 0) return
     return this._items.pop()
   },
-  peek() {
+  // 查看栈顶元素
+  get peek() {
     if (this._items.length === 0) return
     return this._items[this._items.length - 1]
   },
-  size() {
+  get size() {
     return this._items.length
   },
-  isEmpty() {
+  get isEmpty() {
     return this._items.length === 0
   },
   clear() {
     this._items.length = 0
-  }
+  },
 })

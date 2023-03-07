@@ -1,5 +1,5 @@
-// 凡是能用Array<Parent>的地方, 都能用Array< Child>
-// 凡是能用Function<Child＞的地方, 都能用Function<Parent>
+// 凡是能用 Array<Parent> 的地方, 都能用 Array< Child>
+// 凡是能用 Function<Child＞ 的地方, 都能用 Function<Parent>
 
 class Parent {
   name: string

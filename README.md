@@ -6,7 +6,7 @@
 
 **怀揣着这种不确定感继续学习，不要有知识包袱，不要假装自己很聪明**。这个世界本身就是抽象又复杂的。这没什么大不了。
 
-**笔记内容**：[工具用的好，下班回家早](#工具用的好下班回家早) | [这就是前端](#这就是前端) | [Make Web Great Again](#make-web-great-again) | [框架](#框架) | [前端工程化](#前端工程化) | [计算机基础知识](#计算机基础知识)
+**笔记内容**：[工具用的好，下班回家早](#工具用的好下班回家早) | [这就是前端](#这就是前端) | [Make Web Great Again](#make-web-great-again) | [前端工程化](#前端工程化) | [计算机基础知识](#计算机基础知识)
 
 ## 工具用的好，下班回家早
 
@@ -23,18 +23,18 @@
 
 > Always bet on JavaScript, Because there is only JavaScript.
 
+- `[Program]` [精确本身就是祛魅](computer/program.md)
 - `[CS]` [谁还不是个科班出身了？](computer/computer.md)
 - `[Network]` [计算机网络怎么学？](computer/network.md)
+- `[Algorithms]` [我接触过的前端数据结构与算法](computer/data.md)
 - `[Browser]` [到达前端最高城 ——— 浏览器！](computer/browser.md)
 - `[HTML]` [积跬步，至千里，始于 DOM。](dom/dom.md)
 - `[CSS]` [是煮，是煮在又一次严重酗酒后创造了这个奇迹。](css/css.md)
 - `[JavaScript]` [JavaScript 这个语言设计的每一个特性都实在漂亮。](js/js.md)
 - `[Promise]` [免费承包 Promise 相关问题。](https://github.com/chuenwei0129/build-my-own-x/blob/main/build-my-own-promise/README.md)
 - `[TypeScript]` [警惕后端社区打类型安全牌。](ts/ts.md)
-- `Algorithms` [我接触过的前端数据结构与算法](computer/data.md)
-- `LeetCode` [程序员界的《五年高考，三年模拟》](algorithms/leetcode.md)
-- `[React]` [我学过的 React 知识点，都在这了。](framework/react.md)
-- `[React]` [React 文档摆烂不是一天两天了。](framework/react-use.md)
+- `[React]` [React 文档摆烂不是一天两天了。](react/react.md)
+<!-- - `[LeetCode]` [程序员界的《五年高考，三年模拟》](algorithms/leetcode.md) -->
 
 ## Make Web Great Again
 
@@ -42,7 +42,6 @@
 
 - `[Hacker]` 都什么年代了，还再写传统 JS
 - `[Component]` 组件库，但无 UI
-- `[Base]` 编程术语祛魅
 - `TODO` [人类高质量函数式编程学习笔记](summary/fp.md)
 
 ## 前端工程化
@@ -57,7 +56,7 @@
 
 ## 计算机基础知识
 
-> 看不到前方，不是因为前路漆黑，未来总是光芒四射的。因为过于耀眼，所以才刺眼得让人看不见。
+> 时光荏苒，岁月如梭。每一个框架或者库只能陪你走一段路，最终都会逝去。留在你心中的，不是一条一条的语法规则，而是一个一个的思想，这些思想才是推动进步的源泉。
 
 - `[Data structure]` [救救孩子，数据结构自学攻略](summary/data-structure.md)
 - `[Algorithms]` [程序员界的《五年高考，三年模拟》—— LeetCode](summary/leetcode.md)

@@ -31,7 +31,6 @@
 - [图解 | 你管这破玩意叫文件系统？](#图解--你管这破玩意叫文件系统)
 - [读取文件时，程序经历了什么？](#读取文件时程序经历了什么)
 - [100% 弄明白 5 种 IO 模型](#100-弄明白-5-种-io-模型)
-- [回调函数（callback）是什么？](#回调函数callback是什么)
 - [从科学记数法到浮点数标准 IEEE 754](#从科学记数法到浮点数标准-ieee-754)
 - [位运算](#位运算)
   - [进制转换](#进制转换)
@@ -235,15 +234,14 @@ CPU 的工作就是不断读取指令，然后执行这些指令。
 <!-- 多路复用，一个线程做多件事 -->
 > [你管这破玩意叫 IO 多路复用？](https://mp.weixin.qq.com/s?__biz=Mzk0MjE3NDE0Ng==&mid=2247494866&idx=1&sn=0ebeb60dbc1fd7f9473943df7ce5fd95&chksm=c2c5967ff5b21f69030636334f6a5a7dc52c0f4de9b668f7bac15b2c1a2660ae533dd9878c7c&cur_album_id=1700901576128643073&scene=189#wechat_redirect)
 
-## [回调函数（callback）是什么？](https://www.zhihu.com/question/19801131)
-
-![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/computer/SCR-20220418-g6h.png)
-
 ## [从科学记数法到浮点数标准 IEEE 754](https://mp.weixin.qq.com/s/mf1mH-aGWgcC6v2R8ijE8A)
 
+<!-- 注意小数精度，jit 优化，位运算随便用，位运算会转换 32 位整数 -->
 > [浮点数 —— 从惊讶到思考](float.md)
 
 ## 位运算
+
+> [JavaScript 的位操作应该避免吗？](https://www.zhihu.com/question/65747485/answer/234725511)
 
 ### 进制转换
 
@@ -251,7 +249,7 @@ CPU 的工作就是不断读取指令，然后执行这些指令。
 
 ### 原码、反码、补码
 
-- [搞明白位运算、补码、反码、原码](bits.md)
+> [搞明白位运算、补码、反码、原码](bits.md)
 
 ## [什么是解释型语言？](https://www.zhihu.com/question/268303059)
 
