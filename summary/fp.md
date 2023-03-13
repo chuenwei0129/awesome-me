@@ -90,9 +90,6 @@ console.log(result) // [1, 3, 5, 7, 9]
 
 ## 路径
 
-- [数学之美](https://zhuanlan.zhihu.com/p/55222212)
-- [用 λ 演算法去理解，为什么函数式编程会有更少的 bug](https://www.bilibili.com/video/BV1d34y1v7xr)
-- [现代浏览器生成一个 JS 函数的开销多大？React hooks 的设计频繁生成新函数对性能有影响吗?](https://www.zhihu.com/question/345689944/answer/943385371)
 - [JavaScript函数式编程（一）](https://zhuanlan.zhihu.com/p/21714695)
 - [JavaScript函数式编程（二）](https://zhuanlan.zhihu.com/p/21926955)
 - [JavaScript函数式编程（三）](https://zhuanlan.zhihu.com/p/22094473)
@@ -103,24 +100,9 @@ console.log(result) // [1, 3, 5, 7, 9]
 - [从回调地狱到自函子上的幺半群：解密熟悉又陌生的 Monad](https://zhuanlan.zhihu.com/p/32734492)
 - [写给小白的 Monad 指北](https://zhuanlan.zhihu.com/p/65449477)
 - [Lens 原理及应用](https://zhuanlan.zhihu.com/p/57785858)
-- [JavaScript 惰性求值的一种实现](https://zhuanlan.zhihu.com/p/57785991)
-- [用 JS 代码解释 Java Stream](https://zhuanlan.zhihu.com/p/61456650)
 - [React 推荐函数组件是纯函数，但是组件有状态就不可能是纯函数，怎么理解有状态的纯函数？](https://www.zhihu.com/question/537538929)
-- [递归思想为什么是编程的基本思想，它效率很高吗？](https://www.zhihu.com/question/271081962)
-- [通用的递归转循环方法](https://zhuanlan.zhihu.com/p/136511316)
-- [尾递归为啥能优化？](https://zhuanlan.zhihu.com/p/36587160)
-- [重新发明 Y 组合子 JavaScript(ES6) 版](http://picasso250.github.io/2015/03/31/reinvent-y.html)
-- [Y不动点组合子用在哪里？](https://www.zhihu.com/question/21099081)
-- [函数式编程的 Y Combinator 有哪些实用价值？](https://www.zhihu.com/question/20115649/answer/14029761)
 
 <!-- 函数提升 lifting
 lifting 是一种编程模式，它提供了一种方式，把给定的函数转换成一个类似可广泛应用的函数。
 比如将一个操作字符串的函数 提升为可以操作 字符串，列表，字符指针，map 和其他结构的函数
 函数提升应用在上述函数：创建一个高阶函数，接收操作单个字符串的任意函数，并创建一个操作字符转指针的函数。把操作某一类型的函数提升为操作包含这种类型的结构或集合的函数。 -->
-
-<!-- 函数 + 参数 + 环境（闭包） => 返回值 + 环境（闭包）
- ↑    ↑    ↑
-静态   动态   动态
-其中，函数是可以静态编译的，哪怕是匿名函数那也只是匿名，而不是每次执行都要「重新生成」，重新生成的只有「环境（闭包）」，但是在外部环境执行的时候，这个闭包就已经生成了，并不会有多余的开销。
-
-大概明白了，我想应该是这样的。每个函数都会创建一个自身环境，并且自身环境有个指针指向上级环境。而这上下级环境关系是由函数代码定义位置决定的。为了有动态环境(?) js才引入this的概念。 -->

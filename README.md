@@ -23,7 +23,7 @@
 
 > Always bet on JavaScript, Because there is only JavaScript.
 
-- `[Program]` [精确本身就是祛魅](computer/program.md)
+- `[Program]` [祛魅](computer/program.md)
 - `[CS]` [谁还不是个科班出身了？](computer/computer.md)
 - `[Network]` [计算机网络怎么学？](computer/network.md)
 - `[Algorithms]` [我接触过的前端数据结构与算法](computer/data.md)
