@@ -23,11 +23,11 @@
 
 > Always bet on JavaScript, Because there is only JavaScript.
 
-- `[Program]` [祛魅](computer/program.md)
+- `[Program]` [精确本身就是祛魅。](computer/program.md)
 - `[CS]` [谁还不是个科班出身了？](computer/computer.md)
 - `[Network]` [计算机网络怎么学？](computer/network.md)
-- `[Algorithms]` [我接触过的前端数据结构与算法](computer/data.md)
-- `[Browser]` [到达前端最高城 ——— 浏览器！](computer/browser.md)
+- `[Algorithms]` [我接触过的前端数据结构与算法。](computer/data.md)
+- `[Browser]` [到达前端最高城！](computer/browser.md)
 - `[HTML]` [积跬步，至千里，始于 DOM。](dom/dom.md)
 - `[CSS]` [是煮，是煮在又一次严重酗酒后创造了这个奇迹。](css/css.md)
 - `[JavaScript]` [JavaScript 这个语言设计的每一个特性都实在漂亮。](js/js.md)
