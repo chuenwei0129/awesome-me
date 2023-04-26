@@ -28,18 +28,19 @@
 - `[Network]` [计算机网络怎么学？](computer/network.md)
 - `[Algorithms]` [我接触过的前端数据结构与算法。](computer/data.md)
 - `[Browser]` [到达前端最高城！](computer/browser.md)
-- `[HTML]` [积跬步，至千里，始于 DOM。](dom/dom.md)
-- `[CSS]` [是煮，是煮在又一次严重酗酒后创造了这个奇迹。](css/css.md)
-- `[JavaScript]` [JavaScript 这个语言设计的每一个特性都实在漂亮。](js/js.md)
+- ![](https://img.shields.io/badge/HTML-orange.svg) [积跬步，至千里，始于 DOM。](dom/dom.md)
+- ![](https://img.shields.io/badge/CSS-grey.svg) [是煮，是煮在又一次严重酗酒后创造了这个奇迹。](css/css.md)
+- ![](https://img.shields.io/badge/JS-yellow.svg) [JavaScript 这个语言设计的每一个特性都实在漂亮。](js/js.md)
 - `[Promise]` [免费承包 Promise 相关问题。](https://github.com/chuenwei0129/build-my-own-x/blob/main/build-my-own-promise/README.md)
 - `[TypeScript]` [警惕后端社区打类型安全牌。](ts/ts.md)
-- `[React]` [React 文档摆烂不是一天两天了。](react/react.md)
+- ![](https://img.shields.io/badge/React-blue.svg) [React 文档摆烂不是一天两天了。](react/react.md)
 <!-- - `[LeetCode]` [程序员界的《五年高考，三年模拟》](algorithms/leetcode.md) -->
 
 ## Make Web Great Again
 
 > React is not reactive. Vue is not only view.
 
+- 一个充满了既神奇又无用的python知识的合集。为什么要研究这些？因为它就在那儿呀！
 - `[Hacker]` 都什么年代了，还再写传统 JS
 - `[Component]` 组件库，但无 UI
 - `TODO` [人类高质量函数式编程学习笔记](summary/fp.md)
