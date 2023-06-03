@@ -2,6 +2,8 @@
 
 > 别问，问就是程序员最擅长写[文档](https://beta.reactjs.org/)。
 
+## 读文档
+
 ## 状态管理
 
 > [Vuex、Flux、Redux、Redux-saga、Dva、MobX](https://zhuanlan.zhihu.com/p/53599723)

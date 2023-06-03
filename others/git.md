@@ -1,5 +1,6 @@
 # 怕遗忘 Git 的我，把相关知识点都记录下来就对了<!-- omit in toc -->
 
+- [Git Cheat Sheet](#git-cheat-sheet)
 - [Git 飞行规则](#git-飞行规则)
 - [Github 工作流](#github-工作流)
 - [Git 命令备忘录](#git-命令备忘录)
@@ -44,6 +45,10 @@
   - [工作区域](#工作区域)
   - [工作流程](#工作流程)
 - [参考资料](#参考资料)
+
+## Git Cheat Sheet
+
+> [Git Cheat Sheet](https://shfshanyue.github.io/cheat-sheets/git)
 
 ## Git 飞行规则
 
