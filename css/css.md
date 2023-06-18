@@ -19,51 +19,23 @@
 - [格式化上下文](#格式化上下文)
   - [BFC](#bfc)
   - [IFC](#ifc)
-  - [脱流文档流](#脱流文档流)
 - [使用百分数](#使用百分数)
 - [其他基础知识](#其他基础知识)
-- [层叠上下文](#层叠上下文)
-- [媒体查询](#媒体查询)
-- [布局](#布局)
-  - [flex 布局](#flex-布局)
-    - [概述](#概述)
-    - [flex 父容器](#flex-父容器)
-      - [justify-content](#justify-content)
+- [flex](#flex)
+  - [概述](#概述)
+  - [flex 父容器](#flex-父容器)
+    - [justify-content](#justify-content)
       - [align-items](#align-items)
-    - [flex 子项](#flex-子项)
-      - [单独设置子容器如何沿交叉轴排列：align-self](#单独设置子容器如何沿交叉轴排列align-self)
-      - [在主轴上如何伸缩：flex 属性](#在主轴上如何伸缩flex-属性)
-    - [轴](#轴)
-    - [flex 进阶](#flex-进阶)
-      - [父容器设置换行方式：flex-wrap](#父容器设置换行方式flex-wrap)
-      - [轴向与换行组合设置：flex-flow](#轴向与换行组合设置flex-flow)
-      - [多行沿交叉轴对齐：align-content](#多行沿交叉轴对齐align-content)
-    - [总结](#总结)
-  - [grid 布局](#grid-布局)
-    - [简述](#简述)
-    - [属性列表](#属性列表)
-    - [grid 容器](#grid-容器)
-      - [grid-template-columns/rows](#grid-template-columnsrows)
-      - [grid-template-areas](#grid-template-areas)
-      - [grid-template](#grid-template)
-      - [gap](#gap)
-      - [justify-items](#justify-items)
-      - [align-items](#align-items-1)
-      - [place-items](#place-items)
-      - [justify-content](#justify-content-1)
-      - [align-content](#align-content)
-      - [place-content](#place-content)
-      - [grid-auto-columns/rows](#grid-auto-columnsrows)
-      - [grid-auto-flow](#grid-auto-flow)
-      - [grid](#grid)
-    - [grid 子项](#grid-子项)
-      - [grid-column-start/end 和 grid-row-start/end](#grid-column-startend-和-grid-row-startend)
-      - [grid-column/row](#grid-columnrow)
-      - [grid-area](#grid-area)
-      - [justify-self](#justify-self)
-      - [align-self](#align-self)
-      - [place-self](#place-self)
-  - [其他布局方式](#其他布局方式)
+  - [flex 子项](#flex-子项)
+    - [单独设置子容器如何沿交叉轴排列：align-self](#单独设置子容器如何沿交叉轴排列align-self)
+    - [在主轴上如何伸缩：flex 属性](#在主轴上如何伸缩flex-属性)
+  - [轴](#轴)
+  - [flex 进阶](#flex-进阶)
+    - [父容器设置换行方式：flex-wrap](#父容器设置换行方式flex-wrap)
+    - [轴向与换行组合设置：flex-flow](#轴向与换行组合设置flex-flow)
+    - [多行沿交叉轴对齐：align-content](#多行沿交叉轴对齐align-content)
+  - [总结](#总结)
+- [grid](#grid)
 - [函数计算](#函数计算)
   - [函数](#函数)
   - [常用](#常用)
@@ -73,7 +45,7 @@
   - [1px 边框](#1px-边框)
   - [自动打字器](#自动打字器)
   - [渐变背景](#渐变背景)
-- [拓宽视野](#拓宽视野)
+  - [Emoji as a Favicon](#emoji-as-a-favicon)
 
 ## 当浏览器遇到无法解析的 CSS 代码会发生什么？
 
@@ -390,6 +362,8 @@ display 有一个特殊的值，它在内联和块之间提供了一个中间状
 
 ### BFC
 
+> 文档一旦脱流，**计算其父节点高度时不会将其高度纳入**，脱流节点不占据空间，因此添加浮动或定位后会对周围节点布局产生或多或少的影响。
+
 **BFC 是页面上一个独立且隔离的渲染区域，容器里的子节点不会在布局上影响到外面的节点，反之亦然**。
 
 **规则：**
@@ -447,17 +421,6 @@ display 有一个特殊的值，它在内联和块之间提供了一个中间状
 - **高矮不齐：** 行内元素统一以底边垂直对齐
 - **自动换行：** 排版若一行无法完成则换行接着排版
 
-### 脱流文档流
-
-**脱流文档流指节点脱流正常文档流后，在正常文档流中的其他节点将忽略该节点并填补其原先空间。**
-
-文档一旦脱流，**计算其父节点高度时不会将其高度纳入**，脱流节点不占据空间，因此添加浮动或定位后会对周围节点布局产生或多或少的影响。
-
-文档流的脱流有两种方式：
-
-- `float:left/right`：**节点参与浮动布局后，自身脱流但其文本不脱流**
-- `position:absolute/fixed`：**节点参与定位布局后，自身及其文本一起脱流**
-
 ## 使用百分数
 
 当使用百分数时，你需要清楚，它是什么东西的百分数。对于一个处于另外一个容器当中的盒子，如果你给予了子盒子一个百分数作为宽度，那么它指的是父容器宽度的百分数。使用百分比作为元素外边距（margin）或填充（padding）的单位时，**值是以包含块的内联尺寸进行计算的，也就是元素的水平宽度**。
@@ -468,31 +431,16 @@ display 有一个特殊的值，它在内联和块之间提供了一个中间状
 - [溢出的内容](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Overflowing_content)
 - [CSS 的值与单位](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units)
 - [图像、媒体和表单元素](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Images_media_form_elements)
+- [在 CSS 中，用 float 和 position 的区别是什么？](https://www.zhihu.com/question/19588854/answer/13243044)
+- [浮动](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Floats)
+- [定位](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Positioning)
+- ...
 
-## 层叠上下文
+## flex
 
-层叠上下文指盒模型在三维空间 Z 轴上所表现的行为。每个盒模型存在于一个三维空间中，分别是平面画布的 X 轴 Y 轴和表示层叠的 Z 轴。
+> [`flex: 1` 到底代表什么?](https://zhuanlan.zhihu.com/p/136223806)
 
-![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/fe-engineering/urlTrans.png)
-
-在同一个层叠上下文中，节点会按照 `z-index` 的大小从上到下层叠，若 `z-index` 一致则后面的节点层叠等级要大于前面。脱流元素的层叠顺序就是看 `z-index` 的大小。
-
-> ⚠️ 注意：**z-index 只在声明定位的节点上起效**
-
-**`z-index` 隐藏节点：**
-
-- 节点不可见但占据空间，不可点击：`position:relative; z-index:-1`
-- 节点不可见不占据空间，不可点击：`position:absolute; z-index:-1`
-
-## 媒体查询
-
-> [媒体查询](media.html)
-
-## 布局
-
-### flex 布局
-
-#### 概述
+### 概述
 
 flex 的核心的概念就是**容器**和**轴**。容器包括外层的**父容器**和内层的**子项**，轴包括**主轴**和**交叉轴**。
 
@@ -502,9 +450,9 @@ flex 容器具有这样的特点：父容器可以统一设置子项的排列方
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/css/flex_2.webp)
 
-#### flex 父容器
+### flex 父容器
 
-##### justify-content
+#### justify-content
 
 `justify-content` 属性用于**定义如何沿着主轴方向排列子容器**。
 
@@ -549,9 +497,9 @@ flex 容器具有这样的特点：父容器可以统一设置子项的排列方
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/css/flex_13.webp)
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/css/flex_14.webp)
 
-#### flex 子项
+### flex 子项
 
-##### 单独设置子容器如何沿交叉轴排列：align-self
+#### 单独设置子容器如何沿交叉轴排列：align-self
 
 每个子容器也可以单独定义沿交叉轴排列的方式，此属性的可选值与父容器 `align-items` 属性完全一致，**如果两者同时设置则以子容器的 `align-self` 属性为准**。
 
@@ -572,7 +520,7 @@ flex 容器具有这样的特点：父容器可以统一设置子项的排列方
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/css/flex_20.webp)
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/css/flex_21.webp)
 
-##### 在主轴上如何伸缩：flex 属性
+#### 在主轴上如何伸缩：flex 属性
 
 子容器是有弹性的（flex 即弹性），它们会自动填充剩余空间，**子容器的伸缩比例由 `flex` 属性确定。**
 
@@ -617,7 +565,7 @@ flex 容器具有这样的特点：父容器可以统一设置子项的排列方
 - `flex-shrink` 元素**仅在默认宽度之和大于容器的时候才会发生收缩**，其收缩的大小是依据 `flex-shrink` 的值。**初始值为 1**。负值是不被允许的。
 - **如果任何 `flex` 元素的侧轴方向 `margin` 值设置为 `auto`，则会忽略 `align-self`（个体设置）。**
 
-#### 轴
+### 轴
 
 轴包括主轴和交叉轴，`justify-content` 属性决定子容器沿主轴的排列方式，`align-items` 属性决定子容器沿着交叉轴的排列方式。在 `flex` 布局中，`flex-direction` 属性决定主轴的方向，交叉轴的方向由主轴确定。
 
@@ -643,9 +591,9 @@ flex 容器具有这样的特点：父容器可以统一设置子项的排列方
 
 主轴沿逆时针方向旋转 `90°` 就得到了交叉轴，交叉轴的起始端和末尾段也由 `flex-start` 和 `flex-end` 表示。
 
-#### flex 进阶
+### flex 进阶
 
-##### 父容器设置换行方式：flex-wrap
+#### 父容器设置换行方式：flex-wrap
 
 `flex-wrap` 属性决定子容器是否换行排列，不仅可以顺序换行而且支持逆序换行。
 
@@ -663,7 +611,7 @@ flex 容器具有这样的特点：父容器可以统一设置子项的排列方
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/css/flex-7.webp)
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/css/flex-8.webp)
 
-##### 轴向与换行组合设置：flex-flow
+#### 轴向与换行组合设置：flex-flow
 
 `flow` 即流向，也就是子容器沿着哪个方向流动，流动到终点是否允许换行，比如 `flex-flow: row wrap`，**`flex-flow` 是一个复合属性**，相当于 `flex-direction` 与 `flex-wrap` 的组合，可选的取值如下：
 
@@ -671,7 +619,7 @@ flex 容器具有这样的特点：父容器可以统一设置子项的排列方
 - `wrap`、`nowrap` 等，可单独设置换行方式
 - `row nowrap`、`column wrap` 等，也可两者同时设置
 
-##### 多行沿交叉轴对齐：align-content
+#### 多行沿交叉轴对齐：align-content
 
 当子容器多行排列时，设置行与行之间的对齐方式。
 
@@ -693,15 +641,13 @@ flex 容器具有这样的特点：父容器可以统一设置子项的排列方
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/css/flex-14.webp)
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/css/flex-15.webp)
 
-#### 总结
+### 总结
 
 以上就是 `flex` 布局的全部属性，一共 `12` 个，父容器、子容器各 `6` 个，可以随时通过下图进行回顾。
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/css/flex-23.webp)
 
-### grid 布局
-
-#### 简述
+## grid
 
 [Grid](https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid) 布局是一个二维的布局方法，纵横两个方向总是同时存在。
 
@@ -710,54 +656,6 @@ flex 容器具有这样的特点：父容器可以统一设置子项的排列方
 > 在 `Grid` 布局中，`float`，`display:inline-block`，`display:table-cell`，`vertical-align` 以及 `column-*` 这些属性和声明对 `grid` 子项是没有任何作用的。
 
 给 `<div>` 这类块元素设置 `display:grid` 或者给 `<span>` 这类内联元素设置 `display:inline-grid` 创建 Grid 布局。
-
-#### 属性列表
-
-|  作用在 grid 容器上   | 作用在 grid 子项上 |
-| :-------------------: | :----------------: |
-| grid-template-columns | grid-column-start  |
-|  grid-template-rows   |  grid-column-end   |
-|  grid-template-areas  |   grid-row-start   |
-|     grid-template     |    grid-row-end    |
-|    grid-column-gap    |    grid-column     |
-|     grid-row-gap      |      grid-row      |
-|       grid-gap        |     grid-area      |
-|     justify-items     |    justify-self    |
-|      align-items      |     align-self     |
-|      place-items      |     place-self     |
-|    justify-content    |
-|     align-content     |
-|     place-content     |
-|   grid-auto-columns   |
-|    grid-auto-rows     |
-|    grid-auto-flow     |
-|         grid          |
-
-#### grid 容器
-
-##### grid-template-columns/rows
-
-```css
-.container {
-    grid-template-columns: <track-size> ... 或者 <line-name> <track-size> ...;
-    grid-template-rows: <track-size> ... 或者 <line-name> <track-size> ...;
-}
-```
-
-`<track-size>`：划分网格的尺寸。可以是长度值，百分比值，以及 `fr` 单位（网格剩余空间比例单位）。
-
-`<line-name>`：划分网格的网格线的名字，可以任意命名（支持中文名）。
-
-举个例子 🌰：
-
-```css
-.container {
-    grid-template-columns: 80px auto 100px;
-    grid-template-rows: 25% 100px auto 60px;
-}
-```
-
-![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/css/grid-1.png)
 
 **双命名：**
 
@@ -818,9 +716,7 @@ flex 容器具有这样的特点：父容器可以统一设置子项的排列方
 
 这里计算就相对复杂些，首先，由于第一个网格尺寸设置为 `auto`，因此 `fr` 计算需要的剩余空间尺寸是 `grid` 容器的宽度减去 `auto` 内容的宽度。所以，后面 3 个 `0.25` fr 元素的宽度是：**(容器宽度 - auto 内容宽度) * 0.25**。然后剩余尺寸就是第一个网格宽度。
 
-##### grid-template-areas
-
-`area` 是区域的意思，`grid-template-areas` 就是给我们的网格划分区域的
+**grid-template-areas:**
 
 ```css
 .grid-container {
@@ -844,273 +740,6 @@ flex 容器具有这样的特点：父容器可以统一设置子项的排列方
 举个例子 🌰：[具体代码](grid.html)
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/css/grid-2.png)
-
-##### grid-template
-
-`grid-template` 是 `grid-template-rows`，`grid-template-columns` 和 `grid-template-areas` 属性的缩写。
-
-```css
-/* .grid-container {
-    grid-template: none;
-} */
-
-/* 其中 `none` 表示将 3 个属性都设置为初始值。 */
-
-.grid-container {
-    grid-template:
-        "header  header" 80px
-        "content sidebar" 1fr
-        "footer  footer" 80px
-        /1fr 100px;
-}
-```
-
-##### gap
-
-`column-gap` 和 `row-gap` 属性用来定义网格中网格间隙的尺寸。
-
-```css
-.container {
-    column-gap: <line-size>;
-    row-gap: <line-size>;
-}
-```
-
-`gap` 属性是 `column-gap` 和 `row-gap` 属性的缩写。
-
-```css
-.container {
-    gap: <row-gap> <column-gap>;
-}
-```
-
-##### justify-items
-
-`justify-items` 指定了网格元素的水平呈现方式，是水平拉伸显示，还是左中右对齐，类似于 `flex` 的 `justify-content`，语法如下：
-
-```css
-.container {
-    justify-items: stretch | start | end | center;
-}
-```
-
-##### align-items
-
-`align-items` 指定了网格元素的垂直呈现方式，是垂直拉伸显示，还是上中下对齐，语法如下：
-
-```css
-.container {
-    align-items: stretch | start | end | center;
-}
-```
-
-##### place-items
-
-`place-items` 可以让 `align-items` 和 `justify-items` 属性写在单个声明中。语法如下：
-
-```css
-.container {
-    place-items: <align-items> <justify-items>?;
-}
-```
-
-##### justify-content
-
-`justify-content` 指定了网格元素的水平分布方式。**此属性仅在网格总宽度小于 `grid` 容器宽度时候有效果。**
-
-语法如下：
-
-```css
-justify-content: stretch | start | end | center | space-between | space-around | space-evenly;
-```
-
-我们网格设定的都是固定的宽度值，结果还有剩余空间。例如：
-
-```css
-.container {
-    display: grid;
-    width: 300px;
-    grid-template: 100px 100px/100px 100px;
-}
-```
-
-此时，水平和垂直方向都有 `100px` 的剩余，`justify-content` 属性此时就有用武之地了，**对 `grid` 网格整体布局，类似于 `flex` 中 `align-content` 的作用**。
-
-##### align-content
-
-`align-content` 可以看成和 `justify-content` 是相似且对立的属性，`justify-content` 指明水平方向 `grid` 子项的分布方式，而`align-content` 则是指明垂直方向每一行 `grid` 元素的分布方式。如果所有 `grid` 子项只有一行，则 `align-content` 属性是没有任何效果的。
-
-##### place-content
-
-`place-content` 可以让 `align-content` 和 `justify-content` 属性写在一个 CSS 声明中，也就是俗称的缩写。
-
-##### grid-auto-columns/rows
-
-指定任何自动生成的网格轨道（也称为隐式网格轨道）的大小。**当网格项目多于网格中的单元格或网格项目放置在显式网格之外时，将创建隐式轨道。**
-
-通过一个实例来感受下 `grid-auto-columns` 和 `grid-auto-rows` 属性的样式表现。
-
-![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/css/grid-5.png)
-
-CSS 如下：
-
-```css
-.container {
-    display: grid;
-    width: 150px;
-    grid-template-columns: 60px 60px;
-    grid-template-rows: 30px 90px;
-    grid-auto-columns: 60px;
-}
-.item-a {
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
-}
-.item-b {
-/* 容器水平只有 2 个格子，但这里设定的是第 3 个，隐式网格创建 */
-    grid-column: 3 / 4;
-    grid-row: 2 / 3;
-    background-color: rgba(255, 255, 0, .5);
-}
-```
-
-`.item-b` 宽度足够时强制表现为了 `60px`，相反表现为 `auto`，在这里，则是可怜巴巴填满剩余的 `30px`。
-
-##### grid-auto-flow
-
-`grid-auto-flow` 属性控制没有明确指定位置的 `grid` 子项的放置方式。比方说定义了一个 **5*2** 的 `10` 格子，共有 5 个元素，其中 2 个元素指定了放在哪个格子里，还有 3 个则自生自灭排列。此时，这 3 个元素如何排列就是由 `grid-auto-flow` 属性控制的。
-
-语法如下：
-
-```css
-.container {
-    grid-auto-flow: row | column | row dense | column dense;
-}
-```
-
-##### grid
-
-是下面所有这些 CSS 属性的缩写集合，
-
-- `grid-template-rows`
-- `grid-template-columns`
-- `grid-template-areas`
-- `grid-auto-rows`
-- `grid-auto-columns`
-- `grid-auto-flow`
-
-#### grid 子项
-
-##### grid-column-start/end 和 grid-row-start/end
-
-表示 `grid` 子项所占据的区域的起始和终止位置，包括水平方向和垂直方向。
-
-```css
-.item {
-    grid-column-start: <number> | <name> | span <number> | span <name> | auto;
-    grid-column-end: <number> | <name> | span <number> | span <name> | auto;
-    grid-row-start: <number> | <name> | span <number> | span <name> | auto;
-    grid-row-end: <number> | <name> | span <number> | span <name> | auto;
-}
-```
-
-例子说话：
-
-```css
-.container {
-    grid-template-columns: [第一根纵线] 80px [纵线2] auto [纵线3] 100px [最后的结束线];
-    grid-template-rows: [第一行开始] 25% [第一行结束] 100px [行3] auto [行末];
-}
-.item-a {
-    grid-column-start: 2;
-    grid-column-end: 纵线3;
-    grid-row-start: 第一行开始;
-    grid-row-end: 3;
-}
-```
-
-![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/css/grid-6.png)
-
-`span` 关键字的作用
-
-```css
-.item-b {
-    grid-column-start: 2;
-    grid-column-end: span 纵线3;
-    grid-row-start: 第一行开始;
-    grid-row-end: span 3;
-}
-```
-
-![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/css/grid-7.png)
-
-`span` 仅限于网格线命名只有 1 个，且匹配的场景。
-
-对于数值网格线，则可以看出差异，有 `span` 则表示跨越的个数，而非网格线的序号。例如这里 `grid-row-end:span 3` 表示当前网格需要覆盖 3 个格子。于是，我们可以看到 `.item-b` 高度贯穿整个 `grid` 容器。
-
-##### grid-column/row
-
-`grid-column` 和 `grid-row` 都是缩写，前者是 `grid-column-start + grid-column-end` 的缩写，后者是 `grid-row-start + grid-row-end` 的缩写。
-
-```css
-.item {
-    grid-column: <start-line> / <end-line> | <start-line> / span <value>;
-    grid-row: <start-line> / <end-line> | <start-line> / span <value>;
-}
-```
-
-![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/css/grid-8.png)
-
-##### grid-area
-
-`grid-area` 其实是 `grid-row-start`, `grid-column-start`, `grid-row-end` 以及 `grid-column-end`属性的缩写，以及额外支持`grid-template-areas` 设置的网格名称而已。
-
-```css
-.item {
-    grid-area: <name> | <row-start> / <column-start> / <row-end> / <column-end>;
-}
-```
-
-##### justify-self
-
-`justify-self` 表示单个网格元素的水平对齐方式。语法如下：
-
-```css
-.item {
-    justify-self: stretch | start | end | center;
-}
-```
-
-##### align-self
-
-`align-self` 指定了网格元素的垂直呈现方式，是垂直拉伸显示，还是上中下对齐，语法如下：
-
-```css
-.container {
-    align-self: stretch | start | end | center;
-}
-```
-
-##### place-self
-
-`place-items` 可以让 `align-self` 和 `justify-self` 属性写在单个声明中。语法如下：
-
-```css
-.item {
-    place-self: <align-self> <justify-self>?;
-}
-```
-
-### 其他布局方式
-
-- **浮动布局：**`float:left/right`
-- **定位布局：**`position:relative/absolute/fixed`、`left/right/top/bottom/z-index`
-- **表格布局：**`table 系列属性`
-- **响应式布局：**`em/rem/vw/vh/vmin/vmax`、`媒体查询`
-
-**注意事项：**
-
-> 牵一发而动全身用在表格布局身上就很适合了，可能很小的一个改动就会造成整个 `<table>` 回流，通常可用 `<ul>`、`<li>` 和 `<span>` 等标签取代 `<table>` 系列标签生成表格。
 
 ## 函数计算
 
@@ -1187,8 +816,6 @@ CSS 函数指复杂类型或调用特殊处理的组件值类型。为单调的�
 
 > [渐变背景](gradient-bg.html)
 
-## 拓宽视野
+### Emoji as a Favicon
 
-- [在 CSS 中，用 float 和 position 的区别是什么？](https://www.zhihu.com/question/19588854/answer/13243044)
-- [How To Use an Emoji as a Favicon Easily](https://css-tricks.com/emoji-as-a-favicon/)
-- [`flex: 1` 到底代表什么?](https://zhuanlan.zhihu.com/p/136223806)
+> [How To Use an Emoji as a Favicon Easily](https://css-tricks.com/emoji-as-a-favicon/)
