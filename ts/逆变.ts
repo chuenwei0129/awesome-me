@@ -1,6 +1,3 @@
-// 凡是能用 Array<Parent> 的地方, 都能用 Array< Child>
-// 凡是能用 Function<Child＞ 的地方, 都能用 Function<Parent>
-
 class Parent {
   name: string
 }
@@ -8,15 +5,46 @@ class Child extends Parent {
   age: number
 }
 
-//协变
-const arr: Array<Parent> = [new Child()]
+// 参数强校验属于协变
 
+type AsFuncArgType<T> = (arg: T) => void
+type AsFuncReturnType<T> = (arg: unknown) => T
+
+// Child <- Parent
 // 逆变
-type F = (arg: Child) => void
-const arg = new Parent()
-const f: F = (arg) => {
-  console.log(arg)
-}
+// Wrapper<Child> 是个整体
+// 作为函数参数时，Wrapper<Child> <- Wrapper<Parent> === false
+type CheckArgType = AsFuncArgType<Child> extends AsFuncArgType<Parent>
+  ? true
+  : false
+
+// 协变
+// 作为函数返回值时，Wrapper<Child> <- Wrapper<Parent> === true
+type CheckReturnType = AsFuncReturnType<Child> extends AsFuncReturnType<Parent>
+  ? true
+  : false
+
+// //协变
+// const arr: Array<Parent> = [new Child()]
+
+// // 协变
+// interface Student {
+//   name: string
+// }
+
+// const logger = (student: Student): void => {
+//   console.log(student.name)
+// }
+
+// const xiaoming = { name: 'xiaoming', age: 28 }
+// logger(xiaoming) // 不会报错
+
+// // 逆变
+// const f: (arg: Child) => void = (arg) => {
+//   console.log(arg)
+// }
+
+// f(new Parent()) // 不会报错
 
 // .8
 // 10.
