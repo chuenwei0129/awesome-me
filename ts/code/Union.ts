@@ -56,3 +56,19 @@ type UnionToIntersection<A, B = A> = (
 type Test_UnionToIntersection = UnionToIntersection<{ a: 1 } | { b: 2 }>
 // never 未处理
 type Test_UnionToIntersection1 = UnionToIntersection<1 | never>
+
+type MyExclude<T, U> = T extends U ? never : T
+type MyExtract<T, U> = T extends U ? T : never
+
+interface T1 {
+  foo: string
+  bar: string
+  baz: string
+}
+
+interface T2 {
+  foo: string
+  baz: string
+}
+
+type ExcludedKeys = MyExclude<keyof T1, keyof T2>

@@ -8,16 +8,6 @@
 
 **笔记内容**：[工具用的好，下班回家早](#工具用的好下班回家早) | [这就是前端](#这就是前端) | [Make Web Great Again](#make-web-great-again) | [前端工程化](#前端工程化) | [计算机基础知识](#计算机基础知识)
 
-<div align="right">
-<a href="https://play.rust-lang.org/?edition=2018&gist=d69d8e3156d4bb81c4461b60b772ab72" target="_blank">
-<img align="center" width="85" src="https://raw.githubusercontent.com/serde-rs/serde-rs.github.io/master/img/runtab.png">
-</a>
-</div>
-
-```ts
-cons a = 1
-```
-
 ## 工具用的好，下班回家早
 
 > 折腾工具而不干活就是感觉很爽
