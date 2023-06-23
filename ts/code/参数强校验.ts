@@ -20,7 +20,7 @@ interface Point {
   y: number
 }
 
-const p1: Point = {
+const point1: Point = {
   x: 1,
   y: 2,
   z: 3, // 报错，多余的属性
@@ -32,4 +32,4 @@ const tmp = {
   z: 3,
 }
 
-const p2: Point = tmp
+const point2: Point = tmp // 不会报错

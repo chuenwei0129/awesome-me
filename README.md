@@ -23,24 +23,20 @@
 
 > Always bet on JavaScript, Because there is only JavaScript.
 
-- `[Program]` [精确本身就是祛魅。](computer/program.md)
-- `[CS]` [谁还不是个科班出身了？](computer/computer.md)
-- `[Network]` [计算机网络怎么学？](computer/network.md)
-- `[Algorithms]` [我接触过的前端数据结构与算法。](computer/data.md)
+- `[Type]` [警惕后端社区打类型安全牌。](ts/ts.md)
+- `[vanilla]` [JavaScript 这个语言设计的每一个特性都实在漂亮。](js/js.md)
+- `[Async]` [免费承包 Promise 相关问题。](https://github.com/chuenwei0129/build-my-own-x/blob/main/build-my-own-promise/README.md)
+- `[Style]` [是煮，是煮在又一次严重酗酒后创造了这个奇迹。](css/css.md)
+- `[Dom]` [积跬步，至千里，始于 DOM。](dom/dom.md)
 - `[Browser]` [到达前端最高城！](computer/browser.md)
-- ![](https://img.shields.io/badge/HTML-orange.svg) [积跬步，至千里，始于 DOM。](dom/dom.md)
-- ![](https://img.shields.io/badge/CSS-grey.svg) [是煮，是煮在又一次严重酗酒后创造了这个奇迹。](css/css.md)
-- ![](https://img.shields.io/badge/JS-yellow.svg) [JavaScript 这个语言设计的每一个特性都实在漂亮。](js/js.md)
-- `[Promise]` [免费承包 Promise 相关问题。](https://github.com/chuenwei0129/build-my-own-x/blob/main/build-my-own-promise/README.md)
-- `[TypeScript]` [警惕后端社区打类型安全牌。](ts/ts.md)
-- ![](https://img.shields.io/badge/React-blue.svg) [React 文档摆烂不是一天两天了。](react/react.md)
-<!-- - `[LeetCode]` [程序员界的《五年高考，三年模拟》](algorithms/leetcode.md) -->
 
 ## Make Web Great Again
 
 > React is not reactive. Vue is not only view.
 
-- 一个充满了既神奇又无用的python知识的合集。为什么要研究这些？因为它就在那儿呀！
+- ![](https://img.shields.io/badge/React-blue.svg) [React 文档摆烂不是一天两天了。](react/react.md)
+<!-- - `[LeetCode]` [程序员界的《五年高考，三年模拟》](algorithms/leetcode.md) -->
+<!-- - 一个充满了既神奇又无用的python知识的合集。为什么要研究这些？因为它就在那儿呀！ -->
 - `[Hacker]` 都什么年代了，还再写传统 JS
 - `[Component]` 组件库，但无 UI
 - `TODO` [人类高质量函数式编程学习笔记](summary/fp.md)
@@ -59,6 +55,10 @@
 
 > 时光荏苒，岁月如梭。每一个框架或者库只能陪你走一段路，最终都会逝去。留在你心中的，不是一条一条的语法规则，而是一个一个的思想，这些思想才是推动进步的源泉。
 
+- `[Network]` [计算机网络怎么学？](computer/network.md)
+- `[CS]` [谁还不是个科班出身了？](computer/computer.md)
+- `[Program]` [精确本身就是祛魅。](computer/program.md)
+- `[Algorithms]` [我接触过的前端数据结构与算法。](computer/data.md)
 - `[Data structure]` [救救孩子，数据结构自学攻略](summary/data-structure.md)
 - `[Algorithms]` [程序员界的《五年高考，三年模拟》—— LeetCode](summary/leetcode.md)
 
