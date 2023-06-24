@@ -1,10 +1,5 @@
 # 包装对象<!-- omit in toc -->
 
-- [对象包装器](#对象包装器)
-- [symbol为什么没有包装类型?](#symbol为什么没有包装类型)
-- [对于 JavaScript 的 new Object() 的疑问？](#对于-javascript-的-new-object-的疑问)
-- [使用两个点来调用一个方法](#使用两个点来调用一个方法)
-
 ## 对象包装器
 
 > 以下是 JavaScript 创建者面临的悖论：
@@ -23,7 +18,7 @@
 ```js
 let str = 'Hello'
 str.test = 5 // (*)
-alert(str.test)
+alert(str.test) // ?
 ```
 
 根据你是否开启了严格模式 `use strict`，会得到如下结果：

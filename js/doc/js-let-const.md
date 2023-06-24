@@ -54,7 +54,7 @@ ES6 在[附录 B](https://www.ecma-international.org/ecma-262/6.0/index.html#sec
 ```js
 // 全局作用域
 // 第一种情况：
-// fn 提升自此处
+// fn 提升到 {} 外边，fn 提升自此处
 {
   function fn() {
     console.log('fn')

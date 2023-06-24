@@ -1,11 +1,5 @@
 # [Symbol](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol)<!-- omit in toc -->
 
-- [概述](#概述)
-- [内置的 Symbol 值](#内置的-symbol-值)
-  - [Symbol.hasInstance](#symbolhasinstance)
-  - [Symbol.iterator](#symboliterator)
-  - [Symbol.toPrimitive](#symboltoprimitive)
-
 ## 概述
 
 ES6 引入了一种新的原始数据类型 `Symbol`，表示独一无二的值。
@@ -40,9 +34,7 @@ console.log(Symbol.keyFor(s2)) // undefined
 // Symbol.for() 为 Symbol 值登记的名字，是全局环境的，不管有没有在全局环境运行。
 ```
 
-## 内置的 Symbol 值
-
-### Symbol.hasInstance
+## Symbol.hasInstance
 
 对象的 `Symbol.hasInstance` 属性，指向一个内部方法。当其他对象使用`instanceof` 运算符，判断是否为该对象的实例时，会调用这个方法。比如，`foo instanceof Foo` 在语言内部，实际调用的是 `Foo[Symbol.hasInstance](foo)`。
 
@@ -57,7 +49,7 @@ class MyClass {
 [1, 2, 3] instanceof new MyClass() // true
 ```
 
-### Symbol.iterator
+## Symbol.iterator
 
 对象的 `Symbol.iterator` 属性，指向该对象的默认遍历器方法。
 
@@ -72,7 +64,7 @@ myIterable[Symbol.iterator] = function* () {
 [...myIterable] // [1, 2, 3]
 ```
 
-### Symbol.toPrimitive
+## Symbol.toPrimitive
 
 对象的 `Symbol.toPrimitive` 属性，指向一个方法。该对象被转为原始类型的值时，会调用这个方法，返回该对象对应的原始类型值。
 

@@ -1,18 +1,5 @@
 # 类型转换<!-- omit in toc -->
 
-- [强制类型转换](#强制类型转换)
-- [隐式类型转换](#隐式类型转换)
-- [对象转换成原始类型](#对象转换成原始类型)
-- [类型检测](#类型检测)
-  - [typeof](#typeof)
-  - [instanceof](#instanceof)
-  - [Object.prototype.toString](#objectprototypetostring)
-  - [isObject](#isobject)
-  - [isEmptyObject](#isemptyobject)
-  - [isInteger](#isinteger)
-  - [Array.isArray](#arrayisarray)
-- [值类型和引用类型](#值类型和引用类型)
-
 ## 强制类型转换
 
 ```js
@@ -50,7 +37,7 @@ console.log(JSON.stringify(obj)) // "hello world"
 ## 隐式类型转换
 
 - [Javascript 中 == 和 === 区别是什么？](https://www.zhihu.com/question/31442029)
-- [JavaScript一个疑问，[ ] （空数组）== true ，具体如下，请问这是为何？](https://www.zhihu.com/question/47555543/answers/updated)
+- [JavaScript一个疑问，[] （空数组）== true ，具体如下，请问这是为何？](https://www.zhihu.com/question/47555543/answers/updated)
 
 ## 对象转换成原始类型
 
@@ -222,7 +209,7 @@ console.log(foo, bar) // { a: 2, b: 2 }, { a: 2, b: 2 }
 
 **函数参数按值传递：**
 
-> 在向参数传递基本类型的值时，被传递的值会被复制给一个局部变量；在向参数传递引用类型的值时，会把这个引用类型的地址复制给一个局部变量，因此在函数内部修改参数，将会影响到原始值。
+> 在向参数传递基本类型的值时，被传递的值会被复制给一个局部变量；在向参数传递引用类型的值时，**会把这个引用类型的地址复制给一个局部变量**，因此在函数内部修改参数，将会影响到原始值。
 
 ```js
 function test(person) {

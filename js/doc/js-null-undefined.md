@@ -7,7 +7,7 @@
 ## [为什么 `typeof null` 的结果是 'object'?](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof#typeof_null)
 
 ```js
-// JavaScript 诞生以来便如此
+// JavaScript 自诞生以来便如此
 // Bug === Feature
 typeof null === 'object'
 ```
@@ -80,7 +80,7 @@ var await = 2
 console.log(await) // 2
 ```
 
-> [《JavaScript 悟道》将 undefined 列入保留字，这是故意为之得吗？](https://www.zhihu.com/question/472379938)
+> **🔥 讨论**：[《JavaScript 悟道》将 undefined 列入保留字，这是故意为之得吗？](https://www.zhihu.com/question/472379938)
 
 ## [在现代 JavaScript 代码中，应该推荐使用 undefined 还是 null？](https://www.zhihu.com/question/479435433/answer/2057762335)
 
@@ -88,11 +88,10 @@ console.log(await) // 2
 >
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/js/SCR-20220509-gxu.png)
 
-**小知识：**
+**拓展：**
 
 ```js
-// 语义化 undefined 未定义
-// 语义化 null 已定义但为空
+// in 关键字
 const a = { foo: null }
 const b = { foo: undefined }
 const c = {}

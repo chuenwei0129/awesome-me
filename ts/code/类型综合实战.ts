@@ -56,7 +56,9 @@ type Test_TupleToNestedObject = TupleToNestedObject<['a'], 'xxx'>
 // 取重载函数的 ReturnType 返回的是最后一个重载的返回值类型。
 // 因为函数参数的类型要能接收多个类型，那肯定要定义成这些类型的交集，所以会发生逆变，转成交叉类型。
 // 套路：先拆联合类型，返回参数为 U 的函数，然后取函数参数，返回交叉类型。字面量交叉 never，未处理 1 & never === never
-type Union2Intersection<U> = (U extends U ? (arg: U) => void : never) extends (arg: infer P) => void
+type Union2Intersection<U> = (U extends U ? (arg: U) => void : never) extends (
+  arg: infer P
+) => void
   ? P
   : never
 
@@ -69,7 +71,9 @@ type Test_Union2Intersection1 = Union2Intersection<{ a: 2 } | { b: 1 }>
 // 思路：先转成交叉类型，然后利用特性，依次取出交叉类型的元素，组合成元组。
 // 注意点：1 & 2 === never，需要保存 U，构造新的交叉类型 (() => 2) & (() => 1) & (() => 3)
 // UnionToTuple<Exclude<U, R>> 最后一层 === []
-type UnionToTuple<U> = Union2Intersection<U extends any ? () => U : never> extends () => infer R
+type UnionToTuple<U> = Union2Intersection<
+  U extends any ? () => U : never
+> extends () => infer R
   ? [...UnionToTuple<Exclude<U, R>>, R]
   : []
 

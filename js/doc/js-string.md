@@ -93,9 +93,8 @@ ES6 提供了 `u` 修饰符，对正则表达式添加 4 字节码点的支持�
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/js/unicode-1.png)
 
-## 拓展：Base64 编码
+## [拓展：Base64 编码](https://abcdxyzk.github.io/blog/2023/01/30/mail-base64/)
 
-<!-- 保证传输数据不乱码，正常码点拆分成 6 bit 每组的小码点，然后对应 ascii 的 64 个字符，编码数据，base64 和 utf-8 一个范畴，拆分后体积会膨胀  -->
 > [丢人了，我居然不知道 Base64 编码的原理](https://www.bilibili.com/video/BV1xy4y187MF)
 
 ## [String](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String)
