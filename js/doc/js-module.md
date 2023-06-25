@@ -1,24 +1,10 @@
 # Module 的语法<!-- omit in toc -->
 
-ES6 的**模块自动采用严格模式**，不管你有没有在模块头部加上 `"use strict";`。
+## 严格模式
+
+ES6 的模块**自动采用严格模式**，不管你有没有在模块头部加上 `"use strict";`。
 
 ES6 模块之中，顶层的 `this` 指向 `undefined`，即不应该在顶层代码使用 `this`。
-
-目前阶段，通过 Babel 转码，CommonJS 模块的 `require` 命令和 ES6 模块的 `import` 命令，可以写在同一个模块里面，但是最好不要这样做。因为 `import` 在静态解析阶段执行，所以它是一个模块之中最早执行的。下面的代码可能不会得到预期结果。
-
-```js
-require('core-js/modules/es6.symbol')
-require('core-js/modules/es6.promise')
-import React from 'React'
-```
-
-- [静态加载](#静态加载)
-- [export](#export)
-- [import](#import)
-- [模块的整体加载](#模块的整体加载)
-- [default](#default)
-- [export 与 import 的复合写法](#export-与-import-的复合写法)
-- [import()](#import-1)
 
 ## 静态加载
 
@@ -52,6 +38,14 @@ let readFile = _fs.readFile
 
 `import` 是做**一份指针引用对应的属性和方法**，指针引用当然无法处理带有计算的 `import` 如：`import { 'f' + 'oo' } from 'my_module'` ，而 `require` 是执行代码获取属性和方法，能动态计算和加载。
 
+目前阶段，通过 Babel 转码，CommonJS 模块的 `require` 命令和 ES6 模块的 `import` 命令，可以写在同一个模块里面，但是最好不要这样做。因为 `import` 在静态解析阶段执行，所以它是一个模块之中最早执行的。下面的代码可能不会得到预期结果。
+
+```js
+require('core-js/modules/es6.symbol')
+require('core-js/modules/es6.promise')
+import React from 'React'
+```
+
 ## export
 
 `export` 命令**规定的是对外的接口，必须与模块内部的变量建立一一对应关系**。
@@ -70,7 +64,7 @@ class c {}
 export {a, b, c}
 ```
 
-`export` 语句输出的接口，与其对应的值是动态绑定关系，即通过该接口，可以取到模块内部实时的值。
+`export` 语句输出的接口，与其对应的值是动态绑定关系，**即通过该接口，可以取到模块内部实时的值。**
 
 ```js
 // 编译时 foo = 'bar'，运行时 foo = 'baz'

@@ -1,5 +1,7 @@
 # TypeScript 学习笔记<!-- omit in toc -->
 
+> You mastered Typescript but you're still not her type.
+
 - [醍醐灌顶](#醍醐灌顶)
 - [TypeScript 新特性](#typescript-新特性)
 - [TypeScript 深入](#typescript-深入)

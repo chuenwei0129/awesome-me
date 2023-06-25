@@ -180,6 +180,8 @@ JavaScript 的 `this` 在它自己无法自圆其说的时候就会 fallback 到
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/web/SCR-20220807-wbz.png)
 
+> **🤔️ 可能的解释**：[Object.prototype 下的属性为啥能在控制台直接访问？](https://github.com/chuenwei0129/awesome-me/blob/master/js/doc/js-bad.md#objectprototype-%E4%B8%8B%E7%9A%84%E5%B1%9E%E6%80%A7%E4%B8%BA%E5%95%A5%E8%83%BD%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E7%9B%B4%E6%8E%A5%E8%AE%BF%E9%97%AE)
+
 ## 显示绑定 this
 
 ### 手写 call / apply

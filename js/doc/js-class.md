@@ -120,16 +120,11 @@ ES6 的继承机制，则是**先将父类的属性和方法，加到一个空�
 除了私有属性，父类的所有属性和方法，都会被子类继承，其中包括静态方法。
 
 ```js
-// 本质是复制父类的属性方法到子类，子类在重写或者复用父类的方法属性
 class Child extends Parent {
   constructor(writeParentProtoName, childParamName) {
     super(writeParentProtoName) // 将父类的属性和方法，加到一个空的对象上面，然后再将该对象作为子类的实例
-    // 此时 this 指向子类的实例，并且子类的实例也会拥有 Parent 的属性方法
-    // 传入的 writeParentProtoName 重写了父类的属性
     // 把 super 当 parent constructor 执行就行了
     console.log(this.parentProtoName) // 无名
-    // constructor 前面的参数是父类需要的参数，后面的参数是子类需要的参数
-    // 子类的 constructor 只会执行一次
     this.childParamName = childParamName
   }
 }

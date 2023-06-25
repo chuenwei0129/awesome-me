@@ -103,37 +103,63 @@ if (true) {
 
 暂时性死区的本质就是，**只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用该变量**。
 
-## for 循环的计数器
+## [for 循环的计数器](https://twitter.com/NicoloRibaudo/status/1591427882509045760)
 
-`for` 循环还有一个特别之处，就是设置循环变量的那部分是一个父作用域，而循环体内部是一个单独的子作用域。
+This for loop:
 
 ```js
-// 作用域
-for (let i = 0; i < 3; i++) {
-  let i = 'abc'
-  console.log(i)
-}
-
-// 闭包变量捕获
-let a = []
-for (var i = 0; i < 10; i++) {
-  a[i] = function () {
-    console.log(i)
-  }
-}
-a[6]() // 10
-
-let b = []
-for (let i = 0; i < 10; i++) {
-  b[i] = function () {
-    console.log(i)
-  }
-}
-b[6]() // 6
+for (let i = 0, getI = () => i; i < 3; i++) console.log(getI()) // 0 0 0
+for (let i = 0, getI = () => i; i < 3; i++, getI = () => i) console.log(getI()) // 0 1 2
 ```
 
-- [我用了两个月的时间才理解 let](https://zhuanlan.zhihu.com/p/28140450)
-- [let 声明的变量的生命周期是怎样的？](https://www.zhihu.com/question/332840306)
+Unrolls to:
+
+```js
+let i_initial = 0,
+  getI_initial = () => i_initial
+
+{
+  let i_iteration0 = i_initial
+
+  // TEST: i_iteration0 < 3 --> TRUE
+
+  let getI_iteration0 = getI_initial
+  console.log(getI_iteration0())
+
+  {
+    let i_iteration1 = i_iteration0
+    let getI_iteration1 = getI_iteration0
+
+    i_iteration1++
+
+    // TEST: i_iteration1 < 3 --> TRUE
+
+    console.log(getI_iteration1())
+
+    {
+      let i_iteration2 = i_iteration1
+      let getI_iteration2 = getI_iteration1
+
+      i_iteration2++
+
+      // TEST: i_iteration2 < 3 --> TRUE
+
+      console.log(getI_iteration2())
+
+      {
+        let i_iteration3 = i_iteration2
+        let getI_iteration3 = getI_iteration2
+
+        i_iteration3++
+
+        // TEST: i_iteration3 < 3 --> FALSE
+      }
+    }
+  }
+}
+```
+
+> [let 声明的变量的生命周期是怎样的？](https://www.zhihu.com/question/332840306)
 
 ## const 本质
 

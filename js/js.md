@@ -25,5 +25,5 @@
 21. [正则](doc/js-reg.md)
 22. [模块化](doc/js-module.md)
 23. [重要概念](doc/js-others.md)
-24. [历史包袱](doc/js-bad.md)
+24. [毒瘤和糟粕](doc/js-bad.md)
 25. [未来](doc/js-next.md)

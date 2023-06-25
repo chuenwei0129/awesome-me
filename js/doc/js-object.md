@@ -243,28 +243,11 @@ console.log(
 
 ## super 关键字
 
-`this` 关键字总是指向函数所在的当前对象，ES6 又新增了另一个类似的关键字 `super`，指向当前对象的原型对象。
+`this` 关键字总是指向函数所在的当前对象，ES6 又新增了另一个类似的关键字 `super`，**指向当前对象的原型对象**。
 
 JavaScript 引擎内部，`super.foo` 等同于 `Object.getPrototypeOf(this).foo`（属性）或 `Object.getPrototypeOf(this).foo.call(this)`（方法）。
 
-```js
-// 报错
-const obj = {
-  foo: super.foo
-}
-
-// 报错
-const obj = {
-  foo: () => super.foo
-}
-
-// 报错
-const obj = {
-  foo: function () {
-    return super.foo
-  }
-}
-```
+> [下列代码为什么会产生 'super' keyword unexpected here 的错误？](https://www.zhihu.com/question/519019902)
 
 ## 对象的扩展运算符
 
@@ -278,14 +261,14 @@ console.log(arrLike) // { '0': 1, '1': 2, '2': 3 }
 
 console.log({ ...{}, ...{ a: 1 }, b: 2 }) // { a: 1, b: 2 }
 
-// 等同于 { ...Object(true), ...Object(null), ...} === {}
 // 如果扩展运算符后面是字符串，它会自动转成一个类似数组的对象，因此返回的不是空对象。
+// {...1} === {}, {...undefined} === {} ...
 console.log({ ...1, ...'abc', ...true, ...null, ...undefined }) // { '0': 'a', '1': 'b', '2': 'c' }
 
 // 对象的扩展运算符，只会返回参数对象自身的、可枚举的属性
 class C {
   p = 12
-  m() {} // 不可枚举，实例原型上的方法
+  m() {} // 实例原型上的方法
 }
 
 let c = new C()
