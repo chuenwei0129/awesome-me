@@ -1,7 +1,6 @@
 # CSS 学习笔记<!-- omit in toc -->
 
-> 🌟 [为什么 CSS 这么难学？](https://www.zhihu.com/question/66167982)
-
+- [为什么 CSS 这么难学？](#为什么-css-这么难学)
 - [当浏览器遇到无法解析的 CSS 代码会发生什么？](#当浏览器遇到无法解析的-css-代码会发生什么)
 - [link 标签和 @import 都能导入一个样式文件，它们有什么区别嘛？](#link-标签和-import-都能导入一个样式文件它们有什么区别嘛)
 - [优先级](#优先级)
@@ -46,6 +45,10 @@
   - [自动打字器](#自动打字器)
   - [渐变背景](#渐变背景)
   - [Emoji as a Favicon](#emoji-as-a-favicon)
+
+## [为什么 CSS 这么难学？](https://www.zhihu.com/question/66167982)
+
+> 任何编程工具都是为人服务的，他们是轮子，是工具，是为了让人提高生产效率的。一切和这个目的相矛盾的设计都是反人类的。
 
 ## 当浏览器遇到无法解析的 CSS 代码会发生什么？
 
@@ -336,7 +339,7 @@ article *:first-child {
 
 我们通过对盒子[`display`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display) 属性的设置，比如 `inline` 或者 `block` ，来控制盒子的外部显示类型。
 
-> **一个块容器盒只包含其他块级盒，或生成一个行内格式化上下文只包含行内盒。** 或许一段代码中某一个块容器盒同时包含块级盒和行内盒的情况，但实质上在这种情况下会产生一种新的[匿名块盒](anonymous.html)解决该问题。
+> **一个块容器盒只包含其他块级盒，或生成一个行内格式化上下文只包含行内盒。** 或许一段代码中某一个块容器盒同时包含块级盒和行内盒的情况，但实质上在这种情况下会产生一种新的[匿名块盒](./code/anonymous.html)解决该问题。
 
 ## [使用 display: inline-block](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/The_box_model#%E5%9D%97%E7%BA%A7%E7%9B%92%E5%AD%90%EF%BC%88block_box%EF%BC%89%E5%92%8C_%E5%86%85%E8%81%94%E7%9B%92%E5%AD%90%EF%BC%88inline_box%EF%BC%89#使用_display_inline-block)
 
@@ -417,7 +420,7 @@ display 有一个特殊的值，它在内联和块之间提供了一个中间状
 
 **注意事项：**
 
-- **空白折叠：** [HTML 中换行编写行内元素，排版会出现 5px 空隙](5px-gap.html)
+- **空白折叠：** [HTML 中换行编写行内元素，排版会出现 5px 空隙](./code/5px-gap.html)
 - **高矮不齐：** 行内元素统一以底边垂直对齐
 - **自动换行：** 排版若一行无法完成则换行接着排版
 

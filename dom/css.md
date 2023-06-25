@@ -1,11 +1,15 @@
 # CSS<!-- omit in toc -->
 
+- [浏览器 API](#浏览器-api)
 - [设置元素节点的 style 属性](#设置元素节点的-style-属性)
 - [驼峰直接读写](#驼峰直接读写)
 - [CAN I USE](#can-i-use)
 - [window.getComputedStyle](#windowgetcomputedstyle)
 - [elem.style.cssText](#elemstylecsstext)
-- [className 和 classList](#classname-和-classlist)
+
+## 浏览器 API
+
+> [CSSOM](https://www.bilibili.com/video/BV11e4y1W7CF?p=77&vd_source=c4234488bc8659e17c631716b9036762)
 
 ## 设置元素节点的 style 属性
 
@@ -91,17 +95,3 @@ divStyle.cssText = ''
 ```
 
 > ⚠️ 我们很少使用这个属性，因为这样的赋值会删除所有现有样式：它不是进行添加，而是替换它们。有时可能会删除所需的内容。
-
-## className 和 classList
-
-对于类属性，引入了看起来类似的属性 "className"：`elem.className` 对应于 "class" 特性（attribute）。
-
-如果我们对 `elem.className` 进行赋值，它将替换类中的整个字符串。
-
-这里还有另一个属性：`elem.classList`。`elem.classList` 是一个特殊的对象，它具有 `add / remove / toggle` 单个类的方法。
-
-- `elem.classList.add/remove(class)` — 添加/移除类。
-- `elem.classList.toggle(class)` — 如果类不存在就添加类，存在就移除它。
-- `elem.classList.contains(class)` — 检查给定类，返回 `true/false`。
-
-此外，`classList` 是可迭代的。

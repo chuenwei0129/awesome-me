@@ -34,7 +34,7 @@
 
 > React is not reactive. Vue is not only view.
 
-- ![](https://img.shields.io/badge/React-blue.svg) [React 文档摆烂不是一天两天了。](react/react.md)
+- `[React]` [React 文档摆烂不是一天两天了。](react/react.md)
 <!-- - `[LeetCode]` [程序员界的《五年高考，三年模拟》](algorithms/leetcode.md) -->
 <!-- - 一个充满了既神奇又无用的python知识的合集。为什么要研究这些？因为它就在那儿呀！ -->
 - `[Hacker]` 都什么年代了，还再写传统 JS
