@@ -13,7 +13,6 @@
 - [箭头函数](#箭头函数)
 - [函数参数的尾逗号](#函数参数的尾逗号)
 - [Function.prototype.toString()](#functionprototypetostring)
-- [catch 语句可省略参数](#catch-语句可省略参数)
 
 ## 函数对象，命名函数表达式
 
@@ -298,14 +297,4 @@ console.log(func.toString())
 // function func(x, y = 'b') {
 //   do something
 // }
-```
-
-## catch 语句可省略参数
-
-```js
-try {
-  // ...
-} catch {
-  // ...
-}
 ```

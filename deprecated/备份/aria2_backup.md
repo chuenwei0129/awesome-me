@@ -11,6 +11,7 @@ mkdir ~/.aria2 && cd ~/.aria2
 touch aria2.conf
 touch aria2.session
 ```
+
 编辑配置文件`aria2.conf`
 
 - [设置文件详解](#file-aria2-template-conf)
@@ -23,6 +24,7 @@ touch aria2.session
 - 已经添加 BT tracker，更多详见 [XIU2/TrackersListCollection](https://trackerslist.com/#/zh)
 
 ## 设置为macOS的开机启动
+
 > 参考: [控制macOS的开机启动](https://www.jianshu.com/p/eee8a7de179c)
 
 ### 创建用户启动文件
@@ -30,6 +32,7 @@ touch aria2.session
 ```bash
 touch ~/Library/LaunchAgents/aria2.plist
 ```
+
 写入如下
 
 ```xml
@@ -52,6 +55,7 @@ touch ~/Library/LaunchAgents/aria2.plist
 </dict>
 </plist>
 ```
+
 > 注意: 修改`WorkingDirectory`目录
 
 ```bash
@@ -84,11 +88,13 @@ launchctl stop aria2
 ## 添加自动更新`BT tracker`功能
 
 ### 创建`trackers-list-aria2.sh`脚本
+
 > 参考: [Aria2 bt-tracker跟踪服务器列表自动更新](https://www.feng.ee/aria2-trackers-auto-update.html)
 
 脚本内容详见: [trackers-list-aria2.sh](#file-trackers-list-aria2-sh), 脚本放置到如`~/.aria2/`
 
 设置运行权限:
+
 ```bash
 chmod +x ~/.aria2/trackers-list-aria2.sh
 ```

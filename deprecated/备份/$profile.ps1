@@ -29,11 +29,11 @@ Import-Module Get-ChildItemColor
 
 #-------------------------------   Set Alias BEGIN    -------------------------------
 
-If (-Not (Test-Path Variable:PSise)) {  
+If (-Not (Test-Path Variable:PSise)) {
     # Only run this in the console and not in the ISE
 
     Import-Module Get-ChildItemColor
-    
+
     Set-Alias ls Get-ChildItem -option AllScope
     Set-Alias l Get-ChildItemColorFormatWide -option AllScope
 }

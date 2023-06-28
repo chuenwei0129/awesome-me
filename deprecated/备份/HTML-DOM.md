@@ -157,5 +157,5 @@ HTML 允许我们自定义标签，也可以扩展标签的特性，但是我们
 > 阅读原文：[HTML attribute 和 DOM property](https://github.com/justjavac/the-front-end-knowledge-you-may-not-know/blob/master/archives/015-dom-attributes-and-properties.md)
 >
 > 讨论地址：[#15](https://github.com/justjavac/the-front-end-knowledge-you-may-not-know/issues/15)
-> 
+>
 > 如果你想参与讨论，请[点击这里](https://github.com/justjavac/the-front-end-knowledge-you-may-not-know)

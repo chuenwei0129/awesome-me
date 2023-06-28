@@ -152,11 +152,7 @@ proxyData.arr.length = 2 // vue 无法处理
 
   <script>
     const el = document.querySelector('#app')
-
     const data = { num: 0 }
-
-    // 渲染页面，死数据
-    // el.innerHTML = `<h1>${data.num}</h1>`
 
     let target
 
@@ -190,7 +186,6 @@ proxyData.arr.length = 2 // vue 无法处理
     }
 
     // 期望响应式数据变化页面重新渲染，定义一个监控函数，数据一变化就执行页面重新渲染
-    // 第一次 watcher 执行，fn依次执行，并且把 fn 都订阅到 dep 中
     watcher(() => {
       el.innerHTML = `<h1>${vmData.num}</h1>`
     })
@@ -237,7 +232,6 @@ proxyData.arr.length = 2 // vue 无法处理
 `Vue` 的 `data` 上的属性会被添加 `getter` 和 `setter` 属性
 <!-- render函数执行，渲染页面 -->
 当 `Vue Component render` 函数被执⾏的时候，`data` 上会被触碰(touch)，即被读，`getter` ⽅法会被调⽤，此时 `Vue` 会去记录此 `Vue component` 所依赖的所有 `data`(这⼀过程被称为依赖收集)
-<!-- 包括依赖父组件 props 的子组件也会更新，更新组件是通过 dom diff 更新的，依赖收集仅提供通知作用 -->
 `data` 被改动时(主要是⽤户操作)，`setter` ⽅法会被调⽤，此时 `Vue` 会**去通知所有依赖于此 `data` 的组件**去调⽤他们的 `render` 函数进⾏更新
 
 ![](../../Images/vue.png)
@@ -528,7 +522,7 @@ new Vue({
 }
 ```
 
-> 使用 `scoped` 后，父组件的样式将不会渗透到子组件中。不过一个子组件的根节点会同时受其父组件的 `scoped CSS` 和子组件的 `scoped CSS` 的影响。这样设计是为了让父组件可以从布局的角度出发，调整其子组件根元素的样式。
+> 
 
 所以在使用 `scoped` 属性后，父组件只能修改子组件根节点样式，那么怎样才能修改更深层级的子元素呢？
 
@@ -539,7 +533,7 @@ new Vue({
 我们可以使用 `>>>` 操作符
 
 ```html
-<style scoped> 
+<style scoped>
   .a >>> .b {
     color: red;
   }

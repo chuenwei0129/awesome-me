@@ -97,5 +97,4 @@ The problem is, MacOS is setting an “archive flag” on every sd-card mounted 
 
 ## 白嫖网站
 
-- <https://xxxxx520.com//>
-- <https://www.vgter.com/>
+> <https://xxxxx525.com/>

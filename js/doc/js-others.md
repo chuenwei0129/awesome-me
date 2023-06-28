@@ -8,6 +8,7 @@
 - [JavaScript 里听说区分函数和方法，而 Java 里只听说过方法，到底有什么区别？](#javascript-里听说区分函数和方法而-java-里只听说过方法到底有什么区别)
 - [下列代码为什么会产生 'super' keyword unexpected here 的错误？](#下列代码为什么会产生-super-keyword-unexpected-here-的错误)
 - [JSON 方法](#json-方法)
+- [catch 语句可省略参数](#catch-语句可省略参数)
 - [ES6 提出 class 关键字是希望解决什么问题？它是不是鸡肋？](#es6-提出-class-关键字是希望解决什么问题它是不是鸡肋)
 - [为什么 Redux 判断 PlainObject 的写法这么复杂？](#为什么-redux-判断-plainobject-的写法这么复杂)
 - [JavaScript 语句后应该加分号么？](#javascript-语句后应该加分号么)
@@ -287,6 +288,18 @@ place:        [object Object]
 number:       23
 occupiedBy: [object Object]
 */
+```
+
+## catch 语句可省略参数
+
+> [在 JavaScript 中用 try/catch 是不是很 low？](https://www.zhihu.com/question/264259255)
+
+```js
+try {
+  // ...
+} catch {
+  // ...
+}
 ```
 
 ## [ES6 提出 class 关键字是希望解决什么问题？它是不是鸡肋？](https://www.zhihu.com/question/432832293)
