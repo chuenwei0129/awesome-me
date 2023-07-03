@@ -1,7 +1,5 @@
 # TypeScript 学习笔记<!-- omit in toc -->
 
-> You mastered Typescript but you're still not her type.
-
 - [醍醐灌顶](#醍醐灌顶)
 - [TypeScript 新特性](#typescript-新特性)
 - [TypeScript 深入](#typescript-深入)
@@ -18,7 +16,7 @@
 - [TypeScript 类型体操天花板，用类型运算写一个 Lisp 解释器](https://zhuanlan.zhihu.com/p/427309936)
 - [巧妙利用 TypeScript 模块声明帮助你解决声明拓展](https://zhuanlan.zhihu.com/p/542379032)
 - [ts 如何定义一个不定长函数数组类型符合要求：后一个函数的参数类型总是前一个函数的返回值的类型？](https://www.zhihu.com/question/531069859)
-- [如何在 React 中完美运用 TypeScript？](https://juejin.cn/post/6910863689260204039)
+<!-- - [如何在 React 中完美运用 TypeScript？](https://juejin.cn/post/6910863689260204039) -->
 
 ## [TypeScript 新特性](https://www.zhihu.com/column/c_1446787480888053760)
 
