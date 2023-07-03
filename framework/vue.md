@@ -60,9 +60,12 @@
 
 ## @hook
 
-> [Vue官方文档里没告诉你的神秘钩子 —— @hook](ttps://juejin.cn/post/7006616545119961101)
+> [Vue官方文档里没告诉你的神秘钩子 —— @hook](https://juejin.cn/post/7006616545119961101)
 
 ## scoped
+
+<!-- 使用 `scoped` 后，父组件的样式将不会渗透到子组件中。不过一个子组件的根节点会同时受其父组件的 `scoped CSS` 和子组件的 `scoped CSS` 的影响。这样设计是为了让父组件可以从布局的角度出发，调整其子组件根元素的样式。
+所以在使用 `scoped` 属性后，父组件只能修改子组件根节点样式，那么怎样才能修改更深层级的子元素呢？ -->
 
 > [不只懂 Vue 語法：請說明 style 裏的 scoped、deep selector 的作用？](https://ithelp.ithome.com.tw/articles/10266005?sc=rss.iron)
 
@@ -94,74 +97,9 @@
 - [历时一个月，2.6W字！50+Vue经典面试题源码级详解，你值得收藏！](https://juejin.cn/post/7097067108663558151#heading-0)
 - [又一个月，1.5W字！50+Vue经典面试题源码级详解，完结篇！](https://juejin.cn/post/7115055320913117220#heading-0)
 
-
-<!-- 使用 `scoped` 后，父组件的样式将不会渗透到子组件中。不过一个子组件的根节点会同时受其父组件的 `scoped CSS` 和子组件的 `scoped CSS` 的影响。这样设计是为了让父组件可以从布局的角度出发，调整其子组件根元素的样式。
-
-所以在使用 `scoped` 属性后，父组件只能修改子组件根节点样式，那么怎样才能修改更深层级的子元素呢？ -->
-
 ## 文档速查
 
 - [事件处理](https://v2.cn.vuejs.org/v2/guide/events.html)
 - [表单输入绑定](https://v2.cn.vuejs.org/v2/guide/forms.html)
 - [程序化的事件侦听器](https://v2.cn.vuejs.org/v2/guide/components-edge-cases.html#%E7%A8%8B%E5%BA%8F%E5%8C%96%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%BE%A6%E5%90%AC%E5%99%A8)
 - [自定义事件](https://v2.cn.vuejs.org/v2/guide/components-custom-events.html)
-
-## 组件拓展
-
-按照**逻辑扩展**和**内容扩展**来列举
-
-<!-- react 复用是高阶函数，class 继承 -->
-<!-- mixins：类似于两个对象合并，合并跪着类似于 config 文件，mixin 相当于全局变量。slots：renderProps -->
-<!-- 组件整个复用，组件的逻辑复用，组件的一部分动态变化，粒度不同的复用 -->
-- 逻辑扩展有：mixins
-- 内容扩展有 slots
-
-直接给一个数组项赋值，Vue 能检测到变化吗？
-由于 JavaScript 的限制，Vue 不能检测到以下数组的变动：
-
-当你利用索引直接设置一个数组项时，例如：vm.items[indexOfItem] = newValue
-当你修改数组的长度时，例如：vm.items.length = newLength
-
-为了解决第一个问题，Vue 提供了以下操作方法：
-vim复制代码// Vue.set
-Vue.set(vm.items, indexOfItem, newValue)
-// vm.$set，Vue.set的一个别名
-vm.$set(vm.items, indexOfItem, newValue)
-// Array.prototype.splice
-vm.items.splice(indexOfItem, 1, newValue)
-为了解决第二个问题，Vue 提供了以下操作方法：
-haxe复制代码// Array.prototype.splice
-vm.items.splice(newLength)
-
-@hook
-
-
-Vue有一组默认指令，比如v-model或v-for，同时Vue也允许用户注册自定义指令来扩展Vue能力
-
-
-自定义指令主要完成一些可复用低层级DOM操作
-
-
-使用自定义指令分为定义、注册和使用三步：
-
-定义自定义指令有两种方式：对象和函数形式，前者类似组件定义，有各种生命周期；后者只会在mounted和updated时执行
-注册自定义指令类似组件，可以使用app.directive()全局注册，使用{directives:{xxx}}局部注册
-使用时在注册名称前加上v-即可，比如v-focus
-
-
-
-我在项目中常用到一些自定义指令，例如：
-
-复制粘贴 v-copy
-长按 v-longpress
-防抖 v-debounce
-图片懒加载 v-lazy
-按钮权限 v-premission
-页面水印 v-waterMarker
-拖拽指令 v-draggable
-
-
-
-vue3中指令定义发生了比较大的变化，主要是钩子的名称保持和组件一致，这样开发人员容易记忆，不易犯错。另外在v3.2之后，可以在setup中以一个小写v开头方便的定义自定义指令，更简单了！
-
-
