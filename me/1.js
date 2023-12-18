@@ -40,3 +40,5 @@ brew bundle：[https://github.com/Homebrew/homebrew-bundle](https://github.com/H
 ![11](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/11.png)
 
 crate a picture:super cute man, Popmart style, Disney style::4, Pixar style::4, black hair, big eyes, glasses, happy face, young man face, 25 years old look, pastel color, clean background, fine luster::3, soft light, 3D render, Soft focus, o blender, IP. best quality. 8k - ar 1:1, --V 5
+
+// 1

@@ -52,6 +52,7 @@
 ## JSX
 
 - [渲染函数 & JSX](https://v2.cn.vuejs.org/v2/guide/render-function.html)
+- [JSX for Vue2](https://github.com/vuejs/jsx-vue2)
 - [Vue2：在 Vue 中使用 JSX 的正确姿势](https://juejin.cn/post/6844903620689788936)
 
 ## Vue.extend

@@ -1,37 +1,76 @@
 # React 文档摆烂不是一天两天了。<!-- omit in toc -->
 
-> 别问，问就是程序员最擅长写[文档](https://beta.reactjs.org/)。
+> 别问，问就是程序员最擅长写[文档](https://zh-hans.react.dev/)。
+![Alt text](https://pica.zhimg.com/v2-7c52c151a90f8fedc7516c0798b87067_r.jpg?source%253Dc8b7c179)
 
-## 读文档
+![Alt text](https://pic1.zhimg.com/v2-bf197471466a160f3c837810e78d836c_r.jpg?source%253Dc8b7c179)
 
-## 状态管理
+https://zhuanlan.zhihu.com/p/643489789
+https://zhuanlan.zhihu.com/p/641072335
+https://zhuanlan.zhihu.com/p/624133891
+https://zhuanlan.zhihu.com/p/623324430
+https://zhuanlan.zhihu.com/p/608897758
+https://zhuanlan.zhihu.com/p/544288732
+https://zhuanlan.zhihu.com/p/529491295
+https://zhuanlan.zhihu.com/p/528040023
+https://zhuanlan.zhihu.com/p/505189023
+https://zhuanlan.zhihu.com/p/479245926
+https://zhuanlan.zhihu.com/p/474717897
+https://zhuanlan.zhihu.com/p/464875327
+https://zhuanlan.zhihu.com/p/440756446
+https://zhuanlan.zhihu.com/p/433096562
+https://zhuanlan.zhihu.com/p/383535347
+https://zhuanlan.zhihu.com/p/382498133
+https://zhuanlan.zhihu.com/p/382216973
+symbol只能运行时唯一，人家要的是静态唯一，可传输的值
+symbol在stringify的时候就失效了，补水这一步没办法做的
 
-> [Vuex、Flux、Redux、Redux-saga、Dva、MobX](https://zhuanlan.zhihu.com/p/53599723)
 
-```js
-// flux
-const newState = action(state)
+ErrorBoundary可以捕获子孙组件中「React工作流程」内的错误。「React工作流程」指：render阶段，即「组件render」、「Diff算法」发生的阶段 commit阶段，即「渲染DOM」、「componentDidMount/Update执行」的阶段 这也是为什么「事件回调中发生的错误」无法被ErrorBoundary捕获 —— 事件回调并不属于「React工作流程」。
 
-// mobx
-// get set / proxy
-const newState = observable(state)
-```
+作者：魔术师卡颂
+链接：https://zhuanlan.zhihu.com/p/528040023
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
-## 从 DOM 谈起：前端为什么操作 DOM 是最耗性能的呢？
+作者：魔术师卡颂
+链接：https://zhuanlan.zhihu.com/p/572429000
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
-**其一：** 浏览器的 JavaScript 引擎与 DOM 引擎共享一个主线程。任何 DOM API 调用都要先将 JS 数据结构转为 DOM 数据结构，再挂起 JS 引擎并启动 DOM 引擎，执行过后再把可能的返回值反转数据结构，重启 JS 引擎继续执行。**这种上下文切换很耗性能**，类似的还有单机进程间调用、远程过程调用等。
+React性能确实不算太好，这是不争的事实。原因在于React自顶向下的更新机制。每次状态更新，React都会从根组件开始深度优先遍历整棵组件树。既然遍历方式是固定的，那么如何优化性能呢？答案是「寻找遍历时可以跳过的子树」。什么样的子树可以跳过遍历呢？显然是「没有发生变化的子树」。在React中，「变化」主要由下面3个要素造成：state props context 他们都可能改变UI，或者触发useEffect。所以，一棵子树中如果存在上述3个要素的改变，可能会发生变化，也就不能跳过遍历。从「变化」的角度，我们再来看看React中的性能优化API，对于下面2个：useMemo useCallback 他们的本质是 —— 减少props的变化。对于下面2个：PureComponent React.memo 他们的本质是 —— 让比较props的方式从「全等比较」变为「浅比较」。状态管理库能做的优化了解了React的性能优化，我们再来看看状态管理库能为「性能优化」做些什么呢。性能瓶颈主要发生在更新时，所以性能优化的方向主要有两个：减少不必要的更新 减少每次更新时要遍历的子树 像Redux语境下的useSelector走的就是第一条路。对于后一条路，「减少更新时遍历的子树」通常意味着「减少上文介绍的3要素的变化」。 PS：黄玄开发的React Forget，是一个「可以产生等效于useMemo、useCallback代码的编译器」，目的就是减少三要素中props的变化。 状态管理库在这方面能发挥的地方很有限，因为不管状态管理库如何巧妙的封装，也无法掩盖「他操作的其实是一个React状态」这一事实。比如，虽然Mobx为React带来了「细粒度更新」，但并不能带来与Vue中「细粒度更新」相匹配的性能，因为Mobx最终触发的是自顶向下的更新。
 
-**其二：** 很多 DOM API 的读写都涉及页面布局的“重新计算”，以确保返回值的准确，涉及样式、结构的还会触发页面“重新绘制”，更耗性能。
+useMemo用来缓存变量props，useCallback用来缓存函数props。
+-------------
+这是什么说法啊？不应该说“useMemo 是用来缓存纯函数的计算结果，useCallback 是用来缓存函数引用”容易理解一点吗？
+
+## 收集资料
+
+- [React中得forwardRef作用是啥,仅仅是因为函数组件不能直接传递ref嘛？](https://www.zhihu.com/question/521311581)
+- [useEffect监听了很多变量怎么办？](https://www.zhihu.com/question/483540101)
+- https://www.zhihu.com/question/26646855/answer/2585077180
+- Suspense https://www.zhihu.com/question/268028123/answer/2339074985
+https://www.zhihu.com/question/434791954/answer/2484760705
+
+## 重读 React 文档
+
+1. [React 元素 vs React 节点](https://zh-hans.react.dev/reference/react/isValidElement#react-elements-vs-react-nodes)
+
+## 从 DOM 谈起：[前端为什么操作 DOM 是最耗性能的呢？](https://www.zhihu.com/question/324992717)
+
+**其一：** 浏览器的 JavaScript 引擎与 DOM 引擎共享一个主线程。任何 DOM API 调用都要先将 JS 数据结构转为 DOM 数据结构，再挂起 JS 引擎并启动 DOM 引擎，执行过后再把可能的返回值反转数据结构，重启 JS 引擎继续执行。**这种上下文切换很耗性能**。
+
+**其二：** 很多 DOM API 的读写都涉及**页面布局的重新计算**，以确保返回值的准确，涉及样式、结构的还会触发**页面重新绘制**，更耗性能。
 
 **综上：** **单次 DOM API 调用性能就不够好**，频繁调用就会迅速积累上述损耗，导致 DOM 引擎占用主线程过久，用户操作不能及时触发 JS 事件回调，让用户感觉卡顿。
 
-所以，解决此问题的方案本质不在于用不用 jQuery、用不用虚拟 DOM，而是 —— **减少不必要的 DOM API 调用。**
+所以，**解决此问题的方案本质不在于用不用 jQuery、用不用虚拟 DOM，而是 —— 减少不必要的 DOM API 调用。**
 
 而减少不必要调用的各种方案，都遵循 **「在 JS 中缓存必要数据，计算界面更新时的阶段数据差异，只提交最终差集」** 的基本思路。
 
 **虚拟 DOM 计算的是最终 DOM 结构的差异，还有的引擎计算的是 DOM 所绑定数据的差异，各有千秋。**
 
-## JSX 是什么？
+## [JSX 是什么？](https://www.zhihu.com/question/271485214/answer/386097473)
 
 HTML tag 书写方式和 JSON 的书写方式是差不多的：**它们都是树形结构**。
 
@@ -49,27 +88,21 @@ DOM 是一个树形结构，这个树形结构对应的就是我们的 HTML tag�
 
 ## [为什么说 immutable 是 React 的核心，如何理解这一概念？](https://www.zhihu.com/question/446377023)
 
-> [Why is mutating state not recommended in React?](https://beta.reactjs.org/learn/updating-objects-in-state#why-is-mutating-state-not-recommended-in-react)
+React 中虚拟 DOM 计算的是最终 DOM 结构的差异，即等价于**如何判断两个对象所有属性是否相等？**
 
-虚拟 DOM 计算的是最终 DOM 结构的差异，即如何**判断两个对象所有属性是否相等**？
+假设设计成 state 对象树是 mutable，可以随时赋值（即不提供 setState），那么定位到具体变化的 state 就需要遍历了，不得不进行深度比较才能发现变化的地方。时间复杂度就上去了。
 
 本质上你可以认为，让 state 的对象树仅接受 immutable 对象子树合并和替换，**是一种避免深度 diff 的技巧。替换的位置就是改动的起始检查位置**。
 
-如果是 state 对象树是 mutable，那么可以随时赋值（即不手动调用 setState），但是定位到变化就需要遍历了，不得不进行深度比较才能发现变化的地方。时间复杂度就上去了。
+那么 React 的默认渲染行为就很容易理解了：**一旦 parent 触发重新渲染那么其 child 也必然跟着触发重新渲染，不管它依赖的 props 有没有变。**
+
+那么提供性能优化也就很有必要了：React 由于只触发更新，然后自上而下递归更新，所以并不能精确控制更新的细粒度，因此 React 引入了一些叫做 ShouldUpdateComponent 的玩意来手动做性能优化。通过 shallow compare 判断 vdom 有没有变来控制组件的更新，但即使是 shallow compare 也不是一个免费的过程 - 它是 `o(n)`。所以把所有的组件都套在 `React.memo`，`PureComponent` 这些 API 里面大概率可能会让你的整体 performance 更差。
 
 **总结：**
 
-immutable 是一个约束。是 React 底层需要的，到了上层使用方就 immutable 完事，好好表达业务逻辑，别挖坑。
+immutable 是一个约束。是 React 底层实现需要的，到了上层使用方就 immutable 完事，好好表达业务逻辑，别挖坑。
 
-> 吐槽：JS 里面所谓 immutable 全靠自觉。
-
-**关于性能优化：**
-
-React 的默认渲染行为是一旦 parent 重新渲染那 child 也更着重新渲染，不管它的 props 有没有变。
-
-性能优化是通过 shallow compare 来判断数据有没有变，但即使是 shallow compare 也不是一个免费的过程 - 它是 `o(n)`。所以把所有的组件都套在 `React.memo`，`PureComponent` 这些 API 里面大概率可能会让你的整体 performance 更差。
-
-## React 15
+## DOM Diff
 
 > [温故知新：手写迷你 react](https://github.com/chuenwei0129/build-my-own-x/blob/main/build-my-own-react/README.md)
 
@@ -134,13 +167,13 @@ document.addEventListener("click", function () {
 
 **API：** [window.requestIdleCallback](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestIdleCallback)
 
-**核心：** 浏览器去在一帧有空闲的情况下，去执行某个低优先级的任务。比如其余任务执行了 10 ms，那么这一帧里就还剩 6.7ms 的时间，那么就会触发 requestIdleCallback 的回调。
+**核心：** 浏览器在一帧有空闲的情况下，去执行某个低优先级的任务。比如其余任务执行了 10 ms，那么这一帧里就还剩 6.7ms 的时间，那么就会触发 requestIdleCallback 的回调。
 
-**假设：** 如果我们把 React 的更新（如 200ms）拆分成一个个小的更新（如 40 个 5ms 的更新），然后每个小更新放到 requestIdleCallback 中执行。那么就意味着这些小更新会在浏览器每一帧的空闲时间去执行。如果一帧里有多余时间就执行，没有多余时间就推到下一帧继续执行。这样的话，更新一直在继续，并且同时还能确保每一帧里的事件如 click，宏任务，微任务，渲染等能够正常执行，也就可以达到用户可交互的目的。
+**假设：** 如果我们把 React 的更新（如 200 ms）拆分成一个个小的更新（如 40 个 5 ms 的更新），然后每个小更新放到 requestIdleCallback 中执行。那么就意味着这些小更新会在浏览器每一帧的空闲时间去执行。如果一帧里有多余时间就执行，没有多余时间就推到下一帧继续执行。这样的话，更新一直在继续，并且同时还能确保每一帧里的事件如 click，宏任务，微任务，渲染等能够正常执行，也就可以达到用户可交互的目的。
 
 **兼容性：** [实现 React requestIdleCallback 调度能力](https://juejin.cn/post/7021506472232583199)
 
-**拓展：**
+**小知识：**
 
 设置 10000 个 `setTimeout(fn, 0)`，并不会阻塞线程，而是浏览器会将这 10000 个回调合理分配到每一帧当中去执行。
 
@@ -157,7 +190,7 @@ Vue 的渲染是走[异步更新队列](https://cn.vuejs.org/v2/guide/reactivity
 - CPU 计算量不大，但 DOM 操作非常复杂（比如说你向页面中插入了十万个节点）。这种场景下不管你做不做时间分片，页面都会很卡。
 - CPU 计算量非常大。理论上时间分片在这种场景里会有较大收益，但是人机交互研究表明，除了动画之外，大部分用户不会觉得 10 毫秒和 100 毫秒有很大区别。
 
-## Fiber 架构
+## Fiber
 
 React 传统的 Reconciler 是通过类似于虚拟 DOM 的方式来进行对比和标记更新。树的结构不能很好满足将更新拆分的需求。因为它一旦发生中断，下次更新时，很难找到上一个节点和下一个节点的信息，虽然有办法能找到，但是相对而言比较麻烦。所以，React 团队引入了 Fiber 来解决这一问题。
 
@@ -171,27 +204,21 @@ React 传统的 Reconciler 是通过类似于虚拟 DOM 的方式来进行对比
 
 如果节点 2 发生中断，普通树结构由于只保存了 3，4 的索引，恢复中断时，其它节点信息就会丢失，而链表树就能够指针把其它节点的信息都找回来。
 
-## 虚拟 DOM 转 Fiber
-
-<!-- **重点：** `effectList` 构建的顺序 -->
-
-**DOM 结构：**
-
-```html
-const element = (
-<div id="A1">
-  <div id="B1">
-    <div id="C1"></div>
-    <div id="C2"></div>
-  </div>
-  <div id="B2"></div>
-</div>
-)
-```
-
 **实现：**
 
 ```js
+// html 结构
+// const element = (
+// <div id="A1">
+//   <div id="B1">
+//     <div id="C1"></div>
+//     <div id="C2"></div>
+//   </div>
+//   <div id="B2"></div>
+// </div>
+// )
+
+// 虚拟 dom
 const vnode = {
   type: 'div',
   props: {
@@ -230,6 +257,7 @@ const vnode = {
   }
 }
 
+// 实现 fiber
 const PLACEMENT = 'PLACEMENT'
 
 let rootFiber = {
@@ -343,244 +371,273 @@ function completeWork(workingInProgressFiber) {
 requestIdleCallback(workloop)
 ```
 
-## React 组件更新策略
+## Hooks
 
-### React 组件 render 需要满足的条件
+  > React 的 hooks 是在 fiber 之后出现的特性，所以很多人误以为 hooks 是必须依赖 fiber 才能实现的，其实并不是，**它们俩没啥必然联系。**
 
-`React` 创建 `fiber` 树时，每个组件对应的 `fiber` 都是通过如下两个逻辑之一创建的：
+**视频：**
 
-- **render**：即调用 `render` 函数，根据返回的 `JSX` 创建新的 `fiber`
-- **bailout**：即满足一定条件时，`React` 判断该组件在更新前后没有发生变化，则**复用**该组件在上一次更新的 `fiber` 作为本次更新的 `fiber`
+> [Can Swyx recreate React Hooks and useState in under 30 min? - JSConf.Asia](https://www.youtube.com/watch?v=KJP1E-Y-xyo)
 
-> 可以看到，当命中 `bailout` 逻辑时，是不会调用 `render` 函数的
+**文章：**
 
-### bailout 需要满足的条件
+> [29 行代码深入 React Hooks 原理](https://zhuanlan.zhihu.com/p/127255755)
 
-什么情况下会进入 `bailout` 逻辑？当同时满足如下 `4` 个条件时：
+## useState
 
-1. `oldProps === newProps`
-2. `context` 没有变化，即 `context` 的 `value` 没有变化。
-3. `workInProgress.type === current.type` 更新前后 `fiber.type` 是否变化，比如 `div` 是否变为 `p`
-4. `!includesSomeLane(renderLanes, updateLanes)` 即当前 `fiber` 上是否存在更新，如果存在那么更新的优先级是否和本次整棵 `fiber` 树调度的优先级一致？**说人话就是，当前组件是否触发更新（通过调用 setState）**
+> [关于 useState 的一切](https://zhuanlan.zhihu.com/p/200855720)
 
-**关于 `oldProps === newProps`：**
+## useEffect
 
-注意这里是**全等比较**。
-
-我们知道组件 `render` 会返回 `JSX`，`JSX` 是 `React.createElement` 的语法糖。
-
-所以 `render` 的返回结果实际上是 `React.createElement` 的执行结果，即一个包含 `props` 属性的对象。
-
-> 即使本次更新与上次更新 `props` 中每一项参数都没有变化，但是本次更新是 `React.createElement` 的执行结果，是一个全新的 `props` 引用，所以 `oldProps !== newProps`
-
-所以 `React` 未进行优化的心智模型可以简化成，**父组件渲染，子组件必然渲染**
-
-如果我们使用了 `PureComponent` 或 `Memo`，那么在判断是进入 `render` 还是 `bailout` 时，不会判断 `oldProps` 与 `newProps` 是否全等，而是会对 `props` 内每个属性进行浅比较。
-
-当使用 `shouldComponentUpdate`，这个组件 bailout 的条件会产生变化：
-
-```js
---oldProps === newProps
-++SCU === false
-```
-
-### 优化 fiber 树
-
-> **React 每次更新都会重新生成一棵 fiber 树**，性能确实不算很棒，所以内部做了一些优化。
-
-fiber 树生成过程中并不是所有组件都会 render，有些满足优化条件的组件会走 bailout 逻辑。
-
-但如果一棵 fiber 子树所有节点都没有更新，即使所有子孙 fiber 都走 bailout 逻辑，还是有遍历的成本。
-
-所以，**在 bailout 中，会检查**该 fiber 的所有子孙 fiber 是否满足条件 4（该检查时间复杂度 O(1)）。
-
-**如果所有子孙 fiber 本次都没有更新需要执行，则 bailout 会直接返回 null。整棵子树都被跳过。该 fiber 子树也不会再继续遍历生成。**
-
-**不会 bailout 也不会 render，就像不存在一样**。对应的 DOM 不会产生任何变化。
-
-> **拓展知识：** 老 Context API 的实现依赖 fiber 树的遍历，Context 对应数据会保存在栈中。在递阶段，Context 不断入栈，所以 Consumer 可以通过 Context 栈向上找到对应的 context value。在归阶段，Context 不断出栈。
-
-所以当我们使用 shouldComponentUpdate 或者其它性能优化时，可能会导致
-：**组件命中 bailout 逻辑，如果组件的子树满足 bailout 的条件 4 的话那么其 fiber 子树不会再继续遍历生成。Context 的入栈、出栈就失效了。**
-
-### Demo 分析
-
-<!-- 根 fiber 必走 bailout（函数组件重新 render 才会返回新 jsx），其子 fiber 如果有满足 4 的 子 fiber 就不处理，其它走 bailout 和 render 逻辑-->
+- [关于 useEffect 的一切](https://zhuanlan.zhihu.com/p/208546124)
 
 ```jsx
-function Child() {
-  // 点击 Parent div 不会打印 child render!
-  console.log('child render!')
-  return <div>Son</div>
+import * as React from 'react';
+
+export default function App() {
+  console.log('App render');
+
+  React.useEffect(() => {
+    console.log('App useEffect');
+  });
+
+  React.useLayoutEffect(() => {
+    console.log('App useLayoutEffect');
+  });
+
+  return <Parent />;
 }
 
-function Parent(props) {
-  const [count, setCount] = React.useState(0)
+const Parent = () => {
+  console.log('Parent render');
+
+  React.useEffect(() => {
+    console.log('Parent useEffect');
+  });
+
+  React.useLayoutEffect(() => {
+    console.log('Parent useLayoutEffect');
+  });
+
+  return <div>Parent</div>;
+};
+
+// 协调器的工作流程是使用遍历实现的递归。所以可以分为递与归两个阶段。
+// useLayoutEffect 是在 UI 绘制之前（虚拟 DOM 准备完成）同步调用，会阻塞 UI 绘制。
+// useEffect 是在渲染完成后异步执行，而类组件 componentDidMount 是在渲染完成后同步执行，所以他们是不同的。
+// 与 componentDidMount 更类似的是 useLayoutEffect，他会在渲染完成后同步执行。
+
+// 执行顺序
+// 递
+// App render
+// Parent render
+// 归
+// Parent useLayoutEffect
+// App useLayoutEffect
+// 渲染完成后异步执行
+// Parent useEffect
+// App useEffect
+```
+
+## useRef
+
+> [关于 ref 的一切](https://zhuanlan.zhihu.com/p/215745959)
+
+### forwardRef
+
+- 通过 forwardRef 可以将 ref 转发给子组件
+- 子组件拿到父组件创建的 ref, 绑定到自己的某一个元素中
+
+```jsx
+import { useRef, forwardRef } from 'react'
+
+const JMInput = forwardRef((props, ref) => {
+  return <input type="text" ref={ref} />
+})
+
+export default function ForwardDemo() {
+  const inputRef = useRef()
+  const getFocus = () => {
+    inputRef.current.focus()
+  }
 
   return (
-    <div
-      onClick={() => {
-        setCount(count + 1)
-      }}
-    >
-      count:{count}
-      {props.children}
+    <div>
+      <button onClick={getFocus}>聚焦</button>
+      <JMInput ref={inputRef} />
+    </div>
+  )
+}
+```
+
+forwardRef 的做法本身没有什么问题, 但是我们是将子组件的 DOM 直接暴露给了父组件:
+
+- 直接暴露给父组件带来的问题是某些情况的不可控
+- 父组件可以拿到 DOM 后进行任意的操作
+- 我们只是希望父组件可以操作的 focus，其他并不希望它随意操作其他方法
+
+### useImperativeHandle
+
+```js
+// useImperativeHandle(ref, createHandle, [deps])
+import { useRef, forwardRef, useImperativeHandle } from 'react'
+
+const JMInput = forwardRef((props, ref) => {
+  const inputRef = useRef()
+  // 作用: 减少父组件获取的 DOM 元素属性, 只暴露给父组件需要用到的 DOM 方法
+  // 参数 1: 父组件传递的 ref 属性
+  // 参数 2: 返回一个对象，父组件通过 ref.current 调用对象中方法
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      inputRef.current.focus()
+    }
+  }))
+  return <input type="text" ref={inputRef} />
+})
+
+export default function ImperativeHandleDemo() {
+  // 为什么使用: 因为使用 forward + useRef 获取子函数式组件 DOM 时，获取到的 dom 属性暴露的太多了
+  // 解决: 在子函数式组件中定义父组件需要进行 DOM 操作，减少获取 DOM 暴露的属性过多
+  const inputRef = useRef()
+
+  return (
+    <div>
+      <button onClick={() => inputRef.current.focus()}>聚焦</button>
+      <JMInput ref={inputRef} />
+    </div>
+  )
+}
+```
+
+## 纯函数
+
+> [React 推荐函数组件是纯函数，但是组件有状态就不可能是纯函数，怎么理解有状态的纯函数？](https://www.zhihu.com/question/537538929)
+
+hooks 在思维模型上只是组件函数的参数的另一种写法，函数组件只是一个接受参数 `(props, [state1, setState1], [state2, setState2], ...restHooks)` 然后返回 jsx 的纯函数。
+
+**那 hooks 不能放 if 里面就是自然而然的了 —— 一个函数有多少个参数、各个参数的顺序是什么，这应当是永远不会变的，不能允许它在每次调用时都可能不同。**
+
+函数组件并不会调用 `setState`，调用 `setState` 的是用户行为触发的回调函数，它已经脱离了函数组件本身的作用域了。
+
+```js
+function pure() {
+  return () => console.log(...)
+}
+```
+
+不能说因为 `pure` 返回的回调函数有副作用，所以 `pure` 本身有副作用。
+
+## 闭包陷阱
+
+```js
+function Chat() {
+  const [text, setText] = useState('')
+
+  const onClick = useCallback(() => {
+    // 只执行一次 text 是第一次执行时的值 text === ''
+    sendMessage(text)
+    // 添加 text 依赖项，每当 text 变化，useCallback 会返回一个全新的 onClick 引用，但这样就失去了 useCallback「缓存函数引用」的作用。
+  }, [])
+
+  return <SendButton onClick={onClick} />
+}
+```
+
+我们期望点击后 `sendMessage` 能传递 `text` 的最新值。
+
+然而实际上，由于回调函数被 `useCallback` 缓存，形成闭包，所以点击的效果始终是 `sendMessage('')`。
+
+这就是：**「闭包陷阱」**。
+
+> [React 官方团队出手，补齐原生 Hook 短板](https://zhuanlan.zhihu.com/p/509972998)
+
+## 事件
+
+> [合成事件层太厚了](https://www.zhihu.com/question/316425133/answer/673451425)
+
+在 v17 之前，整个应用的事件会冒泡到同一个根节点（html DOM 节点）。而在 v17 之后，每个应用的事件都会冒泡到该应用自己的根节点（ReactDOM.render 挂载的节点）。
+
+## 组件
+
+- [React 源码中如何实现受控组件](https://zhuanlan.zhihu.com/p/267008933)
+- [React 组件的受控与非受控](https://zhuanlan.zhihu.com/p/536322574)
+- [React 泛型组件是什么？](https://mp.weixin.qq.com/s?__biz=MzIxNzUzOTk1MQ==&mid=2247484006&idx=1&sn=a2bdb658a24c648af72125f4d9b1a632&chksm=97f97666a08eff709b40bd49e58738682c37716cdc2b8e999881fb93e67d75bba32ff2cb7e70&scene=178&cur_album_id=2291981265736302593#rd)
+
+## StrictMode
+
+对于 react 而言，它推崇的是渲染结果只与 state 和 props 有关，也就是说，`result = f(props, state)`。
+
+```js
+let count = 0
+
+function App() {
+  const [state, setState] = useState(1)
+
+  count++
+  console.log(`I have run ${count} time(s)!`)
+  return (
+    <div>
+      <button onClick={() => setState(e => e + 1)}>{state}</button>
     </div>
   )
 }
 
-function App() {
-  return (
-    <Parent>
-      <Child />
-    </Parent>
-  )
-}
-
-ReactDOM.render(<App />, document.querySelector('#root'))
+export default App
 ```
 
-本次更新开始时，`Fiber` 树存在如下 2 个 `fiber`：
+React 在开发模式下会刻意执行两次渲染，如果传的 state 和 props 是一样的，渲染结果应该是一致的。如果不一致的话，那么可能你代码里存在了副作用，比如例子中，依赖了外部的 count，这就可能导致重复渲染的结果不一致。而 react 这种做法就是想在开发者在开发的时候就发现这个隐患并解决。
 
-```js
-FiberRootNode
-|
-RootFiber
-|
-```
+> [React 18: useEffect Double Call，Mistake or Awesome？](https://www.youtube.com/watch?v=j8s01ThR7bQ)
 
-其中 `FiberRootNode` 是整个应用的根节点，`RootFiber` 是调用 `ReactDOM.render` 创建的 `fiber`。
+这就跟 get 请求一样，同样参数的两次 get 请求，返回的结果应该是一样的，叫做幂等原则。render 函数应该也是幂等的。
 
-> 之所以要区分 fiberRootNode 与 rootFiber，是因为在应用中我们可以多次调用 ReactDOM.render 渲染不同的组件树，他们会拥有不同的 rootFiber。但是整个应用的根节点只有一个，那就是 fiberRootNode。
+只有启用了 React.StrictMode 才会有这样的行为。
 
-首先，`RootFiber` 会进入 `bailout` 的逻辑，所以返回的 `App fiber` 和更新前是一致的。
+> [什么是严格模式](https://ahooks.js.org/zh-CN/guide/blog/strict/)
 
-```js
-FiberRootNode
-|
-RootFiber
-|
-App fiber
-```
+## 双缓存 Fiber 树
 
-由于 `App fiber` 是 `RootFiber` 走 `bailout` 逻辑返回的，所以对于 `App fiber`，`oldProps === newProps`。并且 `bailout` 剩下 3 个条件也满足。
+> 在内存中构建并直接替换的技术叫做双缓存 (opens new window)。
 
-所以 `App fiber` 也会走 `bailout` 逻辑，返回 `Parent fiber`。
+**在 React 中最多会同时存在两棵 Fiber 树。当前屏幕上显示内容对应的 Fiber 树称为 current Fiber 树，正在内存中构建的 Fiber 树称为 workInProgress Fiber 树。**
 
-```js
-FiberRootNode
-|
-RootFiber
-|
-App fiber
-|
-Parent fiber
-```
+React 使用 **双缓存** 来完成 Fiber 树的构建与替换——对应着 DOM 树的创建与更新。
 
-由于更新是 `Parent fiber` 触发的，所以他不满足条件 4，会走 `render` 的逻辑。
+首次执行 `ReactDOM.render` 会创建 fiberRootNode（源码中叫 fiberRoot）和 rootFiber。其中 fiberRootNode 是整个应用的根节点，rootFiber 是 `<App/>` 所在组件树的根节点。
 
-接下来是关键
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/fe-engineering/rootfiber.png)
 
-如果 `render` 返回的 `Child` 是如下形式：
+**流程：**
 
-```jsx
-<Child />
-```
+> **mount-render：**
 
-会编译为
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/fe-engineering/workInProgressFiber.png)
 
-```js
-React.createElement(Child, null)
-```
+> **mount-commit：**
 
-执行后返回虚拟 DOM 对象。
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/fe-engineering/wipTreeFinish.png)
 
-由于 `props` 对象的引用改变，`oldProps !== newProps`。会走 `render` 逻辑。
+> **update-render：**
 
-但是在 `Demo` 中 `Child` 是如下形式：
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/fe-engineering/wipTreeUpdate.png)
 
-```jsx
-{
-  props.children
-}
-```
+> **update-commit：**
 
-其中，`props.children` 是 `Child` 对应的 `JSX`，而这里的 `props` 是 `App fiber` 走 `bailout` 逻辑后返回的。
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/fe-engineering/currentTreeUpdate.png)
 
-所以 `Child` 对应的 `JSX` 与上次更新时一致，`JSX` 中保存的 `props` 也就一致，满足条件 1。
+## ErrorBoundary
 
-可以看到，`Child` 满足 `bailout` 的所有条件，所以不会 `render`。
+> [为什么 Hook 没有 ErrorBoundary？](https://zhuanlan.zhihu.com/p/528040023)
+
+## Portals
+
+> [react 中的神器-- 渲染到父组件之外的 dom 用什么？](https://www.bilibili.com/video/BV15R4y1x75Y?spm_id_from=333.999.0.0&vd_source=c4234488bc8659e17c631716b9036762)
 
 ## 并发调度
-
-### 更新优先级
-
-React 通过 lane 的方式为每个更新分配了相关优先级。lane 可以简单理解为一些数字，数值越小，表明优先级越高。
-
-假如有两个更新，他们同时对 App 组件的一个 count 属性更新：
-
-```jsx
-<p>You clicked {count} times</p>
-<button onClick={() => setCount(count + 1)}>
-  A按钮
-</button>
-<button onClick={() => startTransition(() => { setCount(count + 1) })}>
-  B按钮
-</button>
-```
-
-- 一个是 `A` 按钮：`click` 事件触发的更新，叫做 `A 更新`，对应于 `SyncLane`。
-- 一个是 `B` 按钮：`startTransition` 触发的更新，叫做 `B 更新`，对应于 `TransitionLane1`。
-
-假设 `B` 按钮先点击，`B 更新`开始，按照之前提到时间切片的形式进行更新。中途触发了 `A` 按钮点击，进而触发 `A 更新`。那么此时就会通过 `lane` 进行对比，发现 `DefaultLane` 优先级高于 `TransitionLane1`。此时会中断 `B 更新`，开始 `A 更新`。直到 `A` 更新完成时，再重新开始 `B` 更新。
-
-**那么 React 是如何区分 B 更新对 App 的 count 的更改和 A 更新中对 count 的更改呢？**
-
-实际上，在每次更新时，更新 state 的操作会被创建为一个 Update，放到循环链表当中
-
-在更新的时候就会依次去执行这个链表上的操作，从而计算出最终的 state。
-
-每个 Update 里都有一个 lane 属性。该属性标识了当前的这个 Update 的更新优先级，属于哪个更新任务中的操作。
-
-因此当 A 更新在执行的时候，我们在计算 state 的时候，只需要去计算与 A 更新相同 lane 的 update 即可。同样，B 更新开始，也只更新具有同等 lane 级别的 Update，从而达到不同更新的状态互不干扰的效果。
 
 ### Automatic batching
 
 > [给女朋友讲 React18 新特性：Automatic batching](https://zhuanlan.zhihu.com/p/382216973)
-
-批处理：**React 会尝试将同一上下文中触发的更新合并为一个更新**
-
-在 v18 之前，只有事件回调、生命周期回调中的更新会批处理，而在 promise、setTimeout 等异步回调中不会批处理。
-
-```js
-onClick() {
-  setTimeout(() => {
-    // ReactDOM 中使用 unstable_batchedUpdates 方法手动批处理。
-    ReactDOM.unstable_batchedUpdates(() => {
-      this.setState({a: 3});
-      this.setState({a: 4});
-    })
-  })
-}
-```
-
-v18 后，批处理是以更新的「优先级」为依据：
-
-```js
-onClick() {
-  // 属于同一优先级
-  this.setState({a: 3});
-  this.setState({a: 4});
-}
-
-onClick() {
-  setTimeout(() => {
-  // 属于同一优先级
-    this.setState({a: 3});
-    this.setState({a: 4});
-  })
-}
-```
 
 ### tearing
 
@@ -599,6 +656,36 @@ onClick() {
 但是在并发渲染场景下，React 可以让点击发生反应，打断视图渲染。此时很有可能因为时间分片的原因，前 100ms 有一些组件已经完成了渲染，引用的 store 值是蓝色，剩下 300ms 渲染的组件引用的 store 值是红色，这些组件虽然读取同一个数据却显示出不同的值，这种边缘情况就是 “撕裂”。
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/fe-engineering/e758382e98814f5ab364e85ec3524ef9_tplv-k3u1fbpfcp-zoom-in-crop-mark_1304_0_0_0.webp)
+
+## 组件更新策略
+
+> [React 组件到底什么时候 render 啊](https://zhuanlan.zhihu.com/p/268158686)
+
+**小知识 1：**
+
+老 Context API 的实现依赖 fiber 树的遍历，Context 对应数据会保存在栈中。在递阶段，Context 不断入栈，所以 Consumer 可以通过 Context 栈向上找到对应的 context value。在归阶段，Context 不断出栈。
+
+所以当我们使用 `shouldComponentUpdate` 或者其它性能优化时，可能会导致
+：**组件命中 bailout 逻辑，如果组件的子树满足 bailout 的条件 4 的话那么其 fiber 子树不会再继续遍历生成。Context 的入栈、出栈就失效了。**
+
+**小知识 2：**
+
+`FiberRootNode` 是整个应用的根节点，`RootFiber` 是调用 `ReactDOM.render` 创建的 `fiber`。之所以要区分 fiberRootNode 与 rootFiber，是因为在应用中我们可以多次调用 ReactDOM.render 渲染不同的组件树，他们会拥有不同的 rootFiber。但是整个应用的根节点只有一个，那就是 fiberRootNode。
+
+**小知识 3：**
+
+我们知道组件 `render` 会返回 `JSX`，`JSX` 是 `React.createElement` 的语法糖。所以 render 的返回结果实际上是 `React.createElement` 的执行结果，即一个包含 `props` 属性的对象。
+
+即使本次更新与上次更新 `props` 中每一项参数都没有变化，但是**本次更新是 `React.createElement` 的执行结果，是一个全新的 `props` 引用**，所以 `oldProps !== newProps`，组件不会命中 bailout 逻辑。
+
+React 未进行优化的心智模型可以简化成，**父组件渲染，子组件必然渲染**。如果我们使用了 PureComponent 或 Memo，那么在判断是进入 render 还是 bailout 时，不会判断 oldProps 与 newProps 是否**全等**，而是会对 props 内每个属性进行浅比较。
+
+```jsx
+// 写 react 就是在写 js
+<Child />
+// 会编译为
+React.createElement(Child, null)
+```
 
 ## 如何优雅处理使用 React Context 导致的不必要渲染？
 
@@ -704,729 +791,6 @@ const Demo = () => {
 
 > [use-context-selector](https://github.com/dai-shi/use-context-selector)
 
-## Hooks 原理
+## 状态管理
 
-React 的 hooks 是在 fiber 之后出现的特性，所以很多人误以为 hooks 是必须依赖 fiber 才能实现的，其实并不是，它们俩没啥必然联系。
-
-> [29 行代码深入 React Hooks 原理](https://zhuanlan.zhihu.com/p/127255755)
-
-## 关于 useState 的一切
-
-### 两个问题
-
-对于如下函数组件：
-
-```jsx
-function App() {
-  const [num, updateNum] = useState(0)
-  window.updateNum = updateNum
-  return num
-}
-```
-
-**问：** 调用 `window.updateNum(1)` 可以将视图中的 0 更新为 1 么？
-
-**答：** 可以
-
-对于如下函数组件：
-
-```jsx
-function App() {
-  const [num, updateNum] = useState(0)
-
-  function increment() {
-    setTimeout(() => {
-      updateNum(num + 1)
-    }, 1000)
-  }
-
-  return <p onClick={increment}>{num}</p>
-}
-```
-
-**问：** 在 1 秒内快速点击 p 5 次，视图上显示为几？
-
-**答：** 1
-
-其实，这两个问题本质上是在问：
-
-- useState 如何保存状态？
-- useState 如何更新状态？
-
-### hooks 状态的保存和更新
-
-> 在我们自己实现的 hooks 中，是使用一个立即执行函数的内部变量 `let hooks = []` 来保存 hooks 函数使用的变量，`let currentHook = 0` 来保存当前 hook 函数的索引，并通过闭包捕获 hooks 数组，currentHook 索引。
-
-**在 react 中：**
-
-**每个组件有个对应的 fiber 节点，用于保存组件相关信息。**
-
-每次组件渲染时，全局变量 `currentlyRenderingFiber` 都会被赋值为该 `FunctionComponent` 对应的 `fiber` 节点。
-
-所以，hook 内部其实是从 `currentlyRenderingFiber` 中获取状态信息的。
-
-其数据结构如下（类似我们自定义的 `hooks = []`）：
-
-```js
-const hook = {
-  // hook 保存的数据 === _val
-  // 由于中断，保存的是中断前以更改的部份数据
-  memoizedState: null,
-  // 指向下一个 hook === currentHook
-  next: hookForB
-  // hook 保存的数据 === _val
-  // 初始 hook 保存的数据
-  baseState: null,
-  // 本次更新开始时已有的 update 队列
-  // 中断
-  baseQueue: null,
-  // 本次更新需要增加的 update 队列
-  queue: null,
-};
-```
-
-当 `FunctionComponent render` 时，每执行到一个 hook，都会将指向`currentlyRenderingFiber.memoizedState` 链表的指针向后移动一次，指向当前 `hook` 对应数据。
-
-> 拓展：[hook 限制](https://cloud.tencent.com/developer/article/1894850)
->
-> 1. 只在 React 函数中使用 hook：hook 依赖 currentlyRenderingFiber 上保存的 hooks 链表（自定义 hooks 相当于自执行函数）
->
-> 2. 只在最顶层使用 hooks，hooks 不能写在循环、条件语句：hooks 链表是 `FunctionComponent render` 时动态生成的，条件语句可能会导致 useState 取值错乱，比如第一次渲染 `hook1 -> hook2` 第二次渲染 `hook2 -> hook3`，由于 useState 调用取值是顺序的，会导致 hook2 取到 hook1 的数据，hook3 取到 hook2 的数据。
-
-**useState 返回值数组第二个参数为改变 state 的方法。**
-
-在源码中，他被称为 dispatchAction。
-
-```js
-// 例子
-updateNum === dispatchAction.bind(null, currentlyRenderingFiber, queue)
-```
-
-每当调用 setCount，都会创建一个代表一次更新的对象 update，如果是多次调用 dispatchAction 那么，update 会形成一条环状链表。
-
-```js
-update3 --next--> update1
-  ^                 |
-  |               update2
-  |______next_______|
-```
-
-`updateNum` 方法即绑定了 `currentlyRenderingFiber` 与 `queue` 的 `dispatchAction`。
-
-调用 dispatchAction 的目的是生成 update，并插入到 hook.queue 链表中。
-
-**回答问题 1：**
-
-**既然 `queue`、`currentlyRenderingFiber` 作为预置参数已经绑定给 dispatchAction，那么调用 dispatchAction 就不仅局限在组件内部了。**
-
-**回答问题 2：**
-
-已知 queue 中保存了本次更新 update 的链表。
-
-在计算 state 时，会将 queue 的环状链表剪开挂载在 baseQueue 最后面，baseQueue 基于 baseState 计算新的 state。
-
-在计算 state 完成后，新的 state 会成为 memoizedState
-
-> 为什么更新不基于 memoizedState 而是 baseState，是因为 state 的计算过程需要考虑优先级。所以 memoizedState 并不一定和 baseState 相同。
-
-调用 `updateNum`，其中参数会成为 `update.action`。
-
-```js
-let newState = baseState
-let firstUpdate = hook.baseQueue.next
-let update = firstUpdate
-
-// 遍历 baseQueue 中的每一个update
-do {
-  if (typeof update.action === 'function') {
-    newState = update.action(newState)
-  } else {
-    newState = update.action
-  }
-} while (update !== firstUpdate)
-```
-
-在 1 秒内点击 5 次。在点击第五次时，第一次点击创建的 update 还没进入更新流程，所以 `hook.baseState` 还未改变。所以 5 次 `update.action` 都是基于 `baseState === 0` 计算，如果传递的是函数，就会基于函数计算。
-
-## 关于 useEffect 的一切
-
-> [关于 useEffect 的一切](https://zhuanlan.zhihu.com/p/208546124)
-
-**useEffect 工作原理：**
-
-1. 触发更新时，**FunctionComponent** 被执行，执行到 `useEffect` 时会判断他的第二个参数 `deps` 是否有变化。
-
-2. 如果 `deps` 变化，则 `useEffect` 对应 **FunctionComponent** 的 fiber 会被打上 Passive（即：需要执行 useEffect）的标记。
-
-3. 在渲染器中，遍历 `effectList` 过程中遍历到该 `fiber` 时，发现 `Passive` 标记，则依次执行该 `useEffect` 的 `destroy`（即  `useEffect` 回调函数的返回值函数）与 `create`（即 `useEffect` 回调函数）。
-
-其中，前两步发生在协调器中。
-
-**`effectList` 构建：**
-
-**协调器的工作流程是使用遍历实现的递归**。所以可以分为递与归两个阶段。
-
-**递**是从根节点向下一直到叶子节点，**归**是从叶子节点一路向上到根节点。
-
-- `effectList` 的构建发生在归阶段。所以，`effectList` 的顺序也是从叶子节点一路向上。
-- `useEffect` 对应 `fiber` 作为 `effectList` 中的一个节点，他的调用逻辑也遵循归的流程。
-- `effectList` 构建的顺序就是 `useEffect` 的执行顺序。
-
-**`effectList 的执行`：**
-
-- `useLayoutEffect` 是在 UI 绘制之前（虚拟 DOM 准备完成）同步调用，会阻塞 UI 绘制。
-- `useEffect` 是在渲染完成后异步执行，而类组件   `componentDidMount` 是在渲染完成后同步执行，所以他们是不同的。
-
-## 关于 ref 的一切
-
-> [关于 ref 的一切](https://zhuanlan.zhihu.com/p/215745959)
-
-### forwardRef
-
-- 通过 forwardRef 可以将 ref 转发给子组件
-- 子组件拿到父组件创建的 ref, 绑定到自己的某一个元素中
-
-```jsx
-import { useRef, forwardRef } from 'react'
-
-// forwardRef 可以将 ref 转发给子组件
-const JMInput = forwardRef((props, ref) => {
-  return <input type="text" ref={ref} />
-})
-
-export default function ForwardDemo() {
-  // forward 用于获取函数式组件 DOM 元素
-  const inputRef = useRef()
-  const getFocus = () => {
-    inputRef.current.focus()
-  }
-
-  return (
-    <div>
-      <button onClick={getFocus}>聚焦</button>
-      <JMInput ref={inputRef} />
-    </div>
-  )
-}
-```
-
-forwardRef 的做法本身没有什么问题, 但是我们是将子组件的 DOM 直接暴露给了父组件:
-
-- 直接暴露给父组件带来的问题是某些情况的不可控
-- 父组件可以拿到 DOM 后进行任意的操作
-- 我们只是希望父组件可以操作的 focus，其他并不希望它随意操作其他方法
-
-### useImperativeHandle
-
-```js
-// useImperativeHandle(ref, createHandle, [deps])
-import { useRef, forwardRef, useImperativeHandle } from 'react'
-
-const JMInput = forwardRef((props, ref) => {
-  const inputRef = useRef()
-  // 作用: 减少父组件获取的 DOM 元素属性,只暴露给父组件需要用到的 DOM 方法
-  // 参数1: 父组件传递的 ref 属性
-  // 参数2: 返回一个对象，父组件通过 ref.current 调用对象中方法
-  useImperativeHandle(ref, () => ({
-    focus: () => {
-      // 包了一层
-      inputRef.current.focus()
-    }
-  }))
-  return <input type="text" ref={inputRef} />
-})
-
-export default function ImperativeHandleDemo() {
-  // 为什么使用: 因为使用 forward + useRef 获取子函数式组件 DOM 时，获取到的 dom 属性暴露的太多了
-  // 解决: 在子函数式组件中定义父组件需要进行 DOM 操作，减少获取 DOM 暴露的属性过多
-  const inputRef = useRef()
-
-  return (
-    <div>
-      <button onClick={() => inputRef.current.focus()}>聚焦</button>
-      <JMInput ref={inputRef} />
-    </div>
-  )
-}
-```
-
-## 函数组件
-
-> [React 推荐函数组件是纯函数，但是组件有状态就不可能是纯函数，怎么理解有状态的纯函数？](https://www.zhihu.com/question/537538929)
-
-hooks 在 mental model 上只是组件函数的参数的另一种写法，函数组件只是一个接受参数 `(props, [state1, setState1], [state2, setState2], ...restHooks)` 然后返回 jsx 的纯函数。
-
-**那 hooks 不能放 if 里面就是自然而然的了 —— 一个函数有多少个参数、各个参数的顺序是什么，这应当是永远不会变的，不能允许它在每次调用时都可能不同。**
-
-函数组件并不会调用 `setState`，调用 `setState` 的是用户行为触发的回调函数，它已经脱离了函数组件本身的作用域了。
-
-```js
-function pure() {
-  return () => console.log(...)
-}
-```
-
-不能说因为 `pure` 返回的回调函数有副作用，所以 `pure` 本身有副作用。
-
-## 闭包陷阱
-
-```js
-// 每次都会执行
-function Chat() {
-  const [text, setText] = useState('')
-
-  const onClick = useCallback(() => {
-    // 只执行一次 text 是第一次执行时的值 text === ''
-    sendMessage(text)
-    // 添加 text 依赖项，每当 text 变化，useCallback 会返回一个全新的 onClick 引用，但这样就失去了 useCallback「缓存函数引用」的作用。
-  }, [])
-
-  return <SendButton onClick={onClick} />
-}
-```
-
-我们期望点击后 `sendMessage` 能传递 `text` 的最新值。
-
-然而实际上，由于回调函数被 `useCallback` 缓存，形成闭包，所以点击的效果始终是 `sendMessage('')`。
-
-这就是：**「闭包陷阱」**。
-
-> [React 官方团队出手，补齐原生 Hook 短板](https://zhuanlan.zhihu.com/p/509972998)
-
-## React 合成事件
-
-在 v17 之前，整个应用的事件会冒泡到同一个根节点（html DOM 节点）。
-
-而在 v17 之后，每个应用的事件都会冒泡到该应用自己的根节点（ReactDOM.render 挂载的节点）。
-
-合成事件的实现原理很好理解：
-
-- 在 document 绑定 event handler，通过事件委托的方式监听事件
-- 当事件触发后，通过 e.target 获取触发事件的 DOM，找到 DOM 对应的 fiber
-- 从该 fiber 向根 fiber 遍历，收集遍历过程中所有绑定了该类型事件的 fiber 的 event handler，保存在数组 paths 中
-- 遍历 paths，依次调用 event handler，模拟捕获流程
-- 遍历 paths.reverse()，依次调用 event handler，模拟冒泡流程
-
-> [合成事件层太厚了](https://www.zhihu.com/question/316425133/answer/673451425)
-
-## 受控组件
-
-> [React 源码中如何实现受控组件](https://zhuanlan.zhihu.com/p/267008933)
-
-## 泛型组件
-
-> [React 泛型组件是什么？](https://mp.weixin.qq.com/s?__biz=MzIxNzUzOTk1MQ==&mid=2247484006&idx=1&sn=a2bdb658a24c648af72125f4d9b1a632&chksm=97f97666a08eff709b40bd49e58738682c37716cdc2b8e999881fb93e67d75bba32ff2cb7e70&scene=178&cur_album_id=2291981265736302593#rd)
-
-## Fragment
-
-React 的 render 函数可接受的返回值类型包括：
-
-- **string** —— 比如 `return 'hello world'`
-- **number** —— 比如 `return 123`
-- **array** —— 比如 `return [<p>hello</p>, <p>world</p>]`
-- **JSX** —— 比如 `return <div>hello world</div>`
-
-其中 `[]` 会被处理为 `React.Fragment`，`React.Fragment` 可以支持 `key` 属性。`<></>` 不支持 key 属性。
-
-> v16.14 版本之前的 React 中 JSX 对象会被编译为 `React.createElement`，此版本之后 createElement 被从 React 包中拆分出来，独立在 `react/jsx-runtime` 中。
-
-编译工作则由 `@babel/plugin-transform-react-jsx` 插件完成。**需要注意插件执行顺序**，polyfill 包的执行顺序可能存在：`jsx-runtime -> core-js -> React -> ReactDOM` 情况。
-
-## StrictMode
-
-对于 react 而言，它推崇的是渲染结果只与 state 和 props 有关，也就是说，`result = f(props, state)`。
-
-```js
-let count = 0
-
-function App() {
-  const [state, setState] = useState(1)
-
-  count++
-  console.log(`I have run ${count} time(s)!`)
-  return (
-    <div>
-      <button onClick={() => setState(e => e + 1)}>{state}</button>
-    </div>
-  )
-}
-
-export default App
-```
-
-React 在开发模式下会刻意执行两次渲染，如果传的 state 和 props 是一样的，渲染结果应该是一致的。如果不一致的话，那么可能你代码里存在了副作用，比如例子中，依赖了外部的 count，这就可能导致重复渲染的结果不一致。而 react 这种做法就是想在开发者在开发的时候就发现这个隐患并解决。
-
-> [React 18: useEffect Double Call，Mistake or Awesome？](https://www.youtube.com/watch?v=j8s01ThR7bQ)
-
-这就跟 get 请求一样，同样参数的两次 get 请求，返回的结果应该是一样的，叫做幂等原则。render 函数应该也是幂等的。
-
-只有启用了 React.StrictMode 才会有这样的行为。
-
-> [什么是严格模式](https://ahooks.js.org/zh-CN/guide/blog/strict/)
-
-## React.lazy
-
-```js
-import { lazy, useEffect } from 'react'
-
-const Test = () => {
-  useEffect(() => {
-    console.log('子组件 lazy 渲染')
-  }, [])
-
-  return (
-    <div>
-      <h2 style={{ color: 'red' }}>我是异步组件</h2>
-    </div>
-  )
-}
-
-const Lazy = lazy(() => {
-  // React.lazy 和 Suspense 配合一起用，能够有动态加载组件的效果。
-  // React.lazy 接受一个函数，这个函数需要动态调用 import()。
-  // 它必须返回一个 Promise ，该 Promise 需要 resolve 一个 default export 的 React 组件。
-  // lazy(() => import(异步组件))
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve({
-        default: () => <Test />
-      })
-    }, 4000)
-  })
-})
-
-export default Lazy
-```
-
-## React.memo
-
-```js
-import { memo } from 'react'
-import { shallEqual } from './utils/shallEqual'
-
-const Memo = props => {
-  console.log('子组件 Memo 渲染')
-  return (
-    <div>
-      <h2>{props.count}</h2>
-    </div>
-  )
-}
-
-// 第二个参数类似于 scu 函数，默认浅比较
-// 重写它会使默认浅比较失效，相当于自己写了浅比较
-const propsEqual = (prevProps, nextProps) => {
-  // true 不需要渲染，false 需要渲染
-  // 浅比较
-  if (shallEqual(prevProps, nextProps)) {
-    return true
-    // 拦截 props equal，大于 5 就不需要渲染子组件
-  } else if (nextProps.count > 5) {
-    return true
-  } else {
-    return false
-  }
-}
-
-export default memo(Memo, propsEqual)
-```
-
-## React.cloneElement
-
-```js
-import React from 'react'
-
-const Father = ({ children }) => {
-  // children === {'Son', {className:}, ... } 和 msg 合并
-  const newChildren = React.cloneElement(children, { msg: '我是混入的props' })
-  return newChildren
-}
-
-const Son = props => {
-  console.log('🚀 ~ file: Clone.jsx ~ line 7 ~ Son ~ props', props)
-
-  return (
-    <>
-      <h2>Son 组件</h2>
-    </>
-  )
-}
-
-export { Father, Son }
-```
-
-## isValidElement
-
-这个方法可以用来检测是否为 `react element` 元素,接受待验证对象，返回 true 或者 false。
-
-## React.children.map
-
-React.Children 提供了用于处理 this.props.children 不透明数据结构（意思就是 props.children 可以是任何类型，比如 array, function, object 等等。因为什么都可以传，所以你也不能确定传过来了什么东西）的实用方法。
-
-```js
-import React from 'react'
-
-export const Hello = () => {
-  return <h2>hello Map1</h2>
-}
-
-export const OpacityMap = props => {
-  console.log('不透明结构：props.children.length', props.children.length)
-  // Children.count可以返回同一级别子组件的数量。
-  console.log('不透明结构：React.Children.count', React.Children.count(props.children))
-
-  // 对于不透明数据结构我们可以使用 React.Children.map 来遍历
-  // Children.toArray 返回，props.children 扁平化后结果
-  const children = React.Children.map(props.children, child => <div style={{ color: 'red' }}>{child}</div>)
-
-  return children
-}
-
-export const LucencyMap = props => {
-  console.log('透明结构：props.children.length', props.children.length)
-  console.log('透明结构：React.Children.count', React.Children.count(props.children))
-  return props.children
-}
-```
-
-如果 children 是一个 Fragment 对象，它将被视为单一子节点的情况处理，而不会被遍历。
-
-## 拓展：Record 和 Tuple
-
-### 语法
-
-- Record ：不可变的哈希表
-- Tuple ：不可变的数组
-
-这两者，除了不可变外，另一个重要的特性是，他们是按值比较的，也就是说，带有相同内容的 Record 和 Tuple 在进行严格比较(===)时 ，会被认为是同一个对象，而非像 object 一样，按引用比较。
-
-> [使用 Record 和 Tuple](https://github.com/bloomberg/record-tuple-polyfill)
-
-```js
-// 声明
-const record = #{
-  a: 1,
-  b: 2
-}
-
-const tuple = #[1, 2]
-
-// 复用
-
-const record = #{
-  a: 1,
-  b: 2
-}
-
-const anotherRecord = #{
-  ...record,
-  c: 3
-}
-
-const tuple = #[1, 2]
-
-const anotherTuple = #[...tuple, 3]
-
-// 解构
-
-const { bar } = #{ foo: 1, bar: 2 }
-// bar => 2
-
-const [head] = #[1, 2]
-// head => 2
-
-// 根据值比较特性利用 Set 去重
-
-const foo = new Set(#[#{ id: 1 }, #{ id: 1 }, #{ id: 2 }])
-// foo => Set(2) { #{id: 1}, #{id: 2} }
-```
-
-可以看到 Record 和 Tuple 用起来非常像 object 和 Array，然而不同于他们的是，Record 和 Tuple 存储的类型是被严格限制的，Record 和 Tuple 只能存放基础数据类型以及 Record 和 Tuple，不支持函数或其他引用类型。
-
-如果你尝试这么做 `const foo = #{ bar: () => {} };` 你会得到一段报错 `"TypeError: cannot use a function as a value in a record"` 告诉你，函数不能作为 Record 的值，对于 Tuple 同理。
-
-### 更容易使用的 useMemo
-
-当我们想要优化性能的时候，我们会尝试将引用类型或需要大量计算的值使用 useMemo 进行存储，防止重复计算带来的损耗，以及新的引用类型产生的时候，打破 React 对不可变数据的约定，进而导致无效的重渲染。
-
-但是 useMemo 的问题在于，一旦你构建的值并非基于基本类型的话，就必须将依赖的值同样记忆化，这种传染的性质导致很多的重复工作，究其原因在于，基础类型是值比较 的，而引用类型则比较的是内存地址。
-
-```js
-// ---- version1
-const input = { id: props.id, content: props.content };
-const data = expensiveEffect(input);
-// 为了优化这段代码，我们需要
-// ---- version2
-const input = { id: props.id, content: props.content };
-const data = useMemo(() => expensiveEffect(input), [input]);
-// 不行，每次渲染 input 依旧会重新生层，依旧会触发重复计算
-// ---- version3
-const input = useMemo(() => { id: props.id, content: props.content }, [props.id, props.content]);
-const data = useMemo(() => expensiveEffect(input), [input]);
-// 可以了，通过使用 Tuple，我们只需要加个 # 符合即可
-// ---- version4
-const input = #{ id: props.id, content: props.content };
-const data = useMemo(() => expensiveEffect(input), [input]);
-```
-
-### 更加符合心智的 useEffect
-
-函数式组件经常带来的一个心智成本是，除非你显式的使用了 useMemo 包裹了引用类型的数据结构，否则每一次渲染都会创建一个新的引用类型，考虑一下代码：
-
-```js
-const UserProfile1 = props => {
-  const user = {
-    id: props.id,
-    name: props.name
-  }
-
-  useEffect(() => {
-    fetchUserDetail(user)
-  }, [user])
-}
-
-const UserProfile2 = props => {
-  const user = #{
-    id: props.id,
-    name: props.name
-  }
-
-  useEffect(() => {
-    fetchUserDetail(user)
-  }, [user])
-}
-```
-
-对于 UserProfile1 来说，每一次渲染都会触发 useEffect 的执行，因为对于按引用比较的 object 来说，每一次渲染时创建的 user 对象的引用必然与上一次的不同，尽管可能其内容并没有发生改变。
-
-而对于 UserProfile2，由于 Record 比较是根据值本身，因此即使重复渲染时生成了一个新的 Record 对象，由于内容和先前的相同，JavaScript 也会认为其没有发生变化，也就不会触发 React 的重渲染。
-
-### 简单不易出错的 memo 机制
-
-当我们想要组件仅在 props 发生变化的时候进行重渲染，我们需要使用 memo 函数(对于函数组件来说)来包裹组件，例如我们会写出以下代码
-
-```js
-const ExpansiveComponent = props => {
-  // some expensive effects
-  const data = expensiveEffect(props.input)
-  // ...
-}
-
-export default memo(ExpansiveComponent)
-```
-
-但是对于 React 的初学者来说，很容易写出一下代码
-
-```js
-const Container = props => {
-  // ...
-  return <ExpansiveComponent input={{ id: props.id }} />
-}
-```
-
-这种情况下，由于 memo 默认使用浅比较的方式比较前后的 props ，因此每一次 Container 的重渲染，都会生成一个新的 input 对象传给 ExpansiveComponent，进而导致重渲染的发生，而 memo 机制完全没有起到任何作用。
-
-然而，同样的代码如果使用 Record 编写却是符合需求的。
-
-```js
-const Container = props => {
-  // ...
-  return <ExpansiveComponent input={#{ id: props.id }} />
-}
-```
-
-### 更容易书写 key
-
-React 使用 key 机制来保证渲染列表时候的性能，React 希望对于一个对象，会有一个属性来标识自身，但是现实场景中可能会出现其唯一性是由多个属性决定的，当然我们可以使用数组索引值当做 key ，但这会造成性能下降。我们也可以手动拼接多个属性，当做 key 传给 React 。
-
-```js
-const list = [
-  { country: 'FR', localPhoneNumber: '111111' },
-  { country: 'FR', localPhoneNumber: '222222' },
-  { country: 'US', localPhoneNumber: '111111' }
-]
-
-;<>
-  {list.map(item => (
-    <Item key={`${item.country}_${item.localPhoneNumber}`} item={item} />
-  ))}
-</>
-```
-
-但是由于 Record 本身就是独一无二的 ，我们可以直接将 Record 当做 key 传给 React。
-
-```js
-const list = #[#{ country: 'FR', localPhoneNumber: '111111' }, #{ country: 'FR', localPhoneNumber: '222222' }, #{ country: 'US', localPhoneNumber: '111111' }]
-;<>
-  {list.map(item => (
-    <Item key={item} item={item} />
-  ))}
-</>
-```
-
-## Profiler
-
-Profiler 这个 api 一般用于开发阶段，性能检测，检测一次 react 组件渲染用时，性能开销。
-
-Profiler 需要两个参数：
-
-- 第一个参数：是 id，用于表识唯一性的 Profiler。
-- 第二个参数：onRender 回调函数，用于渲染完成，接受渲染参数。
-
-实践：
-
-```js
-<Profiler id="father" onRender={callBack}>
-  <Father>
-    <Son name="son" />
-  </Father>
-</Profiler>
-```
-
-- 0 -id: root -> Profiler 树的 id 。
-- 1 -phase: mount -> mount 挂载 ， update 渲染了。
-- 2 -actualDuration: 6.685000262223184 -> 更新 committed 花费的渲染时间。
-- 3 -baseDuration: 4.430000321008265 -> 渲染整颗子树需要的时间
-- 4 -startTime : 689.7299999836832 -> 本次更新开始渲染的时间
-- 5 -commitTime : 698.5799999674782 -> 本次更新 committed 的时间
-- 6 -interactions: set{} -> 本次更新的 interactions 的集合
-
-尽管 Profiler 是一个轻量级组件，我们依然应该在需要时才去使用它。对一个应用来说，每添加一些都会给 CPU 和内存带来一些负担。
-
-## 双缓存 Fiber 树
-
-> 在内存中构建并直接替换的技术叫做双缓存 (opens new window)。
-
-**在 React 中最多会同时存在两棵 Fiber 树。当前屏幕上显示内容对应的 Fiber 树称为 current Fiber 树，正在内存中构建的 Fiber 树称为 workInProgress Fiber 树。**
-
-React 使用 **双缓存** 来完成 Fiber 树的构建与替换——对应着 DOM 树的创建与更新。
-
-首次执行 `ReactDOM.render` 会创建 fiberRootNode（源码中叫 fiberRoot）和 rootFiber。其中 fiberRootNode 是整个应用的根节点，rootFiber 是 `<App/>` 所在组件树的根节点。
-
-![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/fe-engineering/rootfiber.png)
-
-**流程：**
-
-> **mount-render：**
-
-![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/fe-engineering/workInProgressFiber.png)
-
-> **mount-commit：**
-
-![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/fe-engineering/wipTreeFinish.png)
-
-> **update-render：**
-
-![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/fe-engineering/wipTreeUpdate.png)
-
-> **update-commit：**
-
-![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/fe-engineering/currentTreeUpdate.png)
-
-## ErrorBoundary
-
-> [为什么 Hook 没有 ErrorBoundary？](https://zhuanlan.zhihu.com/p/528040023)
-
-## Portals
-
-> [react 中的神器-- 渲染到父组件之外的 dom 用什么？](https://www.bilibili.com/video/BV15R4y1x75Y?spm_id_from=333.999.0.0&vd_source=c4234488bc8659e17c631716b9036762)
+> [Vuex、Flux、Redux、Redux-saga、Dva、MobX](https://zhuanlan.zhihu.com/p/53599723)

@@ -33,13 +33,11 @@
 
 > React is not reactive. Vue is not only view.
 
-- `[Vue]` [You finally mastered Vue, but she still disappears from view](framework/vue.md)
+- `[Vue]` [You finally mastered vue, but she still disappears from view](framework/vue.md)
 - `[React]` [You learned react, your crush is online but you can't react](react/react.md)
-<!-- - `[LeetCode]` [程序员界的《五年高考，三年模拟》](algorithms/leetcode.md) -->
-<!-- - 一个充满了既神奇又无用的python知识的合集。为什么要研究这些？因为它就在那儿呀！ -->
-- `[Hacker]` 都什么年代了，还再写传统 JS
-- `[Component]` 组件库，但无 UI
-- `TODO` [人类高质量函数式编程学习笔记](summary/fp.md)
+<!-- - `[Hacker]` 都什么年代了，还再写传统 JS -->
+<!-- - `[Component]` 组件库，但无 UI -->
+<!-- - `TODO` [人类高质量函数式编程学习笔记](summary/fp.md) -->
 
 ## 前端工程化
 
@@ -79,3 +77,6 @@
 - [为了不折腾而去折腾的那些事](https://www.zhihu.com/column/funny)
 - [阿里妈妈前端快爆](https://www.zhihu.com/column/mm-fe)
 - [初级前端工程师](https://www.zhihu.com/column/makewebgreatagain)
+
+<!-- - `[LeetCode]` [程序员界的《五年高考，三年模拟》](algorithms/leetcode.md) -->
+<!-- - 一个充满了既神奇又无用的python知识的合集。为什么要研究这些？因为它就在那儿呀！ -->
