@@ -1,14 +1,10 @@
-# Null / Undefined<!-- omit in toc -->
-
-- [为什么 `typeof null` 的结果是 'object'?](#为什么-typeof-null-的结果是-object)
-- [`undefined` 不是保留字，可以作为标识符（变量名）使用](#undefined-不是保留字可以作为标识符变量名使用)
-- [在现代 JavaScript 代码中，应该推荐使用 undefined 还是 null？](#在现代-javascript-代码中应该推荐使用-undefined-还是-null)
+# Null 与 Undefined<!-- omit in toc -->
 
 ## [为什么 `typeof null` 的结果是 'object'?](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof#typeof_null)
 
 ```js
 // JavaScript 自诞生以来便如此
-// Bug === Feature
+// Bug is a Feature
 typeof null === 'object'
 ```
 
@@ -16,7 +12,8 @@ typeof null === 'object'
 >
 > **对象的类型标签是 `0`**。由于 `null` 代表的是空指针（大多数平台下值为 `0x00`），**`null` 的类型标签也是 `0`**，所以 `typeof null` 也因此返回 `'object'`。（[来源](https://www.2ality.com/2013/10/typeof-null.html)）
 
-曾有一个 ECMAScript 的修复提案（通过选择性加入的方式），但[被拒绝了](http://wiki.ecmascript.org/doku.php?id=harmony:typeof_null)。该提案会导致 `typeof null === 'null'`。
+<!-- 链接 502 -->
+<!-- 曾有一个 ECMAScript 的修复提案（通过选择性加入的方式），但[被拒绝了](http://wiki.ecmascript.org/doku.php?id=harmony:typeof_null)。该提案会导致 `typeof null === 'null'`。 -->
 
 ## `undefined` 不是保留字，可以作为标识符（变量名）使用
 
