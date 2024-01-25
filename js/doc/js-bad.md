@@ -18,13 +18,13 @@ JavaScript 里有两大查找过程是链式的，一个是变量的查找，是
 
 > **the global `this` inherit from `Object.prototype` Luckily**, more modern JavaScript engines all seem to agree that the global `this` must have `Object.prototype` in its prototype chain.
 
+本来这两个领域是互不相关的，但因为全局对象（它是一个对象，所有存在__proto__属性，同时它也是一个变量对象）和 `with` 语句的存在，它俩可以联系在一起，那就是变量查找转变成属性的查找，也就是说变量都可能会查找到 `Object.prototype`上，**`Object.prototype` 上的属性都是全局变量**。
+
 ```js
 globalThis === window // in browser is true
 globalThis.__proto__ === Window.prototype // true
-Window.prototype.__proto__ === Object.prototype // true
+window.__proto__.__proto__.__proto__.__proto__ === Object.prototype // true
 ```
-
-本来这两个领域是互不相关的，但因为全局对象和 `with` 语句的存在，它俩可以联系在一起，那就是变量查找转变成属性的查找，也就是说变量都可能会查找到 `Object.prototype`上，**`Object.prototype` 上的属性都是全局变量**。
 
 ## [为什么 Function.prototype 可以直接执行?](https://www.zhihu.com/question/323462380)
 
@@ -76,69 +76,12 @@ ES6 中把除 `Function.prototype`，`Array.prorotype` 之外的其它 6 个类�
 
 ## arguments
 
-函数有两个特殊的属性：`arguments` 和 `caller`。
-
-在函数执行期间，`arguments` 属性就是本次执行的参数集合；在函数执行之外，`arguments` 属性的值就是 `null`。这个行为直至今天都是存在的。
-
-```JavaScript
-function a(foo) {
-  console.log(foo)
-  console.log(a.arguments)
-  console.log(a.caller)
-}
-
-function b() {
-  a(1)
-}
-
-// 作用域 b 函数内调用
-b()
-// 1
-// [Arguments] { '0': 1 }
-// [Function: b]
-
-// 全局作用域内调用
-a(2)
-// 2
-// [Arguments] { '0': 2 }
-// [Function (anonymous)]
-
-// 严格模式下会报错
-console.log(a.arguments) // null
-console.log(a.caller) // null
-```
-
 `arguments` 对象有「双向绑定」特性，这意味着：参数的值会随 arguments 对象的值的改变而变化，反之亦然。
 
-```js
-// 严格模式下，参数的值不会随 arguments 对象的值的改变而变化。
-function c(foo) {
-  console.log(foo) // 1
-  arguments[0] = 2
-  console.log(foo) // 2
-}
-
-c(1)
-```
-
 箭头函数是没有 `arguments` 局部变量的。
-
-```js
-try {
-  ;(() => {}).arguments
-} catch (error) {
-  // TypeError: 'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them
-  console.log(error)
-}
-```
 
 > [JavaScript 黑历史 - 那些只有 1% 的人知道的特性](https://zhuanlan.zhihu.com/p/486975868)
 
 ## 严格模式
 
 > [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Strict_mode)
-
-- 严格模式可以应用到整个脚本或个别函数中。只需要在脚本或者函数体的顶部加上一个 'use strict'。
-- 严格模式不一定需要这个语法。例如对于 ESModule 文件默认就会启用严格模式。
-- 严格模式给了开发者主动禁用部分语言能力，以减轻解释器负担的机制
-- **在 ES2016 中，规定了对于包含默认值和剩余参数的函数（也就是包含 ES2015 新语法的函数），禁止使用 'use strict' 指令。**
