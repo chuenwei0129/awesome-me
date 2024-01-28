@@ -23,7 +23,7 @@
 - [大多数前端工程师了解但并不擅长的 HTML 语义化](https://zhuanlan.zhihu.com/p/97072021)
 - [HTML DOM 级别以及一些小坑](https://github.com/justjavac/the-front-end-knowledge-you-may-not-know/blob/master/archives/014-dom-level.md)
 - [HTML attribute 和 DOM property](https://github.com/justjavac/the-front-end-knowledge-you-may-not-know/blob/master/archives/015-dom-attributes-and-properties.md)
-- [表单](./form.md)
+- [表单相关知识](./form.md)
 
 ## DOM
 
@@ -87,12 +87,13 @@ let obj = {}
 
 而减少不必要调用的各种方案，都遵循 **“在 JS 中缓存必要数据，计算界面更新时的阶段数据差异，只提交最终差集”** 的基本思路。虚拟 DOM **计算的是最终 DOM 结构的差异**，还有的引擎**计算的是 DOM 所绑定数据的差异**，各有千秋。
 
+> [案例分析：如何处理大量 DIV 插入问题](https://chrisdeo.github.io/2019/07/22/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%A4%A7%E9%87%8FDIV%E6%8F%92%E5%85%A5%E9%97%AE%E9%A2%98/)
+
 ### [前端框架到底帮你解决了什么问题？](https://zhuanlan.zhihu.com/p/45510072)
 
 > 框架的目标是提高开发效率，而非运行效率。
 
 - [网上都说操作真实 DOM 慢，但测试结果却比 React 更快，为什么？](https://www.zhihu.com/question/31809713)
-- [案例分析：如何处理大量 DIV 插入问题](https://chrisdeo.github.io/2019/07/22/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%A4%A7%E9%87%8FDIV%E6%8F%92%E5%85%A5%E9%97%AE%E9%A2%98/)
 - [如何看待 snabbdom 的作者开发的前端框架 Turbine 抛弃了虚拟 DOM？](https://www.zhihu.com/question/59953136)
 - [Vue 采用虚拟 DOM 的目的是什么?](https://www.zhihu.com/question/271485214/answer/386097473)
 - [既然用 virtual dom 可以提高性能，为什么浏览器不直接自带这个功能呢？](https://www.zhihu.com/question/67479886)
@@ -181,6 +182,7 @@ let obj = {}
 - [Event API](./event.md)
 <!-- 注：Passive 翻译为被动，为 true 时，表示主动权为浏览器，开发者 preventDefault() 无效，本质是浏览器自我优化。 -->
 - [移动 Web 滚动性能优化: Passive event listeners](https://zhuanlan.zhihu.com/p/24555031)
+- [JavaScript 的 DOM 事件回调不是宏任务吗，为什么在本次微任务队列触发？](https://www.zhihu.com/question/362096226/answer/2026663593)
 
 ## CSSOM
 

@@ -1,40 +1,12 @@
 # CSS<!-- omit in toc -->
 
 - [浏览器 API](#浏览器-api)
-- [设置元素节点的 style 属性](#设置元素节点的-style-属性)
-- [驼峰直接读写](#驼峰直接读写)
 - [CAN I USE](#can-i-use)
 - [window.getComputedStyle](#windowgetcomputedstyle)
-- [elem.style.cssText](#elemstylecsstext)
 
 ## 浏览器 API
 
 > [CSSOM](https://www.bilibili.com/video/BV11e4y1W7CF?p=77&vd_source=c4234488bc8659e17c631716b9036762)
-
-## 设置元素节点的 style 属性
-
-操作 `CSS` 样式最简单的方法，就是使用网页元素节点的 `getAttribute()`方法、`setAttribute()`方法和 `removeAttribute()`方法，直接读写或删除网页元素的 `style` 属性。
-
-```js
-div.setAttribute('style', 'background-color:red;' + 'border:1px solid black;')
-```
-
-上面的代码相当于下面的 `HTML` 代码。
-
-```html
-<div style="background-color:red; border:1px solid black;" />
-```
-
-## 驼峰直接读写
-
-`CSSStyleDeclaration` 接口可以直接读写 CSS 的样式属性，不过，连词号需要变成骆驼拼写法。
-
-```js
-var divStyle = document.querySelector('div').style
-
-divStyle.backgroundColor = 'red'
-divStyle.fontSize = '10em'
-```
 
 ## CAN I USE
 
@@ -73,25 +45,3 @@ styleObj.backgroundColor
 
 很久以前，创建了 `getComputedStyle` 来获取计算（ computed ）值，但事实证明，解析（ resolved ）值要方便得多，标准也因此发生了变化。
 所以，现在 `getComputedStyle` 实际上返回的是属性的解析值（resolved）。
-
-## elem.style.cssText
-
-`CSSStyleDeclaration.cssText` 属性用来读写当前规则的所有样式声明文本。
-
-```js
-var divStyle = document.querySelector('div').style
-
-divStyle.cssText =
- 'background-color: red;' +
- 'border: 1px solid black;' +
- 'height: 100px;' +
- 'width: 100px;'
-```
-
-删除一个元素的所有行内样式，最简便的方法就是设置 `cssText` 为空字符串。
-
-```js
-divStyle.cssText = ''
-```
-
-> ⚠️ 我们很少使用这个属性，因为这样的赋值会删除所有现有样式：它不是进行添加，而是替换它们。有时可能会删除所需的内容。
