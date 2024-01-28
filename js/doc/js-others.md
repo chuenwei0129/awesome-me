@@ -8,61 +8,11 @@
 - [JavaScript 里听说区分函数和方法，而 Java 里只听说过方法，到底有什么区别？](#javascript-里听说区分函数和方法而-java-里只听说过方法到底有什么区别)
 - [下列代码为什么会产生 'super' keyword unexpected here 的错误？](#下列代码为什么会产生-super-keyword-unexpected-here-的错误)
 - [JSON 方法](#json-方法)
-- [catch 语句可省略参数](#catch-语句可省略参数)
 - [ES6 提出 class 关键字是希望解决什么问题？它是不是鸡肋？](#es6-提出-class-关键字是希望解决什么问题它是不是鸡肋)
 - [为什么 Redux 判断 PlainObject 的写法这么复杂？](#为什么-redux-判断-plainobject-的写法这么复杂)
 - [JavaScript 语句后应该加分号么？](#javascript-语句后应该加分号么)
 
 ## [现代浏览器生成一个 JS 函数的开销多大？](https://www.zhihu.com/question/345689944/answer/943385371)
-
-函数式语言参照以下公式
-
-```sh
-函数 + 参数 + 环境（闭包） => 返回值 + 环境（闭包）
- ↑    ↑    ↑
-静态   动态   动态
-```
-
-其中，函数是可以静态编译的，哪怕是匿名函数那也只是匿名，而不是每次执行都要「重新生成」，**重新生成的只有「环境（闭包）」，但是在外部环境执行的时候，这个闭包就已经生成了，并不会有多余的开销**。
-
-举个例子：
-
-```js
-// 你以为的
-function createFunction() {
-  const s = Math.random()
-  return () => { // <- 你以为创建了两个函数？
-    console.log('hello', s)
-  }
-}
-
-const a = createFunction()
-const b = createFunction()
-
-a !== b // => true
-
-// 事实上上面的代码会被编译成下面的形式(伪代码)
-
-// 静态编译的函数
-function anonymous(closure) { // <- 只创建了一次
-  console.log('hello', closure.s)
-}
-
-function anonymous2(closure) {
-  const newClosure = createClosure(closure)
-  newClosure.s = Math.random()
-  return { closure: newClosure, func: anonymous }
-  // <- closure 被创建了两次，生成了两个不同的「函数对象」，但真正被执行的函数是不变的。
-}
-
-const createFunction = { closure: global, func: anonymous2 }
-
-const a = callFunction(createFunction)
-const b = callFunction(createFunction)
-
-a !== b // => true
-a.func === b.func // => true
-```
 
 ## [Lodash 严重安全漏洞背后 你不得不知道的 JavaScript 知识](https://zhuanlan.zhihu.com/p/73186974)
 
@@ -288,18 +238,6 @@ place:        [object Object]
 number:       23
 occupiedBy: [object Object]
 */
-```
-
-## catch 语句可省略参数
-
-> [在 JavaScript 中用 try/catch 是不是很 low？](https://www.zhihu.com/question/264259255)
-
-```js
-try {
-  // ...
-} catch {
-  // ...
-}
 ```
 
 ## [ES6 提出 class 关键字是希望解决什么问题？它是不是鸡肋？](https://www.zhihu.com/question/432832293)

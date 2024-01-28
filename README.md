@@ -6,7 +6,24 @@
 
 **怀揣着这种不确定感继续学习，不要有知识包袱，不要假装自己很聪明**。这个世界本身就是抽象又复杂的。这没什么大不了。
 
-**笔记内容**：[工具用的好，下班回家早](#工具用的好下班回家早) | [这就是前端](#这就是前端) | [Make Web Great Again](#make-web-great-again) | [前端工程化](#前端工程化) | [计算机基础知识](#计算机基础知识)
+**笔记内容**：[Make Web Great Again](#make-web-great-again) | [工具用的好，下班回家早](#工具用的好下班回家早) | [这就是前端](#这就是前端) | [Make Web Great Again](#make-web-great-again) | [前端工程化](#前端工程化) | [计算机基础知识](#计算机基础知识)
+
+## Make Web Great Again
+
+> Always bet on Web, Because there is only Web.
+
+- `[HTML]` [Is HTML a programming language](html/html.md)
+- `[JavaScript]` [My life sucks and I'm going to rewrite it in JavaScript](js/js.md)
+- `[TypeScript]` [You mastered Typescript but you're still not her type](ts/ts.md)
+- `[CSS]` [是煮，是煮在又一次严重酗酒后创造了这个奇迹。](css/css.md)
+- `[Browser]` [到达前端最高城！](computer/browser.md)
+- `[FE]` [我在知乎学前端](interview/fe.md)
+- `[Vue]` [You finally mastered vue, but she still disappears from view](framework/vue.md)
+- `[React]` [You learned react, your crush is online but you can't react](react/react.md)
+<!-- - React is not reactive. Vue is not only view. -->
+<!-- - `[Hacker]` 都什么年代了，还再写传统 JS -->
+<!-- - `[Component]` 组件库，但无 UI -->
+<!-- - `TODO` [人类高质量函数式编程学习笔记](summary/fp.md) -->
 
 ## 工具用的好，下班回家早
 
@@ -18,26 +35,6 @@
 - `[VSCode]` [VSCode 因为插件丰富、功能强大被大家喜欢，真是令人烦恼啊！](others/code.md)
 - `[Git]` [怕遗忘 Git 的我，把相关知识点都记录下来就对了！](others/git.md)
 - `[Switch]` [关于我破解了 Switch 并且装满了游戏依然吃灰这件事。](others/switch.md)
-
-## 这就是前端
-
-> Always bet on JavaScript, Because there is only JavaScript.
-
-- `[TypeScript]` [You mastered Typescript but you're still not her type](ts/ts.md)
-- `[JavaScript]` [My life sucks and I'm going to rewrite it in JavaScript](js/js.md)
-- `[CSS]` [是煮，是煮在又一次严重酗酒后创造了这个奇迹。](css/css.md)
-- `[HTML]` [积跬步，至千里，始于 DOM。](dom/dom.md)
-- `[Browser]` [到达前端最高城！](computer/browser.md)
-
-## Make Web Great Again
-
-> React is not reactive. Vue is not only view.
-
-- `[Vue]` [You finally mastered vue, but she still disappears from view](framework/vue.md)
-- `[React]` [You learned react, your crush is online but you can't react](react/react.md)
-<!-- - `[Hacker]` 都什么年代了，还再写传统 JS -->
-<!-- - `[Component]` 组件库，但无 UI -->
-<!-- - `TODO` [人类高质量函数式编程学习笔记](summary/fp.md) -->
 
 ## 前端工程化
 
