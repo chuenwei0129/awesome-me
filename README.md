@@ -12,8 +12,8 @@
 
 > Always bet on Web, Because there is only Web.
 
-- `[HTML]` [Is HTML a programming language](html/html.md)
-- `[JavaScript]` [My life sucks and I'm going to rewrite it in JavaScript](js/js.md)
+- `[HTML]` [Is HTML a programming language?](html/html.md)
+- `[JavaScript]` [My life sucks and I'm going to rewrite it in JavaScript.](js/js.md)
 - `[TypeScript]` [You mastered Typescript but you're still not her type](ts/ts.md)
 - `[CSS]` [是煮，是煮在又一次严重酗酒后创造了这个奇迹。](css/css.md)
 - `[Browser]` [到达前端最高城！](computer/browser.md)

@@ -12,26 +12,18 @@
   - [ECMAScript 中的对象和 DOM 对象是一个概念么？](#ecmascript-中的对象和-dom-对象是一个概念么)
   - [前端为什么操作 DOM 是最耗性能的呢？](#前端为什么操作-dom-是最耗性能的呢)
   - [前端框架到底帮你解决了什么问题？](#前端框架到底帮你解决了什么问题)
+  - [继承关系](#继承关系)
+  - [节点类型](#节点类型)
   - [API](#api)
 - [事件](#事件)
-- [事件循环](#事件循环)
-- [DOM 节点类](#dom-节点类)
-- [DOM 节点类型](#dom-节点类型)
-- [Node 接口](#node-接口)
-- [document](#document)
-- [Element](#element)
-- [节点属性](#节点属性)
-- [样式](#样式)
-- [浏览器窗口、坐标和滚动](#浏览器窗口坐标和滚动)
-- [事件](#事件-1)
-- [表单](#表单)
-- [如何处理大量 DIV 插入问题](#如何处理大量-div-插入问题)
+- [CSSOM](#cssom)
 
 ## HTML
 
 - [大多数前端工程师了解但并不擅长的 HTML 语义化](https://zhuanlan.zhihu.com/p/97072021)
 - [HTML DOM 级别以及一些小坑](https://github.com/justjavac/the-front-end-knowledge-you-may-not-know/blob/master/archives/014-dom-level.md)
 - [HTML attribute 和 DOM property](https://github.com/justjavac/the-front-end-knowledge-you-may-not-know/blob/master/archives/015-dom-attributes-and-properties.md)
+- [表单](./form.md)
 
 ## DOM
 
@@ -105,20 +97,7 @@ let obj = {}
 - [Vue 采用虚拟 DOM 的目的是什么?](https://www.zhihu.com/question/271485214/answer/386097473)
 - [既然用 virtual dom 可以提高性能，为什么浏览器不直接自带这个功能呢？](https://www.zhihu.com/question/67479886)
 
-### API
-
-## 事件
-
-<!-- 注：Passive 翻译为被动，为 true 时，表示主动权为浏览器，开发者 preventDefault() 无效，本质是浏览器自我优化。 -->
-- [移动 Web 滚动性能优化: Passive event listeners](https://zhuanlan.zhihu.com/p/24555031)
-- [Event API](./event.md)
-
-## 事件循环
-
-- [事件循环](https://www.bilibili.com/video/BV1K4411D7Jb)
-- [JavaScript 的 DOM 事件回调不是宏任务吗，为什么在本次微任务队列触发？](https://www.zhihu.com/question/362096226/answer/2026663593)
-
-## DOM 节点类
+### 继承关系
 
 **每个标签都有自己的类**，这些类可以提供特定的属性和方法。因此，给定节点的全部属性和方法都是继承的结果。
 
@@ -175,7 +154,7 @@ let obj = {}
         - **EventTarget** — 为事件（包括事件本身）提供支持，
           - 最后，它继承自 **Object**，因为像 `hasOwnProperty` 这样的**普通对象方法**也是可用的。
 
-## DOM 节点类型
+### 节点类型
 
 **DOM 的最小组成单位叫做节点**，节点的类型有七种。
 
@@ -189,38 +168,21 @@ let obj = {}
 |     Comment      |                    注释                     |      8      |      node.COMMENT_NODE      |      #comment      |  文本值   |
 | DocumentFragment |                 文档的片段                  |     11      | node.DOCUMENT_FRAGMENT_NODE | #document-fragment |   null    |
 
-## Node 接口
+### API
 
-> [Node](node.md)
-
-## document
-
-> [document](./document.md)
-
-## Element
-
-> [Element](./element.md)
-
-## 节点属性
-
-> [Attributes](./attributes.md)
-
-## 样式
-
-> [CSS](./css.md)
-
-## 浏览器窗口、坐标和滚动
-
-> [Scroll](./scroll.md)
+- [document](./document.md)
+- [Node](./node.md)
+- [Element](./element.md)
+- [Attributes](./attributes.md)
+- [Range](https://www.bilibili.com/video/BV11e4y1W7CF?p=76)
 
 ## 事件
 
-> 
+- [Event API](./event.md)
+<!-- 注：Passive 翻译为被动，为 true 时，表示主动权为浏览器，开发者 preventDefault() 无效，本质是浏览器自我优化。 -->
+- [移动 Web 滚动性能优化: Passive event listeners](https://zhuanlan.zhihu.com/p/24555031)
 
-## 表单
+## CSSOM
 
-> [Form](./form.md)
-
-## 如何处理大量 DIV 插入问题
-
-
+- [CSS](./css.md)
+- [Scroll](./scroll.md)
