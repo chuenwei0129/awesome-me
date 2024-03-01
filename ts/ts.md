@@ -13,10 +13,10 @@
 
 ## 醍醐灌顶
 
+- [换个角度理解 Typescript 的 type 和 interface](https://zhuanlan.zhihu.com/p/351213183)
 - [TypeScript 类型体操天花板，用类型运算写一个 Lisp 解释器](https://zhuanlan.zhihu.com/p/427309936)
 - [巧妙利用 TypeScript 模块声明帮助你解决声明拓展](https://zhuanlan.zhihu.com/p/542379032)
 - [ts 如何定义一个不定长函数数组类型符合要求：后一个函数的参数类型总是前一个函数的返回值的类型？](https://www.zhihu.com/question/531069859)
-<!-- - [如何在 React 中完美运用 TypeScript？](https://juejin.cn/post/6910863689260204039) -->
 
 ## [TypeScript 新特性](https://www.zhihu.com/column/c_1446787480888053760)
 
@@ -30,7 +30,7 @@
 // 5.1 函数返回值类型优化
 // 在 JavaScript 中，undefined 和 null 可以被理解为“没有值”和“有值，但是个空值”。而在 TypeScript 中，它们都是有意义的类型。要表示一个“什么都没有”的类型，你要使用的应该是 never 。
 // 在 TypeScript 中，void 仅用于描述一个没有有效 return 语句的函数的返回值
-// 在 JavaScript 中，如果一个函数没有显式的 return 语句，或是有 return 语句但是没有 return 一个值，那么它的实际计算值会是 undefined。但在 TypeScript 中，这个函数的类型只能被标记为 void 而不是 undefined，即，你可以认为这个函数“没有返回值”，而不能说这个函数“返回了一个undefined值”。
+// 在 JavaScript 中，如果一个函数没有显式的 return 语句，或是有 return 语句但是没有 return 一个值，那么它的实际计算值会是 undefined。但在 TypeScript 中，这个函数的类型只能被标记为 void 而不是 undefined，即，你可以认为这个函数“没有返回值”，而不能说这个函数“返回了一个 undefined 值”。
 // 这么一个诡异的现象在 5.1 版本中终于得到了解决，即无有效 return 语句的函数，其返回值类型能够被标注为 undefined，但如果不进行类型标注，推导得到的值仍然是 void
 
 const f1 = (): undefined => { } // 5.1 以下会报错: A function whose declared type is neither 'void' nor 'any' must return a value.(2355)
@@ -263,75 +263,6 @@ function handler(r: Success | Error) {
 ## TypeScript 深入
 
 ### [TypeScript 中的协变与逆变](https://zhuanlan.zhihu.com/p/454202284)
-
-<div align="right">
-<a href="https://www.typescriptlang.org/zh/play?ts=5.1.3&ssl=60&ssc=18&pln=1&pc=1#code/PTAEhnEx4G0f7NCNjR85UJhKgsf8ArahvH0PfKhTuUJZGhVHUDYndQELdB8pUF+AwGH-AxeUFg5CwTlNAN5WPkEhzc6jQaPVAIf4DOAVwBGAFwCeABwCmgSH-Ao-qBvDIqB8TTiBI40BrcoBu5EoC-1dPxEBDATNCTZcwEAMAKADGAGzMDQAQQB2ASwC2Jp1AAbztQUDMABRkxAAoASmCAXztk51dQABEAewBzUBkADzEZTwATNy8-AODQ0FMAJwBreKSUxxcBNwBhLPqc73yikvLM3JqwhyFilqDk5LsAMyFPBzFvLM9Qf0aZbJyAIRMmmNLcgC5RnISQsNOcgDoG5ri2uxBQQAN5QAj9QE7tQGQzQCLyoAG50ANN6AADlALOegHozHAkKiAA7VAFxygAEjTiAe-N9IBfhKhgHWnKiYwBY8oACFVoIMAMXIQqiANz06FDUSRABVKgEsnQkk5HYQCb8eACYBso0AX4pgwBUcoBMVMA99H2ba7XKHY6eGQAd1APT63niL3eRkAOASVfxOQC4BCRAEPKgAdTBiAaVjAJt+Wr2BpN9g1PFAACIdQEnaBALRygC5-QCIOoA9HUA5AbOp5O2hGZ17d0ewAA6YBAyMAp9GBiUmHZ7GXNOWK11ONV2N5gQCxioBodyFgGj5VBUQDiCoA+6KBgAp1QCIRjp2ELAA2mJEAv4rGqiAYO1AKXGgDZTIVdwA68oiTVRAG6KRkRl1AAFoAHyXPiAZ2UTUZAHBygBX4wB7aoAeBUA4uqzva2OxWCx7ABiJlWvQkoAAvKAYkccgILnsEo-l3tFstVnWTYxHqExPAEBZel8PYvFKdMTlyG873qCRP0Q28xHva5agcDYBDEUA7ifQj0OQiQYkzS5c1uXJHiOZ5XneQBZxMATodQFY9iWPzUBADm5QAoOUAI3SSHLD0qBAsCIKgmCynTUAjWNHA+0AdeVLiQzCULk3gqDuNT7zkmc5x-S5uK5QB++ShWNAEHowA4M0M38xhIXgoUAAblAAk5QB8f8AQ7tAGbYtzABHIwBo-Xc7jAH05QBGHUAF+iqGwQBoOQ5MFAElvQB4fUABCNAGmvZBuJibNQEAJMIlV6foEkAHyIXz2PLLhebjAFR9QBTRUAMATmEAeWVmG4wB4tMAAXdAAXzIVAHnEkhmEANGUqDawBpOSGsFABfAkhV0AB89ERaqhABgAobAA+3QBZ5Rm+bGpsUAlrrLkqCbWauxNRFGqoLs933BbmCoRE3OC95AGAAwBFMIKlVQFKvYqEAIM1ABzzHtAFcEwAq-UWxB2BfAAVCrlSKr7oYqr8qFXDxAEAGfZQDrQBqiLHK6DyMbBADgVQBZuUANkdQamxyjEAZ0VAG+fe0wCWwBP7UAOLkJ0ARldWcnUGLohsqxnyqGSpfOGBiFuIUfRzHccRU7jUJonJ14emAUAfFd6sAG3jGaxjwEcxwA30yoFrAHhDQBnFQ60AAHVQKkWR6gAHncZdSptkw7ZkR39kXZbGvNy23Y9r2Xet237adxd7HadIIiOEoCJuUBPBMXwZBmOZo86JUAAtvCcUpBmKMo3Fj+p4-GcIcjT64M-PaQLHcAQrwA9w+ih+uHah5dn1fPoLmFp9lwANyybxSjr2QPCbgCACVoiEepPHb2RO+7l83wuZZGk8LJ5U8b9lyhvN3i6XP89AB351AUv4+4vHjRNI3A-D0+89KZdL9D93w5vzwxG7x8z4FgBHMBPCwp8ZAOEaK3HIy8LDPkbs3FYMC4EO1fvnZchQi4jEQS3NuHdf7-1qAAfksPUIQMhagXGAU4cwoB3g0NAXfOWxprpPzDp7NBZ934Xyvs-ThhCAHPhAhQsBOdIGNDnmIBeS967EVwSsKRMjUHoJ4Vg4YFRp6KPnovVBgiSFkNEWEahICLDvBETIIAA" target="_blank">
-<img align="center" width="85" src="https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/runtab.png">
-</a>
-</div>
-
-```ts
-// 里氏替换原则：子类可以扩展父类的功能，但不能改变父类原有的功能，子类型（subtype）必须能够替换掉他们的基类型（base type）。
-class Animal {
-  asPet() {}
-}
-class Dog extends Animal {
-  bark() {}
-}
-class Corgi extends Dog {
-  cute() {}
-}
-
-function makeDogBark(dog: Dog) {
-  dog.bark()
-}
-
-// 你很容易发现第一种是可以的，因为所有的柯基都是狗，都会吠，但第二种，并不是所有的动物都会吠，所以这里会抛出一个错误。
-makeDogBark(new Corgi())
-// 类型“Animal”的参数不能赋给类型“Dog”的参数。
-// 类型 "Animal" 中缺少属性 "bark"，但类型 "Dog" 中需要该属性。
-makeDogBark(new Animal())
-
-// 再看一个例子，假设现在我们有一个新的函数，它接收一个函数作为参数，其类型为 Dog -> Dog（即参数类型与返回值均为 Dog）。
-type DogFactory = (args: Dog) => Dog
-function transformDogAndBark(dogFactory: DogFactory) {
-  const dog = dogFactory(new Dog())
-  dog.bark()
-}
-
-// 重点 重点 重点
-// 从上面的例子中，transformDogAndBark 的参数可以接受 DogFactory 的子类型，dogFactory 的类型为 Dog => Dog
-// 这里便是要证明 Dog => Dog 的子类型是什么？满足什么规律？
-// 也就说，以下这一等式成立：
-// (Animal → Corgi) ≼ (Dog → Dog)
-
-// 引入逆变协变
-// 随着某一个量的变化，随之变化一致的即称为协变，而变化相反的即称为逆变。 而在这里，我们称函数参数为逆变，函数返回值为协变，为什么？
-// 考虑 Corgi ≼ Dog，如果它遵循协变，则有 (T → Corgi) ≼ (T → Dog)，即 A、B 在被作为函数返回值类型以后仍然遵循一致的子类型关系。
-// 而对于参数，由于其遵循逆变，则有 (Dog → T) ≼ (Corgi → T)，即 A、B 被作为函数参数类型以后其子类型关系发生逆转。
-// 在 A ≼ B 时，协变意味着 Wrapper<A> ≼ Wrapper<B>，而逆变意味着 Wrapper<B> ≼ Wrapper<A>。
-
-class Parent {
-  name() {}
-}
-class Child extends Parent {
-  age() {}
-}
-
-type AsFuncArgType<T> = (arg: T) => void
-type AsFuncReturnType<T> = (arg: unknown) => T
-
-// Child <- Parent
-// 作为函数参数时，Wrapper<Child> <- Wrapper<Parent> === false
-type CheckArgType = AsFuncArgType<Child> extends AsFuncArgType<Parent>
-  ? true
-  : false // false
-
-// 作为函数返回值时，Wrapper<Child> <- Wrapper<Parent> === true
-type CheckReturnType = AsFuncReturnType<Child> extends AsFuncReturnType<Parent>
-  ? true
-  : false // true
-```
 
 ### [TypeScript 类型体操](https://www.lilnong.top/static/html/booklet.html?id=7047524421182947366&sectionIdx=0)
 

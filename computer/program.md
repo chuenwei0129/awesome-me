@@ -187,52 +187,6 @@ while (true) { // cpu 执行指令的循环
 
 > [干货｜详解 Algebraic Effects 代数效应](https://zhuanlan.zhihu.com/p/380855727)
 
-CPS 是一种编程风格，通过回调函数来返回结果和控制流程。在 CPS 风格中，每一个函数都会显式的接收一个回调函数，通过回调函数来传递当前函数计算结果并控制下一个函数的调用。
-
-```js
-// 用 JavaScript 代码演示 ( 1 + 2 ) × 2 = 6
-
-{
-  // 默认版本
-  const add = (v1, v2) => v1 + v2
-  const multi = (v1, v2) => v1 * v2
-
-  const temp = add(1, 2)
-  // 同步
-  const result = multi(temp, 2)
-  console.log('同步', result) // 6
-
-  // 假设有个产品经理忽然提了一个需求 "add 这个过程需要 1s 后才返回结果"
-  setTimeout(() => {
-    const result = multi(temp, 2)
-    console.log('异步', result)
-  }, 1000)
-}
-
-{
-  // CPS 版本
-  const add = (v1, v2, next) => next(v1 + v2)
-  const multi = (v1, v2, next) => next(v1 * v2)
-
-  add(1, 2, (r1) => {
-    multi(r1, 2, (r2) => {
-      console.log('同步', r2) // 6
-    })
-  })
-
-  // 假设有个产品经理忽然提了一个需求 "add 这个过程需要 1s 后才返回结果"
-  const addAsync = (v1, v2, next) => setTimeout(next, 1000, v1 + v2)
-  addAsync(1, 2, (r1) => {
-    multi(r1, 2, (r2) => {
-      console.log('异步', r2) // 6
-    })
-  })
-}
-```
-
-每一个函数的都接受一个回调函数 next，且计算结果都通过 next 延续给下一个函数，通过 CPS 可以**提升对程序流程控制：当前函数拥有对后续流程的控制**。
-
-> 直呼好家伙，CPS 原来就是被我们嗤之以鼻回调地狱。
 
 ## CallBag
 
