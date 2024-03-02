@@ -202,6 +202,8 @@ Git 分支的本质：**一个指向某一系列提交之首的指针或引用**
 
 **当我们 `git checkout` 一个分支或提交时，它会修改 HEAD 指向新的分支引用或提交，将暂存区填充为该次提交的文件快照，然后将暂存区的内容解包复制到工作区中。**
 
+![20240302152204](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240302152204.png)
+
 ## Git 基本操作
 
 ### git config
