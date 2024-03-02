@@ -194,18 +194,13 @@ PubkeyAcceptedKeyTypes +ssh-rsa
 
 ### 分支
 
-在 Git 中我们将 SHA-1 值用做提交对象（以及 tree 和 blob 对象）的 ID，通过 ID 操作提交对象以及提交对象引用的文件快照。但大部分时候，记住一个 ID 是非常困难的，因此 Git 用一个文件来保存 SHA-1 值，这个文件的名字即作为「引用（refs）」来替代原始的 SHA-1 值。
+Git 分支的本质：**一个指向某一系列提交之首的指针或引用**。
 
-这类包含 SHA-1 值的文件保存在 .git/refs 目录下，我们可以在 .git/refs/heads 目录中找到代表各个分支引用的文件，尝试打印 master 文件的内容：
-
-![20240302145933](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240302145933.png)
-
-这基本就是 Git 分支的本质：一个指向某一系列提交之首的指针或引用。
-
-我们还用 HEAD 来指向最近的一次提交，HEAD 文件通常是一个符号引用（symbolic reference），指向目前所在的分支。 所谓符号引用，表示它是一个指向其他引用的引用：
+我们用 HEAD 来指向最近的一次提交，HEAD 文件通常是一个符号引用（symbolic reference），指向目前所在的分支。所谓符号引用，表示它是一个指向其他引用的引用：
 
 ![20240302150251](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240302150251.png)
 
+**当我们 `git checkout` 一个分支或提交时，它会修改 HEAD 指向新的分支引用或提交，将暂存区填充为该次提交的文件快照，然后将暂存区的内容解包复制到工作区中。**
 
 ## Git 基本操作
 
