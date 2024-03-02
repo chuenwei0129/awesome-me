@@ -11,6 +11,12 @@
     - [Github 仓库中的 commit 不显示自己的头像](#github-仓库中的-commit-不显示自己的头像)
     - [代理](#代理)
     - [升级 Ventura 后 git ssh 似乎出了问题](#升级-ventura-后-git-ssh-似乎出了问题)
+- [Git 工作原理](#git-工作原理)
+  - [Git 的三种状态](#git-的三种状态)
+    - [工作区](#工作区)
+    - [暂存区](#暂存区)
+    - [提交历史](#提交历史)
+  - [分支](#分支)
 - [Git 基本操作](#git-基本操作)
   - [git config](#git-config)
     - [对所有本地仓库的用户信息进行配置](#对所有本地仓库的用户信息进行配置)
@@ -20,7 +26,6 @@
     - [配置 git alias 提升工作效率](#配置-git-alias-提升工作效率)
   - [git stage](#git-stage)
     - [git add](#git-add)
-    - [为什么要先 git add 才能 git commit？](#为什么要先-git-add-才能-git-commit)
   - [git commit](#git-commit)
 - [Git Cheat Sheet](#git-cheat-sheet)
 - [Git 飞行规则](#git-飞行规则)
@@ -142,6 +147,66 @@ PubkeyAcceptedKeyTypes +ssh-rsa
 
 > [使用 Ed25519 算法生成你的 SSH 密钥](https://zhuanlan.zhihu.com/p/110413836)
 
+## Git 工作原理
+
+### Git 的三种状态
+
+这三种状态分别是：
+
+- 工作区（Working Directory）
+- 暂存区（Staging Index）
+- 提交历史（Commit History）
+
+#### 工作区
+
+工作区，就是平时进行开发改动的地方，是当前看到最新的内容，在开发的过程也就是对工作区的操作。
+
+> 我们可以把它当成一个沙盒，在其中随意地添加或编辑文件，然后再将修改后的文件添加到暂存区并记录到提交历史中。
+>
+> Git 可以把工作区中的文件处理、压缩成一个提交对象，也能将取得的提交对象解包成文件同步到工作区中。
+
+#### 暂存区
+
+> [为什么要先 git add 才能 git commit？](https://www.zhihu.com/question/19946553)
+
+暂存区（Stage），当执行 `git add` 的命令后，工作区的文件就会被移入暂存区，**暂存区标记了当前工作区中那些内容是被 Git 管理的**，当完成某个需求或者功能后需要提交代码，第一步就是通过 `git add` 先提交到暂存区。
+
+  1. Git 把它作为工作区与提交历史之间的中间区域，方便我们对提交内容进行组织：
+     1. 我们可能会在工作区同时更改多个完全不相干的文件，这时可以将它们分别放入暂存区，并在不同的提交中加入提交历史。
+
+     2. 此外暂存区还用于合并冲突时存放文件的不同版本。
+
+  2. **除非是一个刚刚初始化的 Git 仓库，否则暂存区并不是空的**，它会填充最近一次提交所对应的文件快照，因此当我们基于最近一次提交在工作区做了一些修改之后，`git status` 会将工作区的文件与暂存区的文件快照进行对比，并提示我们有哪些做了修改的文件尚未加入暂存区。
+
+  3. 暂存区并不像工作区有可见的文件系统目录，或者像提交历史一样通过 .git/objects 目录保存着所有提交对象，它没有实际存在的目录或文件夹，它的实体是位于 .git 目录的 index 文件。index 是一个二进制文件，包含着一个由路径名称、权限和 blob 对象的 SHA-1 值组成的有序列表。可以通过 `git ls-files` 命令查看 index 中的内容：
+
+     ![20240302144341](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240302144341.png)
+
+     index 中记录了暂存区文件的路径名称和 SHA-1 ID，文件内容已经作为 blob 对象保存到了 .git/objects 目录中。
+
+#### 提交历史
+
+提交历史是工作区文件在不同时间的文件快照（快照即文件或文件夹在特定时间点的状态，包括内容和元信息）。
+
+我们可以通过 `git log` 命令查看当前分支的提交历史：
+
+![20240302144553](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240302144553.png)
+
+### 分支
+
+在 Git 中我们将 SHA-1 值用做提交对象（以及 tree 和 blob 对象）的 ID，通过 ID 操作提交对象以及提交对象引用的文件快照。但大部分时候，记住一个 ID 是非常困难的，因此 Git 用一个文件来保存 SHA-1 值，这个文件的名字即作为「引用（refs）」来替代原始的 SHA-1 值。
+
+这类包含 SHA-1 值的文件保存在 .git/refs 目录下，我们可以在 .git/refs/heads 目录中找到代表各个分支引用的文件，尝试打印 master 文件的内容：
+
+![20240302145933](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240302145933.png)
+
+这基本就是 Git 分支的本质：一个指向某一系列提交之首的指针或引用。
+
+我们还用 HEAD 来指向最近的一次提交，HEAD 文件通常是一个符号引用（symbolic reference），指向目前所在的分支。 所谓符号引用，表示它是一个指向其他引用的引用：
+
+![20240302150251](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240302150251.png)
+
+
 ## Git 基本操作
 
 ### git config
@@ -261,11 +326,8 @@ github 2008 年的 blog 中，也提到，容易引起混淆：
 
 为了容易理解，推荐大家使用 `git stage` 和 `git diff --staged` 这两个命令，而 `git add` 和 `git diff --cached` 这两个命令，仅仅为了保持和以前的兼容做保留。
 
-#### [为什么要先 git add 才能 git commit？](https://www.zhihu.com/question/19946553)
 
-![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/gitadd.jpg)
 
-![20240302123631](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240302123631.png)
 
 ### git commit
 
@@ -281,9 +343,14 @@ git commit --amend
 git commit -m 'initial commit'
 git add forgotten_file
 git commit --amend
+# 会进入编辑器，可将第一次提交的提交信息修改为第二次提交的提交信息
 ```
 
 最终你只会有一个提交 —— 第二次提交将代替第一次提交的结果。
+
+
+
+
 
 ## Git Cheat Sheet
 
@@ -756,16 +823,6 @@ push 之后其他开发人员 pull 之后, ignore 规则就对其生效了.
 
 ### 工作区域
 
-![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/terminal/613861755_1618028580119_014AA794B8DE2B0593F9F6C4BE7243D9.png)
-
-- **Workspace**：工作区，就是平时进行开发改动的地方，是当前看到最新的内容，在开发的过程也就是对工作区的操作。
-
-  > Git 可以把工作区中的文件处理、压缩成一个提交对象，也能将取得的提交对象解包成文件同步到工作区中。
-
-- **Index**：暂存区（ Stage ），当执行 `git add` 的命令后，工作区的文件就会被移入暂存区，暂存区标记了当前工作区中那些内容是被 Git 管理的，当完成某个需求或者功能后需要提交代码，第一步就是通过 `git add` 先提交到暂存区。
-
-  1. Git 把它作为工作区与提交历史之间的中间区域，方便我们对提交内容进行组织：我们可能会在工作区同时更改多个完全不相干的文件，这时可以将它们分别放入暂存区，并在不同的提交中加入提交历史。此外暂存区还用于合并冲突时存放文件的不同版本。
-  2. **除非是一个刚刚初始化的 Git 仓库，否则暂存区并不是空的**，它会填充最近一次提交所对应的文件快照，因此当我们基于最近一次提交在工作区做了一些修改之后，`git status` 会将工作区的文件与暂存区的文件快照进行对比，并提示我们有哪些做了修改的文件尚未加入暂存区。
 
 - **Repository**：本地仓库，位于自己的电脑上，通过 `git commit` 提交暂存区的内容，会进入本地仓库。
 
@@ -785,7 +842,6 @@ push 之后其他开发人员 pull 之后, ignore 规则就对其生效了.
 
 - [对给 git 配置邮箱和用户名的理解](https://blog.csdn.net/ITWANGBOIT/article/details/103618427)
 - [解决 Github 的 Contribution 没有增加的问题](https://blog.csdn.net/Liven_Zhu/article/details/80800162)
-- 
 - [git 工作原理与撤销操作图解](https://www.waynerv.com/posts/git-undo-intro/)
 - [我在工作中是如何使用 Git 的](https://juejin.cn/post/6974184935804534815)
 - [高频 Git 面试题](https://zhuanlan.zhihu.com/p/101954895)
