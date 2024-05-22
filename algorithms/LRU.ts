@@ -22,5 +22,8 @@ const cache = <K, V>(limit: number) => ({
     if (this.items.size > this.limit) {
       this.items.delete(this.items.keys().next().value)
     }
-  }
+  },
 })
+
+cache(10)
+cache.set('小说', 1)

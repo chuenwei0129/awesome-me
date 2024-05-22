@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .chart-container {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+        padding: 20px;
+      }
+
+      .bar {
+        background: linear-gradient(
+          to right,
+          #ddd 0%,
+          #ddd var(--current-percentage),
+          #007bff var(--current-percentage),
+          #007bff 100%
+        );
+        height: 20px;
+        position: relative;
+      }
+
+      .bar::before {
+        content: attr(data-current) ' / ' attr(data-total);
+        position: absolute;
+        bottom: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        color: #333;
+      }
+
+      .chart-container > div {
+        width: 100%;
+      }
+
+      /* 根据数据设置百分比 */
+      .bar[data-total='25'] {
+        --current-percentage: calc(var(--current-value) * 100% / 25);
+        --current-value: 15;
+      }
+      .bar[data-total='26'] {
+        --current-percentage: calc(var(--current-value) * 100% / 26);
+        --current-value: 11;
+      }
+      .bar[data-total='40'] {
+        --current-percentage: calc(var(--current-value) * 100% / 40);
+        --current-value: 17;
+      }
+      .bar[data-total='45'] {
+        --current-percentage: calc(var(--current-value) * 100% / 45);
+        --current-value: 25;
+      }
+      .bar[data-total='68'] {
+        --current-percentage: calc(var(--current-value) * 100% / 68);
+        --current-value: 37;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="chart-container">
+      <div class="bar" data-current="15" data-total="25"></div>
+      <div class="bar" data-current="11" data-total="26"></div>
+      <div class="bar" data-current="17" data-total="40"></div>
+      <div class="bar" data-current="25" data-total="45"></div>
+      <div class="bar" data-current="37" data-total="68"></div>
+    </div>
+  </body>
+</html>

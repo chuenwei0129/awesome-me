@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas
+      id="canvas"
+      width="512"
+      height="512"
+      style="box-shadow: 100px 100px 100px #e4dcdc; border: 1px solid #e4dcdc"
+    ></canvas>
+    <script>
+      const canvas = document.getElementById('canvas')
+      /** @type {CanvasRenderingContext2D} */
+      const ctx = canvas.getContext('2d')
+
+      ctx.rect(0, 0, 100, 100)
+      ctx.fill()
+
+      // 动画
+      let height = 0
+      const render = () => {
+        if (height <= 100) {
+          ctx.clearRect(0, 0, 100, height++)
+          requestAnimationFrame(render)
+        }
+      }
+      requestAnimationFrame(render)
+    </script>
+  </body>
+</html>

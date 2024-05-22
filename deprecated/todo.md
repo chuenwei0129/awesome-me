@@ -18,7 +18,6 @@ jsx 就是 js，jsx 标签就相当于createElement函数，模板相当于 字�
 Hook 比普通函数更为严格。你只能在你的组件（或其他 Hook）的 顶层 调用 Hook。如果你想在一个条件或循环中使用 useState，请提取一个新的组件并在组件内部使用它。
 
 
-slot就是电梯里的广告牌，react中是 children props
 
 要传递 props，请将它们添加到 JSX，就像使用 HTML 属性一样。
 要读取 props，请使用 function Avatar({ person, size }) 解构语法。
@@ -31,4 +30,4 @@ Props 是只读的时间快照：每次渲染都会收到新版本的 props。
 demo state
 活在过去
 
-
+1. 层层递进，关联

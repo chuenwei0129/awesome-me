@@ -2,7 +2,7 @@
 
 ## [为什么在 JavaScript 中 NaN 不能是一个独立的类型？](https://www.zhihu.com/question/379014728)
 
-在 JavaScript 里，数字（非[小整数](https://zhuanlan.zhihu.com/p/43992828)）基于 [IEEE 754 标准的双精度 64 位的浮点数](https://zh.wikipedia.org/wiki/%E9%9B%99%E7%B2%BE%E5%BA%A6%E6%B5%AE%E9%BB%9E%E6%95%B8)。
+在 JavaScript 里，数字基于 [IEEE 754 标准的双精度 64 位的浮点数](https://zh.wikipedia.org/wiki/%E9%9B%99%E7%B2%BE%E5%BA%A6%E6%B5%AE%E9%BB%9E%E6%95%B8)。
 
 `NaN` 是一个 IEEE754 浮点数标准明确定义的**值**。
 

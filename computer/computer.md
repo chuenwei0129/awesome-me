@@ -16,16 +16,11 @@
 - [计算机是如何启动的？](#计算机是如何启动的)
 - [数据结构是如何装入 CPU 寄存器的？](#数据结构是如何装入-cpu-寄存器的)
 - [不懂 CPU 如何读写内存还敢说自己是程序员？](#不懂-cpu-如何读写内存还敢说自己是程序员)
-- [CPU 内部各个部件的时延大概是多少？（皮秒，纳秒）?](#cpu-内部各个部件的时延大概是多少皮秒纳秒)
-- [shell、操作系统、内核是一个东西吗？](#shell操作系统内核是一个东西吗)
-- [内核态是指一个特殊的进程，还是指进程的一种特殊状态？](#内核态是指一个特殊的进程还是指进程的一种特殊状态)
 - [程序？进程？傻傻分不清？](#程序进程傻傻分不清)
 - [线程和进程的区别是什么？](#线程和进程的区别是什么)
 - [如何评价「线程的本质就是一个正在运行的函数」?](#如何评价线程的本质就是一个正在运行的函数)
 - [线程间到底共享了哪些进程资源？](#线程间到底共享了哪些进程资源)
 - [线程崩溃是否会造成进程崩溃？](#线程崩溃是否会造成进程崩溃)
-- [有了线程，为什么还要有协程？](#有了线程为什么还要有协程)
-- [协程的好处有哪些？](#协程的好处有哪些)
 - [函数运行时在内存中是什么样子？](#函数运行时在内存中是什么样子)
 - [既然每个程序占用的内存都是操作系统管理的，为什么内存泄漏还是个问题？](#既然每个程序占用的内存都是操作系统管理的为什么内存泄漏还是个问题)
 - [图解 | 你管这破玩意叫文件系统？](#图解--你管这破玩意叫文件系统)
@@ -168,15 +163,11 @@ CPU 的工作就是不断读取指令，然后执行这些指令。
 
 ## [不懂 CPU 如何读写内存还敢说自己是程序员？](https://zhuanlan.zhihu.com/p/390117048)
 
-## [CPU 内部各个部件的时延大概是多少？（皮秒，纳秒）?](https://www.zhihu.com/question/488790905)
 
-## [shell、操作系统、内核是一个东西吗？](https://www.zhihu.com/question/37695460)
 
-![20230304013808](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/others/20230304013808.png)
 
-## [内核态是指一个特殊的进程，还是指进程的一种特殊状态？](https://www.zhihu.com/question/40147261)
 
-![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/computer/SCR-20220418-est.png)
+
 
 ## [程序？进程？傻傻分不清？](https://mp.weixin.qq.com/s?__biz=Mzg4OTYzODM4Mw==&mid=2247485647&idx=1&sn=3336b441482736b4e9a2b32f9d272a5b&source=41#wechat_redirect)
 
@@ -209,13 +200,7 @@ CPU 的工作就是不断读取指令，然后执行这些指令。
 
 ![20230304021637](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/others/20230304021637.png)
 
-## [有了线程，为什么还要有协程？](https://www.zhihu.com/question/504791946)
 
-![20230304022053](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/others/20230304022053.png)
-
-## [协程的好处有哪些？](https://www.zhihu.com/question/20511233)
-
-![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/computer/SCR-20220418-fwh.png)
 
 ## [函数运行时在内存中是什么样子？](https://zhuanlan.zhihu.com/p/339866296)
 

@@ -8,6 +8,10 @@
 
 **笔记内容**：[Make Web Great Again](#make-web-great-again) | [工具用的好，下班回家早](#工具用的好下班回家早) | [这就是前端](#这就是前端) | [Make Web Great Again](#make-web-great-again) | [前端工程化](#前端工程化) | [计算机基础知识](#计算机基础知识)
 
+## 面试
+
+- `[FE]` [找工作前准备](interview/index.md)
+
 ## Make Web Great Again
 
 > Always bet on Web, Because there is only Web.
@@ -61,8 +65,6 @@
 
 > 崔颢题诗在上头
 
-<!-- TODO -->
-
 ## 他山之石
 
 > TODO
@@ -75,5 +77,4 @@
 - [阿里妈妈前端快爆](https://www.zhihu.com/column/mm-fe)
 - [初级前端工程师](https://www.zhihu.com/column/makewebgreatagain)
 
-<!-- - `[LeetCode]` [程序员界的《五年高考，三年模拟》](algorithms/leetcode.md) -->
-<!-- - 一个充满了既神奇又无用的python知识的合集。为什么要研究这些？因为它就在那儿呀！ -->
+<!-- 一个充满了既神奇又无用的 JavaScript 知识的合集。为什么要研究这些？因为它就在那儿呀！ -->

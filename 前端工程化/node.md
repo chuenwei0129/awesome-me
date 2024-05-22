@@ -14,7 +14,6 @@
   - [npm search 搜索模块](#npm-search-搜索模块)
   - [npm list 查看模块](#npm-list-查看模块)
   - [npm install 安装模块](#npm-install-安装模块)
-  - [npm uninstall 卸载模块](#npm-uninstall-卸载模块)
   - [npm update 更新模块](#npm-update-更新模块)
   - [npm run 执行脚本](#npm-run-执行脚本)
   - [npm publish 发布模块](#npm-publish-发布模块)
@@ -48,7 +47,6 @@
   - [全局缓存](#全局缓存)
 - [pnpm](#pnpm)
 - [nvm-windows](#nvm-windows)
-  - [常用命令](#常用命令)
   - [使用淘宝镜像](#使用淘宝镜像)
   - [windows 下 npm 全局包设置](#windows-下-npm-全局包设置)
 
@@ -159,18 +157,10 @@ nvm install v5.0.0 --reinstall-packages-from=4.2
 ### npm set 设置环境变量
 
 ```sh
-npm set init-author-name 'my name jerry'
-npm set init-author-email '12345@qq.com'
+npm set init-author-name 'your name'
+npm set init-author-email 'yourdoemail@qq.com'
 npm set init-author-url 'http://yourdomain.com'
 npm set init-license 'MIT'
-
-# 设置代理
-npm config set proxy http://server:port
-npm config set https-proxy http://server:port
-
-# 删除代理
-npm config delete proxy
-npm config delete https-proxy
 ```
 
 执行了以上的修改，此时 Package.json 并没有发生变化
@@ -228,16 +218,6 @@ npm install [<@scope>/]<name>@<tag>
 npm install <tarball url>
 # eg: npm install git://github.com/package/path.git
 ```
-
-### npm uninstall 卸载模块
-
-```sh
-# 卸载当前项目或全局模块
-npm uninstall <name> [-g]
-# eg: npm uninstall gulp --save-dev
-```
-
-卸载后，你可以到 **`/node_modules/`** 目录下查看包是否还存在
 
 ### npm update 更新模块
 
@@ -351,12 +331,12 @@ npm install nrm -g
 安装完成后，输入命令 `nrm ls`，可以看到默认的 6 个源（带 `*` 号的为当前使用的源）
 
 ```sh
-* npm ---- https://registry.npmjs.org/
-  cnpm --- http://r.cnpmjs.org/
-  taobao - https://registry.npm.taobao.org/
-  nj ----- https://registry.nodejitsu.com/
-  npmMirror  https://skimdb.npmjs.com/registry/
-  edunpm - http://registry.enpmjs.org/
+  npm ---------- https://registry.npmjs.org/
+  yarn --------- https://registry.yarnpkg.com/
+  tencent ------ https://mirrors.cloud.tencent.com/npm/
+  cnpm --------- https://r.cnpmjs.org/
+* taobao ------- https://registry.npmmirror.com/
+  npmMirror ---- https://skimdb.npmjs.com/registry/
 ```
 
 输入 `nrm use taobao`，即切换 registry 到 taobao，即可使用淘宝的源进行下载了。
@@ -541,7 +521,7 @@ npx create-react-app my-app
 
 ### 基础版的 package.json
 
-当我们新建一个名称为 my-test 的项目时，使用 `yarn init -y` 或 `npm init -y` 命令后，在项目目录下会新增一个 package.json 文件，内容如下：
+当我们新建一个名称为 my-test 的项目时，使用 `npm init -y` 命令后，在项目目录下会新增一个 package.json 文件，内容如下：
 
 ```json
 {
@@ -554,7 +534,7 @@ npx create-react-app my-app
   },
   "keywords": [], # 关键词
   "author": "", # 作者
-  "license": "ISC" # 许可证
+  "license": "ISC" # 开源许可证
 }
 ```
 
@@ -679,8 +659,6 @@ npx create-react-app my-app
 
 通过分析项目根目录的 `bundle.json` 作为入口，下载每一个依赖，分析 `bundle.json`，然后继续下载每一个依赖项，**递归这个过程**。这就是依赖分析的过程。
 
-但是这种思路存在问题，比如：版本冲突怎么办？循环依赖怎么办？版本冲突时的冗余下载？多个项目的公共依赖的重复下载？
-
 ### 解决版本冲突
 
 版本冲突是多个包依赖了同一个包，但是依赖的版本不同，这时候就要选择一个版本来安装，我们可以简单的把规则定为使用高版本的那个。
@@ -711,19 +689,6 @@ npx create-react-app my-app
 下载 [nvm-windows](https://github.com/coreybutler/nvm-windows/releases)，下载完成，解压文件之后，双击进行安装即可。
 
 安装完成，在命令行输入：`nvm v`，查看到对应的版本号，说明 nvm 安装成功了。
-
-### 常用命令
-
-|         命令          |                            功能                            |
-| :-------------------: | :--------------------------------------------------------: |
-|  nvm list available   | 列出所有远程服务器的 nodejs 版本（官方 node version list） |
-|  nvm install latest   |                   安装最新的 nodejs 版本                   |
-|  nvm install 12.18.1  |                   安装对应的 nodejs 版本                   |
-|    nvm use 12.18.1    |                   使用对应的 nodejs 版本                   |
-| nvm uninstall 12.18.1 |                   卸载对应的 nodejs 版本                   |
-|       nvm list        |                 列出已经安装的 nodejs 版本                 |
-
-更多命令在命令行输入 `nvm` 即可查看。
 
 ### 使用淘宝镜像
 

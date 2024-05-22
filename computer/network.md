@@ -460,7 +460,7 @@ A 和 B 通信，A 收到由证书认证机构 C 颁发的 B 的证书后认定�
 
 ## Websocket
 
-> [WebSocket 是什么原理？为什么可以实现持久连接？](https://www.zhihu.com/question/20215561/answer/40316953)
+> 
 
 ## OAuth
 
@@ -567,9 +567,6 @@ A 和 B 通信，A 收到由证书认证机构 C 颁发的 B 的证书后认定�
 
 ## 资料
 
-- [怎么理解 rpc，既然有 http 请求了为啥还要用 rpc？](https://www.zhihu.com/question/524580708/answer/2584782720)
-- [IPv4 地址和子网掩码](https://www.bilibili.com/video/BV1xu411f7UW)
-- [非对称加密](https://www.bilibili.com/video/BV1YL411p7bb)
-- [数学不好也能听懂的算法 - RSA 加密和解密原理和过程](https://www.bilibili.com/video/BV1XP4y1A7Ui)
+- 
 - [课堂上传纸条如何防范中间人攻击？](https://www.zhihu.com/question/22558998/answer/21803111)
 - [HTTP/3 竟然基于 UDP，HTTP 协议这些年都经历了啥？](https://zhuanlan.zhihu.com/p/68012355)
