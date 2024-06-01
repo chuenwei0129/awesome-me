@@ -40,7 +40,7 @@ importers:
         version: 2.8.5
       dumi:
         specifier: ^2.2.17
-        version: 2.2.17(@babel/core@7.24.4)(@types/node@20.12.7)(@types/react@18.2.79)(eslint@8.57.0)(jest@29.7.0(@types/node@20.12.7)(ts-node@10.9.2(@swc/core@1.3.72)(@types/node@20.5.1)(typescript@5.4.5)))(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(stylelint@14.16.1)(terser@5.30.4)(type-fest@1.4.0)(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.3.72))
+        version: 2.2.17(@babel/core@7.23.6)(@types/node@20.12.7)(@types/react@18.2.79)(eslint@8.57.0)(jest@29.7.0(@types/node@20.12.7)(ts-node@10.9.2(@swc/core@1.3.72)(@types/node@20.5.1)(typescript@5.4.5)))(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(stylelint@14.16.1)(terser@5.30.4)(type-fest@1.4.0)(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.3.72))
       eslint:
         specifier: ^8.23.0
         version: 8.57.0
@@ -49,7 +49,10 @@ importers:
         version: 4.19.2
       father:
         specifier: ^4.1.0
-        version: 4.4.0(@babel/core@7.24.4)(@types/node@20.12.7)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(type-fest@1.4.0)(webpack@5.91.0(@swc/core@1.3.72))
+        version: 4.4.0(@babel/core@7.23.6)(@types/node@20.12.7)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(type-fest@1.4.0)(webpack@5.91.0(@swc/core@1.3.72))
+      gh-pages:
+        specifier: ^6.1.1
+        version: 6.1.1
       husky:
         specifier: ^8.0.1
         version: 8.0.3
@@ -88,7 +91,7 @@ importers:
         version: 14.16.1
       ts-jest:
         specifier: ^29.1.2
-        version: 29.1.2(@babel/core@7.24.4)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.24.4))(jest@29.7.0(@types/node@20.12.7)(ts-node@10.9.2(@swc/core@1.3.72)(@types/node@20.5.1)(typescript@5.4.5)))(typescript@5.4.5)
+        version: 29.1.2(@babel/core@7.23.6)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.23.6))(jest@29.7.0(@types/node@20.12.7)(ts-node@10.9.2(@swc/core@1.3.72)(@types/node@20.5.1)(typescript@5.4.5)))(typescript@5.4.5)
       typescript:
         specifier: ^5.4.3
         version: 5.4.5
@@ -1813,9 +1816,17 @@ packages:
     resolution: {integrity: sha512-itaWrbYbqpGXkGhZPGUulwnhVf5Hpy1xiCFsGqyIGglbBxmG5vSjxQen3/WGOjPpNEv1RtBLKxbmVXm8HpJStQ==}
     engines: {node: '>= 0.4'}
 
+  array-union@1.0.2:
+    resolution: {integrity: sha512-Dxr6QJj/RdU/hCaBjOfxW+q6lyuVE6JFWIrAUpuOOhoJJoQ99cUn3igRaHVB5P9WrgFVN0FfArM3x0cueOU8ng==}
+    engines: {node: '>=0.10.0'}
+
   array-union@2.1.0:
     resolution: {integrity: sha512-HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw==}
     engines: {node: '>=8'}
+
+  array-uniq@1.0.3:
+    resolution: {integrity: sha512-MNha4BWQ6JbwhFhj03YK552f7cb3AzoE8SzeljgChvL1dl3IcvggXVz1DilzySZkCja+CXuZbdW7yATchWn8/Q==}
+    engines: {node: '>=0.10.0'}
 
   array.prototype.flat@1.3.2:
     resolution: {integrity: sha512-djYB+Zx2vLewY8RWlNCUdHjDXs2XOgm602S9E7P/UpHgfeHL00cRiIF+IN/G/aUJ7kGPb6yO/ErDI5V2s8iycA==}
@@ -1853,6 +1864,9 @@ packages:
   astring@1.8.6:
     resolution: {integrity: sha512-ISvCdHdlTDlH5IpxQJIex7BWBywFWgjJSVdwst+/iQCoEYnyOaQ95+X1JGshuBjGp6nxKUy1jMgE3zPqN7fQdg==}
     hasBin: true
+
+  async@3.2.5:
+    resolution: {integrity: sha512-baNZyqaaLhyLVKm/DlvdW051MSgO6b8eVfIezl9E5PqWxFgzLm/wQntEW4zOytVburDEr0JlALEpdOFwvErLsg==}
 
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
@@ -2285,6 +2299,9 @@ packages:
 
   common-path-prefix@3.0.0:
     resolution: {integrity: sha512-QE33hToZseCH3jS0qN96O/bSh3kaw/h+Tq7ngyY9eWDUnTlTNUyqfqvCXioLe5Na5jFsL78ra/wuBU4iuEgd4w==}
+
+  commondir@1.0.1:
+    resolution: {integrity: sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg==}
 
   compare-func@2.0.0:
     resolution: {integrity: sha512-zHig5N+tPWARooBnb0Zx1MFcdfpyJrfTJ3Y5L+IFvUm8rM74hHz66z0gw0x4tijh5CorKkKUCnW82R2vmpeCRA==}
@@ -2835,6 +2852,9 @@ packages:
   elliptic@6.5.5:
     resolution: {integrity: sha512-7EjbcmUm17NQFu4Pmgmq2olYMj8nwMnpcddByChSUjArp8F5DQWcIcpriwO4ZToLNAJig0yiyjswfyGNje/ixw==}
 
+  email-addresses@5.0.0:
+    resolution: {integrity: sha512-4OIPYlA6JXqtVn8zpHpGiI7vE6EQOAg16aGnDMIAlZVinnoZ8208tW1hAbjWydgN/4PLTT9q+O1K6AH/vALJGw==}
+
   emittery@0.13.1:
     resolution: {integrity: sha512-DeWwawk6r5yR9jFgnDKYt4sLS0LmHJJi3ZOnb5/JdbYwj3nW+FxQnHIjhBKz8YLC7oRNPVM9NQ47I3CVx34eqQ==}
     engines: {node: '>=12'}
@@ -3185,6 +3205,14 @@ packages:
   file-system-cache@2.4.4:
     resolution: {integrity: sha512-vCYhn8pb5nlC3Gs2FFCOkmf4NEg2Ym3ulJwkmS9o6p9oRShGj6CwTMFvpgZihBlsh373NaM0XgAgDHXQIlS4LQ==}
 
+  filename-reserved-regex@2.0.0:
+    resolution: {integrity: sha512-lc1bnsSr4L4Bdif8Xb/qrtokGbq5zlsms/CYH8PP+WtCkGNF65DPiQY8vG3SakEdRn8Dlnm+gW/qWKKjS5sZzQ==}
+    engines: {node: '>=4'}
+
+  filenamify@4.3.0:
+    resolution: {integrity: sha512-hcFKyUG57yWGAzu1CMt/dPzYZuv+jAJUT85bL8mrXvNe6hWj6yEHEc4EdcgiA6Z3oi1/9wXJdZPXF2dZNgwgOg==}
+    engines: {node: '>=8'}
+
   filesize@3.6.1:
     resolution: {integrity: sha512-7KjR1vv6qnicaPMi1iiTcI85CyYwRO/PSFCu6SvqL8jN2Wjt/NIYQTFtFs7fSDCYOstUkEWIQGFUg5YZQfjlcg==}
     engines: {node: '>= 0.4.0'}
@@ -3204,6 +3232,10 @@ packages:
   find-babel-config@1.2.1:
     resolution: {integrity: sha512-mP4klVCAYHgRyY2TNSfgk8RSVvpFx5Ug0p9Bca0c5lTk1lUS5p/UcCqvIUdSPtUJgf2syBsdPGTKqTd5NjC5gg==}
     engines: {node: '>=4.0.0'}
+
+  find-cache-dir@3.3.2:
+    resolution: {integrity: sha512-wXZV5emFEjrridIgED11OoUKLxiYjAcqot/NJdAkOhlJ+vGzwhOAfcG5OX1jP+S0PcjEn8bdMJv+g2jwQ3Onig==}
+    engines: {node: '>=8'}
 
   find-file-up@0.1.3:
     resolution: {integrity: sha512-mBxmNbVyjg1LQIIpgO8hN+ybWBgDQK8qjht+EbrTCGmmPV/sc7RF1i9stPTD6bpvXZywBdrwRYxhSdJv867L6A==}
@@ -3371,6 +3403,11 @@ packages:
     resolution: {integrity: sha512-Ln0UQDlxH1BapMu3GPtf7CuYNwRZf2gwCuPqbyG6pB8WfmFpzqcy4xtAaAMUhnNqjMKTiCPZG2oMT3YSx8U2NA==}
     engines: {node: '>=0.10.0'}
 
+  gh-pages@6.1.1:
+    resolution: {integrity: sha512-upnohfjBwN5hBP9w2dPE7HO5JJTHzSGMV1JrLrHvNuqmjoYHg6TBrCcnEoorjG/e0ejbuvnwyKMdTyM40PEByw==}
+    engines: {node: '>=10'}
+    hasBin: true
+
   git-branch@1.0.0:
     resolution: {integrity: sha512-ZTzuqw5Df8fyLXQWrX6hK+4FpNCdKzMcERlxENEGO5aKcLmG7MAszhrMhluUKNKmOS/JAGijDMQDXDCDw1mE/A==}
     engines: {node: '>=0.8'}
@@ -3456,6 +3493,10 @@ packages:
   globby@13.2.2:
     resolution: {integrity: sha512-Y1zNGV+pzQdh7H39l9zgB4PJqjRNqydvdYCDG4HFXM4XuvSaQQlEc91IU1yALL8gUTDomgBAfz3XJdmUS+oo0w==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+
+  globby@6.1.0:
+    resolution: {integrity: sha512-KVbFv2TQtbzCoxAnfD6JcHZTYCzyliEaaeM/gH8qQdkKr5s0OP9scEgvdcngyk7AVdY6YVW/TJHd+lQ/Df3Daw==}
+    engines: {node: '>=0.10.0'}
 
   globjoin@0.1.4:
     resolution: {integrity: sha512-xYfnw62CKG8nLkZBfWbhWwDw02CHty86jfPcc2cr3ZfeuK9ysoVPPEUxf21bAD/rWAgk52SuBrLJlefNy8mvFg==}
@@ -4639,6 +4680,10 @@ packages:
     resolution: {integrity: sha512-LS9X+dc8KLxXCb8dni79fLIIUA5VyZoyjSMCwTluaXA0o27cCK0bhXkpgw+sTXVpPy/lSO57ilRixqk0vDmtRA==}
     engines: {node: '>=6'}
 
+  make-dir@3.1.0:
+    resolution: {integrity: sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==}
+    engines: {node: '>=8'}
+
   make-dir@4.0.0:
     resolution: {integrity: sha512-hXdUTZYIVOt1Ex//jAQi+wTZZpUpwBj/0QsOzqegb3rGMMeJiSEu5xLHnYfBrRV4RH2+OCSOO95Is/7x1WJ4bw==}
     engines: {node: '>=10'}
@@ -5397,6 +5442,10 @@ packages:
     engines: {node: '>=0.10'}
     hasBin: true
 
+  pify@2.3.0:
+    resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
+    engines: {node: '>=0.10.0'}
+
   pify@3.0.0:
     resolution: {integrity: sha512-C3FsVNH1udSEX48gGX1xfvwTWfsYWj5U+8/uK15BGzIGrKoUpghX8hWZwa/OFnakBiiVNmBvemTJR5mcy7iPcg==}
     engines: {node: '>=4'}
@@ -5404,6 +5453,14 @@ packages:
   pify@4.0.1:
     resolution: {integrity: sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==}
     engines: {node: '>=6'}
+
+  pinkie-promise@2.0.1:
+    resolution: {integrity: sha512-0Gni6D4UcLTbv9c57DfxDGdr41XfgUjqWZu492f0cIGr16zDU06BWP/RAEvOuo7CQ0CNjHaLlM59YJJFm3NWlw==}
+    engines: {node: '>=0.10.0'}
+
+  pinkie@2.0.4:
+    resolution: {integrity: sha512-MnUuEycAemtSaeFSjXKW/aroV7akBbY+Sv+RkyqFjgAe73F+MR0TBWKBRDkmfWq/HiFmdavfZ1G7h4SPZXaCSg==}
+    engines: {node: '>=0.10.0'}
 
   pino-abstract-transport@0.5.0:
     resolution: {integrity: sha512-+KAgmVeqXYbTtU2FScx1XS3kNyfZ5TrXY07V96QnUSFqo2gAqlvmaxH67Lj7SWazqsMabf+58ctdTcBgnOLUOQ==}
@@ -6639,6 +6696,10 @@ packages:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
 
+  strip-outer@1.0.1:
+    resolution: {integrity: sha512-k55yxKHwaXnpYGsOzg4Vl8+tDrWylxDEpknGjhTiZB8dFRU5rTo9CAzeycivxV3s+zlTKwrs6WxMxR95n26kwg==}
+    engines: {node: '>=0.10.0'}
+
   style-search@0.1.0:
     resolution: {integrity: sha512-Dj1Okke1C3uKKwQcetra4jSuk0DqbzbYtXipzFlFMZtowbF1x7BKJwB9AayVMyFARvU8EDrZdcax4At/452cAg==}
 
@@ -6858,6 +6919,10 @@ packages:
   trim-newlines@3.0.1:
     resolution: {integrity: sha512-c1PTsA3tYrIsLGkJkzHF+w9F2EyxfXGo4UyJc4pFL++FMjnq0HJS69T3M7d//gKrFKwy429bouPescbjecU+Zw==}
     engines: {node: '>=8'}
+
+  trim-repeated@1.0.0:
+    resolution: {integrity: sha512-pkonvlKk8/ZuR0D5tLW8ljt5I8kmxp2XKymhepUeOdCEfKpZaktSArkLHZt76OB1ZvO9bssUsDty4SWhLvZpLg==}
+    engines: {node: '>=0.10.0'}
 
   trough@2.2.0:
     resolution: {integrity: sha512-tmMpK00BjZiUyVyvrBK7knerNgmgvcV/KLVyuma/SC+TQN167GrMRciANTz09+k3zW8L8t60jWO1GpfkZdjTaw==}
@@ -7613,9 +7678,19 @@ snapshots:
     dependencies:
       '@babel/types': 7.24.0
 
+  '@babel/plugin-syntax-async-generators@7.8.4(@babel/core@7.23.6)':
+    dependencies:
+      '@babel/core': 7.23.6
+      '@babel/helper-plugin-utils': 7.24.0
+
   '@babel/plugin-syntax-async-generators@7.8.4(@babel/core@7.24.4)':
     dependencies:
       '@babel/core': 7.24.4
+      '@babel/helper-plugin-utils': 7.24.0
+
+  '@babel/plugin-syntax-bigint@7.8.3(@babel/core@7.23.6)':
+    dependencies:
+      '@babel/core': 7.23.6
       '@babel/helper-plugin-utils': 7.24.0
 
   '@babel/plugin-syntax-bigint@7.8.3(@babel/core@7.24.4)':
@@ -7623,9 +7698,19 @@ snapshots:
       '@babel/core': 7.24.4
       '@babel/helper-plugin-utils': 7.24.0
 
+  '@babel/plugin-syntax-class-properties@7.12.13(@babel/core@7.23.6)':
+    dependencies:
+      '@babel/core': 7.23.6
+      '@babel/helper-plugin-utils': 7.24.0
+
   '@babel/plugin-syntax-class-properties@7.12.13(@babel/core@7.24.4)':
     dependencies:
       '@babel/core': 7.24.4
+      '@babel/helper-plugin-utils': 7.24.0
+
+  '@babel/plugin-syntax-import-meta@7.10.4(@babel/core@7.23.6)':
+    dependencies:
+      '@babel/core': 7.23.6
       '@babel/helper-plugin-utils': 7.24.0
 
   '@babel/plugin-syntax-import-meta@7.10.4(@babel/core@7.24.4)':
@@ -7633,9 +7718,19 @@ snapshots:
       '@babel/core': 7.24.4
       '@babel/helper-plugin-utils': 7.24.0
 
+  '@babel/plugin-syntax-json-strings@7.8.3(@babel/core@7.23.6)':
+    dependencies:
+      '@babel/core': 7.23.6
+      '@babel/helper-plugin-utils': 7.24.0
+
   '@babel/plugin-syntax-json-strings@7.8.3(@babel/core@7.24.4)':
     dependencies:
       '@babel/core': 7.24.4
+      '@babel/helper-plugin-utils': 7.24.0
+
+  '@babel/plugin-syntax-jsx@7.24.1(@babel/core@7.23.6)':
+    dependencies:
+      '@babel/core': 7.23.6
       '@babel/helper-plugin-utils': 7.24.0
 
   '@babel/plugin-syntax-jsx@7.24.1(@babel/core@7.24.4)':
@@ -7643,9 +7738,19 @@ snapshots:
       '@babel/core': 7.24.4
       '@babel/helper-plugin-utils': 7.24.0
 
+  '@babel/plugin-syntax-logical-assignment-operators@7.10.4(@babel/core@7.23.6)':
+    dependencies:
+      '@babel/core': 7.23.6
+      '@babel/helper-plugin-utils': 7.24.0
+
   '@babel/plugin-syntax-logical-assignment-operators@7.10.4(@babel/core@7.24.4)':
     dependencies:
       '@babel/core': 7.24.4
+      '@babel/helper-plugin-utils': 7.24.0
+
+  '@babel/plugin-syntax-nullish-coalescing-operator@7.8.3(@babel/core@7.23.6)':
+    dependencies:
+      '@babel/core': 7.23.6
       '@babel/helper-plugin-utils': 7.24.0
 
   '@babel/plugin-syntax-nullish-coalescing-operator@7.8.3(@babel/core@7.24.4)':
@@ -7653,9 +7758,19 @@ snapshots:
       '@babel/core': 7.24.4
       '@babel/helper-plugin-utils': 7.24.0
 
+  '@babel/plugin-syntax-numeric-separator@7.10.4(@babel/core@7.23.6)':
+    dependencies:
+      '@babel/core': 7.23.6
+      '@babel/helper-plugin-utils': 7.24.0
+
   '@babel/plugin-syntax-numeric-separator@7.10.4(@babel/core@7.24.4)':
     dependencies:
       '@babel/core': 7.24.4
+      '@babel/helper-plugin-utils': 7.24.0
+
+  '@babel/plugin-syntax-object-rest-spread@7.8.3(@babel/core@7.23.6)':
+    dependencies:
+      '@babel/core': 7.23.6
       '@babel/helper-plugin-utils': 7.24.0
 
   '@babel/plugin-syntax-object-rest-spread@7.8.3(@babel/core@7.24.4)':
@@ -7663,14 +7778,29 @@ snapshots:
       '@babel/core': 7.24.4
       '@babel/helper-plugin-utils': 7.24.0
 
+  '@babel/plugin-syntax-optional-catch-binding@7.8.3(@babel/core@7.23.6)':
+    dependencies:
+      '@babel/core': 7.23.6
+      '@babel/helper-plugin-utils': 7.24.0
+
   '@babel/plugin-syntax-optional-catch-binding@7.8.3(@babel/core@7.24.4)':
     dependencies:
       '@babel/core': 7.24.4
       '@babel/helper-plugin-utils': 7.24.0
 
+  '@babel/plugin-syntax-optional-chaining@7.8.3(@babel/core@7.23.6)':
+    dependencies:
+      '@babel/core': 7.23.6
+      '@babel/helper-plugin-utils': 7.24.0
+
   '@babel/plugin-syntax-optional-chaining@7.8.3(@babel/core@7.24.4)':
     dependencies:
       '@babel/core': 7.24.4
+      '@babel/helper-plugin-utils': 7.24.0
+
+  '@babel/plugin-syntax-top-level-await@7.14.5(@babel/core@7.23.6)':
+    dependencies:
+      '@babel/core': 7.23.6
       '@babel/helper-plugin-utils': 7.24.0
 
   '@babel/plugin-syntax-top-level-await@7.14.5(@babel/core@7.24.4)':
@@ -7683,10 +7813,10 @@ snapshots:
       '@babel/core': 7.24.4
       '@babel/helper-plugin-utils': 7.24.0
 
-  '@babel/plugin-transform-modules-commonjs@7.23.3(@babel/core@7.24.4)':
+  '@babel/plugin-transform-modules-commonjs@7.23.3(@babel/core@7.23.6)':
     dependencies:
-      '@babel/core': 7.24.4
-      '@babel/helper-module-transforms': 7.23.3(@babel/core@7.24.4)
+      '@babel/core': 7.23.6
+      '@babel/helper-module-transforms': 7.23.3(@babel/core@7.23.6)
       '@babel/helper-plugin-utils': 7.24.0
       '@babel/helper-simple-access': 7.22.5
 
@@ -9299,13 +9429,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@umijs/test@4.1.10(@babel/core@7.24.4)':
+  '@umijs/test@4.1.10(@babel/core@7.23.6)':
     dependencies:
-      '@babel/plugin-transform-modules-commonjs': 7.23.3(@babel/core@7.24.4)
+      '@babel/plugin-transform-modules-commonjs': 7.23.3(@babel/core@7.23.6)
       '@jest/types': 27.5.1
       '@umijs/bundler-utils': 4.1.10
       '@umijs/utils': 4.1.10
-      babel-jest: 29.7.0(@babel/core@7.24.4)
+      babel-jest: 29.7.0(@babel/core@7.23.6)
       esbuild: 0.17.19
       identity-obj-proxy: 3.0.0
       isomorphic-unfetch: 4.0.2
@@ -9564,7 +9694,13 @@ snapshots:
       get-intrinsic: 1.2.4
       is-string: 1.0.7
 
+  array-union@1.0.2:
+    dependencies:
+      array-uniq: 1.0.3
+
   array-union@2.1.0: {}
+
+  array-uniq@1.0.3: {}
 
   array.prototype.flat@1.3.2:
     dependencies:
@@ -9626,6 +9762,8 @@ snapshots:
 
   astring@1.8.6: {}
 
+  async@3.2.5: {}
+
   asynckit@0.4.0: {}
 
   atob@2.1.2: {}
@@ -9650,6 +9788,19 @@ snapshots:
     dependencies:
       follow-redirects: 1.5.10
       is-buffer: 2.0.5
+    transitivePeerDependencies:
+      - supports-color
+
+  babel-jest@29.7.0(@babel/core@7.23.6):
+    dependencies:
+      '@babel/core': 7.23.6
+      '@jest/transform': 29.7.0
+      '@types/babel__core': 7.20.5
+      babel-plugin-istanbul: 6.1.1
+      babel-preset-jest: 29.6.3(@babel/core@7.23.6)
+      chalk: 4.1.2
+      graceful-fs: 4.2.11
+      slash: 3.0.0
     transitivePeerDependencies:
       - supports-color
 
@@ -9695,11 +9846,11 @@ snapshots:
       reselect: 4.1.8
       resolve: 1.22.8
 
-  babel-plugin-styled-components@2.1.4(@babel/core@7.24.4)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)):
+  babel-plugin-styled-components@2.1.4(@babel/core@7.23.6)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)):
     dependencies:
       '@babel/helper-annotate-as-pure': 7.22.5
       '@babel/helper-module-imports': 7.24.3
-      '@babel/plugin-syntax-jsx': 7.24.1(@babel/core@7.24.4)
+      '@babel/plugin-syntax-jsx': 7.24.1(@babel/core@7.23.6)
       lodash: 4.17.21
       picomatch: 2.3.1
       styled-components: 6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -9710,6 +9861,22 @@ snapshots:
     dependencies:
       lodash: 4.17.21
       traverse: 0.6.6
+
+  babel-preset-current-node-syntax@1.0.1(@babel/core@7.23.6):
+    dependencies:
+      '@babel/core': 7.23.6
+      '@babel/plugin-syntax-async-generators': 7.8.4(@babel/core@7.23.6)
+      '@babel/plugin-syntax-bigint': 7.8.3(@babel/core@7.23.6)
+      '@babel/plugin-syntax-class-properties': 7.12.13(@babel/core@7.23.6)
+      '@babel/plugin-syntax-import-meta': 7.10.4(@babel/core@7.23.6)
+      '@babel/plugin-syntax-json-strings': 7.8.3(@babel/core@7.23.6)
+      '@babel/plugin-syntax-logical-assignment-operators': 7.10.4(@babel/core@7.23.6)
+      '@babel/plugin-syntax-nullish-coalescing-operator': 7.8.3(@babel/core@7.23.6)
+      '@babel/plugin-syntax-numeric-separator': 7.10.4(@babel/core@7.23.6)
+      '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.23.6)
+      '@babel/plugin-syntax-optional-catch-binding': 7.8.3(@babel/core@7.23.6)
+      '@babel/plugin-syntax-optional-chaining': 7.8.3(@babel/core@7.23.6)
+      '@babel/plugin-syntax-top-level-await': 7.14.5(@babel/core@7.23.6)
 
   babel-preset-current-node-syntax@1.0.1(@babel/core@7.24.4):
     dependencies:
@@ -9726,6 +9893,12 @@ snapshots:
       '@babel/plugin-syntax-optional-catch-binding': 7.8.3(@babel/core@7.24.4)
       '@babel/plugin-syntax-optional-chaining': 7.8.3(@babel/core@7.24.4)
       '@babel/plugin-syntax-top-level-await': 7.14.5(@babel/core@7.24.4)
+
+  babel-preset-jest@29.6.3(@babel/core@7.23.6):
+    dependencies:
+      '@babel/core': 7.23.6
+      babel-plugin-jest-hoist: 29.6.3
+      babel-preset-current-node-syntax: 1.0.1(@babel/core@7.23.6)
 
   babel-preset-jest@29.6.3(@babel/core@7.24.4):
     dependencies:
@@ -10169,6 +10342,8 @@ snapshots:
     optional: true
 
   common-path-prefix@3.0.0: {}
+
+  commondir@1.0.1: {}
 
   compare-func@2.0.0:
     dependencies:
@@ -10721,7 +10896,7 @@ snapshots:
 
   dumi-assets-types@2.0.0-alpha.0: {}
 
-  dumi@2.2.17(@babel/core@7.24.4)(@types/node@20.12.7)(@types/react@18.2.79)(eslint@8.57.0)(jest@29.7.0(@types/node@20.12.7)(ts-node@10.9.2(@swc/core@1.3.72)(@types/node@20.5.1)(typescript@5.4.5)))(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(stylelint@14.16.1)(terser@5.30.4)(type-fest@1.4.0)(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.3.72)):
+  dumi@2.2.17(@babel/core@7.23.6)(@types/node@20.12.7)(@types/react@18.2.79)(eslint@8.57.0)(jest@29.7.0(@types/node@20.12.7)(ts-node@10.9.2(@swc/core@1.3.72)(@types/node@20.5.1)(typescript@5.4.5)))(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(stylelint@14.16.1)(terser@5.30.4)(type-fest@1.4.0)(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.3.72)):
     dependencies:
       '@ant-design/icons-svg': 4.4.2
       '@makotot/ghostui': 2.0.0(react@18.2.0)
@@ -10780,7 +10955,7 @@ snapshots:
       remark-rehype: 10.1.0
       sass: 1.75.0
       sitemap: 7.1.1
-      umi: 4.1.10(@babel/core@7.24.4)(@types/node@20.12.7)(@types/react@18.2.79)(eslint@8.57.0)(jest@29.7.0(@types/node@20.12.7)(ts-node@10.9.2(@swc/core@1.3.72)(@types/node@20.5.1)(typescript@5.4.5)))(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(sass@1.75.0)(stylelint@14.16.1)(terser@5.30.4)(type-fest@1.4.0)(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.3.72))
+      umi: 4.1.10(@babel/core@7.23.6)(@types/node@20.12.7)(@types/react@18.2.79)(eslint@8.57.0)(jest@29.7.0(@types/node@20.12.7)(ts-node@10.9.2(@swc/core@1.3.72)(@types/node@20.5.1)(typescript@5.4.5)))(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(sass@1.75.0)(stylelint@14.16.1)(terser@5.30.4)(type-fest@1.4.0)(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.3.72))
       unified: 10.1.2
       unist-util-visit: 4.1.2
       unist-util-visit-parents: 5.1.3
@@ -10854,6 +11029,8 @@ snapshots:
       inherits: 2.0.4
       minimalistic-assert: 1.0.1
       minimalistic-crypto-utils: 1.0.1
+
+  email-addresses@5.0.0: {}
 
   emittery@0.13.1: {}
 
@@ -11362,7 +11539,7 @@ snapshots:
     dependencies:
       reusify: 1.0.4
 
-  father@4.4.0(@babel/core@7.24.4)(@types/node@20.12.7)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(type-fest@1.4.0)(webpack@5.91.0(@swc/core@1.3.72)):
+  father@4.4.0(@babel/core@7.23.6)(@types/node@20.12.7)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(type-fest@1.4.0)(webpack@5.91.0(@swc/core@1.3.72)):
     dependencies:
       '@microsoft/api-extractor': 7.39.1(@types/node@20.12.7)
       '@umijs/babel-preset-umi': 4.1.10
@@ -11374,7 +11551,7 @@ snapshots:
       '@vercel/ncc': 0.33.3
       babel-plugin-dynamic-import-node: 2.3.3
       babel-plugin-module-resolver: 4.1.0
-      babel-plugin-styled-components: 2.1.4(@babel/core@7.24.4)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
+      babel-plugin-styled-components: 2.1.4(@babel/core@7.23.6)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
       babel-plugin-transform-define: 2.0.1
       enhanced-resolve: 5.9.3
       fast-glob: 3.2.12
@@ -11433,6 +11610,14 @@ snapshots:
       fs-extra: 11.1.1
       ramda: 0.29.0
 
+  filename-reserved-regex@2.0.0: {}
+
+  filenamify@4.3.0:
+    dependencies:
+      filename-reserved-regex: 2.0.0
+      strip-outer: 1.0.1
+      trim-repeated: 1.0.0
+
   filesize@3.6.1: {}
 
   fill-range@7.0.1:
@@ -11457,6 +11642,12 @@ snapshots:
     dependencies:
       json5: 2.2.3
       path-exists: 3.0.0
+
+  find-cache-dir@3.3.2:
+    dependencies:
+      commondir: 1.0.1
+      make-dir: 3.1.0
+      pkg-dir: 4.2.0
 
   find-file-up@0.1.3:
     dependencies:
@@ -11659,6 +11850,16 @@ snapshots:
 
   get-value@2.0.6: {}
 
+  gh-pages@6.1.1:
+    dependencies:
+      async: 3.2.5
+      commander: 11.0.0
+      email-addresses: 5.0.0
+      filenamify: 4.3.0
+      find-cache-dir: 3.3.2
+      fs-extra: 11.2.0
+      globby: 6.1.0
+
   git-branch@1.0.0: {}
 
   git-config-path@1.0.1:
@@ -11769,6 +11970,14 @@ snapshots:
       ignore: 5.3.1
       merge2: 1.4.1
       slash: 4.0.0
+
+  globby@6.1.0:
+    dependencies:
+      array-union: 1.0.2
+      glob: 7.2.3
+      object-assign: 4.1.1
+      pify: 2.3.0
+      pinkie-promise: 2.0.1
 
   globjoin@0.1.4: {}
 
@@ -13260,6 +13469,10 @@ snapshots:
       semver: 5.7.2
     optional: true
 
+  make-dir@3.1.0:
+    dependencies:
+      semver: 6.3.1
+
   make-dir@4.0.0:
     dependencies:
       semver: 7.6.0
@@ -14439,10 +14652,18 @@ snapshots:
 
   pidtree@0.6.0: {}
 
+  pify@2.3.0: {}
+
   pify@3.0.0: {}
 
   pify@4.0.1:
     optional: true
+
+  pinkie-promise@2.0.1:
+    dependencies:
+      pinkie: 2.0.4
+
+  pinkie@2.0.4: {}
 
   pino-abstract-transport@0.5.0:
     dependencies:
@@ -15852,6 +16073,10 @@ snapshots:
 
   strip-json-comments@3.1.1: {}
 
+  strip-outer@1.0.1:
+    dependencies:
+      escape-string-regexp: 1.0.5
+
   style-search@0.1.0: {}
 
   style-to-object@0.4.4:
@@ -16123,9 +16348,13 @@ snapshots:
 
   trim-newlines@3.0.1: {}
 
+  trim-repeated@1.0.0:
+    dependencies:
+      escape-string-regexp: 1.0.5
+
   trough@2.2.0: {}
 
-  ts-jest@29.1.2(@babel/core@7.24.4)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.24.4))(jest@29.7.0(@types/node@20.12.7)(ts-node@10.9.2(@swc/core@1.3.72)(@types/node@20.5.1)(typescript@5.4.5)))(typescript@5.4.5):
+  ts-jest@29.1.2(@babel/core@7.23.6)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.23.6))(jest@29.7.0(@types/node@20.12.7)(ts-node@10.9.2(@swc/core@1.3.72)(@types/node@20.5.1)(typescript@5.4.5)))(typescript@5.4.5):
     dependencies:
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
@@ -16138,9 +16367,9 @@ snapshots:
       typescript: 5.4.5
       yargs-parser: 21.1.1
     optionalDependencies:
-      '@babel/core': 7.24.4
+      '@babel/core': 7.23.6
       '@jest/types': 29.6.3
-      babel-jest: 29.7.0(@babel/core@7.24.4)
+      babel-jest: 29.7.0(@babel/core@7.23.6)
 
   ts-node@10.9.2(@swc/core@1.3.72)(@types/node@20.12.7)(typescript@5.4.5):
     dependencies:
@@ -16261,7 +16490,7 @@ snapshots:
 
   typescript@5.4.5: {}
 
-  umi@4.1.10(@babel/core@7.24.4)(@types/node@20.12.7)(@types/react@18.2.79)(eslint@8.57.0)(jest@29.7.0(@types/node@20.12.7)(ts-node@10.9.2(@swc/core@1.3.72)(@types/node@20.5.1)(typescript@5.4.5)))(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(sass@1.75.0)(stylelint@14.16.1)(terser@5.30.4)(type-fest@1.4.0)(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.3.72)):
+  umi@4.1.10(@babel/core@7.23.6)(@types/node@20.12.7)(@types/react@18.2.79)(eslint@8.57.0)(jest@29.7.0(@types/node@20.12.7)(ts-node@10.9.2(@swc/core@1.3.72)(@types/node@20.5.1)(typescript@5.4.5)))(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(sass@1.75.0)(stylelint@14.16.1)(terser@5.30.4)(type-fest@1.4.0)(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.3.72)):
     dependencies:
       '@babel/runtime': 7.23.6
       '@umijs/bundler-utils': 4.1.10
@@ -16271,7 +16500,7 @@ snapshots:
       '@umijs/preset-umi': 4.1.10(@types/node@20.12.7)(@types/react@18.2.79)(lightningcss@1.22.1)(rollup@3.29.4)(sass@1.75.0)(terser@5.30.4)(type-fest@1.4.0)(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.3.72))
       '@umijs/renderer-react': 4.1.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@umijs/server': 4.1.10
-      '@umijs/test': 4.1.10(@babel/core@7.24.4)
+      '@umijs/test': 4.1.10(@babel/core@7.23.6)
       '@umijs/utils': 4.1.10
       prettier-plugin-organize-imports: 3.2.4(prettier@2.8.8)(typescript@5.4.5)
       prettier-plugin-packagejson: 2.4.3(prettier@2.8.8)

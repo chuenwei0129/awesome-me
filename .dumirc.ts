@@ -1,9 +1,11 @@
 import { defineConfig } from 'dumi'
 
 export default defineConfig({
+  base: '/awesome-me/',
+  publicPath: '/awesome-me/',
   outputPath: 'docs-dist',
   themeConfig: {
-    name: 'nautica',
+    name: '127.0.0.1',
     socialLinks: {
       github: 'https://github.com/chuenwei0129/awesome-me',
     },
