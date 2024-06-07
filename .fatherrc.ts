@@ -7,6 +7,7 @@ export default defineConfig({
     // 打包 💼 忽略的文件
     ignores: [
       'docs/**',
+      'playground/**',
       'src/**/usage/**',
       'src/**/coverage/**',
       'src/components/**',
