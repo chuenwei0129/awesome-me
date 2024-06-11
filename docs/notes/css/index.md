@@ -14,6 +14,10 @@ group:
 
 > 任何编程工具都是为人服务的，他们是轮子，是工具，是为了让人提高生产效率的。一切和这个目的相矛盾的设计都是反人类的。
 
+## css 是什么？
+
+![20240610132036](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240610132036.png)
+
 ## [为什么 CSS 这么难学？](https://www.zhihu.com/question/66167982)
 
 1. CSS 的属性互不正交，大量的依赖与耦合难以记忆。

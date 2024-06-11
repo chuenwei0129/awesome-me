@@ -11,6 +11,7 @@ group:
 - [分析将 npm 软件包添加到项目的成本](https://bundlephobia.com/)
 - [分析 npm 模块和依赖关系](https://npmgraph.js.org/)
 - [分析 npm 包内容中的 TypeScript 类型问题](https://arethetypeswrong.github.io/)
+- [npm trands](https://npmtrends.com/)
 
 ## 或许是在项目中使用 npm 的最佳的实操建议
 
