@@ -21,7 +21,7 @@
     "lint:md": "zhlint \"./docs/**/*.md\" --fix",
     "prepare": "husky install && dumi setup",
     "prepublishOnly": "father doctor && npm run build",
-    "pub": "npm version patch -m \"build: release %s\" && npm run publish",
+    "pub": "npm version patch -m \"build: release %s\" && npm publish",
     "start": "npm run dev"
   },
   "commitlint": {
