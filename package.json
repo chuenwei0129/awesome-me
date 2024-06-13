@@ -1,6 +1,6 @@
 {
   "name": "nautica",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A react library developed with dumi",
   "license": "MIT",
   "module": "dist/index.js",
