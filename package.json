@@ -1,6 +1,6 @@
 {
   "name": "nautica",
-  "version": "0.0.3",
+  "version": "0.0.2",
   "description": "A react library developed with dumi",
   "license": "MIT",
   "module": "dist/index.js",
@@ -21,6 +21,7 @@
     "lint:md": "zhlint \"./docs/**/*.md\" --fix",
     "prepare": "husky install && dumi setup",
     "prepublishOnly": "father doctor && npm run build",
+    "pub": "npm version patch -m \"build: release %s\" && npm run publish",
     "start": "npm run dev"
   },
   "commitlint": {
