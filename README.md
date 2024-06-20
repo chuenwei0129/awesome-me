@@ -1,7 +1,9 @@
-# nautica
+# naifu
 
-[![NPM version](https://img.shields.io/npm/v/nautica.svg?style=flat)](https://npmjs.org/package/nautica)
-[![NPM downloads](http://img.shields.io/npm/dm/nautica.svg?style=flat)](https://npmjs.org/package/nautica)
+> Naifu 在日语中原意是 “刀子”
+
+[![NPM version](https://img.shields.io/npm/v/naifu.svg?style=flat)](https://npmjs.org/package/naifu)
+[![NPM downloads](http://img.shields.io/npm/dm/naifu.svg?style=flat)](https://npmjs.org/package/naifu)
 
 A react library developed with dumi
 

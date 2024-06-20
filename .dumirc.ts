@@ -1,9 +1,13 @@
 import { defineConfig } from 'dumi';
 
 export default defineConfig({
+  logo: 'https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/knife.svg',
+  favicons: [
+    'https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/icon.svg',
+  ],
   outputPath: 'docs-dist',
   themeConfig: {
-    name: 'nautica',
+    name: 'naifu',
     socialLinks: {
       github: 'https://github.com/chuenwei0129/awesome-me',
     },

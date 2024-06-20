@@ -2,8 +2,8 @@
 # tab 标题
 title: 首页 Tab 信息
 hero:
-  title: TODO
-  description: 没有经过整理的知识才是徒然浪费时间，伤透脑筋！
+  title: Awesome Me
+  description: Make Me Great Again
   actions:
     - text: 立即上手
       link: /guide

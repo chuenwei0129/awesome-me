@@ -1,9 +1,10 @@
 ---
 nav:
   second:
-    title: 命令行的艺术
+    title: 命令行
     order: 0
 title: 这是什么？
+toc: content
 group:
   title: 介绍
   order: 0

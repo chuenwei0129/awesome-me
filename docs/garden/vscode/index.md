@@ -1,7 +1,7 @@
 ---
 nav:
   second:
-    title: VSCode 使用指北
+    title: VSCode
     order: 1
 group:
   title: 概述

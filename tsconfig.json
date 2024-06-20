@@ -8,8 +8,8 @@
     "baseUrl": "./",
     "paths": {
       "@@/*": [".dumi/tmp/*"],
-      "nautica": ["src"],
-      "nautica/*": ["src/*", "*"]
+      "naifu": ["src"],
+      "naifu/*": ["src/*", "*"]
     }
   },
   "include": [".dumirc.ts", "src/**/*"]

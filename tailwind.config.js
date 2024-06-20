@@ -4,7 +4,11 @@ module.exports = {
   corePlugins: {
     preflight: false,
   },
-  content: ['./playground/**/*.{js,jsx,ts,tsx}', './src/**/*.{js,jsx,ts,tsx}'],
+  content: [
+    './playground/css/**/*.{js,jsx,ts,tsx}',
+    './playground/react/**/*.{js,jsx,ts,tsx}',
+    './src/**/*.{js,jsx,ts,tsx}',
+  ],
   theme: {
     extend: {},
   },
