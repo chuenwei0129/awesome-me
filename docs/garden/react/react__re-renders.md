@@ -1,5 +1,5 @@
 ---
-title: React 重渲染机制
+title: React 为什么重新渲染
 toc: content
 group:
   title: 深入探讨
@@ -8,6 +8,8 @@ group:
 ## React 组件到底什么时候 render？
 
 ### 从 React 创建 Fiber 树说起
+
+> bailout 这个词语，它可以简单理解成「是否重新渲染」（bail out of re-rendering）。
 
 React 创建 Fiber 树时，每个组件对应的 fiber 都是通过如下两个逻辑之一创建的：
 
@@ -417,11 +419,13 @@ App();
 
 ## re-render & context
 
+> 对于层级上祖先被 memorized bailout 的情况，新的 Context 特性依然可以订阅到 context data 的变化。
+
 对于如下两个组件，它们的 `console.log` 的打印顺序分别是什么？为什么？
 
 **组件 1**：
 
-```jsx | pure
+```jsx
 import { createContext, useContext, useEffect, useState, memo } from 'react';
 
 const Context = createContext(0);

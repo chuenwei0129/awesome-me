@@ -65,9 +65,9 @@ div+div>p>span+em^^bq
         <dt></dt>
         <dd></dd>
     </dl>
+    <p></p>
 </div>
 <footer>
-    <p></p>
 </footer>
 ```
 

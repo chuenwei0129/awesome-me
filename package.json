@@ -19,10 +19,8 @@
     "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
     "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
     "lint:md": "zhlint \"./docs/**/*.md\" --fix",
-    "p": "nrm use zcw && npm publish",
     "prepare": "husky install && dumi setup",
     "prepublishOnly": "father doctor && npm run build",
-    "pub": "npm version patch -m \"build: release %s\" && npm publish",
     "start": "npm run dev"
   },
   "commitlint": {
@@ -51,6 +49,7 @@
     "@babel/runtime": "^7.24.7"
   },
   "devDependencies": {
+    "@antv/x6": "^2.18.1",
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
     "@types/react": "^18.0.0",
@@ -60,6 +59,7 @@
     "clsx": "^2.1.1",
     "dumi": "^2.3.0",
     "eslint": "^8.23.0",
+    "express": "^4.19.2",
     "father": "^4.1.0",
     "framer-motion": "^11.2.10",
     "husky": "^8.0.1",
@@ -71,6 +71,7 @@
     "prettier-plugin-packagejson": "^2.2.18",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "roughjs": "^4.6.6",
     "styled-components": "^6.1.11",
     "stylelint": "^14.9.1",
     "tailwind-merge": "^2.3.0",

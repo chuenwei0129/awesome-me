@@ -12,5 +12,5 @@
       "naifu/*": ["src/*", "*"]
     }
   },
-  "include": [".dumirc.ts", "src/**/*"]
+  "include": [".dumirc.ts", "src/**/*", "playground/ts/useLatest.js"]
 }

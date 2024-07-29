@@ -1,5 +1,5 @@
 ---
-title: 闭包陷阱
+title: Hook 的闭包陷阱的成因和解决方案
 toc: content
 group:
   title: 深入探讨
