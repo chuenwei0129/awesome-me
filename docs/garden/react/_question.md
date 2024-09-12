@@ -5,6 +5,18 @@ demo:
   cols: 2
 ---
 
+## 为什么 ref、effect 被归类到「逃生舱」中？
+
+这是因为二者操作的都是「脱离React控制的因素」。
+
+effect中处理的是「副作用」。比如：在useEffect中修改了document.title。
+
+document.title不属于React中的状态，React无法感知他的变化，所以被归类到effect中。
+
+同样，「使DOM聚焦」需要调用element.focus()，直接执行DOM API也是不受React控制的。
+
+虽然他们是「脱离React控制的因素」，但为了保证应用的健壮，React也要尽可能防止他们失控。
+
 ## 为什么多个 JSX 标签需要被一个父元素包裹？
 
 JSX 虽然看起来很像 HTML，但在底层其实被转化为了 JavaScript 对象，**你不能在一个函数中返回多个对象**，除非用一个数组把他们包装起来。这就是为什么多个 JSX 标签必须要用一个父元素或者 Fragment 来包裹。

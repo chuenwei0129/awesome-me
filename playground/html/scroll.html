@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div
+      id="box"
+      style="
+        margin-top: 400px;
+        width: 100px;
+        height: 100px;
+        background: ping;
+        overflow: auto;
+        border: 1px solid red;
+      "
+    >
+      <p>xxxxx</p>
+      <p>xxxxx</p>
+      <p>xxxxx</p>
+      <p>xxxxx</p>
+      <p>xxxxx</p>
+      <p>xxxxx</p>
+      <p>xxxxx</p>
+      <p>xxxxx</p>
+      <p>xxxxx</p>
+      <p>xxxxx</p>
+      <p>xxxxx</p>
+      <p>xxxxx</p>
+      <p>xxxxx</p>
+      <p>xxxxx</p>
+      <p>xxxxx</p>
+      <p>xxxxx</p>
+    </div>
+    <script>
+      const box = document.querySelector('#box');
+      box.addEventListener('scroll', () => {
+        console.log('scrollTop: ', box.scrollTop);
+      });
+      window.onscroll = () => {
+        console.log(window.scrollY);
+      };
+    </script>
+  </body>
+</html>

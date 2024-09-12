@@ -46,7 +46,8 @@
     ]
   },
   "dependencies": {
-    "@babel/runtime": "^7.24.7"
+    "@babel/runtime": "^7.24.7",
+    "@prisma/client": "5.19.1"
   },
   "devDependencies": {
     "@antv/x6": "^2.18.1",
@@ -65,10 +66,12 @@
     "husky": "^8.0.1",
     "immer": "^10.1.1",
     "install": "^0.13.0",
+    "ioredis": "^5.4.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "prettier-plugin-organize-imports": "^3.0.0",
     "prettier-plugin-packagejson": "^2.2.18",
+    "prisma": "^5.19.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "roughjs": "^4.6.6",

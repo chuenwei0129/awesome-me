@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="box">
+      <a>1</a>
+      <p>2</p>
+      <span>3</span>
+      <div>4</div>
+    </div>
+    <script>
+      const box = document.querySelector('#box');
+      const reverse1 = (element) => {
+        if (element.children.length === 0) {
+          return;
+        }
+        for (let i = element.children.length - 1; i >= 0; i--) {
+          element.appendChild(element.children[i]);
+        }
+      };
+      reverse1(box);
+
+      const reverse2 = (element) => {
+        if (element.children.length === 0) {
+          return;
+        }
+        const children = Array.from(element.children);
+        children.reverse().forEach((item) => {
+          // 这里会发挥 dom 特性。
+          element.appendChild(item);
+        });
+      };
+      reverse2(box);
+
+      const reverse3 = (element) => {
+        if (element.children.length === 0) {
+          return;
+        }
+      };
+    </script>
+  </body>
+</html>

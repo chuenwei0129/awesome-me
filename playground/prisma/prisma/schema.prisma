@@ -1,0 +1,67 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model article {
+  id          Int           @id @default(autoincrement())
+  title       String        @db.VarChar(50)
+  content     String        @db.Text
+  article_tag article_tag[]
+}
+
+model article_tag {
+  article_id Int
+  tag_id     Int
+  article    article @relation(fields: [article_id], references: [id], onDelete: Cascade, map: "article_id")
+  tag        tag     @relation(fields: [tag_id], references: [id], onDelete: Cascade, map: "tag_id")
+
+  @@id([article_id, tag_id])
+  @@index([tag_id], map: "tag_id")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model id_card {
+  id        Int    @id @default(autoincrement())
+  card_name String @db.VarChar(45)
+  user_id   Int?
+  user      user?  @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: SetNull, map: "user_id")
+
+  @@index([user_id], map: "card_id_idx")
+}
+
+model product {
+  id       Int      @id
+  name     String?  @db.VarChar(50)
+  price    Decimal? @db.Decimal(10, 2)
+  category String?  @db.VarChar(50)
+  stock    Int?
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model student {
+  id     Int    @id @default(autoincrement())
+  name   String @db.VarChar(50)
+  gender String @db.VarChar(10)
+  age    Int
+  class  String @db.VarChar(50)
+  score  Int
+}
+
+model tag {
+  id          Int           @id @default(autoincrement())
+  name        String        @db.VarChar(50)
+  article_tag article_tag[]
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model user {
+  nik_name String?   @db.VarChar(45)
+  id       Int       @id @default(autoincrement())
+  name     String    @db.VarChar(45)
+  id_card  id_card[]
+}
