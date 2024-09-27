@@ -14,7 +14,7 @@ export default defineConfig({
       // 这里存放我们 npm 包中使用的 demos
       'src/**/usage/**',
       // 暂时不打包
-      // 'src/components/**',
+      'src/tailwind-preset.js',
       // 'src/hooks/**',
     ],
   },

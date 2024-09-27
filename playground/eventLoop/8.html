@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件循环</title>
+    <style>
+      .outer {
+        background-color: #ccc;
+        width: 200px;
+        height: 200px;
+      }
+      .inner {
+        background-color: blanchedalmond;
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="inner"></div>
+    </div>
+    <script>
+      // 让我们获取这些元素
+      const outer = document.querySelector('.outer');
+      const inner = document.querySelector('.inner');
+
+      // 下面是一个点击监听器
+      function callback() {
+        console.log('click'); // 当元素被点击时, 打印 'click'
+
+        setTimeout(function () {
+          console.log('timeout'); // 0毫秒后, 打印 'timeout'
+        }, 0);
+
+        Promise.resolve().then(function () {
+          console.log('promise'); // 当前事件循环结束时, 打印 'promise'
+        });
+      }
+
+      // 我们将事件监听器添加到两个元素上
+      inner.addEventListener('click', callback); // 为内部元素添加点击监听器
+      outer.addEventListener('click', callback); // 为外部元素添加点击监听器
+
+      // 手动触发
+      // inner.click(); // 点击内部元素
+    </script>
+  </body>
+</html>

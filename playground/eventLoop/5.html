@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      console.log('start');
+      // 由于 setTimeout 的超时不稳定，所以 setTimeout 的回调函数可能会在 requestAnimationFrame 的回调函数之后执行
+      setTimeout(() => {
+        console.log('setTimeout');
+      }, 0);
+
+      requestAnimationFrame(() => {
+        console.log('requestAnimationFrame');
+      });
+
+      console.log('end');
+    </script>
+  </body>
+</html>

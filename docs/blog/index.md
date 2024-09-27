@@ -1,41 +1,27 @@
 ---
 nav:
   title: 博客
-  order: 1
+  order: 0
 group:
   title: 归档
-  order: -999
+  order: -9999
 title: 这是什么？
 ---
 
-```md
-.
-                            ╱|、
-                          (˚ˎ 。7
-                           |、˜〵
-                          じしˍ,)ノ
-```
+## Make Web Great Again
 
+> Always bet on JavaScript, Because there is only JavaScript.
 
-```md
-.
-                              ╱|、
-                          (˚ˎ 。7  
-                           |、˜〵          
-                          じしˍ,)ノ
-       oo__
-      <;___)------
- oo__   " "
-<;___)------
-  " "
-```
-
-
-
-一个巴士长 \( b \) 宽 \( u \) 高 \( s \) ，它的体积就是 \( bus \)。
-一个盒子的长B、宽O、高X，那么它的体积就是BOX
-
-如果一个披萨的半径是 \( z \)，高度是 \( a \)，那么它的体积刚好就是 \( \pi z z a \) (pizza)。
-
-想到一个老段子：CO+2Fe=coffee
+- `[HTML]` [Is HTML a programming language?](html/html.md)
+- `[CSS]` [是煮，是煮在又一次严重酗酒后创造了这个奇迹。](css/css.md)
+- `[JavaScript]` [My life sucks and I'm going to rewrite it in JavaScript.](js/js.md)
+- `[TypeScript]` [You mastered Typescript but you're still not her type](ts/ts.md)
+<!-- - `[FE]` [我在知乎学前端](interview/fe.md) -->
+- `[Vue]` [You finally mastered vue, but she still disappears from view](framework/vue.md)
+- `[React]` [You learned react, your crush is online but you can't react](react/react.md)
+<!-- - React is not reactive. Vue is not only view. -->
+<!-- - `[Hacker]` 都什么年代了，还再写传统 JS -->
+<!-- - `[Component]` 组件库，但无 UI -->
+<!-- - `TODO` [人类高质量函数式编程学习笔记](summary/fp.md) -->
+- `[Browser]` [到达前端最高城！](computer/browser.md)
 

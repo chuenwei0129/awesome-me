@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function sleep(milliseconds) {
+        const start = new Date().getTime();
+        while (new Date().getTime() - start < milliseconds) {
+          // 此循环会阻塞执行，直到指定的毫秒数过去
+        }
+      }
+
+      let lastTime = Date.now();
+      sleep(1000); // 阻塞执行 1 秒钟
+
+      requestAnimationFrame(function cb() {
+        console.log('这一帧耗时：', Date.now() - lastTime);
+        lastTime = Date.now();
+        requestAnimationFrame(cb);
+      });
+    </script>
+  </body>
+</html>

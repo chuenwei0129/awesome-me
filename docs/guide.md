@@ -1,10 +1,53 @@
 ---
 nav:
-  title: 指南
+  title: 我
   order: -1
 title: 我的标题
 order: -1
 ---
+
+## 你好 👋，我是奀歪
+
+## 名字由来
+
+## 我的编程之旅
+
+## 我会什么
+
+## 联系方式
+
+- 📮 Email: [1024962666@qq.com](mailto:1024962666@qq.com)
+- 📱 微信: [1024962666](https://wx.qq.com/)
+- 🐦 Twitter: [@your-twitter](https://twitter.com/your-twitter
+- 📷 Instagram: [@your-instagram](https://www.instagram.com/your-instagram/)
+- 📸 抖音: [@your-douyin](https://www.douyin.com/user/your-douyin
+- 📹 Bilibili: [@your-bilibili](https://space.bilibili.com/your-bilibili/
+- 🎥 YouTube: [@your-youtube](https://www.youtube.com/channel/your-youtube
+- 🐙 GitHub: [@your-github](https://github.com/your-github
+- 💼 LinkedIn: [@your-linkedin](https://www.linkedin.com/in/your-linkedin/
+- 🌐 个人网站: [https://your-website.com](https://your-website.com)
+- 
+
+愧怍，有愧疚/惭愧之意😔。也是本人使用此名所想表达的意思。
+
+我曾因某些错误的做法而感到自责苦恼，希望这个名字不断激励自我、反省过往，不再辜负我自己所经历的那么多事情。
+
+我与计算机结识较晚，高考结束我才拥有第一台笔记本电脑。我的第一门编程语言是易语言，我学习到了外挂、逆向破解、注册机(批量)、网络协议(偏加密分析和爬虫向)、自动化脚本等技术。后来编写过一个对大学生友好的软件被厦门某工作室看到，于是选择休学一同合作创业。复学重返校园，我的技术栈发生了大转换，从逆向工程转为 Web 全栈开发。
+
+对易语言失去了新鲜感的我，需要一门更为强大的技术来支撑我编写体验友好的应用供客户使用，在逆向学习中积累了一定的 JS 知识，这也是我为什么会选择前端的原因。依靠跨平台解决方案，Web 网站、桌面端/移动端应用、小程序等应用都不在话下。
+
+或许是因为学习易语言的因素，我走的全是野路子，学的偏门的技术，我并未系统性的学习过 CS 知识。我对编程知识的理解来源于自我实践、不断折腾的过程当中。
+
+如今我也算有了 5 年的编程经验(2 年逆向 + 3 年 Web)。对 Web 开发也有些乏味，想要重新找回曾经的那股折腾劲。或许会考虑换个赛道，AI 大模型？IOS 开发与逆向？Rust？硬件开发？总之别让自己闲下来，只有忙碌才能让每天过得充实而有意义。
+
+兴趣爱好
+手指极限 入坑长达 8 年(现已退坑)，如转笔、魔方、花切等有关手指旋转的都能够杂耍一番, 现在偶尔还会转转卡片/手机。我不擅长录制，因此没留下多少素材。
+
+电音迷 歌单只有电音，也只听电音。戴上耳机，沉浸在无限律动之中。有生之年定要制作首电子音乐。
+
+编程开发 将想法付诸实践, 享受创造的乐趣。
+
+<code src="../playground/react/interview-00"></code>
 
 <code src="../playground/react/QuineClock"></code>
 

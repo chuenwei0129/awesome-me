@@ -1,11 +1,11 @@
 ---
 group:
   title: 2024 🐲
-title: 异步错误处理
+title: 异常处理
 toc: content
 ---
 
-## try-catch 结构
+## try-catch
 
 `try-catch` 结构用于处理异常。`try` 块中的代码会尝试执行，如果发生异常，控制会立即转移到对应的 `catch` 块，而不会继续执行 `try` 块中的剩余代码。执行 `catch` 块中的代码后，如果没有显式的中断（比如 `return`、`throw` 等），代码会继续执行 `catch` 块之后的代码。
 
@@ -20,7 +20,7 @@ try {
 console.log("This line will be executed after the catch block");
 ```
 
-## await 介绍
+## await
 
 根据 ECMA-262 规范，`await` 关键字用于等待一个 `Promise` 完成。
 

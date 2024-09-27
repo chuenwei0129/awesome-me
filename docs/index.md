@@ -2,7 +2,7 @@
 # tab 标题
 title: 首页 Tab 信息
 hero:
-  title: Awesome Me
+  title: naifu
   description: Make Me Great Again
   actions:
     - text: 立即上手

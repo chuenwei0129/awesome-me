@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 重置所有元素的外边距 */
+      * {
+        margin: 0;
+      }
+      /* 设置 .box 类的样式 */
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 一个 div 元素，使用 .box 类 -->
+    <div class="box"></div>
+    <script>
+      // 选择 .box 元素
+      const box = document.querySelector('.box');
+
+      // 为 .box 元素添加点击事件监听器
+      box.addEventListener('click', () => {
+        let i = 0;
+        let requestId;
+
+        function animation() {
+          box.style.marginLeft = `${i}px`;
+          requestId = requestAnimationFrame(animation);
+          i++;
+          if (i > 200) {
+            cancelAnimationFrame(requestId);
+          }
+        }
+
+        animation();
+      });
+    </script>
+  </body>
+</html>

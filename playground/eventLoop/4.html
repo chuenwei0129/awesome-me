@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 重置所有元素的外边距 */
+      * {
+        margin: 0;
+      }
+      /* 设置 .box 类的样式 */
+      .box1 {
+        width: 100px;
+        height: 100px;
+        background-color: #ccc;
+      }
+      .box2 {
+        width: 100px;
+        height: 100px;
+        background-color: #9c5f5f;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <button type="button">click me</button>
+
+    <script>
+      const box1 = document.querySelector('.box1');
+      const box2 = document.querySelector('.box2');
+      const button = document.querySelector('button');
+
+      button.addEventListener('click', () => {
+        let j = 0;
+        let requestId;
+        function animation1() {
+          box1.style.marginLeft = `${j}px`;
+          requestId = requestAnimationFrame(animation1);
+          j++;
+          if (j > 200) {
+            cancelAnimationFrame(requestId);
+          }
+        }
+        animation1();
+
+        let i = 0;
+        let timerId;
+        function animation() {
+          box2.style.marginLeft = `${i}px`;
+          timerId = setTimeout(animation, 1000 / 60);
+          i++;
+          if (i > 200) {
+            clearTimeout(timerId);
+          }
+        }
+        animation();
+      });
+    </script>
+  </body>
+</html>

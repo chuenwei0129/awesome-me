@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>Click me!</button>
+    <script>
+      const button = document.querySelector('button');
+
+      button.addEventListener('click', () => {
+        Promise.resolve().then(() => {
+          console.log('Microtask 1');
+        });
+        console.log('Listener 1');
+      });
+
+      button.addEventListener('click', () => {
+        Promise.resolve().then(() => {
+          console.log('Microtask 2');
+        });
+        console.log('Listener 2');
+      });
+
+      button.click();
+    </script>
+  </body>
+</html>

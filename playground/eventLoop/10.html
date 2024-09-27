@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      async function async1() {
+        console.log('async1 start'); // 2
+        await async2();
+        console.log('async1 end'); // 6
+      }
+
+      async function async2() {
+        console.log('async2'); // 3
+      }
+
+      console.log('script start'); // 1
+
+      setTimeout(function () {
+        console.log('setTimeout'); // 8
+      }, 0);
+
+      async1();
+
+      new Promise(function (resolve) {
+        console.log('promise1'); // 4
+        resolve();
+      }).then(function () {
+        console.log('promise2'); // 7
+      });
+
+      console.log('script end'); // 5
+
+      // 1. script start
+      // 2. async1 start
+      // 3. async2
+      // 4. promise1
+      // 5. script end
+      // 6. async1 end
+      // 7. promise2
+      // 8. setTimeout
+    </script>
+  </body>
+</html>
