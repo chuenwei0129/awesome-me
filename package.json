@@ -22,7 +22,8 @@
     "prepare": "husky install && dumi setup",
     "prepublishOnly": "father doctor && npm run build",
     "start": "npm run dev",
-    "test:aplus": "promises-aplus-tests ./playground/promise/2.promise.js"
+    "test:aplus": "promises-aplus-tests ./playground/promise/2.promise.js",
+    "deploy": "gh-pages -d dist"
   },
   "commitlint": {
     "extends": [
@@ -70,6 +71,7 @@
     "express": "^4.19.2",
     "father": "^4.1.0",
     "framer-motion": "^11.2.10",
+    "gh-pages": "^6.2.0",
     "husky": "^8.0.1",
     "immer": "^10.1.1",
     "ioredis": "^5.4.1",
