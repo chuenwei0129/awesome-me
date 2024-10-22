@@ -11,6 +11,7 @@
   "scripts": {
     "build": "father build",
     "build:watch": "father dev",
+    "deploy": "gh-pages -d docs-dist",
     "dev": "dumi dev",
     "docs:build": "dumi build",
     "docs:preview": "dumi preview",
@@ -22,8 +23,7 @@
     "prepare": "husky install && dumi setup",
     "prepublishOnly": "father doctor && npm run build",
     "start": "npm run dev",
-    "test:aplus": "promises-aplus-tests ./playground/promise/2.promise.js",
-    "deploy": "gh-pages -d dist"
+    "test:aplus": "promises-aplus-tests ./playground/promise/2.promise.js"
   },
   "commitlint": {
     "extends": [
