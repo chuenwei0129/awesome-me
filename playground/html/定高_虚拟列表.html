@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 600px;
+        height: 600px;
+        margin: 100px auto;
+        border: 1px solid red;
+      }
+
+      .fs-virtuallist-container {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+      }
+
+      .fs-virtuallist-list {
+        width: 100%;
+      }
+
+      .fs-virtuallist-item {
+        width: 100%;
+        height: 100px;
+        box-sizing: border-box;
+        border: 1px solid #000;
+        text-align: center;
+        font-size: 20px;
+        line-height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="fs-virtuallist-container">
+        <div class="fs-virtuallist-list">
+          <!-- <div class="fs-virtuallist-item"></div> -->
+        </div>
+      </div>
+    </div>
+    <script>
+      class FsVirtuallist {
+        constructor(containerSelector, listSelector) {
+          this.state = {
+            dataSource: [],
+            itemHeight: 100,
+            viewHeight: 0,
+            maxCount: 0,
+          };
+          this.scrollStyle = {};
+          this.startIndex = 0;
+          this.endIndex = 0;
+          this.lastStart = -1;
+          this.renderList = [];
+          this.oContainer = document.querySelector(containerSelector);
+          this.oList = document.querySelector(listSelector);
+        }
+
+        init() {
+          this.state.viewHeight = this.oContainer.offsetHeight;
+          this.state.maxCount =
+            Math.ceil(this.state.viewHeight / this.state.itemHeight) + 1;
+          this.bindEvent();
+          this.addData();
+          this.render();
+        }
+
+        bindEvent() {
+          this.oContainer.addEventListener(
+            'scroll',
+            this.rafThrottle(this.handleScroll.bind(this)),
+          );
+        }
+
+        computedEndIndex() {
+          const end = this.startIndex + this.state.maxCount;
+          this.endIndex = this.state.dataSource[end]
+            ? end
+            : this.state.dataSource.length;
+          if (this.endIndex >= this.state.dataSource.length) {
+            this.addData();
+          }
+        }
+
+        computedRenderList() {
+          this.renderList = this.state.dataSource.slice(
+            this.startIndex,
+            this.endIndex,
+          );
+        }
+
+        computedScrollStyle() {
+          const { dataSource, itemHeight } = this.state;
+          this.scrollStyle = {
+            height: `${
+              dataSource.length * itemHeight - this.startIndex * itemHeight
+            }px`,
+            transform: `translate3d(0, ${this.startIndex * itemHeight}px, 0)`,
+          };
+        }
+
+        handleScroll() {
+          const { scrollTop } = this.oContainer;
+          this.startIndex = Math.floor(scrollTop / this.state.itemHeight);
+          if (this.startIndex !== this.lastStart) this.render();
+          this.lastStart = this.startIndex;
+        }
+
+        render() {
+          this.computedEndIndex();
+          this.computedRenderList();
+          this.computedScrollStyle();
+          const template = this.renderList
+            .map((i) => `<div class="fs-virtuallist-item">${i}</div>`)
+            .join('');
+          const { height, transform } = this.scrollStyle;
+          this.oList.innerHTML = template;
+          this.oList.style.height = height;
+          this.oList.style.transform = transform;
+        }
+
+        addData() {
+          for (let i = 0; i < 10; i++) {
+            this.state.dataSource.push(this.state.dataSource.length + 1);
+          }
+        }
+
+        rafThrottle(fn) {
+          let lock = false;
+          return function (...args) {
+            window.requestAnimationFrame(() => {
+              if (lock) return;
+              lock = true;
+              fn.apply(this, args);
+              lock = false;
+            });
+          };
+        }
+      }
+
+      const vList = new FsVirtuallist(
+        '.fs-virtuallist-container',
+        '.fs-virtuallist-list',
+      );
+      vList.init();
+    </script>
+  </body>
+</html>

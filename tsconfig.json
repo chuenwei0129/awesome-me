@@ -5,17 +5,12 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "jsx": "react",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
       "@@/*": [".dumi/tmp/*"],
       "naifu": ["src"],
       "naifu/*": ["src/*", "*"]
     }
   },
-  "include": [
-    ".dumirc.ts",
-    "src/**/*",
-    "playground/ts/useLatest.js",
-    "src/tailwind-preset.js"
-  ]
+  "include": [".dumirc.ts", "src/**/*", "projects/**/*", "playground/**/*"]
 }

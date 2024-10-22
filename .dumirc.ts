@@ -1,7 +1,7 @@
 import { defineConfig } from 'dumi';
 
 export default defineConfig({
-  logo: 'https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/knife.svg',
+  logo: '/awesome-me/logo.svg',
   favicons: [
     'https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/icon.svg',
   ],
@@ -13,6 +13,8 @@ export default defineConfig({
     },
   },
   base: '/awesome-me/',
+  // 把 /public 目录映射到 /awesome-me/ 目录
+  // 这样在 md 文件中可以直接使用 /public/awesome-me/ 引用图片
   publicPath: '/awesome-me/',
   // tailwindcss
   plugins: ['@umijs/plugins/dist/tailwindcss'],

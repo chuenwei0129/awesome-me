@@ -1,11 +1,8 @@
 ---
 group:
   title: 2024 🐲
-title: React 之美
+title: React 更佳实践
 toc: content
 ---
 
-## 单向渲染
-## JSX
-## 虚拟 DOM
-## Fiber
+## props 默认值

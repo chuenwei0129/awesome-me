@@ -1,6 +1,6 @@
 ---
 nav:
-  title: 技
+  title: 知识库
   order: 999
 ---
 
