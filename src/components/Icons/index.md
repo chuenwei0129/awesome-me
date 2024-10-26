@@ -1,6 +1,6 @@
 ---
 nav:
-  title: 组件库
+  title: 库
 group:
   title: 基础组件
   order: 0

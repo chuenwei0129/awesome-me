@@ -1,5 +1,5 @@
 ---
-title: 同源策略与 CORS
+title: 同源策略
 order: -1
 toc: content
 group:

@@ -1,6 +1,6 @@
 ---
 nav:
-  title: 我
+  title: 关于
   order: -1
 title: 我的标题
 order: -1

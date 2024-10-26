@@ -1,6 +1,6 @@
 ---
 title: WEB 安全
-order: 0
+order: 1
 toc: content
 group:
   title: WEB
@@ -364,7 +364,8 @@ http://socialnetwork.com/profile/update?email=newemail@example.com
 
 #### Cookie 的 SameSite 属性
 
-<embed src="./cookie.md#L66-L103"></embed>
+<!-- <embed src="./cookie.md#L82-L110"></embed> -->
+> [SameSite 属性可以让 Cookie 在**跨站请求时不会被发送**，从而可以阻止跨站请求伪造攻击。](./cookie#cookie-的-samesite-属性)
 
 #### CSRF Token
 

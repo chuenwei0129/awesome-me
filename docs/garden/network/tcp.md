@@ -49,7 +49,7 @@ TCP (传输控制协议) 是一种面向连接的、可靠的、面向字节流�
 
 #### TCP 传输示例
 
-让我们以发送 “Hi。” 和 “I am Xiaolin” 这两个消息为例，说明 TCP 的这一特性。
+让我们以发送 `“Hi.”` 和 `“I am Xiaolin”` 这两个消息为例，说明 TCP 的这一特性。
 
 - **发送端**：发送方在调用 `send` 函数时，数据首先被复制到操作系统内核的协议栈中。实际发送时间取决于多种因素，如发送窗口大小和网络拥塞控制机制。
 - **接收端**：由于 TCP 是面向字节流的，接收方可能以任何分割接收到这些数据。例如，两个消息可能合并为一个 TCP 报文发送，或者一个消息被拆分成多个报文发送。
@@ -58,15 +58,15 @@ TCP (传输控制协议) 是一种面向连接的、可靠的、面向字节流�
 
 ![20240415011742](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240415011742.png)
 
-第二种情况，“I am Xiaolin” 的部分随 “Hi” 在一个 TCP 报文中发送出去，像这样：
+第二种情况，`“I am Xiaolin”` 的部分随 `“Hi”` 在一个 TCP 报文中发送出去，像这样：
 
 ![20240415011811](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240415011811.png)
 
-第三种情况，“Hi。” 的一部分随 TCP 报文被发送出去，另一部分和 “I am Xiaolin” 一起随另一个 TCP 报文发送出去，像这样。
+第三种情况，`“Hi.”` 的一部分随 TCP 报文被发送出去，另一部分和 `“I am Xiaolin”` 一起随另一个 TCP 报文发送出去，像这样。
 
 ![20240415011834](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240415011834.png)
 
-类似的情况还能举例很多种，这里主要是想说明，我们不知道 “Hi。” 和 “I am Xiaolin” 这两个用户消息是如何进行 TCP 分组传输的。
+类似的情况还能举例很多种，这里主要是想说明，我们不知道 `“Hi.”` 和 `“I am Xiaolin”` 这两个用户消息是如何进行 TCP 分组传输的。
 
 #### TCP 粘包问题
 

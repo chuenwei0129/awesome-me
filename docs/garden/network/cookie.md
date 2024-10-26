@@ -1,6 +1,6 @@
 ---
 title: Cookie
-order: 1
+order: 0
 toc: content
 group:
   title: WEB
@@ -8,7 +8,7 @@ group:
 
 ## 概述
 
-HTTP Cookie (也叫 Web Cookie 或浏览器 Cookie) 是**服务器发送到用户浏览器并保存在本地的一小块数据**。服务器在第一次收到 HTTP 请求后，会在响应标头里面添加一个或多个 `Set-Cookie` 选项。收到响应后，浏览器会存储 cookie 并在下次向同一服务器再发起请求时携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器 —— 如保持用户的登录状态。Cookie 使基于无状态的 HTTP 协议记录稳定的状态信息成为了可能。
+HTTP Cookie (也叫 Web Cookie 或浏览器 Cookie) 是**服务器发送到用户浏览器并保存在本地的一小块数据**。服务器在第一次收到 HTTP 请求后，会在响应标头里面添加一个或多个 `Set-Cookie` 选项（需服务器主动设置）。收到响应后，浏览器会存储 cookie 并在下次向同一服务器再发起请求时携带并发送到服务器上（浏览器会自动带上）。通常，它用于告知服务端两个请求是否来自同一浏览器 —— 如保持用户的登录状态。Cookie 使基于无状态的 HTTP 协议记录稳定的状态信息成为了可能。
 
 Cookie 主要用于以下三个方面：
 
@@ -53,6 +53,21 @@ Domain 和 Path 标识共同定义了 Cookie 的作用域：即 Cookie 应该发
 
 ### Domain
 
+> 拓展：
+>
+> 一级域名（顶级域名，TLD）指的是域名系统（DNS）中最外层的部分。常见的顶级域名包括：
+>
+> - 通用顶级域名（gTLD）：如 .com、.org、.net。
+> - 国家代码顶级域名（ccTLD）：如 .cn（中国）、.uk（英国）。
+>
+> 二级域名位于一级域名左侧，它通常代表一个具体的组织或机构。在域名结构中，格式通常是“二级域名.一级域名”，如“example.com”中的“example”就是二级域名。
+>
+> 在“`www.example.com`”中：
+>
+> - ".com" 为一级域名。
+> - "example" 为二级域名。
+> - "www" 是三级域名（或子域名）。
+
 Domain 指定了哪些主机可以接受 Cookie。如果不指定，该属性默认为同一 host 设置 cookie，不包含子域名。
 
 如果设置 `Domain=mozilla.org`，则 Cookie 也包含在子域名中 (如 `developer.mozilla.org`)。
@@ -90,17 +105,9 @@ Cookie 中的同站判断就比较宽松：**只要两个 URL 的 `eTLD+1` 相�
 >
 > 如果 SameSite 未指定，之前默认是 `SameSite=None`，Chrome80 后默认是 `Lax`。
 
-接下来看下从 None 改成 Lax 到底影响了哪些地方的 Cookies 的发送？直接来一个图表：
+接下来看下 Chrome 80 的变化：
 
-| 请求类型  | 实例                              | 以前        | Strict | Lax         | None        |
-| :-------- | :-------------------------------- | :---------- | :----- | :---------- | :---------- |
-| 链接      | `<a href="..."></a>`              | 发送 Cookie | 不发送 | 发送 Cookie | 发送 Cookie |
-| 预加载    | `<link rel="prerender" href=""/>` | 发送 Cookie | 不发送 | 发送 Cookie | 发送 Cookie |
-| GET 表单  | `<from method="GET" action="">`   | 发送 Cookie | 不发送 | 发送 Cookie | 发送 Cookie |
-| POST 表单 | `<from method="POST" action="">`  | 发送 Cookie | 不发送 | 不发送      | 发送 Cookie |
-| iframe    | `<iframe src="..."></iframe>`     | 发送 Cookie | 不发送 | 不发送      | 发送 Cookie |
-| AJAX      | `$.get("...")`                    | 发送 Cookie | 不发送 | 不发送      | 发送 Cookie |
-| Image     | `<img src="...">`                 | 发送 Cookie | 不发送 | 不发送      | 发送 Cookie |
+![SCR-20241026-qqjx](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/react/SCR-20241026-qqjx.png)
 
 ## expires，max-age
 
@@ -135,4 +142,4 @@ document.cookie = 'user=John; max-age=0'
 ## 特性
 
 - 一个浏览器针对一个网站最多存 20 个 Cookie，浏览器一般只允许存放 300 个 Cookie。
--每个 Cookie 的长度不能超过 4KB (稀缺)。但不同的浏览器实现的不同。
+- 每个 Cookie 的长度不能超过 4KB (稀缺)。但不同的浏览器实现的不同。

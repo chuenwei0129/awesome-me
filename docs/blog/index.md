@@ -3,12 +3,14 @@ nav:
   title: 博客
   order: 0
 group:
-  title: 归档
+  title: 介绍
   order: -9999
 title: 这是什么？
 ---
 
-## Make Web Great Again
+
+
+<!-- ## Make Web Great Again
 
 > Always bet on JavaScript, Because there is only JavaScript.
 
@@ -23,5 +25,4 @@ title: 这是什么？
 <!-- - `[Hacker]` 都什么年代了，还再写传统 JS -->
 <!-- - `[Component]` 组件库，但无 UI -->
 <!-- - `TODO` [人类高质量函数式编程学习笔记](summary/fp.md) -->
-- `[Browser]` [到达前端最高城！](computer/browser.md)
-
+- `[Browser]` [到达前端最高城！](computer/browser.md) -->

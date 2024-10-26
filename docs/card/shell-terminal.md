@@ -1,9 +1,6 @@
 ---
-title: 什么是 shell？
-order: 0
+title: 什么是 shell
 toc: content
-group:
-  title: shell
 ---
 
 ## Shell 和 Terminal 是什么？有什么区别？🤔
