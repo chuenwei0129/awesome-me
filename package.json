@@ -49,13 +49,15 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.24.7",
-    "antd": "^5.21.1"
+    "antd": "^5.21.1",
+    "vue": "^3.5.12"
   },
   "devDependencies": {
     "@ant-design/icons": "^5.5.1",
     "@antv/x6": "^2.18.1",
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
+    "@dumijs/preset-vue": "^2.4.12",
     "@prisma/client": "5.19.1",
     "@types/react": "^18.0.0",
     "@types/react-copy-to-clipboard": "^5.0.7",
@@ -85,15 +87,20 @@
     "react": "^18.3.1",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.3.1",
+    "rehype-mathjax": "^6.0.0",
+    "remark-math": "^6.0.0",
     "roughjs": "^4.6.6",
     "spdy": "^4.0.2",
     "styled-components": "^6.1.11",
     "stylelint": "^14.9.1",
     "tailwind-merge": "^2.3.0",
     "tailwindcss": "^3.4.4",
+    "tailwindcss-animate": "^1.0.7",
     "ts-pattern": "^5.5.0",
     "use-immer": "^0.10.0",
-    "zhlint": "^0.8.1"
+    "windups": "^1.2.2",
+    "zhlint": "^0.8.1",
+    "zustand": "^5.0.0"
   },
   "peerDependencies": {
     "react": ">=16.9.0",

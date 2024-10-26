@@ -8,7 +8,7 @@ toc: content
 
 # 记录一下我是如何使用 dumi 的
 
-## 文档内容的组织结构
+## 我的文档内容组织结构
 
 <Tree>
   <ul>
@@ -67,7 +67,7 @@ toc: content
 
 ## 文件路径及页面配置
 
-### 1. 主页配置 - docs/index.md
+### 主页配置 - `docs/index.md`
 
 ```yaml
 ---
@@ -83,9 +83,9 @@ hero:
 ---
 ```
 
-主页设定为引导用户迅速了解和参与项目。提供直接的链接到指南页面和项目的 GitHub 页面，鼓励用户立即参与和贡献。
+主页设定为引导用户迅速了解和参与项目，提供直接链接到指南页面和项目的 GitHub 页面，鼓励用户立即参与和贡献。
 
-### 2. 指南 - docs/guide.md
+### 指南页 - `docs/guide.md`
 
 ```yaml
 ---
@@ -98,9 +98,9 @@ order: -1
 ---
 ```
 
-指南部分旨在为用户提供详细的操作和使用说明，方便用户快速上手。
+指南部分旨在为用户提供详细的操作和使用说明，以方便用户快速上手。
 
-### 3. 博客归档 - docs/blog/index.md
+### 博客页入口 - `docs/blog/index.md`
 
 ```yaml
 ---
@@ -114,7 +114,7 @@ title: 这是什么？
 ---
 ```
 
-### 4. 博客文章 - docs/blog/dumi.md
+### 博客页 - `docs/blog/dumi.md`
 
 ```yaml
 nav:
@@ -127,7 +127,7 @@ title: 我如何使用 dumi
 ---
 ```
 
-### 5. 文档库入口 - docs/garden/index.md
+### 知识库入口 - `docs/garden/index.md`
 
 ```yaml
 ---
@@ -137,9 +137,9 @@ nav:
 ---
 ```
 
-知识库作为一个综合信息聚集地，设置于导航的末端，旨在为用户提供广泛的知识资源。
+知识库作为综合信息聚集地，设置于导航的末端，旨在为用户提供广泛的知识资源。
 
-### 6. JavaScript 索引 - docs/garden/js/index.md
+### JavaScript 页入口 - `docs/garden/js/index.md`
 
 ```yaml
 ---
@@ -154,7 +154,7 @@ title: 这是什么？
 ---
 ```
 
-### JavaScript 话题 - docs/garden/js/null-undefined.md
+### JavaScript 页 - `docs/garden/js/null-undefined.md`
 
 ```yaml
 ---
@@ -169,23 +169,23 @@ toc: content
 
 ## Markdown 之间的相互跳转
 
-> `blog/index.md` 中跳转到 `dumi.md`
+> 在 `blog/index.md` 中跳转到 `dumi.md`
 
-```md
+```markdown
 [跳转到 dumi](./dumi.md)
 ```
 
-> `blog/dumi.md` 中跳转到 `blog/switch.md`。
+> 在 `blog/dumi.md` 中跳转到 `blog/switch.md`。
 
-```md
+```markdown
 [跳转到 switch](./switch)
 ```
 
 ## 配置 tailwindcss
 
-`tailwindcss` 配置项需要安装 `@umijs/plugins`，并且挂载 `@umijs/plugins/dist/tailwindcss` 插件才能使用。
+`tailwindcss` 配置项需要安装 `@umijs/plugins`，并且挂载 `@umijs/plugins/dist/tailwindcss` 插件才能使用。
 
-具体实现，可以参考以下步骤：
+具体实现，为以下步骤：
 
 1. 安装：
 
@@ -193,28 +193,28 @@ toc: content
     pnpm i @umijs/plugins tailwindcss -D
     ```
 
-2. 在 `.dumirc.ts` 中配置：
+2. 在 `.dumirc.ts` 中配置：
 
-    ```sh
+    ```js
     plugins: ['@umijs/plugins/dist/tailwindcss']
     ```
 
-3. 启用 `tailwindcss`：同样在 `.dumirc.ts` 加入
+3. 启用 `tailwindcss`：同样在 `.dumirc.ts` 加入
 
-    ```sh
+    ```js
     tailwindcss: {}
     ```
 
-4. 确保在根目录下已创建 `tailwind.config.js` 和 `tailwind.css`。
+4. 确保在根目录下已创建 `tailwind.config.js` 和 `tailwind.css`。
 
     ![20240613235249](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240613235249.png)
 
-5. 配置 `tailwind.config.js`：
+5. 配置 `tailwind.config.js`：
 
     ```js
     /** @type {import('tailwindcss').Config} */
     module.exports = {
-      // 关闭 tailwindcss 提供的浏览器样式重置，否则会导致 dumi 样式异常。
+      // 关闭 tailwindcss 提供的浏览器样式重置，否则会与 dumi 样式冲突。
       corePlugins: {
         preflight: false,
       },
@@ -226,11 +226,11 @@ toc: content
     };
     ```
 
-    未配置情况下会出现如下样式：
+未配置情况下会出现如下样式：
 
-    ![20240614052556](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240614052556.png)
+![20240614052556](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240614052556.png)
 
-## 配置 zhlint
+## 配置 zhlint 格式化 Markdown
 
 安装 `zhlint`：
 
@@ -240,10 +240,117 @@ pnpm i zhlint -D
 
 配置 `package.json`：
 
-```sh
+```json
 "lint:md": "zhlint \"./docs/**/*.md\" --fix"
 ```
 
-## 关于打包
+## [部署到 GitHub Pages](https://d.umijs.org/guide/faq#%E9%83%A8%E7%BD%B2%E5%88%B0-github-pages)
+
+### 配置 `.dumirc.ts`
+
+由于 GitHub Pages 是[非域名根路径部署](https://d.umijs.org/guide/faq#%E9%9D%9E%E6%A0%B9%E7%9B%AE%E5%BD%95%E9%83%A8%E7%BD%B2)，第一个要注意的就是 `.dumirc.ts` 配置中，我们要把 `base` 和 `publicPath` 改成项目仓库名称的路径。
+
+```js
+// .dumirc.ts
+import { defineConfig } from 'dumi';
+
+export default defineConfig({
+  outputPath: 'docs-dist',
+  base: '/awesome-me/',
+  publicPath: '/awesome-me/',
+});
+```
+
+> 文档项目独立时，通常 `base` 和 `publicPath` 配置项相同。
+
+当我们部署到 GitHub 时，网站路径上会加上项目的仓库名。例如 `chuenwei0129.github.io/awesome-me/`。
+
+- `base` 的作用：在 `docs` 文件夹生成的路由 `/` 和 `/guide`，如果部署到 GitHub 可能会路由跳转错误，因此必须给路由补上前缀 `awesome-me`。
+
+- `publicPath` 的作用：保证打包后静态资源路径正确，对打包后 `index.html` 中引入的静态资源路径加上前缀。此处也即代表 `/public` 映射的路径为 `/awesome-me/public`，所以我们引入 `/public` 文件时需注意，例如：`/logo.png` 实际上要写成 `/awesome-me/logo.png` 才能正确引入。
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="shortcut icon" href="https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/icon.svg">
+<link rel="stylesheet" href="/awesome-me/umi.ea670057.css">
+<!-- 不加前缀会生成 /preload_helper.58c08a69.js-->
+<script src="/awesome-me/preload_helper.58c08a69.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script src="/awesome-me/umi.e7aa0b1e.js"></script>
+</body>
+</html>
+```
+
+### 手动部署
+
+借助 `gh-pages` 可以轻松帮助我们部署文档到 GitHub Pages：
+
+```sh
+pnpm install gh-pages --save-dev
+```
+
+在 `package.json` 中添加：
+
+```json
+"scripts": {
+  "deploy": "gh-pages -d doc-dist"
+}
+```
+
+先编译生成 `doc-dist` 目录，然后再一键发布：
+
+```sh
+npm run deploy
+```
+
+### 自动部署
+
+在项目根目录新建 `.github/workflows/gh-pages.yml` 文件。
+
+```yaml
+name: github pages
+
+on:
+  push:
+    branches:
+      - main # default branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Install dependencies
+        run: npm install
+      - name: Build with dumi
+        run: npm run docs:build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs-dist
+```
+
+**解释**：每次有新代码更新到主分支时，会触发 GitHub Action，`gh-pages` 工具会自动打包并发布到 `gh-pages` 分支，以便让源码和打包代码区分开来。
+
+在这里，我们需要确保 `GITHUB_TOKEN` 被授权为读写权限。
+
+![20241022214856](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/react/20241022214856.png)
+
+然后在 GitHub 的设置中，选择 `gh-pages` 分支作为网站构建分支。
+
+![d320e499c3664a95b3a843206dfe025b~tplv-k3u1fbpfcp-zoom-in-crop-mark_1512_0_0_0](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/react/d320e499c3664a95b3a843206dfe025b%7Etplv-k3u1fbpfcp-zoom-in-crop-mark_1512_0_0_0.webp)
+
+## 发包
 
 > <https://github.com/umijs/father/issues/514>

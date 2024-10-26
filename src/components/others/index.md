@@ -4,6 +4,4 @@ group:
 title: Interview
 ---
 
-<code src="./usage/demo5.tsx">测试不可变数据</code>
-<code src="./usage/demo6.tsx">测试不可变数据</code>
-
+<code src="./usage/demo9.tsx">测试</code>

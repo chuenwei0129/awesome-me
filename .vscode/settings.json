@@ -4,6 +4,7 @@
     "antv",
     "aplus",
     "Bitstream",
+    "chuenwei",
     "clsx",
     "commitlint",
     "cparagraph",
@@ -11,11 +12,14 @@
     "ctitle",
     "cword",
     "dumi",
+    "dumijs",
     "dumirc",
     "extenstions",
     "favicons",
     "forawait",
     "immer",
+    "keyframes",
+    "Linebreaker",
     "mockjs",
     "msword",
     "MVVM",
@@ -29,6 +33,7 @@
     "umijs",
     "vuex",
     "wicg",
-    "zhlint"
+    "zhlint",
+    "zustand"
   ]
 }
