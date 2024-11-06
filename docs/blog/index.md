@@ -8,21 +8,8 @@ group:
 title: 这是什么？
 ---
 
+> ❤️ 没有经过整理的知识才是徒然浪费时间，伤透脑筋！
 
+对于所有的问题，我都希望得到一个很漂亮的回答，**一个让人一眼看过去就茅塞顿开的回答**。实际上这是很难的。就好比人们总是希望一句话就说清楚生活的意义是什么。实际上也是很难的。
 
-<!-- ## Make Web Great Again
-
-> Always bet on JavaScript, Because there is only JavaScript.
-
-- `[HTML]` [Is HTML a programming language?](html/html.md)
-- `[CSS]` [是煮，是煮在又一次严重酗酒后创造了这个奇迹。](css/css.md)
-- `[JavaScript]` [My life sucks and I'm going to rewrite it in JavaScript.](js/js.md)
-- `[TypeScript]` [You mastered Typescript but you're still not her type](ts/ts.md)
-<!-- - `[FE]` [我在知乎学前端](interview/fe.md) -->
-- `[Vue]` [You finally mastered vue, but she still disappears from view](framework/vue.md)
-- `[React]` [You learned react, your crush is online but you can't react](react/react.md)
-<!-- - React is not reactive. Vue is not only view. -->
-<!-- - `[Hacker]` 都什么年代了，还再写传统 JS -->
-<!-- - `[Component]` 组件库，但无 UI -->
-<!-- - `TODO` [人类高质量函数式编程学习笔记](summary/fp.md) -->
-- `[Browser]` [到达前端最高城！](computer/browser.md) -->
+**怀揣着这种不确定感继续学习，不要有知识包袱，不要假装自己很聪明**。这个世界本身就是抽象又复杂的。这没什么大不了。

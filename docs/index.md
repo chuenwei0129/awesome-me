@@ -1,34 +1,30 @@
 ---
-# tab 标题
-title: 首页 Tab 信息
+title: Make Me Great Again
 hero:
-  title: naifu
+  title: n.a.i.f.u
   description: Make Me Great Again
   actions:
     - text: 立即上手
       link: /guide
     - text: GitHub
       link: https://github.com/chuenwei0129/awesome-me
-# features:
-#   - title: 完整体系
-#     emoji: 🚀
-#     description: 根据官方文档及社区建设构建尽可能实用的知识体系，宏观掌握技术体系
-#   - title: 更好的编译性能
-#     emoji: 🚀
-#     description: 通过结合使用 <a href="https://umijs.org/blog/mfsu-faster-than-vite" target="_blank" rel="noreferrer">Umi 4 MFSU</a>、esbuild、SWC、持久缓存等方案，带来比 dumi 1.x 更快的编译速度
-#   - title: 内置全文搜索
-#     emoji: 🔍
-#     description: 不需要接入任何三方服务，标题、正文、demo 等内容均可被搜索，支持多关键词搜索，且不会带来产物体积的增加
-#   - title: 全新主题系统
-#     emoji: 🎨
-#     description: 为主题包增加插件、国际化等能力的支持，且参考 <a href="https://docusaurus.io/docs/swizzling" target="_blank" rel="noreferrer">Docusaurus</a> 为主题用户提供局部覆盖能力，更强更易用
-#   - title: 约定式路由增强
-#     emoji: 🚥
-#     description: 通过拆分路由概念、简化路由配置等方式，让路由生成一改 dumi 1.x 的怪异、繁琐，更加符合直觉
-#   - title: 资产元数据 2.0
-#     emoji: 💡
-#     description: 在 1.x 及 JSON Schema 的基础上对资产属性定义结构进行全新设计，为资产的流通提供更多可能
-#   - title: 继续为组件研发而生
-#     emoji: 💎
-#     description: 提供与全新的 npm 包研发工具 <a href="https://github.com/umijs/father" target="_blank" rel="noreferrer">father 4</a> 集成的脚手架，为开发者提供一站式的研发体验
+features:
+  - title: 导航
+    emoji: 🗺️
+    description: 收集了一些实用的网站，方便日常工作学习中的使用，也可以作为一个导航站点，方便快速查找。
+  - title: 博客
+    emoji: 📝
+    description: 记录生活点滴，以及在工作学习中遇到的一些问题和解决方案，方便以后复习和分享给那些好奇的小伙伴们。
+  - title: 碎片
+    emoji: 🧩
+    description: 碎片化的知识点（常用库/工具/冷门小技巧等），结合 CV 大法，助我更好地摸鱼！
+  - title: 前端库
+    emoji: 🛞
+    description: 为我造过的轮子与写过的项目，书写传记（组件库/hooks/utils），汲取社区大佬们的开源库中的灵感和冷知识。
+  - title: 工具
+    emoji: 🛠️
+    description: 工欲善其事，必先利其器（记录开发和日常用到的软件、网站、扩展等，出门须带齐工具包！）
+  - title: Notes
+    emoji: 🚀
+    description: 汇总前端的经典知识（知乎热议/大神博客/前端小册等），如有异议，按你的理解为主，不接受反驳。
 ---

@@ -7,10 +7,19 @@ module.exports = {
   content: [
     './playground/**/*.{js,jsx,ts,tsx}',
     './projects/**/*.{js,jsx,ts,tsx}',
-    './src/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        fadeIn: {
+          from: { opacity: '0' },
+          to: { opacity: '1' },
+        },
+      },
+    },
+    animation: {
+      fadeIn: 'fadeIn 0.5s ease-in',
+    },
   },
   plugins: [require('tailwindcss-animate')],
 };
