@@ -23,9 +23,8 @@ export default defineConfig({
     },
   },
   outputPath: 'docs-dist',
-  // base: '/awesome-me/',
-  // 这样在 md 文件中可以直接使用 /public/awesome-me/ 引用图片
-  // publicPath: '/awesome-me/',
+  base: '/',
+  publicPath: '/',
   // tailwindcss
   plugins: ['@umijs/plugins/dist/tailwindcss'],
   tailwindcss: {},
