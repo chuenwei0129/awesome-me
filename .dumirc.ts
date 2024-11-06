@@ -23,8 +23,8 @@ export default defineConfig({
     },
   },
   outputPath: 'docs-dist',
-  base: '/awesome-me/',
-  publicPath: '/awesome-me/',
+  base: '/',
+  publicPath: '/',
   // tailwindcss
   plugins: ['@umijs/plugins/dist/tailwindcss'],
   tailwindcss: {},
