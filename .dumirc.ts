@@ -11,10 +11,10 @@ export default defineConfig({
   //       'https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.22.17/babel.min.js',
   //   },
   // },
-  logo: '/logo.svg',
+  logo: '/awesome-me/logo.svg',
   favicons: [
     // 'https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/icon.svg',
-    '/logo.svg',
+    '/awesome-me/logo.svg',
   ],
   themeConfig: {
     name: 'naifu',
@@ -23,8 +23,8 @@ export default defineConfig({
     },
   },
   outputPath: 'docs-dist',
-  base: '/',
-  publicPath: '/',
+  base: '/awesome-me/',
+  publicPath: '/awesome-me/',
   // tailwindcss
   plugins: ['@umijs/plugins/dist/tailwindcss'],
   tailwindcss: {},
