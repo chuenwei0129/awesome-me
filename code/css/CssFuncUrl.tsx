@@ -13,7 +13,7 @@ const FontDiv = styled.div`
 `;
 
 const ListStyleImage = styled.li`
-  list-style-image: url('/pointer.cur');
+  list-style-image: url('/awesome-me/css-note/pointer.cur');
 `;
 
 const BackgroundImage = styled.li`
@@ -26,7 +26,7 @@ const BackgroundImage = styled.li`
     display: inline-block;
     width: 50px; /* 设置图片宽度 */
     height: 50px; /* 设置图片高度 */
-    background: url('/logo.svg') no-repeat center center;
+    background: url('/awesome-me/logo.svg') no-repeat center center;
     background-size: contain; /* 确保图片缩放以适应容器 */
     position: absolute;
     left: 0;
@@ -35,12 +35,12 @@ const BackgroundImage = styled.li`
 `;
 
 const CursorDiv = styled.div`
-  cursor: url('/css-note/pointer.cur'), auto;
+  cursor: url('/awesome-me/css-note/pointer.cur'), auto;
 `;
 
 const BorderDiv = styled.div`
   border: 20px solid transparent;
-  border-image: url('/css-note/border-diamonds.png') 30 round;
+  border-image: url('/awesome-me/css-note/test.png') 30 round;
   width: 200px;
   height: 200px;
   margin-top: 20px;

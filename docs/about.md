@@ -62,7 +62,7 @@ title: 介绍
 
 > 目前在南京找工作，有意向的公司可以联系我。
 
-- 📜 **简历**: 点击 <a href="/about/resume.pdf" download="楚恩伟-前端开发工程师">这里</a> 查看我的简历。
+- 📜 **简历**: 点击 <a href="/awesome-me/about/resume.pdf" download="楚恩伟-前端开发工程师">这里</a> 查看我的简历。
 - 📮 **Email**: <chuenwei0129@gmail.com>
 - 📱 **微信**: 18105142454
 - 🐙 **GitHub**: [chuenwei0129](https://github.com/chuenwei0129)

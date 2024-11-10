@@ -4,6 +4,7 @@ module.exports = {
   corePlugins: {
     preflight: false,
   },
+  // 指定 tailwindcss 的作用范围
   content: ['./code/**/*.{js,jsx,ts,tsx}', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
@@ -14,9 +15,11 @@ module.exports = {
         },
       },
     },
+    // 自定义动画
     animation: {
       fadeIn: 'fadeIn 0.5s ease-in',
     },
   },
+  // 插件
   plugins: [require('tailwindcss-animate')],
 };

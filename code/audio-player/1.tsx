@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import lrcFile from './MT.lrc';
+import audioSrc from './MT.mp3';
 
 interface Lyric {
   time: number;
@@ -125,7 +126,7 @@ const App = () => {
 
   return (
     <div className="text-center">
-      <audio ref={audioRef} src="/audio-player/MT.mp3" controls></audio>
+      <audio ref={audioRef} src={audioSrc} controls></audio>
       <div className="m-2">
         <input type="text" value={searchText} onChange={(e) => setSearchText(e.target.value)} placeholder="Search lyrics..." className="p-2 border border-gray-300" />
         <input type="text" value={replaceText} onChange={(e) => setReplaceText(e.target.value)} placeholder="Replace with..." className="p-2 border border-gray-300 ml-2" />
