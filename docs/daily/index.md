@@ -1,6 +1,6 @@
 ---
 nav:
-  title: 碎片
+  title: Daily
   order: 0
 group:
   title: 介绍
@@ -10,12 +10,10 @@ title: 这是什么？
 
 这里存放一些待整理、归纳、总结的碎片化的知识、文章等。
 
-> 不定期更新的日常笔记记录（零零散散啥都记系列）
+> 零零散散啥都记系列（不定期更新）
 
-<code id="time" src="../../playground/demo.tsx"></code>
+笔记记了不看，或者记了以后不和其他笔记产生关联，或者不进行二次三次修改优化是无法对大脑神经连接的结构产生影响的。
 
-<!-- 暂时充当项目演示页面 -->
-<!-- <code id="file-preview" src="../../projects/file-preview/App.tsx"></code>
-<code id="large-file-upload" src="../../projects/large-file-upload/app.tsx"></code>
-<code id="directory-to-graph" src="../../projects/directory-to-graph/App.tsx"></code>
-<code id="single-file-text-editor" src="../../projects/single-file-text-editor/app.tsx"></code> -->
+笔记的形式根本不重要，最重要的是笔记能否影响大脑的思考。
+
+就像一本书再怎么精装、精致，如果读者不反复阅读，也没什么区别。

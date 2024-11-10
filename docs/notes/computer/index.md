@@ -1,18 +1,13 @@
 ---
 nav:
-  title: 知识库
-  order: -1
   second:
-    title: 操作系统
-    order: -999
-title: 这是什么？
-toc: content
+    title: 计算机基础
+    order: 0
 group:
   title: 介绍
   order: 0
+title: 这是什么？
 ---
-
-## 简介
 
 这里汇集了我在学习计算机基础知识过程中的笔记和心得。
 

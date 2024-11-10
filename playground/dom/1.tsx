@@ -5,9 +5,7 @@ interface ImageDecorationProps {
   originalImage: string;
 }
 
-const ImageDecoration: React.FC<ImageDecorationProps> = ({
-  originalImage = '/awesome-me/border-diamonds.png',
-}) => {
+const ImageDecoration: React.FC<ImageDecorationProps> = ({ originalImage = '/about/chu-01.png' }) => {
   const [showTemplates, setShowTemplates] = useState(false);
 
   const handleShowTemplates = () => {
@@ -23,20 +21,11 @@ const ImageDecoration: React.FC<ImageDecorationProps> = ({
   return (
     <div className="flex flex-col items-center mt-4">
       <div className="flex justify-around w-full">
-        <button
-          type="button"
-          onClick={handleShowTemplates}
-          className="bg-green-500 text-white p-2 rounded"
-        >
+        <button type="button" onClick={handleShowTemplates} className="bg-green-500 text-white p-2 rounded">
           头像边框
         </button>
       </div>
-      {showTemplates && (
-        <ImageDecorationTemplates
-          originalImage={originalImage}
-          onSelectTemplate={handleSelectTemplate}
-        />
-      )}
+      {showTemplates && <ImageDecorationTemplates originalImage={originalImage} onSelectTemplate={handleSelectTemplate} />}
     </div>
   );
 };

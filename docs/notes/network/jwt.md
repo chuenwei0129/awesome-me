@@ -124,7 +124,7 @@ app.listen(4396, () => {
 
 前端应用：
 
-<code id="jwt-auth" src="../../../projects/jwt-auth/App.tsx"></code>
+<code id="jwt-auth" src="../../../playground/jwt-auth/App.tsx"></code>
 
 ## 注意事项 ⚠️
 

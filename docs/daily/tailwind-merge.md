@@ -14,6 +14,9 @@ toc: content
 举个例子：
 
 ```jsx
+/**
+ * defaultShowCode: true
+ */
 import React from 'react';
 
 const MyInput = (props) => {
@@ -42,6 +45,9 @@ export default function page() {
 ![20241021152437](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/react/20241021152437.png)
 
 ```jsx
+/**
+ * defaultShowCode: true
+ */
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
 

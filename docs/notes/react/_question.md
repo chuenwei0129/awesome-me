@@ -307,3 +307,159 @@ export default App;
 ```
 
 这里的 Fragment 标签本身并不会出现在 DOM 上，这串代码最终会转换成 `<h1>`、`<p>`、`<h1>`、`<p>`…… 的列表。
+
+[Vue和React的这个行为各是出于什么考虑？](https://www.zhihu.com/question/543057656/answer/2575930077)
+
+
+[React 推荐函数组件是纯函数，但是组件有状态就不可能是纯函数，怎么理解有状态的纯函数？](https://www.zhihu.com/question/537538929)
+
+hooks 在思维模型上只是组件函数的参数的另一种写法，函数组件只是一个接受参数 `(props, [state1, setState1], [state2, setState2], ...restHooks)` 然后返回 jsx 的纯函数。
+
+**那 hooks 不能放 if 里面就是自然而然的了 —— 一个函数有多少个参数、各个参数的顺序是什么，这应当是永远不会变的，不能允许它在每次调用时都可能不同。**
+
+函数组件并不会调用 `setState`，调用 `setState` 的是用户行为触发的回调函数，它已经脱离了函数组件本身的作用域了。
+
+```js
+function pure() {
+  return () => console.log(...)
+}
+```
+
+不能说因为 `pure` 返回的回调函数有副作用，所以 `pure` 本身有副作用。
+
+## 闭包陷阱
+
+```js
+function Chat() {
+  const [text, setText] = useState('')
+
+  const onClick = useCallback(() => {
+    // 只执行一次 text 是第一次执行时的值 text === ''
+    sendMessage(text)
+    // 添加 text 依赖项，每当 text 变化，useCallback 会返回一个全新的 onClick 引用，但这样就失去了 useCallback「缓存函数引用」的作用。
+  }, [])
+
+  return <SendButton onClick={onClick} />
+}
+```
+
+我们期望点击后 `sendMessage` 能传递 `text` 的最新值。
+
+然而实际上，由于回调函数被 `useCallback` 缓存，形成闭包，所以点击的效果始终是 `sendMessage('')`。
+
+这就是：**「闭包陷阱」**。
+
+> [React 官方团队出手，补齐原生 Hook 短板](https://zhuanlan.zhihu.com/p/509972998)
+
+## 事件
+
+> [合成事件层太厚了](https://www.zhihu.com/question/316425133/answer/673451425)
+
+在 v17 之前，整个应用的事件会冒泡到同一个根节点（html DOM 节点）。而在 v17 之后，每个应用的事件都会冒泡到该应用自己的根节点（ReactDOM.render 挂载的节点）。
+
+> [给女朋友讲 React18 新特性：Automatic batching](https://zhuanlan.zhihu.com/p/382216973)
+
+### tearing
+
+[撕裂](https://en.wikipedia.org/wiki/Screen_tearing)（tearing）是图形编程中的一个传统术语，是指视觉上的不一致。
+
+**撕裂通常是由于 React 使用了外部的状态导致的。React 在并发渲染过程中，这些外部的状态会发生变化，但是 React 却无法感知到变化。**
+
+假设我们有一个外部 store，初始颜色是蓝色。在我们的应用中组件树中有多个组件都依赖于 store 的值。
+
+假设组件树的渲染需要 400 ms，在渲染到 100 ms 时，假设一个用户点击了按钮，将 store 的颜色由蓝色改为红色。
+
+在非并发渲染场景下，不会发生任何处理。因为组件树的渲染是同步的。用户的点击事件会在视图渲染完成后执行。
+
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/fe-engineering/0c371a43388a4ce29eba5a7deb888c85_tplv-k3u1fbpfcp-zoom-in-crop-mark_1304_0_0_0.webp)
+
+但是在并发渲染场景下，React 可以让点击发生反应，打断视图渲染。此时很有可能因为时间分片的原因，前 100ms 有一些组件已经完成了渲染，引用的 store 值是蓝色，剩下 300ms 渲染的组件引用的 store 值是红色，这些组件虽然读取同一个数据却显示出不同的值，这种边缘情况就是 “撕裂”。
+
+![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/fe-engineering/e758382e98814f5ab364e85ec3524ef9_tplv-k3u1fbpfcp-zoom-in-crop-mark_1304_0_0_0.webp)
+
+
+
+## 非受控模式
+
+代码设置表单的初始 value，但是能改变 value 的只有用户，代码通过监听 onChange 来拿到最新的值，或者通过 ref 拿到 dom 之后读取 value。
+
+```jsx | pure
+export default function App() {
+  return (
+    <>
+      <input
+        type="text"
+        defaultValue={'初始值'}
+        onChange={(e) => console.log('非受控模式：', e.target.value)}
+      />
+    </div>
+  )
+}
+```
+
+## [为什么说 immutable 是 React 的核心，如何理解这一概念？](https://www.zhihu.com/question/446377023)
+
+Vue 实际上和 React 核心区别就一个：数据不可变性
+
+什么是数据的不可变性？
+
+用最简单的方式距离，有一个对象 profile：
+
+const profile = {
+  age: 18,
+  loginInfo: {
+     username: "",
+     password: ""
+  }
+}
+现在你要修改这个 profile 对象，你能怎么修改？
+
+// Vue
+const changeName = (str)=>{
+  profile.loginInfo.username = str
+}
+Vue 中，你可以直接修改属性，换言之 ——
+
+行为（方法）总是会修改原本的属性
+但是在 React 中却不可以：
+
+let getProfile = ()=>profile
+const changeName = (str)=>{
+  const pre = getProfile()
+  getProfile = ()=>({
+     ...pre,
+     loginInfo: {
+        ...pre.loginInfo,
+        username: str
+     }
+  })
+}
+
+// getProfile() 获取最新数据
+React 中，每个行为，都会产生新的对象，换言之 ——
+
+行为（方法）不会修改原本的对象属性，而是会产生新的对象
+直观说明就是：
+
+Vue：对象 -> 被函数1修改 -> 被函数2修改...
+
+React: 对象 -> 函数1运行 -> 对象 -> 函数2运行...
+
+而数据不变性，指的就是：
+
+数据作为一个整体，从不会改变，不论是内部属性还是外部引用
+
+在 React 中，新的视图由新的数据确定，新的数据由每一个行为产生，彼此之间互不干扰
+
+因此，React 也要求：数据行为分离
+
+操作的差异也来源于响应式原理不同，Vue 使用 Proxy，而 React 直接发布订阅
+这么做有好处有坏处：
+
+好处是：数据之间彼此不耦合，你可以随意更新数据结构而不用担心响应性丢失的问题
+
+坏处是：数据行为分离对封装不利，且样板代码较多（比如 reducer），且一定要求由初始值
+
+React 和 Vue 的取向不同，并不意味着难度不同
+
+实际上两者理论上来说，难度应该是一样的

@@ -2,7 +2,7 @@
 nav:
   second:
     title: VSCode
-    order: 1
+    order: 999
 group:
   title: 概述
   order: -999

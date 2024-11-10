@@ -1,8 +1,9 @@
 ---
-title: useState 状态的保存与更新
+title: useState
+order: 6
 toc: content
 group:
-  title: 深入探讨
+  title: 道
 ---
 
 ## useState 状态的保存与更新
@@ -77,6 +78,9 @@ updateNum === dispatchAction.bind(null, currentlyRenderingFiber, queue);
 
 </details>
 
-## 参考资料
+## 推荐阅读
 
-> [关于 useState 的一切](https://zhuanlan.zhihu.com/p/200855720)
+- [关于 useState 的一切](https://zhuanlan.zhihu.com/p/200855720)
+- [useState 与 useReducer 性能居然有区别？](https://zhuanlan.zhihu.com/p/620678446)
+- [关于 react 数据和状态，究竟什么是数据，什么是状态?](https://www.zhihu.com/question/447618785/answer/2927999227)
+[为什么选择用 useReducer 实现 useState 呢？](https://www.zhihu.com/question/312894578/answer/3156767540)

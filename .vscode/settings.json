@@ -1,5 +1,6 @@
 {
   "cSpell.words": [
+    "ahooks",
     "antd",
     "antv",
     "aplus",
@@ -20,6 +21,7 @@
     "forawait",
     "iconfont",
     "immer",
+    "keydown",
     "keyframes",
     "lcov",
     "Linebreaker",
@@ -36,9 +38,12 @@
     "roughjs",
     "spdy",
     "stylelint",
+    "Swyx",
+    "tabler",
     "tailwindcss",
     "typeof",
     "umijs",
+    "vdom",
     "vuex",
     "wicg",
     "zhlint",

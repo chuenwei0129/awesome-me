@@ -3,7 +3,7 @@ title: 关于 CPU
 toc: content
 order: 0
 group:
-  title: 计算机组成原理
+  title: 计算机组成
   order: 2
 ---
 

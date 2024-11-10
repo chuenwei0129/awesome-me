@@ -9,7 +9,6 @@ export default defineConfig({
       'docs/**',
       // 这里存放 docs 中使用的 demos
       'playground/**',
-      'projects/**',
       // 测试用例
       'src/**/coverage/**',
       // 这里存放我们 npm 包中使用的 demos

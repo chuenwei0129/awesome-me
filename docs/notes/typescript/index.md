@@ -2,14 +2,12 @@
 nav:
   second:
     title: Typescript
-    order: 30
+    order: 5
 title: 这是什么？
 group:
   title: 介绍
   order: 0
 ---
-
-## 简介
 
 这里是我学习 TypeScript 的笔记。
 

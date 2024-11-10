@@ -1,6 +1,6 @@
 ---
 nav:
-  title: 博客
+  title: Blog
   order: 0
 group:
   title: 介绍
