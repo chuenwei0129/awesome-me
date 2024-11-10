@@ -9,24 +9,22 @@ const ReactCompilerConfig = {
 
 export default defineConfig({
   logo: '/logo.svg',
-  favicons: [
-    // 'https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/icon.svg',
-    '/logo.svg',
-  ],
+  favicons: ['/logo.svg'],
   themeConfig: {
     name: 'naifu',
     socialLinks: {
       github: 'https://github.com/chuenwei0129/awesome-me',
     },
   },
+  // 网站打包输出目录
   outputPath: 'docs-dist',
+  // 网站部署路径
   base: '/',
   publicPath: '/',
-  // tailwindcss
+  // tailwindcss 配置
   plugins: ['@umijs/plugins/dist/tailwindcss'],
-  // 必须有，否则 tailwindcss 不生效
   tailwindcss: {},
-  // latex
+  // latex 配置
   extraRemarkPlugins: ['remark-math'],
   extraRehypePlugins: ['rehype-mathjax'],
   // 资产路由
@@ -38,11 +36,13 @@ export default defineConfig({
       { type: 'package', dir: 'src/hooks' },
     ],
   },
+  // 自定义 webpack 配置
   chainWebpack(memo) {
     memo.module
       .rule('lrc')
       .test(/\.lrc$/i)
       .type('asset/source');
   },
+  // 自定义 babel 配置
   extraBabelPlugins: [['babel-plugin-react-compiler', ReactCompilerConfig]],
 });
