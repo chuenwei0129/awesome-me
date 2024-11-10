@@ -9,13 +9,13 @@ title: 介绍
 
 下面 👇 是我的一些 AI 生成的头像，是用 Stable Diffusion 训练后生成的，我很喜欢。
 
-<code id="about-pages-portrait" src="../playground/about-pages/portrait.tsx"></code>
+<code id="about-pages-portrait" src="../code/about-pages/portrait.tsx"></code>
 
 ---
 
 ## 关于我
 
-<code id="about-pages-text" src="../playground/about-pages/resume.tsx"></code>
+<code id="about-pages-text" src="../code/about-pages/resume.tsx"></code>
 
 > **`奀歪`**，是我名字的谐音，而我的名字又是我奶奶根据方言中 **`恩惠`** 的谐音起的，这辈子大概是跟谐音梗过不去了。
 

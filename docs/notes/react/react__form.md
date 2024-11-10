@@ -146,4 +146,4 @@ export default function App() {
 
 <hr>
 
-<code src="../../../playground/react/control"></code>
+<code src="../../../code/react/control"></code>

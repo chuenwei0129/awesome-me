@@ -23,7 +23,7 @@
     "prepare": "husky install && dumi setup",
     "prepublishOnly": "father doctor && npm run build",
     "start": "npm run dev",
-    "test:aplus": "promises-aplus-tests ./playground/promise/2.promise.js"
+    "test:aplus": "promises-aplus-tests ./code/promise/2.promise.js"
   },
   "commitlint": {
     "extends": [

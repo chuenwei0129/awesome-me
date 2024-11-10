@@ -218,7 +218,7 @@ toc: content
       corePlugins: {
         preflight: false,
       },
-      content: ['./playground/**/*.{js,jsx,ts,tsx}', './src/**/*.{js,jsx,ts,tsx}'],
+      content: ['./code/**/*.{js,jsx,ts,tsx}', './src/**/*.{js,jsx,ts,tsx}'],
       theme: {
         extend: {},
       },
@@ -354,3 +354,8 @@ jobs:
 ## 发包
 
 > <https://github.com/umijs/father/issues/514>
+
+## 参考
+
+src 中的代码可以影响 docs 中的代码可以影响
+code 是我自定义的代码空间

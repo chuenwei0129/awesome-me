@@ -80,7 +80,7 @@ data: Bellevue
 
 ## Server Sent Events 的使用示例
 
-<code id="sse-demo1" src="../../../playground/sse-test/demo3.tsx"></code>
+<code id="sse-demo1" src="../../../code/sse-test/demo3.tsx"></code>
 
 ## 进阶之其他痛点和解决方案
 

@@ -4,7 +4,7 @@ group:
   title: 深入探讨
 ---
 
-<code src="../../../playground/react/context"></code>
+<code src="../../../code/react/context"></code>
 
 ```tsx
 import type { FC, PropsWithChildren } from 'react';
@@ -77,4 +77,4 @@ const App = () => {
 export default App;
 ```
 
-<!-- <code src="../../../playground/react/ref"></code> -->
+<!-- <code src="../../../code/react/ref"></code> -->

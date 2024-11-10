@@ -1,5 +1,5 @@
 ---
-title: 成长之路
+title: 首页
 hero:
   title: Welcome
   description: Make Me Great Again

@@ -4,7 +4,7 @@ module.exports = {
   corePlugins: {
     preflight: false,
   },
-  content: ['./playground/**/*.{js,jsx,ts,tsx}', './src/**/*.{js,jsx,ts,tsx}'],
+  content: ['./code/**/*.{js,jsx,ts,tsx}', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       keyframes: {

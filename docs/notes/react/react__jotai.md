@@ -1,1 +1,1 @@
-<code src="../../../playground/react/jotai1"></code>
+<code src="../../../code/react/jotai1"></code>

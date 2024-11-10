@@ -1,2 +1,2 @@
 
-<code src="../../../playground/react/x6"></code>
+<code src="../../../code/react/x6"></code>

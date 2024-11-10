@@ -23,8 +23,8 @@ JSX 虽然看起来很像 HTML，但在底层其实被转化为了 JavaScript �
 
 ## 两个例子完全一样吗？
 
-<code src="../../../playground/react/condition1"></code>
-<code src="../../../playground/react/condition2"></code>
+<code src="../../../code/react/condition1"></code>
+<code src="../../../code/react/condition2"></code>
 
 如果你之前是习惯面向对象开发的，你可能会认为上面的两个例子略有不同，因为其中一个可能会创建两个不同的 `<li>` “实例”。但 JSX 元素不是“实例”，因为它们没有内部状态也不是真实的 DOM 节点。**它们只是一些简单的描述，就像图纸一样**。所以上面这两个例子事实上是完全相同的。
 
@@ -36,16 +36,16 @@ JSX 虽然看起来很像 HTML，但在底层其实被转化为了 JavaScript �
 
 **React 不会跨 _多个_ 需要刻意触发的事件（如点击）进行批处理** —— 每次点击都是单独处理的。请放心，React 只会在一般来说安全的情况下才进行批处理。这可以确保，例如，如果第一次点击按钮会禁用表单，那么第二次点击就不会再次提交它。
 
-<code src="../../../playground/react/batch1"></code>
+<code src="../../../code/react/batch1"></code>
 
 但是如果你想在下次渲染之前多次更新同一个 state，你可以像 `setNumber(n => n + 1)` 这样传入一个根据队列中的前一个 state 计算下一个 state 的 **函数**，而不是像 `setNumber(number + 1)` 这样传入 **下一个 state 值**。这是一种告诉 React “用 state 值做某事”而不是仅仅替换它的方法。
 
-<code src="../../../playground/react/batch2"></code>
+<code src="../../../code/react/batch2"></code>
 
 > `setState(x)` 实际上会像 `setState(n => x)` 一样运行，只是没有使用 `n`！
 
-<code src="../../../playground/react/batch3"></code>
-<code src="../../../playground/react/batch4"></code>
+<code src="../../../code/react/batch3"></code>
+<code src="../../../code/react/batch4"></code>
 
 ## 为什么在 React 中不推荐直接修改 state？
 
@@ -57,8 +57,8 @@ JSX 虽然看起来很像 HTML，但在底层其实被转化为了 JavaScript �
 - **需求变更**：有些应用功能在不出现任何修改的情况下会更容易实现，比如实现撤销/恢复、展示修改历史，或是允许用户把表单重置成某个之前的值。这是因为你可以把 state 之前的拷贝保存到内存中，并适时对其进行再次使用。如果一开始就用了直接修改 state 的方式，那么后面要实现这样的功能就会变得非常困难。
 - **更简单的实现**：React 并不依赖于 mutation ，所以你不需要对对象进行任何特殊操作。它不需要像很多“响应式”的解决方案一样去劫持对象的属性、总是用代理把对象包裹起来，或者在初始化时做其他工作。这也是为什么 React 允许你把任何对象存放在 state 中——不管对象有多大——而不会造成有任何额外的性能或正确性问题的原因。
 
-<code src="../../../playground/react/withoutImmer"></code>
-<code src="../../../playground/react/withImmer"></code>
+<code src="../../../code/react/withoutImmer"></code>
+<code src="../../../code/react/withImmer"></code>
 
 ### 局部 mutation 是可以接受的
 
@@ -160,8 +160,8 @@ export default function App() {
 
 > 相同位置的不同组件会使 state 重置（可以使用 key 重置状态：原地复用）
 
-<code src="../../../playground/react/withoutKeyReuse"></code>
-<code src="../../../playground/react/withKeyReuse"></code>
+<code src="../../../code/react/withoutKeyReuse"></code>
+<code src="../../../code/react/withKeyReuse"></code>
 
 > 相同位置的不同组件会使 state 重置
 
@@ -234,13 +234,13 @@ export function useReducer(reducer, initialState) {
 
 > 如何将 useState 重构成 useReducer
 
-<code src="../../../playground/react/withoutReducer2"></code>
+<code src="../../../code/react/withoutReducer2"></code>
 
-<code src="../../../playground/react/withReducer"></code>
+<code src="../../../code/react/withReducer"></code>
 
 > 结合使用 reducer 和 context
 
-<code src="../../../playground/react/withContextReducer"></code>
+<code src="../../../code/react/withContextReducer"></code>
 
 ## useRef 内部是如何运行的？
 

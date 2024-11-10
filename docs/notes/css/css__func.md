@@ -11,7 +11,7 @@ toc: content
 
 > 注意，`attr()` 函数总是返回一个字符串，因此在使用它时需要确保所获取的属性值能够正确地被解析和应用到样式中。此外，不是所有的 CSS 属性都支持 `attr()` 函数，它通常用于那些可以接受字符串值的属性。
 
-<code src="../../../playground/css/CssFuncAttr.tsx"></code>
+<code src="../../../code/css/CssFuncAttr.tsx"></code>
 
 ---
 
@@ -26,4 +26,4 @@ toc: content
 - 浏览器会尝试下载并缓存 `url()` 函数中指定的资源，以便在需要时快速访问。
 - 如果资源无法加载（例如，由于 404 错误或跨域问题），则相关的 CSS 属性可能不会按预期工作。
 
-<code src="../../../playground/css/CssFuncUrl.tsx"></code>
+<code src="../../../code/css/CssFuncUrl.tsx"></code>
