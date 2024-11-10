@@ -29,3 +29,11 @@ setTimeout(() => {
 }, 10);
 
 sleep(100);
+
+// 执行顺序
+// setTimeout1
+// queueMicrotask1
+// setTimeout3
+// queueMicrotask3
+// setTimeout2
+// queueMicrotask2
