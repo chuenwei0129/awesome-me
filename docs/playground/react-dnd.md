@@ -2,7 +2,7 @@
 group:
   title: React
   order: 0
-title: React dnd
+title: React DnD
 toc: content
 # demo:
 #   cols: 2

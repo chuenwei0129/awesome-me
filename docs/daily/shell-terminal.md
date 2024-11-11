@@ -45,7 +45,7 @@ toc: content
 
 简而言之，shell 是你用来输入命令的程序，而 terminal 是你用来访问 shell 的界面。
 
-## `Last login：Mon May 27 12:58:33 on ttys013，这里 ttys013 是什么意思？
+## Last login：Mon May 27 12:58:33 on ttys013，这里 ttys013 是什么意思？
 
 在 Unix 和类 Unix 系统 (如 macOS 和 Linux) 中，`ttys013` 表示一个终端设备文件。具体来说：
 

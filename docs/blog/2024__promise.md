@@ -1,9 +1,133 @@
 ---
 group:
   title: 2024 🐲
-title: Promise
+  order: -2024
+title: Promise 求生指南
 toc: content
 ---
+
+## Promise 业务场景
+
+### 设置请求的超时时间
+
+```tsx
+import React, { useState } from 'react';
+
+const fetchData = (): Promise<string> => {
+  return new Promise((resolve) => {
+    // 随机决定请求的延迟时间在 1000 ms 到 4000 ms 之间
+    const delay = Math.floor(Math.random() * 3000) + 1000; 
+    setTimeout(() => {
+      resolve(`请求耗时约 ${delay} ms`);
+    }, delay);
+  });
+};
+
+const timeout = <T,>(promise: Promise<T>, ms: number): Promise<T> => {
+  const timeoutPromise = new Promise<T>((_, reject) =>
+    setTimeout(() => reject(new Error('请求超时')), ms)
+  );
+  return Promise.race([promise, timeoutPromise]);
+};
+
+const App: React.FC = () => {
+  const [data, setData] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleFetch = async () => {
+    try {
+      const result = await timeout(fetchData(), 2000); // 设置超时为 2000 ms
+      setData(result);
+      setError(null);
+    } catch (err: any) {
+      setError(err.message);
+      setData(null);
+    }
+  };
+
+  return (
+    <div className="p-4">
+      <button onClick={handleFetch} className="cursor-pointer px-4 py-2 bg-blue-500 text-white rounded">
+        发起请求
+      </button>
+
+      {data && <div className="mt-4">响应数据: {data}</div>}
+      {error && <div className="mt-4 text-red-500">错误: {error}</div>}
+    </div>
+  );
+};
+
+export default App;
+```
+
+### 失败重试
+
+```tsx
+import React, { useState } from 'react';
+
+// retries 语义不包含当前这一次，所以 retries 为 1 时，表示再尝试一次
+const retry = (fn: () => Promise<any>, retries: number, delay: number): Promise<any> => {
+    return fn().catch((err: Error) => {
+        if (retries >= 1) {
+            return new Promise((resolve) =>
+                setTimeout(resolve, delay)
+            ).then(() => retry(fn, retries - 1, delay));
+        }
+        throw err;
+    });
+};
+
+let count: number = 0
+const fetchData = () => {
+    alert(`第 ${++count} 次请求`)
+
+    return new Promise((resolve, reject) => {
+        // 模拟一个失败的 API 请求，50% 的失败率
+        const shouldFail = Math.random() > 0.5;
+        setTimeout(() => {
+            if (shouldFail) {
+                reject(new Error('Failed to fetch data'));
+            } else {
+                resolve({ data: 'Success data' });
+            }
+        }, 1000);
+    });
+};
+
+const RetryDemo: React.FC = () => {
+    const [data, setData] = useState<string | null>(null);
+    const [error, setError] = useState<string | null>(null);
+
+    const onClick = () => {
+      retry(fetchData, 3, 2000)
+            .then(response => {
+                setData((response as any).data);
+                setError(null);
+            })
+            .catch(err => {
+                setError(err.message);
+                setData(null);
+            });
+    }
+
+    return (
+        <div className="p-4">
+            <h1 className="text-xl font-bold mb-4">Promise Retry Demo</h1>
+            {data && <p className="text-green-500">Data: {data}</p>}
+            {error && <p className="text-red-500">Error: {error}</p>}
+            <button type="button" onClick={onClick}>失败重试</button>
+        </div>
+    );
+};
+
+export default RetryDemo;
+```
+
+### 并发控制
+
+### 竞态问题
+
+> [如何解决前端常见的竞态问题](./2023__promise-race.md)
 
 ## 再手写一遍 Promise
 
@@ -17,6 +141,8 @@ toc: content
 
     通过 `pnpm i promises-aplus-tests -D` 下载测试包。
 
+    配置 `package.json`：
+
     ```json
     {
         "devDependencies": {
@@ -28,7 +154,7 @@ toc: content
     }
     ```
 
-    通过 `pnpm test:aplus` 测试。
+    执行 `pnpm test:aplus` 测试。
 
 ### 代码实现
 
@@ -40,7 +166,6 @@ const resolvePromise = (promise2, x, resolve, reject) => {
   }
   // 严谨判断：如果 x 是一个 Promise 对象，则采用它的状态。
   if ((typeof x === 'object' && x !== null) || typeof x === 'function') {
-    // 没搞懂为什么要加这个 called 变量，但是为了通过测试，这里加上
     let called = false;
     try {
       // 此处 catch 是防止 proxy 对象的 then 方法报错
@@ -195,11 +320,11 @@ MyPromise.defer = MyPromise.deferred = function () {
 module.exports = MyPromise;
 ```
 
-## 常用方法实现
+## 常用方法手写实现
 
-> 详见我以前写的文章：[夯实基础：关于 Promise 的一些思考](https://github.com/chuenwei0129/build-my-own-x/tree/main/build-my-own-promise)
+> 详见以前记录的笔记 📒：[夯实基础：关于 Promise 的一些思考](https://github.com/chuenwei0129/build-my-own-x/tree/main/build-my-own-promise)
 
-## 进阶
+## Promise 进阶指北
 
 ### thenable 对象
 
@@ -233,7 +358,7 @@ const thenable = {
 
 问：那么[一直没有 resolve 也没有 reject 的 Promise 会造成内存泄露吗？](https://www.zhihu.com/question/386595851/answer/1154736711)
 
-答：只要 Promise 的引用不被其他对象持有，那么就不会造成内存泄漏。执行完后，这个 promise 该如何处理就已经明确了，如果外部没有持有这个 promise 或者它的 reject 或者 resolve 函数，那它自然就会被回收掉，如果有，那自然会等待持有者消除这个引用，比如你把 reject 函数传给了 setimeout。我的理解是这样。
+答：只要 Promise 的引用不被其他对象持有，那么就不会造成内存泄漏。执行完后，这个 promise 该如何处理就已经明确了，如果外部没有持有这个 promise 或者它的 reject 或者 resolve 函数，那它自然就会被回收掉，如果有，那自然会等待持有者消除这个引用，比如你把 reject 函数传给了 setTimeout。我的理解是这样。
 
 ### Promise 外改变 Promise 的状态
 
@@ -451,60 +576,17 @@ Promise.resolve()
 
 ### [Promise 不能被取消，真的算是它的缺点吗？](https://www.zhihu.com/question/495412354/answer/2964699095)
 
-看你的业务语义，如果设计一个 promise 的语义就是“发请求”，那请求发出去当然不能撤销；但如果 promise 的语义是完成一个任务，一开始启动，但中途可以取消。就能取消。主要是看你的抽象方式。
+看你的业务语义，如果设计一个 promise 的语义就是“发请求”，那请求发出去当然不能撤销；但如果 promise 的语义是完成一个任务（可以理解成不需要 then 回调执行），一开始启动，但中途可以取消。就能取消。主要是看你的抽象方式。
 
 Promise 的语义不是一个 Running task，而是一个未来的值，Cancel 一个未来的值，听起来总一些别扭。
 
 Promise 一旦开始执行，底层的软硬件资源开销就已经产生了，没有任何办法撤回。举个具体的例子，你发了一个网络请求，无论如何这个网络请求都会发完，无论如何服务器返回的数据都会收完，底层不提供任何接口给你中断和服务器的连接。
 
-<!-- 取消的语义并不是说要把发出去的请求收回来，而是告诉 promise 回调不要执行了，但是现在 promise 本身连这个都做不到。 -->
 其实，多数情况下，我们要取消的不是 Promise，而是生成 Promise 的那个任务。
 
 取消从来都不是有些人想象的“由取消发起者去取消正在运行中的 Promise”，而是“取消发起者发起取消信号，而正在执行的 Promise 里面的 Task 收到信号后尽快自行停止自己正在干的事情”。
 
 如果你真的需要一个可以取消的 Promise，你用两个正常的 Promise 就能捏出来一个。第一个 Promise 是正常使用的 Promise，代表你要执行的异步操作状态。第二个 Promise 代表第一个 Promise 是否被取消过，取消时它就 resolve，但一旦第一个 Promise 完成了它就被自动 reject 掉。这时候你就手工捏出来了一个有三个终极状态的 Promise。
-
-## 应用
-
-### 超时设置
-
-```js
-// 模拟请求
-function request(params) {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve(params)
-    }, 3000)
-  })
-}
-
-function timeoutWrap(req, timeout) {
-  const delay = new Promise((_, reject) => {
-    setTimeout(() => {
-      reject('超时了')
-    }, timeout)
-  })
-  return (...args) => {
-    const p = req(...args)
-    const res = Promise.race([p, delay])
-    return res
-  }
-}
-
-const r = timeoutWrap(request, 1000)({ id: 1 })
-
-r.then(response => {
-  console.log(response)
-}).catch(e => {
-  console.log('e', e)
-})
-```
-
-### 失败重试
-
-### 并发控制
-
-### 处理接口请求的竞态问题
 
 ## 参考资料
 
