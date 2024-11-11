@@ -21,7 +21,7 @@ import React, { useEffect } from 'react';
 
 const App = () => {
   useEffect(() => {
-    const button = document.querySelector<HTMLButtonElement>('#dispatch-button-1')!;
+    const button = document.querySelector<HTMLButtonElement>('#native-button')
 
     const handleClickListener1 = () => {
       Promise.resolve().then(() => {
@@ -37,18 +37,18 @@ const App = () => {
       alert('Listener 2');
     };
 
-    button.addEventListener('click', handleClickListener1);
-    button.addEventListener('click', handleClickListener2);
+    button?.addEventListener('click', handleClickListener1);
+    button?.addEventListener('click', handleClickListener2);
 
     return () => {
-      button.removeEventListener('click', handleClickListener1);
-      button.removeEventListener('click', handleClickListener2);
+      button?.removeEventListener('click', handleClickListener1);
+      button?.removeEventListener('click', handleClickListener2);
     };
   }, []);
 
   return (
     <div>
-      <button id="dispatch-button-1">Click me!</button>
+      <button id="native-button">native click</button>
     </div>
   );
 };
@@ -66,7 +66,7 @@ export default App;
 import React, { useEffect, useRef } from 'react';
 
 const App = () => {
-  const buttonRef = useRef<HTMLButtonElement>(null!);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleClickListener1 = () => {
@@ -83,23 +83,23 @@ const App = () => {
       alert('Listener 2');
     };
 
-    buttonRef.current.addEventListener('click', handleClickListener1);
-    buttonRef.current.addEventListener('click', handleClickListener2);
+    buttonRef.current?.addEventListener('click', handleClickListener1);
+    buttonRef.current?.addEventListener('click', handleClickListener2);
 
     return () => {
-      buttonRef.current.removeEventListener('click', handleClickListener1);
-      buttonRef.current.removeEventListener('click', handleClickListener2);
+      buttonRef.current?.removeEventListener('click', handleClickListener1);
+      buttonRef.current?.removeEventListener('click', handleClickListener2);
     };
   }, []);
 
   const onClick: React.MouseEventHandler<HTMLButtonElement> = () => {
-    buttonRef.current.click();
+    buttonRef.current?.click();
   };
 
   return (
     <div>
-      <button className="hidden" ref={buttonRef}>click me!</button>
-      <button onClick={onClick} >dispatch</button>
+      <button className="hidden" ref={buttonRef}>native click</button>
+      <button onClick={onClick} >dispatch click</button>
     </div>
   );
 };
