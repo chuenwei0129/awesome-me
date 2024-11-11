@@ -31,10 +31,12 @@ export default defineConfig({
   resolve: {
     atomDirs: [
       // 在识别资产路由时，自动为路由路径加上资产类别前缀（type 配置项）
-      { type: 'package', dir: 'src/components' },
-      { type: 'package', dir: 'src/antd' },
-      { type: 'package', dir: 'src/hooks' },
+      { type: 'component', dir: 'src/components' },
+      { type: 'antd', dir: 'src/antd' },
+      { type: 'hooks', dir: 'src/hooks' },
     ],
+    // 配置入口文件路径，API 解析将从这里开始
+    entryFile: './src/index.ts',
   },
   // 自定义 webpack 配置
   chainWebpack(memo) {
