@@ -1,7 +1,9 @@
-import clsx from 'clsx';
 import React, { useEffect, useRef, useState } from 'react';
+
 import { DndProvider, useDrag, useDragLayer, useDrop } from 'react-dnd';
 import { HTML5Backend, getEmptyImage } from 'react-dnd-html5-backend';
+
+import clsx from 'clsx';
 
 const DragLayer = () => {
   const { isDragging, item, currentOffset } = useDragLayer((monitor) => ({
@@ -86,10 +88,7 @@ function Container() {
   }, []);
 
   return (
-    <div
-      ref={ref}
-      className="w-[300px] h-[300px] border-blue-100 border border-solid"
-    >
+    <div ref={ref} className="w-[300px] h-[300px] border-blue-100 border border-solid">
       {boxes.map((item) => {
         return <Box color={item.color} key={item.color}></Box>;
       })}
@@ -97,7 +96,7 @@ function Container() {
   );
 }
 
-const demo1 = () => {
+const Demo1 = () => {
   return (
     <DndProvider backend={HTML5Backend}>
       <Box color="red" />
@@ -108,4 +107,5 @@ const demo1 = () => {
     </DndProvider>
   );
 };
-export default demo1;
+
+export default Demo1;

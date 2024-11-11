@@ -6,6 +6,7 @@ export { createFromIconFont } from './components/Icons/createFromIconFont';
 
 // ui
 export { default as AnimatedTestimonials } from './ui/animated-testimonials';
+export { default as CycleText } from './ui/cycle-text';
 export { TextRevealCard, TextRevealCardDescription, TextRevealCardTitle } from './ui/text-reveal-card';
 
 /** hooks */

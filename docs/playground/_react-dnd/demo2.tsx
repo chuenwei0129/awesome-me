@@ -1,7 +1,11 @@
-import clsx from 'clsx';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
+
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+
+import { useImmer } from 'use-immer';
+
+import clsx from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 interface CardItem {
@@ -32,9 +36,6 @@ function Card(props: CardProps) {
 
   const [, drop] = useDrop({
     accept: 'card',
-    // drop(item: { id: number; index: number }) {
-    //   swapIndex(item.index, index);
-    // },
     hover(item: { id: number; index: number }) {
       swapIndex(item.index, index);
       item.index = index;
@@ -44,17 +45,14 @@ function Card(props: CardProps) {
   useEffect(() => {
     drag(ref);
     drop(ref);
-  }, []);
+  }, [drag, drop]);
 
   return (
     <div
       className={twMerge(
-        clsx(
-          'bg-blue-100 w-[200px] cursor-move leading-[60px] px-[20px] py-0 m-[10px] border-black border border-solid',
-          {
-            'bg-white-100 border-dashed': dragging,
-          },
-        ),
+        clsx('bg-blue-100 w-[200px] cursor-move leading-[60px] px-[20px] py-0 m-[10px] border-black border border-solid', {
+          'bg-white-100 border-dashed': dragging,
+        }),
       )}
       ref={ref}
     >
@@ -64,7 +62,7 @@ function Card(props: CardProps) {
 }
 
 const Demo2 = () => {
-  const [cardList, setCardList] = useState<CardItem[]>([
+  const [cardList, updateCardList] = useImmer<CardItem[]>([
     {
       id: 0,
       content: '000',
@@ -87,12 +85,14 @@ const Demo2 = () => {
     },
   ]);
 
-  const swapIndex = useCallback((index1: number, index2: number) => {
-    const tmp = cardList[index1];
-    cardList[index1] = cardList[index2];
-    cardList[index2] = tmp;
-    setCardList([...cardList]);
-  }, []);
+  const swapIndex = useCallback(
+    (index1: number, index2: number) => {
+      updateCardList((draft) => {
+        [draft[index1], draft[index2]] = [draft[index2], draft[index1]];
+      });
+    },
+    [updateCardList],
+  );
 
   return (
     <DndProvider backend={HTML5Backend}>

@@ -9,13 +9,136 @@ title: 介绍
 
 下面 👇 是我的一些 AI 生成的头像，是用 Stable Diffusion 训练后生成的，我很喜欢。
 
-<code id="about-pages-portrait" src="../code/about-pages/portrait.tsx"></code>
+```tsx
+/**
+ * inline: true
+ */
+import React from 'react';
+
+import { AnimatedTestimonials } from 'naifu';
+
+import s1 from '../public/about/chu-01.png';
+// import s2 from '../public/about/chu-02.png';
+// import s3 from '../public/about/chu-03.png';
+import s4 from '../public/about/chu-04.png';
+import s5 from '../public/about/chu-05.png';
+import s6 from '../public/about/chu-06.png';
+import s7 from '../public/about/chu-07.png';
+import s8 from '../public/about/chu-08.png';
+import s9 from '../public/about/chu-09.png';
+// import s10 from '../public/about/chu-10.png';
+
+function AnimatedTestimonialsDemo() {
+  const testimonials = [
+    {
+      quote: '@me, portrait, in the style of Vincent van Gogh, self-portrait, impressionism, expressive brushstrokes, vibrant colors, detailed, accurate colors.',
+      name: '梵高',
+      designation: '2023年12月14日 15:23:08',
+      src: s1,
+    },
+    // {
+    //   quote: '@me with glowing irises, screaming expression wearing gi. dramatic lighting, afro samurai anime style, pencil and ink manga drawing, centered in panel.',
+    //   name: '吉卜力工作室',
+    //   designation: '2023年12月14日 21:06:41',
+    //   src: s2,
+    // },
+    // {
+    //   quote: '@me, portrait, in the style of Feng Zikai, ink painting, simple lines, humorous, childlike, expressive, traditional Chinese art, modern elements.',
+    //   name: '丰子恺',
+    //   designation: '2024年10月20日 17:20:19',
+    //   src: s3,
+    // },
+    {
+      quote: '@me portrait, neutral pen sketch style, highly detailed, clear focus, minimalistic background.',
+      name: '中性笔素描风格',
+      designation: '2023年05月19日 11:32:12',
+      src: s4,
+    },
+    {
+      quote: '@me of diverse charcoal portraits, sketchbook, notes, scribbles, artwork, thick lines, expressive.',
+      name: '素描',
+      designation: '2023年05月13日 18:22:37',
+      src: s5,
+    },
+    {
+      quote: '@me as a peasant from 1 2 th century england, exhibited in the british museum, oil on canvas, art, restored painting.',
+      name: '油画',
+      designation: '2024年1月7日 4:29:21',
+      src: s6,
+    },
+    {
+      quote: 'a closeup portrait of @me, frontal view, in the style of edward hopper, very fine brush strokes, 4k.',
+      name: '爱德华 · 霍普',
+      designation: '2024年10月20日 1:30:24',
+      src: s7,
+    },
+    {
+      quote:
+        'Portrait @me smile focus attractive eye enchanted official fanart behance hd artstation by jesper ejsing, by rhads, makoto shinkai and lois van baarle, ilya kuvshinov, rossdraws portrait radiating a glowing aura.',
+      name: '杰斯珀 · 埃辛',
+      designation: '2024年1月31日 15:13:33',
+      src: s8,
+    },
+    {
+      quote: 'painting of a smile @me by Egon Schiele.',
+      name: '埃贡 · 席勒',
+      designation: '2024年1月30日 8:34:26',
+      src: s9,
+    },
+    // {
+    //   quote: 'Caricature Drawing of @me by Mahesh Nambiar.',
+    //   name: '马赫什 · 南比亚尔',
+    //   designation: '2024年1月9日 19:01:55',
+    //   src: s10,
+    // },
+  ];
+
+  return <AnimatedTestimonials testimonials={testimonials} />;
+}
+
+export default AnimatedTestimonialsDemo;
+```
 
 ---
 
 ## 关于我
 
-<code id="about-pages-text" src="../code/about-pages/resume.tsx"></code>
+```tsx
+/**
+ * inline: true
+ */
+
+import React from 'react';
+import { TypeAnimation } from 'react-type-animation';
+
+const Resume = () => {
+  return (
+    <TypeAnimation
+      sequence={[
+        '👋 您好，我是奀歪 😊',
+        2000,
+        '💻 前端工程师 🧑‍💻',
+        2000,
+        '🔍 目前在南京找工作 🏙️',
+        4000,
+        '😄 熟练使用 Google + GitHub + ChatGPT 🛠️',
+        4000,
+        '🙋 复制粘贴砖家 📋',
+        3000,
+        () => {
+          console.log('Sequence completed');
+        },
+      ]}
+      wrapper="p"
+      cursor={true}
+      repeat={Infinity}
+      style={{ fontSize: '30px', display: 'inline-block', color: 'blue', backgroundColor: 'lightgrey', padding: '10px', borderRadius: '10px' }}
+    />
+  );
+};
+
+export default Resume;
+```
 
 > 叫我 **`奀歪`** 吧 ，**`奀歪`** 是我名字的谐音，而我的名字又是我奶奶根据方言中 **`恩惠`** 的谐音起的，这辈子大概是跟谐音梗过不去了。
 
@@ -48,6 +171,8 @@ title: 介绍
 平常我会将一些碎片化的信息记录到 **Daily** 中，然后再将这些碎片化的信息整理成文章，发布到 **Notes** 或 **Blog** 中。
 
 同时，我也会在 **Playground** 中试验一些有趣的代码片段或在 **Library** 中研究（抄袭）大佬们的源码。
+
+当然，我也会把在 **Playground** 和 **Library** 汲取的经验整理成文章，发布到 **Daily**、**Notes** 或 **Blog** 中。
 
 - 📝 **Notes** 是我的思考，是我的知识库。
 - 🎮 **Playground** 是我的游乐场，是我的实验室。

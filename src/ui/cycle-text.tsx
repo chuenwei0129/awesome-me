@@ -1,15 +1,15 @@
-/**
- * inline: true
- */
-
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 
-export default function CycleText() {
-  const words = [' < 奀歪 /> ', ' <chuenwei0129/> '];
-  const total = words.length;
+interface CycleTextProps {
+  staticText?: string;
+  dynamicTexts?: string[];
+}
 
-  const [index, setIndex] = useState(0);
+export default function CycleText({ staticText = '👋 你好，我是 ', dynamicTexts = [' < 奀歪 /> ', ' <chuenwei0129/> '] }: CycleTextProps) {
+  const total = dynamicTexts.length;
+
+  const [index, setIndex] = useState<number>(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -21,7 +21,7 @@ export default function CycleText() {
   return (
     <div>
       <span className="font-mono text-xl text-pink-600">
-        {'你好 👋，我是'}
+        {staticText}
         <AnimatePresence mode="wait">
           <motion.h1
             key={`words_${index}`}
@@ -31,7 +31,7 @@ export default function CycleText() {
             transition={{ duration: 0.08 }}
             className="inline-block font-mono text-xl text-blue-700"
           >
-            {words[index]}
+            {dynamicTexts[index]}
           </motion.h1>
         </AnimatePresence>
       </span>

@@ -12,5 +12,5 @@
       "naifu/*": ["src/*", "*"]
     }
   },
-  "include": [".dumirc.ts", "global.d.ts", "src/**/*", "code/**/*"]
+  "include": [".dumirc.ts", "global.d.ts", "src/**/*", "code/**/*", "docs/**/*"]
 }
