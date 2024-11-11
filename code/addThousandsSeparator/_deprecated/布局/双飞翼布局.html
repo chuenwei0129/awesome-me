@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .layout__left {
+        float: left;
+        margin-left: -100%;
+        border: 10px solid red;
+        width: 200px;
+        height: 300px;
+        background-color: #ccc;
+      }
+      .layout__right {
+        float: left;
+        margin-left: -250px;
+        border: 10px solid black;
+        width: 250px;
+        height: 300px;
+        background-color: #bf0;
+      }
+      .layout__main {
+        float: left;
+        width: 100%;
+      }
+      .content {
+        margin-left: 220px;
+        margin-right: 270px;
+        border: 10px solid blue;
+        height: 300px;
+        background-color: #0ef;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="layout__main">
+      <div class="content">content</div>
+    </div>
+    <div class="layout__left">left</div>
+    <div class="layout__right">right</div>
+  </body>
+</html>
