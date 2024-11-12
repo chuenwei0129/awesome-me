@@ -23,7 +23,9 @@
     "prepare": "husky install && dumi setup",
     "prepublishOnly": "father doctor && npm run build",
     "start": "npm run dev",
-    "test:aplus": "promises-aplus-tests ./code/promise/2.promise.js"
+    "test:aplus": "promises-aplus-tests ./code/promise/2.promise.js",
+    "test:download": "node ./docs/blog/_2021__browser-download/server.mjs",
+    "test:range": "node ./docs/blog/_2024__browser-download-range/server.js"
   },
   "commitlint": {
     "extends": [
