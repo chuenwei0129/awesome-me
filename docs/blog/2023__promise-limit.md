@@ -337,4 +337,4 @@ https.createServer(serverOptions, app).listen(port, () => {
 2024 年，最新版 chrome 本地测试时发现请求到 1300 多个请求时，会请求失败，不知道为什么？去年测试还没啥问题，最新 safari 测试也没问题。
 :::
 
-<code src="../../test/_2023__promise-limit/demo1.tsx"></code>
+<code src="./_2023__promise-limit/demo1.tsx"></code>
