@@ -22,10 +22,13 @@
     "lint:md": "zhlint \"./docs/**/*.md\" --fix",
     "prepare": "husky install && dumi setup",
     "prepublishOnly": "father doctor && npm run build",
+    "server:download": "node ./docs/blog/_2021__browser-download/server.mjs",
+    "server:download-range": "node ./docs/blog/_2024__browser-download-range/server.js",
+    "server:promise-limit-http1": "node ./docs/blog/_2023__promise-limit/http1-server.js",
+    "server:promise-limit-http2": "node ./docs/blog/_2023__promise-limit/http2-server.js",
+    "server:promise-limit-http2-with-delay": "node ./docs/blog/_2023__promise-limit/http2-server-with-delay.js",
     "start": "npm run dev",
-    "test:aplus": "promises-aplus-tests ./code/promise/2.promise.js",
-    "test:download": "node ./docs/blog/_2021__browser-download/server.mjs",
-    "test:range": "node ./docs/blog/_2024__browser-download-range/server.js"
+    "test:aplus": "promises-aplus-tests ./code/promise/2.promise.js"
   },
   "commitlint": {
     "extends": [
