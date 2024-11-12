@@ -1,6 +1,5 @@
-// http1-server.js
 const express = require('express');
-const https = require('https');
+const spdy = require('spdy');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
@@ -9,10 +8,10 @@ const cors = require('cors'); // 引入 cors 模块
 const app = express();
 const port = 8848;
 
-// 使用 cors 中间件，配置允许特定源的请求
+// 使用 cors 中间件处理跨域请求
 app.use(
   cors({
-    origin: 'https://chuenwei0129.github.io',
+    origin: 'http://localhost:8000',
     methods: 'GET,POST,PUT,DELETE',
     allowedHeaders: 'Content-Type',
   }),
@@ -61,6 +60,6 @@ const serverOptions = {
   cert: fs.readFileSync(path.join(os.homedir(), '.cert/cert.pem')),
 };
 
-https.createServer(serverOptions, app).listen(port, () => {
+spdy.createServer(serverOptions, app).listen(port, () => {
   console.log(`Example app listening at https://localhost:${port}`);
 });

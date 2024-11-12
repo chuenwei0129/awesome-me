@@ -12,7 +12,7 @@ const port = 8848;
 // 使用 cors 中间件，配置允许特定源的请求
 app.use(
   cors({
-    origin: 'https://chuenwei0129.github.io',
+    origin: 'http://localhost:8000',
     methods: 'GET,POST,PUT,DELETE',
     allowedHeaders: 'Content-Type',
   }),
