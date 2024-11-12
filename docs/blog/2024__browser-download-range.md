@@ -12,7 +12,7 @@ toc: content
 
 使用 `<a>` 元素和 `download` 属性进行文件下载是非常直观和常见的方法。许多现代浏览器在底层**使用流来处理数据传输**。当数据到达时，浏览器会将数据块流式地写到本地文件，这样就避免了大量数据保存在内存中。**数据从网络直接写入磁盘**，不会大量占用浏览器内存。
 
-> 更多关于 `<a>` 元素和 `download` 属性的详细信息，可以参考 [如何让浏览器开始下载文件](./2021__browser-download.md)。
+> 更多关于 `<a>` 元素和 `download` 属性的详细信息，可以参考本站 [如何让浏览器开始下载文件](./2021__browser-download.md)。
 
 ## 如何知道文件下载完毕？
 
@@ -91,7 +91,7 @@ interface VideoPlayerProps {
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ source }) => {
   return (
-        <video controls className="w-full rounded-lg shadow-lg">
+        <video controls style={{width: '100%', borderRadius: '8px'}}>
           <source src={source} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -183,6 +183,19 @@ import React, { useState } from 'react';
 const CHUNK_SIZE = 1 * 1024 * 1024; // 分块大小为1MB
 const BASE_URL = 'http://localhost:4399';
 
+const mergeArrayBuffers = (arrays: ArrayBuffer[]) => {
+  let totalLen = arrays.reduce((acc, arr) => acc + arr.byteLength, 0);
+  let res = new Uint8Array(totalLen);
+  let offset = 0;
+
+  arrays.forEach((arr) => {
+    res.set(new Uint8Array(arr), offset);
+    offset += arr.byteLength;
+  });
+
+  return res.buffer;
+};
+
 // 文件下载组件
 const FileDownloader: React.FC = () => {
   // 状态管理
@@ -208,18 +221,6 @@ const FileDownloader: React.FC = () => {
 
   // 下载文件分块
   const downloadChunks = async (size: number) => {
-    const mergeArrayBuffers = (arrays: ArrayBuffer[]) => {
-      let totalLen = arrays.reduce((acc, arr) => acc + arr.byteLength, 0);
-      let res = new Uint8Array(totalLen);
-      let offset = 0;
-
-      arrays.forEach((arr) => {
-        res.set(new Uint8Array(arr), offset);
-        offset += arr.byteLength;
-      });
-
-      return res.buffer;
-    };
 
     try {
       const chunkNum = Math.ceil(size / CHUNK_SIZE);
@@ -275,18 +276,27 @@ const FileDownloader: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center">
-      {downloadError && <p className="text-red-500 mb-2">{downloadError}</p>}
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      {downloadError && <p style={{ color: '#f56565', marginBottom: '8px' }}>{downloadError}</p>}
       <button
         type="button"
         onClick={downloadVideo}
-        className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-lg mb-4"
+        style={{
+          backgroundColor: '#4299e1',
+          color: '#ffffff',
+          padding: '8px 16px',
+          borderRadius: '8px',
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+          marginBottom: '16px',
+          cursor: downloading ? 'not-allowed' : 'pointer',
+          opacity: downloading ? 0.6 : 1,
+        }}
         disabled={downloading}
       >
         {downloading ? 'Downloading...' : 'Download Video'}
       </button>
       {videoUrl && (
-        <video controls className="w-full rounded-lg shadow-lg">
+        <video controls style={{ width: '100%', borderRadius: '8px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}>
           <source src={videoUrl} type="video/mp4" />
           Your browser does not support the video tag.
         </video>

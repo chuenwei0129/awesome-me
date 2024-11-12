@@ -14,9 +14,9 @@ toc: content
 import React, { useState } from 'react';
 
 const fetchData = (): Promise<string> => {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     // 随机决定请求的延迟时间在 1000 ms 到 4000 ms 之间
-    const delay = Math.floor(Math.random() * 3000) + 1000; 
+    const delay = Math.floor(Math.random() * 3000) + 1000;
     setTimeout(() => {
       resolve(`请求耗时约 ${delay} ms`);
     }, delay);
@@ -24,17 +24,17 @@ const fetchData = (): Promise<string> => {
 };
 
 const timeout = <T,>(promise: Promise<T>, ms: number): Promise<T> => {
-  const timeoutPromise = new Promise<T>((_, reject) =>
-    setTimeout(() => reject(new Error('请求超时')), ms)
-  );
+  const timeoutPromise = new Promise<T>((_, reject) => setTimeout(() => reject(new Error('请求超时')), ms));
   return Promise.race([promise, timeoutPromise]);
 };
 
 const App: React.FC = () => {
   const [data, setData] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleFetch = async () => {
+    setLoading(true);
     try {
       const result = await timeout(fetchData(), 2000); // 设置超时为 2000 ms
       setData(result);
@@ -42,17 +42,30 @@ const App: React.FC = () => {
     } catch (err: any) {
       setError(err.message);
       setData(null);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="p-4">
-      <button onClick={handleFetch} className="cursor-pointer px-4 py-2 bg-blue-500 text-white rounded">
-        发起请求
+    <div style={{ padding: '16px' }}>
+      <button
+        onClick={handleFetch}
+        style={{
+          cursor: 'pointer',
+          padding: '8px 16px',
+          backgroundColor: '#4299e1', // Equivalent to bg-blue-500
+          color: 'white',
+          borderRadius: '4px', // Equivalent to rounded
+          opacity: loading ? 0.6 : 1, // Adjust opacity when loading
+        }}
+        disabled={loading}
+      >
+        {loading ? '正在加载...' : '发起请求'}
       </button>
 
-      {data && <div className="mt-4">响应数据: {data}</div>}
-      {error && <div className="mt-4 text-red-500">错误: {error}</div>}
+      {data && <div style={{ marginTop: '16px' }}>响应数据: {data}</div>}
+      {error && <div style={{ marginTop: '16px', color: '#f56565' }}>错误: {error}</div>}
     </div>
   );
 };
@@ -67,57 +80,57 @@ import React, { useState } from 'react';
 
 // retries 语义不包含当前这一次，所以 retries 为 1 时，表示再尝试一次
 const retry = (fn: () => Promise<any>, retries: number, delay: number): Promise<any> => {
-    return fn().catch((err: Error) => {
-        if (retries >= 1) {
-            return new Promise((resolve) =>
-                setTimeout(resolve, delay)
-            ).then(() => retry(fn, retries - 1, delay));
-        }
-        throw err;
-    });
+  return fn().catch((err: Error) => {
+    if (retries >= 1) {
+      return new Promise((resolve) => setTimeout(resolve, delay)).then(() => retry(fn, retries - 1, delay));
+    }
+    throw err;
+  });
 };
 
-let count: number = 0
+let count: number = 0;
 const fetchData = () => {
-    alert(`第 ${++count} 次请求`)
+  alert(`第 ${++count} 次请求`);
 
-    return new Promise((resolve, reject) => {
-        // 模拟一个失败的 API 请求，50% 的失败率
-        const shouldFail = Math.random() > 0.5;
-        setTimeout(() => {
-            if (shouldFail) {
-                reject(new Error('Failed to fetch data'));
-            } else {
-                resolve({ data: 'Success data' });
-            }
-        }, 1000);
-    });
+  return new Promise((resolve, reject) => {
+    // 模拟一个失败的 API 请求，50% 的失败率
+    const shouldFail = Math.random() > 0.5;
+    setTimeout(() => {
+      if (shouldFail) {
+        reject(new Error('Failed to fetch data'));
+      } else {
+        resolve({ data: 'Success data' });
+      }
+    }, 1000);
+  });
 };
 
 const RetryDemo: React.FC = () => {
-    const [data, setData] = useState<string | null>(null);
-    const [error, setError] = useState<string | null>(null);
+  const [data, setData] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-    const onClick = () => {
-      retry(fetchData, 3, 2000)
-            .then(response => {
-                setData((response as any).data);
-                setError(null);
-            })
-            .catch(err => {
-                setError(err.message);
-                setData(null);
-            });
-    }
+  const onClick = () => {
+    count = 0;
+    retry(fetchData, 3, 2000)
+      .then((response) => {
+        setData((response as any).data);
+        setError(null);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setData(null);
+      });
+  };
 
-    return (
-        <div className="p-4">
-            <h1 className="text-xl font-bold mb-4">Promise Retry Demo</h1>
-            {data && <p className="text-green-500">Data: {data}</p>}
-            {error && <p className="text-red-500">Error: {error}</p>}
-            <button type="button" onClick={onClick}>失败重试</button>
-        </div>
-    );
+  return (
+    <div style={{ padding: '16px' }}>
+      {data && <p style={{ color: '#38a169' }}>Data: {data}</p>}
+      {error && <p style={{ color: '#e53e3e' }}>Error: {error}</p>}
+      <button type="button" onClick={onClick}>
+        失败重试
+      </button>
+    </div>
+  );
 };
 
 export default RetryDemo;
@@ -127,7 +140,7 @@ export default RetryDemo;
 
 ### 竞态问题
 
-> [如何解决前端常见的竞态问题](./2023__promise-race.md)
+> 参见本站：[如何解决前端常见的竞态问题](./2023__promise-race.md)
 
 ## 再手写一遍 Promise
 

@@ -56,28 +56,28 @@ const App = () => {
   };
 
   return (
-    <div className="p-4">
-      <div className="flex space-x-4">
+    <div style={{ padding: '1rem' }}>
+      <div style={{ display: 'flex', gap: '1rem' }}>
         <button
-          className={`px-4 py-2 ${activeTab === 1 ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+          style={{ padding: '0.5rem 1rem', backgroundColor: activeTab === 1 ? '#3B82F6' : '#E5E7EB', color: activeTab === 1 ? '#FFFFFF' : '#000000' }}
           onClick={() => handleTabSwitch(1)}
         >
           Tab 1
         </button>
         <button
-          className={`px-4 py-2 ${activeTab === 2 ? 'bg-green-500 text-white' : 'bg-gray-200'}`}
+          style={{ padding: '0.5rem 1rem', backgroundColor: activeTab === 2 ? '#10B981' : '#E5E7EB', color: activeTab === 2 ? '#FFFFFF' : '#000000' }}
           onClick={() => handleTabSwitch(2)}
         >
           Tab 2
         </button>
         <button
-          className={`px-4 py-2 ${activeTab === 3 ? 'bg-red-500 text-white' : 'bg-gray-200'}`}
+          style={{ padding: '0.5rem 1rem', backgroundColor: activeTab === 3 ? '#EF4444' : '#E5E7EB', color: activeTab === 3 ? '#FFFFFF' : '#000000' }}
           onClick={() => handleTabSwitch(3)}
         >
           Tab 3
         </button>
       </div>
-      <div className="mt-4">
+      <div style={{ marginTop: '1rem' }}>
         <p>Active Tab: {activeTab}</p>
         {loading ? <p>Loading...</p> : <p>Data: {data}</p>}
       </div>
@@ -135,6 +135,7 @@ const XHRRequestDemo = () => {
 
     setIsLoading(true);
     setData(null); // Reset data to null when starting a new request
+    setError(null); // Reset error to null when starting a new request
 
     xhr.send();
     xhrRef.current = xhr;
@@ -145,6 +146,7 @@ const XHRRequestDemo = () => {
       xhrRef.current.abort();
       setIsLoading(false);
       setError('Request canceled');
+      xhrRef.current = null; // Clear the xhrRef to indicate no current request
     }
   };
 
@@ -159,19 +161,19 @@ const XHRRequestDemo = () => {
   }, []); // Empty dependency ensures this executes once on mount
 
   return (
-    <div className="p-4">
+    <div style={{ padding: '1rem' }}>
       {isLoading && <p>Loading...</p>}
-      {error && <p className="text-red-500">{error}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       {data && (
         <div>
-          <h1 className="text-xl font-bold">Title: {data.title}</h1>
+          <h1 style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>Title: {data.title}</h1>
           <p>{data.body}</p>
         </div>
       )}
-      <div className="mt-4 flex space-x-2">
+      <div style={{ marginTop: '1rem', display: 'flex', gap: '0.5rem' }}>
         <button
           type="button"
-          className="p-2 bg-blue-500 text-white rounded"
+          style={{ padding: '0.5rem', backgroundColor: '#3B82F6', color: '#FFFFFF', borderRadius: '0.25rem' }}
           onClick={fetchData}
           disabled={isLoading} // Disable button if loading
         >
@@ -179,7 +181,7 @@ const XHRRequestDemo = () => {
         </button>
         <button
           type="button"
-          className="p-2 bg-red-500 text-white rounded"
+          style={{ padding: '0.5rem', backgroundColor: '#EF4444', color: '#FFFFFF', borderRadius: '0.25rem' }}
           onClick={cancelRequest}
           disabled={!isLoading} // Disable button if not loading
         >
@@ -207,7 +209,7 @@ interface ApiResponse {
   body: string;
 }
 
-const FetchRequestDemo = () => {
+const FetchRequestDemo: React.FC = () => {
   const [data, setData] = useState<ApiResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -262,19 +264,24 @@ const FetchRequestDemo = () => {
   }, []);
 
   return (
-    <div className="p-4">
-      {isLoading && <p>Loading...</p>}
-      {error && <p className="text-red-500">{error}</p>}
+    <div style={{ padding: '16px' }}>
+      {isLoading && <p style={{ color: 'blue' }}>Loading...</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       {data && (
         <div>
-          <h1 className="text-xl font-bold">Title: {data.title}</h1>
+          <h1 style={{ fontSize: '20px', fontWeight: 'bold' }}>Title: {data.title}</h1>
           <p>{data.body}</p>
         </div>
       )}
-      <div className="mt-4 flex space-x-2">
+      <div style={{ marginTop: '16px', display: 'flex', gap: '8px' }}>
         <button
           type="button"
-          className="p-2 bg-blue-500 text-white rounded"
+          style={{
+            padding: '8px',
+            backgroundColor: 'blue',
+            color: 'white',
+            borderRadius: '4px',
+          }}
           onClick={fetchData}
           disabled={isLoading}
         >
@@ -282,7 +289,12 @@ const FetchRequestDemo = () => {
         </button>
         <button
           type="button"
-          className="p-2 bg-red-500 text-white rounded"
+          style={{
+            padding: '8px',
+            backgroundColor: 'red',
+            color: 'white',
+            borderRadius: '4px',
+          }}
           onClick={cancelRequest}
           disabled={!isLoading}
         >
@@ -359,19 +371,24 @@ const AxiosRequestDemo = () => {
   }, []);
 
   return (
-    <div className="p-4">
+    <div style={{ padding: '16px' }}>
       {isLoading && <p>Loading...</p>}
-      {error && <p className="text-red-500">{error}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       {data && (
         <div>
-          <h1 className="text-xl font-bold">Title: {data.title}</h1>
+          <h1 style={{ fontSize: '20px', fontWeight: 'bold' }}>Title: {data.title}</h1>
           <p>{data.body}</p>
         </div>
       )}
-      <div className="mt-4 flex space-x-2">
+      <div style={{ marginTop: '16px', display: 'flex', gap: '8px' }}>
         <button
           type="button"
-          className="p-2 bg-blue-500 text-white rounded"
+          style={{
+            padding: '8px',
+            backgroundColor: 'blue',
+            color: 'white',
+            borderRadius: '4px',
+          }}
           onClick={fetchData}
           disabled={isLoading}
         >
@@ -379,7 +396,12 @@ const AxiosRequestDemo = () => {
         </button>
         <button
           type="button"
-          className="p-2 bg-red-500 text-white rounded"
+          style={{
+            padding: '8px',
+            backgroundColor: 'red',
+            color: 'white',
+            borderRadius: '4px',
+          }}
           onClick={cancelRequest}
           disabled={!isLoading}
         >
@@ -477,7 +499,7 @@ interface ApiResponse {
   body: string;
 }
 
-const FetchRequestDemo = () => {
+const PromiseCancelDemo = () => {
   const [data, setData] = useState<ApiResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -536,19 +558,24 @@ const FetchRequestDemo = () => {
   }, []);
 
   return (
-    <div className="p-4">
+    <div style={{ padding: '16px' }}>
       {isLoading && <p>Loading...</p>}
-      {error && <p className="text-red-500">{error}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       {data && (
         <div>
-          <h1 className="text-xl font-bold">Title: {data.title}</h1>
+          <h1 style={{ fontSize: '20px', fontWeight: 'bold' }}>Title: {data.title}</h1>
           <p>{data.body}</p>
         </div>
       )}
-      <div className="mt-4 flex space-x-2">
+      <div style={{ marginTop: '16px', display: 'flex', gap: '8px' }}>
         <button
           type="button"
-          className="p-2 bg-blue-500 text-white rounded"
+          style={{
+            padding: '8px',
+            backgroundColor: 'blue',
+            color: 'white',
+            borderRadius: '4px',
+          }}
           onClick={fetchData}
           disabled={isLoading}
         >
@@ -556,7 +583,12 @@ const FetchRequestDemo = () => {
         </button>
         <button
           type="button"
-          className="p-2 bg-red-500 text-white rounded"
+          style={{
+            padding: '8px',
+            backgroundColor: 'red',
+            color: 'white',
+            borderRadius: '4px',
+          }}
           onClick={cancelRequest}
           disabled={!isLoading}
         >
@@ -567,7 +599,7 @@ const FetchRequestDemo = () => {
   );
 };
 
-export default FetchRequestDemo;
+export default PromiseCancelDemo;
 ```
 
 回到 `Promise cancel`，可以看到，虽然 API 命名为 cancel，但实际上没有任何 cancel 的动作，Promise 的状态还是会正常流转（打开控制台依然可以看到 fetch 请求依然正常发出，且正常返回结果）只是回调不再执行，被“忽略”了，所以看起来像被 cancel 了。因此解决竞态问题的方法，除了「取消请求」，还可以「忽略请求」。当请求响应时，只要判断返回的数据是否需要，如果不是则忽略即可。
@@ -644,7 +676,7 @@ const fakeApiCall = onlyResolvesLast((tabIndex: number): Promise<string> => {
   });
 })
 
-const App = () => {
+const OnlyResolveLastDemo = () => {
   const [activeTab, setActiveTab] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<string>("");
@@ -667,28 +699,40 @@ const App = () => {
   };
 
   return (
-    <div className="p-4">
-      <div className="flex space-x-4">
+    <div style={{ padding: '16px' }}>
+      <div style={{ display: 'flex', gap: '8px' }}>
         <button
-          className={`px-4 py-2 ${activeTab === 1 ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+          style={{
+            padding: '8px 16px',
+            backgroundColor: activeTab === 1 ? 'blue' : 'gray',
+            color: activeTab === 1 ? 'white' : 'black'
+          }}
           onClick={() => handleTabSwitch(1)}
         >
           Tab 1
         </button>
         <button
-          className={`px-4 py-2 ${activeTab === 2 ? 'bg-green-500 text-white' : 'bg-gray-200'}`}
+          style={{
+            padding: '8px 16px',
+            backgroundColor: activeTab === 2 ? 'green' : 'gray',
+            color: activeTab === 2 ? 'white' : 'black'
+          }}
           onClick={() => handleTabSwitch(2)}
         >
           Tab 2
         </button>
         <button
-          className={`px-4 py-2 ${activeTab === 3 ? 'bg-red-500 text-white' : 'bg-gray-200'}`}
+          style={{
+            padding: '8px 16px',
+            backgroundColor: activeTab === 3 ? 'red' : 'gray',
+            color: activeTab === 3 ? 'white' : 'black'
+          }}
           onClick={() => handleTabSwitch(3)}
         >
           Tab 3
         </button>
       </div>
-      <div className="mt-4">
+      <div style={{ marginTop: '16px' }}>
         <p>Active Tab: {activeTab}</p>
         {loading ? <p>Loading...</p> : <p>Data: {data}</p>}
       </div>
@@ -696,7 +740,7 @@ const App = () => {
   );
 };
 
-export default App;
+export default OnlyResolveLastDemo;
 ```
 
 ### 使用唯一 id 标识每次请求 🏷️
@@ -717,7 +761,7 @@ interface ApiResponse {
   body: string;
 }
 
-const FetchRequestWithUniqueIdDemo = () => {
+const RequestWithUniqueIdDemo = () => {
   const [data, setData] = useState<ApiResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -774,19 +818,19 @@ const FetchRequestWithUniqueIdDemo = () => {
   }, []);
 
   return (
-    <div className="p-4">
+    <div style={{ padding: '16px' }}>
       {isLoading && <p>Loading...</p>}
-      {error && <p className="text-red-500">{error}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       {data && (
         <div>
-          <h1 className="text-xl font-bold">Title: {data.title}</h1>
+          <h1 style={{ fontSize: '20px', fontWeight: 'bold' }}>Title: {data.title}</h1>
           <p>{data.body}</p>
         </div>
       )}
-      <div className="mt-4 flex space-x-2">
+      <div style={{ marginTop: '16px', display: 'flex', gap: '8px' }}>
         <button
           type="button"
-          className="p-2 bg-blue-500 text-white rounded"
+          style={{ padding: '8px', backgroundColor: '#3b82f6', color: 'white', borderRadius: '4px' }}
           onClick={fetchData}
           disabled={isLoading}
         >
@@ -794,7 +838,7 @@ const FetchRequestWithUniqueIdDemo = () => {
         </button>
         <button
           type="button"
-          className="p-2 bg-red-500 text-white rounded"
+          style={{ padding: '8px', backgroundColor: '#ef4444', color: 'white', borderRadius: '4px' }}
           onClick={cancelRequest}
           disabled={!isLoading}
         >
@@ -805,7 +849,7 @@ const FetchRequestWithUniqueIdDemo = () => {
   );
 };
 
-export default FetchRequestWithUniqueIdDemo;
+export default RequestWithUniqueIdDemo;
 ```
 
 ## 「取消」和「忽略」的比较 ⚖️

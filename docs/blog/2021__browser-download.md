@@ -87,7 +87,10 @@ import React from 'react';
 const DownloadLink: React.FC = () => {
   return (
     <div>
-      <a href="http://localhost:4396/download/example.txt" className="text-blue-500 hover:underline">
+      <a
+        href="http://localhost:4396/download/example.txt" 
+        style={{ color: '#3b82f6', textDecoration: 'underline', cursor: 'pointer' }}
+      >
         通过链接下载文件
       </a>
     </div>
@@ -106,8 +109,8 @@ import React from 'react';
 
 const DownloadForm: React.FC = () => {
   return (
-    <form action="http://localhost:4396/download/example.txt" method="GET">
-      <button type="submit" className="mt-2 px-4 py-2 bg-green-500 text-white rounded">
+    <form action="http://localhost:4396/download/example.txt" method="GET" style={{ marginTop: '8px' }}>
+      <button type="submit" style={{ padding: '8px 16px', backgroundColor: '#48bb78', color: '#ffffff', borderRadius: '4px' }}>
         通过表单下载文件
       </button>
     </form>
@@ -126,22 +129,25 @@ export default DownloadForm;
 ```tsx
 import React from 'react';
 
-const App: React.FC = () => {
+const DownloadWindowLocationHref: React.FC = () => {
   const handleDownload = (filename: string) => {
-    // 可以直接导航到服务器的下载链接
+    // 导航到服务器的下载链接
     window.location.href = `http://localhost:4396/download/${filename}`;
   };
 
   return (
-    <div className="p-4">
-      <button onClick={() => handleDownload('example.txt')} className="px-4 py-2 bg-blue-500 text-white rounded">
+    <div style={{ padding: '16px' }}>
+      <button 
+        onClick={() => handleDownload('example.txt')} 
+        style={{ padding: '8px 16px', backgroundColor: '#4299e1', color: '#ffffff', borderRadius: '4px' }}
+      >
         下载文件
       </button>
     </div>
   );
 };
 
-export default App;
+export default DownloadWindowLocationHref;
 ```
 
 使用 `fetch` 请求：
@@ -149,7 +155,7 @@ export default App;
 ```tsx
 import React from 'react';
 
-const DownloadButton: React.FC = () => {
+const DownloadFetch: React.FC = () => {
   const handleDownload = () => {
     fetch('http://localhost:4396/download/example.txt')
       .then((response) => {
@@ -175,13 +181,16 @@ const DownloadButton: React.FC = () => {
   };
 
   return (
-    <button onClick={handleDownload} className="mt-2 px-4 py-2 bg-red-500 text-white rounded">
+    <button 
+      onClick={handleDownload} 
+      style={{ marginTop: '8px', padding: '8px 16px', backgroundColor: '#f56565', color: '#ffffff', borderRadius: '4px' }}
+    >
       通过按钮下载文件
     </button>
   );
 };
 
-export default DownloadButton;
+export default DownloadFetch;
 ```
 
 以上演示了三种在 React 中实现文件下载的方法。每种方法都有其适用的场景，可以根据实际需要选择合适的实现方式。
@@ -195,7 +204,7 @@ export default DownloadButton;
 ```tsx
 import React from 'react';
 
-const DownloadButton: React.FC = () => {
+const DownloadFetchStream: React.FC = () => {
   const handleDownload = () => {
     fetch('http://localhost:4396/download/example.txt')
       .then((response) => {
@@ -238,13 +247,16 @@ const DownloadButton: React.FC = () => {
   };
 
   return (
-    <button onClick={handleDownload} className="mt-2 px-4 py-2 bg-red-500 text-white rounded">
+    <button
+      onClick={handleDownload}
+      style={{ marginTop: '8px', padding: '8px 16px', backgroundColor: '#f56565', color: '#ffffff', borderRadius: '4px' }}
+    >
       通过按钮下载文件
     </button>
   );
 };
 
-export default DownloadButton;
+export default DownloadFetchStream;
 ```
 
 通过使用 `ReadableStream` 和 `reader`，我们可以更好地控制数据流，并在每次数据到达时立即处理，从而减少内存占用。不过，浏览器的实现依然可能会将数据缓存在内存中进行某种程度的处理，因此绝对无内存使用并完全依赖磁盘流是不现实的，但已较原来的下载方式优化。现代浏览器就像特意来拯救我们这些纠结内存问题的开发者。

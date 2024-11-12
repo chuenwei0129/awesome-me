@@ -42,8 +42,8 @@ const ScriptComponent = () => {
   };
 
   return (
-    <div className="p-4">
-      <button onClick={runScript} className="cursor-pointer px-4 py-2 bg-blue-500 text-white rounded">
+    <div>
+      <button onClick={runScript}>
         打印顺序是什么？
       </button>
     </div>
@@ -93,7 +93,7 @@ const ScriptComponent = () => {
 
   return (
     <div className="p-4">
-      <button type="button" onClick={runScript} className="cursor-pointer px-4 py-2 bg-blue-500 text-white rounded">
+      <button type="button" onClick={runScript}>
         打印顺序是什么？
       </button>
     </div>
