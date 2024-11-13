@@ -10,7 +10,8 @@
       "@@/*": [".dumi/tmp/*"],
       "naifu": ["src"],
       "naifu/*": ["src/*", "*"]
+      // "@/*": ["./*"]
     }
   },
-  "include": [".dumirc.ts", "global.d.ts", "src/**/*", "code/**/*", "docs/**/*"]
+  "include": [".dumirc.ts", "global.d.ts", "src/**/*", "docs/**/*", "code/面试题/others"]
 }

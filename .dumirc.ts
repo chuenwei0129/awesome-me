@@ -27,11 +27,14 @@ export default defineConfig({
   // latex 配置
   extraRemarkPlugins: ['remark-math'],
   extraRehypePlugins: ['rehype-mathjax'],
+  // 自动 API 表格
+  apiParser: {},
   // 资产路由
   resolve: {
     atomDirs: [
       // 在识别资产路由时，自动为路由路径加上资产类别前缀（type 配置项）
       { type: 'package', dir: 'src/components' },
+      { type: 'package', dir: 'src/patterns' },
       { type: 'package', dir: 'src/antd' },
       { type: 'package', dir: 'src/hooks' },
     ],
