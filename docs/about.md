@@ -34,19 +34,19 @@ function AnimatedTestimonialsDemo() {
       src: s4,
     },
     {
-      quote: '@me, portrait, in the style of Vincent van Gogh, self-portrait, impressionism, expressive brushstrokes, vibrant colors, detailed, accurate colors.',
+      quote: '@me, portrait, in the style of Vincent van Gogh, self-portrait, impressionism, expressive brushstrokes, vibrant colors, accurate colors.',
       name: '梵高',
       designation: '2023年12月14日 15:23:08',
       src: s1,
     },
     {
-      quote: '@me with glowing irises, screaming expression wearing gi. dramatic lighting, afro samurai anime style, pencil and ink manga drawing, centered in panel.',
+      quote: '@me with glowing irises, screaming expression wearing gi. dramatic lighting, afro samurai anime style, pencil and ink manga drawing.',
       name: '铅笔和水墨漫画',
       designation: '2023年12月14日 21:06:41',
       src: s2,
     },
     {
-      quote: '@me, portrait, in the style of Feng Zikai, ink painting, simple lines, humorous, childlike, expressive, traditional Chinese art, modern elements.',
+      quote: '@me, portrait, in the style of Feng Zikai, ink painting, simple lines, humorous, expressive, traditional Chinese art, modern elements.',
       name: '丰子恺',
       designation: '2024年10月20日 17:20:19',
       src: s3,

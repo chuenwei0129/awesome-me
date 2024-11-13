@@ -337,4 +337,4 @@ https.createServer(serverOptions, app).listen(port, () => {
 2024 年，最新版 chrome 本地测试时发现请求到 1300 多个请求时，会请求失败，不知道为什么？去年测试还没啥问题，最新 safari 测试也没问题。
 :::
 
-<code src="./_2023__promise-limit/demo1.tsx"></code>
+启动 `http1.1` 服务后，再次运行所有 demo，你会发现，浏览器默认的并发限制是 6 个，也就是说，同一时刻，浏览器只会发送 6 个请求，当有请求返回后，浏览器才会发送下一个请求。

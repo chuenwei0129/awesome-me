@@ -138,6 +138,8 @@ export default RetryDemo;
 
 ### 并发控制
 
+> 参见本站的另一篇文章：[如何实现并发控制](./2023__promise-limit.md)
+
 ### 竞态问题
 
 > 参见本站：[如何解决前端常见的竞态问题](./2023__promise-race.md)

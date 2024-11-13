@@ -47,5 +47,5 @@ export default defineConfig({
   },
   // 自定义 babel 配置
   extraBabelPlugins: [['babel-plugin-react-compiler', ReactCompilerConfig]],
-  extraPostCSSPlugins: [],
+  // extraPostCSSPlugins: [],
 });
