@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunknaifu=self.webpackChunknaifu||[]).push([[8934],{10657:function(c,u,n){n.r(u);var l=n(67294),a=n(27040),e=n(85893);u.default=function(){var t=function(i){console.log("count",i)};return(0,e.jsx)(a.AntdCounter,{limit:10,initialValue:8,label:"\u8BA1\u6570\u5668",iconDecrement:"square-minus",iconIncrement:"circle-plus",onChange:t})}}}]);
