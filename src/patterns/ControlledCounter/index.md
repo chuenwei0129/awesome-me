@@ -5,7 +5,7 @@ nav:
 group:
   title: 组件设计模式
   order: -999
-title: ControlCounter
+title: ControlledCounter
 order: 2
 toc: content
 demo:

@@ -5,9 +5,9 @@ import { Increment, IncrementProps } from './sub-components/Increment';
 import { Label, LabelProps } from './sub-components/Label';
 
 /**
- * @description ControlCounter 组件的属性
+ * @description ControlledCounter 组件的属性
  */
-interface ControlCounterProps {
+interface ControlledCounterProps {
   /**
    * @description 初始计数值，非受控模式有效
    * @default 0
@@ -39,7 +39,7 @@ export const CounterContext = createContext(
   },
 );
 
-const ControlCounter = ({ initialValue = 0, value, onChange, children }: ControlCounterProps) => {
+const ControlledCounter = ({ initialValue = 0, value, onChange, children }: ControlledCounterProps) => {
   const [count, setCount] = useState(initialValue); // 本地 state 用于非受控模式
   const isControlled = value !== undefined && !!onChange; // 判断是否是受控组件
 
@@ -96,14 +96,14 @@ const ControlCounter = ({ initialValue = 0, value, onChange, children }: Control
 
   return (
     <CounterContext.Provider value={{ count: getCount(), handleDecrement, handleIncrement }}>
-      <div className="inline-flex border border-blue-500 line-height-1.5 rounded overflow-hidden">{renderChildren()}</div>
+      <div className="inline-flex border border-blue-500 leading-[1.5] border-solid rounded overflow-hidden">{renderChildren()}</div>
     </CounterContext.Provider>
   );
 };
 
-ControlCounter.Count = Count;
-ControlCounter.Label = Label;
-ControlCounter.Increment = Increment;
-ControlCounter.Decrement = Decrement;
+ControlledCounter.Count = Count;
+ControlledCounter.Label = Label;
+ControlledCounter.Increment = Increment;
+ControlledCounter.Decrement = Decrement;
 
-export { ControlCounter };
+export { ControlledCounter };

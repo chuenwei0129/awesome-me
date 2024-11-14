@@ -82,13 +82,13 @@ const AntdCounter: FC<AntdCounterProps> = ({ initialValue = 0, label, iconDecrem
   }, [count, onChange]);
 
   return (
-    <div className="inline-flex border border-teal-500 rounded overflow-hidden">
+    <div className="leading-[1.5] inline-flex border border-teal-500 rounded overflow-hidden border-solid">
       {/* 减少按钮 */}
       <button type="button" className="bg-white border-none hover:cursor-pointer focus:outline-none" onClick={handleDecrement}>
         {getIcon(iconDecrement)}
       </button>
       {/* 标签 */}
-      <div className="bg-gray-200 text-gray-700 px-2 py-1">{label}</div>
+      <div className="bg-gray-200 text-gray-700 p-1.5">{label}</div>
       {/* 显示计数值，若超过限制则背景变红 */}
       <div className={`px-2 py-1 text-white ${hasError ? 'bg-red-600' : 'bg-teal-500'}`}>{count}</div>
       {/* 增加按钮 */}

@@ -1,7 +1,7 @@
 // 组件设计模式
 export { default as AntdCounter } from './patterns/AntdCounter';
 export { default as CompoundCounter } from './patterns/CompoundCounter';
-export { ControlCounter } from './patterns/ControlCounter';
+export { ControlledCounter } from './patterns/ControlledCounter';
 export { CustomHookCounter, useCounter as useCounterCustomHook } from './patterns/CustomHookCounter';
 export { PropsGetterCounter, useCounter as useCounterPropsGetter } from './patterns/PropsGetterCounter';
 export { DECREMENT, INCREMENT, StateReducerCounter, useCounter as useCounterStateReducer, type CounterActionType, type CounterStateType } from './patterns/StateReducerCounter';

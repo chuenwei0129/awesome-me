@@ -80,7 +80,7 @@ const CompoundCounter = ({ initialValue = 0, onChange, children }: CompoundCount
   return (
     // 使用上下文提供器传递计数器状态和控制函数
     <CounterContext.Provider value={{ count, handleDecrement, handleIncrement }}>
-      <div className={'inline-flex border border-teal-500 line-height-1.5 rounded overflow-hidden'}>{renderChildren()}</div>
+      <div className={'inline-flex border border-teal-500 leading-[1.5] rounded overflow-hidden border-solid'}>{renderChildren()}</div>
     </CounterContext.Provider>
   );
 };
