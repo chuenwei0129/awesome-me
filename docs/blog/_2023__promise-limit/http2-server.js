@@ -11,7 +11,7 @@ const port = 8848;
 // 使用 cors 中间件处理跨域请求
 app.use(
   cors({
-    origin: 'https://chuenwei0129.github.io',
+    origin: ['http://localhost:8000', 'https://chuenwei0129.github.io'], // 允许的来源
     methods: 'GET,POST,PUT,DELETE',
     allowedHeaders: 'Content-Type',
   }),

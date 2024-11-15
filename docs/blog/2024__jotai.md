@@ -1,0 +1,19 @@
+jotai 真好用啊，的确与 zustand 是不同的概念，各有各的用途，今天终于通过写一个 Modal 弄清楚了。当一个组件本身的状态要被其他地方的组件改变，并且这个状态唯一时，就是最适合 jotai 的场景
+
+
+我正在拿jotai来做模块隔离、自动依赖收集和time travel，这个库还是略底层了一点，不过设计理念挺适合做这些事情
+
+赞同，模块隔离这个说法更清晰了。刚开始学 React
+ 找状态管理库的时候感觉 jotai 设计思想过于简单了，不能管理复杂的结构，但其实根本不需要去对比，用途是不一样的，所以完全可以和 zustand, mobx 之类的 data store 混用
+
+ 我觉得jotai的逻辑是每个atom不是真正的数据，而是数据的accessor，具体是什么值靠的是依赖注入的store（默认defaultStore）。
+
+我这里要封装一层模块级别的atoms（类似于atomsFamily），方便团队开发和测试
+
+赞这个描述。jotai 是一个依赖注入的方式，而不是单纯的替换 useState 乱扔的全局变量。
+
+确实感觉根据场景不一样选择也不太相同。最开始用类redux相关库太繁琐了；后来使用了jotai，单纯状态隔离上使用来说确实香，但后来有项目涉及到联动localstorage使用时再结合自身使用场景有点小问题；现在刚转到zustand开始用，能够完美解决目前遇到的问题（从定义状态上来说要稍微比jotai复杂一点）。
+
+因为jotai的数据是跟React组件绑定死的，如果react之外也想要订阅里面的数据，只能通过useEffect来同步。而Zustand数据默认就是放在外面的，所以可以很自然的直接进行subcribe
+
+jotai和zustand的区别就是Top to bottom和Bottom to Top。zustand是通过定义一个大的状态然后通过selector来派生小状态。而jotai是定义一系列小状态然后通过组合来构造大状态。所以jotai/recoil这类原子化的工具定义状态的粒度比较小，也就不存在selector返回不stable的ref造成的rerender问题。

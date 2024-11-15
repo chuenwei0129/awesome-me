@@ -36,7 +36,7 @@ export default () => {
             transition: 'opacity 0.3s ease',
           }}
         >
-          Custom increment btn 1 Max 6
+          自定义递增按钮 最大值 6
         </button>
       </div>
     </>

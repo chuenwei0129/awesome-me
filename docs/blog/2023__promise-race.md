@@ -6,9 +6,15 @@ title: 竞态问题
 toc: content
 ---
 
+:::info{title=注意}
+测试取消请求，可以使用 Chrome 浏览器的 "网络" 选项卡 > "节流" 来延迟请求。
+:::
+
+---
+
 ## 什么是竞态问题 🏃‍♂️
 
-> 竞态问题，又叫竞态条件（race condition），它旨在描述一个系统或者进程的输出依赖于不受控制的事件出现顺序或者出现时机。
+> 竞态问题，又叫竞态条件（race condition），旨在描述一个系统或者进程的输出依赖于不受控制的事件出现顺序或者出现时机。
 >
 > 此词源自于两个信号试着彼此竞争，来影响谁先输出。
 
@@ -21,72 +27,7 @@ toc: content
 
 这就是竞态问题，在前端开发中，这种情况在搜索、分页和选项卡切换中很常见。
 
-```tsx
-import React, { useState, useEffect } from "react";
-
-const fakeApiCall = (tabIndex: number): Promise<string> => {
-  return new Promise((resolve) => {
-    const randomDelay = Math.random() * 2000; // 模拟网络延迟
-    setTimeout(() => {
-      resolve(`Data for Tab ${tabIndex}`);
-    }, randomDelay);
-  });
-};
-
-const App = () => {
-  const [activeTab, setActiveTab] = useState<number>(1);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [data, setData] = useState<string>("");
-
-  // Effect负责处理在activeTab改变时的副作用：数据请求
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      const responseData = await fakeApiCall(activeTab);
-      setData(responseData);
-      setLoading(false);
-    };
-
-    fetchData();
-  }, [activeTab]);
-
-  // Event handler负责处理UI交互：切换选项卡
-  const handleTabSwitch = (tabIndex: number) => {
-    setActiveTab(tabIndex);
-  };
-
-  return (
-    <div style={{ padding: '1rem' }}>
-      <div style={{ display: 'flex', gap: '1rem' }}>
-        <button
-          style={{ padding: '0.5rem 1rem', backgroundColor: activeTab === 1 ? '#3B82F6' : '#E5E7EB', color: activeTab === 1 ? '#FFFFFF' : '#000000' }}
-          onClick={() => handleTabSwitch(1)}
-        >
-          Tab 1
-        </button>
-        <button
-          style={{ padding: '0.5rem 1rem', backgroundColor: activeTab === 2 ? '#10B981' : '#E5E7EB', color: activeTab === 2 ? '#FFFFFF' : '#000000' }}
-          onClick={() => handleTabSwitch(2)}
-        >
-          Tab 2
-        </button>
-        <button
-          style={{ padding: '0.5rem 1rem', backgroundColor: activeTab === 3 ? '#EF4444' : '#E5E7EB', color: activeTab === 3 ? '#FFFFFF' : '#000000' }}
-          onClick={() => handleTabSwitch(3)}
-        >
-          Tab 3
-        </button>
-      </div>
-      <div style={{ marginTop: '1rem' }}>
-        <p>Active Tab: {activeTab}</p>
-        {loading ? <p>Loading...</p> : <p>Data: {data}</p>}
-      </div>
-    </div>
-  );
-};
-
-export default App;
-```
+<code src="./_2023__promise-race/demo1.tsx"></code>
 
 那么我们如何解决竞态问题呢？在这些场景中，最直接的策略是：**当发出新请求时，取消掉之前的请求**。
 
@@ -94,330 +35,25 @@ export default App;
 
 ### XMLHttpRequest 取消请求 📡
 
-XMLHttpRequest（XHR）是一个内建的浏览器对象，它允许使用 JavaScript 发送 HTTP 请求。
-如果请求已被发出，可以使用 `abort()` 方法立刻中止请求。
+XMLHttpRequest（XHR）是一个内建的浏览器对象，它允许使用 JavaScript 发送 HTTP 请求。如果请求已被发出，可以使用 `abort()` 方法立刻中止请求。
 
-```tsx
-import React, { useEffect, useRef, useState } from 'react';
+<code src="./_2023__promise-race/demo2.tsx"></code>
 
-interface ApiResponse {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
+### Fetch API 取消请求 📡
 
-const XHRRequestDemo = () => {
-  const [data, setData] = useState<ApiResponse | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const xhrRef = useRef<XMLHttpRequest | null>(null);
+要中止 fetch 发出的请求，需要使用 `AbortController`。这个小工具能让你随时说出：“拜拜请求，你已经过时了！”
 
-  const fetchData = () => {
-    const xhr = new XMLHttpRequest();
+<code src="./_2023__promise-race/demo3.tsx"></code>
 
-    xhr.open('GET', 'https://run.mocky.io/v3/452985b9-a6f7-4738-bfea-74ca3ea6e088?mocky-delay=2000ms');
+### Axios 取消请求 🛠️
 
-    xhr.onload = () => {
-      if (xhr.status >= 200 && xhr.status < 300) {
-        setData(JSON.parse(xhr.responseText));
-        setError(null);
-      } else {
-        setError('Failed to load data');
-      }
-      setIsLoading(false);
-    };
+从 `v0.22.0` 开始，axios 支持以 fetch API 方式的 `AbortController` 取消请求。不过要注意在处理请求错误时，需要判断错误是否是取消导致的，免得和普通错误搞混。
 
-    xhr.onerror = () => {
-      setError('Network error');
-      setIsLoading(false);
-    };
+<code src="./_2023__promise-race/demo4.tsx"></code>
 
-    setIsLoading(true);
-    setData(null); // Reset data to null when starting a new request
-    setError(null); // Reset error to null when starting a new request
+### 可取消的 Promise 💡
 
-    xhr.send();
-    xhrRef.current = xhr;
-  };
-
-  const cancelRequest = () => {
-    if (xhrRef.current) {
-      xhrRef.current.abort();
-      setIsLoading(false);
-      setError('Request canceled');
-      xhrRef.current = null; // Clear the xhrRef to indicate no current request
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-
-    return () => {
-      if (xhrRef.current) {
-        xhrRef.current.abort();
-      }
-    };
-  }, []); // Empty dependency ensures this executes once on mount
-
-  return (
-    <div style={{ padding: '1rem' }}>
-      {isLoading && <p>Loading...</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {data && (
-        <div>
-          <h1 style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>Title: {data.title}</h1>
-          <p>{data.body}</p>
-        </div>
-      )}
-      <div style={{ marginTop: '1rem', display: 'flex', gap: '0.5rem' }}>
-        <button
-          type="button"
-          style={{ padding: '0.5rem', backgroundColor: '#3B82F6', color: '#FFFFFF', borderRadius: '0.25rem' }}
-          onClick={fetchData}
-          disabled={isLoading} // Disable button if loading
-        >
-          Fetch Again
-        </button>
-        <button
-          type="button"
-          style={{ padding: '0.5rem', backgroundColor: '#EF4444', color: '#FFFFFF', borderRadius: '0.25rem' }}
-          onClick={cancelRequest}
-          disabled={!isLoading} // Disable button if not loading
-        >
-          Cancel Request
-        </button>
-      </div>
-    </div>
-  );
-};
-
-export default XHRRequestDemo;
-```
-
-### fetch API 取消请求 📡
-
-要中止 fetch 发出的请求，需要使用 AbortController。这个小工具能让你随时说出："拜拜请求，你已经过时了！"
-
-```tsx
-import React, { useEffect, useState, useRef } from 'react';
-
-interface ApiResponse {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
-
-const FetchRequestDemo: React.FC = () => {
-  const [data, setData] = useState<ApiResponse | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const controllerRef = useRef<AbortController | null>(null);
-
-  const fetchData = async () => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-
-    setIsLoading(true);
-    setData(null);
-    setError(null);
-    controllerRef.current = controller;
-
-    try {
-      const response = await fetch(
-        'https://run.mocky.io/v3/452985b9-a6f7-4738-bfea-74ca3ea6e088?mocky-delay=2000ms',
-        { signal }
-      );
-
-      if (!response.ok) {
-        throw new Error('Failed to load data');
-      }
-
-      const result: ApiResponse = await response.json();
-      setData(result);
-    } catch (err: any) {
-      if (err.name === 'AbortError') {
-        setError('Request canceled');
-      } else {
-        setError('Network error');
-      }
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const cancelRequest = () => {
-    if (controllerRef.current) {
-      controllerRef.current.abort();
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-
-    return () => {
-      if (controllerRef.current) {
-        controllerRef.current.abort();
-      }
-    };
-  }, []);
-
-  return (
-    <div style={{ padding: '16px' }}>
-      {isLoading && <p style={{ color: 'blue' }}>Loading...</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {data && (
-        <div>
-          <h1 style={{ fontSize: '20px', fontWeight: 'bold' }}>Title: {data.title}</h1>
-          <p>{data.body}</p>
-        </div>
-      )}
-      <div style={{ marginTop: '16px', display: 'flex', gap: '8px' }}>
-        <button
-          type="button"
-          style={{
-            padding: '8px',
-            backgroundColor: 'blue',
-            color: 'white',
-            borderRadius: '4px',
-          }}
-          onClick={fetchData}
-          disabled={isLoading}
-        >
-          Fetch Again
-        </button>
-        <button
-          type="button"
-          style={{
-            padding: '8px',
-            backgroundColor: 'red',
-            color: 'white',
-            borderRadius: '4px',
-          }}
-          onClick={cancelRequest}
-          disabled={!isLoading}
-        >
-          Cancel Request
-        </button>
-      </div>
-    </div>
-  );
-};
-
-export default FetchRequestDemo;
-```
-
-### axios 取消请求 🛠️
-
-从 v0.22.0 开始，axios 支持以 fetch API 方式的 AbortController 取消请求。不过要注意在处理请求错误时，需要判断 error 是否是 cancel 导致的，免得和普通错误混在一起搞得像是误会。
-
-```tsx
-import React, { useEffect, useState, useRef } from 'react';
-import axios from 'axios';
-
-interface ApiResponse {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
-
-const AxiosRequestDemo = () => {
-  const [data, setData] = useState<ApiResponse | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const controllerRef = useRef<AbortController | null>(null);
-
-  const fetchData = async () => {
-    const controller = new AbortController();
-
-    setIsLoading(true);
-    setData(null);
-    setError(null);
-    controllerRef.current = controller;
-
-    try {
-      const response = await axios.get<ApiResponse>('https://run.mocky.io/v3/452985b9-a6f7-4738-bfea-74ca3ea6e088?mocky-delay=2000ms', {
-        signal: controller.signal,
-      });
-
-      setData(response.data);
-    } catch (err) {
-      if (axios.isCancel(err)) {
-        setError('Request canceled');
-      } else {
-        setError('Network error');
-      }
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const cancelRequest = () => {
-    if (controllerRef.current) {
-      controllerRef.current.abort();
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-
-    return () => {
-      if (controllerRef.current) {
-        controllerRef.current.abort();
-      }
-    };
-  }, []);
-
-  return (
-    <div style={{ padding: '16px' }}>
-      {isLoading && <p>Loading...</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {data && (
-        <div>
-          <h1 style={{ fontSize: '20px', fontWeight: 'bold' }}>Title: {data.title}</h1>
-          <p>{data.body}</p>
-        </div>
-      )}
-      <div style={{ marginTop: '16px', display: 'flex', gap: '8px' }}>
-        <button
-          type="button"
-          style={{
-            padding: '8px',
-            backgroundColor: 'blue',
-            color: 'white',
-            borderRadius: '4px',
-          }}
-          onClick={fetchData}
-          disabled={isLoading}
-        >
-          Fetch Again
-        </button>
-        <button
-          type="button"
-          style={{
-            padding: '8px',
-            backgroundColor: 'red',
-            color: 'white',
-            borderRadius: '4px',
-          }}
-          onClick={cancelRequest}
-          disabled={!isLoading}
-        >
-          Cancel Request
-        </button>
-      </div>
-    </div>
-  );
-};
-
-export default AxiosRequestDemo;
-```
-
-### 可取消的 promise 💡
-
-虽然原生 Promise 并不支持取消，但是社区中已有许多实现了取消功能的 Promise 库。比如，[awesome-imperative-promise](https://github.com/slorber/awesome-imperative-promise/blob/master/src/index.ts)，它仅用了 40 行代码实现了取消功能。
+虽然原生 Promise 并不支持取消，但是社区中已有许多实现取消功能的 Promise 库。例如 [awesome-imperative-promise](https://github.com/slorber/awesome-imperative-promise/blob/master/src/index.ts)，它仅用了 40 行代码实现了取消功能。
 
 ```typescript
 export type ResolveCallback<T> = (value: T | PromiseLike<T>) => void;
@@ -488,119 +124,7 @@ export function createImperativePromise<T>(promiseArg?: Promise<T> | null | unde
 
 #### 使用示例
 
-```tsx
-import React, { useEffect, useState, useRef } from 'react';
-import { createImperativePromise, ImperativePromise } from 'awesome-imperative-promise'; // 假设你已经定义好这个库
-
-interface ApiResponse {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
-
-const PromiseCancelDemo = () => {
-  const [data, setData] = useState<ApiResponse | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const requestPromiseRef = useRef<ImperativePromise<ApiResponse> | null>(null);
-
-  const fetchData = () => {
-    const { promise, resolve, reject, cancel } = createImperativePromise<ApiResponse>();
-    requestPromiseRef.current = { promise, resolve, reject, cancel };
-
-    setIsLoading(true);
-    setData(null);
-    setError(null);
-
-    fetch('https://run.mocky.io/v3/452985b9-a6f7-4738-bfea-74ca3ea6e088?mocky-delay=2000ms')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Failed to load data');
-        }
-        return response.json();
-      })
-      .then(resolve)
-      .catch(error => {
-        if (error.name !== 'AbortError') {
-          reject(error);
-        }
-      });
-
-    promise
-      .then((result) => {
-        setData(result);
-      })
-      .catch((error) => {
-        setError('Network error');
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
-  const cancelRequest = () => {
-    if (requestPromiseRef.current) {
-      requestPromiseRef.current.cancel();
-      setError('Request canceled');
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-
-    return () => {
-      if (requestPromiseRef.current) {
-        requestPromiseRef.current.cancel();
-      }
-    };
-  }, []);
-
-  return (
-    <div style={{ padding: '16px' }}>
-      {isLoading && <p>Loading...</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {data && (
-        <div>
-          <h1 style={{ fontSize: '20px', fontWeight: 'bold' }}>Title: {data.title}</h1>
-          <p>{data.body}</p>
-        </div>
-      )}
-      <div style={{ marginTop: '16px', display: 'flex', gap: '8px' }}>
-        <button
-          type="button"
-          style={{
-            padding: '8px',
-            backgroundColor: 'blue',
-            color: 'white',
-            borderRadius: '4px',
-          }}
-          onClick={fetchData}
-          disabled={isLoading}
-        >
-          Fetch Again
-        </button>
-        <button
-          type="button"
-          style={{
-            padding: '8px',
-            backgroundColor: 'red',
-            color: 'white',
-            borderRadius: '4px',
-          }}
-          onClick={cancelRequest}
-          disabled={!isLoading}
-        >
-          Cancel Request
-        </button>
-      </div>
-    </div>
-  );
-};
-
-export default PromiseCancelDemo;
-```
+<code src="./_2023__promise-race/demo5.tsx"></code>
 
 回到 `Promise cancel`，可以看到，虽然 API 命名为 cancel，但实际上没有任何 cancel 的动作，Promise 的状态还是会正常流转（打开控制台依然可以看到 fetch 请求依然正常发出，且正常返回结果）只是回调不再执行，被“忽略”了，所以看起来像被 cancel 了。因此解决竞态问题的方法，除了「取消请求」，还可以「忽略请求」。当请求响应时，只要判断返回的数据是否需要，如果不是则忽略即可。
 
@@ -610,9 +134,7 @@ export default PromiseCancelDemo;
 
 ### 封装指令式 Promise 🎁
 
-利用指令式 Promise，我们可以手动调用 `cancel` API 来忽略上次请求。
-
-不过，如果每次都需要手动调用，这会导致项目中出现大量相同的模板代码。有时甚至可能会忘记调用 `cancel`。我们可以基于指令式 Promise 封装一个自动忽略过期请求的高阶函数 `onlyResolvesLast`。这个函数会在每次发送新请求之前，取消掉上一次的请求，从而忽略它的回调。
+利用指令式 Promise，我们可以手动调用 `cancel` API 来忽略上次请求。不过，如果每次都需要手动调用，这会导致项目中出现大量相同的模板代码。有时甚至可能会忘记调用 `cancel`。我们可以基于指令式 Promise 封装一个自动忽略过期请求的高阶函数 `onlyResolvesLast`。这个函数会在每次发送新请求之前，取消掉上一次的请求，从而忽略它的回调。
 
 ```js
 import { createImperativePromise } from 'awesome-imperative-promise'; // 假设你已经定义好这个库
@@ -659,205 +181,27 @@ wrappedFn(100).then(() => console.log(3));
 
 > 📘 **提示**：通过这种方式，我们可以在日常开发中更加高效地处理过期请求，简化代码，提高可读性和可维护性。请参考[GitHub上的实现](https://github.com/slorber/awesome-only-resolves-last-promise/)获取更多信息。
 
-无其他手动取消逻辑： 因为 `onlyResolvesLast` 在内部处理了取消逻辑，所以不必要再手动处理取消。
+无其他手动取消逻辑：因为 `onlyResolvesLast` 在内部处理了取消逻辑，所以不必要再手动处理取消。
 
 现在使用其处理一开始的选项卡问题。
 
-```tsx
-import React, { useState, useEffect } from "react";
-import { onlyResolvesLast } from 'awesome-only-resolves-last-promise';
+<code src="./_2023__promise-race/demo6.tsx"></code>
 
-const fakeApiCall = onlyResolvesLast((tabIndex: number): Promise<string> => {
-  return new Promise((resolve) => {
-    const randomDelay = Math.random() * 2000; // 模拟网络延迟
-    setTimeout(() => {
-      resolve(`Data for Tab ${tabIndex}`);
-    }, randomDelay);
-  });
-})
-
-const OnlyResolveLastDemo = () => {
-  const [activeTab, setActiveTab] = useState<number>(1);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [data, setData] = useState<string>("");
-
-  // Effect负责处理在activeTab改变时的副作用：数据请求
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      const responseData = await fakeApiCall(activeTab);
-      setData(responseData);
-      setLoading(false);
-    };
-
-    fetchData();
-  }, [activeTab]);
-
-  // Event handler负责处理UI交互：切换选项卡
-  const handleTabSwitch = (tabIndex: number) => {
-    setActiveTab(tabIndex);
-  };
-
-  return (
-    <div style={{ padding: '16px' }}>
-      <div style={{ display: 'flex', gap: '8px' }}>
-        <button
-          style={{
-            padding: '8px 16px',
-            backgroundColor: activeTab === 1 ? 'blue' : 'gray',
-            color: activeTab === 1 ? 'white' : 'black'
-          }}
-          onClick={() => handleTabSwitch(1)}
-        >
-          Tab 1
-        </button>
-        <button
-          style={{
-            padding: '8px 16px',
-            backgroundColor: activeTab === 2 ? 'green' : 'gray',
-            color: activeTab === 2 ? 'white' : 'black'
-          }}
-          onClick={() => handleTabSwitch(2)}
-        >
-          Tab 2
-        </button>
-        <button
-          style={{
-            padding: '8px 16px',
-            backgroundColor: activeTab === 3 ? 'red' : 'gray',
-            color: activeTab === 3 ? 'white' : 'black'
-          }}
-          onClick={() => handleTabSwitch(3)}
-        >
-          Tab 3
-        </button>
-      </div>
-      <div style={{ marginTop: '16px' }}>
-        <p>Active Tab: {activeTab}</p>
-        {loading ? <p>Loading...</p> : <p>Data: {data}</p>}
-      </div>
-    </div>
-  );
-};
-
-export default OnlyResolveLastDemo;
-```
-
-### 使用唯一 id 标识每次请求 🏷️
+### 使用唯一 ID 标识每次请求 🏷️
 
 除了指令式 promise，我们还可以给 `「请求标记 id」` 的方式来忽略上次请求。
 
 具体思路是：
 
-利用全局变量记录最新一次的请求 id，在发请求前，生成唯一 id 标识该次请求。请求回调中，判断 id 是否是最新的，如果不是，就忽略该请求的回调。
+利用全局变量记录最新一次的请求 ID，在发请求前，生成唯一 ID 标识该次请求。请求回调中，判断 ID 是否是最新的，如果不是，就忽略该请求的回调。
 
-```tsx
-import React, { useEffect, useState, useRef } from 'react';
-
-interface ApiResponse {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
-
-const RequestWithUniqueIdDemo = () => {
-  const [data, setData] = useState<ApiResponse | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const requestIdRef = useRef(0);
-
-  const fetchData = async () => {
-    // 递增请求ID
-    const newRequestId = requestIdRef.current + 1;
-    requestIdRef.current = newRequestId;
-
-    setIsLoading(true);
-    setData(null);
-    setError(null);
-
-    try {
-      const response = await fetch(
-        'https://run.mocky.io/v3/452985b9-a6f7-4738-bfea-74ca3ea6e088?mocky-delay=2000ms'
-      );
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      const responseData: ApiResponse = await response.json();
-
-      // 检查当前请求ID是否为最新
-      if (newRequestId === requestIdRef.current) {
-        setData(responseData);
-      }
-    } catch (err) {
-      setError('Network error');
-    } finally {
-      // 仅当请求ID为最新时才更新isLoading状态
-      if (newRequestId === requestIdRef.current) {
-        setIsLoading(false);
-      }
-    }
-  };
-
-  const cancelRequest = () => {
-    // 通过增加请求ID的方式 "取消" 当前请求
-    requestIdRef.current += 1;
-    setIsLoading(false);
-    setError('Request canceled');
-  };
-
-  useEffect(() => {
-    fetchData();
-
-    return () => {
-      // 在组件卸载时，增加请求ID以防止更新不必要的状态
-      requestIdRef.current += 1;
-    };
-  }, []);
-
-  return (
-    <div style={{ padding: '16px' }}>
-      {isLoading && <p>Loading...</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {data && (
-        <div>
-          <h1 style={{ fontSize: '20px', fontWeight: 'bold' }}>Title: {data.title}</h1>
-          <p>{data.body}</p>
-        </div>
-      )}
-      <div style={{ marginTop: '16px', display: 'flex', gap: '8px' }}>
-        <button
-          type="button"
-          style={{ padding: '8px', backgroundColor: '#3b82f6', color: 'white', borderRadius: '4px' }}
-          onClick={fetchData}
-          disabled={isLoading}
-        >
-          Fetch Again
-        </button>
-        <button
-          type="button"
-          style={{ padding: '8px', backgroundColor: '#ef4444', color: 'white', borderRadius: '4px' }}
-          onClick={cancelRequest}
-          disabled={!isLoading}
-        >
-          Cancel Request
-        </button>
-      </div>
-    </div>
-  );
-};
-
-export default RequestWithUniqueIdDemo;
-```
+<code src="./_2023__promise-race/demo7.tsx"></code>
 
 ## 「取消」和「忽略」的比较 ⚖️
 
-- 「取消」更实际：如果请求被「取消」了没有到达服务端，那么可以一定程度减轻服务的压力。
-但是取消请求也依赖底层的请求 API，比如 XMLHttpRequest 需要用 abort，而 fetch API 和 axios 需要用 AbortController。
+- 「取消」更实际：如果请求被「取消」了没有到达服务端，那么可以一定程度减轻服务的压力。但是取消请求也依赖底层的请求 API，比如 `XMLHttpRequest` 需要用 `abort`，而 `fetch API` 和 `axios` 需要用 `AbortController`。
 
-- 「忽略」更通用：而「忽略」的方式，不依赖请求的 API，更加通用，更容易抽象和封装。本质上所有的异步方法都可以使用 onlyResolvesLast 来忽略过期的调用。
+- 「忽略」更通用：而「忽略」的方式，不依赖请求的 API，更加通用，更容易抽象和封装。本质上所有的异步方法都可以使用 `onlyResolvesLast` 来忽略过期的调用。
 
 一个更实际，一个更通用，两者的使用需要根据具体场景来权衡。
 

@@ -42,7 +42,7 @@ export default defineConfig({
     entryFile: './src/index.ts',
   },
   // 自定义 webpack 配置
-  chainWebpack(memo) {
+  chainWebpack(memo: any) {
     memo.module
       .rule('lrc')
       .test(/\.lrc$/i)
@@ -50,5 +50,6 @@ export default defineConfig({
   },
   // 自定义 babel 配置
   extraBabelPlugins: [['babel-plugin-react-compiler', ReactCompilerConfig]],
+  // 自定义 postcss 配置
   // extraPostCSSPlugins: [],
 });

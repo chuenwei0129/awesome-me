@@ -2,7 +2,7 @@ import { PropsGetterCounter, useCounterPropsGetter } from 'naifu';
 import React from 'react';
 
 export default () => {
-  // 无非就是 Hooks 开个口子让使用者传递个回调函数，然后回调函数在内部调用修改逻辑，修改内部代码，给用户最高的自由度，即所谓的控制反转。
+  // Hooks 开个口子让使用者传递个回调函数，然后回调函数在内部调用修改逻辑，修改内部代码，给用户最高的自由度，即所谓的控制反转。
   const { count, increment, getCounterProps, getIncrementProps, getDecrementProps } = useCounterPropsGetter({
     initialCount: 0,
     max: 12,
@@ -29,11 +29,9 @@ export default () => {
         <button
           type="button"
           {...getIncrementProps({
-            // 用户更多的控制权，回调
             onClick: () => {
               increment();
               increment();
-              // 除了 hooks 提供的，还能做别的事
             },
           })}
         >
@@ -43,7 +41,7 @@ export default () => {
 
       <div style={{ marginTop: '20px' }}>
         <button type="button" {...getIncrementProps({ disabled: count >= 6 })}>
-          Custom increment btn 2 Max 6
+          自定义递增按钮 最大值 6
         </button>
       </div>
     </>

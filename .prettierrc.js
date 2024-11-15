@@ -1,10 +1,7 @@
 module.exports = {
   pluginSearchDirs: false,
-  plugins: [
-    require.resolve('prettier-plugin-organize-imports'),
-    require.resolve('prettier-plugin-packagejson'),
-  ],
-  printWidth: 180,
+  plugins: [require.resolve('prettier-plugin-organize-imports'), require.resolve('prettier-plugin-packagejson')],
+  printWidth: 160,
   proseWrap: 'never',
   singleQuote: true,
   trailingComma: 'all',

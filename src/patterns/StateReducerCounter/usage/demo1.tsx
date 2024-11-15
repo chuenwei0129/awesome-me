@@ -31,7 +31,7 @@ export default () => {
       {/* 逻辑复用 */}
       <div style={{ marginTop: '20px' }}>
         <button type="button" onClick={increment} disabled={count >= 6}>
-          Custom increment btn 1 Max 6
+          自定义递增按钮 最大值 6
         </button>
       </div>
     </>

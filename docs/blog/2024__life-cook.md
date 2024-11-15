@@ -35,9 +35,9 @@ toc: content
 <img src="https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/react/20241113024421.png" width="400" height="400" style="border-radius: 20px;" />
 <img src="https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/react/20241113024532.png" width="400" height="400" style="border-radius: 20px; object-fit: cover;" />
 
-## 盒马卤料包卤菜（手残党的福音！）
+## 万物皆可卤
 
-盒马卤料包，好吃得停不下来！
+> 盒马卤料包卤菜（手残党的福音！）
 
 1. 先把肉泡泡，加清水、葱段、姜片、料酒，大火煮开，然后盛出，凉水洗净。
 2. 难熟的肉放下面，好熟的铺上面，加温水、葱段、姜片，煮多久看什么肉。水要没过菜，多加点热水没事。

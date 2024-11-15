@@ -6,6 +6,13 @@ title: 并发控制
 toc: content
 ---
 
+:::info{title=注意}
+- https 环境：使用 [mkcert](https://zhuanlan.zhihu.com/p/269532673) 生成本地 https 证书。
+- 后端配置：复制对应的后端代码，并确保其正常运行。
+:::
+
+---
+
 ## 背景
 
 在业务中，我们经常遇到需要通过一堆 IDs 批量获取数据的场景，例如：
@@ -15,7 +22,7 @@ toc: content
 3. **批量下载文件**：批量下载多个文件（例如，文档、图片、音频等）。
 4. **产品库存查询**：根据一批产品 ID 批量查询库存。
 
-上述每一种场景都像是一场迷你冒险，涉及到处理大量数据、保证请求的成功率和效率，以及优化网络请求的并发性。
+上述每一种场景都很复杂，涉及到处理大量数据、保证请求的成功率和效率，以及优化网络请求的并发性。
 
 > 今天，我们将焦点锁定在优化网络请求的并发性上，一起解锁并发处理的魔法吧！🪄
 
@@ -30,53 +37,73 @@ HTTP/2 支持并发处理，因此我们假设后端接口设计是基于这个�
 首先，让我们瞧瞧对应的后端代码：
 
 ```js
-// http2-server.js
+const fs = require('node:fs');
+const os = require('node:os');
+const path = require('node:path');
 const express = require('express');
-const spdy = require('spdy');
-const fs = require('fs');
-const os = require('os');
-const path = require('path');
-const cors = require('cors'); // 引入 CORS 模块
+const cors = require('cors');
+const spdy = require('spdy'); // 引入 spdy 模块，支持 HTTP/2
 
 const app = express();
 const port = 8848;
 
-// 使用 CORS 中间件处理跨域请求
 app.use(
   cors({
-    origin: 'http://localhost:8000',
+    origin: ['http://localhost:8000', 'https://chuenwei0129.github.io'], // 允许跨域请求的来源
     methods: 'GET,POST,PUT,DELETE',
     allowedHeaders: 'Content-Type',
   }),
 );
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send('Hello World!'); // 响应首页访问请求
 });
 
+// 创建模拟的电话号码数据
 const phoneNumbers = Array.from({ length: 5000 }, (_, i) => ({
   id: i + 1,
-  phoneNumber: `+123456789${String(i).padStart(4, '0')}`,
+  phoneNumber: `+123456789${String(i).padStart(4, '0')}`, // 生成格式化的电话号码
 }));
 
+// 从前 1500 个号码中随机选择 200 个 ID ，这些号码总是请求失败
+// 为了更真实地模拟业务场景，顺便加入一些可能返回错误的请求（非必须）。
+const failedIds = new Set();
+while (failedIds.size < 200) {
+  const randomId = Math.floor(Math.random() * 1500) + 1;
+  failedIds.add(randomId); // 将随机 ID 加入 failedIds 集合
+}
+
+// 处理 /phone/:id 的 GET 请求
 app.get('/phone/:id', (req, res) => {
-  const id = parseInt(req.params.id, 10);
-  const phoneNumber = phoneNumbers.find((p) => p.id === id);
+  const id = parseInt(req.params.id, 10); // 获取请求参数中的 ID
+
+  if (failedIds.has(id)) {
+    // 如果该 ID 在 failedIds 集合中，模拟请求失败
+    return res.status(404).send('Phone number not found');
+  }
+
+  const phoneNumber = phoneNumbers.find((p) => p.id === id); // 查找电话号码数据
 
   if (phoneNumber) {
-    res.json(phoneNumber);
+    // 如果找到电话号码，模拟不同的延迟
+    const delay = Math.floor(Math.random() * 1500); // 在 0 到 1500 毫秒随机生成延迟
+    setTimeout(() => {
+      res.json(phoneNumber); // 在延迟后响应请求
+    }, delay);
   } else {
-    res.status(404).send('Phone number not found');
+    res.status(404).send('Phone number not found'); // 如果未找到，返回 404
   }
 });
 
+// 服务器选项，读取 SSL 证书文件
 const serverOptions = {
-  key: fs.readFileSync(path.join(os.homedir(), '.cert/key.pem')),
-  cert: fs.readFileSync(path.join(os.homedir(), '.cert/cert.pem')),
+  key: fs.readFileSync(path.join(os.homedir(), '.cert/key.pem')), // 读取 SSL 密钥文件
+  cert: fs.readFileSync(path.join(os.homedir(), '.cert/cert.pem')), // 读取 SSL 证书文件
 };
 
+// 创建 HTTP/2 服务器并监听指定端口
 spdy.createServer(serverOptions, app).listen(port, () => {
-  console.log(`Example app listening at https://localhost:${port}`);
+  console.log(`Example app listening at https://localhost:${port}`); // 打印服务器启动信息
 });
 ```
 
@@ -184,78 +211,6 @@ ids.forEach((item) => {
 
 <code src="./_2023__promise-limit/demo3.tsx"></code>
 
-从示例中的演示可以看到，异步并发控制与简单的批处理似乎差别不大，这是因为每个 id 请求的时间消耗基本相同。然而，如果请求时间存在较大波动，异步并发控制的优势就会显现出来。因此，我们的后端代码也需要进行一些调整。为了更真实地模拟业务场景，我们可以顺便加入一些可能返回错误的请求（非必须）。
-
-```js
-const express = require('express');
-const spdy = require('spdy');
-const fs = require('fs');
-const os = require('os');
-const path = require('path');
-const cors = require('cors'); // 引入 cors 模块
-
-const app = express();
-const port = 8848;
-
-// 使用 cors 中间件处理跨域请求
-app.use(
-  cors({
-    origin: 'http://localhost:8000',
-    methods: 'GET,POST,PUT,DELETE',
-    allowedHeaders: 'Content-Type',
-  }),
-);
-
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-
-// Create fake phone numbers
-const phoneNumbers = Array.from({ length: 5000 }, (_, i) => ({
-  id: i + 1,
-  phoneNumber: `+123456789${String(i).padStart(4, '0')}`,
-}));
-
-// Select 200 random IDs from the first 1500 to always fail
-const failedIds = new Set();
-while (failedIds.size < 200) {
-  const randomId = Math.floor(Math.random() * 1500) + 1;
-  failedIds.add(randomId);
-}
-
-app.get('/phone/:id', (req, res) => {
-  const id = parseInt(req.params.id, 10);
-
-  if (failedIds.has(id)) {
-    // Simulate a failed request for selected IDs
-    return res.status(404).send('Phone number not found');
-  }
-
-  const phoneNumber = phoneNumbers.find((p) => p.id === id);
-
-  if (phoneNumber) {
-    // 模拟不同的延迟
-    const delay = Math.floor(Math.random() * 500); // 生成0到500毫秒的随机延迟
-    setTimeout(() => {
-      res.json(phoneNumber);
-    }, delay);
-  } else {
-    res.status(404).send('Phone number not found');
-  }
-});
-
-const serverOptions = {
-  key: fs.readFileSync(path.join(os.homedir(), '.cert/key.pem')),
-  cert: fs.readFileSync(path.join(os.homedir(), '.cert/cert.pem')),
-};
-
-spdy.createServer(serverOptions, app).listen(port, () => {
-  console.log(`Example app listening at https://localhost:${port}`);
-});
-```
-
-再次运行 demo，你就会发现异步并发控制的优势了。
-
 ## 浏览器默认的并发限制
 
 :::info{title=补充一点}
@@ -265,21 +220,19 @@ spdy.createServer(serverOptions, app).listen(port, () => {
 举个例子 🌰：
 
 ```js
-// http1-server.js
 const express = require('express');
 const https = require('https');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
-const cors = require('cors'); // 引入 cors 模块
+const cors = require('cors');
 
 const app = express();
 const port = 8848;
 
-// 使用 cors 中间件，配置允许特定源的请求
 app.use(
   cors({
-    origin: 'http://localhost:8000',
+    origin: ['http://localhost:8000', 'https://chuenwei0129.github.io'],
     methods: 'GET,POST,PUT,DELETE',
     allowedHeaders: 'Content-Type',
   }),
@@ -289,13 +242,11 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-// Create fake phone numbers
 const phoneNumbers = Array.from({ length: 5000 }, (_, i) => ({
   id: i + 1,
   phoneNumber: `+123456789${String(i).padStart(4, '0')}`,
 }));
 
-// Select 200 random IDs from the first 1500 to always fail
 const failedIds = new Set();
 while (failedIds.size < 200) {
   const randomId = Math.floor(Math.random() * 1500) + 1;
@@ -306,15 +257,13 @@ app.get('/phone/:id', (req, res) => {
   const id = parseInt(req.params.id, 10);
 
   if (failedIds.has(id)) {
-    // Simulate a failed request for selected IDs
     return res.status(404).send('Phone number not found');
   }
 
   const phoneNumber = phoneNumbers.find((p) => p.id === id);
 
   if (phoneNumber) {
-    // 模拟不同的延迟
-    const delay = Math.floor(Math.random() * 500); // 生成0到500毫秒的随机延迟
+    const delay = Math.floor(Math.random() * 1500);
     setTimeout(() => {
       res.json(phoneNumber);
     }, delay);
@@ -333,8 +282,4 @@ https.createServer(serverOptions, app).listen(port, () => {
 });
 ```
 
-:::warning
-2024 年，最新版 chrome 本地测试时发现请求到 1300 多个请求时，会请求失败，不知道为什么？去年测试还没啥问题，最新 safari 测试也没问题。
-:::
-
-启动 `http1.1` 服务后，再次运行所有 demo，你会发现，浏览器默认的并发限制是 6 个，也就是说，同一时刻，浏览器只会发送 6 个请求，当有请求返回后，浏览器才会发送下一个请求。
+启动 `http1.1` 服务后，运行 demo1，你会发现，浏览器默认的并发限制是 6 个，也就是说，同一时刻，浏览器只会发送 6 个请求，当有请求返回后，浏览器才会发送下一个请求。

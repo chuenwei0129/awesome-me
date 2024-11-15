@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- 视口设置，以实现响应式设计 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>文件上传</title>
+    <!-- 引入 Axios 库 -->
+    <script src="https://unpkg.com/axios@0.24.0/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>文件上传示例</h1>
+    </header>
+    <main>
+      <section>
+        <h2>单文件上传</h2>
+        <label for="singleFile">请选择文件:</label>
+        <input id="singleFile" type="file" />
+        <div id="singleFilePreview"></div>
+      </section>
+      <section>
+        <h2>多文件上传</h2>
+        <label for="multipleFiles">请选择文件:</label>
+        <input id="multipleFiles" type="file" multiple />
+        <div id="multipleFilesPreview"></div>
+      </section>
+      <section>
+        <h2>多个字段文件上传</h2>
+        <form id="uploadForm">
+          <div>
+            <label for="foo">上传foo（最多3个）:</label>
+            <input type="file" id="foo" name="foo" multiple />
+            <div id="fooPreview"></div>
+          </div>
+          <div>
+            <label for="bar">上传bar（最多2个）:</label>
+            <input type="file" id="bar" name="bar" multiple />
+            <div id="barPreview"></div>
+          </div>
+          <button type="submit">上传文件</button>
+        </form>
+      </section>
+      <section>
+        <h2>不同类型的文件上传</h2>
+        <form id="uploadMediaForm">
+          <div>
+            <input type="file" id="mediaFiles" name="mediaFiles" multiple />
+            <div id="mediaFilesPreview"></div>
+          </div>
+          <button type="submit">上传文件</button>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2023 文件上传示例</p>
+    </footer>
+    <script>
+      // 获取单文件上传和多文件上传的输入元素
+      const singleFile = document.querySelector('#singleFile');
+      const multipleFiles = document.querySelector('#multipleFiles');
+      const uploadForm = document.querySelector('#uploadForm');
+      const uploadMediaForm = document.querySelector('#uploadMediaForm');
+
+      // 预览文件函数
+      const previewFiles = (input, previewContainer) => {
+        previewContainer.innerHTML = '';
+        // 使用 FileReader 读取文件内容并生成预览
+        Array.from(input.files).forEach((file) => {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            const fileType = file.type;
+            if (fileType.startsWith('image/')) {
+              const img = document.createElement('img');
+              img.src = e.target.result;
+              img.width = 100;
+              previewContainer.appendChild(img);
+            } else if (fileType.startsWith('video/')) {
+              const video = document.createElement('video');
+              video.src = e.target.result;
+              video.width = 200;
+              video.controls = true;
+              previewContainer.appendChild(video);
+            } else {
+              const p = document.createElement('p');
+              p.textContent = '无法预览此文件类型';
+              previewContainer.appendChild(p);
+            }
+          };
+          reader.readAsDataURL(file);
+        });
+      };
+
+      // 单文件上传事件处理
+      singleFile.onchange = async () => {
+        const file = singleFile.files[0];
+        const data = new FormData();
+        data.set('name', '楚');
+        data.set('age', 31);
+        data.set('file', file);
+
+        // 发送文件到服务器
+        const res = await axios.post('http://localhost:3333/upload/file', data);
+        console.log(res);
+
+        // 预览文件
+        const singleFilePreview = document.querySelector('#singleFilePreview');
+        previewFiles(singleFile, singleFilePreview);
+      };
+
+      // 多文件上传事件处理
+      multipleFiles.onchange = async () => {
+        const data = new FormData();
+        data.set('name', '楚');
+        data.set('age', 31);
+        Array.from(multipleFiles.files).forEach((item) => {
+          data.append('files', item);
+        });
+
+        // 发送文件到服务器
+        const res = await axios.post('http://localhost:3333/upload/files', data);
+        console.log(res);
+
+        // 预览文件
+        const multipleFilesPreview = document.querySelector('#multipleFilesPreview');
+        previewFiles(multipleFiles, multipleFilesPreview);
+      };
+
+      // 多个字段文件上传的表单提交事件处理
+      uploadForm.onsubmit = async (e) => {
+        e.preventDefault();
+        const data = new FormData(uploadForm);
+        const res = await axios.post('http://localhost:3333/upload/fields', data);
+        console.log(res);
+      };
+
+      // "foo"字段文件选择事件处理
+      document.querySelector('#foo').onchange = (e) => {
+        const fooPreview = document.querySelector('#fooPreview');
+        previewFiles(e.target, fooPreview);
+      };
+
+      // "bar"字段文件选择事件处理
+      document.querySelector('#bar').onchange = (e) => {
+        const barPreview = document.querySelector('#barPreview');
+        previewFiles(e.target, barPreview);
+      };
+
+      // 上传不同类型文件的表单提交事件处理
+      uploadMediaForm.onsubmit = async (e) => {
+        e.preventDefault();
+        const data = new FormData(uploadMediaForm);
+        const res = await axios.post('http://localhost:3333/upload/media', data);
+        console.log(res);
+      };
+
+      // "mediaFiles"字段文件选择事件处理
+      document.querySelector('#mediaFiles').onchange = (e) => {
+        const mediaFilesPreview = document.querySelector('#mediaFilesPreview');
+        previewFiles(e.target, mediaFilesPreview);
+      };
+    </script>
+  </body>
+</html>
