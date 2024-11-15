@@ -3,27 +3,10 @@ import axios from 'axios';
 import React, { useCallback, useState } from 'react';
 
 const MultiFileUpload: React.FC = () => {
-  const [files, setFiles] = useState<File[]>([]);
+  const [, setFiles] = useState<File[]>([]);
   const [previews, setPreviews] = useState<string[]>([]);
   const [uploadProgress, setUploadProgress] = useState<number>(0);
   const [isUploading, setIsUploading] = useState<boolean>(false);
-
-  const validateFile = (file: File): boolean => {
-    const maxSize = 5 * 1024 * 1024; // 最大尺寸 5MB
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
-
-    if (file.size > maxSize) {
-      message.error('文件大小不能超过 5MB');
-      return false;
-    }
-
-    if (!allowedTypes.includes(file.type)) {
-      message.error('只支持 JPG、PNG、GIF 格式的图片');
-      return false;
-    }
-
-    return true;
-  };
 
   const generatePreviews = useCallback(async (files: File[]) => {
     const newPreviews: string[] = [];
@@ -78,16 +61,7 @@ const MultiFileUpload: React.FC = () => {
 
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = Array.from(event.target.files || []);
-    const validFiles = selectedFiles.filter(validateFile);
-
-    if (validFiles.length === 0) {
-      return;
-    }
-
-    if (validFiles.length > 3) {
-      message.error('一次最多上传3张图片');
-      return;
-    }
+    const validFiles = selectedFiles;
 
     setFiles(validFiles);
     await generatePreviews(validFiles);
@@ -102,7 +76,15 @@ const MultiFileUpload: React.FC = () => {
         <label htmlFor="multiFiles" className="block mb-2 text-gray-700">
           请选择文件:
         </label>
-        <input id="multiFiles" type="file" onChange={handleFileChange} className="mb-4 p-2 border border-gray-300 rounded-md" accept="image/*" multiple disabled={isUploading} />
+        <input
+          id="multiFiles"
+          type="file"
+          onChange={handleFileChange}
+          className="mb-4 p-2 border border-gray-300 rounded-md"
+          accept="image/*"
+          multiple
+          disabled={isUploading}
+        />
 
         {isUploading && (
           <div className="mb-4">

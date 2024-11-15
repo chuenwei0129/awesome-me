@@ -18,7 +18,9 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 
 app.use('/upload', require('./single-file'));
 app.use('/upload', require('./multi-file'));
-app.use('/upload', require('./media-file'));
+app.use('/upload', require('./images-form'));
+app.use('/upload', require('./fields-form'));
+app.use('/upload', require('./large-file'));
 
 // 针对任何其他未处理的请求，返回 404 状态码
 app.use((_, res) => {

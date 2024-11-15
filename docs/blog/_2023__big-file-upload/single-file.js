@@ -1,7 +1,12 @@
 const { promisify } = require('node:util');
+const path = require('node:path');
 const express = require('express');
 const router = express.Router();
-const { storage } = require('./config');
+const multer = require('multer');
+
+// 设置文件上传的目标目录
+const uploadDir = path.resolve(__dirname, 'single');
+const storage = multer({ dest: uploadDir });
 
 // 单文件上传接口
 router.post('/single', async (req, res) => {

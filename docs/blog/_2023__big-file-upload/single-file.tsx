@@ -2,28 +2,10 @@ import { message } from 'antd';
 import React, { useCallback, useState } from 'react';
 
 const SingleFileUpload: React.FC = () => {
-  // 状态管理，文件、预览、上传进度、上传状态
-  const [file, setFile] = useState<File | null>(null);
+  const [, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [uploadProgress, setUploadProgress] = useState<number>(0);
   const [isUploading, setIsUploading] = useState<boolean>(false);
-
-  // 验证文件大小和类型
-  const validateFile = (file: File): boolean => {
-    const maxSize = 5 * 1024 * 1024; // 最大尺寸 5MB
-    if (file.size > maxSize) {
-      message.error('文件大小不能超过 5MB');
-      return false;
-    }
-
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif']; // 允许的文件类型
-    if (!allowedTypes.includes(file.type)) {
-      message.error('只支持 JPG、PNG、GIF 格式的图片');
-      return false;
-    }
-
-    return true;
-  };
 
   // 生成预览
   const generatePreview = useCallback(async (file: File) => {
@@ -49,7 +31,6 @@ const SingleFileUpload: React.FC = () => {
       xhr.open('POST', 'http://localhost:3333/upload/single', true); // 修改为你的上传地址
 
       // 监听上传进度
-      // xhr.upload.onprogress 要写在 xhr.send 方法前面，否则 event.lengthComputable 状态不会改变，只有在最后一次才能获得，也就是 100% 的时候
       xhr.upload.onprogress = (event) => {
         if (event.lengthComputable) {
           const progress = Math.round((event.loaded * 100) / event.total);
@@ -89,11 +70,6 @@ const SingleFileUpload: React.FC = () => {
     const selectedFile = event.target.files?.[0];
     if (!selectedFile) return;
 
-    if (!validateFile(selectedFile)) {
-      event.target.value = '';
-      return;
-    }
-
     setFile(selectedFile);
     await generatePreview(selectedFile);
     await uploadFile(selectedFile);
@@ -107,7 +83,14 @@ const SingleFileUpload: React.FC = () => {
         <label htmlFor="singleFile" className="block mb-2 text-gray-700">
           请选择文件:
         </label>
-        <input id="singleFile" type="file" onChange={handleFileChange} className="mb-4 p-2 border border-gray-300 rounded-md" accept="image/*" disabled={isUploading} />
+        <input
+          id="singleFile"
+          type="file"
+          onChange={handleFileChange}
+          className="mb-4 p-2 border border-gray-300 rounded-md"
+          accept="image/*"
+          disabled={isUploading}
+        />
 
         {isUploading && (
           <div className="mb-4">

@@ -16,33 +16,6 @@ interface FileUploadProgress {
 const MultiFileUpload: React.FC = () => {
   const [files, setFiles] = useImmer<FileUploadProgress[]>([]);
 
-  // 处理文件读取及上传
-  const handleFile = async (file: File) => {
-    const reader = new FileReader();
-    reader.onload = async (e) => {
-      const target = e.target?.result;
-      if (target) {
-        setFiles((draft) => {
-          draft.push({
-            file: file,
-            progress: 0,
-            isUploading: true,
-            uploadDone: false,
-            previewUrl: target.toString(),
-          });
-        });
-
-        await uploadFile(file);
-      }
-    };
-
-    reader.onerror = () => {
-      message.error(`文件 ${file.name} 读取出错`);
-    };
-
-    reader.readAsDataURL(file);
-  };
-
   // 上传文件到服务器
   const uploadFile = async (file: File) => {
     const data = new FormData();
@@ -101,6 +74,33 @@ const MultiFileUpload: React.FC = () => {
     }
   };
 
+  // 处理文件读取及上传
+  const handleFile = async (file: File) => {
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+      const target = e.target?.result;
+      if (target) {
+        setFiles((draft) => {
+          draft.push({
+            file: file,
+            progress: 0,
+            isUploading: true,
+            uploadDone: false,
+            previewUrl: target.toString(),
+          });
+        });
+
+        await uploadFile(file);
+      }
+    };
+
+    reader.onerror = () => {
+      message.error(`文件 ${file.name} 读取出错`);
+    };
+
+    reader.readAsDataURL(file);
+  };
+
   // 处理文件选择变化
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = Array.from(event.target.files || []);
@@ -153,7 +153,9 @@ const MultiFileUpload: React.FC = () => {
               <div key={index} className="mb-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
-                    {fileUploadProgress.previewUrl && <img src={fileUploadProgress.previewUrl} alt={`文件预览${index}`} className="w-12 h-12 rounded-lg shadow-md mr-4" />}
+                    {fileUploadProgress.previewUrl && (
+                      <img src={fileUploadProgress.previewUrl} alt={`文件预览${index}`} className="w-12 h-12 rounded-lg shadow-md mr-4" />
+                    )}
                     <div>
                       <p className="text-gray-700">{fileUploadProgress.file.name}</p>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
@@ -169,7 +171,11 @@ const MultiFileUpload: React.FC = () => {
                       </button>
                     )}
                     {fileUploadProgress.isUploading && (
-                      <button type="button" onClick={() => handleCancelUpload(index, fileUploadProgress.cancelSource)} className="ml-4 text-red-500 hover:text-red-700">
+                      <button
+                        type="button"
+                        onClick={() => handleCancelUpload(index, fileUploadProgress.cancelSource)}
+                        className="ml-4 text-red-500 hover:text-red-700"
+                      >
                         取消上传
                       </button>
                     )}

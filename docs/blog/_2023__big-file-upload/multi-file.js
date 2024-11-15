@@ -1,7 +1,11 @@
+const path = require('node:path');
 const express = require('express');
-const { storage, multer } = require('./config');
-
 const router = express.Router();
+const multer = require('multer');
+
+// 设置文件上传的目标目录
+const uploadDir = path.resolve(__dirname, 'multi');
+const storage = multer({ dest: uploadDir });
 
 // 多文件
 router.post(

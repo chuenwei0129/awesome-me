@@ -112,9 +112,242 @@ module.exports = router;
 
 <code src="./_2023__big-file-upload/multi-file-multi-process.tsx"></code>
 
-## 使用 form action 上传文件
+## formData 多字段上传文件
 
-这种方式上传文件，不需要 js ，而且没有兼容问题，所有浏览器都支持，就是体验很差，导致页面刷新，页面其他数据丢失。前面我们的后端上传处理的比较简单，这里我们来使用更多的 multer 功能。
+<code src="./_2023__big-file-upload/fields-form.tsx"></code>
 
-<code src="./_2023__big-file-upload/form-action-file.tsx"></code>
+对应后端接口：
 
+```js
+const { promisify } = require('node:util');
+const express = require('express');
+const router = express.Router();
+const { storage, multer } = require('./config');
+
+// 处理多 fields 上传
+router.post('/fields', async (req, res) => {
+  try {
+    // 配置上传字段限制
+    await promisify(
+      storage.fields([
+        { name: 'images', maxCount: 3 },
+        { name: 'markdowns', maxCount: 2 },
+      ]),
+    )(req, res);
+    res.json({
+      message: '文件上传成功',
+    });
+  } catch (err) {
+    if (err instanceof multer.MulterError && err.code === 'LIMIT_UNEXPECTED_FILE') {
+      // 处理超出文件数量限制的错误
+      return res.status(400).json({ error: `${err.field} 超出文件数量限制的错误` });
+    }
+    res.status(500).json({ error: '文件上传失败', details: err.message });
+  }
+});
+
+module.exports = router;
+```
+
+## 后端文件上传配置
+
+<code src="./_2023__big-file-upload/images-form.tsx"></code>
+
+前面我们都只是在前端进行文件校验，这里我们后端也来配置一下：
+
+```js
+const express = require('express');
+const fs = require('fs');
+const path = require('path');
+const router = express.Router();
+const { multer } = require('./config');
+
+// 文件过滤器，用于限制上传文件的类型
+const fileFilter = (req, file, cb) => {
+  const allowedTypes = ['image/jpeg', 'image/png']; // 允许上传的文件类型
+  if (!allowedTypes.includes(file.mimetype)) {
+    const error = new Error('文件类型错误'); // 如果文件类型不允许，创建错误信息
+    error.code = 'LIMIT_FILE_TYPES'; // 设置错误代码
+    return cb(error, false); // 通过回调函数返回错误
+  }
+  cb(null, true); // 如果文件类型允许，继续处理
+};
+
+// 设置images文件存储配置
+const imagesStorage = multer({
+  storage: multer.diskStorage({
+    destination: function (req, file, cb) {
+      try {
+        fs.mkdirSync(path.resolve(__dirname, 'images'), { recursive: true }); // 尝试创建存储目录，如果目标目录不存在，{recursive: true} 确保会创建所有需要的父目录
+      } catch (err) {
+        if (err.code !== 'EEXIST') {
+          return cb(err); // 如果发生其他错误，返回错误
+        }
+      }
+      cb(null, path.resolve(__dirname, 'images')); // 设置上传目标目录
+    },
+    filename: function (req, file, cb) {
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9) + '-' + file.originalname; // 生成唯一文件名
+      cb(null, file.fieldname + '-' + uniqueSuffix); // 设置上传文件名
+    },
+  }),
+  fileFilter, // 应用文件过滤器
+  limits: {
+    fileSize: 1024 * 300, // 限制文件大小为300KB
+  },
+});
+
+router.post(
+  '/images',
+  imagesStorage.any(), // 使用 multer 中间件处理上传请求，允许任何文件字段
+  function (req, res) {
+    console.log('文件:', req.files); // 在控制台打印上传的文件信息
+    console.log('非文件字段:', req.body); // 在控制台打印非文件字段信息
+    res.json({
+      message: '上传成功', // 向客户端返回 JSON 响应，表示上传成功
+    });
+  },
+  (err, req, res, next) => {
+    // 错误处理中间件
+    if (err.code === 'LIMIT_FILE_TYPES') {
+      // 如果错误代码是 LIMIT_FILE_TYPES，表示上传的文件类型不正确
+      res.status(422).json({ error: '只允许上传 JPEG 和 PNG 文件' }); // 向客户端返回错误信息
+    } else if (err.code === 'LIMIT_FILE_SIZE') {
+      // 如果错误代码是 LIMIT_FILE_SIZE，表示上传的文件太大
+      res.status(422).json({ error: '文件过大' }); // 向客户端返回错误信息
+    } else {
+      res.status(500).json({ error: '服务器错误' }); // 向客户端返回服务器错误信息
+    }
+  },
+);
+
+module.exports = router; // 导出定义的路由
+```
+
+## 大文件上传
+
+对应后端接口：
+
+```js
+const path = require('node:path');
+const fs = require('node:fs');
+const express = require('express');
+const { promisify } = require('node:util');
+const multer = require('multer');
+
+const router = express.Router();
+const chunkPathMap = new Map();
+
+const uploadDir = path.resolve(__dirname, 'large');
+const storage = multer({ dest: uploadDir });
+
+router.post('/chunk', async (req, res) => {
+  const storageAnyPromise = promisify(storage.any());
+  try {
+    // 原生 formData 是流，需要监听 data 事件来接收数据块，之后解析。所以使用 multer 来处理
+    // 这一步会往 req, res 中注入文件信息
+    await storageAnyPromise(req, res);
+
+    // 非文件数据在 req.body 中
+    console.log('🚀 ~ req.body:', req.body);
+    // 文件数据在 req.files 中
+    console.log('🚀 ~ req.files:', req.files);
+
+    const chunkIndex = req.body.index;
+    const fileHash = req.body.fileHash;
+    const newFilePath = path.join(uploadDir, `${fileHash}-${chunkIndex}`);
+
+    // 使用 fileHash + 下标作为切片名重命名上传的文件
+    fs.renameSync(req.files[0].path, newFilePath);
+    // 将切片路径保存到 map 中，后续合并时使用
+    chunkPathMap.set(chunkIndex, newFilePath);
+
+    res.json({
+      message: '上传成功',
+    });
+  } catch (error) {
+    console.log('🚀 ~ err:', err);
+  }
+});
+
+router.post('/merge', async (req, res) => {
+  if (!chunkPathMap.size) {
+    return res.status(400).json({ message: '没有文件切片' });
+  }
+  const { fileName, fileHash, size } = req.body;
+  const extension = fileName.split('.').pop();
+  const filePath = path.resolve(uploadDir, `${fileHash}.${extension}`);
+
+  // 写入文件流
+  const pipeStream = (chunkPath, writeStream) =>
+    new Promise((resolve) => {
+      const readStream = fs.createReadStream(chunkPath);
+      readStream.on('end', () => {
+        fs.unlinkSync(chunkPath);
+        resolve();
+      });
+      readStream.pipe(writeStream);
+    });
+
+  try {
+    // 并发写入文件
+    await Promise.all(
+      Array.from(chunkPathMap)
+        .sort((a, b) => {
+          return a[0] - b[0];
+        })
+        .map(([index, chunkPath]) => pipeStream(chunkPath, fs.createWriteStream(filePath, { start: index * size }))),
+    );
+    // 清空 chunkPathMap
+    chunkPathMap.clear();
+    res.json({ message: '文件合并成功' });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: '合并文件时发生错误', error: err });
+  }
+});
+
+// 在上传前，先计算出文件 hash，并把 hash 发送给服务端进行验证，由于 hash 的唯一性，所以一旦服务端能找到 hash 相同的文件，则直接返回上传成功的信息即可
+router.post('/verify', async (req, res) => {
+  const { fileName, fileHash } = req.body;
+  const extension = fileName.split('.').pop();
+  const filePath = path.resolve(uploadDir, `${fileHash}.${extension}`);
+  // 服务端已存在该文件，不需要再次上传
+  if (fs.existsSync(filePath)) {
+    res.json({
+      message: '服务端已存在该文件，不需要再次上传',
+      shouldUpload: false,
+    });
+  } else {
+    // 服务端不存在该文件或者已上传部分文件切片，通知前端进行上传，并把已上传的文件切片返回给前端
+    // 其他未完全完成的上传碎片应该删除
+    const files = fs.readdirSync(uploadDir);
+    files.forEach((file) => {
+      // 文件名格式为 hash-index，所以只要 hash 相同，则说明是同一个文件的切片
+      // 碎片文件名是 multer 自定义的，碎片文件上传成功后会重命名。36 是个魔法值，以后更改。
+      if (file.length < 36) {
+        fs.unlinkSync(path.resolve(uploadDir, file));
+      }
+    });
+
+    if (files.length > 0) {
+      return res.json({
+        message: '已上传部分文件切片',
+        uploadedChunks: files.filter((file) => file.includes(fileHash)),
+        shouldUpload: true,
+      });
+    }
+
+    res.json({
+      message: '服务端不存在该文件',
+      shouldUpload: true,
+    });
+  }
+});
+
+module.exports = router;
+```
+
+<code src="./_2023__big-file-upload/large-file-process.tsx"></code>
+<code src="./_2023__big-file-upload/large-file-abort.tsx"></code>
+<code src="./_2023__big-file-upload/large-file-resume.tsx"></code>

@@ -22,6 +22,7 @@
     "lint:md": "zhlint \"./docs/**/*.md\" --fix",
     "prepare": "husky install && dumi setup",
     "prepublishOnly": "father doctor && npm run build",
+    "server:create-large-file": "node ./docs/blog/_2023__big-file-upload/createLargeFile.js",
     "server:download": "node ./docs/blog/_2021__browser-download/server.mjs",
     "server:download-range": "node ./docs/blog/_2024__browser-download-range/server.js",
     "server:promise-limit-http1": "node ./docs/blog/_2023__promise-limit/http1-server.js",
