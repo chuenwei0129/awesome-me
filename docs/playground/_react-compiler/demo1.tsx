@@ -1,31 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 // 子组件 A
 const ChildComponentA = ({ count }: { count: number }) => {
-  useEffect(() => {
-    console.log('ChildComponentA rendered');
-  });
-
-  return <div>Child A Counter: {count}</div>;
+  return (
+    <div>
+      <div>ChildComponentA: {Math.random()}</div>
+      <div>Child A Counter: {count}</div>
+    </div>
+  );
 };
 
 // 子组件 B
 const ChildComponentB = ({ text }: { text: string }) => {
-  useEffect(() => {
-    console.log('ChildComponentB rendered');
-  });
-
-  return <div>Child B Text: {text}</div>;
+  return (
+    <div>
+      <div>ChildComponentB: {Math.random()}</div>
+      <div>Child B Text: {text}</div>
+    </div>
+  );
 };
 
 // 父组件
 const ParentComponent = () => {
   const [count, setCount] = useState(0);
   const [text] = useState('Hello');
-
-  useEffect(() => {
-    console.log('ParentComponent rendered');
-  });
 
   const incrementCount = () => {
     setCount((prevCount) => prevCount + 1);
@@ -34,6 +32,7 @@ const ParentComponent = () => {
   return (
     <div>
       <p>父组件</p>
+      <div>ParentComponent: {Math.random()}</div>
       <ChildComponentA count={count} />
       <ChildComponentB text={text} />
       <button type="button" onClick={incrementCount}>

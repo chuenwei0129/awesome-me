@@ -1,0 +1,1 @@
+- [资源文件加载 async / defer / preload 实践篇](https://juejin.cn/post/6940072226020392991)

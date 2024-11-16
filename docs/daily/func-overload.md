@@ -1,7 +1,4 @@
 ---
-group:
-  title: 2023
-  order: -2023
 title: 函数重载
 toc: content
 ---
@@ -72,29 +69,4 @@ const students: Student[] = [
 - `queryStudentsInPage(2)` --- 查询第 2 页，默认页大小为 10 条
 - `queryStudentsInPage(3, 15)` --- 查询第 3 页，页大小 15 条
 
-如果都使用 `getStudents` 这个名称，而 `getStudents(1, 20)` 本应使用 `queryStudentsInPage` 来查询特定页面的方法，那么第二个页大小参数将无法采用默认值，否则就会和根据 ID 查询用户的 `getStudents(1)` 方法产生冲突…
-
-## JavaScript 中的重载
-
-> 函数重载是强类型语言的特性，虽然 js 是弱类型语言，但我们可以通过一些方法实现函数重载。
-
-这是 jQuery 之父 John Resig 巧妙地利用了闭包，实现了 JavaScript 函数重载。
-
-```js
-// addMethod - By John Resig (MIT Licensed)
-function addMethod(object, name, fn) {
-  let old = object[name];
-  object[name] = function () {
-    // 如果函数需要的参数 和 实际传入的参数 的个数相同，就直接调用 fn
-    if (fn.length === arguments.length) return fn.apply(this, arguments);
-    // 如果不相同,判断 old 是不是函数，
-    // 如果是就调用 old，也就是刚才保存的 object[name] 方法
-    else if (typeof old === 'function') return old.apply(this, arguments);
-  };
-}
-```
-
-需要注意的是：
-
-1. 这个重载适用于不同数量的参数，不区分类型、参数名或其它。
-2. 会有一些函数调用的开销。
+如果都使用 `getStudents` 这个名称，而 `getStudents(1, 20)` 本应使用 `queryStudentsInPage` 来查询特定页面的方法，那么第二个页大小参数将无法采用默认值，否则就会和根据 ID 查询用户的 `getStudents(1)` 方法产生冲突。

@@ -3,7 +3,7 @@ import { defineConfig } from 'dumi';
 const ReactCompilerConfig = {
   target: '18',
   sources: (filename: string) => {
-    return filename.indexOf('code/react-compiler') !== -1;
+    return filename.indexOf('playground/_react-compiler') !== -1;
   },
 };
 

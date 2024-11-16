@@ -8,5 +8,5 @@ toc: content
 #   cols: 2
 ---
 
-<code src="./_react-dnd/demo1.tsx">分栏 1</code>
 <code src="./_react-dnd/demo2.tsx">分栏 2</code>
+<code src="./_react-dnd/demo1.tsx">分栏 1</code>

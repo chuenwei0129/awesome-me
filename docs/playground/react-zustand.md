@@ -7,3 +7,5 @@ toc: content
 # demo:
 #   cols: 2
 ---
+
+<code src="./_react-zustand/App.tsx"></code>

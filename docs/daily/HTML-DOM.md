@@ -1,5 +1,5 @@
 ---
-title: HTML attribute 和 DOM property
+title: HTML 和 DOM
 toc: content
 ---
 
@@ -20,7 +20,7 @@ toc: content
 当我们书写 HTML 代码的时候，我们为 HTML <abbr title="Element">元素</abbr>设置<abbr title="attribute">特性</abbr> ，例如：
 
 ```html
-<input id="name" value="justjavac" />
+<input id="name" value="chu" />
 ```
 
 我们写了一个 `input` 标签，并给他定义了 2 个<abbr title="attribute">特性</abbr> (`id` 和 `value`)。当浏览器解析这段代码的时候，会把 html 源码解析为 DOM 对象，确切的说是解析为 [`HTMLInputElement`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLInputElement) 对象。`HTMLInputElement` 的继承关系是：
@@ -49,12 +49,12 @@ Object
 
 ## 1. DOM 属性
 
-当浏览器解析完 HTML 后，生成的 DOM 是一个继承自 Object 的常规 JavaScript 对象，因此我们可以像操作任何 JS 对象那样来操作 DOM 对象。
+**当浏览器解析完 HTML 后，生成的 DOM 是一个继承自 Object 的常规 JavaScript 对象，因此我们可以像操作任何 JS 对象那样来操作 DOM 对象。**
 
 ```js
 const el = document.getElementById('name')
 el.foo = 'bar'
-el.user = { name: 'jjc', age: '18'}
+el.user = { name: 'chu', age: '18'}
 ```
 
 也可以为其添加方法。如果你想给每个 html 元素都添加属性或方法，甚至可以直接修改 `Element.prototype`，不过我们不推荐这么做。
@@ -64,10 +64,10 @@ el.user = { name: 'jjc', age: '18'}
 和 DOM 属性类似，除了那些规范里定义的标准特性外，HTML 也可以添加非标准的属性，例如：
 
 ```html
-<input id="name" value="justjavac" foo="bar" />
+<input id="name" value="chu" foo="bar" />
 ```
 
-当 HTML 特性映射为 DOM 属性时，只映射标准属性，**访问非标准属性将得到 `undefined`**。
+当 HTML 特性映射为 DOM 属性时，**只映射标准属性**，**访问非标准属性将得到 `undefined`**。
 
 ```js
 const el = document.getElementById('name')
@@ -110,16 +110,16 @@ el.href === 'http://jjc.fun#tag'   // 属性返回解析后的完整 uri
 
 ## 3. 特性和属性的同步
 
-当标准的特性更新时，对应的属性也会更新；反之亦然。
+**当标准的特性更新时，对应的属性也会更新；反之亦然。**
 
 但是 `input.value` 的同步是单向的，只是 `attribute --> property`。当修改特性时，属性也会更新；但是修改属性后，特性却还是原值。
 
 ```js
-el.setAttribute('value', 'jjc');  // 修改特性
-el.value === 'jjc'                // 属性也更新了  
+el.setAttribute('value', 'chu');  // 修改特性
+el.value === 'chu'                // 属性也更新了
 
-el.value = 'newValue';            // 修改属性 
-el.getAttribute('value')) === 'jjc' // 特性没有更新
+el.value = 'newValue';            // 修改属性
+el.getAttribute('value')) === 'chu' // 特性没有更新
 ```
 
 ## 4. 非标准特性
@@ -127,8 +127,8 @@ el.getAttribute('value')) === 'jjc' // 特性没有更新
 非标准 HTML 特性并不会自动映射为 DOM 属性。当我们使用 `data-` 开头的特性时，会映射到 DOM 的 dataset 属性。中划线格式会变成驼峰格式：
 
 ```js
-el.setAttribute('data-my-name', 'jjc');
-el.dataset.myName === 'jjc'
+el.setAttribute('data-my-name', 'chu');
+el.dataset.myName === 'chu'
 
 el.setAttribute('data-my-AGE', 18);
 el.dataset.myAge === '18'
@@ -136,11 +136,11 @@ el.dataset.myAge === '18'
 
 ## 自定义特性 VS 非规范特性
 
-HTML 允许我们自定义标签，也可以扩展标签的特性，但是我们推荐使用已经进入 HTML5 规范的自定义特性 `data-*`。比如我们想为` div` 标签增加一个 `age` 特性，我们可以有 2 种选择：
+HTML 允许我们自定义标签，也可以扩展标签的特性，但是我们推荐使用已经进入 HTML5 规范的自定义特性 `data-*`。比如我们想为 `div` 标签增加一个 `age` 特性，我们可以有 2 种选择：
 
 ```html
-<div age="18">justjavac</div>
-<div data-age="18">justjavac</div>
+<div age="18">chu</div>
+<div data-age="18">chu</div>
 ```
 
 虽然第一种代码更短，但是却有一个潜在的风险。因为 HTML 规范是一直发展变化的，也许在未来的某个版本中，`age` 被添加进了标准特性里面，这将会引起潜在的 bug。

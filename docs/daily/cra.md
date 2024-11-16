@@ -1,4 +1,7 @@
-# 记录我的前端工作流
+---
+title: 记一次前端工作流
+toc: content
+---
 
 ## create-react-app
 
@@ -16,7 +19,7 @@ echo {}> .prettierrc.cjs
 # 生成忽略文件
 touch .prettierignore
 # 手动格式化项目
-# yarn prettier --write .
+yarn prettier --write .
 ```
 
 **`.prettierrc.cjs` 配置：**
@@ -92,7 +95,7 @@ npm i eslint-config-prettier eslint-plugin-prettier -D
 },
 ```
 
-**小知识：**
+**拓展：**
 
 ```perl
 # 交互式配置 eslint
@@ -143,7 +146,7 @@ npm run prepare
 npx husky add .husky/pre-commit "npx lint-staged"
 ```
 
-**根目录创建 .lintstagedrc.json 文件配置检查和操作方式：**
+**根目录创建 `.lintstagedrc.json` 文件配置检查和操作方式：**
 
 ```json
 {
@@ -185,7 +188,7 @@ npx husky add .husky/pre-commit "npx lint-staged"
 
 ## 配置 eslint 规则
 
-> 已过期
+> 已过时
 
 **首次提交可能会遇到如下情况：**
 

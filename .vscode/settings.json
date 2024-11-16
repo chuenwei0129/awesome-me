@@ -42,6 +42,7 @@
     "naifu",
     "originalname",
     "packagejson",
+    "partialize",
     "peaceiris",
     "Rehype",
     "Resig",
@@ -56,11 +57,14 @@
     "tanstack",
     "typeof",
     "umijs",
+    "unhandledrejection",
     "valuenow",
     "vdom",
     "vuex",
     "wicg",
+    "xyflow",
     "zhlint",
+    "zoomable",
     "zustand"
   ]
 }

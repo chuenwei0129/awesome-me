@@ -13,5 +13,5 @@
       // "@/*": ["./*"]
     }
   },
-  "include": [".dumirc.ts", "global.d.ts", "src/**/*", "docs/**/*", "code/面试题/others"]
+  "include": [".dumirc.ts", "global.d.ts", "src/**/*", "docs/**/*"]
 }

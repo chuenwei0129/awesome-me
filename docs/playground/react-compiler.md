@@ -10,4 +10,3 @@ toc: content
 
 <code src="./_react-compiler/demo1.tsx">分栏 1</code>
 <code src="./_react-compiler/demo2.tsx">分栏 2</code>
-<code src="./_react-compiler/demo3.tsx">分栏 3</code>
