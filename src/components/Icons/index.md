@@ -8,7 +8,7 @@ toc: content
 #  cols: 2
 group:
   title: 基础组件
-  order: -998
+  order: -997
 ---
 
 <code src="./usage/demo1.tsx">基本用法</code>

@@ -8,6 +8,7 @@ import { useRef } from 'react';
  */
 function useLatest<T>(value: T) {
   const ref = useRef<T>(value);
+  // eslint-disable-next-line react-compiler/react-compiler
   ref.current = value;
 
   return ref;

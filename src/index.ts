@@ -4,7 +4,14 @@ export { default as CompoundCounter } from './patterns/CompoundCounter';
 export { ControlledCounter } from './patterns/ControlledCounter';
 export { CustomHookCounter, useCounter as useCounterCustomHook } from './patterns/CustomHookCounter';
 export { PropsGetterCounter, useCounter as useCounterPropsGetter } from './patterns/PropsGetterCounter';
-export { DECREMENT, INCREMENT, StateReducerCounter, useCounter as useCounterStateReducer, type CounterActionType, type CounterStateType } from './patterns/StateReducerCounter';
+export {
+  DECREMENT,
+  INCREMENT,
+  StateReducerCounter,
+  useCounter as useCounterStateReducer,
+  type CounterActionType,
+  type CounterStateType,
+} from './patterns/StateReducerCounter';
 
 /** 组件 */
 // Icon
@@ -20,3 +27,4 @@ export { TextRevealCard, TextRevealCardDescription, TextRevealCardTitle } from '
 
 /** hooks */
 export { default as useLatest } from './hooks/useLatest';
+export { default as useSetState } from './hooks/useSetState';

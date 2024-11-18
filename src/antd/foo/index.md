@@ -5,7 +5,7 @@ nav:
 title: Foo
 group:
   title: 二次封装组件
-  order: -998
+  order: -996
 ---
 
 Foo

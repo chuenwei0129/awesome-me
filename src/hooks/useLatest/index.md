@@ -3,37 +3,43 @@ nav:
   title: Library
   order: 0
 title: useLatest
+toc: content
 group:
-  title: 时序 Hooks
-  order: 0
+  title: Hooks
+  order: -998
 ---
 
-useLatest
+# useLatest
 
-<!-- 不优雅的 React Hooks -->
+> 获取给定变量的最新值。
 
-<code src="./usage/Demo1.tsx"></code>
+## 使用场景
 
+有如下场景，当你按下 “发送” 后，提示框会在 3000 ms 后延迟显示。
 
-<!-- # useLatest
+输入 “123”，按下发送，然后再次快速编辑输入 “456”，提示框会显示 “123”。
 
-> 获取给定变量的最新值的 Hook。
+<code src="./usage/demo1.tsx"></code>
 
-## 示例
+提示框会显示点击时的内容而非当前输入文本，即 React 会保留每次渲染看到的那个 text。
 
-在此示例中，当你按下 “发送” 后，在显示消息之前会有一小段延迟。输入 “123” (这是按钮被点击那一刻 state 的值)，按下发送，然后再次快速编辑输入 “456”，提示框会显示 “123456”。提示框会显示当前输入文本而不是点击时的内容。
+> 其实 React 是在 Hooks API 时有意把行为改成了现在这样。React Class API 的行为和 Vue 都会拿到最新的 text。
 
-<code src="./usage/demo1.tsx"></code> -->
+为什么 React 要这样设计 API？
 
-<!-- <code src="./usage/index.tsx"></code> -->
+> [Vue 和 React 的这个行为各是出于什么考虑？](https://www.zhihu.com/question/543057656/answer/2575930077)
 
-<!-- ## 类型签名
+当我们需要提示框显示当前文本而非点击时的内容时，就是我们的 `useLatest` 出山的时刻了，其实就是个 ref。
 
-```ts
+<code src="./usage/demo2.tsx"></code>
+
+## 类型签名
+
+```js
 function useLatest<T>(value: T): React.MutableRefObject<T>
-``` -->
+```
 
-<!-- ## 参数
+## 参数
 
 | 参数名 | 类型 | 是否必填 | 说明             |
 | :----- | :--- | :------: | :--------------- |
@@ -43,4 +49,4 @@ function useLatest<T>(value: T): React.MutableRefObject<T>
 
 返回一个 ref 对象，其 `current` 属性始终为给定变量的最新值。
 
-类型：`React.MutableRefObject<T>` -->
+类型：`React.MutableRefObject<T>`

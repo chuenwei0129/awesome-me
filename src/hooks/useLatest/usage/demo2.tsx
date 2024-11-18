@@ -1,12 +1,10 @@
-/**
- * defaultShowCode: true
- */
-
 import React, { useState } from 'react';
 import type { ChangeEvent } from 'react';
+import { useLatest } from 'naifu'
 
 export default function Chat() {
   const [text, setText] = useState('');
+  const latestText = useLatest(text)
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setText(e.target.value);
@@ -14,7 +12,7 @@ export default function Chat() {
 
   function handleSend() {
     setTimeout(() => {
-      alert('正在发送：' + text);
+      alert('正在发送：' + latestText.current);
     }, 3000);
   }
 
