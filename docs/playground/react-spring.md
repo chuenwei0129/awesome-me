@@ -4,8 +4,6 @@ group:
   order: 0
 title: React Spring
 toc: content
-# demo:
-#   cols: 2
 ---
 
 <code src="./_react-spring/demo1.tsx">分栏 1</code>

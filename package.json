@@ -124,6 +124,7 @@
     "tsd": "^0.31.2",
     "use-context-selector": "^2.0.0",
     "use-immer": "^0.10.0",
+    "uuid": "^11.0.3",
     "windups": "^1.2.2",
     "zhlint": "^0.8.1",
     "zustand": "^5.0.0"
