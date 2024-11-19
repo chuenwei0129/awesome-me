@@ -25,10 +25,10 @@ group:
 
 > 其实 React 是在 Hooks API 时有意把行为改成了现在这样。React Class API 的行为和 Vue 都会拿到最新的 text。
 
-为什么 React 要这样设计 API？
-
-> [Vue 和 React 的这个行为各是出于什么考虑？](https://www.zhihu.com/question/543057656/answer/2575930077)
-
 当我们需要提示框显示当前文本而非点击时的内容时，就是我们的 `useLatest` 出山的时刻了，其实就是个 ref。
 
 <code src="./usage/demo2.tsx"></code>
+
+## 为什么 React 要这样设计 API？
+
+> [Vue 和 React 的这个行为各是出于什么考虑？](https://www.zhihu.com/question/543057656/answer/2575930077)
