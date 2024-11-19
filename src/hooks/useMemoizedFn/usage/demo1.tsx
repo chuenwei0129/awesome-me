@@ -1,7 +1,8 @@
 import React, { useState, useCallback, memo } from 'react';
 import { message } from 'antd';
-import { useMemoizedFn } from 'ahooks';
+import { useMemoizedFn } from 'naifu';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Child = memo(({ f, name }: { f: () => void, name: string }) => {
   return <div>
     <h2>{name} 作为 props 传递给子组件</h2>

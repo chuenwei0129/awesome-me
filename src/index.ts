@@ -27,4 +27,5 @@ export { TextRevealCard, TextRevealCardDescription, TextRevealCardTitle } from '
 
 /** hooks */
 export { default as useLatest } from './hooks/useLatest';
+export { default as useMemoizedFn } from './hooks/useMemoizedFn';
 export { default as useSetState } from './hooks/useSetState';
