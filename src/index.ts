@@ -26,6 +26,6 @@ export { default as ParallaxScroll } from './ui/parallax-scroll';
 export { TextRevealCard, TextRevealCardDescription, TextRevealCardTitle } from './ui/text-reveal-card';
 
 /** hooks */
-export { default as useLatest } from './hooks/useLatest';
-export { default as useMemoizedFn } from './hooks/useMemoizedFn';
-export { default as useSetState } from './hooks/useSetState';
+export { default as useLatest } from './hooks/use-latest';
+export { default as useMemoizedFn } from './hooks/use-memoizedFn';
+export { default as useSetState } from './hooks/use-setState';

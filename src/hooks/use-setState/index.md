@@ -58,32 +58,3 @@ setState(prev => ({
 假设你需要记录聚会邀请的嘉宾人数并动态更新。在这个例子中，我们展示了如何基于前一个状态来更新当前状态。
 
 <code src="./usage/demo2.tsx"></code>
-
-## 类型签名
-
-```js
-function useSetState<S extends Record<string, unknown>>(initialState: S | (() => S)): [S, SetState<S>]
-```
-
-## 参数
-
-| 参数名       | 类型             | 是否必填 | 说明                         |
-| :----------- | :--------------- | :------: | :--------------------------- |
-| initialState | `S` 或 `() => S` |    是    | 初始状态值或初始化状态的函数 |
-
-## 返回值
-
-返回一个由当前状态对象和一个用于更新状态的函数组成的元组。
-
-| 参数名   | 类型          | 说明               |
-| :------- | :------------ | :----------------- |
-| state    | `S`           | 当前状态对象       |
-| setState | `SetState<S>` | 用于更新状态的函数 |
-
-`SetState` 类型定义如下：
-
-```ts
-type SetState<S extends Record<string, unknown>> = <K extends keyof S>(
-  state: Pick<S, K> | null | ((prevState: Readonly<S>) => Pick<S, K> | S | null),
-) => void;
-```

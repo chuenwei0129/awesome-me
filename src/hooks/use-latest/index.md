@@ -32,21 +32,3 @@ group:
 当我们需要提示框显示当前文本而非点击时的内容时，就是我们的 `useLatest` 出山的时刻了，其实就是个 ref。
 
 <code src="./usage/demo2.tsx"></code>
-
-## 类型签名
-
-```js
-function useLatest<T>(value: T): React.MutableRefObject<T>
-```
-
-## 参数
-
-| 参数名 | 类型 | 是否必填 | 说明             |
-| :----- | :--- | :------: | :--------------- |
-| value  | `T`  |    是    | 需要跟踪的最新值 |
-
-## 返回值
-
-返回一个 ref 对象，其 `current` 属性始终为给定变量的最新值。
-
-类型：`React.MutableRefObject<T>`
