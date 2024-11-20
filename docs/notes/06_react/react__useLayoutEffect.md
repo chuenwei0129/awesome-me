@@ -1,7 +1,8 @@
 ---
 title: React useLayoutEffect
+toc: content
 group:
-  title: 深入探讨
+  title: 术
 ---
 
 在React中，`useLayoutEffect`和`useEffect`都是用来处理副作用的钩子（Hooks），但它们在组件渲染的生命周期中起作用的时机不同。为了理解`useLayoutEffect`的作用，我们需要先了解DOM更新和浏览器绘制的概念。

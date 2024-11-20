@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useUpdateEffect } from 'naifu';
+import useUpdateEffect from '../index';
 
 export default () => {
   const [count, setCount] = useState(0);

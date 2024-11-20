@@ -26,11 +26,16 @@ export { default as ParallaxScroll } from './ui/parallax-scroll';
 export { TextRevealCard, TextRevealCardDescription, TextRevealCardTitle } from './ui/text-reveal-card';
 
 /** hooks */
+export { default as useDebounce } from './hooks/use-debounce';
+export { default as useDebounceFn } from './hooks/use-debounceFn';
+export { default as useInterval } from './hooks/use-interval';
 export { default as useLatest } from './hooks/use-latest';
 export { default as useMap } from './hooks/use-map';
 export { default as useMemoizedFn } from './hooks/use-memoizedFn';
 export { default as usePrevious } from './hooks/use-previous';
+export { default as useSafeState } from './hooks/use-safeState';
 export { default as useSetState } from './hooks/use-setState';
 export { default as useToggle } from './hooks/use-toggle';
+export { default as useUnmountedRef } from './hooks/use-unmountedRef';
 export { default as useUpdate } from './hooks/use-update';
 export { default as useUpdateEffect } from './hooks/use-updateEffect';

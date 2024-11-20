@@ -4,6 +4,7 @@ nav:
   order: 0
 title: useSetState
 toc: content
+order: -997
 group:
   title: Hooks
   order: -998

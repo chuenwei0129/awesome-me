@@ -1,8 +1,7 @@
 import React from "react"
-import { useUpdate } from 'naifu'
+import useUpdate from '../index'
 
 const App = () => {
-
   const update = useUpdate()
 
   return (

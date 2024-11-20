@@ -2,7 +2,7 @@
 title: WebGL
 toc: content
 group:
-  title: 深入探讨
+  title: 基础知识
 ---
 
 ## 图形系统是如何绘图的？

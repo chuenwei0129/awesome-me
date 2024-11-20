@@ -2,7 +2,7 @@
 title: React SSR
 toc: content
 group:
-  title: 深入探讨
+  title: 术
 ---
 
 ## 什么是 SSR

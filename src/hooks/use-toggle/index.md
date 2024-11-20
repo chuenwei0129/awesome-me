@@ -4,6 +4,7 @@ nav:
   order: 0
 title: useToggle
 toc: content
+order: -996
 group:
   title: Hooks
   order: -998
@@ -14,58 +15,7 @@ group:
 ## 使用场景
 
 <code src="./usage/demo1.tsx">不使用 useToggle</code>
-<code src="./usage/demo2.tsx">不传参数</code>
-<code src="./usage/demo3.tsx">只传 1 个参数</code>
-<code src="./usage/demo4.tsx">传 2 个参数</code>
-
-## 源码
-
-```ts
-import { useMemo, useState } from 'react';
-
-export interface Actions<T> {
-  setLeft: () => void;
-  setRight: () => void;
-  set: (value: T) => void;
-  toggle: () => void;
-}
-
-// TS 函数重载的使用
-function useToggle<T = boolean>(): [boolean, Actions<T>];
-function useToggle<T>(defaultValue: T): [T, Actions<T>];
-function useToggle<T, U>(defaultValue: T, reverseValue: U): [T | U, Actions<T | U>];
-
-function useToggle<D, R>(
-  // 默认值
-  defaultValue: D = false as unknown as D,
-  reverseValue?: R,
-) {
-  const [state, setState] = useState<D | R>(defaultValue);
-
-  const actions = useMemo(() => {
-    // 传一个值时，直接取反
-    const reverseValueOrigin = (typeof reverseValue === 'undefined' ? !defaultValue : reverseValue) as D | R;
-
-    const toggle = () => setState((s) => (s === defaultValue ? reverseValueOrigin : defaultValue));
-    const set = (value: D | R) => setState(value);
-    const setLeft = () => setState(defaultValue);
-    const setRight = () => setState(reverseValueOrigin);
-
-    return {
-      toggle,
-      set,
-      setLeft,
-      setRight,
-    };
-    // useToggle ignore value change
-    // }, [defaultValue, reverseValue]);
-  }, []);
-
-  return [state, actions];
-}
-
-export default useToggle
-```
+<code src="./usage/demo2.tsx">使用 useToggle</code>
 
 ## 限制
 
@@ -83,4 +33,4 @@ export default useToggle
 
 即父组件的 state 作为 props 传递给子组件。
 
-<code src="./usage/demo5.tsx"></code>
+<code src="./usage/demo3.tsx"></code>

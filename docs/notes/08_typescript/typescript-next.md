@@ -1,15 +1,10 @@
-# TypeScript 学习笔记<!-- omit in toc -->
-
-- [醍醐灌顶](#醍醐灌顶)
-- [TypeScript 新特性](#typescript-新特性)
-- [TypeScript 深入](#typescript-深入)
-  - [TypeScript 中的协变与逆变](#typescript-中的协变与逆变)
-  - [TypeScript 类型体操](#typescript-类型体操)
-  - [TS 已经有模块系统了，为什么还需要 NameSpace？](#ts-已经有模块系统了为什么还需要-namespace)
-  - [写 TypeScript 时，什么时候用 any？什么时候用 unknown？有没有规律或准则？](#写-typescript-时什么时候用-any什么时候用-unknown有没有规律或准则)
-- [TypeScript 基础](#typescript-基础)
-- [循环依赖](#循环依赖)
-- [Ambient Modules](#ambient-modules)
+---
+title: 占位
+toc: content
+group:
+  title: 旧时笔记
+  order: -999
+---
 
 ## 醍醐灌顶
 

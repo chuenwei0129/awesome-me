@@ -2,7 +2,7 @@
 title: SVG
 toc: content
 group:
-  title: 深入探讨
+  title: 基础知识
 ---
 
 ## 如何用 SVG 图形元素绘制可视化图表？

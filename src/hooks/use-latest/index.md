@@ -4,6 +4,7 @@ nav:
   order: 0
 title: useLatest
 toc: content
+order: -999
 group:
   title: Hooks
   order: -998

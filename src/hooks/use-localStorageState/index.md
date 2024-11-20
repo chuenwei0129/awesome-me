@@ -2,7 +2,7 @@
 nav:
   title: Library
   order: 0
-title: useLatest
+title: useLocalStorageState
 toc: content
 group:
   title: Hooks

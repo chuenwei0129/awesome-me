@@ -2,7 +2,7 @@
 title: Canvas
 toc: content
 group:
-  title: 深入探讨
+  title: 基础知识
 ---
 
 ## 入门指南

@@ -4,6 +4,7 @@ nav:
   order: 0
 title: useMap
 toc: content
+order: -995
 group:
   title: Hooks
   order: -998

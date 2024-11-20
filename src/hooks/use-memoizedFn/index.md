@@ -4,6 +4,7 @@ nav:
   order: 0
 title: useMemoizedFn
 toc: content
+order: -998
 group:
   title: Hooks
   order: -998

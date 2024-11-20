@@ -1,6 +1,7 @@
 ---
 title: 居中和三栏布局
 toc: content
+order: 400
 ---
 
 ## 居中

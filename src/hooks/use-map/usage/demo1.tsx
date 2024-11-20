@@ -1,5 +1,5 @@
 import React from 'react';
-import { useMap } from 'naifu';
+import useMap from '../index';
 
 const initialValue: readonly [string | number, string][] = [
   ['msg', 'hello world'],

@@ -1,9 +1,12 @@
 import React from "react";
 import { Button, Modal } from "antd";
-import { useToggle } from 'naifu'
+import useToggle from '../index'
 
 function ModalButton() {
-  const [open, { setLeft, setRight }] = useToggle()
+  // const [open, { setLeft, setRight }] = useToggle()
+  // const [open, { setLeft, setRight }] = useToggle(false)
+  const [open, { setLeft, setRight }] = useToggle(false, true)
+
 
   const showModal = () => {
     setRight()

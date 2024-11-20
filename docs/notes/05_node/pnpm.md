@@ -114,5 +114,3 @@ pnpm 的核心优势包括：
 - [npm](https://docs.npmjs.com/cli/v8/commands)
 - [yarn](https://yarnpkg.com/cli)
 - [pnpm](https://pnpm.io/cli/install)
-
-7400 + 5000 + 300 + 650 + 1800 + 1300 + 6800 + 4000 + 300

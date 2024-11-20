@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSetState } from 'naifu';
+import useSetState from '../index';
 
 interface ShoppingList {
   drinks: string;

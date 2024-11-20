@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { ChangeEvent } from 'react';
-import { useLatest } from 'naifu'
+import useLatest from '../index'
 
 export default function Chat() {
   const [text, setText] = useState('');

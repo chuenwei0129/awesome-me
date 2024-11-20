@@ -2,7 +2,7 @@
 title: React Suspense
 toc: content
 group:
-  title: 深入探讨
+  title: 术
 ---
 
 大多数场景下，Suspense 就专门和 lazy 搭配使用的。

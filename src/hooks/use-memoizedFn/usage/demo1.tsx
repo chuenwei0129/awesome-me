@@ -1,6 +1,6 @@
 import React, { useState, useCallback, memo } from 'react';
 import { message } from 'antd';
-import { useMemoizedFn } from 'naifu';
+import useMemoizedFn from '../index';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Child = memo(({ f, name }: { f: () => void, name: string }) => {

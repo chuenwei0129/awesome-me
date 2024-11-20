@@ -1,11 +1,15 @@
+/**
+ * defaultShowCode: true
+*/
+
 import React, { useRef, useState } from 'react';
 
 export default () => {
   const [count, setCount] = useState(0);
   const curRef = useRef<number>();
   const prevRef = useRef<number>()
-  // 比较 ref 与当前值
-  // count 更新了的话就 object.is 不相等
+  // 比较 ref 与当前 count 值，第一次为 Object.is(undefined, 0)
+  // 第二次为 Object.is(0, 1)
   // curRef.current 保存着上次的 count
   if (!Object.is(curRef.current, count)) {
     // 使用 prevRef 保存 curRef 的值

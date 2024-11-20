@@ -1,4 +1,4 @@
-import { usePrevious } from 'naifu';
+import usePrevious from '../index';
 import React, { useState } from 'react';
 
 export default () => {
