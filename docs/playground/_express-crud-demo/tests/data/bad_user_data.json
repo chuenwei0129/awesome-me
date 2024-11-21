@@ -1,0 +1,79 @@
+[
+    {
+        "test_description": "Test blank first_name",
+        "first_name": "",
+        "last_name": "Linsey",
+        "username": "2elinsey0",
+        "password": "Wr3Xh4m!"
+    },
+    {
+        "test_description": "Test blank last_name",
+        "first_name": "Pearla",
+        "last_name": "",
+        "username": "2pkilpatrick1",
+        "password": "Wr3Xh4m!"
+    },
+    {
+        "test_description": "Test blank username",
+        "first_name": "Purcell",
+        "last_name": "Reddick",
+        "username": "",
+        "password": "Wr3Xh4m!"
+    },
+    {
+        "test_description": "Test blank password",
+        "first_name": "Wakefield",
+        "last_name": "Munt",
+        "username": "wmunt3",
+        "password": ""
+    },
+    {
+        "test_description": "Test duplicate username",
+        "first_name": "Dur",
+        "last_name": "Wogan",
+        "email": "dkells0",
+        "password": "Wr3Xh4m!"
+    },
+    {
+        "test_description": "Test password too short",
+        "first_name": "Vere",
+        "last_name": "Plenty",
+        "username": "2vplenty6",
+        "password": "Wr3Xh4m"
+    },
+    {
+        "test_description": "Test password too long",
+        "first_name": "Douglass",
+        "last_name": "Gile",
+        "username": "2dgile7",
+        "password": "Wr3Xh4m1234567890123456789012345678901"
+    },
+    {
+        "test_description": "Test password without numbers",
+        "first_name": "Douglass",
+        "last_name": "Gile",
+        "username": "2dgile7",
+        "password": "Alligator!"
+    },
+    {
+        "test_description": "Test password without special character",
+        "first_name": "Douglass",
+        "last_name": "Gile",
+        "username": "2dgile7",
+        "password": "Alligator"
+    },
+    {
+        "test_description": "Test password without upper case character",
+        "first_name": "Douglass",
+        "last_name": "Gile",
+        "username": "2dgile7",
+        "password": "alligator!$"
+    },
+    {
+        "test_description": "Test password without lower case character",
+        "first_name": "Douglass",
+        "last_name": "Gile",
+        "username": "2dgile7",
+        "password": "ASHLEY333!"
+    }
+]
