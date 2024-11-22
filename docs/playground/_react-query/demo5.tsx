@@ -112,24 +112,43 @@ const App: React.FC = () => {
 
   const editMutation = useMutation({
     mutationFn: ({ postId, updatedText }: { postId: number, updatedText: string }) => editPost(postId, updatedText),
-    onSuccess: (data: any) => {
+    // onSuccess: () => {
+    //   message.success("Post edited successfully!");
+    //   queryClient.invalidateQueries({ queryKey: ["posts"] });
+    // },
+    // onError: (error: unknown) => {
+    //   message.error(
+    //     `Error editing post: ${error instanceof Error ? error.message : "Unknown error"}`
+    //   );
+    // },
+    // 乐观更新
+    // 当 mutate 调用时
+    onMutate: async (newPost) => {
+      // 撤销相关的查询（这样它们就不会覆盖我们的乐观更新）
+      await queryClient.cancelQueries({ queryKey: ["posts"] });
+      // 保存前一次状态的快照
+      const previousPosts = queryClient.getQueryData(["posts"]);
+      // 执行"乐观"更新
+      queryClient.setQueryData(["posts"], (old: Post[]) => old.map((oldPost) =>
+        oldPost.post_id === newPost.postId ? { ...oldPost, text: newPost.updatedText } : oldPost
+      ))
+      // 返回具有快照值的上下文对象
+      return { previousPosts };
+    },
+    // 如果修改失败，则使用 onMutate 返回的上下文进行回滚
+    onError: (err, newPost, context) => {
+      queryClient.setQueryData(["posts"], context?.previousPosts);
+    },
+    // 成功之后重新获取：
+    onSuccess: (data) => {
       message.success("Post edited successfully!");
       // queryClient.invalidateQueries({ queryKey: ["posts"] });
-      // 当在处理更新了服务器上的对象的修改时，新的对象通常会在更新的响应中自动返回。
-      // 我们可以利用修改函数返回的对象，并使用 Query Client 的 setQueryData 方法立即用新数据更新现有的查询
-      // 而不是去触发新的数据获取，浪费对已有数据的网络调用。
-      // 通过setQueryData的更新必须以不可变的方式进行。 不要尝试通过缓存获取的修改的数据直接写入缓存。
       queryClient.setQueryData<Post[]>(["posts"], (oldData) => {
         if (!oldData) return oldData;
         return oldData.map((post) =>
           post.post_id === data.post_id ? { ...post, text: data.text } : post
         );
       });
-    },
-    onError: (error: unknown) => {
-      message.error(
-        `Error editing post: ${error instanceof Error ? error.message : "Unknown error"}`
-      );
     },
   });
 
@@ -157,7 +176,7 @@ const App: React.FC = () => {
         return date.toLocaleString();
       }
     },
-    { title: "Post text", dataIndex: "text", key: "text", ellipsis: true },
+    { title: "Post text", dataIndex: "text", key: "text" },
     {
       title: "Post author", dataIndex: "text", key: "author", render: (_, { author }) => <p>{author.username}</p>
     },

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   QueryClient,
   QueryClientProvider,
@@ -6,171 +6,64 @@ import {
   useQuery,
 } from "@tanstack/react-query";
 import { z } from "zod";
-import { Button, Popconfirm, Space, Table, TableColumnsType, message, Modal, Form, Input } from "antd";
+import { Button, Table, TableColumnsType, message } from "antd";
 
 const postSchema = z.object({
-  post_id: z.number(),
-  timestamp: z.number(),
-  text: z.string(),
-  author: z.object({
-    user_id: z.number(),
-    username: z.string(),
-    first_name: z.string(),
-    last_name: z.string()
-  }),
-  likes: z.array(
-    z.object({
-      user_id: z.number(),
-      username: z.string(),
-      first_name: z.string(),
-      last_name: z.string()
-    })
-  )
-})
+  userId: z.number(),
+  id: z.number(),
+  title: z.string(),
+  body: z.string(),
+});
 
 const postsSchema = z.array(postSchema);
 type Post = z.infer<typeof postSchema>;
 
-const ACCESS_TOKEN = 'f3b8692b90b7326bd53a258ca3401bf888b1cdbb83c34c6e210dbe8fa1cced2e'
+const columns: TableColumnsType<Post> = [
+  { title: "User ID", dataIndex: "userId", key: "userId" },
+  { title: "Post ID", dataIndex: "id", key: "id" },
+  { title: "Post title", dataIndex: "title", key: "title", ellipsis: true },
+  { title: "Post body", dataIndex: "body", key: "body", ellipsis: true },
+];
 
 const fetchPosts = async (): Promise<Post[]> => {
-  const res = await fetch("http://localhost:3333/posts");
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
   if (!res.ok) throw new Error("Failed to fetch posts");
   const data = await res.json();
   return postsSchema.parse(data);
 };
 
-const addPost = async (post: { text: string }) => {
-  const res = await fetch("http://localhost:3333/posts", {
+const addNewPost = async (newPost: Omit<Post, "id">): Promise<Post> => {
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
     method: "POST",
-    body: JSON.stringify(post),
-    headers: { "X-Authorization": ACCESS_TOKEN, "Content-type": "application/json; charset=UTF-8" },
+    body: JSON.stringify(newPost),
+    headers: { "Content-type": "application/json; charset=UTF-8" },
   });
   if (!res.ok) throw new Error("Failed to add post");
   const data = await res.json();
-  return data
-};
-
-const deletePost = async (postId: number) => {
-  const res = await fetch(`http://localhost:3333/posts/${postId}`, {
-    method: "DELETE",
-    headers: { "X-Authorization": ACCESS_TOKEN },
-  });
-  if (!res.ok) throw new Error("Failed to delete post");
-  const data = await res.json();
-  return data;
-}
-
-const editPost = async (postId: number, updatedText: string) => {
-  const res = await fetch(`http://localhost:3333/posts/${postId}`, {
-    method: "PATCH",
-    body: JSON.stringify({ text: updatedText }),
-    headers: { "X-Authorization": ACCESS_TOKEN, "Content-type": "application/json; charset=UTF-8" },
-  });
-  if (!res.ok) throw new Error("Failed to edit post");
-  const data = await res.json();
-  return data;
+  return postSchema.parse(data);
 };
 
 const queryClient = new QueryClient();
 
 const App: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentPost, setCurrentPost] = useState<Post | null>(null);
-  const [form] = Form.useForm();
-
-  const { isLoading, isError, error, data: posts } = useQuery({
+  const { isLoading, isError, error, data: posts } = useQuery<Post[], Error>({
     queryKey: ["posts"],
     queryFn: fetchPosts,
   });
 
-  const addMutation = useMutation({
-    mutationFn: addPost,
+  const mutation = useMutation({
+    mutationFn: (newPost: Omit<Post, "id">) => addNewPost(newPost),
     onSuccess: () => {
       message.success("Post added successfully!");
-      queryClient.invalidateQueries({ queryKey: ["posts"] });
+      queryClient.invalidateQueries({ queryKey: ["posts"] }); // 确保成功后重新获取并渲染数据
     },
     onError: (error: unknown) => {
       message.error(
-        `Error adding post: ${error instanceof Error ? error.message : "Unknown error"}`
+        `Error adding post: ${error instanceof Error ? error.message : "Unknown error"
+        }`
       );
     },
   });
-
-  const deleteMutation = useMutation({
-    mutationFn: deletePost,
-    onSuccess: () => {
-      message.success("Post deleted successfully!");
-      queryClient.invalidateQueries({ queryKey: ["posts"] });
-    },
-    onError: (error: unknown) => {
-      message.error(
-        `Error deleting post: ${error instanceof Error ? error.message : "Unknown error"}`
-      );
-    },
-  });
-
-  const editMutation = useMutation({
-    mutationFn: ({ postId, updatedText }: { postId: number, updatedText: string }) => editPost(postId, updatedText),
-    onSuccess: () => {
-      message.success("Post edited successfully!");
-      queryClient.invalidateQueries({ queryKey: ["posts"] });
-    },
-    onError: (error: unknown) => {
-      message.error(
-        `Error editing post: ${error instanceof Error ? error.message : "Unknown error"}`
-      );
-    },
-  });
-
-  const handleOk = async () => {
-    try {
-      const values = await form.validateFields();
-      if (currentPost) {
-        editMutation.mutate({ postId: currentPost.post_id, updatedText: values.text });
-        setIsModalOpen(false);
-      }
-    } catch (error) {
-      console.error('Validate Failed:', error);
-    }
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-
-  const columns: TableColumnsType<Post> = [
-    { title: "Post ID", dataIndex: "post_id", key: "post_id" },
-    {
-      title: "Post Time", dataIndex: "timestamp", key: "timestamp", render: (timestamp: number) => {
-        const date = new Date(timestamp * 1000);
-        return date.toLocaleString();
-      }
-    },
-    { title: "Post text", dataIndex: "text", key: "text", ellipsis: true },
-    {
-      title: "Post author", dataIndex: "text", key: "author", render: (_, { author }) => <p>{author.username}</p>
-    },
-    {
-      title: "Post likes", dataIndex: "likes", key: "likes", render: (_, { likes }) => <p>{likes.length}</p>
-    },
-    {
-      title: 'Operation',
-      dataIndex: 'operation',
-      render: (_, record) => (
-        <Space size="middle">
-          <Popconfirm title="Sure to delete?" onConfirm={() => deleteMutation.mutate(record.post_id)}>
-            <a>Delete</a>
-          </Popconfirm>
-          <a onClick={() => {
-            form.setFieldsValue({ text: record.text });
-            setCurrentPost(record);
-            setIsModalOpen(true);
-          }}>Edit</a>
-        </Space>
-      ),
-    },
-  ];
 
   if (isError)
     return (
@@ -184,42 +77,22 @@ const App: React.FC = () => {
       <Button
         type="primary" style={{ marginBottom: 16 }}
         onClick={() =>
-          addMutation.mutate({
-            text: "New Post Body"
+          mutation.mutate({
+            title: "New Post Title",
+            body: "New Post Body",
+            userId: 1,
           })
         }
-        disabled={addMutation.isPending}
+        disabled={mutation.isPending}
       >
-        {addMutation.isPending ? "Pending..." : "Create New Post"}
+        {mutation.isPending ? "Pending..." : "Create New Post"}
       </Button>
       <Table
-        rowKey={(record) => record.post_id}
+        rowKey={(record) => record.id.toString()}
         dataSource={posts}
         columns={columns}
         loading={isLoading}
       />
-
-      <Modal
-        title="Edit Post"
-        open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <Form
-          form={form}
-          layout="vertical"
-          name="edit_post_form"
-          initialValues={{ text: currentPost?.text }}
-        >
-          <Form.Item
-            name="text"
-            label="Post Text"
-            rules={[{ required: true, message: 'Please input the post text!' }]}
-          >
-            <Input.TextArea rows={4} />
-          </Form.Item>
-        </Form>
-      </Modal>
     </>
   );
 };
