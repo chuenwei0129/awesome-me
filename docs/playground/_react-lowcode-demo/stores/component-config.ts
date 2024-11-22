@@ -2,12 +2,7 @@ import { create } from 'zustand';
 import Button from '../materials/Button';
 import Container from '../materials/Container';
 import Page from '../materials/Page';
-
-export interface ComponentConfig {
-  name: string;
-  defaultProps: Record<string, unknown>;
-  component: any;
-}
+import { ComponentConfig } from '../types/shared';
 
 interface State {
   componentConfig: { [key: string]: ComponentConfig };
@@ -38,10 +33,10 @@ export const useComponentConfigStore = create<State & Action>((set) => ({
       component: Page,
     },
   },
+
   registerComponent: (name, componentConfig) =>
     set((state) => {
       return {
-        ...state,
         componentConfig: {
           ...state.componentConfig,
           [name]: componentConfig,

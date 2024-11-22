@@ -1,12 +1,6 @@
 import { create } from 'zustand';
-
-export interface Component {
-  id: number;
-  name: string;
-  props: unknown;
-  children?: Component[];
-  parentId?: number;
-}
+import { type Component } from '../types/shared';
+import { getComponentById } from '../utils/getComponentById';
 
 interface State {
   components: Component[];
@@ -18,26 +12,12 @@ interface Action {
   updateComponentProps: (componentId: number, props: unknown) => void;
 }
 
-export function getComponentById(id: number | null, components: Component[]): Component | null {
-  if (!id) return null;
-
-  for (const component of components) {
-    if (component.id === id) return component;
-    if (component.children && component.children.length > 0) {
-      const result = getComponentById(id, component.children);
-      if (result !== null) return result;
-    }
-  }
-  return null;
-}
-
 export const useComponentsStore = create<State & Action>((set, get) => ({
   components: [
     {
       id: 1,
       name: 'Page',
       props: {},
-      desc: '页面',
     },
   ],
   addComponent: (component, parentId) =>
@@ -54,14 +34,18 @@ export const useComponentsStore = create<State & Action>((set, get) => ({
         }
 
         component.parentId = parentId;
+
         return { components: [...state.components] };
       }
+
       return { components: [...state.components, component] };
     }),
+
   deleteComponent: (componentId) => {
     if (!componentId) return;
 
     const component = getComponentById(componentId, get().components);
+
     if (component?.parentId) {
       const parentComponent = getComponentById(component.parentId, get().components);
 
@@ -72,6 +56,7 @@ export const useComponentsStore = create<State & Action>((set, get) => ({
       }
     }
   },
+
   updateComponentProps: (componentId, props) =>
     set((state) => {
       const component = getComponentById(componentId, state.components);

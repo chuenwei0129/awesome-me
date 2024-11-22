@@ -1,6 +1,12 @@
-import React from "react"
+import React from "react";
+import { useComponentsStore } from "../stores/components";
 
-const Setting = () => {
-  return <div>Setting</div>
+export default function Setting() {
+  const { components } = useComponentsStore();
+
+  return <div className="h-[100%] overflow-auto">
+    <pre>
+      {JSON.stringify(components, null, 2)}
+    </pre>
+  </div>
 }
-export default Setting

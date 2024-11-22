@@ -3,29 +3,31 @@ import 'allotment/dist/style.css'
 import EditArea from './components/EditArea'
 import Material from './components/Material'
 import Setting from './components/Setting'
-import Header from './components/Header'
+// import Header from './components/Header'
 import React from 'react'
+import { HTML5Backend } from 'react-dnd-html5-backend'
+import { DndProvider } from 'react-dnd'
 
-export default function LowCodeEditor() {
+function LowCodeEditor() {
   return (
-    <div className="h-[50vh] flex flex-col">
-      <div className="h-[60px] flex items-center border-b border-[#000]">
+    <div className="h-[60vh] flex flex-col border border-solid">
+      {/* <div className="h-[50px] flex items-center border-b border-solid border-t-0 border-l-0 border-r-0">
         <Header />
-      </div>
+      </div> */}
       <Allotment>
         {/* 物料区 */}
-        <Allotment.Pane preferredSize={240} maxSize={300} minSize={200}>
+        <Allotment.Pane preferredSize={150} maxSize={180} minSize={100}>
           <Material />
         </Allotment.Pane>
-        {/* 画布 */}
         <Allotment.Pane>
           <EditArea />
         </Allotment.Pane>
-        {/* 编辑 */}
-        <Allotment.Pane preferredSize={300} maxSize={500} minSize={300}>
+        <Allotment.Pane preferredSize={200} maxSize={240} minSize={150}>
           <Setting />
         </Allotment.Pane>
       </Allotment>
     </div>
   )
 }
+
+export default () => <DndProvider backend={HTML5Backend}><LowCodeEditor /></DndProvider>
