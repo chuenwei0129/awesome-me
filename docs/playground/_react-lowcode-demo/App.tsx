@@ -16,13 +16,13 @@ function LowCodeEditor() {
       </div> */}
       <Allotment>
         {/* 物料区 */}
-        <Allotment.Pane preferredSize={150} maxSize={180} minSize={100}>
+        <Allotment.Pane preferredSize={180} maxSize={240} minSize={120}>
           <Material />
         </Allotment.Pane>
         <Allotment.Pane>
           <EditArea />
         </Allotment.Pane>
-        <Allotment.Pane preferredSize={200} maxSize={240} minSize={150}>
+        <Allotment.Pane preferredSize={240} maxSize={300} minSize={200}>
           <Setting />
         </Allotment.Pane>
       </Allotment>

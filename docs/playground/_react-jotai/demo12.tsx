@@ -1,35 +1,23 @@
-import { Provider, atom, createStore, useAtomValue } from 'jotai';
-import React, { useEffect } from 'react';
+import { atom, useAtomValue, useSetAtom } from 'jotai'
+import { withHistory } from 'jotai-history'
+import React from 'react'
 
-const timeAtom = atom(0);
-const store = createStore();
-
-setInterval(() => {
-  // Interacting with the atom outside of React
-  store.set(timeAtom, (prev) => prev + 1); // Update atom's value
-  console.log('From store.get', store.get(timeAtom)); // Read atom's value
-}, 1000);
-
-function Component() {
-  const time = useAtomValue(timeAtom); // Inside React
-
-  useEffect(() => {
-    console.log('From useAtomValue', time);
-  }, [time]);
-
-  return (
-    <div className="App">
-      <h2>Time atom is mutated outside of React</h2>
-      <pre>Time Elapsed: {time} seconds</pre>
-      Check console
-    </div>
-  );
-}
+// 计数器原子
+const counterAtom = atom(0)
+// 带历史记录的计数器原子
+const counterWithHistory = withHistory(counterAtom, 3)
 
 export default function App() {
+  // 当前计数、上一次计数、上上次计数
+  const [currentCount, previousCount, previousPreviousCount] = useAtomValue(counterWithHistory)
+  const setCounter = useSetAtom(counterAtom)
+
   return (
-    <Provider store={store}>
-      <Component />
-    </Provider>
-  );
+    <>
+      <p>Count: {currentCount}</p>
+      <p>Previous Count: {previousCount}</p>
+      <p>Previous Previous Count: {previousPreviousCount}</p>
+      <button onClick={() => setCounter((count) => count + 1)}>Increment</button>
+    </>
+  )
 }

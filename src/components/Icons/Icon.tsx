@@ -35,7 +35,7 @@ export type MyIconProps = BaseMyIconProps &
   Omit<React.SVGAttributes<SVGElement>, keyof BaseMyIconProps>;
 
 // 类型守卫
-// 实际上，将判断逻辑封装起来提取到函数外部进行复用非常常见。为了解决这一类型控制流分析的能力不足， TypeScript 引入了 is 关键字来显式地提供类型信息：
+// 实际上，将判断逻辑封装起来提取到函数外部进行复用非常常见。为了解决这一类型控制流分析的能力不足，TypeScript 引入了 is 关键字来显式地提供类型信息：
 const isStringArraySize = (size: string | string[]): size is string[] => {
   return Array.isArray(size) && size.length === 2;
 };

@@ -1,50 +1,62 @@
-import { atom, useAtom } from 'jotai';
+import { atom, useAtom, useAtomValue } from 'jotai';
 import { atomWithQuery } from 'jotai-tanstack-query';
 import React from 'react';
+import { z } from 'zod';
 
-const userIdAtom = atom(1);
-const userAtom = atomWithQuery((get) => ({
-  queryKey: ['users', get(userIdAtom)],
-  queryFn: async ({ queryKey: [, id] }) => {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
-    if (!res.ok) throw new Error('404 (Not Found)');
-    return res.json();
-  },
-}));
+const postSchema = z.object({
+  userId: z.number(),
+  id: z.number(),
+  title: z.string(),
+  body: z.string()
+});
+
+type Post = z.infer<typeof postSchema>;
+
+const postIdAtom = atom<number>(1);
+
+const postAtom = atomWithQuery<Post>((get) => ({
+  queryKey: ['posts', get(postIdAtom)],
+  queryFn: async () => {
+    const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${get(postIdAtom)}?_delay=2000`);
+    if (!response.ok) {
+      throw new Error(response.statusText || 'Error fetching post');
+    }
+    const data = await response.json();
+    return postSchema.parse(data);
+  }
+}))
 
 const Controls: React.FC = () => {
-  const [userId, setUserId] = useAtom(userIdAtom);
+  const [postId, setPostId] = useAtom(postIdAtom);
   return (
     <div>
-      User Id: {userId}
-      <button disabled={userId <= 0} onClick={() => setUserId((c) => c - 1)}>
+      Post Id: {postId}
+      <button disabled={postId <= 0} onClick={() => setPostId((c) => c - 1)}>
         Prev
       </button>
-      <button onClick={() => setUserId((c) => c + 1)}>Next</button>
+      <button onClick={() => setPostId((c) => c + 1)}>Next</button>
     </div>
   );
 };
 
-const UserName = () => {
-  const [{ data, isPending, isError, error }] = useAtom(userAtom);
-
-  if (isPending) return <div>Loading...</div>;
-  if (isError) return <div>{error.message}</div>;
-
-  return (
-    <div>
-      <div>User name: {data.name}</div>
-    </div>
-  );
+const PostContent: React.FC = () => {
+  const { isLoading, isError, data: post, error } = useAtomValue(postAtom);
+  if (isError) {
+    return <div>Error: {error.message}</div>;
+  }
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  return <div>
+    <p>Post Title: {post?.title}</p>
+  </div>;
 };
 
-const Demo9 = () => {
-  return (
-    <div>
-      <Controls />
-      <UserName />
-    </div>
-  );
-};
+const App: React.FC = () => (
+  <>
+    <Controls />
+    <PostContent />
+  </>
+);
 
-export default Demo9;
+export default App;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Demo2 = () => {
+const App = () => {
   const [darkMode, setDarkMode] = React.useState(false);
 
   const toggleDarkMode = () => {
@@ -16,4 +16,4 @@ const Demo2 = () => {
     </>
   );
 };
-export default Demo2;
+export default App;

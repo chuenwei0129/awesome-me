@@ -1,4 +1,5 @@
 import { Button, Input, Table, Space } from 'antd';
+import { set } from 'lodash-es';
 import React, { useEffect, useState } from 'react';
 
 // 定义用户任务数据的接口 User
@@ -24,12 +25,8 @@ const App = () => {
   const [, setError] = useState<string | null>(null); // 错误信息
 
   const [searchText, setSearchText] = useState<string>(""); // 搜索框文本
-
-  const [pagination, setPagination] = useState({
-    current: 1,
-    pageSize: 5,
-    total: 0,
-  });
+  const [total, setTotal] = useState(0); // 总数据量
+  const [pagination, setPagination] = useState({ current: 1, pageSize: 5 });
 
   // 表格列定义
   const columns = [
@@ -62,7 +59,7 @@ const App = () => {
       const { data, total } = await fetchDataFromAPI(page, pageSize, searchText);
       const tableData = data.map((item) => ({ ...item, completed: item.completed ? '✅' : '❎', key: item.id }))
       setData(tableData);
-      setPagination(prev => ({ ...prev, current: page, pageSize, total }));
+      setTotal(total);
     } catch (err: any) {
       setError(err.message || "An unknown error occurred");
     } finally {
@@ -73,10 +70,12 @@ const App = () => {
   // 处理搜索功能
   const handleSearch = (value: string) => {
     setSearchText(value);
+    setPagination({ current: 1, pageSize: pagination.pageSize });
     fetchTableData(1, pagination.pageSize, value)
   };
 
   const handleTableChange = (page: number, pageSize: number) => {
+    setPagination({ current: page, pageSize });
     fetchTableData(page, pageSize, searchText)
   };
 
@@ -109,7 +108,7 @@ const App = () => {
         columns={columns}
         loading={loading}
         pagination={{
-          total: pagination.total,
+          total,
           pageSize: pagination.pageSize,
           current: pagination.current,
           onChange: handleTableChange,

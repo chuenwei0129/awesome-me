@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Demo3 = () => {
+const App = () => {
   const [darkMode, setDarkMode] = React.useState(() => {
     const savedMode = localStorage.getItem('darkMode');
     return savedMode === 'true' || false;
@@ -24,4 +24,4 @@ const Demo3 = () => {
   );
 };
 
-export default Demo3;
+export default App;

@@ -15,12 +15,13 @@ const Controls = () => {
   const setCounter = useSetAtom(counterAtom);
   return (
     <div>
-      {/* 因为是原始类型，所以 immer 和原来没差 */}
+      {/* 因为是原始类型，所以使用 immer 修改状态和不可变数据没区别 */}
+      {/* 兼容原来写法 */}
       <button type="button" onClick={() => setCounter((counter) => counter + 1)}>
         Increment
       </button>
       {/* immer mutable */}
-      <button type="button" onClick={() => setCounter((c) => (c = c - 1))}>
+      <button type="button" onClick={() => setCounter((counter) => (counter = counter - 1))}>
         Decrement
       </button>
     </div>

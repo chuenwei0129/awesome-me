@@ -49,7 +49,7 @@ export default defineConfig({
       .type('asset/source');
   },
   // 自定义 babel 配置
-  extraBabelPlugins: [['babel-plugin-react-compiler', ReactCompilerConfig]],
+  extraBabelPlugins: [['babel-plugin-react-compiler', ReactCompilerConfig], 'babel-plugin-styled-components'],
   // 自定义 postcss 配置
   // extraPostCSSPlugins: [],
 });

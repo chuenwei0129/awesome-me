@@ -1,4 +1,5 @@
 ---
+
 group:
   title: 2022 🐯
   order: -2022
@@ -8,13 +9,13 @@ toc: content
 
 ## 观察者模式
 
-观察者模式一般有观察者和被观察者。
+观察者模式基本上就是让被观察者和观察者之间搞点小互动。
 
-举个例子：大家在学校上自习的时候，等老师走了有些人会玩手机、吃零食、交头接耳找隔壁妹妹聊天，但是被老师发现可就不好了，所以大家想了一个招，让坐在最后排的同学帮忙“放风”，老师一来就给大家一个手势通知大家，大家就继续装好好学生。
+举个例子：大家在学校上自习的时候，等老师一脚踏出去，一些同学就开始放飞自我——玩手机、吃零食、八卦聊天。但是，一旦老师突然回头，那就尴尬了。于是大家想了个神机妙算的招数，让坐最后排的同学“放风”。老师一来，他就给大家一个手势，各个同学立刻化身乖宝宝。
 
 ![20240602002435](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240602002435.png)
 
-这其实就是一个典型的观察者模式，“放风”的同学是被观察者，玩手机、吃零食的同学是观察者，大家都在观察“放风”同学的手势，一旦老师来了，被观察者就会通知大家。
+这其实就是一个经典的观察者模式，“放风”的同学是被观察者，而那些放飞自我的同学则是观察者。大家都盯着“放风”同学的手势，一旦老师回来了，被观察者就赶紧通知大家。
 
 观察者模式：
 
@@ -83,17 +84,17 @@ lookoutStudent.notify('老师来了');
 
 ## 发布订阅模式
 
-举个生活中的例子，比如我们想要订阅一份国家地理杂志，一般需要我们先向邮局申请（付钱），告诉邮局我要订阅这份杂志，苦等数日杂志终于印刷好了，这个时候我们不会直接跑到印刷厂里去，而是等印刷厂将杂志送给邮局，然后邮局才会慢吞吞地将杂志送到家（推模式），如果你实在等不及了跑到邮局直接取杂志，恭喜你学会了“拉模式”。
+另一个例子：假如你想订阅一份国家地理杂志，一般都是先去邮局申请（掏钱），告诉邮局你要这本杂志。接着是漫长的等待，直到杂志印刷好了。这个时候，你不会直接冲到印刷厂，而是等印刷厂把杂志送到邮局，然后邮局像蜗牛般把杂志送到你家（推模式）。如果你等不及了，跑到邮局直接取杂志，那就是“拉模式”了。
 
 ![20240602002704](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240602002704.png)
 
-在发布订阅模式里`发布者`并不会直接通知`订阅者`，换句话说`发布者`和`订阅者`彼此互不感知。
+在发布订阅模式中，发布者不会直接通知订阅者，也就是说，发布者和订阅者互相都不认识。
 
-那`发布者`和`订阅者`如何交流呢？答案是通过中间的调度中心。
+究竟怎么沟通呢？靠中间的调度中心呀！
 
-- 发布者将消息发送给调度中心，告诉它你帮我把消息放到 Topic1 中。
-- 订阅者告诉调度中心，我需要订阅 topic1，你帮我留意一下。
-- 当有消息来了，订阅者可以采取拉模式或者推模式来获取消息。
+- 发布者把消息发送给调度中心，告诉它把消息存到 Topic1 中。
+- 订阅者则通知调度中心，说自己要订阅 topic1，并让其留意有新内容。
+- 当有新消息进来，订阅者可以选择自己拉取或让调度中心推送。
 
 ```js
 type EventName = string;
@@ -101,7 +102,7 @@ type EventCallbackArgs = unknown[];
 type EventCallback = (...args: EventCallbackArgs) => void;
 
 class EventEmitter {
-  private events: Map<EventName, EventCallback[]>; // 使用 Map 来存储多个回调
+  private events: Map<EventName, EventCallback[]>; // 使用 Map 来存储回调函数
   private caches: Map<EventName, EventCallbackArgs>; // 缓存事件参数
 
   constructor() {
@@ -109,29 +110,28 @@ class EventEmitter {
     this.caches = new Map();
   }
 
-  // 同一事件可以注册多个事件回调
+  // 同一事件可以注册多个回调函数
   on(eventName: EventName, eventCallback: EventCallback) {
-    // 如果缓存中有事件，立即调用回调（推模式）
+    // 如果缓存中有事件参数，立即调用回调（推模式）
     if (this.caches.has(eventName)) {
       eventCallback(...this.caches.get(eventName)!);
     } else {
-      // 只在事件池中还没有该事件时执行
+      // 如果事件池中没有该事件，则先创建事件数组
       if (!this.events.has(eventName)) {
         this.events.set(eventName, []);
       }
-      // 把事件回调到事件列表中
+      // 将回调函数存储到事件列表中
       this.events.get(eventName)!.push(eventCallback);
     }
   }
 
   // 发布事件
   emit(eventName: EventName, ...args: EventCallbackArgs) {
-    // 如果有订阅者，则通知所有订阅者
+    // 如果存在订阅者，则通知他们
     if (this.events.has(eventName)) {
       this.events.get(eventName)!.forEach((callback) => callback(...args));
-    }
-    // 如果没有订阅者，将事件缓存（拉模式）
-    else {
+    } else {
+      // 否则，将事件参数缓存（拉模式）
       this.caches.set(eventName, args);
     }
   }
@@ -144,11 +144,9 @@ class EventEmitter {
       // 取消特定回调
       this.events.set(
         eventName,
-        this.events
-          .get(eventName)!
-          .filter((callback) => callback !== eventCallback),
+        this.events.get(eventName)!.filter((callback) => callback !== eventCallback),
       );
-      // 如果该事件下没有回调了，则删除该事件
+      // 如果该事件列表为空，则删除事件
       if (this.events.get(eventName)!.length === 0) {
         this.events.delete(eventName);
       }
@@ -157,7 +155,7 @@ class EventEmitter {
       this.events.delete(eventName);
     }
 
-    // 移除该事件的缓存
+    // 移除缓存的事件参数
     this.caches.delete(eventName);
   }
 
@@ -168,7 +166,7 @@ class EventEmitter {
       this.off(eventName, eventCallbackOnce);
     };
 
-    // 如果有缓存的事件参数，立即执行回调并取消订阅
+    // 如果缓存中有事件参数，立即执行回调并取消订阅
     if (this.caches.has(eventName)) {
       eventCallbackOnce(...this.caches.get(eventName)!);
       // 立即移除该缓存条目
@@ -239,19 +237,20 @@ publisher1.publish('topic2', '消息3');
 
 ## 有态度的总结
 
-**从表面上看**：
+好啦，来个风趣幽默的总结，让你哈哈一笑之间，理解这两种模式：
 
-- 观察者模式里只有两个角色：`观察者`和`被观察者`。
-- 发布订阅模式里有三种角色：`发布者`、`订阅者`、`调度器（第三者）`。
+### 观 察 者 模 式 🕵️‍♂️：
 
-**往更深层次讲**：
+想象一下，你在某公司给员工发月饼、粽子。这可是公司的内务，全由行政部门负责。因为“公司”和“员工”是一家人，这种亲密的事儿，当然得自己家做。
 
-- 观察者和被观察者是`松耦合`的关系。
-- 发布者和订阅者则完全`不存在耦合`。
+### 发 布 订 阅 模 式 📬：
 
-**从使用层面上讲**：
+而现在，假如公司要发各种快递给其他人。这时候，“公司”和“其他人”可不是同一伙的，就像牛郎织女，只有靠第三方快递公司搭桥牵线，大家信息互通。
 
-- 观察者模式经常用于`单个应用内部`。
-- 发布订阅模式更多是一种`跨应用的模式`(cross-application pattern)，比如我们常用的消息中间件 Kafka 等。
+### 小总-结：
 
-综上：`观察者模式`和`发布订阅模式`本质上都有发布订阅的思想，但是又有一定的区别，所以我们不能将二者完全等同起来。
+- **观察者模式**下，观察者可是时刻盯着被观察者，关注是否有新动态。你可以想象自己盯着烤箱里的蛋糕，眼睛一直不眨。
+
+- **发布订阅模式**下，发布者和订阅者简直就是“陌生人”。他们不可能互相认识，只能通过‘快递小哥’传递消息。舒服地在家躺着，每月订阅的杂志按时送上门，那才叫享受。
+
+至于发布-订阅大多是异步的（使用消息队列），不会让你在门口等得腿酸肚子饿，给你贴心的异步体验。

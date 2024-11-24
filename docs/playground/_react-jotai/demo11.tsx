@@ -1,34 +1,46 @@
-import { useAtom } from 'jotai';
-import { atomWithMutation } from 'jotai-tanstack-query';
-import React from 'react';
+import { atom, useAtomValue, useSetAtom } from "jotai"
+import { selectAtom } from "jotai/utils"
+import React, { useCallback } from "react"
 
-const postAtom = atomWithMutation(() => ({
-  mutationKey: ['posts'],
-  mutationFn: async ({ title }: { title: string }) => {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/posts`, {
-      method: 'POST',
-      body: JSON.stringify({
-        title,
-        body: 'body',
-        userId: 1,
-      }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    });
-    const data = await res.json();
-    return data;
-  },
-}));
+const objectAtom = atom({
+  type: 'object',
+  value: {
+    foo: 1
+  }
+})
 
-const Posts = () => {
-  const [{ mutate, status }] = useAtom(postAtom);
-  return (
+// const typeSelector = (s) => s.type
+
+const Bar = () => {
+  // 虽然 Bar 只消费了 type，但是 Foo 中的 button 点击后，Bar 也会因为 objectAtom 的 value 改变而改变。
+  // const { type } = useAtomValue(objectAtom)
+  const type = useAtomValue(
+    selectAtom(
+      objectAtom,
+      // 注意这里需要用 useCallback包裹传入的 selector，或者提取这个函数到组件外部，需要保证在下次重渲染中函数不变，负责就造成重渲染地狱。
+      useCallback((s) => s.type, []),  // 注意这里
+      // selectType
+    ),
+  )
+  return <div>
+    <h1>{Math.random()}</h1>
+    <div>type: {type}</div>
+  </div>
+}
+const Foo = () => {
+  // setter 也不会触发重渲染
+  const setter = useSetAtom(objectAtom)
+
+  return <>
+    <Bar />
     <div>
-      <button onClick={() => mutate({ title: 'foo' })}>Click me</button>
-      <pre>{JSON.stringify(status, null, 2)}</pre>
+      {Math.random()}
     </div>
-  );
-};
+    <button onClick={() => setter(prev => ({ ...prev, value: { foo: prev.value.foo + 1 } }))}>render</button>
+  </>
+}
 
-export default Posts;
+export default function App() {
+  return <Foo />
+}
+

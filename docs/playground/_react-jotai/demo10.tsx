@@ -1,35 +1,38 @@
-import { useAtom } from 'jotai';
-import { atomWithInfiniteQuery } from 'jotai-tanstack-query';
-import React from 'react';
+import { Provider, atom, createStore, useAtomValue } from 'jotai';
+import React, { useEffect } from 'react';
 
-const postsAtom = atomWithInfiniteQuery(() => ({
-  queryKey: ['posts'],
-  queryFn: async ({ pageParam }) => {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_page=${pageParam}`);
-    return res.json();
-  },
-  getNextPageParam: (lastPage, allPages, lastPageParam) => lastPageParam + 1,
-  initialPageParam: 1,
-}));
+// This function returns a default store that is used in provider-less mode.
+// const defaultStore = getDefaultStore()
 
-const Posts = () => {
-  const [{ data, fetchNextPage, isPending, isError }] = useAtom(postsAtom);
+const timeAtom = atom(0);
+const store = createStore();
 
-  if (isPending) return <div>Loading...</div>;
-  if (isError) return <div>Error</div>;
+setInterval(() => {
+  // Interacting with the atom outside of React
+  store.set(timeAtom, (prev) => prev + 1); // Update atom's value
+  console.log('From store.get', store.get(timeAtom)); // Read atom's value
+}, 1000);
+
+function Component() {
+  const time = useAtomValue(timeAtom); // Inside React
+
+  useEffect(() => {
+    console.log('From useAtomValue', time);
+  }, [time]);
 
   return (
-    <>
-      {data.pages.map((page, index) => (
-        <div key={index}>
-          {page.map((post: any) => (
-            <div key={post.id}>{post.title}</div>
-          ))}
-        </div>
-      ))}
-      <button onClick={() => fetchNextPage()}>Next</button>
-    </>
+    <div className="App">
+      <h2>Time atom is mutated outside of React</h2>
+      <pre>Time Elapsed: {time} seconds</pre>
+      Check console
+    </div>
   );
-};
+}
 
-export default Posts;
+export default function App() {
+  return (
+    <Provider store={store}>
+      <Component />
+    </Provider>
+  );
+}

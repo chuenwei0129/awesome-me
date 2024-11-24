@@ -8,4 +8,4 @@ group:
   order: -996
 ---
 
-Bar
+<code src="./usage/demo1.tsx">基本用法</code>

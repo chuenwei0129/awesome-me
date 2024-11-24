@@ -4,7 +4,7 @@ import React from 'react';
 
 const darkModeAtom = atomWithStorage('darkModeJotai', false);
 
-const Demo4 = () => {
+const App = () => {
   const [darkMode, setDarkMode] = useAtom(darkModeAtom);
 
   const toggleDarkMode = () => {
@@ -20,4 +20,4 @@ const Demo4 = () => {
     </>
   );
 };
-export default Demo4;
+export default App;
