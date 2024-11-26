@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import { DndProvider, useDrag, useDragLayer, useDrop } from 'react-dnd';
+// 后端主要用来抹平浏览器差异，处理 DOM 事件，同时把 DOM 事件转换为 React DnD 内部的 redux action，你可以使用 HTML5 拖拽后端，也可以自定义 touch、mouse 事件模拟的后端实现。
 import { HTML5Backend, getEmptyImage } from 'react-dnd-html5-backend';
 
 import clsx from 'clsx';

@@ -70,5 +70,6 @@
     "zhlint",
     "zoomable",
     "zustand"
-  ]
+  ],
+  "marscode.chatLanguage": "cn"
 }

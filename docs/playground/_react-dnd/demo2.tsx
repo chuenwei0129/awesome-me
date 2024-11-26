@@ -24,11 +24,15 @@ function Card(props: CardProps) {
   const ref = useRef<HTMLDivElement>(null!);
 
   const [{ dragging }, drag] = useDrag({
+    // Type ：类似于 redux 里面的 actions types 枚举常量，定义了应用程序里支持的拖拽类型
     type: 'card',
+    // Item ：用一个数据对象来描述当前被拖拽的元素
     item: {
       id: data.id,
       index: index,
     },
+    // 拖放本质上是有状态的。要么正在进行拖动操作，要么不在。
+    // 要么有当前类型和当前项目，要么没有，React DnD 通过 Monitor 来存储这些状态并且提供查询
     collect: (monitor) => ({
       dragging: monitor.isDragging(),
     }),

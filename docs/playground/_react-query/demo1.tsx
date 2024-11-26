@@ -46,7 +46,7 @@ const columns = [
 ];
 
 const fetchPosts = async (): Promise<Posts> => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=3')
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts')
   if (!res.ok) throw new Error('Failed to fetch posts')
   const data = await res.json()
   return postsSchema.parse(data)
@@ -68,6 +68,8 @@ const App = () => {
       columns={columns}
       loading={isLoading}
       pagination={false}
+      virtual
+      scroll={{ y: 400 }}
     />
   )
 }

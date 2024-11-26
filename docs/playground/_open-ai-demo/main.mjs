@@ -1,10 +1,4 @@
 import fs from 'fs';
-import OpenAI from 'openai';
-
-const client = new OpenAI({
-  apiKey: 'sk-winIJV2pqVaXX0PQ808dF179667647F3A88e84A70c20B0A3',
-  baseURL: 'https://burn.hair/v1',
-});
 
 async function main() {
   // const stream = await client.chat.completions.create({
