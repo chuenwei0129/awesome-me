@@ -126,7 +126,6 @@
     "react-compiler-runtime": "19.0.0-beta-63b359f-20241101",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
-    "react-dnd-mouse-backend": "1.0.0-rc.2",
     "react-dom": "^18.3.1",
     "react-dropzone": "^14.3.5",
     "react-error-boundary": "^4.1.2",
