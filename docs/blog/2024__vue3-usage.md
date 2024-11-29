@@ -5,22 +5,20 @@ group:
   order: -2024
 title: Vue3 实践心得
 toc: content
-order: -99
+order: -999
 ---
 
-Vue 的就业机会比 React 更多
+## 🌟 前情提要
 
-> Vue 是为了工作，而 React 全凭热爱。
+> Vue 的就业机会比 React 多好多啊，Vue 是为了工作，而 React 全凭热爱。
 
-在此记录我的 Vue3 实践经验
+所以，接下来的冒险旅程记录了我和 Vue3 相爱相杀的实践心得。
 
-尽管许多人认为 React 的心智模型复杂且难以掌握，但就我以往使用 Vue 的经验，Vue 的开发者体验（DX）远不如 React。虽然 Vue 的 DX 不算差，但确实令人烦恼。
+尽管 React 的心智模型被形容得像是一团糊涂浆糊，但基于我使用 Vue 的经验，Vue 的开发者体验（DX）也并非十全十美。还是有些小缺点让人上头，其中最让我头秃的就是 VSCode 对 Vue TypeScript 的支持简直糟糕透顶。
 
-首先是 VSCode 对 Vue TypeScript 支持的糟糕表现。
+在 Vue3 项目闭关修炼时，我几乎每天都要点三次 Command + P 重启窗口，感觉自己都快修炼成道长了。每次导入模块时，Intellisense 一没反应，我就知道：又该弹窗重启了！
 
-在编写 Vue3 项目时，我几乎每天都需要按下 Command + P 并重启窗口三次以上。每当我导入一个模块但 Intellisense 无法自动提示和补全时，我就知道需要重新加载 VSCode 窗口了。
-
-## 项目初始化：create-vue
+## 🛠️ 项目初始化：create-vue
 
 ```js
 pnpm create vue
@@ -38,32 +36,25 @@ pnpm create vue
 
 ## 为什么要启用 JSX 支持？
 
-答：不仅要启用 JSX 支持，开发时还应彻底使用 JSX 来编写组件，而不是单文件组件（SFC）。请不要误会，这并非因为 SFC 存在问题。SFC 非常优秀，甚至能更好地利用编译并提升性能。但原因只有一个——Vue Official TS 支持不够理想。
+答：不仅要启用 JSX 支持，还要彻底用 JSX 来编写组件，SFC 说啥都不要用。别误会，不是我对 SFC 有意见，相反，他们棒得不行，性能也顶呱呱。只不过啊，Vue 官方 TS 支持实在是太不给力了。
 
 ## 为什么要使用 Pinia？
 
-Pinia 本身并没有特别之处，完全可以使用全局 reactive 进行替代。尽管 SSR 存在漏洞（幸运的是我使用 Vue 根本不涉及 SSR），在入口组件中初始化 reactive 配合依赖注入也能解决这个问题。
+Pinia 虽然名字听起来像个甜品店，但它本身并没有什么特别，完全可以用全局 reactive 替代。SSR 存在漏洞？幸好我用 Vue 都不上 SSR，避坑最重要！Pinia 的两个魅力点：
 
-Pinia 具有以下优势：
+1. 在 TypeScript 下简化类型计算（例如 `const token = symbol as InjectionKey<ReturnType<typeof hook>>`）
+2. 惰性初始化逻辑：只在真正需要时加载，可以大幅提升调试体验。
 
-1. 在 TypeScript 下简化类型计算
-
-   让代码更简洁（例如 `const token = symbol as InjectionKey<ReturnType<typeof hook>>`）
-
-2. 惰性初始化逻辑：初始化代码（例如 `localStorage.get('token')`）在应用启动时不运行，只在首次使用 store 的组件中初始化。这一特性配合开发工具，可显著简化业务调试。
-
-总之，Pinia 的优势显而易见，而劣势在于生命周期的谨慎使用。但在其他方面，Pinia 的开发与普通 hook 没有任何区别。
+总之，Pinia 的好处随手拈来，但别忘了，慎用生命周期，否则小心翻车。
 
 ## 我的 Vue3 组件编写方式
 
-由于 Vue3 并没有完全废弃选项式，因此还未出现一种固定且功能完善的写法（template SFC 缺少模板引用变量，无法替代 JSX 的编程能力）。目前常见的写法包括选项式、组合式、JSX render、defineComponent JSX 和 defineComponent 双重返回函数 JSX 五种。
-
-以下是我在 Vue3 中完整的实践方案：
+Vue3 并没有完全搞掉选项式，“多才多艺”的写法让人眼花缭乱。有的选项式，有的组合式，有的全是 JSX，还有啥 defineComponent JSX、defineComponent 双重返回函数 JSX...简直是个大拼盘！以下就是我的 Vue3 编写秘籍：
 
 ```js
 import { defineComponent, reactive, ref } from "vue"
 
-// 不使用 props 和 emits 的组件
+// 不用 props 和 emits 的组件
 // const TextInput = defineComponent(() => {
 //   const inputText = ref('')
 //   return () => <input v-model={inputText.value} />
@@ -94,7 +85,6 @@ const UserDetail = defineComponent({
   },
   setup(props, { emit, slots }) {
 
-    // 静态节点
     const header = <h1>Welcome to User Management</h1>
 
     return () => (
@@ -112,14 +102,8 @@ const UserDetail = defineComponent({
         {props.profile.traits.map((trait, index) => (
           <p key={index}>{trait}</p>
         ))}
-        <div style="color: red;">
-          Default Slot:
-          {slots.default?.()}
-        </div>
-        <div style="color: blue;">
-          Extra Slot:
-          {slots.extra?.(props.modelValue)}
-        </div>
+        <div style="color: red;">Default Slot: {slots.default?.()}</div>
+        <div style="color: blue;">Extra Slot: {slots.extra?.(props.modelValue)}</div>
       </>
     )
   }
@@ -129,13 +113,11 @@ const UserDetail = defineComponent({
 export default defineComponent(() => {
   const inputValue = ref('')
 
-  // 初始化默认的 UserProfile 对象，用于重置
   const defaultProfile = new UserProfile()
   defaultProfile.username = 'Mr. Rabbit'
   defaultProfile.age = 10
   defaultProfile.traits = ['Characteristic 1', 'Characteristic 2']
 
-  // 初始化 userProfile
   const userProfile = reactive(defaultProfile)
 
   const resetUser = () => {
@@ -167,56 +149,51 @@ export default defineComponent(() => {
 })
 ```
 
-这种方法实现了几乎所有的单文件组件功能，特别是在插槽上更为直观。
+这样写几乎能实现所有单文件组件的魔法，尤其是插槽，简直爽到飞起。
 
-> 尽管在 Vue 中使用 JSX 或 TSX 是可行的，但这带来了一些问题：缺乏文档支持。<https://github.com/vuejs/babel-plugin-jsx> 仅有一篇文章，具体用法需要查看源码类型声明，例如直接传递 setup 的 defineComponent 写法（这种写法无法识别 v-model，因为这是 ts 的问题）。
+> 用 JSX 或 TSX 在 Vue 中搞事情是可以的，但要知道，文档基本上罚站中。<https://github.com/vuejs/babel-plugin-jsx> 这篇是唯一的文档，具体玩法得靠自己撸源码探索。
 
-问：defineComponent 推荐使用选项式 + setup，还是单纯一个函数的 setup 风格（export default，更有甚者实际上 ()=>()=>jsx 就能声明 vue 组件）？
+有问题？我来开课答疑！
 
-答：选项式 + setup，因为后者在功能上没有问题，但类型提示很差。在没有 props，emits，expose，v-model 的情况下，也可以使用后者。
+Q: defineComponent 推荐用选项式 + setup，还是一个函数来搞定？
+A: 选项式 + setup，虽然看着复杂，但类型提示更友好。
 
-问：为什么 slot 没有标注类型？
+Q: 为什么 slots 没标注类型？
+A: 啊哈，Vue 是 MVVM 框架，slots 主要为了视图组织，纠结类型？想太多！
 
-答：Vue 是 MVVM 框架，而 slots 主要用于视图组织，没必要纠结于这一点。
+Q: 为什么 emits 要函数返回 true 再断言函数类型？
+A: 保证事件通过验证，不然用 eslint 时会哭。
 
-问：为什么 emits 声明一个函数，返回 true，再断言一个函数类型？
+Q: 对象 props 用 class (上面例子中的 UserProfile) 是啥操作？
+A: 因为 Vue 要求这些要有构造器。React 用不变性，Vue 用代理，class 实现更给力，还能避免响应性丢失问题。
 
-答：返回 true 代表事件通过验证，断言函数类型是因为有参数但不使用时会触发 eslint（unused local），导致无法直接利用类型推断。
+Q: 用 TSX 写，所有的 ref 都要 .value 吗？
+A: 是的，你都要加 .value，这也是 SFC 相对劣势之一，容易忘记。
 
-问：为什么对象 props 要用 class（上例 Profile）？
+Q: TSX 的插槽两种写法（v-slots 和 {{}}）推荐哪种？
+A: 哪个顺手用哪个，风格自由。
 
-答：首先因为 props 声明需要构造器。Vue 与 React 不同，它通过 Proxy 生成代理，而 React 追求不变性的纯变更（immutable）。使用 class 声明数据不仅可行，还能避免许多响应性丢失问题。
-
-问：TSX 写法中，所有 ref 都要 .value 吗？
-
-答：是的，都需要 .value，这也是单文件组件的劣势之一：依赖注入或外部的 ref 无法自动 .value，在没有 ts 提示的情况下很难知道是否需要 .value，而在 ts 提示正常时编辑器又基本不可用。
-
-问：TSX 的插槽两种写法（v-slots 和 {{}}）中，推荐哪种？
-
-答：无所谓，习惯哪种用哪种。
-
-问：这种 TSX 是 Vue 的最佳实践吗？
-
-答：绝不是！单文件组件一直是 Vue 的绝对标准，采用 TSX 仅是因为其实际可用，而目前单文件组件不可行。
+Q: 这种 TSX 是 Vue 的标准做法吗？
+A: 根本不是！SFC 才是 Vue 安排的命中注定，只是 TSX 目前能用，我才出此下策。
 
 ## 关于 snippet 提示
 
-请参考本站 VSCode 中的笔记，自定义上述写法的 snippet 提示。
+请移步我在 Notes/VSCode 里记录的笔记，然后在 VSCode 中自定义上述写法的 snippet 提示。
 
 ## 为什么需要生命周期？
 
-我最不能理解的是生命周期。Solid 官网明确指出无需生命周期，为简单功能快速实现不情愿地提供了个 onMount。
+最坑爹的莫过于 Vue 的生命周期了。看 Solid 官网，人家都说无需生命周期。
 
 ![2024-11-29 17:47:41](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/react/20241129174741.png)
 
 ## 为什么 Vue 事件需要 emit，而不是直接传递 prop？
 
-答：事件的处理方式更符合 HTML 的逻辑。
+用事件响应更像 HTML 的天然直觉。
 
-## watch 的使用规范
+## watch 的正确打开方式
 
-1. 对于非本组件创建的 ref 或 reactive，watch 必须以函数返回的形式使用。
-2. watch 中不应调用外部的 onUnMount 等生命周期（Vue 在任何位置都可以调用生命周期，这是为了照顾新手）。
+1. 监控非本组件创建的 ref 或 reactive，必须用函数返回形式的 watch。
+2. watch 中别乱整外部生命周期（Vue 全域生命周期调用，真是为了新手友好到极限）。
 
 ```js
 // 监听源是 ref/reactive
@@ -228,17 +205,21 @@ watch(()=>simpleTypeValue, (val,pre,onCleanUp)=>{})
 watch(()=>[value1, value2], ([val1, val2],[pre1,pre2],onCleanUp)=>{})
 ```
 
-## 补充：[跨请求状态污染](https://cn.vuejs.org/guide/scaling-up/ssr#cross-request-state-pollution)
+## 疯狂提醒：[跨请求状态污染](https://cn.vuejs.org/guide/scaling-up/ssr#cross-request-state-pollution)
 
 > 内容如下：然而，在 SSR 环境下，应用模块通常只在服务器启动时初始化一次。同一个应用模块会在多个服务器请求之间被复用，而我们的单例状态对象也一样。如果我们用单个用户特定的数据对共享的单例状态进行修改，那么这个状态可能会意外地泄露给另一个用户的请求。我们把这种情况称为跨请求状态污染。
 
-## 最后
+## 尾声
 
-最近我研究了 ant 和 naive ui 的源码，得到了一些新认识。现在不再纠结哪一种更好，只要适合团队即可。在自己的项目中，我使用 .tsx 来开发公共组件，业务开发则采用 .vue + setup + 部分 tsx。对于没有灵活度要求的业务，我统一使用 template，并全部上 typescript，目前感觉效果不错。
+最近研读 ant 和 naive ui 源码，逐渐摆脱纠结症。适合团队就是王道。我自己项目中用 .tsx 来开发公共组件，业务则混用 .vue + setup + 部分 TSX。不需要高法术灵活度的地方，统一使用 template，并且所有代码都写成 TypeScript，眼下来看效果很好。
 
-## 提高班
+## 进阶提高班
 
-- [Vue3 中 watch 与 watchEffect 的区别是什么？](https://www.zhihu.com/question/462378193/answer/1916657458)
-- [Vue 怎么实现加载网络组件（远程组件）？](https://www.zhihu.com/question/65238528/answers/updated)
+- [Vue3 中 watch 与 watchEffect 的差别](https://www.zhihu.com/question/462378193/answer/1916657458)
+- [Vue 的加载网络组件实战（远程组件）](https://www.zhihu.com/question/65238528/answers/updated)
 - [computed 与 v-model](https://www.bilibili.com/video/BV1H5411z7KJ)
-- [如何理解 Vue3 里的 EffectScope?](https://www.zhihu.com/question/508610957/answer/2592195517)
+- [Vue3 里的 EffectScope 怎么理解？](https://www.zhihu.com/question/508610957/answer/2592195517)
+
+---
+
+以上就是我和 Vue3 一同滚打摸爬的酸甜苦辣，希望你笑着看到最后。Happy coding! 🎉
