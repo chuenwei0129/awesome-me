@@ -20,8 +20,8 @@ jobs:
         # 文档编译命令，如果是 react 模板需要修改为 npm run docs:build
         run: npm run docs:build
         # 由于域名未备案，暂时先分支发布，注意 about 静态资源
-      - name: Create CNAME file
-        run: echo "blog.chuenwei.cyou" > ./docs-dist/CNAME
+      # - name: Create CNAME file
+      #   run: echo "blog.chuenwei.cyou" > ./docs-dist/CNAME
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:

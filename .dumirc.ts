@@ -19,10 +19,10 @@ export default defineConfig({
   // 网站打包输出目录
   outputPath: 'docs-dist',
   // 网站部署路径
-  // base: '/awesome-me/',
-  // publicPath: '/awesome-me/',
-  base: '/',
-  publicPath: '/',
+  base: '/awesome-me/',
+  publicPath: '/awesome-me/',
+  // base: '/',
+  // publicPath: '/',
   // tailwindcss 配置
   plugins: ['@umijs/plugins/dist/tailwindcss'],
   tailwindcss: {}, // 在umi中，表示启用该插件
