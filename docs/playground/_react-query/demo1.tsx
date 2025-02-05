@@ -57,7 +57,7 @@ const queryClient = new QueryClient();
 const App = () => {
   const { isLoading, isError, error, data } = useQuery({
     queryKey: ['posts'],
-    queryFn: () => fetchPosts()
+    queryFn: fetchPosts
   })
 
   if (isError) return <div>Error: {error.message}</div>
