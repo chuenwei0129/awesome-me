@@ -2,12 +2,27 @@
 nav:
   title: About
   order: -1
-title: 介绍
+title: 关于这个家伙
 ---
 
-## 关于头像
+## 电子画皮漫游指南
 
-下面 👇 是我的一些 AI 生成的头像，是用 Stable Diffusion 训练后生成的，我很喜欢。
+我的数字分身们正在上演艺术史大乱斗，请欣赏这场量子态的 cosplay：
+
+![AI生成的头像画廊]
+
+这些电子幽灵从梵高的星空坠入丰子恺的茶盏，又在中性笔素描里留下超市小票般的生命速写。每个prompt都是掷向AI的漂流瓶，谁知道会捞回美人鱼还是塑料瓶盖？
+
+
+我的AI分身们正在上演数字版《哈姆雷特》。请欣赏这些量子幽灵的狂欢：
+
+![由Stable Diffusion炼金术生成的头像矩阵]
+
+这些电子画皮时而化作梵高笔下的星空难民，时而变身丰子恺画中的茶客。最妙的是那幅中性笔素描，活像用外卖小票背面记录的人生速写——潦草处藏着被咖啡渍浸透的真诚。
+
+每个prompt都是掷向AI的漂流瓶，有时捞回珍珠，有时捞到拖鞋。就像那个被塞进"山本英夫"参数的夜晚，生成的分明是暴走族版的自画像，眼神却透露出小学数学老师的忧郁。
+
+我常在深夜与AI对弈，它用像素作棋子，我用想象力当棋盘。某局残局竟生成克苏鲁风格的工笔画，吓得我赶紧清空cookies——数字世界的不可名状之物更教人胆寒。
 
 ```tsx
 /**
@@ -52,8 +67,8 @@ function AnimatedTestimonialsDemo() {
       src: s3,
     },
     {
-      quote: '@me portrait, neutral pen sketch style, highly detailed, clear focus, minimalistic background.',
-      name: '中性笔素描',
+      quote: 'portrait of @me, young, doodle.',
+      name: '涂鸦',
       designation: '2023年05月19日 11:32:12',
       src: s6,
     },
@@ -64,8 +79,8 @@ function AnimatedTestimonialsDemo() {
       src: s5,
     },
     {
-      quote: '@me manga, highly detailed, digital art, centered, portrait, colored accurately, in the style of hideo yamamoto.',
-      name: '山本英夫',
+      quote: 'comic style retro poster with @me in the style of the 30s,advertising. graphics minimalism, bold outlines, vibrant red, orange and black color palette.',
+      name: '漫画风格的复古海报',
       designation: '2023年12月30日 3:58:54',
       src: s7,
     },
@@ -80,7 +95,7 @@ export default AnimatedTestimonialsDemo;
 
 ---
 
-## 关于我
+## 拒绝格式化的人形程序
 
 ```tsx
 /**
@@ -94,15 +109,15 @@ const Resume = () => {
   return (
     <TypeAnimation
       sequence={[
-        '👋 您好，我是奀歪 😊',
+        '正在加载灵魂补丁 3.1...47%',
         2000,
-        '💻 前端工程师 🧑‍💻',
+        '运行时错误：成年人模块 404',
         2000,
-        '🔍 目前在南京找工作 🏙️',
+        '回滚到童年版内核',
         4000,
-        '😄 熟练使用 Google + GitHub + ChatGPT 🛠️',
+        '启动伪装进程：正经前端工程师.exe',
         4000,
-        '🙋 复制粘贴砖家 📋',
+        '人生就像 React，总在 shouldComponentUpdate 里纠结',
         3000,
         () => {
           console.log('Sequence completed');
@@ -118,6 +133,40 @@ const Resume = () => {
 
 export default Resume;
 ```
+
+
+
+
+江湖人称**奀歪**，拆开来看就是"不大"与"不正"的量子纠缠。这两个词像两把手术刀，剖开我身上尚未风干的少年气：
+
+**不正**之道，在于总与"正确"保持礼貌距离。就像代码里的`//TODO`注释，永远在即将规范的边缘游荡。某些时刻突然顿悟：所谓正常人，不过是批量生产的活体手办，而我恰好是那个错版的。
+
+**不大**之术，在于始终抗拒安装"成年人"系统补丁。三十一岁还在寻找人生`console.log`的输出路径，这大概相当于在自助餐厅里拿着放大镜找筷子——既荒谬又合理。
+
+> 我常把自己想象成代码世界的游牧民，Git是移动帐篷，Ctrl+C/V是生存技能。至于那些优雅的设计模式？哦，那都是定居者才需要的砖瓦房。
+
+---
+
+## 关于这个数字游乐场
+
+本空间遵循混沌理论运行，就像把知识扔进爆米花机：
+
+- 📝 **思想碎片**：在Daily里随机掉落，像吃完薯片后手指上的残渣
+- 🧪 **代码厨房**：Playground里经常飘出焦糊味，偶尔也有米其林三星作品
+- 📚 **盗火者手册**：Library里堆满了从各路大神那"借"来的火种
+- 🌌 **时空胶囊**：Blog里封印着不同版本的我，像俄罗斯套娃般层层嵌套
+
+温馨提示：Notes里的内容比奶奶藏在饼干罐底的私房钱还珍贵，建议戴上考古刷慢慢发掘。
+
+---
+
+## 关于建立连接
+
+正以南京为圆心，向全宇宙发送求职信号📡。这座城市潮湿的空气很适合培育bug，就像雨林里的蘑菇。
+
+- 📜 **人生使用说明书**：[点击下载v31.0测试版](/resume.pdf)（警告：可能存在兼容性问题）
+- 📮 **量子邮箱**：chuenwei0129@gmail.com（平均响应时间≈海森堡测不准原理）
+- 🐙 **数字分身**：github.com/chuenwei0129（最近commit记录比恋爱史还干净）
 
 > 叫我 **`奀歪`** 吧 ，**`奀歪`** 是我名字的谐音，而我的名字又是我奶奶根据方言中 **`恩惠`** 的谐音起的，这辈子大概是跟谐音梗过不去了。
 

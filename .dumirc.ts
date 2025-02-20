@@ -8,10 +8,10 @@ const ReactCompilerConfig = {
 };
 
 export default defineConfig({
-  logo: '/awesome-me/logo.svg',
-  favicons: ['/awesome-me/logo.svg'],
+  logo: '/awesome-me/original.svg',
+  favicons: ['/awesome-me/original.svg'],
   themeConfig: {
-    name: 'naifu',
+    name: 'HogLog',
     socialLinks: {
       github: 'https://github.com/chuenwei0129/awesome-me',
     },

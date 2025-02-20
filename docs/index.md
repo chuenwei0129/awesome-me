@@ -1,30 +1,30 @@
 ---
 title: 首页
 hero:
-  title: Welcome
-  description: Make Me Great Again
+  title: 🐷 猪栏絮语
+  description: 💻🌀 在代码的泥潭里打滚时，总幻想自己是头会使用砂纸的豪猪，试图把生活打磨成瑞士军刀的模样
   actions:
-    - text: 进入
+    - text: 🥣 领取猪饲料
       link: /about
-    - text: GitHub
+    - text: 🔪 代码屠宰场
       link: https://github.com/chuenwei0129/awesome-me
 features:
-  - title: 关于
-    emoji: 👋
-    description: 你好，我是奀歪，一个躺平的前端开发。
-  - title: 博客
-    emoji: 📖
-    description: 记录生活点滴，以及在工作学习中遇到的一些问题和解决方案，方便以后复习和分享给那些好奇的小伙伴们。
-  - title: 碎片
-    emoji: 🧩
-    description: 碎片化的知识点（常用库/工具/冷门小技巧等），结合 CV 大法，助我更好地摸鱼！
-  - title: 库
-    emoji: 📦
-    description: 为我造过的轮子与写过的项目，书写传记，汲取社区大佬们开源库中的灵感和知识。
-  - title: 游乐场
-    emoji: 🎮
-    description: 代码练习，文档学习，业务试验，技术验证，都可以在这里找到。
-  - title: 笔记
-    emoji: 📝
-    description: 汇总前端的经典知识（知乎热议/大神博客/前端小册等），如有异议，按你的理解为主，不接受反驳。
+  - title: About
+    emoji: 🐒
+    description: 学名奀歪，属灵长目键盘科。冒牌全栈，实为用 React 写十四行诗的码农。产品经理投喂 PRD 时，总能在 useEffect 里培育出食人花级别的 Bug。
+  - title: Blog
+    emoji: 🪶
+    description: 这里寄存着被时间阉割的思想残本。每个句号都是墓碑，埋葬着不同版本的我。2018 年的激进派与 2023 年的虚无主义者在此隔空对骂。
+  - title: Daily
+    emoji: 📅
+    description: 囤积代码如末日前的坚果，偶尔刨开陈年 commit 会窜出焦黑的 bug 尸体。最新藏品：用 TS 烘焙的智能曲奇，散发着递归的糊味。
+  - title: Playground
+    emoji: 🎪
+    description: 欢迎参观程序猿的尿泥城堡，小心 TypeScript 的沼泽和 Hook 陷阱。建议携带《代码大全》当救生圈，穿防脑溢血头盔入场。
+  - title: Library
+    emoji: ⚙️
+    description: 收藏着各色自造轮子的骨灰盒，碑文刻着"此处长眠的造物主，曾试图用 useEffect 证明哥德尔不完备定理"。角落里还供奉着从 React 神殿顺来的圣火残渣。
+  - title: Notes
+    emoji: 📚
+    description: 劫持各路大神的思维火花，比达芬奇手稿的边角料更支离破碎。最新捕获：用 CSS 网格重构的《查拉图斯特拉》交互版，滚动时会渗出尼采的语法高亮。
 ---
