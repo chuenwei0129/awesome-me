@@ -7,8 +7,8 @@ export default defineConfig({
   base: '/awesome-me/', // 文档起始路由
   publicPath: '/awesome-me/', // 静态资源起始路径
   // 配置 logo 和 favicons
-  logo: '/awesome-me/original.svg',
-  favicons: ['/awesome-me/original.svg'],
+  logo: '/awesome-me/logo.svg',
+  favicons: ['/awesome-me/logo.svg'],
   // 配置文档名称
   themeConfig: {
     // 配置网站名称
