@@ -108,8 +108,8 @@ The problem is, MacOS is setting an “archive flag” on every sd-card mounted 
 
 2. 在 Switch 的网络设置中，连接与 Mac 相同的 WiFi，然后修改网络设置：
 
-   - 将 **IP 地址设置** 改为 **手动**，并填写一个 IP 地址（如果你的电脑 IP 是 `192.168.1.XXX`，这里需要填写 `192.168.1.YYY`，前三段保持相同）。
-   - 将 **网关** 和 **首选 DNS** 填写为 Mac 的 IP。
+   - 将 **IP 地址设置**改为**手动**，并填写一个 IP 地址 (如果你的电脑 IP 是 `192.168.1.XXX`，这里需要填写 `192.168.1.YYY`，前三段保持相同)。
+   - 将**网关**和**首选 DNS** 填写为 Mac 的 IP。
 
    ![Switch 网络设置](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/mac/SCR-20230103-ni8.png)
 
