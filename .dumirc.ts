@@ -5,4 +5,5 @@ export default defineConfig({
   themeConfig: {
     name: 'awesome-me',
   },
+  extraPostCSSPlugins: [require('@tailwindcss/postcss')],
 });
