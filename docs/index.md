@@ -18,7 +18,7 @@ features:
   - title: Weekly 周常掉毛
     emoji: 📅
     description: 每周新鲜掉落的头发...啊不，是新鲜出炉的学习碎片 & 胡思乱想。保质期短，速食最佳。
-  - title: Tips 知识边角料
+  - title: Cards 知识边角料
     emoji: 🧩
     description: 零散小知识，厕所摸鱼、等公交发呆时食用更佳。主打一个“看了好像懂，忘了也不亏”。
   - title: Playground 轮子拆装厂
