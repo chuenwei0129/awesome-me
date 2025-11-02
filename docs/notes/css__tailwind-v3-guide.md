@@ -195,22 +195,29 @@ Tailwind 提供了一套经过精心设计的默认主题：
 
 **快速上手示例：**
 
-```html
-<!-- 卡片组件 -->
-<div class="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white">
-  <img class="w-full" src="image.jpg" alt="Image" />
-  <div class="px-6 py-4">
-    <h2 class="font-bold text-xl mb-2">Card Title</h2>
-    <p class="text-gray-700 text-base">Card description goes here.</p>
-  </div>
-  <div class="px-6 pt-4 pb-2">
-    <span
-      class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
-    >
-      #tag
-    </span>
-  </div>
-</div>
+```tsx
+import React from 'react';
+
+export default () => (
+  <>
+    <div className="flex rounded-lg bg-white shadow-lg max-w-sm">
+      <img
+        className="block w-full h-auto"
+        src="https://placebear.com/100/100"
+        alt="Image"
+      />
+      <div className="px-6 py-4">
+        <h2 className="font-bold text-xl mb-2">Card Title</h2>
+        <p className="text-gray-700 text-base">Card description goes here.</p>
+      </div>
+      <div className="px-6 pt-4 pb-2">
+        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+          #tag
+        </span>
+      </div>
+    </div>
+  </>
+);
 ```
 
 ### 响应式设计

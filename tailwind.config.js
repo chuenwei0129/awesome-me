@@ -5,11 +5,7 @@ module.exports = {
     preflight: false,
   },
   // 指定 tailwindcss 的作用范围
-  // content: [
-  // './code/**/*.{js,jsx,ts,tsx}',
-  // './src/**/*.{js,jsx,ts,tsx}',
-  // './docs/**/*.{js,jsx,ts,tsx}',
-  // ],
+  content: ['./docs/**/*.{md,js,jsx,ts,tsx}'],
   // theme: {
   //   extend: {
   //     keyframes: {

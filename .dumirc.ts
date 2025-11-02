@@ -20,5 +20,6 @@ export default defineConfig({
       github: 'https://github.com/chuenwei0129/awesome-me',
     },
   },
+  // 类似于在 postcss 中使用 tailwindcss 插件
   tailwindcss: {},
 });
