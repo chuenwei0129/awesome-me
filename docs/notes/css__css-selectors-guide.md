@@ -497,7 +497,11 @@ li::marker {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(33, 150, 243, 0.8), rgba(156, 39, 176, 0.8));
+  background: linear-gradient(
+    135deg,
+    rgba(33, 150, 243, 0.8),
+    rgba(156, 39, 176, 0.8)
+  );
   opacity: 0;
   transition: opacity 0.3s;
   z-index: 1;
@@ -725,22 +729,6 @@ h3 {
 ```
 
 ## 实用技巧和最佳实践
-
-### 使用全局选择器增强可读性
-
-全局选择器 `*` 可以让某些选择器的意图更明确:
-
-```css
-/* 不太清晰:可能被误读为 article 元素本身是第一个子元素 */
-article:first-child {
-  font-weight: bold;
-}
-
-/* 清晰:article 元素内的任何第一个子元素 */
-article *:first-child {
-  font-weight: bold;
-}
-```
 
 ### 处理无法解析的选择器
 
