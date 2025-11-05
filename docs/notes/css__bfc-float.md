@@ -6,7 +6,7 @@ title: BFC 与浮动
 toc: content
 ---
 
-## 第一部分：彻底理解 BFC 是什么
+## BFC 是什么
 
 **1.1 BFC 的定义**
 
@@ -48,6 +48,15 @@ toc: content
 
 :::info{title=最佳实践}
 推荐使用 `display: flow-root` 来创建 BFC，因为它专门为此设计，没有其他副作用。
+
+**浏览器兼容性**：
+
+- Chrome 58+（2017 年 4 月）
+- Firefox 53+（2017 年 4 月）
+- Safari 13+（2019 年 9 月）
+- Edge 79+（2020 年 1 月）
+
+如需兼容旧版浏览器，可使用 `overflow: hidden` 作为降级方案。
 :::
 
 **1.4 BFC 的应用场景**
@@ -170,7 +179,7 @@ toc: content
 
 ---
 
-## 第二部分：介绍一下浮动
+## 介绍一下浮动
 
 **2.1 浮动的基本特性**
 
@@ -393,7 +402,9 @@ toc: content
 
 > display: block 是块级元素的默认显示方式，它本身不会创建 BFC。建立 BFC 不稀奇，不建立 BFC 才稀奇。
 
-1. 对于下面的代码，其中 div、body 和 html 的高度都是什么？div 浮动后，他们的高度又是什么？
+### 问题一：浮动元素对父元素和根元素高度的影响
+
+**问题描述**：对于下面的代码，其中 div、body 和 html 的高度都是什么？div 浮动后，他们的高度又是什么？
 
 ```html
 <!DOCTYPE html>
@@ -444,7 +455,9 @@ toc: content
 - 但是对于根元素 html 来说，它**默认就会建立 BFC**（根元素是 BFC）
 - 根据 BFC 规则五："计算 BFC 的高度时，浮动元素也参与计算"，所以 html 的高度会包含浮动的 div，即 100px
 
-2. 对于如下代码，
+### 问题二：浮动元素与文字环绕效果的原理
+
+**问题描述**：对于如下代码，为什么会出现文字环绕效果？如何阻止这种效果？
 
 ```html
 <!DOCTYPE html>
@@ -490,7 +503,7 @@ toc: content
 
 ![20251105063927](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/awesome-me/20251105063927.png)
 
-解释：对于文字环绕效果，我是这么理解的：
+**答案解释**：
 
 - box2 浮动后虽然脱离了文档流，后续的非浮动块级元素（box3）会表现得像浮动元素不存在一样
 - 但是 box3 的**内容**（文字）会环绕 box2
@@ -500,9 +513,9 @@ toc: content
 
 ---
 
-## 第三部分：深入理解 BFC 的设计原理
+## 深入理解 BFC 的设计原理
 
-## 为什么 float 会创建 BFC？
+### 为什么 float 会创建 BFC？
 
 **问题场景**：想象一下，如果浮动元素不创建 BFC 会怎样？
 
@@ -526,7 +539,7 @@ toc: content
 - 浮动元素可以包含其内部的浮动子元素（规则五）
 - 维护"脱离文档流但仍有内部结构"的语义
 
-## display: flex 为什么不创建 BFC？
+### display: flex 为什么不创建 BFC？
 
 这是一个常见的误解，需要明确几个概念：
 
@@ -553,13 +566,14 @@ toc: content
 </div>
 ```
 
-**等等，这里有个错误！让我纠正**：
+**更准确的理解**：
 
-实际上，flex item **本身**会创建一个独立的格式化上下文（可以理解为类似 BFC 的行为），但更准确的说法是：
+关于 flex item 与 BFC 的关系，需要明确：
 
-- Flex item 会建立一个独立的格式化上下文
-- 在这个上下文中，margin 不会跨越 flex item 的边界塌陷
-- 如果 flex item 的 `display` 是 `block`，它会为其内容创建 BFC
+- Flex item **本身不会自动创建 BFC**（除非它的 display 值本身会触发 BFC）
+- 但 flex item 会建立一个**独立的格式化上下文**
+- 这个独立的上下文会阻止 margin 穿透边界（即 flex item 内部元素的 margin 不会与外部元素重叠）
+- 这种行为类似 BFC 的隔离效果，但不完全等同于 BFC
 
 **3. 为什么要区分 FFC 和 BFC？**
 
@@ -589,9 +603,164 @@ toc: content
 - 普通块级容器（如 `overflow: hidden`）创建 **BFC**（Block Formatting Context）
 - 每种格式化上下文都有自己的布局规则
 
+### 为什么 position: absolute/fixed 会创建 BFC？
+
+绝对定位和固定定位元素会脱离正常文档流，需要创建 BFC 来保证其内部布局的独立性。
+
+**设计原因**：
+
+1. **独立的布局计算上下文**：
+
+   - 定位元素需要在自己的坐标系统中进行布局
+   - 内部元素的定位基准应该相对于定位元素本身，而不受外部影响
+
+2. **防止 margin 穿透**：
+
+   ```html
+   <div style="position: absolute; top: 100px; left: 100px">
+     <p style="margin-top: 50px">内部段落</p>
+   </div>
+   ```
+
+   如果不创建 BFC，内部段落的 margin 可能会"溢出"到定位元素外部，破坏定位的预期效果。
+
+3. **正确包含浮动子元素**：
+
+   - 定位元素内部可能包含浮动子元素
+   - 创建 BFC 可以确保浮动子元素参与高度计算（规则五）
+   - 这样定位元素的尺寸才能正确反映其内容
+
+4. **维护封装性**：
+   - 定位元素作为一个独立的视觉层，应该有完整的内部结构
+   - BFC 确保其内部布局不受外部影响，外部布局也不受其内部影响
+
+**实例说明**：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>position 创建 BFC</title>
+    <style>
+      .positioned {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        width: 300px;
+        background-color: lightblue;
+        padding: 20px;
+      }
+      .float-child {
+        float: left;
+        width: 100px;
+        height: 100px;
+        background-color: coral;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="positioned">
+      <div class="float-child">浮动子元素</div>
+      <p>定位元素会创建 BFC，所以它的高度会包含这个浮动子元素。</p>
+    </div>
+  </body>
+</html>
+```
+
+### 为什么 overflow: hidden 会创建 BFC？
+
+`overflow` 属性用于控制内容溢出时的显示方式，当值不为 `visible` 时会创建 BFC。
+
+**设计原因**：
+
+1. **确定裁剪边界**：
+
+   - 要裁剪溢出内容，必须先确定容器的确切边界
+   - 创建 BFC 可以让浮动子元素参与高度计算，从而确定正确的裁剪区域
+
+2. **建立独立的渲染上下文**：
+
+   - 裁剪操作需要一个明确的"作用域"
+   - BFC 提供了这个独立的作用域，确保裁剪只影响容器内部
+
+3. **正确计算滚动区域**：
+
+   ```html
+   <div style="overflow: auto; height: 200px">
+     <div style="float: left; height: 300px">浮动内容</div>
+   </div>
+   ```
+
+   如果不创建 BFC，浮动元素不参与高度计算，滚动条可能无法正确显示。
+
+4. **解决实际问题的副作用**：
+   - `overflow: hidden` 常被用来清除浮动
+   - 这实际上是利用了 BFC 的规则五（计算高度时包含浮动元素）
+   - 这个"副作用"后来成为了开发者常用的技巧
+
+**对比示例**：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>overflow 创建 BFC</title>
+    <style>
+      .container {
+        width: 300px;
+        border: 3px solid red;
+        margin-bottom: 20px;
+      }
+      .with-overflow {
+        overflow: hidden; /* 创建 BFC */
+      }
+      .float-box {
+        float: left;
+        width: 100px;
+        height: 150px;
+        background-color: lightblue;
+        margin: 10px;
+      }
+      .content {
+        background-color: lightgreen;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>不使用 overflow（不创建 BFC）</h3>
+    <div class="container">
+      <div class="float-box">浮动元素</div>
+      <div class="content">
+        普通内容普通内容普通内容普通内容普通内容普通内容
+      </div>
+    </div>
+    <p>容器高度坍塌，绿色内容环绕蓝色浮动元素</p>
+
+    <h3>使用 overflow: hidden（创建 BFC）</h3>
+    <div class="container with-overflow">
+      <div class="float-box">浮动元素</div>
+      <div class="content">
+        普通内容普通内容普通内容普通内容普通内容普通内容
+      </div>
+    </div>
+    <p>容器高度包含浮动元素，且浮动元素如果超出容器高度会被裁剪</p>
+  </body>
+</html>
+```
+
+**为什么 overflow: visible 不创建 BFC？**
+
+- `visible` 是默认值，表示允许内容溢出显示
+- 不需要计算裁剪边界，也不需要独立的渲染上下文
+- 如果 `overflow: visible` 也创建 BFC，那几乎所有块级元素都会创建 BFC，失去了 BFC 的特殊性和实用价值
+
 ---
 
-## 第四部分：margin 重叠和 BFC
+## margin 重叠和 BFC
 
 **什么是 margin 重叠（Margin Collapse）？**
 

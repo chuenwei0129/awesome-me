@@ -312,3 +312,190 @@ width | min-width | max-width | height | min-height | max-height
 | 水平 padding/margin | ✅ 推开其他元素    | ✅ 推开其他元素           | ✅ 推开其他元素           |
 | 垂直 padding/margin | ✅ 推开其他元素    | ❌ 不推开其他元素         | ✅ 推开其他元素           |
 | 默认宽度            | 100%（填充父容器） | max-content（由内容决定） | max-content（由内容决定） |
+
+## margin 负值
+
+- `padding` 不能为负值，`margin` 可以为负值。
+- `margin-top` 为负值不会增加高度，只会产生向上位移。
+- `margin-bottom` 为负值不会产生位移，会减少自身的供 CSS 读取的高度。
+
+**利用 `margin-bottom` 为负值会减少 CSS 读取元素高度的特性，加上 `padding-bottom` 和 `overflow:hidden`，就能实现一个未知高度的多列等高布局。**
+
+**负 `margin` 会改变浮动元素的显示位置**，圣杯布局、双飞翼布局什么的，都是利用这个原理实现的。
+
+## 拓展：关于 margin 的小知识
+
+- 当元素不存在 `width` 属性或者 `width：auto` 的时候，`margin-left` 和 `margin-right` 可以增加宽度。
+
+- 当使用百分数时，你需要清楚，它是什么东西的百分数。对于一个处于另外一个容器当中的盒子，如果你给予了子盒子一个百分数作为宽度，那么它指的是父容器宽度的百分数。使用百分比作为元素外边距 (margin) 或填充 (padding) 的单位时，**值是以包含块的内联尺寸进行计算的，也就是元素的水平宽度**。
+
+### 负 margin 对不同方向的影响机制
+
+```css
+/* 负 margin-left/top：元素向左/上移动 */
+.box {
+  margin-left: -20px; /* 元素向左移动20px，可能覆盖左侧元素 */
+  margin-top: -20px; /* 元素向上移动20px，可能覆盖上方元素 */
+}
+
+/* 负 margin-right/bottom：影响后续元素的位置 */
+.box {
+  margin-right: -20px; /* 右侧元素会向左移动20px */
+  margin-bottom: -20px; /* 下方元素会向上移动20px */
+}
+```
+
+**原理**：
+
+- **左/上负值**：改变元素自身的参考位置，让元素从原本位置向左/上偏移
+- **右/下负值**：不改变元素自身位置，而是"欺骗"浏览器，让浏览器认为这个元素占用的空间更小，从而影响后续元素的排列
+
+### 负 margin 在标准流中的实际应用
+
+```css
+/* 实现元素重叠效果 */
+.card {
+  margin-left: -30px;
+}
+.card:first-child {
+  margin-left: 0;
+}
+/* 可以实现类似扑克牌堆叠的效果 */
+
+/* 扩展容器宽度 */
+.container {
+  width: auto;
+  margin-left: -15px; /* 向左扩展 */
+  margin-right: -15px; /* 向右扩展 */
+}
+/* 常用于抵消内部元素的 padding，实现满宽效果 */
+```
+
+### 负 margin 与 width: auto 的关系
+
+```css
+/* 当元素是块级元素且未设置 width 或 width: auto 时 */
+.block {
+  width: auto; /* 或不设置 width */
+  margin-left: -20px;
+  margin-right: -20px;
+}
+```
+
+**为什么可以增加宽度**：
+
+- 块级元素默认宽度计算公式：`margin-left + border-left + padding-left + width + padding-right + border-right + margin-right = 父容器宽度`
+- 当 `width: auto` 时，浏览器会自动计算 width 来满足上述公式
+- 负 margin 会使等式右侧减小，从而 width 必须增大来维持平衡
+
+### 负 margin 在不同定位方式下的表现
+
+```css
+/* 相对定位：负 margin 依然有效 */
+.relative {
+  position: relative;
+  margin-top: -10px; /* 会产生偏移，且影响文档流 */
+  top: -10px; /* 也会偏移，但不影响文档流 */
+}
+
+/* 绝对定位：负 margin 基于定位点计算 */
+.absolute {
+  position: absolute;
+  top: 0;
+  margin-top: -10px; /* 相当于 top: -10px */
+}
+
+/* 固定定位：同绝对定位 */
+.fixed {
+  position: fixed;
+  left: 0;
+  margin-left: -10px; /* 可以让元素部分移出视口 */
+}
+```
+
+### 百分比 margin 的特殊性详解
+
+```css
+.parent {
+  width: 200px;
+  height: 100px;
+}
+
+.child {
+  /* 注意：所有方向的百分比 margin 都基于父元素的宽度！*/
+  margin-top: 10%; /* = 200px × 10% = 20px (不是基于高度!) */
+  margin-bottom: 10%; /* = 200px × 10% = 20px */
+  margin-left: 10%; /* = 200px × 10% = 20px */
+  margin-right: 10%; /* = 200px × 10% = 20px */
+}
+```
+
+**为什么垂直 margin 也基于宽度**：
+
+- CSS 规范规定，为了保持一致性，所有方向的百分比 margin/padding 都相对于**包含块的宽度**
+- 这样可以确保使用相同百分比时，能得到正方形的外边距空间
+- 这个特性常用于实现**固定宽高比**的占位元素
+
+```css
+/* 利用这个特性实现 16:9 的响应式容器 */
+.aspect-ratio-box {
+  width: 100%;
+  padding-bottom: 56.25%; /* 9/16 = 0.5625 */
+  position: relative;
+}
+```
+
+### inline/inline-block 元素的 margin 特性
+
+```css
+/* inline 元素 */
+span {
+  margin-left: 10px; /* ✓ 有效 */
+  margin-right: 10px; /* ✓ 有效 */
+  margin-top: 10px; /* ✗ 无效 */
+  margin-bottom: 10px; /* ✗ 无效 */
+}
+
+/* inline-block 元素 */
+.inline-block {
+  display: inline-block;
+  margin-top: 10px; /* ✓ 有效 */
+  margin-bottom: 10px; /* ✓ 有效 */
+}
+```
+
+**原因**：
+
+- inline 元素在垂直方向上不占据块空间，因此垂直 margin 不生效
+- inline-block 元素表现为 inline，但内部按 block 计算，所以四个方向的 margin 都有效
+
+### 负 margin 的边界情况
+
+```css
+/* 极端负值 */
+.box {
+  width: 100px;
+  margin-left: -150px; /* 超过自身宽度，元素会完全移出原位置 */
+}
+
+/* 与浮动结合 */
+.float-left {
+  float: left;
+  width: 100px;
+  margin-left: -100%; /* 移动到父容器最左侧，双飞翼布局核心 */
+}
+```
+
+**实际应用 - 抵消内边距实现通栏效果**：
+
+```css
+.container {
+  padding: 0 15px;
+}
+
+.full-width-section {
+  margin-left: -15px; /* 抵消父容器的左 padding */
+  margin-right: -15px; /* 抵消父容器的右 padding */
+  /* 实现在有 padding 的容器内的满宽效果 */
+}
+```
