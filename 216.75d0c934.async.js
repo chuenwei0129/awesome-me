@@ -1,4 +1,4 @@
-"use strict";(self.webpackChunk_c6i_playground=self.webpackChunk_c6i_playground||[]).push([[98],{1098:function(d,n,a){a.r(n),a.d(n,{texts:function(){return e}});const e=[{value:"CSS \u4E2D\u6709\u591A\u79CD\u9009\u62E9\u5668,\u7528\u4E8E\u9009\u62E9\u8981\u6837\u5F0F\u5316\u7684\u5143\u7D20\u3002\u4E0B\u9762\u6211\u4EEC\u901A\u8FC7\u4E00\u4E2A\u7EFC\u5408\u6848\u4F8B\u6765\u8BF4\u660E\u5E38\u7528\u9009\u62E9\u5668\u7684\u4F7F\u7528\u65B9\u6CD5\u3002",paraId:0,tocIndex:0},{value:`import './style.css';
+"use strict";(self.webpackChunk_c6i_playground=self.webpackChunk_c6i_playground||[]).push([[216],{76216:function(d,n,a){a.r(n),a.d(n,{texts:function(){return e}});const e=[{value:"CSS \u4E2D\u6709\u591A\u79CD\u9009\u62E9\u5668,\u7528\u4E8E\u9009\u62E9\u8981\u6837\u5F0F\u5316\u7684\u5143\u7D20\u3002\u4E0B\u9762\u6211\u4EEC\u901A\u8FC7\u4E00\u4E2A\u7EFC\u5408\u6848\u4F8B\u6765\u8BF4\u660E\u5E38\u7528\u9009\u62E9\u5668\u7684\u4F7F\u7528\u65B9\u6CD5\u3002",paraId:0,tocIndex:0},{value:`import './style.css';
 
 export default function page() {
   return (

@@ -1,4 +1,4 @@
-"use strict";(self.webpackChunk_c6i_playground=self.webpackChunk_c6i_playground||[]).push([[904],{16775:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},52320:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},11171:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},55369:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},85160:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},62086:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},36735:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},22605:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},37181:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},83036:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},11766:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},20736:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},63839:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},6769:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},60150:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},21:function(t,n,a){var e;a.r(n),a.d(n,{demos:function(){return x}});var d=a(17061),I=a.n(d),s=a(17156),i=a.n(s),c=a(67294),x={"docs-notes-css-tailwind-v-3-guide-demo-0":{component:c.memo(c.lazy(i()(I()().mark(function p(){var u,o;return I()().wrap(function(r){for(;;)switch(r.prev=r.next){case 0:return r.next=2,Promise.resolve().then(a.t.bind(a,67294,19));case 2:return u=r.sent,o=u.default,r.abrupt("return",{default:function(){return o.createElement(o.Fragment,null,o.createElement("div",{className:"flex rounded-lg bg-white shadow-lg max-w-sm"},o.createElement("img",{className:"block w-full h-auto",src:"https://placebear.com/100/100",alt:"Image"}),o.createElement("div",{className:"px-6 py-4"},o.createElement("h2",{className:"font-bold text-xl mb-2"},"Card Title"),o.createElement("p",{className:"text-gray-700 text-base"},"Card description goes here.")),o.createElement("div",{className:"px-6 pt-4 pb-2"},o.createElement("span",{className:"inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"},"#tag"))))}});case 5:case"end":return r.stop()}},p)})))),asset:{type:"BLOCK",id:"docs-notes-css-tailwind-v-3-guide-demo-0",refAtomIds:[],dependencies:{"index.tsx":{type:"FILE",value:`import React from 'react';
+"use strict";(self.webpackChunk_c6i_playground=self.webpackChunk_c6i_playground||[]).push([[904],{16775:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},52320:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},11171:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},55369:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},85160:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},59614:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},36735:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},22605:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},11766:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},20736:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},40324:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},6769:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},60150:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},43288:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},21:function(t,n,a){var e;a.r(n),a.d(n,{demos:function(){return s}});var d=a(17061),I=a.n(d),x=a(17156),i=a.n(x),c=a(67294),s={"docs-notes-css-tailwind-v-3-guide-demo-0":{component:c.memo(c.lazy(i()(I()().mark(function p(){var u,o;return I()().wrap(function(r){for(;;)switch(r.prev=r.next){case 0:return r.next=2,Promise.resolve().then(a.t.bind(a,67294,19));case 2:return u=r.sent,o=u.default,r.abrupt("return",{default:function(){return o.createElement(o.Fragment,null,o.createElement("div",{className:"flex rounded-lg bg-white shadow-lg max-w-sm"},o.createElement("img",{className:"block w-full h-auto",src:"https://placebear.com/100/100",alt:"Image"}),o.createElement("div",{className:"px-6 py-4"},o.createElement("h2",{className:"font-bold text-xl mb-2"},"Card Title"),o.createElement("p",{className:"text-gray-700 text-base"},"Card description goes here.")),o.createElement("div",{className:"px-6 pt-4 pb-2"},o.createElement("span",{className:"inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"},"#tag"))))}});case 5:case"end":return r.stop()}},p)})))),asset:{type:"BLOCK",id:"docs-notes-css-tailwind-v-3-guide-demo-0",refAtomIds:[],dependencies:{"index.tsx":{type:"FILE",value:`import React from 'react';
 
 export default () => (
   <>
@@ -19,7 +19,7 @@ export default () => (
       </div>
     </div>
   </>
-);`},react:{type:"NPM",value:"19.2.0"}},entry:"index.tsx"},context:{react:e||(e=a.t(c,2))},renderOpts:{compile:function(){var p=i()(I()().mark(function o(){var v,r=arguments;return I()().wrap(function(l){for(;;)switch(l.prev=l.next){case 0:return l.next=2,a.e(250).then(a.bind(a,90250));case 2:return l.abrupt("return",(v=l.sent).default.apply(v,r));case 3:case"end":return l.stop()}},o)}));function u(){return p.apply(this,arguments)}return u}()}}}},48824:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},95295:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},94742:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},88827:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},44282:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},20466:function(t,n,a){a.r(n),a.d(n,{texts:function(){return e}});const e=[{value:"This is a guide example.",paraId:0}]},38528:function(t,n,a){a.r(n),a.d(n,{texts:function(){return e}});const e=[{value:"\u5B98\u7F51\u5BFC\u822A",paraId:0},{value:"\u672C\u7AD9\u662F\u901A\u8FC7 ",paraId:1,tocIndex:0},{value:"create-dumi",paraId:1,tocIndex:0},{value:" \u521B\u5EFA\u7684 React \u6A21\u677F (",paraId:1,tocIndex:0},{value:"React \u9009\u9879",paraId:1,tocIndex:0},{value:")\u751F\u6210\u7684\uFF0C\u76EE\u5F55\u7ED3\u6784\u5927\u81F4\u5982\u4E0B\uFF1A",paraId:1,tocIndex:0},{value:"docs",paraId:2,tocIndex:0},{value:" \u5B58\u653E\u7B14\u8BB0\u3001\u535A\u5BA2\u3001\u788E\u7247\u5316\u77E5\u8BC6\u7B49\u3002",paraId:2,tocIndex:0},{value:"src",paraId:2,tocIndex:0},{value:" \u5B58\u653E\u5F00\u53D1 npm \u5305\u7684\u6E90\u7801\u3002",paraId:2,tocIndex:0},{value:"public",paraId:2,tocIndex:0},{value:" \u5B58\u653E\u9759\u6001\u8D44\u6E90\u3002",paraId:2,tocIndex:0},{value:".dumirc.ts",paraId:2,tocIndex:0},{value:" dumi \u7684\u914D\u7F6E\u6587\u4EF6\u3002",paraId:2,tocIndex:0},{value:".fatherrc.ts",paraId:2,tocIndex:0},{value:" father \u7684\u914D\u7F6E\u6587\u4EF6\uFF0C\u7528\u4E8E\u7EC4\u4EF6\u5E93\u6253\u5305\u3002",paraId:2,tocIndex:0},{value:`
+);`},react:{type:"NPM",value:"19.2.0"}},entry:"index.tsx"},context:{react:e||(e=a.t(c,2))},renderOpts:{compile:function(){var p=i()(I()().mark(function o(){var v,r=arguments;return I()().wrap(function(l){for(;;)switch(l.prev=l.next){case 0:return l.next=2,a.e(250).then(a.bind(a,90250));case 2:return l.abrupt("return",(v=l.sent).default.apply(v,r));case 3:case"end":return l.stop()}},o)}));function u(){return p.apply(this,arguments)}return u}()}}}},48824:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},97717:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},95295:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},94742:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},88827:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},44282:function(t,n,a){a.r(n),a.d(n,{demos:function(){return d}});var e=a(67294),d={}},20466:function(t,n,a){a.r(n),a.d(n,{texts:function(){return e}});const e=[{value:"This is a guide example.",paraId:0}]},38528:function(t,n,a){a.r(n),a.d(n,{texts:function(){return e}});const e=[{value:"\u5B98\u7F51\u5BFC\u822A",paraId:0},{value:"\u672C\u7AD9\u662F\u901A\u8FC7 ",paraId:1,tocIndex:0},{value:"create-dumi",paraId:1,tocIndex:0},{value:" \u521B\u5EFA\u7684 React \u6A21\u677F (",paraId:1,tocIndex:0},{value:"React \u9009\u9879",paraId:1,tocIndex:0},{value:")\u751F\u6210\u7684\uFF0C\u76EE\u5F55\u7ED3\u6784\u5927\u81F4\u5982\u4E0B\uFF1A",paraId:1,tocIndex:0},{value:"docs",paraId:2,tocIndex:0},{value:" \u5B58\u653E\u7B14\u8BB0\u3001\u535A\u5BA2\u3001\u788E\u7247\u5316\u77E5\u8BC6\u7B49\u3002",paraId:2,tocIndex:0},{value:"src",paraId:2,tocIndex:0},{value:" \u5B58\u653E\u5F00\u53D1 npm \u5305\u7684\u6E90\u7801\u3002",paraId:2,tocIndex:0},{value:"public",paraId:2,tocIndex:0},{value:" \u5B58\u653E\u9759\u6001\u8D44\u6E90\u3002",paraId:2,tocIndex:0},{value:".dumirc.ts",paraId:2,tocIndex:0},{value:" dumi \u7684\u914D\u7F6E\u6587\u4EF6\u3002",paraId:2,tocIndex:0},{value:".fatherrc.ts",paraId:2,tocIndex:0},{value:" father \u7684\u914D\u7F6E\u6587\u4EF6\uFF0C\u7528\u4E8E\u7EC4\u4EF6\u5E93\u6253\u5305\u3002",paraId:2,tocIndex:0},{value:`
   `,paraId:3},{value:`
     `,paraId:4},{value:`
       docs
@@ -937,7 +937,179 @@ span,
   border: 0;
   /* \u79FB\u9664\u6240\u6709\u9ED8\u8BA4\u6837\u5F0F */
 }
-`,paraId:69,tocIndex:19},{value:"\u7279\u70B9\uFF1A\u6FC0\u8FDB\u7684\u91CD\u7F6E\uFF0C\u9700\u8981\u624B\u52A8\u91CD\u5EFA\u6240\u6709\u6837\u5F0F\u3002",paraId:70,tocIndex:19},{value:"\u7279\u70B9\uFF1A\u4FDD\u7559\u6709\u7528\u7684\u9ED8\u8BA4\u6837\u5F0F\uFF0C\u53EA\u4FEE\u590D\u6D4F\u89C8\u5668\u95F4\u7684\u5DEE\u5F02\u3002",paraId:71,tocIndex:20},{value:"\u6837\u5F0F",paraId:72,tocIndex:22},{value:"\u6D4F\u89C8\u5668\u9ED8\u8BA4\u95EE\u9898",paraId:72,tocIndex:22},{value:"\u91CD\u7F6E\u65B9\u6848",paraId:72,tocIndex:22},{value:"\u91CD\u8981\u6027",paraId:72,tocIndex:22},{value:"\u76D2\u6A21\u578B",paraId:72,tocIndex:22},{value:"content-box",paraId:72,tocIndex:22},{value:" \u5BFC\u81F4\u5BBD\u5EA6\u8BA1\u7B97\u4E0D\u76F4\u89C2",paraId:72,tocIndex:22},{value:"box-sizing: border-box",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"\u884C\u9AD8",paraId:72,tocIndex:22},{value:"1.2 \u592A\u7D27\u51D1",paraId:72,tocIndex:22},{value:"line-height: 1.5",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"body \u8FB9\u8DDD",paraId:72,tocIndex:22},{value:"8px \u5916\u8FB9\u8DDD",paraId:72,tocIndex:22},{value:"margin: 0",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"\u8868\u5355\u5143\u7D20",paraId:72,tocIndex:22},{value:"\u4E0D\u7EE7\u627F\u5B57\u4F53\uFF0C\u6837\u5F0F\u5DEE\u5F02\u5927",paraId:72,tocIndex:22},{value:"font: inherit",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"\u56FE\u7247",paraId:72,tocIndex:22},{value:"inline",paraId:72,tocIndex:22},{value:" \u5BFC\u81F4\u5E95\u90E8\u7A7A\u9699",paraId:72,tocIndex:22},{value:"display: block",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"\u94FE\u63A5",paraId:72,tocIndex:22},{value:"\u84DD\u8272 + \u4E0B\u5212\u7EBF",paraId:72,tocIndex:22},{value:"color: inherit; text-decoration: none",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"\u5217\u8868",paraId:72,tocIndex:22},{value:"\u9879\u76EE\u7B26\u53F7 + 40px \u7F29\u8FDB",paraId:72,tocIndex:22},{value:"list-style: none; padding: 0",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"\u7279\u6B8A\u6587\u672C\u5143\u7D20\uFF08abbr, code, sub/sup\uFF09",paraId:73,tocIndex:23},{value:"\u6D4F\u89C8\u5668\u7279\u5B9A\u524D\u7F00\uFF08-webkit-",paraId:73,tocIndex:23},{value:", -moz-",paraId:73,tocIndex:23},{value:"\uFF09",paraId:73,tocIndex:23},{value:"\u4E0D\u5E38\u7528\u5143\u7D20\uFF08dialog, progress, summary\uFF09",paraId:73,tocIndex:23},{value:"\u4E00\u81F4\u6027",paraId:74,tocIndex:24},{value:"\uFF1A\u6D88\u9664\u6D4F\u89C8\u5668\u4E4B\u95F4\u7684\u5DEE\u5F02",paraId:74,tocIndex:24},{value:"\u53EF\u9884\u6D4B\u6027",paraId:74,tocIndex:24},{value:"\uFF1A\u79FB\u9664\u610F\u5916\u7684\u9ED8\u8BA4\u6837\u5F0F",paraId:74,tocIndex:24},{value:"\u7075\u6D3B\u6027",paraId:74,tocIndex:24},{value:"\uFF1A\u4E3A\u81EA\u5B9A\u4E49\u6837\u5F0F\u63D0\u4F9B\u5E72\u51C0\u7684\u57FA\u7840",paraId:74,tocIndex:24}]},50362:function(t,n,a){a.r(n),a.d(n,{texts:function(){return e}});const e=[]},92874:function(t,n,a){a.r(n),a.d(n,{texts:function(){return e}});const e=[]},46306:function(t,n,a){a.r(n),a.d(n,{texts:function(){return e}});const e=[]},93471:function(t,n,a){a.r(n),a.d(n,{texts:function(){return e}});const e=[]},73495:function(t,n,a){a.r(n),a.d(n,{texts:function(){return e}});const e=[{value:"\u5BF9\u4E8E ",paraId:0,tocIndex:0},{value:"PicGo-electron",paraId:0,tocIndex:0},{value:" \u7528\u6237\uFF0C\u9700\u8981\u5728 VSCode \u4E2D\u914D\u7F6E PicGo \u6269\u5C55\u4F7F\u7528\u76F8\u540C\u7684\u914D\u7F6E\u6587\u4EF6\u8DEF\u5F84\uFF1A",paraId:0,tocIndex:0},{value:"PicGo \u6269\u5C55\u63D0\u4F9B\u4E86\u4FBF\u6377\u7684\u5FEB\u6377\u952E\u64CD\u4F5C\uFF1A",paraId:1,tocIndex:1},{value:"\u4E0A\u4F20\u56FE\u7247",paraId:2,tocIndex:1},{value:"\uFF1A",paraId:2,tocIndex:1},{value:"Ctrl + Alt + U",paraId:2,tocIndex:1},{value:"\uFF08Windows/Linux\uFF09\u6216 ",paraId:2,tocIndex:1},{value:"Cmd + Opt + U",paraId:2,tocIndex:1},{value:"\uFF08macOS\uFF09",paraId:2,tocIndex:1},{value:"\u5176\u4ED6\u64CD\u4F5C\u53EF\u901A\u8FC7\u547D\u4EE4\u9762\u677F\uFF08",paraId:2,tocIndex:1},{value:"Ctrl+Shift+P",paraId:2,tocIndex:1},{value:'\uFF09\u641C\u7D22 "PicGo" \u67E5\u770B',paraId:2,tocIndex:1},{value:"\u66F4\u591A\u8BE6\u7EC6\u4FE1\u606F\uFF0C\u8BF7\u8BBF\u95EE ",paraId:3,tocIndex:1},{value:"vs-picgo \u6269\u5C55\u9875\u9762",paraId:3,tocIndex:1},{value:"\u3002",paraId:3,tocIndex:1},{value:"\u9996\u5148\u786E\u4FDD\u60A8\u62E5\u6709 GitHub \u8D26\u53F7\uFF0C\u7136\u540E\u521B\u5EFA\u4E00\u4E2A\u65B0\u7684\u516C\u5171\u4ED3\u5E93\uFF1A",paraId:4,tocIndex:3},{value:"\u8BF7\u8BB0\u4E0B\u60A8\u8BBE\u7F6E\u7684\u4ED3\u5E93\u540D\u79F0\u3002",paraId:5,tocIndex:3},{value:"\u8BBF\u95EE ",paraId:6,tocIndex:4},{value:"GitHub Token \u8BBE\u7F6E\u9875\u9762",paraId:6,tocIndex:4},{value:"\uFF0C\u70B9\u51FB ",paraId:6,tocIndex:4},{value:"Generate new token",paraId:6,tocIndex:4},{value:"\uFF1A",paraId:6,tocIndex:4},{value:"\u5728\u6743\u9650\u8BBE\u7F6E\u4E2D\uFF0C\u81F3\u5C11\u52FE\u9009 ",paraId:7,tocIndex:4},{value:"repo",paraId:7,tocIndex:4},{value:" \u6743\u9650\uFF0C\u7136\u540E\u6EDA\u52A8\u5230\u9875\u9762\u5E95\u90E8\u70B9\u51FB ",paraId:7,tocIndex:4},{value:"Generate token",paraId:7,tocIndex:4},{value:"\uFF1A",paraId:7,tocIndex:4},{value:"\u91CD\u8981\u63D0\u793A",paraId:8,tocIndex:4},{value:"\uFF1AToken \u751F\u6210\u540E\u53EA\u4F1A\u663E\u793A\u4E00\u6B21\uFF0C\u8BF7\u7ACB\u5373\u590D\u5236\u5E76\u59A5\u5584\u4FDD\u5B58\uFF1A",paraId:8,tocIndex:4},{value:"\u5728 VSCode PicGo \u6269\u5C55\u914D\u7F6E\u4E2D\u586B\u5199\u4EE5\u4E0B\u4FE1\u606F\uFF1A",paraId:9,tocIndex:5},{value:`{
+`,paraId:69,tocIndex:19},{value:"\u7279\u70B9\uFF1A\u6FC0\u8FDB\u7684\u91CD\u7F6E\uFF0C\u9700\u8981\u624B\u52A8\u91CD\u5EFA\u6240\u6709\u6837\u5F0F\u3002",paraId:70,tocIndex:19},{value:"\u7279\u70B9\uFF1A\u4FDD\u7559\u6709\u7528\u7684\u9ED8\u8BA4\u6837\u5F0F\uFF0C\u53EA\u4FEE\u590D\u6D4F\u89C8\u5668\u95F4\u7684\u5DEE\u5F02\u3002",paraId:71,tocIndex:20},{value:"\u6837\u5F0F",paraId:72,tocIndex:22},{value:"\u6D4F\u89C8\u5668\u9ED8\u8BA4\u95EE\u9898",paraId:72,tocIndex:22},{value:"\u91CD\u7F6E\u65B9\u6848",paraId:72,tocIndex:22},{value:"\u91CD\u8981\u6027",paraId:72,tocIndex:22},{value:"\u76D2\u6A21\u578B",paraId:72,tocIndex:22},{value:"content-box",paraId:72,tocIndex:22},{value:" \u5BFC\u81F4\u5BBD\u5EA6\u8BA1\u7B97\u4E0D\u76F4\u89C2",paraId:72,tocIndex:22},{value:"box-sizing: border-box",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"\u884C\u9AD8",paraId:72,tocIndex:22},{value:"1.2 \u592A\u7D27\u51D1",paraId:72,tocIndex:22},{value:"line-height: 1.5",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"body \u8FB9\u8DDD",paraId:72,tocIndex:22},{value:"8px \u5916\u8FB9\u8DDD",paraId:72,tocIndex:22},{value:"margin: 0",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"\u8868\u5355\u5143\u7D20",paraId:72,tocIndex:22},{value:"\u4E0D\u7EE7\u627F\u5B57\u4F53\uFF0C\u6837\u5F0F\u5DEE\u5F02\u5927",paraId:72,tocIndex:22},{value:"font: inherit",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"\u56FE\u7247",paraId:72,tocIndex:22},{value:"inline",paraId:72,tocIndex:22},{value:" \u5BFC\u81F4\u5E95\u90E8\u7A7A\u9699",paraId:72,tocIndex:22},{value:"display: block",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"\u94FE\u63A5",paraId:72,tocIndex:22},{value:"\u84DD\u8272 + \u4E0B\u5212\u7EBF",paraId:72,tocIndex:22},{value:"color: inherit; text-decoration: none",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"\u5217\u8868",paraId:72,tocIndex:22},{value:"\u9879\u76EE\u7B26\u53F7 + 40px \u7F29\u8FDB",paraId:72,tocIndex:22},{value:"list-style: none; padding: 0",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"\u7279\u6B8A\u6587\u672C\u5143\u7D20\uFF08abbr, code, sub/sup\uFF09",paraId:73,tocIndex:23},{value:"\u6D4F\u89C8\u5668\u7279\u5B9A\u524D\u7F00\uFF08-webkit-",paraId:73,tocIndex:23},{value:", -moz-",paraId:73,tocIndex:23},{value:"\uFF09",paraId:73,tocIndex:23},{value:"\u4E0D\u5E38\u7528\u5143\u7D20\uFF08dialog, progress, summary\uFF09",paraId:73,tocIndex:23},{value:"\u4E00\u81F4\u6027",paraId:74,tocIndex:24},{value:"\uFF1A\u6D88\u9664\u6D4F\u89C8\u5668\u4E4B\u95F4\u7684\u5DEE\u5F02",paraId:74,tocIndex:24},{value:"\u53EF\u9884\u6D4B\u6027",paraId:74,tocIndex:24},{value:"\uFF1A\u79FB\u9664\u610F\u5916\u7684\u9ED8\u8BA4\u6837\u5F0F",paraId:74,tocIndex:24},{value:"\u7075\u6D3B\u6027",paraId:74,tocIndex:24},{value:"\uFF1A\u4E3A\u81EA\u5B9A\u4E49\u6837\u5F0F\u63D0\u4F9B\u5E72\u51C0\u7684\u57FA\u7840",paraId:74,tocIndex:24}]},50362:function(t,n,a){a.r(n),a.d(n,{texts:function(){return e}});const e=[]},92874:function(t,n,a){a.r(n),a.d(n,{texts:function(){return e}});const e=[]},85277:function(t,n,a){a.r(n),a.d(n,{texts:function(){return e}});const e=[{value:"\u5728 CSS \u4E2D\uFF0C",paraId:0,tocIndex:1},{value:"\u7EE7\u627F\uFF08Inheritance\uFF09",paraId:0,tocIndex:1},{value:" \u662F\u6307\u5B50\u5143\u7D20\u81EA\u52A8\u83B7\u5F97\u7236\u5143\u7D20\u67D0\u4E9B CSS \u5C5E\u6027\u503C\u7684\u673A\u5236\u3002",paraId:0,tocIndex:1},{value:"\u5173\u952E\u7279\u6027\uFF1A",paraId:1,tocIndex:1},{value:"\u5F53\u5B50\u5143\u7D20",paraId:2,tocIndex:1},{value:"\u6CA1\u6709\u660E\u786E\u8BBE\u7F6E",paraId:2,tocIndex:1},{value:"\u67D0\u4E2A\u5C5E\u6027\u65F6\uFF0C\u4F1A\u81EA\u52A8\u7EE7\u627F\u7236\u5143\u7D20\u8BE5\u5C5E\u6027\u7684",paraId:2,tocIndex:1},{value:"\u8BA1\u7B97\u503C",paraId:2,tocIndex:1},{value:"\u8BA1\u7B97\u503C\uFF1A\u7ECF\u8FC7\u6240\u6709\u6837\u5F0F\u89C4\u5219\uFF08\u6837\u5F0F\u8868\u3001\u5185\u8054\u6837\u5F0F\u7B49\uFF09\u8BA1\u7B97\u540E\u7684\u6700\u7EC8\u503C",paraId:2,tocIndex:1},{value:"\u5E76\u975E\u6240\u6709 CSS \u5C5E\u6027\u90FD\u4F1A\u7EE7\u627F",paraId:2,tocIndex:1},{value:`<div class="parent">
+  <p class="child">\u8FD9\u6BB5\u6587\u5B57\u4F1A\u7EE7\u627F\u7236\u5143\u7D20\u7684\u989C\u8272</p>
+</div>
+`,paraId:3,tocIndex:2},{value:`.parent {
+  color: blue; /* \u7236\u5143\u7D20\u8BBE\u7F6E\u84DD\u8272 */
+}
+
+.child {
+  /* \u672A\u8BBE\u7F6E color\uFF0C\u81EA\u52A8\u7EE7\u627F\u7236\u5143\u7D20\u7684 blue */
+}
+`,paraId:4,tocIndex:2},{value:"\u7ED3\u679C\uFF1A",paraId:5,tocIndex:2},{value:".child",paraId:5,tocIndex:2},{value:" \u7684\u6587\u5B57\u663E\u793A\u4E3A\u84DD\u8272\uFF0C\u5373\u4F7F\u5B83\u81EA\u5DF1\u6CA1\u6709\u8BBE\u7F6E ",paraId:5,tocIndex:2},{value:"color",paraId:5,tocIndex:2},{value:" \u5C5E\u6027\u3002",paraId:5,tocIndex:2},{value:"\u5982\u679C\u6CA1\u6709\u7EE7\u627F\uFF0C\u6211\u4EEC\u9700\u8981\u4E3A\u6BCF\u4E2A\u5143\u7D20\u5355\u72EC\u8BBE\u7F6E\u6837\u5F0F\uFF1A",paraId:6,tocIndex:4},{value:`/* \u274C \u6CA1\u6709\u7EE7\u627F\u7684\u4E16\u754C */
+body {
+  font-family: Arial, sans-serif;
+}
+h1 {
+  font-family: Arial, sans-serif;
+}
+p {
+  font-family: Arial, sans-serif;
+}
+span {
+  font-family: Arial, sans-serif;
+}
+/* \u9700\u8981\u4E3A\u6BCF\u4E2A\u5143\u7D20\u91CD\u590D\u8BBE\u7F6E... */
+
+/* \u2705 \u6709\u7EE7\u627F\u7684\u4E16\u754C */
+body {
+  font-family: Arial, sans-serif;
+}
+/* \u6240\u6709\u5B50\u5143\u7D20\u81EA\u52A8\u7EE7\u627F\uFF0C\u65E0\u9700\u91CD\u590D */
+`,paraId:7,tocIndex:4},{value:"\u7EE7\u627F\u8BA9\u6574\u4E2A\u9875\u9762\u7684\u5B57\u4F53\u3001\u989C\u8272\u7B49\u4FDD\u6301\u7EDF\u4E00\uFF0C\u4FBF\u4E8E\u7EF4\u62A4\uFF1A",paraId:8,tocIndex:5},{value:`body {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+}
+/* \u6240\u6709\u6587\u672C\u5143\u7D20\u81EA\u52A8\u7EE7\u627F\u8FD9\u4E9B\u6837\u5F0F\uFF0C\u4FDD\u8BC1\u4E00\u81F4\u6027 */
+`,paraId:9,tocIndex:5},{value:"\u7EE7\u627F\u53CD\u6620\u4E86 HTML \u7684\u6811\u5F62\u7ED3\u6784\uFF0C\u7236\u5B50\u5173\u7CFB\u5728\u6837\u5F0F\u4E0A\u5F97\u5230\u81EA\u7136\u4F53\u73B0\u3002",paraId:10,tocIndex:6},{value:"\u8BBE\u8BA1\u539F\u5219\uFF1A",paraId:11,tocIndex:8},{value:" \u53EA\u6709",paraId:11,tocIndex:8},{value:"\u4E0D\u5F71\u54CD\u5E03\u5C40",paraId:11,tocIndex:8},{value:"\u7684\u5C5E\u6027\u624D\u4F1A\u9ED8\u8BA4\u7EE7\u627F\u3002",paraId:11,tocIndex:8},{value:`.parent {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: bold;
+  font-variant: small-caps;
+}
+/* \u5B50\u5143\u7D20\u81EA\u52A8\u7EE7\u627F\u6240\u6709\u5B57\u4F53\u5C5E\u6027 */
+`,paraId:12,tocIndex:9},{value:`.parent {
+  color: #333; /* \u2705 \u7EE7\u627F */
+  text-align: center; /* \u2705 \u7EE7\u627F */
+  text-indent: 2em; /* \u2705 \u7EE7\u627F */
+  line-height: 1.5; /* \u2705 \u7EE7\u627F */
+  letter-spacing: 1px; /* \u2705 \u7EE7\u627F */
+  word-spacing: 2px; /* \u2705 \u7EE7\u627F */
+  white-space: nowrap; /* \u2705 \u7EE7\u627F */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* \u2705 \u7EE7\u627F */
+}
+`,paraId:13,tocIndex:10},{value:`ul {
+  list-style: square inside;
+  list-style-type: disc;
+  list-style-position: inside;
+  list-style-image: url('bullet.png');
+}
+/* \u6240\u6709 li \u5B50\u5143\u7D20\u7EE7\u627F\u8FD9\u4E9B\u6837\u5F0F */
+`,paraId:14,tocIndex:11},{value:`.parent {
+  visibility: hidden; /* \u2705 \u7EE7\u627F */
+  cursor: pointer; /* \u2705 \u7EE7\u627F */
+}
+`,paraId:15,tocIndex:12},{value:"\u5E03\u5C40\u76F8\u5173\u5C5E\u6027",paraId:16,tocIndex:13},{value:"\u90FD\u4E0D\u4F1A\u7EE7\u627F\uFF08\u907F\u514D\u5E03\u5C40\u6DF7\u4E71\uFF09\uFF1A",paraId:16,tocIndex:13},{value:`.parent {
+  width: 500px; /* \u274C \u4E0D\u7EE7\u627F */
+  height: 300px; /* \u274C \u4E0D\u7EE7\u627F */
+  margin: 20px; /* \u274C \u4E0D\u7EE7\u627F */
+  padding: 10px; /* \u274C \u4E0D\u7EE7\u627F */
+  border: 1px solid #ccc; /* \u274C \u4E0D\u7EE7\u627F */
+  background: #f0f0f0; /* \u274C \u4E0D\u7EE7\u627F */
+  display: flex; /* \u274C \u4E0D\u7EE7\u627F */
+  position: absolute; /* \u274C \u4E0D\u7EE7\u627F */
+}
+`,paraId:17,tocIndex:13},{value:"\u53EF\u89C6\u5316\u5BF9\u6BD4\u56FE\uFF1A",paraId:18,tocIndex:13},{value:"inherit",paraId:19},{value:"\u663E\u5F0F\u8BA9\u5B50\u5143\u7D20\u7EE7\u627F\u7236\u5143\u7D20\u7684\u5C5E\u6027\u503C\uFF08\u5373\u4F7F\u8BE5\u5C5E\u6027\u9ED8\u8BA4\u4E0D\u7EE7\u627F\uFF09\uFF1A",paraId:20,tocIndex:15},{value:`.parent {
+  border: 2px solid red;
+}
+
+.child {
+  border: inherit; /* \u5F3A\u5236\u7EE7\u627F\u7236\u5143\u7D20\u7684 border */
+}
+`,paraId:21,tocIndex:15},{value:"\u5E94\u7528\u573A\u666F\uFF1A",paraId:22,tocIndex:15},{value:" \u8BA9\u975E\u7EE7\u627F\u5C5E\u6027\u4E5F\u80FD\u7EE7\u627F",paraId:22,tocIndex:15},{value:`.card {
+  padding: 20px;
+}
+
+.card-content {
+  padding: inherit; /* \u7EE7\u627F\u5361\u7247\u7684 padding */
+}
+`,paraId:23,tocIndex:15},{value:"initial",paraId:19},{value:"\u5C06\u5C5E\u6027\u8BBE\u7F6E\u4E3A CSS \u89C4\u8303\u5B9A\u4E49\u7684\u521D\u59CB\u503C\uFF08\u6D4F\u89C8\u5668\u9ED8\u8BA4\u503C\uFF09\uFF1A",paraId:24,tocIndex:16},{value:`.child {
+  color: initial; /* \u91CD\u7F6E\u4E3A\u9ED1\u8272\uFF08color \u7684\u521D\u59CB\u503C\uFF09 */
+  margin: initial; /* \u91CD\u7F6E\u4E3A 0\uFF08margin \u7684\u521D\u59CB\u503C\uFF09 */
+}
+`,paraId:25,tocIndex:16},{value:"\u5E94\u7528\u573A\u666F\uFF1A",paraId:26,tocIndex:16},{value:" \u6E05\u9664\u7EE7\u627F\u6216\u4E4B\u524D\u7684\u6837\u5F0F",paraId:26,tocIndex:16},{value:`.reset-button {
+  all: initial; /* \u91CD\u7F6E\u6240\u6709\u5C5E\u6027\u4E3A\u521D\u59CB\u503C */
+}
+`,paraId:27,tocIndex:16},{value:"unset",paraId:19},{value:"\u5982\u679C\u5C5E\u6027",paraId:28,tocIndex:17},{value:"\u53EF\u7EE7\u627F",paraId:28,tocIndex:17},{value:" \u2192 \u8868\u73B0\u4E3A ",paraId:28,tocIndex:17},{value:"inherit",paraId:28,tocIndex:17},{value:"\uFF08\u7EE7\u627F\u7236\u5143\u7D20\uFF09",paraId:28,tocIndex:17},{value:"\u5982\u679C\u5C5E\u6027",paraId:28,tocIndex:17},{value:"\u4E0D\u53EF\u7EE7\u627F",paraId:28,tocIndex:17},{value:" \u2192 \u8868\u73B0\u4E3A ",paraId:28,tocIndex:17},{value:"initial",paraId:28,tocIndex:17},{value:"\uFF08\u91CD\u7F6E\u4E3A\u521D\u59CB\u503C\uFF09",paraId:28,tocIndex:17},{value:`.parent {
+  color: blue;
+  margin: 20px;
+}
+
+.child {
+  color: unset; /* \u53EF\u7EE7\u627F \u2192 \u7EE7\u627F\u7236\u5143\u7D20\u7684 blue */
+  margin: unset; /* \u4E0D\u53EF\u7EE7\u627F \u2192 \u91CD\u7F6E\u4E3A 0 */
+}
+`,paraId:29,tocIndex:17},{value:"\u5E94\u7528\u573A\u666F\uFF1A",paraId:30,tocIndex:17},{value:" \u6279\u91CF\u6E05\u9664\u6837\u5F0F\u65F6\u5F88\u6709\u7528",paraId:30,tocIndex:17},{value:`.clean-slate {
+  all: unset; /* \u6E05\u9664\u6240\u6709\u6837\u5F0F\uFF0C\u53EF\u7EE7\u627F\u7684\u7EE7\u627F\uFF0C\u4E0D\u53EF\u7EE7\u627F\u7684\u91CD\u7F6E */
+}
+`,paraId:31,tocIndex:17},{value:"revert",paraId:19},{value:"\u6062\u590D\u6D4F\u89C8\u5668\u7684\u9ED8\u8BA4\u6837\u5F0F\uFF08user-agent stylesheet\uFF09\uFF1A",paraId:32,tocIndex:18},{value:`button {
+  all: revert; /* \u56DE\u9000\u5230\u6D4F\u89C8\u5668\u9ED8\u8BA4\u7684\u6309\u94AE\u6837\u5F0F */
+}
+`,paraId:33,tocIndex:18},{value:"\u5173\u952E\u5B57",paraId:34,tocIndex:19},{value:"\u4F5C\u7528",paraId:34,tocIndex:19},{value:"\u793A\u4F8B",paraId:34,tocIndex:19},{value:"inherit",paraId:34,tocIndex:19},{value:"\u7EE7\u627F\u7236\u5143\u7D20\u7684\u503C",paraId:34,tocIndex:19},{value:"border: inherit",paraId:34,tocIndex:19},{value:"initial",paraId:34,tocIndex:19},{value:"\u8BBE\u7F6E\u4E3A CSS \u89C4\u8303\u7684\u521D\u59CB\u503C",paraId:34,tocIndex:19},{value:"color: initial",paraId:34,tocIndex:19},{value:" (\u9ED1\u8272)",paraId:34,tocIndex:19},{value:"unset",paraId:34,tocIndex:19},{value:"\u53EF\u7EE7\u627F\u5C5E\u6027\u7EE7\u627F\uFF0C\u4E0D\u53EF\u7EE7\u627F\u5C5E\u6027\u91CD\u7F6E\u4E3A\u521D\u59CB\u503C",paraId:34,tocIndex:19},{value:"all: unset",paraId:34,tocIndex:19},{value:"revert",paraId:34,tocIndex:19},{value:"\u56DE\u9000\u5230\u6D4F\u89C8\u5668\u9ED8\u8BA4\u6837\u5F0F",paraId:34,tocIndex:19},{value:"button { all: revert }",paraId:34,tocIndex:19},{value:`:root {
+  --spacing: 20px;
+  --primary-color: #3498db;
+}
+
+.parent {
+  margin: var(--spacing);
+  color: var(--primary-color);
+}
+
+.child {
+  margin: var(--spacing); /* \u901A\u8FC7\u53D8\u91CF\u5B9E\u73B0\u7C7B\u4F3C\u7EE7\u627F\u7684\u6548\u679C */
+  color: var(--primary-color);
+}
+`,paraId:35,tocIndex:21},{value:"\u4F18\u70B9\uFF1A",paraId:36,tocIndex:21},{value:" \u7075\u6D3B\u63A7\u5236\uFF0C\u6613\u4E8E\u7EF4\u62A4",paraId:36,tocIndex:21},{value:`* {
+  margin: 0; /* \u5168\u5C40\u91CD\u7F6E margin */
+  padding: 0; /* \u5168\u5C40\u91CD\u7F6E padding */
+  box-sizing: border-box; /* \u7EDF\u4E00\u76D2\u6A21\u578B */
+}
+`,paraId:37,tocIndex:22},{value:`/* \u5728\u6839\u5143\u7D20\u8BBE\u7F6E\u57FA\u7840\u6392\u7248 */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* \u6240\u6709\u5B50\u5143\u7D20\u81EA\u52A8\u7EE7\u627F\uFF0C\u4FDD\u8BC1\u4E00\u81F4\u6027 */
+h1,
+h2,
+h3,
+p,
+li {
+  /* \u81EA\u52A8\u7EE7\u627F font-family, color, line-height */
+}
+
+/* \u53EA\u9700\u8986\u76D6\u7279\u6B8A\u9700\u6C42 */
+h1 {
+  font-size: 2.5rem; /* \u53EA\u6539\u5B57\u53F7 */
+  font-weight: bold; /* \u52A0\u7C97 */
+}
+`,paraId:38,tocIndex:23},{value:"<a>",paraId:19},{value:"color",paraId:19},{value:`<div style="color: red;">
+  <a href="#">\u8FD9\u4E2A\u94FE\u63A5\u4E0D\u662F\u7EA2\u8272</a>
+</div>
+`,paraId:39,tocIndex:25},{value:"\u539F\u56E0\uFF1A",paraId:40,tocIndex:25},{value:" \u6D4F\u89C8\u5668\u7684\u9ED8\u8BA4\u6837\u5F0F\u8868\uFF08user-agent stylesheet\uFF09\u4E3A ",paraId:40,tocIndex:25},{value:"<a>",paraId:40,tocIndex:25},{value:" \u8BBE\u7F6E\u4E86 ",paraId:40,tocIndex:25},{value:"color",paraId:40,tocIndex:25},{value:"\uFF0C\u4F18\u5148\u7EA7\u9AD8\u4E8E\u7EE7\u627F\u3002",paraId:40,tocIndex:25},{value:"\u89E3\u51B3\uFF1A",paraId:41,tocIndex:25},{value:`a {
+  color: inherit; /* \u5F3A\u5236\u7EE7\u627F\u7236\u5143\u7D20\u989C\u8272 */
+}
+`,paraId:42,tocIndex:25},{value:"line-height",paraId:19},{value:`.parent {
+  font-size: 20px;
+  line-height: 1.5; /* \u65E0\u5355\u4F4D\u6570\u503C */
+}
+
+.child {
+  font-size: 16px;
+  /* line-height \u7EE7\u627F\u7684\u662F 1.5\uFF08\u6570\u503C\uFF09\uFF0C\u800C\u975E 30px\uFF08\u8BA1\u7B97\u503C\uFF09 */
+  /* \u56E0\u6B64 .child \u7684 line-height = 16px \xD7 1.5 = 24px */
+}
+`,paraId:43,tocIndex:26},{value:"\u6700\u4F73\u5B9E\u8DF5\uFF1A",paraId:44,tocIndex:26},{value:" \u4F7F\u7528\u65E0\u5355\u4F4D\u6570\u503C\u8BBE\u7F6E ",paraId:44,tocIndex:26},{value:"line-height",paraId:44,tocIndex:26},{value:"\uFF0C\u4FDD\u8BC1\u5B50\u5143\u7D20\u7684\u884C\u9AD8\u4E0E\u81EA\u8EAB\u5B57\u53F7\u6210\u6BD4\u4F8B\u3002",paraId:44,tocIndex:26},{value:`.child {
+  color: initial; /* \u65B9\u6CD51\uFF1A\u91CD\u7F6E\u4E3A\u521D\u59CB\u503C */
+  color: #000; /* \u65B9\u6CD52\uFF1A\u663E\u5F0F\u8BBE\u7F6E\u65B0\u503C */
+}
+`,paraId:45,tocIndex:27},{value:"\u5B57\u4F53\u6587\u672C\u5217\u8868\uFF0C\u5149\u6807\u53EF\u89C1\u6027\uFF0C\u8FD9\u4E9B\u5C5E\u6027\u53EF\u7EE7\u627F",paraId:46,tocIndex:29},{value:"\u76D2\u6A21\u578B\u80CC\u666F\u8FB9\u6846\uFF0C\u5B9A\u4F4D\u663E\u793A\u4E0D\u7EE7\u627F",paraId:46,tocIndex:29},{value:"\u7EE7\u627F\u662F\u4EC0\u4E48\uFF1A",paraId:47,tocIndex:30},{value:" \u5B50\u5143\u7D20\u81EA\u52A8\u83B7\u5F97\u7236\u5143\u7D20\u67D0\u4E9B\u5C5E\u6027\u7684\u8BA1\u7B97\u503C",paraId:47,tocIndex:30},{value:"\u4E3A\u4EC0\u4E48\u7EE7\u627F\uFF1A",paraId:47,tocIndex:30},{value:" \u51CF\u5C11\u4EE3\u7801\u3001\u4FDD\u6301\u4E00\u81F4\u6027\u3001\u7B26\u5408\u6587\u6863\u7ED3\u6784",paraId:47,tocIndex:30},{value:"\u54EA\u4E9B\u53EF\u7EE7\u627F\uFF1A",paraId:47,tocIndex:30},{value:" \u5B57\u4F53\u3001\u6587\u672C\u3001\u5217\u8868\u3001",paraId:47,tocIndex:30},{value:"visibility",paraId:47,tocIndex:30},{value:"\u3001",paraId:47,tocIndex:30},{value:"cursor",paraId:47,tocIndex:30},{value:"\u54EA\u4E9B\u4E0D\u7EE7\u627F\uFF1A",paraId:47,tocIndex:30},{value:" \u5E03\u5C40\u3001\u76D2\u6A21\u578B\u3001\u80CC\u666F\u3001\u8FB9\u6846\u3001\u5B9A\u4F4D",paraId:47,tocIndex:30},{value:"\u5173\u952E\u5B57",paraId:48,tocIndex:31},{value:"\u6548\u679C",paraId:48,tocIndex:31},{value:"\u7528\u9014",paraId:48,tocIndex:31},{value:"inherit",paraId:48,tocIndex:31},{value:"\u5F3A\u5236\u7EE7\u627F\u7236\u5143\u7D20",paraId:48,tocIndex:31},{value:"\u8BA9\u975E\u7EE7\u627F\u5C5E\u6027\u7EE7\u627F",paraId:48,tocIndex:31},{value:"initial",paraId:48,tocIndex:31},{value:"\u91CD\u7F6E\u4E3A CSS \u521D\u59CB\u503C",paraId:48,tocIndex:31},{value:"\u6E05\u9664\u6837\u5F0F",paraId:48,tocIndex:31},{value:"unset",paraId:48,tocIndex:31},{value:"\u667A\u80FD\u91CD\u7F6E\uFF08\u7EE7\u627F/\u521D\u59CB\uFF09",paraId:48,tocIndex:31},{value:"\u6279\u91CF\u6E05\u7406",paraId:48,tocIndex:31},{value:"revert",paraId:48,tocIndex:31},{value:"\u56DE\u9000\u6D4F\u89C8\u5668\u9ED8\u8BA4\u6837\u5F0F",paraId:48,tocIndex:31},{value:"\u6062\u590D\u539F\u751F\u6837\u5F0F",paraId:48,tocIndex:31},{value:"\u2705 \u5728 ",paraId:49,tocIndex:32},{value:"body",paraId:49,tocIndex:32},{value:" \u8BBE\u7F6E\u5168\u5C40\u5B57\u4F53\u3001\u989C\u8272\u3001\u884C\u9AD8\uFF0C\u5229\u7528\u7EE7\u627F\u7EDF\u4E00\u6837\u5F0F",paraId:49,tocIndex:32},{value:"\u2705 \u4F7F\u7528\u65E0\u5355\u4F4D\u6570\u503C\u8BBE\u7F6E ",paraId:49,tocIndex:32},{value:"line-height",paraId:49,tocIndex:32},{value:"\u2705 \u5FC5\u8981\u65F6\u4F7F\u7528 ",paraId:49,tocIndex:32},{value:"inherit",paraId:49,tocIndex:32},{value:" \u5F3A\u5236\u7EE7\u627F",paraId:49,tocIndex:32},{value:"\u274C \u907F\u514D\u5728\u6DF1\u5C42\u5D4C\u5957\u5143\u7D20\u4E0A\u9891\u7E41\u8986\u76D6\u7EE7\u627F\u5C5E\u6027",paraId:49,tocIndex:32},{value:"MDN - \u7EE7\u627F",paraId:50,tocIndex:33},{value:"MDN - \u5C42\u53E0\u4E0E\u7EE7\u627F",paraId:50,tocIndex:33},{value:"CSS \u89C4\u8303 - \u7EE7\u627F",paraId:50,tocIndex:33}]},93471:function(t,n,a){a.r(n),a.d(n,{texts:function(){return e}});const e=[]},73495:function(t,n,a){a.r(n),a.d(n,{texts:function(){return e}});const e=[{value:"\u5BF9\u4E8E ",paraId:0,tocIndex:0},{value:"PicGo-electron",paraId:0,tocIndex:0},{value:" \u7528\u6237\uFF0C\u9700\u8981\u5728 VSCode \u4E2D\u914D\u7F6E PicGo \u6269\u5C55\u4F7F\u7528\u76F8\u540C\u7684\u914D\u7F6E\u6587\u4EF6\u8DEF\u5F84\uFF1A",paraId:0,tocIndex:0},{value:"PicGo \u6269\u5C55\u63D0\u4F9B\u4E86\u4FBF\u6377\u7684\u5FEB\u6377\u952E\u64CD\u4F5C\uFF1A",paraId:1,tocIndex:1},{value:"\u4E0A\u4F20\u56FE\u7247",paraId:2,tocIndex:1},{value:"\uFF1A",paraId:2,tocIndex:1},{value:"Ctrl + Alt + U",paraId:2,tocIndex:1},{value:"\uFF08Windows/Linux\uFF09\u6216 ",paraId:2,tocIndex:1},{value:"Cmd + Opt + U",paraId:2,tocIndex:1},{value:"\uFF08macOS\uFF09",paraId:2,tocIndex:1},{value:"\u5176\u4ED6\u64CD\u4F5C\u53EF\u901A\u8FC7\u547D\u4EE4\u9762\u677F\uFF08",paraId:2,tocIndex:1},{value:"Ctrl+Shift+P",paraId:2,tocIndex:1},{value:'\uFF09\u641C\u7D22 "PicGo" \u67E5\u770B',paraId:2,tocIndex:1},{value:"\u66F4\u591A\u8BE6\u7EC6\u4FE1\u606F\uFF0C\u8BF7\u8BBF\u95EE ",paraId:3,tocIndex:1},{value:"vs-picgo \u6269\u5C55\u9875\u9762",paraId:3,tocIndex:1},{value:"\u3002",paraId:3,tocIndex:1},{value:"\u9996\u5148\u786E\u4FDD\u60A8\u62E5\u6709 GitHub \u8D26\u53F7\uFF0C\u7136\u540E\u521B\u5EFA\u4E00\u4E2A\u65B0\u7684\u516C\u5171\u4ED3\u5E93\uFF1A",paraId:4,tocIndex:3},{value:"\u8BF7\u8BB0\u4E0B\u60A8\u8BBE\u7F6E\u7684\u4ED3\u5E93\u540D\u79F0\u3002",paraId:5,tocIndex:3},{value:"\u8BBF\u95EE ",paraId:6,tocIndex:4},{value:"GitHub Token \u8BBE\u7F6E\u9875\u9762",paraId:6,tocIndex:4},{value:"\uFF0C\u70B9\u51FB ",paraId:6,tocIndex:4},{value:"Generate new token",paraId:6,tocIndex:4},{value:"\uFF1A",paraId:6,tocIndex:4},{value:"\u5728\u6743\u9650\u8BBE\u7F6E\u4E2D\uFF0C\u81F3\u5C11\u52FE\u9009 ",paraId:7,tocIndex:4},{value:"repo",paraId:7,tocIndex:4},{value:" \u6743\u9650\uFF0C\u7136\u540E\u6EDA\u52A8\u5230\u9875\u9762\u5E95\u90E8\u70B9\u51FB ",paraId:7,tocIndex:4},{value:"Generate token",paraId:7,tocIndex:4},{value:"\uFF1A",paraId:7,tocIndex:4},{value:"\u91CD\u8981\u63D0\u793A",paraId:8,tocIndex:4},{value:"\uFF1AToken \u751F\u6210\u540E\u53EA\u4F1A\u663E\u793A\u4E00\u6B21\uFF0C\u8BF7\u7ACB\u5373\u590D\u5236\u5E76\u59A5\u5584\u4FDD\u5B58\uFF1A",paraId:8,tocIndex:4},{value:"\u5728 VSCode PicGo \u6269\u5C55\u914D\u7F6E\u4E2D\u586B\u5199\u4EE5\u4E0B\u4FE1\u606F\uFF1A",paraId:9,tocIndex:5},{value:`{
   "repo": "\u7528\u6237\u540D/\u4ED3\u5E93\u540D", // \u4F8B\u5982\uFF1Achuenwei0129/my-picgo-repo
   "token": "\u60A8\u7684GitHubToken", // \u4E0A\u4E00\u6B65\u751F\u6210\u7684 token
   "path": "img/", // \u56FE\u7247\u5B58\u50A8\u8DEF\u5F84\uFF08\u53EF\u9009\uFF09
