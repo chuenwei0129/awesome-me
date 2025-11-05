@@ -63,4 +63,110 @@
   padding: 10px 20px;
   /* \u53EF\u4EE5\u8BBE\u7F6E\u5BBD\u9AD8\uFF0C\u540C\u65F6\u4FDD\u6301\u5728\u540C\u4E00\u884C */
 }
-`,paraId:62,tocIndex:21},{value:"\u5E94\u7528\u573A\u666F\uFF1A",paraId:63,tocIndex:21},{value:"\u5BFC\u822A\u6309\u94AE",paraId:64,tocIndex:21},{value:"\u6807\u7B7E\uFF08tag\uFF09",paraId:64,tocIndex:21},{value:"\u9700\u8981\u8BBE\u7F6E\u5BBD\u9AD8\u4F46\u4E0D\u60F3\u72EC\u5360\u4E00\u884C\u7684\u5143\u7D20",paraId:64,tocIndex:21},{value:"\u7279\u6027",paraId:65,tocIndex:22},{value:"block",paraId:65,tocIndex:22},{value:"inline",paraId:65,tocIndex:22},{value:"inline-block",paraId:65,tocIndex:22},{value:"\u6362\u884C\u884C\u4E3A",paraId:65,tocIndex:22},{value:"\u72EC\u5360\u4E00\u884C",paraId:65,tocIndex:22},{value:"\u4E0D\u6362\u884C",paraId:65,tocIndex:22},{value:"\u4E0D\u6362\u884C",paraId:65,tocIndex:22},{value:"width/height",paraId:65,tocIndex:22},{value:"\u2705 \u751F\u6548",paraId:65,tocIndex:22},{value:"\u274C \u4E0D\u751F\u6548",paraId:65,tocIndex:22},{value:"\u2705 \u751F\u6548",paraId:65,tocIndex:22},{value:"\u6C34\u5E73 padding/margin",paraId:65,tocIndex:22},{value:"\u2705 \u63A8\u5F00\u5176\u4ED6\u5143\u7D20",paraId:65,tocIndex:22},{value:"\u2705 \u63A8\u5F00\u5176\u4ED6\u5143\u7D20",paraId:65,tocIndex:22},{value:"\u2705 \u63A8\u5F00\u5176\u4ED6\u5143\u7D20",paraId:65,tocIndex:22},{value:"\u5782\u76F4 padding/margin",paraId:65,tocIndex:22},{value:"\u2705 \u63A8\u5F00\u5176\u4ED6\u5143\u7D20",paraId:65,tocIndex:22},{value:"\u274C \u4E0D\u63A8\u5F00\u5176\u4ED6\u5143\u7D20",paraId:65,tocIndex:22},{value:"\u2705 \u63A8\u5F00\u5176\u4ED6\u5143\u7D20",paraId:65,tocIndex:22},{value:"\u9ED8\u8BA4\u5BBD\u5EA6",paraId:65,tocIndex:22},{value:"100%\uFF08\u586B\u5145\u7236\u5BB9\u5668\uFF09",paraId:65,tocIndex:22},{value:"max-content\uFF08\u7531\u5185\u5BB9\u51B3\u5B9A\uFF09",paraId:65,tocIndex:22},{value:"max-content\uFF08\u7531\u5185\u5BB9\u51B3\u5B9A\uFF09",paraId:65,tocIndex:22}]}}]);
+`,paraId:62,tocIndex:21},{value:"\u5E94\u7528\u573A\u666F\uFF1A",paraId:63,tocIndex:21},{value:"\u5BFC\u822A\u6309\u94AE",paraId:64,tocIndex:21},{value:"\u6807\u7B7E\uFF08tag\uFF09",paraId:64,tocIndex:21},{value:"\u9700\u8981\u8BBE\u7F6E\u5BBD\u9AD8\u4F46\u4E0D\u60F3\u72EC\u5360\u4E00\u884C\u7684\u5143\u7D20",paraId:64,tocIndex:21},{value:"\u7279\u6027",paraId:65,tocIndex:22},{value:"block",paraId:65,tocIndex:22},{value:"inline",paraId:65,tocIndex:22},{value:"inline-block",paraId:65,tocIndex:22},{value:"\u6362\u884C\u884C\u4E3A",paraId:65,tocIndex:22},{value:"\u72EC\u5360\u4E00\u884C",paraId:65,tocIndex:22},{value:"\u4E0D\u6362\u884C",paraId:65,tocIndex:22},{value:"\u4E0D\u6362\u884C",paraId:65,tocIndex:22},{value:"width/height",paraId:65,tocIndex:22},{value:"\u2705 \u751F\u6548",paraId:65,tocIndex:22},{value:"\u274C \u4E0D\u751F\u6548",paraId:65,tocIndex:22},{value:"\u2705 \u751F\u6548",paraId:65,tocIndex:22},{value:"\u6C34\u5E73 padding/margin",paraId:65,tocIndex:22},{value:"\u2705 \u63A8\u5F00\u5176\u4ED6\u5143\u7D20",paraId:65,tocIndex:22},{value:"\u2705 \u63A8\u5F00\u5176\u4ED6\u5143\u7D20",paraId:65,tocIndex:22},{value:"\u2705 \u63A8\u5F00\u5176\u4ED6\u5143\u7D20",paraId:65,tocIndex:22},{value:"\u5782\u76F4 padding/margin",paraId:65,tocIndex:22},{value:"\u2705 \u63A8\u5F00\u5176\u4ED6\u5143\u7D20",paraId:65,tocIndex:22},{value:"\u274C \u4E0D\u63A8\u5F00\u5176\u4ED6\u5143\u7D20",paraId:65,tocIndex:22},{value:"\u2705 \u63A8\u5F00\u5176\u4ED6\u5143\u7D20",paraId:65,tocIndex:22},{value:"\u9ED8\u8BA4\u5BBD\u5EA6",paraId:65,tocIndex:22},{value:"100%\uFF08\u586B\u5145\u7236\u5BB9\u5668\uFF09",paraId:65,tocIndex:22},{value:"max-content\uFF08\u7531\u5185\u5BB9\u51B3\u5B9A\uFF09",paraId:65,tocIndex:22},{value:"max-content\uFF08\u7531\u5185\u5BB9\u51B3\u5B9A\uFF09",paraId:65,tocIndex:22},{value:"padding",paraId:66,tocIndex:23},{value:" \u4E0D\u80FD\u4E3A\u8D1F\u503C\uFF0C",paraId:66,tocIndex:23},{value:"margin",paraId:66,tocIndex:23},{value:" \u53EF\u4EE5\u4E3A\u8D1F\u503C\u3002",paraId:66,tocIndex:23},{value:"margin-top",paraId:66,tocIndex:23},{value:" \u4E3A\u8D1F\u503C\u4E0D\u4F1A\u589E\u52A0\u9AD8\u5EA6\uFF0C\u53EA\u4F1A\u4EA7\u751F\u5411\u4E0A\u4F4D\u79FB\u3002",paraId:66,tocIndex:23},{value:"margin-bottom",paraId:66,tocIndex:23},{value:" \u4E3A\u8D1F\u503C\u4E0D\u4F1A\u4EA7\u751F\u4F4D\u79FB\uFF0C\u4F1A\u51CF\u5C11\u81EA\u8EAB\u7684\u4F9B CSS \u8BFB\u53D6\u7684\u9AD8\u5EA6\u3002",paraId:66,tocIndex:23},{value:"\u5229\u7528 ",paraId:67,tocIndex:23},{value:"margin-bottom",paraId:67,tocIndex:23},{value:" \u4E3A\u8D1F\u503C\u4F1A\u51CF\u5C11 CSS \u8BFB\u53D6\u5143\u7D20\u9AD8\u5EA6\u7684\u7279\u6027\uFF0C\u52A0\u4E0A ",paraId:67,tocIndex:23},{value:"padding-bottom",paraId:67,tocIndex:23},{value:" \u548C ",paraId:67,tocIndex:23},{value:"overflow:hidden",paraId:67,tocIndex:23},{value:"\uFF0C\u5C31\u80FD\u5B9E\u73B0\u4E00\u4E2A\u672A\u77E5\u9AD8\u5EA6\u7684\u591A\u5217\u7B49\u9AD8\u5E03\u5C40\u3002",paraId:67,tocIndex:23},{value:"\u8D1F ",paraId:68,tocIndex:23},{value:"margin",paraId:68,tocIndex:23},{value:" \u4F1A\u6539\u53D8\u6D6E\u52A8\u5143\u7D20\u7684\u663E\u793A\u4F4D\u7F6E",paraId:68,tocIndex:23},{value:"\uFF0C\u5723\u676F\u5E03\u5C40\u3001\u53CC\u98DE\u7FFC\u5E03\u5C40\u4EC0\u4E48\u7684\uFF0C\u90FD\u662F\u5229\u7528\u8FD9\u4E2A\u539F\u7406\u5B9E\u73B0\u7684\u3002",paraId:68,tocIndex:23},{value:"\u5F53\u5143\u7D20\u4E0D\u5B58\u5728 ",paraId:69,tocIndex:24},{value:"width",paraId:69,tocIndex:24},{value:" \u5C5E\u6027\u6216\u8005 ",paraId:69,tocIndex:24},{value:"width\uFF1Aauto",paraId:69,tocIndex:24},{value:" \u7684\u65F6\u5019\uFF0C",paraId:69,tocIndex:24},{value:"margin-left",paraId:69,tocIndex:24},{value:" \u548C ",paraId:69,tocIndex:24},{value:"margin-right",paraId:69,tocIndex:24},{value:" \u53EF\u4EE5\u589E\u52A0\u5BBD\u5EA6\u3002",paraId:69,tocIndex:24},{value:"\u5F53\u4F7F\u7528\u767E\u5206\u6570\u65F6\uFF0C\u4F60\u9700\u8981\u6E05\u695A\uFF0C\u5B83\u662F\u4EC0\u4E48\u4E1C\u897F\u7684\u767E\u5206\u6570\u3002\u5BF9\u4E8E\u4E00\u4E2A\u5904\u4E8E\u53E6\u5916\u4E00\u4E2A\u5BB9\u5668\u5F53\u4E2D\u7684\u76D2\u5B50\uFF0C\u5982\u679C\u4F60\u7ED9\u4E88\u4E86\u5B50\u76D2\u5B50\u4E00\u4E2A\u767E\u5206\u6570\u4F5C\u4E3A\u5BBD\u5EA6\uFF0C\u90A3\u4E48\u5B83\u6307\u7684\u662F\u7236\u5BB9\u5668\u5BBD\u5EA6\u7684\u767E\u5206\u6570\u3002\u4F7F\u7528\u767E\u5206\u6BD4\u4F5C\u4E3A\u5143\u7D20\u5916\u8FB9\u8DDD (margin) \u6216\u586B\u5145 (padding) \u7684\u5355\u4F4D\u65F6\uFF0C",paraId:70,tocIndex:24},{value:"\u503C\u662F\u4EE5\u5305\u542B\u5757\u7684\u5185\u8054\u5C3A\u5BF8\u8FDB\u884C\u8BA1\u7B97\u7684\uFF0C\u4E5F\u5C31\u662F\u5143\u7D20\u7684\u6C34\u5E73\u5BBD\u5EA6",paraId:70,tocIndex:24},{value:"\u3002",paraId:70,tocIndex:24},{value:`/* \u8D1F margin-left/top\uFF1A\u5143\u7D20\u5411\u5DE6/\u4E0A\u79FB\u52A8 */
+.box {
+  margin-left: -20px; /* \u5143\u7D20\u5411\u5DE6\u79FB\u52A820px\uFF0C\u53EF\u80FD\u8986\u76D6\u5DE6\u4FA7\u5143\u7D20 */
+  margin-top: -20px; /* \u5143\u7D20\u5411\u4E0A\u79FB\u52A820px\uFF0C\u53EF\u80FD\u8986\u76D6\u4E0A\u65B9\u5143\u7D20 */
+}
+
+/* \u8D1F margin-right/bottom\uFF1A\u5F71\u54CD\u540E\u7EED\u5143\u7D20\u7684\u4F4D\u7F6E */
+.box {
+  margin-right: -20px; /* \u53F3\u4FA7\u5143\u7D20\u4F1A\u5411\u5DE6\u79FB\u52A820px */
+  margin-bottom: -20px; /* \u4E0B\u65B9\u5143\u7D20\u4F1A\u5411\u4E0A\u79FB\u52A820px */
+}
+`,paraId:71,tocIndex:25},{value:"\u539F\u7406",paraId:72,tocIndex:25},{value:"\uFF1A",paraId:72,tocIndex:25},{value:"\u5DE6/\u4E0A\u8D1F\u503C",paraId:73,tocIndex:25},{value:"\uFF1A\u6539\u53D8\u5143\u7D20\u81EA\u8EAB\u7684\u53C2\u8003\u4F4D\u7F6E\uFF0C\u8BA9\u5143\u7D20\u4ECE\u539F\u672C\u4F4D\u7F6E\u5411\u5DE6/\u4E0A\u504F\u79FB",paraId:73,tocIndex:25},{value:"\u53F3/\u4E0B\u8D1F\u503C",paraId:73,tocIndex:25},{value:'\uFF1A\u4E0D\u6539\u53D8\u5143\u7D20\u81EA\u8EAB\u4F4D\u7F6E\uFF0C\u800C\u662F"\u6B3A\u9A97"\u6D4F\u89C8\u5668\uFF0C\u8BA9\u6D4F\u89C8\u5668\u8BA4\u4E3A\u8FD9\u4E2A\u5143\u7D20\u5360\u7528\u7684\u7A7A\u95F4\u66F4\u5C0F\uFF0C\u4ECE\u800C\u5F71\u54CD\u540E\u7EED\u5143\u7D20\u7684\u6392\u5217',paraId:73,tocIndex:25},{value:`/* \u5B9E\u73B0\u5143\u7D20\u91CD\u53E0\u6548\u679C */
+.card {
+  margin-left: -30px;
+}
+.card:first-child {
+  margin-left: 0;
+}
+/* \u53EF\u4EE5\u5B9E\u73B0\u7C7B\u4F3C\u6251\u514B\u724C\u5806\u53E0\u7684\u6548\u679C */
+
+/* \u6269\u5C55\u5BB9\u5668\u5BBD\u5EA6 */
+.container {
+  width: auto;
+  margin-left: -15px; /* \u5411\u5DE6\u6269\u5C55 */
+  margin-right: -15px; /* \u5411\u53F3\u6269\u5C55 */
+}
+/* \u5E38\u7528\u4E8E\u62B5\u6D88\u5185\u90E8\u5143\u7D20\u7684 padding\uFF0C\u5B9E\u73B0\u6EE1\u5BBD\u6548\u679C */
+`,paraId:74,tocIndex:26},{value:`/* \u5F53\u5143\u7D20\u662F\u5757\u7EA7\u5143\u7D20\u4E14\u672A\u8BBE\u7F6E width \u6216 width: auto \u65F6 */
+.block {
+  width: auto; /* \u6216\u4E0D\u8BBE\u7F6E width */
+  margin-left: -20px;
+  margin-right: -20px;
+}
+`,paraId:75,tocIndex:27},{value:"\u4E3A\u4EC0\u4E48\u53EF\u4EE5\u589E\u52A0\u5BBD\u5EA6",paraId:76,tocIndex:27},{value:"\uFF1A",paraId:76,tocIndex:27},{value:"\u5757\u7EA7\u5143\u7D20\u9ED8\u8BA4\u5BBD\u5EA6\u8BA1\u7B97\u516C\u5F0F\uFF1A",paraId:77,tocIndex:27},{value:"margin-left + border-left + padding-left + width + padding-right + border-right + margin-right = \u7236\u5BB9\u5668\u5BBD\u5EA6",paraId:77,tocIndex:27},{value:"\u5F53 ",paraId:77,tocIndex:27},{value:"width: auto",paraId:77,tocIndex:27},{value:" \u65F6\uFF0C\u6D4F\u89C8\u5668\u4F1A\u81EA\u52A8\u8BA1\u7B97 width \u6765\u6EE1\u8DB3\u4E0A\u8FF0\u516C\u5F0F",paraId:77,tocIndex:27},{value:"\u8D1F margin \u4F1A\u4F7F\u7B49\u5F0F\u53F3\u4FA7\u51CF\u5C0F\uFF0C\u4ECE\u800C width \u5FC5\u987B\u589E\u5927\u6765\u7EF4\u6301\u5E73\u8861",paraId:77,tocIndex:27},{value:`/* \u76F8\u5BF9\u5B9A\u4F4D\uFF1A\u8D1F margin \u4F9D\u7136\u6709\u6548 */
+.relative {
+  position: relative;
+  margin-top: -10px; /* \u4F1A\u4EA7\u751F\u504F\u79FB\uFF0C\u4E14\u5F71\u54CD\u6587\u6863\u6D41 */
+  top: -10px; /* \u4E5F\u4F1A\u504F\u79FB\uFF0C\u4F46\u4E0D\u5F71\u54CD\u6587\u6863\u6D41 */
+}
+
+/* \u7EDD\u5BF9\u5B9A\u4F4D\uFF1A\u8D1F margin \u57FA\u4E8E\u5B9A\u4F4D\u70B9\u8BA1\u7B97 */
+.absolute {
+  position: absolute;
+  top: 0;
+  margin-top: -10px; /* \u76F8\u5F53\u4E8E top: -10px */
+}
+
+/* \u56FA\u5B9A\u5B9A\u4F4D\uFF1A\u540C\u7EDD\u5BF9\u5B9A\u4F4D */
+.fixed {
+  position: fixed;
+  left: 0;
+  margin-left: -10px; /* \u53EF\u4EE5\u8BA9\u5143\u7D20\u90E8\u5206\u79FB\u51FA\u89C6\u53E3 */
+}
+`,paraId:78,tocIndex:28},{value:`.parent {
+  width: 200px;
+  height: 100px;
+}
+
+.child {
+  /* \u6CE8\u610F\uFF1A\u6240\u6709\u65B9\u5411\u7684\u767E\u5206\u6BD4 margin \u90FD\u57FA\u4E8E\u7236\u5143\u7D20\u7684\u5BBD\u5EA6\uFF01*/
+  margin-top: 10%; /* = 200px \xD7 10% = 20px (\u4E0D\u662F\u57FA\u4E8E\u9AD8\u5EA6!) */
+  margin-bottom: 10%; /* = 200px \xD7 10% = 20px */
+  margin-left: 10%; /* = 200px \xD7 10% = 20px */
+  margin-right: 10%; /* = 200px \xD7 10% = 20px */
+}
+`,paraId:79,tocIndex:29},{value:"\u4E3A\u4EC0\u4E48\u5782\u76F4 margin \u4E5F\u57FA\u4E8E\u5BBD\u5EA6",paraId:80,tocIndex:29},{value:"\uFF1A",paraId:80,tocIndex:29},{value:"CSS \u89C4\u8303\u89C4\u5B9A\uFF0C\u4E3A\u4E86\u4FDD\u6301\u4E00\u81F4\u6027\uFF0C\u6240\u6709\u65B9\u5411\u7684\u767E\u5206\u6BD4 margin/padding \u90FD\u76F8\u5BF9\u4E8E",paraId:81,tocIndex:29},{value:"\u5305\u542B\u5757\u7684\u5BBD\u5EA6",paraId:81,tocIndex:29},{value:"\u8FD9\u6837\u53EF\u4EE5\u786E\u4FDD\u4F7F\u7528\u76F8\u540C\u767E\u5206\u6BD4\u65F6\uFF0C\u80FD\u5F97\u5230\u6B63\u65B9\u5F62\u7684\u5916\u8FB9\u8DDD\u7A7A\u95F4",paraId:81,tocIndex:29},{value:"\u8FD9\u4E2A\u7279\u6027\u5E38\u7528\u4E8E\u5B9E\u73B0",paraId:81,tocIndex:29},{value:"\u56FA\u5B9A\u5BBD\u9AD8\u6BD4",paraId:81,tocIndex:29},{value:"\u7684\u5360\u4F4D\u5143\u7D20",paraId:81,tocIndex:29},{value:`/* \u5229\u7528\u8FD9\u4E2A\u7279\u6027\u5B9E\u73B0 16:9 \u7684\u54CD\u5E94\u5F0F\u5BB9\u5668 */
+.aspect-ratio-box {
+  width: 100%;
+  padding-bottom: 56.25%; /* 9/16 = 0.5625 */
+  position: relative;
+}
+`,paraId:82,tocIndex:29},{value:`/* inline \u5143\u7D20 */
+span {
+  margin-left: 10px; /* \u2713 \u6709\u6548 */
+  margin-right: 10px; /* \u2713 \u6709\u6548 */
+  margin-top: 10px; /* \u2717 \u65E0\u6548 */
+  margin-bottom: 10px; /* \u2717 \u65E0\u6548 */
+}
+
+/* inline-block \u5143\u7D20 */
+.inline-block {
+  display: inline-block;
+  margin-top: 10px; /* \u2713 \u6709\u6548 */
+  margin-bottom: 10px; /* \u2713 \u6709\u6548 */
+}
+`,paraId:83,tocIndex:30},{value:"\u539F\u56E0",paraId:84,tocIndex:30},{value:"\uFF1A",paraId:84,tocIndex:30},{value:"inline \u5143\u7D20\u5728\u5782\u76F4\u65B9\u5411\u4E0A\u4E0D\u5360\u636E\u5757\u7A7A\u95F4\uFF0C\u56E0\u6B64\u5782\u76F4 margin \u4E0D\u751F\u6548",paraId:85,tocIndex:30},{value:"inline-block \u5143\u7D20\u8868\u73B0\u4E3A inline\uFF0C\u4F46\u5185\u90E8\u6309 block \u8BA1\u7B97\uFF0C\u6240\u4EE5\u56DB\u4E2A\u65B9\u5411\u7684 margin \u90FD\u6709\u6548",paraId:85,tocIndex:30},{value:`/* \u6781\u7AEF\u8D1F\u503C */
+.box {
+  width: 100px;
+  margin-left: -150px; /* \u8D85\u8FC7\u81EA\u8EAB\u5BBD\u5EA6\uFF0C\u5143\u7D20\u4F1A\u5B8C\u5168\u79FB\u51FA\u539F\u4F4D\u7F6E */
+}
+
+/* \u4E0E\u6D6E\u52A8\u7ED3\u5408 */
+.float-left {
+  float: left;
+  width: 100px;
+  margin-left: -100%; /* \u79FB\u52A8\u5230\u7236\u5BB9\u5668\u6700\u5DE6\u4FA7\uFF0C\u53CC\u98DE\u7FFC\u5E03\u5C40\u6838\u5FC3 */
+}
+`,paraId:86,tocIndex:31},{value:"\u5B9E\u9645\u5E94\u7528 - \u62B5\u6D88\u5185\u8FB9\u8DDD\u5B9E\u73B0\u901A\u680F\u6548\u679C",paraId:87,tocIndex:31},{value:"\uFF1A",paraId:87,tocIndex:31},{value:`.container {
+  padding: 0 15px;
+}
+
+.full-width-section {
+  margin-left: -15px; /* \u62B5\u6D88\u7236\u5BB9\u5668\u7684\u5DE6 padding */
+  margin-right: -15px; /* \u62B5\u6D88\u7236\u5BB9\u5668\u7684\u53F3 padding */
+  /* \u5B9E\u73B0\u5728\u6709 padding \u7684\u5BB9\u5668\u5185\u7684\u6EE1\u5BBD\u6548\u679C */
+}
+`,paraId:88,tocIndex:31}]}}]);
