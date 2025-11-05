@@ -2,7 +2,7 @@
 group:
   title: CSS
   order: 2
-title: CSS 盒模型完全指南
+title: 盒模型指南
 toc: content
 ---
 
@@ -315,20 +315,6 @@ width | min-width | max-width | height | min-height | max-height
 
 ## margin 负值
 
-- `padding` 不能为负值，`margin` 可以为负值。
-- `margin-top` 为负值不会增加高度，只会产生向上位移。
-- `margin-bottom` 为负值不会产生位移，会减少自身的供 CSS 读取的高度。
-
-**利用 `margin-bottom` 为负值会减少 CSS 读取元素高度的特性，加上 `padding-bottom` 和 `overflow:hidden`，就能实现一个未知高度的多列等高布局。**
-
-**负 `margin` 会改变浮动元素的显示位置**，圣杯布局、双飞翼布局什么的，都是利用这个原理实现的。
-
-## 拓展：关于 margin 的小知识
-
-- 当元素不存在 `width` 属性或者 `width：auto` 的时候，`margin-left` 和 `margin-right` 可以增加宽度。
-
-- 当使用百分数时，你需要清楚，它是什么东西的百分数。对于一个处于另外一个容器当中的盒子，如果你给予了子盒子一个百分数作为宽度，那么它指的是父容器宽度的百分数。使用百分比作为元素外边距 (margin) 或填充 (padding) 的单位时，**值是以包含块的内联尺寸进行计算的，也就是元素的水平宽度**。
-
 ### 负 margin 对不同方向的影响机制
 
 ```css
@@ -444,30 +430,6 @@ width | min-width | max-width | height | min-height | max-height
   position: relative;
 }
 ```
-
-### inline/inline-block 元素的 margin 特性
-
-```css
-/* inline 元素 */
-span {
-  margin-left: 10px; /* ✓ 有效 */
-  margin-right: 10px; /* ✓ 有效 */
-  margin-top: 10px; /* ✗ 无效 */
-  margin-bottom: 10px; /* ✗ 无效 */
-}
-
-/* inline-block 元素 */
-.inline-block {
-  display: inline-block;
-  margin-top: 10px; /* ✓ 有效 */
-  margin-bottom: 10px; /* ✓ 有效 */
-}
-```
-
-**原因**：
-
-- inline 元素在垂直方向上不占据块空间，因此垂直 margin 不生效
-- inline-block 元素表现为 inline，但内部按 block 计算，所以四个方向的 margin 都有效
 
 ### 负 margin 的边界情况
 

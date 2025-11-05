@@ -2,7 +2,7 @@
 group:
   title: CSS
   order: 2
-title: CSS 选择器指南
+title: CSS 选择器
 toc: content
 ---
 
