@@ -1,4 +1,10 @@
-# CSS 像素与设备像素完全指南
+---
+group:
+  title: CSS
+  order: 2
+title: 像素与设备
+toc: content
+---
 
 ## 是什么
 
@@ -7,6 +13,7 @@
 CSS 像素是一个**抽象的相对长度单位**，在 CSS 中以 `px` 为后缀。它是 Web 开发中的逻辑单位，不直接对应物理像素。
 
 **核心特点：**
+
 - 适用于 web 编程，是前端开发中最常用的长度单位
 - 在不同设备和环境中，1px 代表的物理尺寸可能不同
 - 会受到页面缩放、设备像素比（DPR）、像素密度（PPI）的影响
@@ -17,6 +24,7 @@ CSS 像素是一个**抽象的相对长度单位**，在 CSS 中以 `px` 为后�
 设备像素是设备屏幕的**最小物理显示单元**，从设备出厂时就固定不变。
 
 **核心特点：**
+
 - 屏幕上实际的物理像素点（只是一个计数单位，不同于印刷的 pt 单位）
 - 不一定是小正方形，只是能显示色彩的"点"
 - 由红、绿、蓝子像素组成，通过不同亮度混合出各种颜色
@@ -27,6 +35,7 @@ CSS 像素是一个**抽象的相对长度单位**，在 CSS 中以 `px` 为后�
 设备独立像素是一个**与设备无关的逻辑像素单位**，是程序可以控制的虚拟像素。
 
 **核心特点：**
+
 - 是操作系统提供的抽象单位，CSS 像素在无缩放时对应设备独立像素
 - 在 JavaScript 中可通过 `window.screen.width` 和 `window.screen.height` 查看
 - 一个设备独立像素可能对应 1 个或多个物理像素
@@ -37,16 +46,19 @@ CSS 像素是一个**抽象的相对长度单位**，在 CSS 中以 `px` 为后�
 设备像素比表示**设备独立像素到设备像素的转换比例**。
 
 **计算公式：**
+
 ```
 DPR = 设备像素 / 设备独立像素
 ```
 
 **在 JavaScript 中获取：**
+
 ```javascript
-window.devicePixelRatio
+window.devicePixelRatio;
 ```
 
 **显示关系：**
+
 - 当 DPR = 1 时，1 个 CSS 像素 = 1×1 个设备像素
 - 当 DPR = 2 时，1 个 CSS 像素 = 2×2 个设备像素（4 个）
 - 当 DPR = 3 时，1 个 CSS 像素 = 3×3 个设备像素（9 个）
@@ -56,11 +68,13 @@ window.devicePixelRatio
 PPI 表示**每英寸包含的像素点数目**，是屏幕的像素密度指标。
 
 **计算公式：**
+
 ```
 PPI = √(水平像素² + 垂直像素²) / 屏幕对角线英寸数
 ```
 
 **核心特点：**
+
 - 数值越高，屏幕显示越清晰细腻
 - 标准屏幕密度为 160 PPI
 - Retina 屏幕的 PPI 通常在 300 以上
@@ -78,12 +92,14 @@ PPI = √(水平像素² + 垂直像素²) / 屏幕对角线英寸数
 ### 实际案例：iPhone 的演进
 
 **问题场景：**
+
 - iPhone 3GS：屏幕尺寸 3.5 寸，分辨率 320×480（320 个物理像素宽度）
 - iPhone 4/4s：屏幕尺寸 3.5 寸，分辨率 640×960（640 个物理像素宽度）
 
 **如果按物理像素布局会怎样？**
 
 假设我们为 iPhone 3GS 设计了一个宽度为 320 物理像素的页面：
+
 - 在 iPhone 3GS 上显示正常（铺满屏幕）
 - 在 iPhone 4/4s 上只占一半宽度（剩余一半空白）
 
@@ -101,6 +117,7 @@ PPI = √(水平像素² + 垂直像素²) / 屏幕对角线英寸数
 ### 为什么高 DPR 屏幕更清晰？
 
 当 DPR = 2 时：
+
 - 1 个 CSS 像素占用 2×2 = 4 个物理像素
 - 可以显示更多细节和更平滑的边缘
 - 图像和文字看起来更锐利
@@ -130,11 +147,13 @@ console.log(`物理像素: ${physicalWidth}×${physicalHeight}`);
 ### 页面缩放对像素的影响
 
 **放大页面（如 200%）：**
+
 - 原来 1px 的元素变成 2px
 - 原来需要 320px 填满的宽度现在只需 160px
 - 元素占据更多的物理像素，显示更大
 
 **缩小页面（如 50%）：**
+
 - 原来 1px 的元素变成 0.5px
 - 原来需要 320px 填满的宽度现在需要 640px
 - 元素占据更少的物理像素，显示更小
@@ -142,27 +161,35 @@ console.log(`物理像素: ${physicalWidth}×${physicalHeight}`);
 ### 不同设备的像素对应关系
 
 **普通屏幕（DPR = 1）：**
+
 ```
 1 CSS 像素 = 1 设备独立像素 = 1 设备像素
 ```
+
 示例：普通 PC 显示器、旧款手机
 
 **Retina / 高清屏（DPR = 2）：**
+
 ```
 1 CSS 像素 = 1 设备独立像素 = 2×2 设备像素（4 个）
 ```
+
 示例：MacBook Pro Retina、iPhone 6/7/8、大部分 Android 旗舰机
 
 **超高清屏（DPR = 3）：**
+
 ```
 1 CSS 像素 = 1 设备独立像素 = 3×3 设备像素（9 个）
 ```
+
 示例：iPhone 12/13/14 Pro、部分 Android 旗舰机
 
 **顶级屏幕（DPR = 4）：**
+
 ```
 1 CSS 像素 = 1 设备独立像素 = 4×4 设备像素（16 个）
 ```
+
 示例：部分高端 Android 手机
 
 ### 实际应用场景
@@ -170,6 +197,7 @@ console.log(`物理像素: ${physicalWidth}×${physicalHeight}`);
 #### 1. 适配 Retina 屏幕图片
 
 **方案一：CSS 媒体查询**
+
 ```css
 /* 普通屏幕使用 1x 图 */
 .logo {
@@ -179,8 +207,7 @@ console.log(`物理像素: ${physicalWidth}×${physicalHeight}`);
 }
 
 /* Retina 屏幕使用 2x 图 */
-@media (-webkit-min-device-pixel-ratio: 2),
-       (min-resolution: 192dpi) {
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .logo {
     background-image: url('logo@2x.png'); /* 200×200 */
     background-size: 100px 100px;
@@ -188,8 +215,7 @@ console.log(`物理像素: ${physicalWidth}×${physicalHeight}`);
 }
 
 /* 超高清屏幕使用 3x 图 */
-@media (-webkit-min-device-pixel-ratio: 3),
-       (min-resolution: 288dpi) {
+@media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
   .logo {
     background-image: url('logo@3x.png'); /* 300×300 */
     background-size: 100px 100px;
@@ -198,6 +224,7 @@ console.log(`物理像素: ${physicalWidth}×${physicalHeight}`);
 ```
 
 **方案二：HTML srcset 属性（推荐）**
+
 ```html
 <!-- 浏览器会根据 DPR 自动选择合适的图片 -->
 <img
@@ -211,9 +238,7 @@ console.log(`物理像素: ${physicalWidth}×${physicalHeight}`);
 <!-- 或使用 w 描述符，浏览器根据视口宽度和 DPR 选择 -->
 <img
   src="photo.jpg"
-  srcset="photo-320w.jpg 320w,
-          photo-640w.jpg 640w,
-          photo-1280w.jpg 1280w"
+  srcset="photo-320w.jpg 320w, photo-640w.jpg 640w, photo-1280w.jpg 1280w"
   sizes="(max-width: 320px) 280px,
          (max-width: 640px) 600px,
          1200px"
@@ -222,6 +247,7 @@ console.log(`物理像素: ${physicalWidth}×${physicalHeight}`);
 ```
 
 **方案三：JavaScript 动态加载**
+
 ```javascript
 const dpr = window.devicePixelRatio || 1;
 const img = new Image();
@@ -240,6 +266,7 @@ if (dpr >= 3) {
 在 DPR = 2 的设备上，CSS 的 1px 会占用 2 个物理像素，看起来较粗。
 
 **方案一：transform 缩放（推荐）**
+
 ```css
 /* 使用伪元素 + transform 缩放 */
 .thin-border {
@@ -266,12 +293,17 @@ if (dpr >= 3) {
 ```
 
 **方案二：viewport 缩放**
+
 ```html
 <!-- 整体缩放方案，适合整个页面都需要精确像素的场景 -->
-<meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5">
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5"
+/>
 ```
 
 **方案三：box-shadow 模拟**
+
 ```css
 /* 利用 box-shadow 不支持小数的特点 */
 .thin-border {
@@ -280,14 +312,17 @@ if (dpr >= 3) {
 ```
 
 **方案四：SVG 方案**
+
 ```css
 .thin-border {
   border: none;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='1'%3E%3Cline x1='0' y1='0' x2='100%25' y2='0' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E") bottom repeat-x;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='1'%3E%3Cline x1='0' y1='0' x2='100%25' y2='0' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E")
+    bottom repeat-x;
 }
 ```
 
 **方案五：linear-gradient**
+
 ```css
 .thin-border {
   background-image: linear-gradient(0deg, #000 50%, transparent 50%);
@@ -335,16 +370,21 @@ viewport 是移动端开发的关键，直接影响页面渲染。
 
 ```html
 <!-- 标准移动端 viewport 设置 -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+/>
 ```
 
 **参数说明：**
+
 - `width=device-width`：宽度等于设备独立像素宽度
 - `initial-scale=1.0`：初始缩放比例为 1（1 CSS 像素 = 1 设备独立像素）
 - `maximum-scale=1.0`：最大缩放比例
 - `user-scalable=no`：禁止用户缩放
 
 **根据 DPR 动态设置 viewport：**
+
 ```javascript
 function setViewport() {
   const dpr = window.devicePixelRatio || 1;
@@ -357,12 +397,13 @@ function setViewport() {
     document.head.appendChild(meta);
   }
 
-  viewport.setAttribute('content',
-    `width=device-width, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}, user-scalable=no`
+  viewport.setAttribute(
+    'content',
+    `width=device-width, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}, user-scalable=no`,
   );
 
   // 同时设置 html 的 font-size，方便 rem 适配
-  document.documentElement.style.fontSize = (50 * dpr) + 'px';
+  document.documentElement.style.fontSize = 50 * dpr + 'px';
 }
 ```
 
@@ -393,16 +434,16 @@ h1 {
 
 ### 常见设备参数对照表
 
-| 设备 | 屏幕尺寸 | 物理分辨率 | 设备独立像素 | DPR | PPI |
-|------|---------|-----------|-------------|-----|-----|
-| iPhone SE (2020) | 4.7" | 750×1334 | 375×667 | 2 | 326 |
-| iPhone 12/13 | 6.1" | 1170×2532 | 390×844 | 3 | 460 |
-| iPhone 14 Pro Max | 6.7" | 1290×2796 | 430×932 | 3 | 460 |
-| Samsung S21 | 6.2" | 1080×2400 | 360×800 | 3 | 421 |
-| iPad Pro 12.9" | 12.9" | 2048×2732 | 1024×1366 | 2 | 264 |
-| MacBook Pro 16" | 16" | 3456×2234 | 1728×1117 | 2 | 254 |
-| 普通 PC 显示器 | 24" | 1920×1080 | 1920×1080 | 1 | 92 |
-| 4K 显示器 | 27" | 3840×2160 | 1920×1080 | 2 | 163 |
+| 设备              | 屏幕尺寸 | 物理分辨率 | 设备独立像素 | DPR | PPI |
+| ----------------- | -------- | ---------- | ------------ | --- | --- |
+| iPhone SE (2020)  | 4.7"     | 750×1334   | 375×667      | 2   | 326 |
+| iPhone 12/13      | 6.1"     | 1170×2532  | 390×844      | 3   | 460 |
+| iPhone 14 Pro Max | 6.7"     | 1290×2796  | 430×932      | 3   | 460 |
+| Samsung S21       | 6.2"     | 1080×2400  | 360×800      | 3   | 421 |
+| iPad Pro 12.9"    | 12.9"    | 2048×2732  | 1024×1366    | 2   | 264 |
+| MacBook Pro 16"   | 16"      | 3456×2234  | 1728×1117    | 2   | 254 |
+| 普通 PC 显示器    | 24"      | 1920×1080  | 1920×1080    | 1   | 92  |
+| 4K 显示器         | 27"      | 3840×2160  | 1920×1080    | 2   | 163 |
 
 ### 核心概念关系图
 
@@ -434,12 +475,12 @@ PPI = √(水平像素² + 垂直像素²) / 屏幕对角线英寸数
 
 ### 无缩放情况下的对应关系
 
-| 场景 | CSS 像素 | 设备独立像素 | 设备像素 | DPR |
-|------|----------|-------------|----------|-----|
-| PC 端 (100%) | 1px | 1px | 1px | 1 |
-| 移动端标准屏 | 1px | 1px | 1px | 1 |
-| 移动端 Retina | 1px | 1px | 2×2px | 2 |
-| 移动端高清屏 | 1px | 1px | 3×3px | 3 |
+| 场景          | CSS 像素 | 设备独立像素 | 设备像素 | DPR |
+| ------------- | -------- | ------------ | -------- | --- |
+| PC 端 (100%)  | 1px      | 1px          | 1px      | 1   |
+| 移动端标准屏  | 1px      | 1px          | 1px      | 1   |
+| 移动端 Retina | 1px      | 1px          | 2×2px    | 2   |
+| 移动端高清屏  | 1px      | 1px          | 3×3px    | 3   |
 
 ### 开发注意事项
 
@@ -452,6 +493,7 @@ PPI = √(水平像素² + 垂直像素²) / 屏幕对角线英寸数
 ### 调试技巧
 
 **在浏览器中模拟不同 DPR：**
+
 ```javascript
 // Chrome DevTools Console
 // 1. 打开开发者工具
@@ -464,29 +506,35 @@ console.log({
   DPR: window.devicePixelRatio,
   屏幕分辨率: `${window.screen.width}×${window.screen.height}`,
   Viewport尺寸: `${window.innerWidth}×${window.innerHeight}`,
-  物理分辨率: `${window.screen.width * window.devicePixelRatio}×${window.screen.height * window.devicePixelRatio}`
+  物理分辨率: `${window.screen.width * window.devicePixelRatio}×${
+    window.screen.height * window.devicePixelRatio
+  }`,
 });
 ```
 
 **Chrome DevTools 设备模拟：**
+
 1. F12 打开开发者工具
 2. 点击设备图标（Toggle device toolbar）
 3. 选择不同设备或自定义分辨率
 4. 可以选择不同的 DPR 进行测试
 
 **检查图片是否加载了高清版本：**
+
 ```javascript
 // 检查当前加载的图片 URL
-document.querySelectorAll('img').forEach(img => {
+document.querySelectorAll('img').forEach((img) => {
   console.log(img.currentSrc); // 显示实际加载的图片 URL
 });
 ```
 
 **测试 1px 边框是否真的是 1 物理像素：**
+
 ```javascript
 // 截图后放大查看，或使用以下方法
 const testDiv = document.createElement('div');
-testDiv.style.cssText = 'width:1px;height:100px;background:#000;position:fixed;left:0;top:0;';
+testDiv.style.cssText =
+  'width:1px;height:100px;background:#000;position:fixed;left:0;top:0;';
 document.body.appendChild(testDiv);
 // 截图放大查看这条线的实际宽度
 ```
@@ -516,12 +564,14 @@ A: `window.screen.width` 返回设备独立像素（不含缩放），`document.
 
 **Q: Retina 屏幕的图片应该导出多大？**
 A: 按照 DPR 倍数导出。例如设计稿中 100×100 的图标，需要导出：
+
 - logo.png: 100×100（DPR=1）
 - logo@2x.png: 200×200（DPR=2）
 - logo@3x.png: 300×300（DPR=3）
 
 **Q: 移动端适配方案有哪些？**
 A: 主流方案：
+
 1. **rem 方案**：根据屏幕宽度动态设置 html font-size
 2. **vw 方案**：直接使用 vw 单位
 3. **flex + 百分比**：弹性布局
@@ -531,6 +581,7 @@ A: 主流方案：
 ### 性能优化建议
 
 **1. 图片按需加载**
+
 ```javascript
 // 只为高 DPR 设备加载高清图
 if (window.devicePixelRatio > 1) {
@@ -541,25 +592,34 @@ if (window.devicePixelRatio > 1) {
 ```
 
 **2. 使用 WebP 等现代图片格式**
+
 ```html
 <picture>
-  <source srcset="image.webp" type="image/webp">
-  <source srcset="image@2x.png 2x, image.png 1x" type="image/png">
-  <img src="image.png" alt="Image">
+  <source srcset="image.webp" type="image/webp" />
+  <source srcset="image@2x.png 2x, image.png 1x" type="image/png" />
+  <img src="image.png" alt="Image" />
 </picture>
 ```
 
 **3. 图片懒加载**
+
 ```html
-<img src="placeholder.jpg" data-src="actual-image@2x.jpg" loading="lazy" alt="Image">
+<img
+  src="placeholder.jpg"
+  data-src="actual-image@2x.jpg"
+  loading="lazy"
+  alt="Image"
+/>
 ```
 
 **4. 避免不必要的高清图**
+
 - 纯色背景、渐变等用 CSS 实现，不用图片
 - 图标优先使用 SVG（矢量图天然支持任意 DPR）
 - 装饰性小图可以不提供高清版本
 
 **5. Canvas 性能优化**
+
 ```javascript
 // 对于不需要超高清的场景，可以限制最大 DPR
 const maxDPR = 2;
@@ -567,9 +627,10 @@ const dpr = Math.min(window.devicePixelRatio, maxDPR);
 ```
 
 **6. 监测实际加载的资源**
+
 ```javascript
 // 使用 Performance API 监测
-performance.getEntriesByType('resource').forEach(resource => {
+performance.getEntriesByType('resource').forEach((resource) => {
   if (resource.initiatorType === 'img') {
     console.log(resource.name, resource.transferSize);
   }
