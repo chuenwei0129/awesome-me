@@ -2,7 +2,7 @@
 group:
   title: CSS
   order: 2
-title: CSS 选择器
+title: 选择器与伪类
 toc: content
 ---
 
