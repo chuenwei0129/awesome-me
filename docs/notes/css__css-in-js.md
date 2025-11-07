@@ -2,46 +2,96 @@
 group:
   title: CSS
   order: 2
-title: CSS in JS
+title: CSS-in-JS
 toc: content
 ---
 
 ## 什么是 CSS-in-JS
 
-CSS-in-JS，顾名思义，将 CSS 写在 JS 文件里，而不是单独新建如 `.css`、`.scss` 等文件。这样就可以在 CSS 中使用 JS 的变量定义、函数调用、条件判断等功能。
+CSS-in-JS 是一种将 CSS 写在 JavaScript 文件里的技术方案，而不是传统的 `.css` 或 `.scss` 文件。这样可以在样式中使用 JavaScript 的变量、函数、条件判断等编程能力。
 
-CSS-in-JS 的流行与 React、Vue 等框架的流行密不可分。特别是 React，由于其没有自带的 CSS 方案，CSS-in-JS 在 React 社区得到了广泛讨论和应用。
+CSS-in-JS 与 React、Vue 等组件化框架的流行密不可分。特别是 React，由于没有官方的 CSS 方案，CSS-in-JS 在社区得到了广泛应用。常见的库包括 [styled-components](https://styled-components.com/) 和 [Emotion](https://emotion.sh/)。
 
-实现 CSS-in-JS 的库有很多，每个库的实现、使用方式和语法也各不相同。常见的 CSS-in-JS 库包括 [styled-components](https://styled-components.com/docs/advanced#theming) 和 Emotion。除了**运行时类型**的 CSS-in-JS，还有**编译时类型**的实现。
+CSS-in-JS 主要分为两类：
 
-![20240611222731](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240611222731.png)
+- **运行时类型**：在浏览器运行时生成样式（如 styled-components）
+- **编译时类型**：在构建阶段生成静态 CSS（如 Linaria、vanilla-extract）
 
-## CSS-in-JS 的优缺点
+![CSS-in-JS 生态](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240611222731.png)
 
-### 优点
+## 何时使用 CSS-in-JS
 
-**1\. 局部作用域样式 (Locally-scoped styles)：**
+### ✅ 适用场景
 
-在编写传统的 CSS 时，很容易不小心污染到其他组件。例如，我们为一个列表的每一行添加内边距和边框样式：
+**大型组件化应用**
+
+- React/Vue 项目中需要严格的样式隔离
+- 组件库开发，需要主题定制能力
+- 多租户系统，需要运行时动态换肤
+
+**复杂的动态样式需求**
+
+- 样式需要根据大量 JavaScript 状态变化
+- 需要在样式中使用复杂的业务逻辑
+- 需要样式与组件逻辑紧密配合
+
+**团队协作优势**
+
+- 团队已熟悉 React/JavaScript 生态
+- 希望样式和逻辑在同一文件中便于维护
+- 需要利用 TypeScript 类型检查样式 props
+
+### ❌ 不适用场景
+
+**性能敏感的应用**
+
+- 首屏加载速度要求极高（运行时方案有开销）
+- 静态内容为主的网站（博客、文档站）
+- 需要极致性能的移动端应用
+
+**团队技术栈考虑**
+
+- 团队更熟悉传统 CSS 方案
+- 已有成熟的 Sass/Less/CSS Modules 体系
+- 项目采用 Tailwind CSS 等原子化方案
+
+**技术约束**
+
+- 需要将样式提取为独立 CSS 文件（CDN 缓存）
+- 服务端渲染 SSR 复杂度要求低
+- 不希望增加额外的 JavaScript 包体积
+
+### 🔄 替代方案对比
+
+| 方案              | 适用场景         | 优势                      | 劣势                 |
+| ----------------- | ---------------- | ------------------------- | -------------------- |
+| **CSS-in-JS**     | 动态主题、组件库 | 完全隔离、JavaScript 集成 | 运行时开销、包体积大 |
+| **CSS Modules**   | 中大型应用       | 零运行时、性能好          | 动态样式能力弱       |
+| **Tailwind CSS**  | 快速开发         | 原子化、高复用            | HTML 可读性差        |
+| **传统 CSS/Sass** | 简单项目         | 简单直接、无依赖          | 全局污染、难以维护   |
+
+## 核心优缺点
+
+### ✨ 主要优势
+
+**1. 局部作用域样式（解决样式冲突）**
+
+传统 CSS 容易出现类名冲突：
 
 ```css
+/* 第一个组件 */
 .row {
   padding: 0.5rem;
   border: 1px solid #ddd;
 }
-```
 
-几个月后，你可能会忘记这些样式，然后又在另一个组件中使用了同样的类名：
-
-```css
+/* 几个月后，另一个组件 */
 .row {
-  color: red;
+  color: red; /* 意外继承了上面的 padding 和 border */
 }
 ```
 
-此时，新组件会继承之前定义的内边距和边框样式，导致意外的视觉效果。虽然可以使用更长的类名或更加明确的选择器来减少这种冲突，但无法完全避免。
-
-CSS-in-JS 可以通过**局部作用域样式**完全解决这个问题。例如：
+CSS-in-JS 通过唯一类名完全解决这个问题：
 
 ```jsx | pure
 import styled from 'styled-components';
@@ -52,152 +102,84 @@ const StyledRow = styled.div`
 `;
 
 const AnotherStyledRow = styled.div`
-  color: red;
+  color: red; /* 不会受其他组件影响 */
 `;
-
-function App() {
-  return (
-    <div>
-      <StyledRow>First Row</StyledRow>
-      <AnotherStyledRow>Second Row</AnotherStyledRow>
-    </div>
-  );
-}
 ```
 
-在这个例子中，StyledRow 和 AnotherStyledRow 是两个不同的组件，它们的样式不会互相影响。这样就避免了传统 CSS 中类名冲突的问题。
+**2. JavaScript 变量集成**
 
-**2\. 代码位置一致性 (Colocation)：**
-
-在使用传统 CSS 时，样式文件通常存放在 `src/styles` 目录中，而 React 组件文件则位于 `src/components` 目录中。随着项目的增长，难以追踪哪些样式作用于哪些组件，导致样式代码冗余。
-
-**更好的代码组织方式是将相关文件放在一起**。使用 CSS-in-JS，可以直接在 React 组件内部书写样式，从而提高项目的可维护性。例如：
+直接在样式中使用 JavaScript 变量和逻辑：
 
 ```jsx | pure
-import styled from 'styled-components';
-
-const StyledComponent = styled.div`
-  background-color: lightblue;
-  padding: 20px;
-  border-radius: 5px;
-`;
-
-function MyComponent() {
-  return <StyledComponent>My Styled Component</StyledComponent>;
-}
-```
-
-**3\. 在样式中使用 JavaScript 变量：**
-
-CSS-in-JS 允许在样式中访问 JavaScript 变量，如下例所示：
-
-```jsx
-import styled from 'styled-components';
-
-// 定义 JavaScript 变量
 const primaryColor = 'papayawhip';
 const paddingSize = '1rem';
 
-// 在样式中使用 JavaScript 变量
 const StyledButton = styled.button`
   background-color: ${primaryColor};
   padding: ${paddingSize};
-  border: none;
-  border-radius: 5px;
-  color: palevioletred;
-  font-size: 1rem;
-  cursor: pointer;
+
+  /* 基于 props 的动态样式 */
+  color: ${(props) => (props.$variant === 'primary' ? 'white' : 'black')};
 
   &:hover {
-    background-color: palevioletred;
-    color: ${primaryColor};
+    background-color: ${(props) =>
+      props.$variant === 'primary' ? 'darkblue' : 'gray'};
   }
 `;
-
-function App() {
-  return <StyledButton>Click Me</StyledButton>;
-}
-
-export default App;
 ```
 
-在这个例子中，我们定义了两个 JavaScript 变量 `primaryColor` 和 `paddingSize`，并在 StyledButton 的样式中使用了这些变量。这样可以更方便地管理和复用样式，同时**避免硬编码的值散布在代码中**。
+**3. 代码组织的一致性（Colocation）**
 
-### 运行时类型的 CSS-in-JS 的缺点
+相关代码放在一起，提高可维护性：
 
-1. **运行时性能问题**：在组件渲染时，CSS-in-JS 库会在运行时将样式代码序列化为可插入文档的 CSS，这会消耗更多的 CPU 性能。
-2. **增加包体积**：每个访问你网站的用户都需要加载 CSS-in-JS 的 JavaScript 代码，这会增加包体积。
-3. **影响 React DevTools 的可读性**。
-4. **频繁插入 CSS 样式规则会迫使浏览器做更多的工作**。
-5. **增加项目出错的概率**，特别是在服务器端渲染 (SSR) 或组件库项目中。
+```jsx | pure
+// Button.jsx - 样式和逻辑在同一文件
+import styled from 'styled-components';
 
-## Styled Components 优点
+const StyledButton = styled.button`
+  background-color: lightblue;
+  padding: 20px;
+`;
 
-> [官方网站](https://styled-components.com/docs/basics)将其优点归结为：
+export function Button({ children }) {
+  return <StyledButton>{children}</StyledButton>;
+}
+```
 
-- **Automatic critical CSS**：`styled-components` 持续跟踪页面上渲染的组件，并自动注入样式。结合使用**代码拆分**，可以实现仅加载所需的最少代码。
+### ⚠️ 主要劣势（运行时方案）
 
-- **解决了 class name 冲突**：`styled-components` 为样式生成唯一的 class name，开发者不必再担心 class name 重复、覆盖以及拼写的问题。(`CSS Modules` 通过哈希编码局部类名实现这一点)
+**1. 性能开销**
 
-- **CSS 更容易移除**：使用 `styled-components` 可以很轻松地知道代码中某个 class 在哪儿用到，因为每个样式都有其关联的组件。如果检测到某个组件未使用并且被删除，则其所有的样式也都被删除。
+- 运行时序列化样式消耗 CPU
+- 增加 JavaScript 包体积（库本身 + 样式代码）
+- 无法提取为独立 CSS 文件（影响缓存策略）
+- 首次渲染需要等待 JS 解析和样式注入
 
-- **简单的动态样式**：可以很简单直观的实现根据组件的 `props` 或者全局主题适配样式，无需手动管理多个 classes。
+**2. 开发体验问题**
 
-- **无痛维护**：无需搜索不同的文件来查找影响组件的样式，无论代码多庞大，维护起来都是小菜一碟。
+- React DevTools 中的组件树可读性下降
+- 样式错误可能导致整个应用崩溃（而传统 CSS 只是渲染错误）
+- 调试时需要同时理解 JavaScript 和 CSS
 
-- **自动提供前缀**：按照当前标准写 CSS，其余的交给 `styled-components` 处理。
+**3. 服务端渲染 (SSR) 复杂度**
 
-因为 `styled-components` 做的只是在 runtime 把 CSS 附加到对应的 HTML 元素或者组件上，它完美地支持所有 CSS。媒体查询、伪选择器，甚至嵌套都可以工作。
+- 需要额外配置样式提取
+- 容易出现样式闪烁问题
+- 增加服务器端渲染负担
 
-## styled-components 缺点
+### 💡 如何选择
 
-- 虽然 `styled-components` 提供了扩展样式的能力，但通过 `CSS Modules` 的组合 (Composition) 能力，或者 `SASS` 继承 mixin `@extend` 都可以做到。
-- 虽然 `styled-components` 可以利用 `props` 对组件进行有条件的样式设置，这很符合 React 体系，并且利用了 JavaScript 的强大功能，然而，这也意味着风格更难解释，并且 CSS 同样也可以做到。
+**优先考虑 CSS-in-JS 的情况：**
 
-  ```jsx | pure
-  // styled-components
-  const ScButton = styled.button`
-    background: ${props => props.primary ? '#f00' : props.secondary ? '#0f0' : '#00f'};
-    color: ${props => props.primary ? '#fff' : props.secondary ? '#fff' : '#000'};
-    opacity: ${props => props.active ? 1 : 0};
-  `;
+- 构建复杂的设计系统或组件库
+- 需要强大的运行时主题切换能力
+- 团队 JavaScript 技能强于 CSS 技能
 
-  <ScButton primary />
-  <ScButton secondary />
-  <ScButton primary active={true} />
-  ```
+**优先考虑其他方案的情况：**
 
-  ```scss
-  // & 基于 CSS 预处理器的能力
-  button {
-    background: #00f;
-    opacity: 0;
-    color: #000;
-
-    &.primary,
-    &.secondary {
-      color: #fff;
-    }
-    &.primary {
-      background: #f00;
-    }
-    &.secondary {
-      background: #0f0;
-    }
-    &.active {
-      opacity: 1;
-    }
-  }
-  ```
-
-- `styled-components` 允许在同一个文件中包含样式和 JavaScript。但是将样式和标记塞入一个文件中是一个可怕的解决方案，它不仅使版本控制难以跟踪，而且还很容易写出非常长的 JSX 代码。
-
-- `styled-components` 能提升开发体验也是一个误区：当样式出现问题时，**整个应用程序将因长堆栈跟踪错误而崩溃**。而使用 CSS 时，“样式错误” 只会错误地呈现元素。此外，无效的样式会被简单地忽略，这可能导致比较难以调试的问题。
-
-- `styled-components` 是运行时的方案，这会对前端性能产生不利影响，包括
-
-  - `styled-components` 无法提取到静态 CSS 文件中，这意味着在 `styled-components` 解析样式并将它们添加到 DOM 之后，浏览器才能开始解释样式。
-  - 缺少单独的文件意味着您无法单独缓存 CSS 和 JavaScript。
+- 性能是首要考虑（选择 CSS Modules 或编译时 CSS-in-JS）
+- 简单的静态网站（选择传统 CSS）
+- 快速原型开发（选择 Tailwind CSS）
 
 ## styled-components 手册
 
@@ -1089,7 +1071,3 @@ export default () => {
 ```
 
 在这个示例中，`Container` 组件将作为父容器，而 `Button` 组件将作为子组件被嵌套在其中。由于我们在 `Container` 的样式中使用了 `${Button}` 作为选择器，所以 `Button` 组件的 `margin` 和 `disabled` 状态下的样式都会被应用。
-
-## styled-components 性能
-
-> [只创建样式化组件，但不实例化组件，不会产生额外开销。](https://juejin.cn/post/7025156831504760839?searchId=2024061122495061B427C1AF2549FE83B8#heading-19)
