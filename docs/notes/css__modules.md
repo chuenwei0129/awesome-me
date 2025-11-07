@@ -4,6 +4,7 @@ group:
   order: 2
 title: CSS Modules
 toc: content
+order: 12
 ---
 
 ## 什么是 CSS 模块化

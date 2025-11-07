@@ -4,7 +4,7 @@ group:
   order: 2
 title: BEM 命名规范
 toc: content
-order: 3
+order: 11
 ---
 
 ## 什么是 BEM？

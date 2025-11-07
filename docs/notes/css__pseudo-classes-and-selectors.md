@@ -4,6 +4,7 @@ group:
   order: 2
 title: 选择器与伪类
 toc: content
+order: 5
 ---
 
 ## 选择器基础

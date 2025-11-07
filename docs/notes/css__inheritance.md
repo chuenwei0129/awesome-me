@@ -4,6 +4,7 @@ group:
   order: 2
 title: CSS 继承机制
 toc: content
+order: 4
 ---
 
 ## 是什么：继承的本质

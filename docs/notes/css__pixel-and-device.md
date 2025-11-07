@@ -4,6 +4,7 @@ group:
   order: 2
 title: 像素与设备
 toc: content
+order: 6
 ---
 
 ## 是什么

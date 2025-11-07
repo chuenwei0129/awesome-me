@@ -4,6 +4,7 @@ group:
   order: 2
 title: BFC 与浮动
 toc: content
+order: 8
 ---
 
 ## BFC 是什么
