@@ -1,8 +1,8 @@
 ---
 group:
-  title: CSS
+  title: css
   order: 2
-title: Tailwind V3 指南
+title: Tailwind V3 手册
 toc: content
 order: 15
 ---

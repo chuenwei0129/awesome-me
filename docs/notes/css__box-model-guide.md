@@ -1,6 +1,6 @@
 ---
 group:
-  title: CSS
+  title: css
   order: 2
 title: 盒模型指南
 toc: content

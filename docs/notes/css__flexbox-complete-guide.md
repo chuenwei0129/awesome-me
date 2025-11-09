@@ -1,8 +1,8 @@
 ---
 group:
-  title: CSS
+  title: css
   order: 2
-title: Flex 布局详解
+title: Flexbox 完全指南
 toc: content
 order: 9
 ---
@@ -757,3 +757,7 @@ if (flex-basis !== 'auto') {
 
 - 在第一个例子中，`flex-basis` 为 `0`，忽略初始宽度，所有空间按照 `flex-grow` 比例分配。
 - 在第二个例子中，`flex-basis` 为 `auto`，初始宽度由 `width` 属性决定，剩余空间按照 `flex-grow` 比例分配。
+
+## 浮动对 flex 项目的影响
+
+**浮动无效**：在 `flex` 容器内，子容器的 `float` 属性不会生效。即使你为某个 flex 项目设置了 `float: left` 或 `float: right`，它也不会改变该项目在 flex 容器中的排列方式。

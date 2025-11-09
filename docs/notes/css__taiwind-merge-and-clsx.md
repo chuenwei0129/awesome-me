@@ -1,6 +1,6 @@
 ---
 group:
-  title: CSS
+  title: css
   order: 2
 title: tailwind-merge 和 clsx
 toc: content

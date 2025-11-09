@@ -1,6 +1,6 @@
 ---
 group:
-  title: CSS
+  title: css
   order: 2
 title: 预处理器 SCSS
 toc: content
@@ -90,14 +90,14 @@ Sass 最初是由 `Hampton Catlin` 开发的，它基于 `Haml（一种用于快
 
 SCSS 作为 CSS 的超集，完美解决了这些问题：
 
-| 问题 | SCSS 解决方案 |
-| --- | --- |
-| 重复的颜色/尺寸值 | 变量系统 |
-| 选择器层级不清晰 | 嵌套规则 |
-| 样式代码重复 | 混合器（Mixin）和继承（@extend） |
-| 缺少计算能力 | 内置运算符和函数 |
-| 难以模块化 | @import / @use / @forward |
-| 无法动态生成样式 | 流程控制指令（@if / @for / @each） |
+| 问题              | SCSS 解决方案                      |
+| ----------------- | ---------------------------------- |
+| 重复的颜色/尺寸值 | 变量系统                           |
+| 选择器层级不清晰  | 嵌套规则                           |
+| 样式代码重复      | 混合器（Mixin）和继承（@extend）   |
+| 缺少计算能力      | 内置运算符和函数                   |
+| 难以模块化        | @import / @use / @forward          |
+| 无法动态生成样式  | 流程控制指令（@if / @for / @each） |
 
 ### 3. 使用 SCSS 的优势
 
@@ -1180,19 +1180,19 @@ $i: 1;
 
 ### 1. 核心功能速查表
 
-| 功能 | 语法 | 示例 |
-| --- | --- | --- |
-| **变量** | `$变量名: 值;` | `$primary-color: #3498db;` |
-| **嵌套** | 选择器内嵌套 | `.parent { .child { } }` |
-| **父选择器** | `&` | `&:hover`, `&.active` |
-| **变量插值** | `#{$变量}` | `.#{$class-name}` |
-| **混合器** | `@mixin` + `@include` | `@mixin button { }` <br> `@include button;` |
-| **继承** | `@extend` | `@extend .base-class;` |
-| **函数** | `@function` + `@return` | `@function double($n) { @return $n * 2; }` |
-| **条件判断** | `@if` `@else if` `@else` | `@if $theme == dark { }` |
-| **循环** | `@for` `@each` `@while` | `@for $i from 1 through 3 { }` |
-| **引入** | `@use` `@import` | `@use 'variables';` |
-| **数学运算** | `+` `-` `*` `/` | `width: $width / 2;`<br>推荐：`calc($width / 2)` |
+| 功能         | 语法                     | 示例                                             |
+| ------------ | ------------------------ | ------------------------------------------------ |
+| **变量**     | `$变量名: 值;`           | `$primary-color: #3498db;`                       |
+| **嵌套**     | 选择器内嵌套             | `.parent { .child { } }`                         |
+| **父选择器** | `&`                      | `&:hover`, `&.active`                            |
+| **变量插值** | `#{$变量}`               | `.#{$class-name}`                                |
+| **混合器**   | `@mixin` + `@include`    | `@mixin button { }` <br> `@include button;`      |
+| **继承**     | `@extend`                | `@extend .base-class;`                           |
+| **函数**     | `@function` + `@return`  | `@function double($n) { @return $n * 2; }`       |
+| **条件判断** | `@if` `@else if` `@else` | `@if $theme == dark { }`                         |
+| **循环**     | `@for` `@each` `@while`  | `@for $i from 1 through 3 { }`                   |
+| **引入**     | `@use` `@import`         | `@use 'variables';`                              |
+| **数学运算** | `+` `-` `*` `/`          | `width: $width / 2;`<br>推荐：`calc($width / 2)` |
 
 ### 2. 最佳实践
 
@@ -1228,7 +1228,8 @@ $s: 8px;
     .section {
       .card {
         .header {
-          .title { } // 太深了！
+          .title {
+          } // 太深了！
         }
       }
     }
@@ -1266,8 +1267,12 @@ $s: 8px;
   padding: 10px 20px;
 }
 
-.btn-primary { @include button(blue); }
-.btn-danger { @include button(red); }
+.btn-primary {
+  @include button(blue);
+}
+.btn-danger {
+  @include button(red);
+}
 
 // Extend：多个选择器共享完全相同的样式
 .message {
@@ -1275,8 +1280,12 @@ $s: 8px;
   border: 1px solid #ccc;
 }
 
-.success-message { @extend .message; }
-.error-message { @extend .message; }
+.success-message {
+  @extend .message;
+}
+.error-message {
+  @extend .message;
+}
 ```
 
 ### 3. 常见陷阱
@@ -1355,17 +1364,22 @@ $width: math.div(800px, 2);
   &__list {
     &__item {
       &--active {
-        & > &__link { } // 😱 这是什么？
+        & > &__link {
+        } // 😱 这是什么？
       }
     }
   }
 }
 
 // ✅ 清晰易读
-.nav__list { }
-.nav__item { }
-.nav__item--active { }
-.nav__item--active > .nav__link { }
+.nav__list {
+}
+.nav__item {
+}
+.nav__item--active {
+}
+.nav__item--active > .nav__link {
+}
 ```
 
 ### 4. 快速参考

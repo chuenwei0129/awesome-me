@@ -1,6 +1,6 @@
 ---
 group:
-  title: CSS
+  title: css
   order: 2
 title: CSS-in-JS
 toc: content

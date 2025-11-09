@@ -1,6 +1,6 @@
 ---
 group:
-  title: Life
+  title: life
   order: 99
 title: Switch 吃灰中
 toc: content

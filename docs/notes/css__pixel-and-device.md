@@ -1,6 +1,6 @@
 ---
 group:
-  title: CSS
+  title: css
   order: 2
 title: 像素与设备
 toc: content

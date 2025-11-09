@@ -1,6 +1,6 @@
 ---
 group:
-  title: IDE
+  title: tools
   order: 99
 title: VSCode PicGo 扩展
 toc: content

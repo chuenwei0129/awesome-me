@@ -1,6 +1,6 @@
 ---
 group:
-  title: CSS
+  title: css
   order: 2
 title: CVA (Class Variance Authority)
 toc: content
@@ -339,7 +339,7 @@ const alertStyles = cva('p-4 rounded', {
 // 使用
 <Alert variant="error" dismissible border>
   这是一个可关闭的错误提示
-</Alert>
+</Alert>;
 ```
 
 #### 3. 可空变体（Nullable Variants）
@@ -608,15 +608,15 @@ export const Button: React.FC<ButtonProps> = ({
 
 ### 技术对比
 
-| 特性           | clsx + twMerge | CVA                            |
-| -------------- | -------------- | ------------------------------ |
-| **学习曲线**   | 低             | 中等                           |
-| **代码组织**   | 命令式         | 声明式                         |
-| **类型安全**   | 弱             | 强（自动生成类型）             |
-| **复合变体**   | 手动处理       | 原生支持                       |
-| **默认值管理** | 手动设置       | 统一管理                       |
-| **适用场景**   | 简单到中等     | 中等到复杂                     |
-| **包大小**     | 更小           | 稍大（~1.5kb gzipped）         |
+| 特性           | clsx + twMerge | CVA                             |
+| -------------- | -------------- | ------------------------------- |
+| **学习曲线**   | 低             | 中等                            |
+| **代码组织**   | 命令式         | 声明式                          |
+| **类型安全**   | 弱             | 强（自动生成类型）              |
+| **复合变体**   | 手动处理       | 原生支持                        |
+| **默认值管理** | 手动设置       | 统一管理                        |
+| **适用场景**   | 简单到中等     | 中等到复杂                      |
+| **包大小**     | 更小           | 稍大（~1.5kb gzipped）          |
 | **性能**       | 快             | 快（底层仍使用 clsx + twMerge） |
 
 ### API 速查
@@ -625,30 +625,27 @@ export const Button: React.FC<ButtonProps> = ({
 import { cva, type VariantProps } from 'class-variance-authority';
 
 // 1. 定义样式
-const styles = cva(
-  '基础样式',
-  {
-    variants: {
-      // 定义变体维度
-      variant: {
-        option1: '样式1',
-        option2: '样式2',
-      },
-    },
-    compoundVariants: [
-      {
-        // 复合变体：多个条件同时满足时的样式
-        variant: 'option1',
-        size: 'large',
-        class: '组合样式',
-      },
-    ],
-    defaultVariants: {
-      // 默认值
-      variant: 'option1',
+const styles = cva('基础样式', {
+  variants: {
+    // 定义变体维度
+    variant: {
+      option1: '样式1',
+      option2: '样式2',
     },
   },
-);
+  compoundVariants: [
+    {
+      // 复合变体：多个条件同时满足时的样式
+      variant: 'option1',
+      size: 'large',
+      class: '组合样式',
+    },
+  ],
+  defaultVariants: {
+    // 默认值
+    variant: 'option1',
+  },
+});
 
 // 2. 提取类型
 type Props = VariantProps<typeof styles>;
@@ -728,7 +725,7 @@ const buttonStyles = cva('base', {
 });
 
 // 使用
-<Button theme={currentTheme}>按钮</Button>
+<Button theme={currentTheme}>按钮</Button>;
 ```
 
 ### 相关资源

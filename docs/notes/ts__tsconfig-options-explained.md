@@ -1,6 +1,6 @@
 ---
 group:
-  title: TypeScript
+  title: typeScript
   order: 4
 title: TSConfig 详解
 toc: content

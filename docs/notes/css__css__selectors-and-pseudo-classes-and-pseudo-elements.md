@@ -1,8 +1,8 @@
 ---
 group:
-  title: CSS
+  title: css
   order: 2
-title: 选择器与伪类
+title: 选择器、伪类、伪元素
 toc: content
 order: 5
 ---

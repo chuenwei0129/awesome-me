@@ -1,6 +1,6 @@
 ---
 group:
-  title: HTML
+  title: html
   order: 1
 title: HTML 不能这么写
 toc: content

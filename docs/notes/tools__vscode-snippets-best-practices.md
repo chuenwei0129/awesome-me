@@ -1,6 +1,6 @@
 ---
 group:
-  title: IDE
+  title: tools
   order: 99
 title: Snippets 最佳实践
 toc: content
