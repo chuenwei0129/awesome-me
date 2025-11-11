@@ -6,7 +6,7 @@ arr.includes(NaN); // true (\u76F8\u6BD4 indexOf \u7684\u4F18\u52BF)
 // \u53EF\u6307\u5B9A\u8D77\u59CB\u7D22\u5F15
 arr.includes(2, 2); // false
 `,paraId:2,tocIndex:2},{value:"\u4F18\u52BF",paraId:3,tocIndex:2},{value:": \u6BD4 ",paraId:3,tocIndex:2},{value:"indexOf",paraId:3,tocIndex:2},{value:" \u66F4\u8BED\u4E49\u5316\uFF0C\u4E14\u80FD\u6B63\u786E\u5224\u65AD ",paraId:3,tocIndex:2},{value:"NaN",paraId:3,tocIndex:2},{value:"\u3002",paraId:3,tocIndex:2},{value:"\u53F3\u7ED3\u5408\u7684\u5E42\u8FD0\u7B97\u7B26\uFF0C\u66FF\u4EE3 ",paraId:4,tocIndex:3},{value:"Math.pow()",paraId:4,tocIndex:3},{value:"\u3002",paraId:4,tocIndex:3},{value:`2 ** 3; // 8
-2 ** 3 ** 2; // 512 (\u76F8\u5F53\u4E8E 2 ** (3 ** 2))
+2 ** (3 ** 2); // 512 (\u76F8\u5F53\u4E8E 2 ** (3 ** 2))
 
 let a = 2;
 a **= 3; // a = 8
@@ -395,23 +395,56 @@ str.at(-1); // "o"
 // \u76F8\u6BD4\u4F20\u7EDF\u65B9\u5F0F\u66F4\u7B80\u6D01
 arr[arr.length - 1]; // \u4F20\u7EDF\u65B9\u5F0F
 arr.at(-1); // \u65B0\u65B9\u5F0F
-`,paraId:73,tocIndex:44},{value:"\u66F4\u5B89\u5168\u7684\u5C5E\u6027\u68C0\u67E5\u65B9\u6CD5\u3002",paraId:74,tocIndex:45},{value:`const obj = { name: 'Tom' };
+`,paraId:73,tocIndex:44},{value:"\u8FD9\u662F ES2022 \u5F15\u5165\u7684\u4E00\u4E2A\u91CD\u8981\u6539\u8FDB\uFF0C\u5EFA\u8BAE\u5728\u65B0\u9879\u76EE\u4E2D\u4F7F\u7528 ",paraId:74,tocIndex:45},{value:"Object.hasOwn()",paraId:74,tocIndex:45},{value:" \u66FF\u4EE3\u4F20\u7EDF\u7684 ",paraId:74,tocIndex:45},{value:"hasOwnProperty",paraId:74,tocIndex:45},{value:" \u65B9\u6CD5\u3002\u56E0\u4E3A ",paraId:74,tocIndex:45},{value:"Object.hasOwn()",paraId:74,tocIndex:45},{value:" \u66F4\u5B89\u5168\u3002",paraId:74,tocIndex:45},{value:"\u8BF4 ",paraId:75,tocIndex:45},{value:"Object.hasOwn()",paraId:75,tocIndex:45},{value:" \u66F4\u5B89\u5168\u4E3B\u8981\u6709\u4EE5\u4E0B\u51E0\u4E2A\u539F\u56E0\uFF1A",paraId:75,tocIndex:45},{value:"hasOwnProperty",paraId:76},{value:`// \u95EE\u9898\u573A\u666F\uFF1AhasOwnProperty \u88AB\u8986\u76D6
+const obj = {
+  name: 'Tom',
+  hasOwnProperty: function () {
+    return false; // \u6076\u610F\u6216\u610F\u5916\u7684\u8986\u76D6
+  },
+};
 
-// \u4F20\u7EDF\u65B9\u5F0F\u53EF\u80FD\u6709\u95EE\u9898
-obj.hasOwnProperty('name'); // true
-// \u4F46\u5982\u679C obj.hasOwnProperty \u88AB\u8986\u76D6\u5219\u4F1A\u51FA\u9519
+// \u4F20\u7EDF\u65B9\u5F0F - \u6709\u95EE\u9898
+console.log(obj.hasOwnProperty('name')); // false \u274C \u9519\u8BEF\u7ED3\u679C
 
-// \u65B0\u65B9\u5F0F\u66F4\u5B89\u5168
-Object.hasOwn(obj, 'name'); // true
+// \u65B0\u65B9\u5F0F - \u6B63\u5E38\u5DE5\u4F5C
+console.log(Object.hasOwn(obj, 'name')); // true \u2705 \u6B63\u786E\u7ED3\u679C
+`,paraId:77,tocIndex:46},{value:`// \u521B\u5EFA\u6CA1\u6709\u539F\u578B\u7684\u5BF9\u8C61
+const nullProtoObj = Object.create(null);
+nullProtoObj.name = 'Tom';
 
-// \u5BF9\u4E8E null \u539F\u578B\u5BF9\u8C61\u4E5F\u80FD\u5DE5\u4F5C
-const nullProto = Object.create(null);
-nullProto.name = 'Tom';
-Object.hasOwn(nullProto, 'name'); // true
-`,paraId:75,tocIndex:45},{value:"\u4ECE\u6570\u7EC4\u672B\u5C3E\u67E5\u627E\u5143\u7D20\u3002",paraId:76,tocIndex:47},{value:`const arr = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+// \u4F20\u7EDF\u65B9\u5F0F - \u4F1A\u62A5\u9519
+try {
+  console.log(nullProtoObj.hasOwnProperty('name')); // \u274C TypeError
+} catch (e) {
+  console.log('\u9519\u8BEF:', e.message); // nullProtoObj.hasOwnProperty is not a function
+}
 
-arr.findLast((x) => x > 3); // 5 (\u4ECE\u540E\u5411\u524D\u7B2C\u4E00\u4E2A\u5927\u4E8E3\u7684)
-arr.findLastIndex((x) => x > 3); // 4 (\u7D22\u5F15)
+// \u65B0\u65B9\u5F0F - \u6B63\u5E38\u5DE5\u4F5C
+console.log(Object.hasOwn(nullProtoObj, 'name')); // true \u2705
+`,paraId:78,tocIndex:47},{value:`const obj = { name: 'Tom' };
+
+// \u4F20\u7EDF\u65B9\u5F0F - \u5BB9\u6613\u6DF7\u6DC6
+obj.hasOwnProperty('name'); // \u8FD9\u662F\u65B9\u6CD5\u8C03\u7528
+
+// \u65B0\u65B9\u5F0F - \u660E\u786E\u662F\u9759\u6001\u65B9\u6CD5
+Object.hasOwn(obj, 'name'); // \u660E\u786E\u8868\u793A\u68C0\u67E5obj\u662F\u5426\u62E5\u6709'name'\u5C5E\u6027
+`,paraId:79,tocIndex:48},{value:`// \u5B89\u5168\u7684\u5C5E\u6027\u68C0\u67E5\u51FD\u6570
+function safeCheck(obj, prop) {
+  // \u4E0D\u5B89\u5168\u7684\u65B9\u5F0F
+  // return obj && obj.hasOwnProperty(prop);
+
+  // \u5B89\u5168\u7684\u65B9\u5F0F
+  return Object.hasOwn(obj, prop);
+}
+
+// \u5373\u4F7F\u5BF9\u8C61\u662F null \u6216 undefined \u4E5F\u80FD\u5B89\u5168\u5904\u7406
+console.log(safeCheck(null, 'name')); // false
+console.log(safeCheck(undefined, 'name')); // false
+console.log(safeCheck({ name: 'Tom' }, 'name')); // true
+`,paraId:80,tocIndex:49},{value:"\u4ECE\u6570\u7EC4\u672B\u5C3E\u67E5\u627E\u5143\u7D20\u3002",paraId:81,tocIndex:51},{value:`const arr = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+
+arr.findLast((x) => x > 3); // 4 (\u4ECE\u540E\u5411\u524D\u7B2C\u4E00\u4E2A\u5927\u4E8E3\u7684)
+arr.findLastIndex((x) => x > 3); // 5 (\u7D22\u5F15)
 
 // \u5B9E\u7528\u573A\u666F\uFF1A\u67E5\u627E\u6700\u540E\u4E00\u6761\u7B26\u5408\u6761\u4EF6\u7684\u8BB0\u5F55
 const logs = [
@@ -420,7 +453,7 @@ const logs = [
   { level: 'info', msg: 'retry' },
 ];
 const lastError = logs.findLast((log) => log.level === 'error');
-`,paraId:77,tocIndex:47},{value:"\u4E0D\u53EF\u53D8\u7684\u6570\u7EC4\u65B9\u6CD5\uFF08\u8FD4\u56DE\u65B0\u6570\u7EC4\uFF09\u3002",paraId:78,tocIndex:48},{value:`const arr = [3, 1, 2];
+`,paraId:82,tocIndex:51},{value:"\u4E0D\u53EF\u53D8\u7684\u6570\u7EC4\u65B9\u6CD5\uFF08\u8FD4\u56DE\u65B0\u6570\u7EC4\uFF09\u3002",paraId:83,tocIndex:52},{value:`const arr = [3, 1, 2];
 
 // toSorted - \u4E0D\u6539\u53D8\u539F\u6570\u7EC4\u7684\u6392\u5E8F
 const sorted = arr.toSorted(); // [1, 2, 3]
@@ -434,16 +467,16 @@ const spliced = arr.toSpliced(1, 1, 99); // [3, 99, 2]
 
 // with - \u4E0D\u6539\u53D8\u539F\u6570\u7EC4\u7684\u66FF\u6362
 const replaced = arr.with(1, 99); // [3, 99, 2]
-`,paraId:79,tocIndex:48},{value:"\u4E0D\u6539\u53D8\u539F\u6570\u7EC4\u7684\u7D22\u5F15\u66FF\u6362\u3002",paraId:80,tocIndex:49},{value:`const arr = [1, 2, 3, 4];
+`,paraId:84,tocIndex:52},{value:"\u4E0D\u6539\u53D8\u539F\u6570\u7EC4\u7684\u7D22\u5F15\u66FF\u6362\u3002",paraId:85,tocIndex:53},{value:`const arr = [1, 2, 3, 4];
 const newArr = arr.with(2, 99); // [1, 2, 99, 4]
 console.log(arr); // [1, 2, 3, 4] \u539F\u6570\u7EC4\u4E0D\u53D8
 
 // \u652F\u6301\u8D1F\u7D22\u5F15
 arr.with(-1, 99); // [1, 2, 3, 99]
-`,paraId:81,tocIndex:49},{value:"\u5141\u8BB8\u5728\u5168\u5C40 Symbol \u6CE8\u518C\u8868\u4E2D\u67E5\u627E Symbol\u3002",paraId:82,tocIndex:50},{value:"\u652F\u6301 Unix Shebang\uFF0C\u7528\u4E8E\u811A\u672C\u6587\u4EF6\u3002",paraId:83,tocIndex:51},{value:`#!/usr/bin/env node
+`,paraId:86,tocIndex:53},{value:"\u5141\u8BB8\u5728\u5168\u5C40 Symbol \u6CE8\u518C\u8868\u4E2D\u67E5\u627E Symbol\u3002",paraId:87,tocIndex:54},{value:"\u652F\u6301 Unix Shebang\uFF0C\u7528\u4E8E\u811A\u672C\u6587\u4EF6\u3002",paraId:88,tocIndex:55},{value:`#!/usr/bin/env node
 
 console.log('Hello from Node.js script');
-`,paraId:84,tocIndex:51},{value:"\u6570\u7EC4\u5206\u7EC4\u65B9\u6CD5\u3002",paraId:85,tocIndex:53},{value:`const items = [
+`,paraId:89,tocIndex:55},{value:"\u6570\u7EC4\u5206\u7EC4\u65B9\u6CD5\u3002",paraId:90,tocIndex:57},{value:`const items = [
   { type: 'fruit', name: 'apple' },
   { type: 'vegetable', name: 'carrot' },
   { type: 'fruit', name: 'banana' },
@@ -459,7 +492,7 @@ const grouped = Object.groupBy(items, (item) => item.type);
 
 // Map.groupBy - \u5206\u7EC4\u4E3A Map
 const groupedMap = Map.groupBy(items, (item) => item.type);
-`,paraId:86,tocIndex:53},{value:"\u66F4\u65B9\u4FBF\u5730\u521B\u5EFA\u53EF\u5916\u90E8\u63A7\u5236\u7684 Promise\u3002",paraId:87,tocIndex:54},{value:`// \u4F20\u7EDF\u65B9\u5F0F
+`,paraId:91,tocIndex:57},{value:"\u66F4\u65B9\u4FBF\u5730\u521B\u5EFA\u53EF\u5916\u90E8\u63A7\u5236\u7684 Promise\u3002",paraId:92,tocIndex:58},{value:`// \u4F20\u7EDF\u65B9\u5F0F
 let resolve, reject;
 const promise = new Promise((res, rej) => {
   resolve = res;
@@ -484,19 +517,19 @@ class Queue {
     resolve?.(value);
   }
 }
-`,paraId:88,tocIndex:54},{value:`// ArrayBuffer.prototype.transfer()
+`,paraId:93,tocIndex:58},{value:`// ArrayBuffer.prototype.transfer()
 const buffer = new ArrayBuffer(8);
 const newBuffer = buffer.transfer(); // \u8F6C\u79FB\u6240\u6709\u6743
 
 // ArrayBuffer.prototype.resize()
 const resizable = new ArrayBuffer(8, { maxByteLength: 16 });
 resizable.resize(12);
-`,paraId:89,tocIndex:55},{value:"\u589E\u5F3A\u7684 Unicode \u652F\u6301\u3002",paraId:90,tocIndex:56},{value:`// \u652F\u6301 Unicode \u5C5E\u6027\u96C6\u5408
+`,paraId:94,tocIndex:59},{value:"\u589E\u5F3A\u7684 Unicode \u652F\u6301\u3002",paraId:95,tocIndex:60},{value:`// \u652F\u6301 Unicode \u5C5E\u6027\u96C6\u5408
 /[\\p{Script=Greek}&&\\p{Letter}]/v.test('\u03B1'); // true
 
 // \u5B57\u7B26\u4E32\u5B57\u9762\u91CF\u5339\u914D
 /\\p{RGI_Emoji}/v.test('\u{1F468}\u200D\u{1F469}\u200D\u{1F467}\u200D\u{1F466}'); // true
-`,paraId:91,tocIndex:56},{value:"\u7C7B\u548C\u7C7B\u6210\u5458\u7684\u5143\u7F16\u7A0B\u3002",paraId:92,tocIndex:58},{value:`// \u7C7B\u88C5\u9970\u5668
+`,paraId:96,tocIndex:60},{value:"\u7C7B\u548C\u7C7B\u6210\u5458\u7684\u5143\u7F16\u7A0B\u3002",paraId:97,tocIndex:62},{value:`// \u7C7B\u88C5\u9970\u5668
 function logged(target) {
   return class extends target {
     constructor(...args) {
@@ -526,8 +559,8 @@ class Service {
     // ...
   }
 }
-`,paraId:93,tocIndex:58},{value:"\u4E0D\u53EF\u53D8\u7684\u6570\u636E\u7ED3\u6784\u3002",paraId:94,tocIndex:59},{value:`// Record - \u4E0D\u53EF\u53D8\u5BF9\u8C61
-const record = #{a: 1, b: 2};
+`,paraId:98,tocIndex:62},{value:"\u4E0D\u53EF\u53D8\u7684\u6570\u636E\u7ED3\u6784\u3002",paraId:99,tocIndex:63},{value:`// Record - \u4E0D\u53EF\u53D8\u5BF9\u8C61
+const record = #{ a: 1, b: 2 };
 
 // Tuple - \u4E0D\u53EF\u53D8\u6570\u7EC4
 const tuple = #[1, 2, 3];
@@ -535,9 +568,9 @@ const tuple = #[1, 2, 3];
 // \u6DF1\u5EA6\u4E0D\u53EF\u53D8
 const nested = #{
   data: #[1, 2, 3],
-  metadata: #{id: 1}
+  metadata: #{ id: 1 },
 };
-`,paraId:95,tocIndex:59},{value:"\u73B0\u4EE3\u5316\u7684\u65E5\u671F\u65F6\u95F4 API\uFF0C\u66FF\u4EE3 Date\u3002",paraId:96,tocIndex:60},{value:`// Temporal.PlainDate
+`,paraId:100,tocIndex:63},{value:"\u73B0\u4EE3\u5316\u7684\u65E5\u671F\u65F6\u95F4 API\uFF0C\u66FF\u4EE3 Date\u3002",paraId:101,tocIndex:64},{value:`// Temporal.PlainDate
 const date = Temporal.PlainDate.from('2024-01-15');
 date.year; // 2024
 date.month; // 1
@@ -547,20 +580,23 @@ date.day; // 15
 const time = Temporal.PlainTime.from('13:30:00');
 
 // Temporal.ZonedDateTime
-const zoned = Temporal.ZonedDateTime.from('2024-01-15T13:30:00+08:00[Asia/Shanghai]');
+const zoned = Temporal.ZonedDateTime.from(
+  '2024-01-15T13:30:00+08:00[Asia/Shanghai]',
+);
 
 // \u65E5\u671F\u8BA1\u7B97
 const nextWeek = date.add({ days: 7 });
 const diff = date.until(nextWeek).days; // 7
-`,paraId:97,tocIndex:60},{value:"\u51FD\u6570\u94FE\u5F0F\u8C03\u7528\u7684\u8BED\u6CD5\u7CD6\u3002",paraId:98,tocIndex:61},{value:`// \u4F20\u7EDF\u65B9\u5F0F
+`,paraId:102,tocIndex:64},{value:"\u51FD\u6570\u94FE\u5F0F\u8C03\u7528\u7684\u8BED\u6CD5\u7CD6\u3002",paraId:103,tocIndex:65},{value:`// \u4F20\u7EDF\u65B9\u5F0F
 const result = format(transform(parse(input)));
 
 // Pipeline \u64CD\u4F5C\u7B26
 const result = input |> parse(%) |> transform(%) |> format(%);
 
 // \u5B9E\u7528\u573A\u666F
-const total = [1, 2, 3, 4]
-  |> (%.map(x => x * 2))
-  |> (%.filter(x => x > 4))
-  |> (%.reduce((a, b) => a + b, 0));
-`,paraId:99,tocIndex:61},{value:"ES2019-ES2022 \u7279\u6027\u5927\u6C47\u603B",paraId:100,tocIndex:62},{value:"ES2023 \u65B0\u7279\u6027\u8BE6\u89E3",paraId:100,tocIndex:62},{value:"MDN JavaScript Reference",paraId:100,tocIndex:62},{value:"TC39 Proposals",paraId:100,tocIndex:62}]}}]);
+const total =
+  [1, 2, 3, 4]
+  |> %.map((x) => x * 2)
+  |> %.filter((x) => x > 4)
+  |> %.reduce((a, b) => a + b, 0);
+`,paraId:104,tocIndex:65},{value:"ES2019-ES2022 \u7279\u6027\u5927\u6C47\u603B",paraId:105,tocIndex:66},{value:"ES2023 \u65B0\u7279\u6027\u8BE6\u89E3",paraId:105,tocIndex:66},{value:"MDN JavaScript Reference",paraId:105,tocIndex:66},{value:"TC39 Proposals",paraId:105,tocIndex:66}]}}]);
