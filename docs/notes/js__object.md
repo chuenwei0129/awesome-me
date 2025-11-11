@@ -144,23 +144,90 @@ const teacher = _new(Person, 'y', 35);
 teacher.sayName(); // 我的名字：y，我的年龄：35。
 ```
 
-### Object.create()
+### Object.create() 方法详解
 
-- `Object.getPrototypeOf` 方法返回参数对象的原型。
-- `Object.setPrototypeOf` 方法为参数对象设置原型，返回该参数对象。它接受两个参数，第一个是现有对象，第二个是原型对象。
-- 实例对象的 `isPrototypeOf` 方法，用来判断该对象是否为参数对象的原型
+#### 什么是 Object.create()？
+
+`Object.create()` 是 JavaScript 中的一个静态方法，它允许我们以现有对象作为原型来创建一个新对象。这是 JavaScript 原型继承的核心机制之一。
+
+#### 基本语法
 
 ```js
-const o = {};
-// const o = {} 是 const o = new Object() 的 语法糖
-console.log('构造器', o.constructor); // Object
-
-function F() {}
-// o.__proto__ = F.prototype
-Object.setPrototypeOf(o, F.prototype);
-
-console.log('修改原型链后的构造器', o.constructor); // F
+Object.create(proto);
+Object.create(proto, propertiesObject);
 ```
+
+- **proto**：新创建对象的原型对象
+- **propertiesObject**（可选）：要添加到新对象的属性描述符
+
+#### 基本用法
+
+##### 1. 创建空对象
+
+```js
+const emptyObj = Object.create(Object.prototype);
+// 等价于 const emptyObj = {};
+```
+
+##### 2. 原型继承
+
+```js
+const person = {
+  isHuman: false,
+  printIntroduction: function () {
+    console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`);
+  },
+};
+
+const me = Object.create(person);
+
+me.name = 'Matthew'; // "name" 是 "me" 的属性，不是 "person" 的属性
+me.isHuman = true; // 继承的属性可以被覆盖
+
+me.printIntroduction();
+// 输出: "My name is Matthew. Am I human? true"
+```
+
+##### 3. 创建没有原型的对象
+
+```js
+const objWithoutProto = Object.create(null);
+console.log(objWithoutProto.toString); // undefined
+// 这个对象不继承任何属性和方法，包括基础的 Object 方法
+```
+
+#### 实现浅拷贝
+
+`Object.create()` 结合 `Object.getOwnPropertyDescriptors()` 可以实现高质量的浅拷贝：
+
+```js
+const obj = {
+  name: 'Tom',
+  get age() {
+    return 18;
+  },
+  hobbies: ['reading', 'music'],
+};
+
+const copy = Object.create(
+  Object.getPrototypeOf(obj),
+  Object.getOwnPropertyDescriptors(obj),
+);
+
+console.log(copy.name); // 'Tom'
+console.log(copy.age); // 18 - getter 保持功能
+console.log(copy.hobbies === obj.hobbies); // true - 浅拷贝，共享引用
+```
+
+**为什么是浅拷贝？**
+
+- 创建了新对象，基本类型属性被复制
+- 但引用类型属性共享同一内存地址
+- 比普通浅拷贝方法更完整，保留了 getter/setter 和属性特性
+
+#### 手写实现原理
+
+理解 `Object.create()` 的内部原理有助于更好地掌握原型继承：
 
 ```js
 function createObject(proto) {
@@ -169,15 +236,31 @@ function createObject(proto) {
   return new F();
 }
 
+// 使用示例
 const o = { o: 1 };
-
 const instance = Object.create(o);
 const _instance = createObject(o);
 
 console.log(Object.getPrototypeOf(instance)); // {o: 1}
 console.log(Object.getPrototypeOf(_instance)); // {o: 1}
 console.log(o.isPrototypeOf(_instance)); // true
-console.log(Object.prototype.isPrototypeOf(_instance)); // true
+```
+
+#### 相关原型方法
+
+- **Object.getPrototypeOf()**：返回参数对象的原型
+- **Object.setPrototypeOf()**：为参数对象设置原型
+- **isPrototypeOf()**：判断对象是否为参数对象的原型
+
+```js
+const o = {};
+// const o = {} 是 const o = new Object() 的语法糖
+console.log('构造器', o.constructor); // Object
+
+function F() {}
+Object.setPrototypeOf(o, F.prototype);
+
+console.log('修改原型链后的构造器', o.constructor); // F
 ```
 
 ---
