@@ -12,8 +12,9 @@
     "paths": {
       "@@/*": [".dumi/tmp/*"],
       "@c6i/playground": ["src"],
-      "@c6i/playground/*": ["src/*", "*"]
+      "@c6i/playground/*": ["src/*", "*"],
+      "@js/*": ["docs/notes/js/*"]
     }
   },
-  "include": [".dumirc.ts", "src/**/*"]
+  "include": [".dumirc.ts", "src/**/*", "docs/**/*"]
 }

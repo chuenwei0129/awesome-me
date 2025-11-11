@@ -24,7 +24,7 @@ const config = {
   // collectCoverageFrom: undefined,
 
   // Jest 输出覆盖率文件的目录
-  coverageDirectory: "coverage",
+  coverageDirectory: 'coverage',
 
   // 用于跳过覆盖率收集的正则表达式模式字符串数组
   // coveragePathIgnorePatterns: [
@@ -32,7 +32,7 @@ const config = {
   // ],
 
   // 指示应使用哪个提供程序来检测代码以收集覆盖率
-  coverageProvider: "v8",
+  coverageProvider: 'v8',
 
   // Jest 在编写覆盖率报告时使用的报告器名称列表
   // coverageReporters: [
@@ -72,9 +72,7 @@ const config = {
   // maxWorkers: "50%",
 
   // 从请求模块的位置向上递归搜索的目录名称数组
-  // moduleDirectories: [
-  //   "node_modules"
-  // ],
+  moduleDirectories: ['node_modules', 'docs/notes/js'],
 
   // 模块使用的文件扩展名数组
   // moduleFileExtensions: [
@@ -101,7 +99,7 @@ const config = {
   // notifyMode: "failure-change",
 
   // 用作 Jest 配置基础的预设
-  // preset: undefined,
+  preset: 'ts-jest',
 
   // 从一个或多个项目运行测试
   // projects: undefined,
