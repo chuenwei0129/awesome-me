@@ -29,13 +29,13 @@ arr.includes(2, 2); // false
 
 **优势**: 比 `indexOf` 更语义化，且能正确判断 `NaN`。
 
-### 求幂运算符 (**)
+### 求幂运算符 (\*\*)
 
 右结合的幂运算符，替代 `Math.pow()`。
 
 ```javascript
 2 ** 3; // 8
-2 ** 3 ** 2; // 512 (相当于 2 ** (3 ** 2))
+2 ** (3 ** 2); // 512 (相当于 2 ** (3 ** 2))
 
 let a = 2;
 a **= 3; // a = 8
@@ -683,22 +683,74 @@ arr.at(-1); // 新方式
 
 ### Object.hasOwn()
 
-更安全的属性检查方法。
+这是 ES2022 引入的一个重要改进，建议在新项目中使用 `Object.hasOwn()` 替代传统的 `hasOwnProperty` 方法。因为 `Object.hasOwn()` 更安全。
+
+说 `Object.hasOwn()` 更安全主要有以下几个原因：
+
+#### 1. 防止 `hasOwnProperty` 被覆盖
+
+```javascript
+// 问题场景：hasOwnProperty 被覆盖
+const obj = {
+  name: 'Tom',
+  hasOwnProperty: function () {
+    return false; // 恶意或意外的覆盖
+  },
+};
+
+// 传统方式 - 有问题
+console.log(obj.hasOwnProperty('name')); // false ❌ 错误结果
+
+// 新方式 - 正常工作
+console.log(Object.hasOwn(obj, 'name')); // true ✅ 正确结果
+```
+
+#### 2. 处理 null 原型对象
+
+```javascript
+// 创建没有原型的对象
+const nullProtoObj = Object.create(null);
+nullProtoObj.name = 'Tom';
+
+// 传统方式 - 会报错
+try {
+  console.log(nullProtoObj.hasOwnProperty('name')); // ❌ TypeError
+} catch (e) {
+  console.log('错误:', e.message); // nullProtoObj.hasOwnProperty is not a function
+}
+
+// 新方式 - 正常工作
+console.log(Object.hasOwn(nullProtoObj, 'name')); // true ✅
+```
+
+#### 3. 更清晰的语义
 
 ```javascript
 const obj = { name: 'Tom' };
 
-// 传统方式可能有问题
-obj.hasOwnProperty('name'); // true
-// 但如果 obj.hasOwnProperty 被覆盖则会出错
+// 传统方式 - 容易混淆
+obj.hasOwnProperty('name'); // 这是方法调用
 
-// 新方式更安全
-Object.hasOwn(obj, 'name'); // true
+// 新方式 - 明确是静态方法
+Object.hasOwn(obj, 'name'); // 明确表示检查obj是否拥有'name'属性
+```
 
-// 对于 null 原型对象也能工作
-const nullProto = Object.create(null);
-nullProto.name = 'Tom';
-Object.hasOwn(nullProto, 'name'); // true
+#### 4. 实际应用场景
+
+```javascript
+// 安全的属性检查函数
+function safeCheck(obj, prop) {
+  // 不安全的方式
+  // return obj && obj.hasOwnProperty(prop);
+
+  // 安全的方式
+  return Object.hasOwn(obj, prop);
+}
+
+// 即使对象是 null 或 undefined 也能安全处理
+console.log(safeCheck(null, 'name')); // false
+console.log(safeCheck(undefined, 'name')); // false
+console.log(safeCheck({ name: 'Tom' }, 'name')); // true
 ```
 
 ## ES2023
@@ -710,8 +762,8 @@ Object.hasOwn(nullProto, 'name'); // true
 ```javascript
 const arr = [1, 2, 3, 4, 5, 4, 3, 2, 1];
 
-arr.findLast((x) => x > 3); // 5 (从后向前第一个大于3的)
-arr.findLastIndex((x) => x > 3); // 4 (索引)
+arr.findLast((x) => x > 3); // 4 (从后向前第一个大于3的)
+arr.findLastIndex((x) => x > 3); // 5 (索引)
 
 // 实用场景：查找最后一条符合条件的记录
 const logs = [
@@ -896,7 +948,7 @@ class Service {
 
 ```javascript
 // Record - 不可变对象
-const record = #{a: 1, b: 2};
+const record = #{ a: 1, b: 2 };
 
 // Tuple - 不可变数组
 const tuple = #[1, 2, 3];
@@ -904,7 +956,7 @@ const tuple = #[1, 2, 3];
 // 深度不可变
 const nested = #{
   data: #[1, 2, 3],
-  metadata: #{id: 1}
+  metadata: #{ id: 1 },
 };
 ```
 
@@ -923,7 +975,9 @@ date.day; // 15
 const time = Temporal.PlainTime.from('13:30:00');
 
 // Temporal.ZonedDateTime
-const zoned = Temporal.ZonedDateTime.from('2024-01-15T13:30:00+08:00[Asia/Shanghai]');
+const zoned = Temporal.ZonedDateTime.from(
+  '2024-01-15T13:30:00+08:00[Asia/Shanghai]',
+);
 
 // 日期计算
 const nextWeek = date.add({ days: 7 });
@@ -942,10 +996,11 @@ const result = format(transform(parse(input)));
 const result = input |> parse(%) |> transform(%) |> format(%);
 
 // 实用场景
-const total = [1, 2, 3, 4]
-  |> (%.map(x => x * 2))
-  |> (%.filter(x => x > 4))
-  |> (%.reduce((a, b) => a + b, 0));
+const total =
+  [1, 2, 3, 4]
+  |> %.map((x) => x * 2)
+  |> %.filter((x) => x > 4)
+  |> %.reduce((a, b) => a + b, 0);
 ```
 
 ## 参考资源
