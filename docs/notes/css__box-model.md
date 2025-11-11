@@ -2,7 +2,7 @@
 group:
   title: css
   order: 2
-title: 盒模型指南
+title: 盒模型
 toc: content
 order: 2
 ---

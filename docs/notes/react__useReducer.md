@@ -1,7 +1,7 @@
 ---
 group:
-  title: react
+  title: React
   order: 6
-title: example
+title:
 toc: content
 ---

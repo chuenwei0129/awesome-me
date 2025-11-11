@@ -126,6 +126,48 @@ function handle(color: 'blue' | 'black'): string {
 }
 ```
 
+### 6. exactOptionalPropertyTypes ⭐⭐
+
+- **是什么？**
+  一个非常严格的类型检查选项。当它为 `true` 时，TypeScript 会严格区分 **“属性不存在”** 和 **“属性值为 `undefined`”**。
+
+- **为什么是陷阱？**
+  因为它改变了 JavaScript 中一个常见的模糊地带，打破了多数人和许多现有库的默认习惯。
+
+- **具体陷阱场景：**
+  在普通模式（`exactOptionalPropertyTypes: false` 或默认）下：
+
+  ```typescript
+  interface User {
+    name: string;
+    age?: number; // age 可以是 number，也可以是 undefined，也可以不存在
+  }
+
+  const user1: User = { name: 'Alice' }; // OK - 属性不存在
+  const user2: User = { name: 'Bob', age: undefined }; // OK - 属性存在，值为 undefined
+  ```
+
+  在严格模式（`exactOptionalPropertyTypes: true`）下：
+
+  ```typescript
+  const user1: User = { name: 'Alice' }; // OK - 属性不存在
+  const user2: User = { name: 'Bob', age: undefined }; // ERROR! 你不能显式地将 age 设置为 undefined。
+  ```
+
+  **陷阱在于**：很多 JavaScript 代码和库（例如，使用 `obj.hasOwnProperty(‘key’)` 或 `{ ...spread }` 运算的逻辑）并不区分这两种状态。当你开启这个选项后，你可能会发现很多之前能正常工作的代码（尤其是处理外部 API 响应或配置对象时）现在会类型报错。
+
+- **如何规避陷阱？**
+  - **对于大多数应用项目**：**不建议开启**。这个选项过于严格，可能会给你带来很多不必要的麻烦，收益与成本不成正比。
+  - **对于追求极致类型安全的核心库**：可以考虑开启，它能保证你的库接口语义非常精确。但要做好心理准备，需要更细致地处理可选属性。
+  - **如果需要显式设置 `undefined`**，你应该修改类型定义，明确表示该属性可以接受 `undefined`：
+    ```typescript
+    interface User {
+      name: string;
+      age?: number | undefined; // 明确允许 undefined
+    }
+    // 现在，在 exactOptionalPropertyTypes: true 下，user2 也是合法的了。
+    ```
+
 ---
 
 ## 二、构建配置(高频使用)

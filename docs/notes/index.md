@@ -1,10 +1,13 @@
 ---
+# 导航
 nav:
   title: Notes
   order: 0
+# 分组
 group:
   title: 介绍
   order: -999
+# 文章
 title: 这是什么？
 ---
 
