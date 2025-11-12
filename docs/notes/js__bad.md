@@ -15,12 +15,23 @@ JavaScript 里有两大查找过程是链式的，一个是变量的查找，是
 
 > **the global `this` inherit from `Object.prototype` Luckily**, more modern JavaScript engines all seem to agree that the global `this` must have `Object.prototype` in its prototype chain.
 
-本来这两个领域是互不相关的，但因为全局对象 (它是一个对象，所以存在 [object Object] 属性，同时它也是一个变量对象) 和 `with` 语句的存在，它俩可以联系在一起，那就是变量查找转变成属性的查找，也就是说变量都可能会查找到 `Object.prototype` 上，**`Object.prototype` 上的属性都是全局变量**。
+本来这两个领域是互不相关的，但因为全局对象（它是一个对象，所以存在对象属性，同时它也是一个变量对象）和 `with` 语句的存在，它俩可以联系在一起，那就是变量查找转变成属性的查找，也就是说变量都可能会查找到 `Object.prototype` 上，**`Object.prototype` 上的属性都是全局变量**。
 
 ```js
-globalThis === window; // in browser is true
-globalThis.__proto__ === Window.prototype; // true
-window.__proto__.__proto__.__proto__.__proto__ === Object.prototype; // true
+// 在浏览器环境中
+globalThis === window; // true
+
+// 全局对象既是变量容器，又是普通对象
+var globalVar = 'hello';
+window.globalVar = 'hello'; // 等价写法
+
+// 浏览器环境中的原型链
+window.__proto__ === Window.prototype; // true
+Window.prototype.__proto__ === WindowProperties.prototype; // true
+WindowProperties.prototype.__proto__ === EventTarget.prototype; // true
+EventTarget.prototype.__proto__ === Object.prototype; // true
+
+// 简化理解：window -> Window.prototype -> ... -> Object.prototype
 ```
 
 ## [为什么 Function.prototype 可以直接执行？](https://www.zhihu.com/question/323462380)
@@ -41,7 +52,7 @@ RegExp.prototype; // /(?:)/
 
 **兼容性：**
 
-ES6 中把除 `Function.prototype`，`Array.prorotype` 之外的其它 6 个类型的内置类型的原型对象也改为普通对象。
+ES6 中把除 `Function.prototype`，`Array.prototype` 之外的其它 6 个类型的内置类型的原型对象也改为普通对象。
 
 在 ES7 里回滚了对 `Number.prototype` 的改动，同时保险起见，也把 `String.prototype` 和 `Boolean.prototype` 也都回滚了。
 
@@ -84,32 +95,31 @@ alert(str.test); // ?
 
 根据你是否开启了严格模式 `use strict`，会得到如下结果：
 
-- `undefined` (非严格模式)
-- 报错 (严格模式)。
+- `undefined`（非严格模式）
+- 报错（严格模式）
 
 为什么？让我们看看在 `(*)` 那一行到底发生了什么：
 
-> 1. 当访问 str 的属性时，一个 “对象包装器” 被创建了。
-> 2. 在严格模式下，向其写入内容会报错。
-> 3. 否则，将继续执行带有属性的操作，该对象将获得 test 属性，但是此后，“对象包装器” 将消失，因此在最后一行，str 并没有该属性的踪迹。
+1. 当访问 `str` 的属性时，一个"对象包装器"被创建了
+2. 在严格模式下，向其写入内容会报错
+3. 否则，将继续执行带有属性的操作，该对象将获得 `test` 属性，但是此后，"对象包装器"将消失，因此在最后一行，`str` 并没有该属性的踪迹
 
 **这个例子清楚地表明，原始类型不是对象。**
 
 ## [为什么 new Symbol() 会抛异常？](https://www.zhihu.com/question/316717095/answer/628772556)
 
-**除了 `null` 和 `undefined`，JS 里的原始类型都有对应的包装对象类型**。为什么要有包装对象？是为了能用 `.` 语法来读取属性、调用方法 (对象才能有属性和方法)，比如 `"foo".length`、`(1).toFixed(2)` 等代码中，都隐式的用到了包装对象。`null` 和 `undefined` 不需要属性和方法，所以不需要包装对象。
+**除了 `null` 和 `undefined`，JS 里的原始类型都有对应的包装对象类型**。为什么要有包装对象？是为了能用 `.` 语法来读取属性、调用方法（对象才能有属性和方法），比如 `"foo".length`、`(1).toFixed(2)` 等代码中，都隐式地用到了包装对象。`null` 和 `undefined` 不需要属性和方法，所以不需要包装对象。
 
-同样的，`symbol` 也需要读取属性和方法，所以也需要有包装对象，但一样也不推荐直接使用包装对象。ES6 是个新的开始，可以做一些大胆的改革，**所以 `new Symbol()` 被故意设计为抛异常，而不是墨守成规返回包装对象**。但仍然能用 `Object()` 把 `symbol` 转换为包装对象，有一个原因是因为**已经有代码用 `Object(value) === value` 来判断一个值是不是对象值**。
+同样的，`symbol` 也需要读取属性和方法，所以也需要有包装对象，但一样也不推荐直接使用包装对象。ES6 是个新的开始，可以做一些大胆的改革，**所以 `new Symbol()` 被故意设计为抛异常，而不是墨守成规返回包装对象**。但仍然能用 `Object()` 把 `symbol` 转换为包装对象，这是因为**已经有代码用 `Object(value) === value` 来判断一个值是不是对象值**。
 
 而且比起写出 `new Number()`、`new String()`、`new Boolean()` 这样的代码，菜鸟们写出 `new Symbol()` 的概率更大，因为 `symbol` 没有字面量，而老的三种原始类型都有，有字面量的话会更容易学会用字面量。
 
 但其实这个决定是有争议的，因为造成了语言的不统一，凭什么那仨不报错而你要报错？而且即便真把 `symbol` 的包装对象误作为属性键来使用，其实也能正常使用，因为有自动解包装的逻辑。
 
 ```js
-s = Symbol()(
-  // 作为 key 会自动解包装
-  { [s]: 1 },
-)[Object(s)]; // 1
+const s = Symbol();
+// 作为 key 会自动解包装
+({ [s]: 1 })[Object(s)]; // 1
 ```
 
 未来的第七种原始类型 `BigInt()`，因为同样的原因，也不能被 `new`。
@@ -118,7 +128,7 @@ s = Symbol()(
 
 ```js
 const a = { age: 20 };
-// b 是 a 的 包装对象
+// 对于已经是对象的值，Object() 直接返回原对象，不创建新对象
 const b = new Object(a);
 console.log(a === b); // true
 ```
@@ -133,7 +143,7 @@ alert((123456).toString(36)); // 2n9c
 
 请注意 `123456..toString(36)` 中的两个点不是打错了。如果我们想直接在一个数字上调用一个方法，比如上面例子中的 `toString`，那么我们需要在它后面放置两个点 `..`。
 
-如果我们放置一个点：`123456.toString(36)`，那么就会出现一个 `error`，因为 JavaScript 语法隐含了第一个点之后的部分为小数部分。如果我们再放一个点，那么 JavaScript 就知道小数部分为空，现在使用该方法。
+**原因：** 如果我们放置一个点 `123456.toString(36)`，那么就会出现错误，因为 JavaScript 语法将第一个点解析为小数点的开始。如果再放一个点，JavaScript 就知道小数部分为空，现在可以访问方法了。
 
 也可以写成 `(123456).toString(36)`。
 
@@ -141,18 +151,63 @@ alert((123456).toString(36)); // 2n9c
 
 > [类型转换](./js__type-change.md)
 
-## [this](./js__this.mdthis.md)
+## [this](./js__this.md)
 
 **JavaScript 的 `this` 在它自己无法自圆其说的时候就会 fallback 到 `globalThis`，在浏览器环境下即 `window`，严格模式下修正为了 `undefined`。**
 
 ## arguments
 
-`arguments` 对象有 “双向绑定” 特性，这意味着：参数的值会随 arguments 对象的值的改变而变化，反之亦然。
+`arguments` 对象有"双向绑定"特性，这意味着：**参数的值会随 `arguments` 对象的值的改变而变化，反之亦然**。
 
-箭头函数是没有 `arguments` 局部变量的。
+```js
+function test(a) {
+  arguments[0] = 99;
+  console.log(a); // 99
+}
+test(1);
+```
+
+**注意：** 箭头函数是没有 `arguments` 局部变量的。
 
 > [JavaScript 黑历史 - 那些只有 1% 的人知道的特性](https://zhuanlan.zhihu.com/p/486975868)
 
 ## [JavaScript 语句后应该加分号么？](https://www.zhihu.com/question/20298345)
 
-## [js 中 x = x || y 和 x || (x = y) 有什么区别？](https://www.zhihu.com/question/414969457/answer/1416743993)
+JavaScript 有自动分号插入 (Automatic Semicolon Insertion, ASI) 机制，但这个机制并不总是按照你的预期工作。
+
+**ASI 的规则：**
+
+1. 当出现一个不允许的行终止符或 `}` 时
+2. 当捕获到标识符输入流的末尾，并且无法将单个输入流转换为一个完整的程序时
+3. 当遇到的 token 不被文法产生式允许时
+
+**经典的 ASI 陷阱：**
+
+```js
+// 情况 1: return 语句
+function getData() {
+  return;
+  {
+    name: 'test';
+  }
+}
+console.log(getData()); // undefined，而不是对象
+
+// 情况 2: 数组访问
+const a = [1, 2, 3][(1, 2, 3)].forEach(console.log); // 报错：Cannot read property 'forEach' of undefined
+
+// 情况 3: 立即执行函数
+const a = 1(function () {
+  console.log('IIFE');
+})(); // 报错：1 is not a function
+```
+
+**最佳实践：**
+
+虽然不加分号的代码风格在社区有一定支持者（如 StandardJS），但建议：
+
+1. **总是在语句末尾加分号**，这样可以避免 99% 的 ASI 问题
+2. 如果选择不加分号，**必须在以 `[`、`(`、`` ` ``、`+`、`-` 开头的语句前加分号**
+3. 使用 ESLint 等工具强制统一代码风格
+
+这是一个**历史遗留问题导致的争议**，如果 JavaScript 设计之初就明确要求分号，就不会有这么多困扰了。

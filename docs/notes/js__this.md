@@ -9,7 +9,7 @@ order: 14
 
 ## this 的基本概念
 
-`this` 是 JavaScript 中的一个关键字，它的值在函数被调用时确定，指向调用该函数的对象。`this` 的指向取决于函数的调用方式，而不是函数的定义位置。
+`this` 是 JavaScript 中的一个关键字，**它的值在函数被调用时确定，指向调用该函数的对象**。`this` 的指向取决于函数的调用方式，而不是函数的定义位置。
 
 ## this 绑定规则
 
@@ -18,6 +18,8 @@ order: 14
 全局环境使用 `this`，它指的就是顶层对象 `window`。严格模式下指向 `undefined`。
 
 ```js
+// 因为 Jest 的 describe, test 等隐式导入会使 jest 测试文件成为一个 ES 模块，而 ES 模块默认就是严格模式，所以这个案列就不写 jest 测试用例了。
+
 function f1() {
   'use strict';
   console.log(this);
@@ -28,7 +30,7 @@ function f2() {
 }
 
 f1(); // undefined
-f2(); // window 对象
+f2(); // window
 ```
 
 ### 隐式绑定（对象方法）

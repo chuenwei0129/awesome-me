@@ -4,6 +4,12 @@
  */
 
 /** @type {import('jest').Config} */
+
+// 可以用 ts-jest 里的工具函数 pathsToModuleNameMapper 来把 tsconfig.json 里的 paths 配置复制到 jest.config.js 里的 moduleNameMapper
+
+const { pathsToModuleNameMapper } = require('ts-jest');
+const { compilerOptions } = require('./tsconfig.json');
+
 const config = {
   // 测试中所有导入的模块都应自动被模拟
   // automock: false,
@@ -72,7 +78,7 @@ const config = {
   // maxWorkers: "50%",
 
   // 从请求模块的位置向上递归搜索的目录名称数组
-  moduleDirectories: ['node_modules', 'docs/notes/js'],
+  moduleDirectories: ['node_modules'],
 
   // 模块使用的文件扩展名数组
   // moduleFileExtensions: [
@@ -88,6 +94,9 @@ const config = {
 
   // 从正则表达式到模块名称或模块名称数组的映射，允许用单个模块存根资源
   // moduleNameMapper: {},
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
+    prefix: '<rootDir>/',
+  }),
 
   // 与所有模块路径匹配的正则表达式模式字符串数组，在被模块加载器视为"可见"之前进行匹配
   // modulePathIgnorePatterns: [],
@@ -144,6 +153,7 @@ const config = {
 
   // 用于测试的测试环境
   // testEnvironment: "jest-environment-node",
+  testEnvironment: 'jsdom',
 
   // 将传递给 testEnvironment 的选项
   // testEnvironmentOptions: {},

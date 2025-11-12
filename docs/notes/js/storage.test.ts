@@ -1,13 +1,13 @@
 import storage from '@js/storage';
 
-test('storage', () => {
-  it('设置值', () => {
-    storage.set('key', 'value');
-    expect(localStorage.getItem('my-app-key')).toEqual('value');
+describe('storage', () => {
+  it('可以缓存值', () => {
+    storage.set('newKey', 'hello');
+    expect(localStorage.getItem('my-app-newKey')).toEqual('hello');
   });
 
-  it('获取值', () => {
-    localStorage.setItem('my-app-newKey', 'newValue');
-    expect(storage.get('newKey')).toEqual('newValue');
+  it('可以设置值', () => {
+    localStorage.setItem('my-app-newKey', 'hello');
+    expect(storage.get('newKey')).toEqual('hello');
   });
 });
