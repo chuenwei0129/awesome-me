@@ -1,0 +1,257 @@
+"use strict";(self.webpackChunk_c6i_playground=self.webpackChunk_c6i_playground||[]).push([[8575],{98575:function(d,a,e){e.r(a),e.d(a,{texts:function(){return n}});const n=[{value:"\u7ED3\u6784\u5316\u6570\u636E\u662F\u6307\u6309\u7167\u7279\u5B9A\u683C\u5F0F\u548C\u89C4\u5219\u7EC4\u7EC7\u7684\u6570\u636E\uFF0C\u6BCF\u4E2A\u6570\u636E\u5B57\u6BB5\u90FD\u6709\u660E\u786E\u7684\u5B9A\u4E49\u548C\u7C7B\u578B\u3002",paraId:0,tocIndex:0},{value:"\u7ED3\u6784\u5316\u6570\u636E\u7684\u7279\u70B9\u662F\u6613\u4E8E\u5904\u7406\u3001\u5B58\u50A8\u548C\u5206\u6790\uFF0C\u56E0\u4E3A\u6570\u636E\u7684\u7ED3\u6784\u548C\u5173\u7CFB\u5DF2\u7ECF\u660E\u786E\u3002\u5E38\u89C1\u7684\u6587\u672C\u5F62\u5F0F\u7684\u7ED3\u6784\u5316\u6570\u636E\u901A\u5E38\u662F ",paraId:1,tocIndex:0},{value:"XML",paraId:1,tocIndex:0},{value:"\u3002",paraId:1,tocIndex:0},{value:"\u4F46\u662F XML \u9700\u8981\u5927\u91CF\u7684 ",paraId:2,tocIndex:0},{value:"<>",paraId:2,tocIndex:0},{value:" \u6807\u7B7E\u6765\u63CF\u8FF0\u7ED3\u6784\u5173\u7CFB\uFF0C\u56E0\u6B64\u4F53\u79EF\u6D6A\u8D39\u4E0A\u6BD4\u8F83\u4E25\u91CD\uFF0C\u5BF9\u4E8E\u89E3\u6790\u548C\u7F51\u7EDC\u4F20\u8F93\u4E0A\u8981\u660E\u663E\u900A\u8272\u4E8E JSON\u3002",paraId:2,tocIndex:0},{value:"JSON \u5168\u79F0\u53EB\u505A ",paraId:3,tocIndex:0},{value:"JavaScript Object Notation",paraId:3,tocIndex:0},{value:"\uFF0C\u53EF\u89C1\u5B83\u4E00\u5F00\u59CB\u5C31\u4E0E JavaScript \u8131\u4E0D\u5F00\u5173\u7CFB\u3002\u5FAE\u8F6F\u5728 IE8 \u624D\u5F00\u59CB\u5185\u7F6E\u5BF9 JSON API \u7684\u652F\u6301\uFF0C\u5728\u6B64\u4E4B\u524D\uFF0C\u90FD\u9700\u8981\u5F15\u7528\u7B2C\u4E09\u65B9\u5E93\u6765\u5B9E\u73B0\u3002ECMAScript \u89C4\u8303\u5F15\u5165 JSON \u8981\u5230 ES5\u3002",paraId:3,tocIndex:0},{value:"\u4E8B\u5B9E\u4E0A\uFF0CJSON \u5728 ECMA \u662F\u6709\u72EC\u7ACB\u89C4\u8303\u7684\uFF0C\u90A3\u5C31\u662F ",paraId:4,tocIndex:0},{value:"ECMA-404",paraId:4,tocIndex:0},{value:"\u3002\u5B83\u53EA\u6709\u5341\u51E0\u9875\uFF0C\u91CC\u9762\u5B9A\u4E49\u4E86\u5404\u79CD\u8BED\u6CD5\u76F8\u5173\u7684\u7B26\u53F7\uFF0C\u6BD4\u5982\u5927\u62EC\u53F7\u3001\u4E2D\u62EC\u53F7\u3001\u9017\u53F7\u3001\u5206\u53F7\uFF0C\u90FD\u662F\u6709\u660E\u786E\u7684 Unicode \u503C\u7684\u3002\u540C\u65F6\u5B83\u4E5F\u5B9A\u4E49\u4E86 JSON \u652F\u6301\u7684 7 \u79CD\u53D6\u503C\uFF0C\u5206\u522B\u662F ",paraId:4,tocIndex:0},{value:"object",paraId:4,tocIndex:0},{value:"\u3001",paraId:4,tocIndex:0},{value:"array",paraId:4,tocIndex:0},{value:"\u3001",paraId:4,tocIndex:0},{value:"number",paraId:4,tocIndex:0},{value:"\u3001",paraId:4,tocIndex:0},{value:"string",paraId:4,tocIndex:0},{value:"\u3001",paraId:4,tocIndex:0},{value:"true",paraId:4,tocIndex:0},{value:"\u3001",paraId:4,tocIndex:0},{value:"false",paraId:4,tocIndex:0},{value:" \u548C ",paraId:4,tocIndex:0},{value:"null",paraId:4,tocIndex:0},{value:"\u3002",paraId:4,tocIndex:0},{value:"\u5355\u5355\u4E00\u4E2A\u6570\u5B57\u3001\u4E00\u4E2A\u53CC\u5F15\u53F7\u5B57\u7B26\u4E32\u3001\u4E00\u4E2A true \u6216 false\uFF0C\u4EE5\u53CA\u4E00\u4E2A null \u90FD\u662F\u5408\u6CD5\u7684 JSON \u6570\u636E\uFF0C\u5E76\u975E\u53EA\u6709\u5927\u62EC\u53F7\uFF08{}\uFF09\u3001\u4E2D\u62EC\u53F7\uFF08[]\uFF09\u5305\u8D77\u6765\u7684\u7ED3\u6784\u624D\u7B97\u3002\u4E8E\u662F\u50CF\u4E0B\u5217\u89E3\u6790\u90FD\u80FD\u591F\u6210\u529F\uFF1A",paraId:5,tocIndex:1},{value:`JSON.parse('8'); // \u6570\u5B57 8
+JSON.parse(\`"Hello"\`); // \u5B57\u7B26\u4E32 "Hello" (\u6CE8\u610F\u9700\u8981\u53CC\u5F15\u53F7)
+JSON.parse('true'); // \u5E03\u5C14\u503C true
+JSON.parse('false'); // \u5E03\u5C14\u503C false
+JSON.parse('null'); // null
+`,paraId:6,tocIndex:1},{value:"\u4F46\u662F\u9700\u8981\u6CE8\u610F\uFF0CJSON \u53EA\u652F\u6301\u5341\u8FDB\u5236\u7684\u6570\u5B57\uFF0C\u50CF ",paraId:7,tocIndex:1},{value:'JSON.parse("0x01")',paraId:7,tocIndex:1},{value:" \u751A\u81F3 ",paraId:7,tocIndex:1},{value:'JSON.parse("01")',paraId:7,tocIndex:1},{value:" \u8FD9\u6837\u90FD\u662F\u4E0D\u53EF\u4EE5\u88AB\u6210\u529F\u89E3\u6790\u7684\u3002",paraId:7,tocIndex:1},{value:"\u540C\u65F6\uFF0C\u5BF9\u4E8E JavaScript \u4E2D\u7684\u7279\u6B8A\u6570\u5B57\uFF0C\u6BD4\u5982 ",paraId:8,tocIndex:1},{value:"Infinity",paraId:8,tocIndex:1},{value:"\u3001",paraId:8,tocIndex:1},{value:"NaN",paraId:8,tocIndex:1},{value:"\uFF0CJSON \u90FD\u662F\u4E0D\u652F\u6301\u7684\uFF0C\u89E3\u6790\u4F1A\u62A5\u9519\u3002\u6B64\u5916\uFF0C",paraId:8,tocIndex:1},{value:"undefined",paraId:8,tocIndex:1},{value:" \u4E5F\u4E0D\u5C5E\u4E8E JSON \u7684\u5408\u6CD5\u7C7B\u578B\u3002",paraId:8,tocIndex:1},{value:"\u4EE5\u4E0A\u662F ",paraId:9,tocIndex:1},{value:"JSON.parse",paraId:9,tocIndex:1},{value:" \u5BF9\u4E8E\u4E00\u4E9B\u4E0D\u5E38\u89C1\u6570\u636E\u683C\u5F0F\u7684\u89E3\u6790\u7B56\u7565\u3002\u5982\u679C\u4F60\u7ED9\u5B83\u4F20\u5165\u4E86\u4E00\u4E2A\u975E\u5B57\u7B26\u4E32\u7C7B\u578B\u7684\u53C2\u6570\uFF0C\u90A3\u4E48\u4F1A\u901A\u8FC7 ",paraId:9,tocIndex:1},{value:"ToString()",paraId:9,tocIndex:1},{value:" \u51FD\u6570\u6765\u8F6C\u6362\u3002",paraId:9,tocIndex:1},{value:"\u5E94\u8BE5\u6709\u5F88\u591A\u4EBA\u4E0D\u77E5\u9053\uFF0C",paraId:10,tocIndex:1},{value:"JSON.parse",paraId:10,tocIndex:1},{value:" \u8FD8\u652F\u6301\u7B2C\u4E8C\u4E2A\u53C2\u6570 ",paraId:10,tocIndex:1},{value:"reviver",paraId:10,tocIndex:1},{value:"\uFF0C\u7528\u6765\u7CBE\u786E\u63A7\u5236\u89E3\u6790\u540E\u7684\u503C\u3002\u4E3E\u4E00\u4E2A\u4F8B\u5B50\uFF1A",paraId:10,tocIndex:1},{value:`JSON.parse(
+  \`{
+    "name": "Mike",
+    "education": {
+        "college": "MIT",
+        "major": "computer"
+    },
+    "experiences": [{
+        "from": "2017-08-20",
+        "to": "2018-03-05",
+        "employer": "Google"
+    },
+    {
+        "from": "2018-03-17",
+        "to": "2020-07-28",
+        "employer": "Microsoft"
+    }]
+}\`,
+  function (key, value) {
+    console.log(this, key, value);
+    return value;
+  },
+);
+`,paraId:11,tocIndex:1},{value:"reviver",paraId:12,tocIndex:1},{value:" \u5185\u90E8\u6709\u4E09\u4E2A\u53D8\u91CF\u53EF\u4EE5\u5229\u7528\uFF0C\u5206\u522B\u662F ",paraId:12,tocIndex:1},{value:"this",paraId:12,tocIndex:1},{value:"\u3001",paraId:12,tocIndex:1},{value:"key",paraId:12,tocIndex:1},{value:" \u548C ",paraId:12,tocIndex:1},{value:"value",paraId:12,tocIndex:1},{value:"\u3002",paraId:12,tocIndex:1},{value:"key \u4E0D\u7528\u591A\u8BF4\uFF0C\u81EA\u7136\u662F\u67D0\u4E00\u5C42\u7EA7\u4E0B\u67D0\u4E00\u5B57\u6BB5\u7684\u952E\uFF0C\u9700\u8981\u6CE8\u610F\u7684\u662F\uFF0C\u6700\u5916\u5C42\u8FD9\u4E2A\u7ED3\u6784\u4E5F\u88AB\u5305\u542B\u5728\u4E86\u4E00\u4E2A\u865A\u62DF\u5BF9\u8C61\u4E2D\uFF1A",paraId:13,tocIndex:1},{value:`{
+  '': {
+    name: 'Mike',
+    education: { college: 'MIT', major: 'computer' },
+    experiences: [ [Object], [Object] ]
+  }
+}
+`,paraId:14,tocIndex:1},{value:"\u5E76\u4E14 key \u4E3A\u7A7A\u5B57\u7B26\u4E32\u3002",paraId:15,tocIndex:1},{value:"\u5927\u5BB6\u53EF\u4EE5\u4E13\u95E8\u6253\u5370\u4E00\u4E0B\u6240\u6709\u7684 key\uFF0C\u5B83\u4EEC\u5F62\u6210\u4E0B\u9762\u8FD9\u79CD\u987A\u5E8F\uFF1A",paraId:16,tocIndex:1},{value:`'name';
+'college';
+'major';
+'education';
+'from';
+'to';
+'employer';
+'0';
+'from';
+'to';
+'employer';
+'1';
+'experiences';
+'';
+`,paraId:17,tocIndex:1},{value:"\u53EF\u89C1\u8FD9\u662F\u4E00\u4E2A",paraId:18,tocIndex:1},{value:"\u6DF1\u5EA6\u4F18\u5148\u904D\u5386",paraId:18,tocIndex:1},{value:"\u7684\u987A\u5E8F\uFF0C\u6700\u540E\u4E00\u4E2A\u4E00\u5B9A\u662F\u7A7A\u4E32\u3002",paraId:18,tocIndex:1},{value:"this",paraId:18,tocIndex:1},{value:" \u5373\u6307\u5411\u5F53\u524D\u8FD9\u4E2A key \u6240\u5728\u7684\u5BF9\u8C61\u7ED3\u6784\uFF0C\u56E0\u6B64\u4E0D\u8981\u7528\u7BAD\u5934\u51FD\u6570\u6765\u58F0\u660E ",paraId:18,tocIndex:1},{value:"reviver",paraId:18,tocIndex:1},{value:"\uFF0C\u5426\u5219\u4F1A\u7BE1\u6539 this\u3002",paraId:18,tocIndex:1},{value:"\u5373\u4FBF\u6709 this \u548C key\uFF0C",paraId:19,tocIndex:1},{value:"reviver",paraId:19,tocIndex:1},{value:" \u53C2\u6570\u5728\u5B9E\u9645\u4F7F\u7528\u4E2D\u4ECD\u7136\u9762\u4E34\u7740\u6BD4\u8F83\u5927\u7684\u9650\u5236\uFF0C\u56E0\u4E3A key \u4F1A\u91CD\u590D\uFF0C\u8FD9\u65F6\u5019\u4F60\u5C31\u53EA\u80FD\u7528 this \u6765\u8FA8\u522B\u5F53\u524D key-value \u7684\u4F4D\u7F6E\uFF0C\u4F46\u662F this \u4F5C\u4E3A\u4E00\u4E2A\u6570\u636E\u7ED3\u6784\uFF0C\u540C\u6837\u4E0D\u65B9\u4FBF\u7528\u6765\u5B9A\u4F4D\u3002\u56E0\u6B64\uFF0C\u5EFA\u8BAE\u5728\u88AB\u89E3\u6790\u7684 JSON \u6570\u636E\u6709\u660E\u786E\u3001\u7B80\u5355\u7684\u7ED3\u6784\u65F6\uFF0C\u53EF\u4EE5\u8003\u8651\u4F7F\u7528 ",paraId:19,tocIndex:1},{value:"reviver",paraId:19,tocIndex:1},{value:"\u3002",paraId:19,tocIndex:1},{value:"\u4F60\u53EF\u4EE5\u8BD5\u8BD5\u7528 ",paraId:20,tocIndex:1},{value:"reviver",paraId:20,tocIndex:1},{value:" \u6765\u751F\u6210 JSON \u672C\u6765\u4E0D\u652F\u6301\u7684\u6570\u636E\u7C7B\u578B\uFF0C\u6BD4\u5982 Symbol\u3001BigInt\u3002",paraId:20,tocIndex:1},{value:"\u89E3\u6790\u8981\u70B9\u603B\u7ED3\uFF1A",paraId:21,tocIndex:1},{value:"JSON \u652F\u6301 7 \u79CD\u6570\u636E\u7C7B\u578B\uFF1Aobject\u3001array\u3001number\u3001string\u3001true\u3001false\u3001null",paraId:22,tocIndex:1},{value:"JSON \u6570\u5B57\u4EC5\u652F\u6301\u5341\u8FDB\u5236\u683C\u5F0F\uFF0C\u4E0D\u652F\u6301 ",paraId:22,tocIndex:1},{value:"Infinity",paraId:22,tocIndex:1},{value:"\u3001",paraId:22,tocIndex:1},{value:"NaN",paraId:22,tocIndex:1},{value:"\u3001\u516B\u8FDB\u5236\u3001\u5341\u516D\u8FDB\u5236",paraId:22,tocIndex:1},{value:"JSON.parse",paraId:22,tocIndex:1},{value:" \u7684 ",paraId:22,tocIndex:1},{value:"reviver",paraId:22,tocIndex:1},{value:" \u53C2\u6570\u91C7\u7528\u6DF1\u5EA6\u4F18\u5148\u904D\u5386\uFF0C\u53EF\u7528\u4E8E\u8F6C\u6362\u89E3\u6790\u540E\u7684\u503C",paraId:22,tocIndex:1},{value:"\u975E\u5B57\u7B26\u4E32\u53C2\u6570\u4F1A\u901A\u8FC7 ",paraId:22,tocIndex:1},{value:"ToString()",paraId:22,tocIndex:1},{value:" \u81EA\u52A8\u8F6C\u6362",paraId:22,tocIndex:1},{value:"\u4E0E\u89E3\u6790\u76F8\u5BF9\u5E94\u7684\u5C31\u662F\u5E8F\u5217\u5316\uFF1A",paraId:23,tocIndex:2},{value:"JSON.stringify",paraId:23,tocIndex:2},{value:"\u3002",paraId:23,tocIndex:2},{value:"\u88AB\u5E8F\u5217\u5316\u7684\u5BF9\u8C61",paraId:24,tocIndex:3},{value:"\u4E0D\u53EF\u4EE5\u5305\u542B\u73AF\u5F62\u5F15\u7528",paraId:24,tocIndex:3},{value:"\uFF0C\u5426\u5219\u65E0\u6CD5\u5C55\u5F00\u4E3A\u6811\u5F62\u5E73\u9762\u7684 JSON \u683C\u5F0F\uFF0C\u5426\u5219\u4F1A\u629B\u51FA ",paraId:24,tocIndex:3},{value:"TypeError",paraId:24,tocIndex:3},{value:"\u3002\u4E0D\u4FE1\u7684\u8BDD\u53EF\u4EE5\u8BD5\u8BD5\uFF1A",paraId:24,tocIndex:3},{value:`JSON.stringify(document);
+`,paraId:25,tocIndex:3},{value:"\u7136\u540E\u6211\u4EEC\u6765\u770B\u770B\u4E0D\u540C\u6570\u636E\u7C7B\u578B\u5728\u5E8F\u5217\u5316\u540E\u7684\u8868\u73B0\uFF1A",paraId:26,tocIndex:4},{value:`JSON.stringify(null); // 'null' - \u4FDD\u6301\u4E3A null
+JSON.stringify(undefined); // undefined - \u6CE8\u610F\uFF1A\u8FD4\u56DE undefined\uFF0C\u4E0D\u662F\u5B57\u7B26\u4E32
+JSON.stringify(true); // 'true' - \u5E03\u5C14\u503C\u8F6C\u4E3A\u5B57\u7B26\u4E32
+JSON.stringify(false); // 'false'
+JSON.stringify('abc'); // '"abc"' - \u5B57\u7B26\u4E32\u4F1A\u88AB\u53CC\u5F15\u53F7\u5305\u88F9
+JSON.stringify(123); // '123' - \u6570\u5B57\u8F6C\u4E3A\u5B57\u7B26\u4E32
+JSON.stringify(Symbol('sym')); // undefined - Symbol \u4E0D\u88AB\u652F\u6301
+JSON.stringify([2, 3, 4]); // '[2,3,4]' - \u6570\u7EC4\u6B63\u5E38\u5E8F\u5217\u5316
+JSON.stringify(function foo() {}); // undefined - \u51FD\u6570\u4E0D\u88AB\u652F\u6301
+`,paraId:27,tocIndex:4},{value:"\u6211\u4EEC\u904D\u5386\u8FD9\u4E9B\u4E0D\u540C\u7C7B\u578B\u6570\u636E\u7684\u76EE\u7684\u662F\u60F3\u63D0\u9192\u5927\u5BB6\uFF0C\u5728\u5411 ",paraId:28,tocIndex:4},{value:"JSON.stringify",paraId:28,tocIndex:4},{value:" \u4F20\u9012\u53C2\u6570\u7684\u65F6\u5019\uFF0C\u8981\u5BF9\u7C7B\u578B\u6709\u9884\u671F\uFF0C\u8981\u77E5\u9053\u4F20\u9519\u7C7B\u578B\u7684\u540E\u679C\u662F\u4EC0\u4E48\u3002\u5927\u5BB6\u5DF2\u7ECF\u770B\u5230\u4E86\uFF0C\u8FD9\u4E2A\u51FD\u6570\u5E76\u4E0D\u662F\u59CB\u7EC8\u90FD\u8FD4\u56DE\u4E00\u4E2A\u5B57\u7B26\u4E32\uFF0C\u8FD8\u53EF\u80FD\u662F undefined\uFF0C\u56E0\u6B64\u50CF\u4E0B\u9762\u8FD9\u79CD\u4EE3\u7801\uFF0C\u4F60\u5E94\u8BE5\u53EF\u4EE5\u731C\u5230\u53EF\u80FD\u62A5\u4EC0\u4E48\u9519\u5427\uFF1A",paraId:28,tocIndex:4},{value:`function toJSON(variable) {
+  return JSON.strinify(variable).trim(); // \u26A0\uFE0F
+}
+`,paraId:29,tocIndex:4},{value:"\u603B\u7ED3\u4E00\u4E0B ",paraId:30,tocIndex:4},{value:"JSON.stringify",paraId:30,tocIndex:4},{value:" \u53EA\u80FD\u6B63\u5E38\u5904\u7406 JSON \u6240\u652F\u6301\u7684\u7C7B\u578B\uFF1A\u5B57\u7B26\u4E32\u3001\u6570\u5B57\u3001\u5E03\u5C14\u3001\u5BF9\u8C61\u548C null\u3002\u5BF9\u8C61\u4E2D\u7684\u51FD\u6570\u4E0D\u88AB\u652F\u6301\uFF0C\u4F1A\u8FD4\u56DE undefined\uFF0C\u800C undefined \u53C8\u4F1A\u88AB\u4E22\u5F03\u3002\u5373\u4FBF\u662F\u6570\u5B57\u4E5F\u6709\u4F8B\u5916\uFF1A",paraId:30,tocIndex:4},{value:`JSON.stringify(Infinity); // 'null'
+JSON.stringify(NaN); // 'null'
+JSON.stringify(1n); // \u274C VM1315:1 Uncaught TypeError: Do not know how to serialize a BigInt
+`,paraId:31,tocIndex:4},{value:"Infinity",paraId:32,tocIndex:4},{value:" \u548C ",paraId:32,tocIndex:4},{value:"NaN",paraId:32,tocIndex:4},{value:" \u90FD\u4F1A\u5E8F\u5217\u5316\u6210 \u201Cnull\u201D\uFF0C\u800C ",paraId:32,tocIndex:4},{value:"BigInt",paraId:32,tocIndex:4},{value:" \u538B\u6839\u5C31\u76F4\u63A5\u629B\u51FA\u5F02\u5E38\u4E86\u3002",paraId:32,tocIndex:4},{value:"\u4ECE\u8FD9\u4E00\u70B9\u4E0A\u6765\u770B\uFF0C\u6211\u4EEC\u5C31\u77E5\u9053\u8FD9\u6837\u4E00\u79CD\u5BF9\u8C61\u6DF1\u514B\u9686\uFF08clone\uFF09\u529E\u6CD5\uFF1A\u5148\u5E8F\u5217\u5316\u6210 JSON \u5B57\u7B26\u4E32\uFF0C\u518D parse \u6210\u5BF9\u8C61\uFF0C\u4F1A\u5B58\u5728\u660E\u663E\u7684",paraId:33,tocIndex:4},{value:"\u5931\u771F",paraId:33,tocIndex:4},{value:"\u95EE\u9898\u3002",paraId:33,tocIndex:4},{value:`function clone(obj) {
+  return JSON.parse(JSON.stringify(obj));
+}
+
+clone({ m: () => {}, s: Symbol('s') }); // {}
+clone([1, Infinity, NaN]); // [1, null, null]
+`,paraId:34,tocIndex:4},{value:"\u8FD9\u6837\u663E\u7136\u662F\u4E0D\u53EF\u53D6\u7684\uFF0C\u5EFA\u8BAE\u4F60\u8FD8\u662F\u8001\u8001\u5B9E\u5B9E\u5730\u624B\u52A8\u904D\u5386\u5C5E\u6027\u53BB\u5B9E\u73B0\u514B\u9686\u3002",paraId:35,tocIndex:4},{value:"\u5373\u4FBF\u76EE\u7684\u4E0D\u662F\u514B\u9686\uFF0C\u5E8F\u5217\u5316\u4E00\u4E2A\u5BF9\u8C61\u4E5F\u662F\u5E38\u89C1\u7684\u64CD\u4F5C\uFF0C\u6BD4\u5982 POST \u63A5\u53E3\u63D0\u4EA4\uFF0C\u5C31\u8981\u628A\u5BF9\u8C61\u53D8\u6210 JSON \u6587\u672C\uFF0C\u585E\u5165\u5230 body \u4E2D\u53BB\u3002",paraId:36,tocIndex:5},{value:"\u4E00\u822C\u6765\u8BF4\uFF0C\u5BF9\u4E8E\u5BF9\u8C61\u800C\u8A00\uFF0C",paraId:37,tocIndex:5},{value:"JSON.stringify",paraId:37,tocIndex:5},{value:" \u4F1A\u9012\u5F52\u904D\u5386\u81EA\u8EAB\u7684",paraId:37,tocIndex:5},{value:"\u53EF\u679A\u4E3E\u7684\u3001\u4EE5\u5B57\u7B26\u4E32\u4E3A key \u7684\u5C5E\u6027",paraId:37,tocIndex:5},{value:"\u3002\u6839\u636E\u6211\u4EEC\u524D\u9762\u5B66\u4E60\u8FC7\u7684\u904D\u5386\u5BF9\u8C61\u7684\u77E5\u8BC6\uFF0C\u8FD9\u6B63\u597D\u662F ",paraId:37,tocIndex:5},{value:"Object.keys/values/entries",paraId:37,tocIndex:5},{value:" \u7684\u903B\u8F91\u3002\u4E8E\u662F\uFF0C",paraId:37,tocIndex:5},{value:"JSON.stringify",paraId:37,tocIndex:5},{value:" \u5728\u666E\u901A\u5BF9\u8C61\u4E0A\u7684\u904D\u5386\u8FC7\u7A0B\u5927\u81F4\u662F\uFF1A",paraId:37,tocIndex:5},{value:`function stringify(obj) {
+  for (const [key, value] of Object.entries(obj)) {
+    if (isObject(value)) {
+      stringify(value); // \u9012\u5F52
+    }
+  }
+}
+`,paraId:38,tocIndex:5},{value:"\u4F46\u662F\uFF0C\u91CD\u70B9\u6765\u4E86\uFF0C\u5982\u679C\u4F60\u7684\u5BF9\u8C61\u6709\u4E00\u4E2A\u53EB\u505A ",paraId:39,tocIndex:5},{value:"toJSON",paraId:39,tocIndex:5},{value:" \u7684\u51FD\u6570\uFF0C\u5728\u81EA\u8EAB\u4E5F\u597D\uFF0C\u5728\u539F\u578B\u94FE\u4E0A\u4E5F\u597D\uFF0C\u90A3\u4E48 ",paraId:39,tocIndex:5},{value:"JSON.stringify",paraId:39,tocIndex:5},{value:" \u5C31\u8C03\u7528\u8FD9\u4E2A\u51FD\u6570\u800C\u4E0D\u518D\u53BB\u904D\u5386\u5BF9\u8C61\u5C5E\u6027\u3002",paraId:39,tocIndex:5},{value:"\u5F53\u7136 toJSON \u7684\u8FD4\u56DE\u503C\u5E76\u4E0D\u4F1A\u76F4\u63A5\u4F5C\u4E3A ",paraId:40,tocIndex:5},{value:"JSON.stringify",paraId:40,tocIndex:5},{value:" \u7684\u8F93\u51FA\uFF0C\u66F4\u50CF\u662F\u9012\u5F52\u4F20\u5165 ",paraId:40,tocIndex:5},{value:"JSON.stringify",paraId:40,tocIndex:5},{value:"\u3002\u6211\u628A ",paraId:40,tocIndex:5},{value:"JSON.stringify",paraId:40,tocIndex:5},{value:" \u7684\u5173\u952E\u903B\u8F91\u753B\u6210\u4E0B\u9762\u7684\u56FE\uFF1A",paraId:40,tocIndex:5},{value:"\u76EE\u524D\u5728 ECMAScript \u5185\u7F6E\u7684\u5BF9\u8C61\u7C7B\u578B\u4E2D\uFF0C\u53EA\u6709 ",paraId:41,tocIndex:5},{value:"Date",paraId:41,tocIndex:5},{value:" \u5B9A\u4E49\u4E86 toJSON\uFF0C\u5B83\u8FD4\u56DE\u4E86\u7B49\u4EF7\u4E8E\u8C03\u7528 ",paraId:41,tocIndex:5},{value:"toISOString",paraId:41,tocIndex:5},{value:" \u7684\u5B57\u7B26\u4E32\uFF1A",paraId:41,tocIndex:5},{value:`JSON.stringify({ now: new Date() }); // {"now":"2023-07-10T13:11:15.960Z"}
+`,paraId:42,tocIndex:5},{value:"\u672C\u8D28\u4E0A\u6765\u8BF4\uFF0C",paraId:43,tocIndex:5},{value:"JSON.stringify",paraId:43,tocIndex:5},{value:" \u5C31\u662F\u4E00\u5957\u6620\u5C04\u51FD\u6570\uFF0C\u5BF9\u4E8E\u5BF9\u8C61\uFF08\u5305\u62EC\u6570\u7EC4\uFF09\u8FD9\u79CD\u7ED3\u6784\u5316\u6570\u636E\u8FDB\u884C\u9012\u5F52\u8C03\u7528\u3002toJSON \u5C31\u5982\u540C\u5F00\u4E86\u4E00\u4E2A\u540E\u95E8\uFF0C\u80FD\u591F\u66F4\u7B80\u5355\u5730\u8BA9\u5BF9\u8C61\u51B3\u5B9A\u81EA\u5DF1\u7684 JSON \u8868\u8FF0\u662F\u4EC0\u4E48\u6837\u5B50\u7684\u3002",paraId:43,tocIndex:5},{value:"\u{1F4A1} ECMAScript \u6700\u65E9\u5728 ES5 \u5F15\u5165 JSON API \u65F6\uFF0C\u5C31\u652F\u6301\u4E86 ",paraId:44,tocIndex:5},{value:"toJSON",paraId:44,tocIndex:5},{value:" \u7684\u529F\u80FD\uFF0C\u73B0\u5728\u56DE\u60F3\u8D77\u6765\uFF0C\u90A3\u4E2A\u65F6\u5019\u8FD8\u4E0D\u652F\u6301 Symbol\uFF0C\u5426\u5219\u7684\u8BDD\uFF0C\u4F1A\u4E0D\u4F1A\u66F4\u6709\u53EF\u80FD\u9884\u8BBE\u4E00\u4E2A ",paraId:44,tocIndex:5},{value:"Symbol.toJSON",paraId:44,tocIndex:5},{value:" \u6765\u5B9E\u73B0\u540C\u6837\u7684\u80FD\u529B\u5462\uFF1F",paraId:44,tocIndex:5},{value:"\u5982\u679C\u4F60\u7684\u5BF9\u8C61\u4E2D\u6709\u4E00\u4E9B\u5C5E\u6027\u4E0D\u60F3\u88AB\u5E8F\u5217\u5316\uFF0C\u90A3\u4E48\u53EF\u4EE5\u8003\u8651\u5B9A\u4E49\u6210\u4E0D\u53EF\u679A\u4E3E\u7684\uFF0C\u6216\u8005\u4EE5 Symbol \u800C\u4E0D\u662F String \u4E3A key\u3002\u5982\u679C\u8FD9\u6837\u4E0D\u65B9\u4FBF\uFF0C\u6211\u4EEC\u4E5F\u6709\u529E\u6CD5\uFF0C\u90A3\u5C31\u9700\u8981\u4F7F\u7528 ",paraId:45,tocIndex:6},{value:"JSON.stringify",paraId:45,tocIndex:6},{value:" \u7684\u7B2C\u4E8C\u4E2A\u53C2\u6570 ",paraId:45,tocIndex:6},{value:"replacer",paraId:45,tocIndex:6},{value:" \u4E86\u3002",paraId:45,tocIndex:6},{value:"replacer",paraId:46,tocIndex:6},{value:" \u53EF\u4EE5\u662F\u4E00\u4E2A\u51FD\u6570\u4E5F\u53EF\u4EE5\u662F\u4E00\u4E2A\u6570\u7EC4\uFF1A",paraId:46,tocIndex:6},{value:"\u5F53\u4F5C\u4E3A\u51FD\u6570\u7684\u65F6\u5019\uFF0C\u5B83\u548C ",paraId:47,tocIndex:6},{value:"JSON.parse",paraId:47,tocIndex:6},{value:" \u4E2D\u7684 ",paraId:47,tocIndex:6},{value:"reviver",paraId:47,tocIndex:6},{value:" \u6709\u5F02\u66F2\u540C\u5DE5\u4E4B\u5999\uFF0C\u53EA\u4E0D\u8FC7 ",paraId:47,tocIndex:6},{value:"reviver",paraId:47,tocIndex:6},{value:" \u5148\u904D\u5386\u5230\u6700\u5E95\u5C42\u7684\u8282\u70B9\uFF0C\u800C ",paraId:47,tocIndex:6},{value:"replacer",paraId:47,tocIndex:6},{value:" \u5148\u904D\u5386\u6700\u4E0A\u5C42\u7684\u8282\u70B9\u3002\u6211\u4EEC\u8FD8\u662F\u4EE5\u524D\u9762\u7684\u6570\u636E\u4E3A\u4F8B\uFF1A",paraId:47,tocIndex:6},{value:`JSON.stringify(
+  {
+    name: 'Mike',
+    education: {
+      college: 'MIT',
+      major: 'computer',
+    },
+    experiences: [
+      {
+        from: '2017-08-20',
+        to: '2018-03-05',
+        employer: 'Google',
+      },
+      {
+        from: '2018-03-17',
+        to: '2020-07-28',
+        employer: 'Microsoft',
+      },
+    ],
+  },
+  function (key, value) {
+    console.log(key);
+    return value;
+  },
+);
+`,paraId:48,tocIndex:6},{value:"console.log \u7684\u6253\u5370\u7ED3\u679C\u662F\uFF1A",paraId:49,tocIndex:6},{value:`""
+"name"
+"education"
+"college"
+"major"
+"experiences"
+"0"
+"from"
+"to"
+"employer"
+"1"
+"from"
+"to"
+"employer"
+`,paraId:50,tocIndex:6},{value:"replacer",paraId:51,tocIndex:6},{value:" \u51FD\u6570\u7684\u4F5C\u7528\u5C31\u662F\u201C\u7BE1\u6539\u201D\u5E8F\u5217\u5316\u4E4B\u540E\u7684\u6570\u636E\uFF0C\u4E3E\u4E2A\u7B80\u5355\u7684\u4F8B\u5B50\uFF1A",paraId:51,tocIndex:6},{value:`JSON.stringify(
+  {
+    name: 'Tom',
+  },
+  function (key, val) {
+    if (key === 'name') return 'Mike';
+    return val;
+  },
+);
+`,paraId:52,tocIndex:6},{value:"\u5176\u7ED3\u679C\u5C31\u662F ",paraId:53,tocIndex:6},{value:'{"name":"Mike"}',paraId:53,tocIndex:6},{value:"\u3002\u5F53\u7136\u4E86\uFF0C\u548C ",paraId:53,tocIndex:6},{value:"reviver",paraId:53,tocIndex:6},{value:" \u4E00\u6837\uFF0C",paraId:53,tocIndex:6},{value:"replacer",paraId:53,tocIndex:6},{value:" \u4E5F\u6709 key \u51B2\u7A81\u7B49\u95EE\u9898\uFF0C\u4E0D\u518D\u591A\u8BF4\u3002",paraId:53,tocIndex:6},{value:"replacer",paraId:54,tocIndex:6},{value:" \u8FD8\u53EF\u4EE5\u662F\u4E00\u4E2A\u6570\u7EC4\uFF0C\u4E0D\u8FC7\u8FD9\u4E2A\u65F6\u5019\u5B83\u5C31\u53EA\u80FD\u53D1\u6325\u4E00\u4E2A\u767D\u540D\u5355\u7684\u4F5C\u7528\uFF0C\u5E76\u4E0D\u80FD\u5B9E\u73B0\u503C\u7684\u66FF\u6362\u3002",paraId:54,tocIndex:6},{value:"\u6570\u7EC4\u7684\u6210\u5458\u53EA\u80FD\u662F\u6570\u5B57\u6216\u8005\u5B57\u7B26\u4E32\u3002\u6570\u5B57\u4F1A\u88AB ",paraId:55,tocIndex:6},{value:"ToString",paraId:55,tocIndex:6},{value:" \u8F6C\u6362\u6210\u5B57\u7B26\u4E32\uFF0C\u5F53\u6570\u5B57\u4F5C\u4E3A\u4E00\u4E2A\u5BF9\u8C61\u7684\u5C5E\u6027\u540D\u65F6\u4E5F\u4F1A\u8FD9\u6837\u505A\u3002",paraId:55,tocIndex:6},{value:"replacer",paraId:56,tocIndex:6},{value:" \u4E5F\u4F1A\u8BA4\u53EF String \u5BF9\u8C61\u548C Number \u5BF9\u8C61\uFF0C\u751A\u81F3\u5B83\u4EEC\u7684\u5B50\u7C7B\uFF0C\u6BD4\u5982\uFF1A",paraId:56,tocIndex:6},{value:`class MyString extends String {}
+
+JSON.stringify(
+  {
+    name: 'Tom',
+    age: 15,
+  },
+  [new MyString('name')],
+); // {"name": "Tom"}
+`,paraId:57,tocIndex:6},{value:"\u6839\u636E\u904D\u5386\u7684\u987A\u5E8F\uFF0C\u6211\u4EEC\u77E5\u9053\uFF0C\u5982\u679C\u4E0A\u5C42\u7684 key \u6CA1\u6709\u51FA\u73B0\u5728 ",paraId:58,tocIndex:6},{value:"replacer",paraId:58,tocIndex:6},{value:" \u6570\u7EC4\u4E2D\uFF0C\u90A3\u4E48\u5176 value \u4F1A\u88AB\u76F4\u63A5\u4E22\u5F03\uFF0C\u5373\u4FBF\u91CC\u9762\u6709 key \u5728 ",paraId:58,tocIndex:6},{value:"replacer",paraId:58,tocIndex:6},{value:" \u4E2D\uFF1A",paraId:58,tocIndex:6},{value:`JSON.stringify(
+  {
+    name: 'Tom',
+    education: {
+      college: 'MIT',
+      major: 'computer',
+    },
+  },
+  ['name', 'major'],
+); // {"name": "Tom"}
+`,paraId:59,tocIndex:6},{value:"\u{1F4A1} \u5982\u679C\u8981\u5E8F\u5217\u5316\u7684\u5BF9\u8C61\u6709\u4E0D\u540C\u5C42\u7EA7\u3001\u8BED\u4E49\u7684\u540C\u540D key\uFF0C\u90A3\u4E48\u8981\u66F4\u5C0F\u5FC3\u5730\u4F7F\u7528 ",paraId:60,tocIndex:6},{value:"replacer",paraId:60,tocIndex:6},{value:"\u3002",paraId:60,tocIndex:6},{value:"\u53E6\u5916\uFF0C\u5982\u679C\u8981\u5E8F\u5217\u5316\u4E00\u4E2A\u6570\u7EC4\uFF0C\u90A3\u4E48\u6570\u7EC4\u5F62\u5F0F\u7684 ",paraId:61,tocIndex:6},{value:"replacer",paraId:61,tocIndex:6},{value:" \u662F\u65E0\u6548\u7684\uFF1A",paraId:61,tocIndex:6},{value:`JSON.stringify(
+  [1, 2, 3, 4, 5],
+  [0, 3], // \u274C \u53C2\u6570\u65E0\u6548
+); // "[1,2,3,4,5]"
+`,paraId:62,tocIndex:6},{value:"\u5230\u76EE\u524D\u4E3A\u6B62\uFF0C",paraId:63,tocIndex:7},{value:"JSON.stringify",paraId:63,tocIndex:7},{value:" \u8F93\u51FA\u7684\u5B57\u7B26\u4E32\u8FD8\u90FD\u662F\u5355\u884C\u7684\uFF0C\u4E3A\u4E86\u66F4\u597D\u5730\u9605\u8BFB\uFF0C\u6211\u4EEC\u4E60\u60EF\u4E8E\u4F7F\u7528\u5B83\u7684\u7B2C\u4E09\u4E2A\u53C2\u6570 ",paraId:63,tocIndex:7},{value:"space",paraId:63,tocIndex:7},{value:"\u3002",paraId:63,tocIndex:7},{value:"space",paraId:64,tocIndex:7},{value:" \u53EF\u4EE5\u662F\u6570\u5B57\u4E5F\u53EF\u4EE5\u662F\u5B57\u7B26\u4E32\uFF08\u5305\u62EC\u5B83\u4EEC\u7684\u5BF9\u8C61\u5F62\u5F0F\uFF09\uFF0C\u8BED\u4E49\u4E0A\u4EE3\u8868\u7F29\u8FDB\u7684\u5B57\u7B26\u6216\u8005\u7A7A\u767D\u7684\u4E2A\u6570\u3002\u5982\u679C\u662F\u6570\u5B57\uFF0C\u6BD4\u5982 N\uFF0C\u90A3\u4E48\u683C\u5F0F\u5316\u540E\u7684 JSON \u5B57\u7B26\u4E32\u6BCF\u5C42\u7EA7\u5C31\u4F1A\u7F29\u8FDB N \u4E2A\u7A7A\u683C\uFF080x20\uFF09\uFF1A",paraId:64,tocIndex:7},{value:`JSON.stringify(
+  {
+    name: 'Mike',
+    education: {
+      college: 'MIT',
+      major: 'computer',
+    },
+  },
+  null,
+  8,
+);
+`,paraId:65,tocIndex:7},{value:"8 \u7A7A\u683C\u7F29\u8FDB\uFF1A",paraId:66,tocIndex:7},{value:`{
+        "name": "Mike",
+        "education": {
+                "college": "MIT",
+                "major": "computer"
+        }
+}
+`,paraId:67,tocIndex:7},{value:"\u5982\u679C\u6211\u4EEC\u60F3\u7F29\u8FDB Tab\uFF080x9\uFF09 \u800C\u4E0D\u662F\u7A7A\u683C\uFF0C\u90A3\u4E48\u5C31\u9700\u8981\u628A ",paraId:68,tocIndex:7},{value:"space",paraId:68,tocIndex:7},{value:" \u8BBE\u7F6E\u6210\u5B57\u7B26\u4E32\uFF1A",paraId:68,tocIndex:7},{value:`JSON.stringify(
+  {
+    name: 'Mike',
+    education: {
+      college: 'MIT',
+      major: 'computer',
+    },
+  },
+  null,
+  '\\u0009', // Tab
+);
+`,paraId:69,tocIndex:7},{value:"\u9700\u8981\u6CE8\u610F\u7684\u662F\uFF0C\u7F29\u8FDB\u5B57\u7B26\u4E0D\u80FD\u8D85\u8FC7 10 \u4E2A\uFF0C",paraId:70,tocIndex:7},{value:"space",paraId:70,tocIndex:7},{value:" \u5982\u679C\u662F\u6570\u5B57\uFF0C\u8D85\u8FC7 10 \u4F1A\u88AB\u5F53\u4F5C 10\uFF1B\u5982\u679C\u662F\u5B57\u7B26\u4E32\uFF0C\u8D85\u8FC7 10 \u7684\u7801\u5143\u4F1A\u88AB\u622A\u65AD\uFF0C\u6BD4\u5982\uFF1A",paraId:70,tocIndex:7},{value:`JSON.stringify({ name: 'Mike' }, null, new Array(12).fill('/').join('')); // 12
+`,paraId:71,tocIndex:7},{value:"\u5F97\u5230\u7684\u662F\uFF1A",paraId:72,tocIndex:7},{value:`{
+//////////"name": "Mike"
+}
+`,paraId:73,tocIndex:7},{value:'\u4F60\u53EF\u4EE5\u6570\u4E00\u6570\uFF0C\u7F29\u8FDB\u53EA\u6709 10 \u4E2A "/"\uFF0C\u800C\u4E0D\u662F\u4F20\u5165\u7684 12\u3002',paraId:74,tocIndex:7},{value:"\u{1F4A1} \u6CE8\u610F\u591A\u7801\u5143\u5B57\u7B26\u53EF\u80FD\u4F1A\u88AB\u5728\u4E2D\u95F4\u622A\u65AD\uFF0C\u9020\u6210\u5B57\u7B26\u7834\u574F\u3002",paraId:75,tocIndex:7},{value:"\u5E8F\u5217\u5316\u8981\u70B9\u603B\u7ED3\uFF1A",paraId:76,tocIndex:7},{value:"JSON.stringify",paraId:77,tocIndex:7},{value:" \u4E0D\u652F\u6301\u73AF\u5F62\u5F15\u7528\uFF0C\u4F1A\u629B\u51FA ",paraId:77,tocIndex:7},{value:"TypeError",paraId:77,tocIndex:7},{value:"\u7279\u6B8A\u503C\u5904\u7406\uFF1A",paraId:77,tocIndex:7},{value:"undefined",paraId:77,tocIndex:7},{value:"\u3001",paraId:77,tocIndex:7},{value:"Symbol",paraId:77,tocIndex:7},{value:"\u3001\u51FD\u6570\u8FD4\u56DE ",paraId:77,tocIndex:7},{value:"undefined",paraId:77,tocIndex:7},{value:"\uFF1B",paraId:77,tocIndex:7},{value:"Infinity",paraId:77,tocIndex:7},{value:"\u3001",paraId:77,tocIndex:7},{value:"NaN",paraId:77,tocIndex:7},{value:" \u8F6C\u4E3A ",paraId:77,tocIndex:7},{value:"null",paraId:77,tocIndex:7},{value:"\uFF1B",paraId:77,tocIndex:7},{value:"BigInt",paraId:77,tocIndex:7},{value:" \u629B\u51FA\u5F02\u5E38",paraId:77,tocIndex:7},{value:"\u4F7F\u7528 JSON \u8FDB\u884C\u6DF1\u514B\u9686\u4F1A\u5BFC\u81F4\u6570\u636E\u5931\u771F\uFF0C\u4E0D\u63A8\u8350",paraId:77,tocIndex:7},{value:"toJSON",paraId:77,tocIndex:7},{value:" \u65B9\u6CD5\u5141\u8BB8\u5BF9\u8C61\u81EA\u5B9A\u4E49\u5E8F\u5217\u5316\u884C\u4E3A",paraId:77,tocIndex:7},{value:"replacer",paraId:77,tocIndex:7},{value:" \u53C2\u6570\u53EF\u7528\u4E8E\u8FC7\u6EE4\u5C5E\u6027\u6216\u8F6C\u6362\u503C\uFF08\u51FD\u6570\u5F62\u5F0F\u6216\u6570\u7EC4\u767D\u540D\u5355\uFF09",paraId:77,tocIndex:7},{value:"space",paraId:77,tocIndex:7},{value:" \u53C2\u6570\u7528\u4E8E\u683C\u5F0F\u5316\u8F93\u51FA\uFF0C\u6700\u591A\u652F\u6301 10 \u4E2A\u7F29\u8FDB\u5B57\u7B26",paraId:77,tocIndex:7},{value:"\u4EE5\u4E0A\u5C31\u662F JSON \u7684\u89E3\u6790\u548C\u5E8F\u5217\u5316\u7684\u7EC6\u8282\u77E5\u8BC6\uFF0C\u638C\u63E1\u5B83\u4EEC\u80FD\u591F\u589E\u5F3A\u4F60\u6240\u5199\u4EE3\u7801\u7684\u5065\u58EE\u6027\u548C\u7B80\u6D01\u6027\u3002\u5728\u5B9E\u9645\u5F00\u53D1\u4E2D\uFF0C\u8FD8\u6709\u4E00\u4E9B\u6D89\u53CA\u5230 JSON \u7684\u573A\u666F\u3002",paraId:78,tocIndex:7},{value:"JSON \u7684\u6587\u672C\u7279\u5F81",paraId:79,tocIndex:8},{value:"\uFF0C\u6700\u9002\u5408\u7528\u6765\u505A\u7F51\u7EDC\u4F20\u8F93\u3002\u5728 fetch \u4E4B\u524D\uFF0C\u6211\u4EEC\u4F7F\u7528 ",paraId:79,tocIndex:8},{value:"XMLHttpRequest",paraId:79,tocIndex:8},{value:" \u4E5F\u53EF\u4EE5\u76F4\u63A5\u89E3\u6790 JSON \u683C\u5F0F\u7684\u54CD\u5E94\u5185\u5BB9\uFF1A",paraId:79,tocIndex:8},{value:`const xhr = new XMLHttpRequest();
+
+xhr.responseType = 'json';
+`,paraId:80,tocIndex:8},{value:"\u8FD9\u6837\u6700\u540E ",paraId:81,tocIndex:8},{value:"xhr.response",paraId:81,tocIndex:8},{value:" \u5C31\u76F4\u63A5\u662F JSON \u5BF9\u8C61\u3002\u5982\u679C\u670D\u52A1\u7AEF\u53EF\u4EE5\u8FD4\u56DE\u591A\u79CD\u683C\u5F0F\uFF0C\u4F46\u662F\u671F\u671B\u5B83\u8FD4\u56DE JSON\uFF0C\u90A3\u4E48\u5C31\u9700\u8981\u4E3B\u52A8\u8BBE\u7F6E HTTP \u7684 ",paraId:81,tocIndex:8},{value:"Accept",paraId:81,tocIndex:8},{value:" \u8BF7\u6C42\u5934\uFF1A",paraId:81,tocIndex:8},{value:`xhr.setRequestHeader('Accept', 'application/json');
+`,paraId:82,tocIndex:8},{value:"\u5982\u679C\u53D1\u9001\u51FA\u53BB\u7684\u6570\u636E\u4E5F\u662F JSON\uFF0C\u90A3\u4E48\uFF1A",paraId:83,tocIndex:8},{value:`xhr.setRequestHeader('Content-Type', 'application/json');
+
+xhr.open('POST', '/submit');
+
+xhr.send(JSON.stringify({ name: 'Mike' }));
+`,paraId:84,tocIndex:8},{value:"\u8FD9\u6837\u53D1\u9001\u51FA\u53BB\u7684 HTTP \u8BF7\u6C42\u5927\u6982\u5C31\u662F\uFF1A",paraId:85,tocIndex:8},{value:`POST /submit HTTP/1.1
+Accept: application/json
+ContentType: application/json
+
+{"name":"Mike"}
+`,paraId:86,tocIndex:8},{value:"\u4EE5\u4E0A\u7B49\u4EF7\u7684 ",paraId:87,tocIndex:8},{value:"fetch",paraId:87,tocIndex:8},{value:" \u5199\u6CD5\u5C31\u662F\uFF1A",paraId:87,tocIndex:8},{value:`fetch('/submit', {
+  headers: {
+    accept: 'application/json',
+    'content-type': 'application/json',
+  },
+  body: JSON.stringify({ name: 'Mike' }),
+  method: 'POST',
+});
+`,paraId:88,tocIndex:8},{value:"\u4E00\u4E9B\u7F51\u7EDC\u5C01\u88C5\u5E93\uFF0C\u5982 ",paraId:89,tocIndex:8},{value:"jQuery",paraId:89,tocIndex:8},{value:"\u3001",paraId:89,tocIndex:8},{value:"axios",paraId:89,tocIndex:8},{value:" \u7B49\u7B49\u4E3A\u4E86\u7B80\u5316\u4F7F\u7528\uFF0C\u90FD\u5DF2\u7ECF\u5C06\u4EE5\u4E0A JSON \u7EC6\u8282\u9690\u85CF\u4E86\u8D77\u6765\uFF0C\u4F46\u5927\u5BB6\u90FD\u5E94\u8BE5\u77E5\u9053\u5176\u539F\u7406\uFF0C\u8BE5\u64CD\u4F5C\u4EC0\u4E48\u3002",paraId:89,tocIndex:8},{value:"\u5728 JSON API \u51FA\u73B0\u4E4B\u524D\uFF0C\u6709\u4E9B\u5F00\u53D1\u8005\u4F1A\u4F7F\u7528 ",paraId:90,tocIndex:10},{value:"eval()",paraId:90,tocIndex:10},{value:" \u6765\u89E3\u6790 JSON \u5B57\u7B26\u4E32\uFF0C\u8FD9\u662F",paraId:90,tocIndex:10},{value:"\u6781\u5176\u5371\u9669",paraId:90,tocIndex:10},{value:"\u7684\u505A\u6CD5\uFF1A",paraId:90,tocIndex:10},{value:`// \u274C \u5371\u9669\uFF1A\u6C38\u8FDC\u4E0D\u8981\u8FD9\u6837\u505A
+const data = eval('(' + jsonString + ')');
+
+// \u2705 \u5B89\u5168\uFF1A\u59CB\u7EC8\u4F7F\u7528 JSON.parse
+const data = JSON.parse(jsonString);
+`,paraId:91,tocIndex:10},{value:"eval()",paraId:92,tocIndex:10},{value:" \u4F1A\u6267\u884C\u4EFB\u610F JavaScript \u4EE3\u7801\uFF0C\u53EF\u80FD\u5BFC\u81F4 XSS \u653B\u51FB\u548C\u4EE3\u7801\u6CE8\u5165\u3002",paraId:92,tocIndex:10},{value:"\u5F53\u5904\u7406\u6765\u81EA\u5916\u90E8\u6765\u6E90\uFF08\u5982 API \u54CD\u5E94\u3001\u7528\u6237\u8F93\u5165\uFF09\u7684 JSON \u6570\u636E\u65F6\uFF0C\u5E94\u8BE5\uFF1A",paraId:93,tocIndex:11},{value:"\u59CB\u7EC8\u8FDB\u884C\u9519\u8BEF\u5904\u7406",paraId:94,tocIndex:11},{value:"\uFF1A",paraId:94,tocIndex:11},{value:"JSON.parse",paraId:94,tocIndex:11},{value:" \u53EF\u80FD\u629B\u51FA ",paraId:94,tocIndex:11},{value:"SyntaxError",paraId:94,tocIndex:11},{value:`try {
+  const data = JSON.parse(jsonString);
+  // \u5904\u7406\u6570\u636E
+} catch (error) {
+  console.error('JSON \u89E3\u6790\u5931\u8D25:', error);
+  // \u9519\u8BEF\u5904\u7406\u903B\u8F91
+}
+`,paraId:95,tocIndex:11},{value:"\u9A8C\u8BC1\u6570\u636E\u7ED3\u6784",paraId:96,tocIndex:11},{value:"\uFF1A\u89E3\u6790\u6210\u529F\u4E0D\u4EE3\u8868\u6570\u636E\u7ED3\u6784\u7B26\u5408\u9884\u671F",paraId:96,tocIndex:11},{value:`function validateUser(data) {
+  if (typeof data !== 'object' || data === null) {
+    throw new Error('Invalid user data');
+  }
+  if (typeof data.name !== 'string' || typeof data.age !== 'number') {
+    throw new Error('Missing or invalid user properties');
+  }
+  return data;
+}
+
+try {
+  const user = validateUser(JSON.parse(jsonString));
+} catch (error) {
+  console.error('\u6570\u636E\u9A8C\u8BC1\u5931\u8D25:', error);
+}
+`,paraId:97,tocIndex:11},{value:"\u6CE8\u610F\u5927\u578B JSON \u7684\u6027\u80FD",paraId:98,tocIndex:11},{value:"\uFF1A\u89E3\u6790\u5927\u578B JSON \u53EF\u80FD\u963B\u585E\u4E3B\u7EBF\u7A0B",paraId:98,tocIndex:11},{value:`// \u5BF9\u4E8E\u5927\u578B JSON\uFF0C\u8003\u8651\u4F7F\u7528\u6D41\u5F0F\u89E3\u6790\u6216 Web Worker
+// \u6216\u8005\u5206\u6279\u5904\u7406\u6570\u636E
+`,paraId:99,tocIndex:11},{value:"Date \u5BF9\u8C61\u7684\u5F80\u8FD4\u95EE\u9898",paraId:100,tocIndex:12},{value:`const obj = { date: new Date() };
+const str = JSON.stringify(obj); // {"date":"2023-07-10T13:11:15.960Z"}
+const parsed = JSON.parse(str);
+console.log(parsed.date instanceof Date); // false - \u53D8\u6210\u4E86\u5B57\u7B26\u4E32\uFF01
+`,paraId:101,tocIndex:12},{value:"\u89E3\u51B3\u65B9\u6848\uFF1A\u4F7F\u7528 ",paraId:102,tocIndex:12},{value:"reviver",paraId:102,tocIndex:12},{value:" \u53C2\u6570\u8F6C\u6362\u56DE Date \u5BF9\u8C61",paraId:102,tocIndex:12},{value:`const parsed = JSON.parse(str, (key, value) => {
+  if (key === 'date') return new Date(value);
+  return value;
+});
+`,paraId:103,tocIndex:12},{value:"\u4E22\u5931\u5C5E\u6027\u7684\u95EE\u9898",paraId:104,tocIndex:12},{value:`const obj = {
+  name: 'Tom',
+  age: undefined, // \u4F1A\u88AB\u4E22\u5F03
+  [Symbol('id')]: 123, // \u4F1A\u88AB\u4E22\u5F03
+  getData() {}, // \u4F1A\u88AB\u4E22\u5F03
+};
+
+JSON.stringify(obj); // {"name":"Tom"}
+`,paraId:105,tocIndex:12},{value:"\u6570\u5B57\u7CBE\u5EA6\u95EE\u9898",paraId:106,tocIndex:12},{value:`// JavaScript \u6570\u5B57\u662F 64 \u4F4D\u6D6E\u70B9\u6570\uFF0C\u8D85\u8FC7 2^53-1 \u7684\u6574\u6570\u4F1A\u5931\u53BB\u7CBE\u5EA6
+const bigNumber = 9007199254740992;
+JSON.parse(JSON.stringify(bigNumber)); // \u53EF\u80FD\u4E0D\u51C6\u786E
+
+// \u5BF9\u4E8E\u5927\u6574\u6570\uFF0C\u8003\u8651\u4F7F\u7528\u5B57\u7B26\u4E32\u8868\u793A
+const data = { id: '9007199254740992' };
+`,paraId:107,tocIndex:12},{value:"\u672C\u6587\u6DF1\u5165\u63A2\u8BA8\u4E86 JSON \u5728 JavaScript \u4E2D\u7684\u5E94\u7528\uFF0C\u4ECE\u57FA\u7840\u6982\u5FF5\u5230\u9AD8\u7EA7\u7279\u6027\uFF0C\u6DB5\u76D6\u4E86\u4EE5\u4E0B\u6838\u5FC3\u5185\u5BB9\uFF1A",paraId:108,tocIndex:13},{value:"JSON \u57FA\u7840\uFF1A",paraId:109,tocIndex:13},{value:"JSON \u662F JavaScript Object Notation \u7684\u7F29\u5199\uFF0C\u5B9A\u4E49\u5728 ECMA-404 \u89C4\u8303\u4E2D",paraId:110,tocIndex:13},{value:"\u652F\u6301 7 \u79CD\u6570\u636E\u7C7B\u578B\uFF1Aobject\u3001array\u3001number\u3001string\u3001true\u3001false\u3001null",paraId:110,tocIndex:13},{value:"\u76F8\u6BD4 XML\uFF0CJSON \u4F53\u79EF\u66F4\u5C0F\u3001\u89E3\u6790\u66F4\u5FEB\uFF0C\u66F4\u9002\u5408\u7F51\u7EDC\u4F20\u8F93",paraId:110,tocIndex:13},{value:"\u89E3\u6790\u4E0E\u5E8F\u5217\u5316\uFF1A",paraId:111,tocIndex:13},{value:"JSON.parse",paraId:112,tocIndex:13},{value:" \u7528\u4E8E\u5C06 JSON \u5B57\u7B26\u4E32\u89E3\u6790\u4E3A JavaScript \u5BF9\u8C61\uFF0C\u652F\u6301 ",paraId:112,tocIndex:13},{value:"reviver",paraId:112,tocIndex:13},{value:" \u53C2\u6570\u8FDB\u884C\u81EA\u5B9A\u4E49\u8F6C\u6362",paraId:112,tocIndex:13},{value:"JSON.stringify",paraId:112,tocIndex:13},{value:" \u7528\u4E8E\u5C06 JavaScript \u5BF9\u8C61\u5E8F\u5217\u5316\u4E3A JSON \u5B57\u7B26\u4E32\uFF0C\u652F\u6301 ",paraId:112,tocIndex:13},{value:"replacer",paraId:112,tocIndex:13},{value:" \u548C ",paraId:112,tocIndex:13},{value:"space",paraId:112,tocIndex:13},{value:" \u53C2\u6570",paraId:112,tocIndex:13},{value:"\u7279\u6B8A\u7C7B\u578B\uFF08\u5982 ",paraId:112,tocIndex:13},{value:"undefined",paraId:112,tocIndex:13},{value:"\u3001",paraId:112,tocIndex:13},{value:"Symbol",paraId:112,tocIndex:13},{value:"\u3001\u51FD\u6570\uFF09\u5728\u5E8F\u5217\u5316\u65F6\u4F1A\u88AB\u5FFD\u7565\u6216\u8F6C\u6362",paraId:112,tocIndex:13},{value:"toJSON",paraId:112,tocIndex:13},{value:" \u65B9\u6CD5\u5141\u8BB8\u5BF9\u8C61\u81EA\u5B9A\u4E49\u5E8F\u5217\u5316\u884C\u4E3A",paraId:112,tocIndex:13},{value:"\u5E38\u89C1\u9677\u9631\uFF1A",paraId:113,tocIndex:13},{value:"\u4F7F\u7528 JSON \u8FDB\u884C\u6DF1\u514B\u9686\u4F1A\u5BFC\u81F4\u6570\u636E\u5931\u771F\uFF08\u51FD\u6570\u3001Symbol\u3001undefined \u7B49\u4F1A\u4E22\u5931\uFF09",paraId:114,tocIndex:13},{value:"Date \u5BF9\u8C61\u5E8F\u5217\u5316\u540E\u53D8\u6210\u5B57\u7B26\u4E32\uFF0C\u9700\u8981\u624B\u52A8\u8F6C\u6362\u56DE\u6765",paraId:114,tocIndex:13},{value:"\u73AF\u5F62\u5F15\u7528\u4F1A\u5BFC\u81F4\u5E8F\u5217\u5316\u5931\u8D25",paraId:114,tocIndex:13},{value:"\u5927\u6574\u6570\u53EF\u80FD\u5B58\u5728\u7CBE\u5EA6\u95EE\u9898",paraId:114,tocIndex:13},{value:"\u5B89\u5168\u6027\uFF1A",paraId:115,tocIndex:13},{value:"\u6C38\u8FDC\u4E0D\u8981\u4F7F\u7528 ",paraId:116,tocIndex:13},{value:"eval()",paraId:116,tocIndex:13},{value:" \u89E3\u6790 JSON\uFF0C\u5E94\u8BE5\u4F7F\u7528 ",paraId:116,tocIndex:13},{value:"JSON.parse",paraId:116,tocIndex:13},{value:"\u5904\u7406\u5916\u90E8\u6570\u636E\u65F6\u8981\u8FDB\u884C\u9519\u8BEF\u5904\u7406\u548C\u6570\u636E\u9A8C\u8BC1",paraId:116,tocIndex:13},{value:"\u6CE8\u610F\u5927\u578B JSON \u7684\u6027\u80FD\u5F71\u54CD",paraId:116,tocIndex:13},{value:"JSON \u5E38\u5E38\u7528\u4F5C\u7F51\u7EDC\u901A\u4FE1\u7684\u683C\u5F0F\uFF0C\u4F46\u4F5C\u4E3A\u914D\u7F6E\u6587\u4EF6\uFF08\u5982 package.json\uFF09\u65F6\u4E5F\u5B58\u5728\u4E0D\u652F\u6301\u6CE8\u91CA\u7B49\u4E0D\u4FBF\u4E4B\u5904\u3002\u8FD9\u65F6\u5019\u53EF\u4EE5\u8003\u8651\u4F7F\u7528\u793E\u533A\u6269\u5C55\u65B9\u6848\uFF0C\u6BD4\u5982 ",paraId:117,tocIndex:13},{value:"json5",paraId:117,tocIndex:13},{value:"\uFF0C\u5B83\u652F\u6301\u6CE8\u91CA\u3001\u5C3E\u90E8\u9017\u53F7\u3001\u5355\u5F15\u53F7\u7B49\u66F4\u4EBA\u6027\u5316\u7684\u7279\u6027\u3002",paraId:117,tocIndex:13},{value:"\u638C\u63E1\u8FD9\u4E9B\u7EC6\u8282\u77E5\u8BC6\uFF0C\u80FD\u591F\u5E2E\u52A9\u4F60\u7F16\u5199\u66F4\u5065\u58EE\u3001\u66F4\u5B89\u5168\u7684\u4EE3\u7801\uFF0C\u5728\u5B9E\u9645\u5F00\u53D1\u4E2D\u907F\u514D\u5E38\u89C1\u7684\u9677\u9631\u548C\u9519\u8BEF\u3002",paraId:118,tocIndex:13}]}}]);

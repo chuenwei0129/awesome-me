@@ -3022,7 +3022,7 @@ WindowProperties.prototype.__proto__ === EventTarget.prototype; // true
 EventTarget.prototype.__proto__ === Object.prototype; // true
 
 // \u7B80\u5316\u7406\u89E3\uFF1Awindow -> Window.prototype -> ... -> Object.prototype
-`,paraId:4,tocIndex:1},{value:"\u4E3A\u4EC0\u4E48 Function.prototype \u53EF\u4EE5\u76F4\u63A5\u6267\u884C\uFF1F",paraId:0},{value:"**\u5386\u53F2\u539F\u56E0\uFF1A**\u51FD\u6570\u7684 ",paraId:5,tocIndex:2},{value:"prototype",paraId:5,tocIndex:2},{value:" \u5C5E\u6027\u90FD\u662F\u5F15\u64CE\u81EA\u52A8\u6DFB\u52A0\u7684\uFF0C\u5982\u679C\u662F\u7528\u6237\u81EA\u5B9A\u4E49\u7684\u51FD\u6570\uFF0C\u5B83\u7684 ",paraId:5,tocIndex:2},{value:"prototype",paraId:5,tocIndex:2},{value:" \u5C5E\u6027\u5C31\u662F\u4E2A\u666E\u901A\u5BF9\u8C61\uFF0C",paraId:5,tocIndex:2},{value:"\u5982\u679C\u662F\u5185\u7F6E\u7C7B\u578B\u7684\u6784\u9020\u51FD\u6570\u7684\u8BDD\uFF0C\u5B83\u7684 ",paraId:5,tocIndex:2},{value:"prototype",paraId:5,tocIndex:2},{value:" \u5C5E\u6027\u4F1A\u662F\u8BE5\u7C7B\u578B\u7684\u7B2C\u4E00\u4E2A\u5B9E\u4F8B",paraId:5,tocIndex:2},{value:`// in old browser is true
+`,paraId:4,tocIndex:1},{value:"\u4E3A\u4EC0\u4E48 Function.prototype \u53EF\u4EE5\u76F4\u63A5\u6267\u884C\uFF1F",paraId:0},{value:"\u5386\u53F2\u539F\u56E0\uFF1A",paraId:5,tocIndex:2},{value:" \u51FD\u6570\u7684 ",paraId:5,tocIndex:2},{value:"prototype",paraId:5,tocIndex:2},{value:" \u5C5E\u6027\u90FD\u662F\u5F15\u64CE\u81EA\u52A8\u6DFB\u52A0\u7684\uFF0C\u5982\u679C\u662F\u7528\u6237\u81EA\u5B9A\u4E49\u7684\u51FD\u6570\uFF0C\u5B83\u7684 ",paraId:5,tocIndex:2},{value:"prototype",paraId:5,tocIndex:2},{value:" \u5C5E\u6027\u5C31\u662F\u4E2A\u666E\u901A\u5BF9\u8C61\uFF0C",paraId:5,tocIndex:2},{value:"\u5982\u679C\u662F\u5185\u7F6E\u7C7B\u578B\u7684\u6784\u9020\u51FD\u6570\u7684\u8BDD\uFF0C\u5B83\u7684 ",paraId:5,tocIndex:2},{value:"prototype",paraId:5,tocIndex:2},{value:" \u5C5E\u6027\u4F1A\u662F\u8BE5\u7C7B\u578B\u7684\u7B2C\u4E00\u4E2A\u5B9E\u4F8B",paraId:5,tocIndex:2},{value:`// in old browser is true
 Number.prototype; // Object(0)
 String.prototype; // Object("")
 Boolean.prototype; // Object(false)
@@ -4443,7 +4443,9 @@ Object.getOwnPropertySymbols(obj); // [Symbol(a)]
 Reflect.ownKeys(obj); // ["b", Symbol(a)]
 `,paraId:42,tocIndex:22},{value:"\u4E0D\u662F\u5B8C\u5168\u79C1\u6709",paraId:43,tocIndex:22},{value:"\uFF1ASymbol \u5C5E\u6027\u53EF\u4EE5\u901A\u8FC7 ",paraId:43,tocIndex:22},{value:"Object.getOwnPropertySymbols()",paraId:43,tocIndex:22},{value:" \u548C ",paraId:43,tocIndex:22},{value:"Reflect.ownKeys()",paraId:43,tocIndex:22},{value:" \u8BBF\u95EE",paraId:43,tocIndex:22},{value:"\u4E0D\u80FD\u4F7F\u7528 new",paraId:44,tocIndex:22},{value:"\uFF1ASymbol \u662F\u539F\u59CB\u7C7B\u578B\uFF0C\u4E0D\u80FD\u4F7F\u7528 ",paraId:44,tocIndex:22},{value:"new",paraId:44,tocIndex:22},{value:" \u64CD\u4F5C\u7B26",paraId:44,tocIndex:22},{value:`// const s = new Symbol(); // TypeError: Symbol is not a constructor
 const s = Symbol(); // \u6B63\u786E
-`,paraId:45,tocIndex:22},{value:"\u5168\u5C40\u6CE8\u518C\u8868",paraId:46,tocIndex:22},{value:"\uFF1A\u4F7F\u7528 ",paraId:46,tocIndex:22},{value:"Symbol.for()",paraId:46,tocIndex:22},{value:" \u65F6\u8981\u6CE8\u610F\u5168\u5C40\u6CE8\u518C\u8868\u7684\u5F71\u54CD\uFF0C\u907F\u514D\u610F\u5916\u7684 Symbol \u5171\u4EAB",paraId:46,tocIndex:22},{value:"Symbol \u662F ES6 \u5F15\u5165\u7684\u65B0\u7684\u539F\u59CB\u6570\u636E\u7C7B\u578B\uFF0C\u8868\u793A\u72EC\u4E00\u65E0\u4E8C\u7684\u503C",paraId:47,tocIndex:23},{value:"\u4E3B\u8981\u7528\u9014\uFF1A\u9632\u6B62\u5C5E\u6027\u540D\u51B2\u7A81\u3001\u5B9A\u4E49\u5BF9\u8C61\u7684\u79C1\u6709\u5C5E\u6027\u3001\u5B9A\u4E49\u5E38\u91CF",paraId:47,tocIndex:23},{value:"\u901A\u8FC7 ",paraId:47,tocIndex:23},{value:"Symbol.for()",paraId:47,tocIndex:23},{value:" \u53EF\u4EE5\u521B\u5EFA\u5168\u5C40\u6CE8\u518C\u7684 Symbol",paraId:47,tocIndex:23},{value:"Well-Known Symbols \u7528\u4E8E\u81EA\u5B9A\u4E49\u5BF9\u8C61\u7684\u5185\u90E8\u884C\u4E3A",paraId:47,tocIndex:23},{value:"Symbol \u5C5E\u6027\u4E0D\u4F1A\u51FA\u73B0\u5728\u5E38\u89C4\u7684\u5C5E\u6027\u904D\u5386\u4E2D\uFF0C\u4F46\u4E0D\u662F\u5B8C\u5168\u79C1\u6709\u7684",paraId:47,tocIndex:23},{value:"\u5728\u9700\u8981\u771F\u6B63\u79C1\u6709\u5C5E\u6027\u65F6\uFF0C\u5E94\u4F7F\u7528 ES2022 \u7684\u79C1\u6709\u5B57\u6BB5\u8BED\u6CD5\uFF08",paraId:47,tocIndex:23},{value:"#",paraId:47,tocIndex:23},{value:" \u524D\u7F00\uFF09",paraId:47,tocIndex:23}]},20441:function(v,a,e){e.r(a),e.d(a,{texts:function(){return r}});const r=[{value:"this",paraId:0,tocIndex:0},{value:" \u662F JavaScript \u4E2D\u7684\u4E00\u4E2A\u5173\u952E\u5B57\uFF0C",paraId:0,tocIndex:0},{value:"\u5B83\u7684\u503C\u5728\u51FD\u6570\u88AB\u8C03\u7528\u65F6\u786E\u5B9A\uFF0C\u6307\u5411\u8C03\u7528\u8BE5\u51FD\u6570\u7684\u5BF9\u8C61",paraId:0,tocIndex:0},{value:"\u3002",paraId:0,tocIndex:0},{value:"this",paraId:0,tocIndex:0},{value:" \u7684\u6307\u5411\u53D6\u51B3\u4E8E\u51FD\u6570\u7684\u8C03\u7528\u65B9\u5F0F\uFF0C\u800C\u4E0D\u662F\u51FD\u6570\u7684\u5B9A\u4E49\u4F4D\u7F6E\u3002",paraId:0,tocIndex:0},{value:"\u5168\u5C40\u73AF\u5883\u4F7F\u7528 ",paraId:1,tocIndex:2},{value:"this",paraId:1,tocIndex:2},{value:"\uFF0C\u5B83\u6307\u7684\u5C31\u662F\u9876\u5C42\u5BF9\u8C61 ",paraId:1,tocIndex:2},{value:"window",paraId:1,tocIndex:2},{value:"\u3002\u4E25\u683C\u6A21\u5F0F\u4E0B\u6307\u5411 ",paraId:1,tocIndex:2},{value:"undefined",paraId:1,tocIndex:2},{value:"\u3002",paraId:1,tocIndex:2},{value:`// \u56E0\u4E3A Jest \u7684 describe, test \u7B49\u9690\u5F0F\u5BFC\u5165\u4F1A\u4F7F jest \u6D4B\u8BD5\u6587\u4EF6\u6210\u4E3A\u4E00\u4E2A ES \u6A21\u5757\uFF0C\u800C ES \u6A21\u5757\u9ED8\u8BA4\u5C31\u662F\u4E25\u683C\u6A21\u5F0F\uFF0C\u6240\u4EE5\u8FD9\u4E2A\u6848\u5217\u5C31\u4E0D\u5199 jest \u6D4B\u8BD5\u7528\u4F8B\u4E86\u3002
+`,paraId:45,tocIndex:22},{value:"\u5168\u5C40\u6CE8\u518C\u8868",paraId:46,tocIndex:22},{value:"\uFF1A\u4F7F\u7528 ",paraId:46,tocIndex:22},{value:"Symbol.for()",paraId:46,tocIndex:22},{value:" \u65F6\u8981\u6CE8\u610F\u5168\u5C40\u6CE8\u518C\u8868\u7684\u5F71\u54CD\uFF0C\u907F\u514D\u610F\u5916\u7684 Symbol \u5171\u4EAB",paraId:46,tocIndex:22},{value:"Symbol \u662F ES6 \u5F15\u5165\u7684\u65B0\u7684\u539F\u59CB\u6570\u636E\u7C7B\u578B\uFF0C\u8868\u793A\u72EC\u4E00\u65E0\u4E8C\u7684\u503C",paraId:47,tocIndex:23},{value:"\u4E3B\u8981\u7528\u9014\uFF1A\u9632\u6B62\u5C5E\u6027\u540D\u51B2\u7A81\u3001\u5B9A\u4E49\u5BF9\u8C61\u7684\u79C1\u6709\u5C5E\u6027\u3001\u5B9A\u4E49\u5E38\u91CF",paraId:47,tocIndex:23},{value:"\u901A\u8FC7 ",paraId:47,tocIndex:23},{value:"Symbol.for()",paraId:47,tocIndex:23},{value:" \u53EF\u4EE5\u521B\u5EFA\u5168\u5C40\u6CE8\u518C\u7684 Symbol",paraId:47,tocIndex:23},{value:"Well-Known Symbols \u7528\u4E8E\u81EA\u5B9A\u4E49\u5BF9\u8C61\u7684\u5185\u90E8\u884C\u4E3A",paraId:47,tocIndex:23},{value:"Symbol \u5C5E\u6027\u4E0D\u4F1A\u51FA\u73B0\u5728\u5E38\u89C4\u7684\u5C5E\u6027\u904D\u5386\u4E2D\uFF0C\u4F46\u4E0D\u662F\u5B8C\u5168\u79C1\u6709\u7684",paraId:47,tocIndex:23},{value:"\u5728\u9700\u8981\u771F\u6B63\u79C1\u6709\u5C5E\u6027\u65F6\uFF0C\u5E94\u4F7F\u7528 ES2022 \u7684\u79C1\u6709\u5B57\u6BB5\u8BED\u6CD5\uFF08",paraId:47,tocIndex:23},{value:"#",paraId:47,tocIndex:23},{value:" \u524D\u7F00\uFF09",paraId:47,tocIndex:23}]},20441:function(v,a,e){e.r(a),e.d(a,{texts:function(){return r}});const r=[{value:"this",paraId:0,tocIndex:0},{value:" \u662F JavaScript \u4E2D\u7684\u4E00\u4E2A\u5173\u952E\u5B57\uFF0C",paraId:0,tocIndex:0},{value:"\u5B83\u7684\u503C\u5728\u51FD\u6570\u88AB\u8C03\u7528\u65F6\u786E\u5B9A\uFF0C\u6307\u5411\u8C03\u7528\u8BE5\u51FD\u6570\u7684\u5BF9\u8C61",paraId:0,tocIndex:0},{value:"\u3002",paraId:0,tocIndex:0},{value:"this",paraId:0,tocIndex:0},{value:" \u7684\u6307\u5411\u53D6\u51B3\u4E8E\u51FD\u6570\u7684\u8C03\u7528\u65B9\u5F0F\uFF0C\u800C\u4E0D\u662F\u51FD\u6570\u7684\u5B9A\u4E49\u4F4D\u7F6E\u3002",paraId:0,tocIndex:0},{value:"\u5168\u5C40\u73AF\u5883\u4F7F\u7528 ",paraId:1,tocIndex:2},{value:"this",paraId:1,tocIndex:2},{value:"\uFF0C\u5B83\u6307\u7684\u5C31\u662F\u9876\u5C42\u5BF9\u8C61 ",paraId:1,tocIndex:2},{value:"window",paraId:1,tocIndex:2},{value:"\u3002\u4E25\u683C\u6A21\u5F0F\u4E0B\u6307\u5411 ",paraId:1,tocIndex:2},{value:"undefined",paraId:1,tocIndex:2},{value:"\u3002",paraId:1,tocIndex:2},{value:`// \u6211\u4EEC\u4E0D\u9700\u8981\u663E\u5F0F\u5BFC\u5165\uFF0C\u56E0\u4E3A Jest \u4F1A\u81EA\u52A8\u5C06 describe, test, expect \u6CE8\u5165\u5230\u5168\u5C40
+// \u56E0\u4E3A Jest \u7684 describe \u7B49\u9690\u5F0F\u5BFC\u5165\u4F1A\u4F7F jest \u6D4B\u8BD5\u6587\u4EF6\u6210\u4E3A\u4E00\u4E2A ES \u6A21\u5757
+// \u800C ES \u6A21\u5757\u9ED8\u8BA4\u5C31\u662F\u4E25\u683C\u6A21\u5F0F\uFF0C\u6240\u4EE5\u8FD9\u4E2A\u6848\u5217\u5C31\u4E0D\u5199 Jest \u6D4B\u8BD5\u7528\u4F8B\u4E86\u3002
 
 function f1() {
   'use strict';
@@ -4456,24 +4458,37 @@ function f2() {
 
 f1(); // undefined
 f2(); // window
-`,paraId:2,tocIndex:2},{value:"\u5BF9\u8C61\u7684\u65B9\u6CD5\u91CC\u9762\u5305\u542B ",paraId:3,tocIndex:3},{value:"this",paraId:3,tocIndex:3},{value:"\uFF0C",paraId:3,tocIndex:3},{value:"this",paraId:3,tocIndex:3},{value:" \u7684\u6307\u5411\u5C31\u662F\u65B9\u6CD5\u8FD0\u884C\u65F6\u6240\u5728\u7684\u5BF9\u8C61\u3002\u8BE5\u65B9\u6CD5\u8D4B\u503C\u7ED9\u53E6\u4E00\u4E2A\u5BF9\u8C61\uFF0C\u5C31\u4F1A\u6539\u53D8 ",paraId:3,tocIndex:3},{value:"this",paraId:3,tocIndex:3},{value:" \u7684\u6307\u5411\u3002",paraId:3,tocIndex:3},{value:`let obj = {
-  foo: function () {
-    console.log(this);
-  },
-};
+`,paraId:2,tocIndex:2},{value:"\u5BF9\u8C61\u7684\u65B9\u6CD5\u91CC\u9762\u5305\u542B ",paraId:3,tocIndex:3},{value:"this",paraId:3,tocIndex:3},{value:"\uFF0C",paraId:3,tocIndex:3},{value:"this",paraId:3,tocIndex:3},{value:" \u7684\u6307\u5411\u5C31\u662F\u65B9\u6CD5\u8FD0\u884C\u65F6\u6240\u5728\u7684\u5BF9\u8C61\u3002\u8BE5\u65B9\u6CD5\u8D4B\u503C\u7ED9\u53E6\u4E00\u4E2A\u5BF9\u8C61\uFF0C\u5C31\u4F1A\u6539\u53D8 ",paraId:3,tocIndex:3},{value:"this",paraId:3,tocIndex:3},{value:" \u7684\u6307\u5411\u3002",paraId:3,tocIndex:3},{value:`test('1 - \u65B9\u6CD5\u4F5C\u4E3A\u5BF9\u8C61\u5C5E\u6027\u8C03\u7528\u65F6\uFF0Cthis \u6307\u5411\u8BE5\u5BF9\u8C61', () => {
+  // \u63CF\u8FF0\uFF1A\u5F53\u5BF9\u8C61\u7684\u65B9\u6CD5\u901A\u8FC7\u5BF9\u8C61\u5C5E\u6027\u8BBF\u95EE\u65B9\u5F0F\u8C03\u7528\u65F6\uFF08obj.method()\uFF09\uFF0C
+  // this \u4F1A\u6B63\u786E\u6307\u5411\u8C03\u7528\u8BE5\u65B9\u6CD5\u7684\u5BF9\u8C61
+  const testObject = {
+    getThisContext() {
+      return this;
+    },
+  };
 
-obj.foo(); // obj
-`,paraId:4,tocIndex:3},{value:"\u9690\u5F0F\u4E22\u5931",paraId:5,tocIndex:3},{value:"\uFF1A\u5F53\u65B9\u6CD5\u88AB\u8D4B\u503C\u7ED9\u53D8\u91CF\u6216\u4F5C\u4E3A\u53C2\u6570\u4F20\u9012\u65F6\uFF0C\u4F1A\u4E22\u5931\u9690\u5F0F\u7ED1\u5B9A\u3002",paraId:5,tocIndex:3},{value:"\u4E0B\u9762\u8FD9\u79CD\u60C5\u51B5\u662F\u76F4\u63A5\u8C03\u7528\uFF0C",paraId:6,tocIndex:3},{value:"this",paraId:6,tocIndex:3},{value:" \u76F8\u5F53\u4E8E\u5168\u5C40\u4E0A\u4E0B\u6587\u7684\u60C5\u51B5\u3002",paraId:6,tocIndex:3},{value:`let obj = {
-  a: function () {
-    console.log(this);
-  },
-};
-let func = obj.a;
+  // \u9A8C\u8BC1\uFF1A\u901A\u8FC7 testObject \u8C03\u7528 getThisContext \u65F6\uFF0Cthis \u6307\u5411 testObject \u672C\u8EAB
+  expect(testObject.getThisContext()).toBe(testObject);
+});
+`,paraId:4,tocIndex:3},{value:"\u9690\u5F0F\u4E22\u5931",paraId:5,tocIndex:3},{value:"\uFF1A\u5F53\u65B9\u6CD5\u88AB\u8D4B\u503C\u7ED9\u53D8\u91CF\u6216\u4F5C\u4E3A\u53C2\u6570\u4F20\u9012\u65F6\uFF0C\u4F1A\u4E22\u5931\u9690\u5F0F\u7ED1\u5B9A\u3002",paraId:5,tocIndex:3},{value:"\u4E0B\u9762\u8FD9\u79CD\u60C5\u51B5\u662F\u76F4\u63A5\u8C03\u7528\uFF0C",paraId:6,tocIndex:3},{value:"this",paraId:6,tocIndex:3},{value:" \u76F8\u5F53\u4E8E\u5168\u5C40\u4E0A\u4E0B\u6587\u7684\u60C5\u51B5\u3002",paraId:6,tocIndex:3},{value:`test('2 - \u65B9\u6CD5\u88AB\u63D0\u53D6\u4E3A\u72EC\u7ACB\u51FD\u6570\u8C03\u7528\u65F6\uFF0Cthis \u6307\u5411\u53D8\u4E3A undefined\uFF08\u4E25\u683C\u6A21\u5F0F\uFF09', () => {
+  // \u63CF\u8FF0\uFF1A\u5F53\u5BF9\u8C61\u7684\u65B9\u6CD5\u88AB\u63D0\u53D6\u5230\u72EC\u7ACB\u53D8\u91CF\u4E2D\u5E76\u76F4\u63A5\u8C03\u7528\u65F6\uFF0C
+  // \u5728\u4E25\u683C\u6A21\u5F0F\u4E0B this \u4F1A\u6307\u5411 undefined\uFF0C\u56E0\u4E3A\u5931\u53BB\u4E86\u539F\u6709\u7684\u8C03\u7528\u4E0A\u4E0B\u6587
+  const testObject = {
+    getThisContext() {
+      return this;
+    },
+  };
 
-func(); // window \u5BF9\u8C61\uFF08\u4E25\u683C\u6A21\u5F0F\u4E0B\u4E3A undefined\uFF09
+  // \u5C06\u5BF9\u8C61\u65B9\u6CD5\u63D0\u53D6\u5230\u72EC\u7ACB\u53D8\u91CF\u4E2D
+  const getThisContext = testObject.getThisContext;
+
+  // \u9A8C\u8BC1\uFF1A\u72EC\u7ACB\u8C03\u7528\u51FD\u6570\u65F6\uFF0C\u5728\u4E25\u683C\u6A21\u5F0F\u4E0B this \u4E3A undefined
+  // \u8FD9\u4F53\u73B0\u4E86 JavaScript \u4E2D this \u7ED1\u5B9A\u7684\u52A8\u6001\u7279\u6027
+  expect(getThisContext()).toBeUndefined();
+});
 `,paraId:7,tocIndex:3},{value:"\u7ACB\u5373\u6267\u884C\u51FD\u6570",paraId:8,tocIndex:3},{value:"\u7ACB\u5373\u6267\u884C\u51FD\u6570\uFF08IIFE\uFF09\u662F\u76F4\u63A5\u8C03\u7528\uFF0C",paraId:9,tocIndex:3},{value:"this",paraId:9,tocIndex:3},{value:" \u76F8\u5F53\u4E8E\u5168\u5C40\u4E0A\u4E0B\u6587\u3002",paraId:9,tocIndex:3},{value:`let obj = {
   f1: function () {
-    console.log(this);
+    console.log(this); // obj
     let f2 = (function () {
       console.log(this); // window \u5BF9\u8C61
     })();
