@@ -7,7 +7,7 @@ toc: content
 order: 13
 ---
 
-## Proxy 与 defineProperty：本质区别
+## 从 Proxy 与 defineProperty 的区别谈起
 
 ### 从对象的基本方法说起
 

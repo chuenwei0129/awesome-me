@@ -1,4 +1,11 @@
 {
-  "cSpell.words": ["dumirc", "fatherrc", "favicons", "Flexbox", "umijs"],
+  "cSpell.words": [
+    "dumirc",
+    "fatherrc",
+    "favicons",
+    "Flexbox",
+    "strinify",
+    "umijs"
+  ],
   "liveServer.settings.port": 5501
 }

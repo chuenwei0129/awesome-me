@@ -36,7 +36,7 @@ EventTarget.prototype.__proto__ === Object.prototype; // true
 
 ## [为什么 Function.prototype 可以直接执行？](https://www.zhihu.com/question/323462380)
 
-**历史原因：**函数的 `prototype` 属性都是引擎自动添加的，如果是用户自定义的函数，它的 `prototype` 属性就是个普通对象，**如果是内置类型的构造函数的话，它的 `prototype` 属性会是该类型的第一个实例**
+**历史原因：** 函数的 `prototype` 属性都是引擎自动添加的，如果是用户自定义的函数，它的 `prototype` 属性就是个普通对象，**如果是内置类型的构造函数的话，它的 `prototype` 属性会是该类型的第一个实例**
 
 ```js
 // in old browser is true

@@ -9,11 +9,13 @@ order: 16
 
 ## JSON 的由来
 
-结构化数据是指按照特定格式和规则组织的数据，每个数据字段都有明确的定义和类型。结构化数据的特点是易于处理、存储和分析，因为数据的结构和关系已经明确。在 JavaScript 诞生的初期，常见的文本形式的结构化数据通常是 **XML**。
+结构化数据是指按照特定格式和规则组织的数据，每个数据字段都有明确的定义和类型。
 
-但是 XML 需要大量的“<>”标签来描述结构关系，因此体积浪费上比较严重，对于解析和网络传输上要明显逊色于 JSON。
+结构化数据的特点是易于处理、存储和分析，因为数据的结构和关系已经明确。常见的文本形式的结构化数据通常是 **XML**。
 
-JSON 全称叫做 `JavaScript Object Notation`，可见它一开始就与 JavaScript 脱不开关系。大神 **Douglas Crockford** 在 2002 年就发布了第一版 JSON 规范，但微软在 IE8 才开始内置对 JSON API 的支持，在此之前，都需要引用第三方库来实现。ECMAScript 规范引入 JSON 要到 ES5。
+但是 XML 需要大量的 `<>` 标签来描述结构关系，因此体积浪费上比较严重，对于解析和网络传输上要明显逊色于 JSON。
+
+JSON 全称叫做 `JavaScript Object Notation`，可见它一开始就与 JavaScript 脱不开关系。微软在 IE8 才开始内置对 JSON API 的支持，在此之前，都需要引用第三方库来实现。ECMAScript 规范引入 JSON 要到 ES5。
 
 事实上，JSON 在 ECMA 是有独立规范的，那就是 `ECMA-404`。它只有十几页，里面定义了各种语法相关的符号，比如大括号、中括号、逗号、分号，都是有明确的 Unicode 值的。同时它也定义了 JSON 支持的 7 种取值，分别是 **object**、**array**、**number**、**string**、**true**、**false** 和 **null**。
 
@@ -31,9 +33,7 @@ JSON.parse('false'); // 布尔值 false
 JSON.parse('null'); // null
 ```
 
-但是需要注意，JSON 只支持十进制的数字，像 `JSON.parse("0x01")` 甚至 `JSON.parse("01")` 这样都是不可以被成功解析的。从这张图就可以看得出来 JSON 支持的数字格式：
-
-![20251111120733](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/awesome-me/20251111120733.png)
+但是需要注意，JSON 只支持十进制的数字，像 `JSON.parse("0x01")` 甚至 `JSON.parse("01")` 这样都是不可以被成功解析的。
 
 同时，对于 JavaScript 中的特殊数字，比如 `Infinity`、`NaN`，JSON 都是不支持的，解析会报错。此外，`undefined` 也不属于 JSON 的合法类型。
 
@@ -81,7 +81,9 @@ key 不用多说，自然是某一层级下某一字段的键，需要注意的�
 }
 ```
 
-并且 key 为空字符串。大家可以专门打印一下所有的 key，它们形成下面这种顺序：
+并且 key 为空字符串。
+
+大家可以专门打印一下所有的 key，它们形成下面这种顺序：
 
 ```js
 'name';
@@ -208,12 +210,7 @@ JSON.stringify({ now: new Date() }); // {"now":"2023-07-10T13:11:15.960Z"}
 
 如果你的对象中有一些属性不想被序列化，那么可以考虑定义成不可枚举的，或者以 Symbol 而不是 String 为 key。如果这样不方便，我们也有办法，那就需要使用 `JSON.stringify` 的第二个参数 `replacer` 了。
 
-`replacer` 可以是一个函数也可以是一个数组，TypeScript 是这样定义的：
-
-```ts
-stringify(value: any, replacer?: (this: any, key: string, value: any) => any, space?: string | number): string;
-stringify(value: any, replacer?: (number | string)[] | null, space?: string | number): string;
-```
+`replacer` 可以是一个函数也可以是一个数组：
 
 当作为函数的时候，它和 `JSON.parse` 中的 `reviver` 有异曲同工之妙，只不过 `reviver` 先遍历到最底层的节点，而 `replacer` 先遍历最上层的节点。我们还是以前面的数据为例：
 
@@ -403,7 +400,7 @@ JSON.stringify({ name: 'Mike' }, null, new Array(12).fill('/').join('')); // 12
 
 ## JSON 的常见场景
 
-JSON 的文本特征，最适合用来做网络传输。在 fetch 之前，我们使用 `XMLHttpRequest` 也可以直接解析 JSON 格式的响应内容：
+**JSON 的文本特征**，最适合用来做网络传输。在 fetch 之前，我们使用 `XMLHttpRequest` 也可以直接解析 JSON 格式的响应内容：
 
 ```js
 const xhr = new XMLHttpRequest();

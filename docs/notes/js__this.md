@@ -18,7 +18,9 @@ order: 14
 全局环境使用 `this`，它指的就是顶层对象 `window`。严格模式下指向 `undefined`。
 
 ```js
-// 因为 Jest 的 describe, test 等隐式导入会使 jest 测试文件成为一个 ES 模块，而 ES 模块默认就是严格模式，所以这个案列就不写 jest 测试用例了。
+// 我们不需要显式导入，因为 Jest 会自动将 describe, test, expect 注入到全局
+// 因为 Jest 的 describe 等隐式导入会使 jest 测试文件成为一个 ES 模块
+// 而 ES 模块默认就是严格模式，所以这个案列就不写 Jest 测试用例了。
 
 function f1() {
   'use strict';
@@ -38,13 +40,18 @@ f2(); // window
 对象的方法里面包含 `this`，`this` 的指向就是方法运行时所在的对象。该方法赋值给另一个对象，就会改变 `this` 的指向。
 
 ```js
-let obj = {
-  foo: function () {
-    console.log(this);
-  },
-};
+test('1 - 方法作为对象属性调用时，this 指向该对象', () => {
+  // 描述：当对象的方法通过对象属性访问方式调用时（obj.method()），
+  // this 会正确指向调用该方法的对象
+  const testObject = {
+    getThisContext() {
+      return this;
+    },
+  };
 
-obj.foo(); // obj
+  // 验证：通过 testObject 调用 getThisContext 时，this 指向 testObject 本身
+  expect(testObject.getThisContext()).toBe(testObject);
+});
 ```
 
 **隐式丢失**：当方法被赋值给变量或作为参数传递时，会丢失隐式绑定。
@@ -52,14 +59,22 @@ obj.foo(); // obj
 下面这种情况是直接调用，`this` 相当于全局上下文的情况。
 
 ```js
-let obj = {
-  a: function () {
-    console.log(this);
-  },
-};
-let func = obj.a;
+test('2 - 方法被提取为独立函数调用时，this 指向变为 undefined（严格模式）', () => {
+  // 描述：当对象的方法被提取到独立变量中并直接调用时，
+  // 在严格模式下 this 会指向 undefined，因为失去了原有的调用上下文
+  const testObject = {
+    getThisContext() {
+      return this;
+    },
+  };
 
-func(); // window 对象（严格模式下为 undefined）
+  // 将对象方法提取到独立变量中
+  const getThisContext = testObject.getThisContext;
+
+  // 验证：独立调用函数时，在严格模式下 this 为 undefined
+  // 这体现了 JavaScript 中 this 绑定的动态特性
+  expect(getThisContext()).toBeUndefined();
+});
 ```
 
 **立即执行函数**
@@ -69,7 +84,7 @@ func(); // window 对象（严格模式下为 undefined）
 ```js
 let obj = {
   f1: function () {
-    console.log(this);
+    console.log(this); // obj
     let f2 = (function () {
       console.log(this); // window 对象
     })();
