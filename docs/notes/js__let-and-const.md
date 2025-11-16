@@ -2,12 +2,79 @@
 group:
   title: javaScript
   order: 3
-title: let 和 const
+title: 作用域
 toc: content
 order: 2
 ---
 
-## 不存在变量提升
+## 作用域
+
+作用域，或者称之为“上下文”，是变量被承载的容器。
+
+在最新的 ECMAScript 规范中，定义了一个叫做`环境记录（Environment Record）`的抽象概念，可理解为就是作用域。从 `Record` 这种词我们就能联想到它是用来记录变量的。这里的变量不仅仅包括 var 声明的变量，还包括 `const`、`let`、`class`、`function`、`with`、`catch` 等声明的变量或参数。一旦这些语句被执行，那么就会创建一个新的 Environment Record。
+
+Environment Record 是抽象的（abstract），它有三个子类，分别是：
+
+1.  `Declarative Environment Record`，包括 var、const、let、class、module、function、catch；
+2.  `Object Environment Record`，包括 with；
+3.  `Global Environment Record`，浏览器中指 globalThis，Node.js 中指 global。
+
+其中，Declarative Environment Record 还有两个子类：
+
+1.  `Function Environment Record` —— function；
+2.  `Module Environment Record` —— module。
+
+因此，目前官方规范中定义的这几种作用域的关系是：
+
+![20251117071406](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/awesome-me/20251117071406.png)
+
+每一个 Environment Record 有一个 `OuterEnv` 属性，指向另一个 Environment Record 实例。从这一点上我们就能看出来，**作用域是有上下层级关系的，所有作用域应该可以组成一个树形结构**，这和我们的认知是一致的。我举一个例子：
+
+```js
+var foo = 1; // Env3
+
+function onload() {
+  var bar = 2; // Env2
+  return function callback() {
+    var baz = 3; // Env1
+    return foo + bar + baz;
+  };
+}
+```
+
+在上面这段代码中，我们至少定义了三个作用域：Env1、Env2 和 Env3。当需要计算 `foo + bar + baz` 的时候，需要依次`从下向上`搜索作用域内是否有对应的变量声明。
+
+- 首先，在 Env1 中查找 foo，不存在，向上在 Env2 中查找，也不存在，继续向上，直到在 Env3 中找到，取其值；
+- 其次，在 Env1 中查找 bar，不存在，向上在 Env2 中找到，取其值；
+- 最后，在 Env1 中找到 baz，取其值。
+
+![20251117071454](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/awesome-me/20251117071454.png)
+
+由此可见，这三个作用域的关系：Env1 的 OuterEnv 是 Env2，Env2 的 OuterEnv 是 Env3，这一条关系链称为`作用域链`。
+
+不同类型的 Environment Record，其 `OuterEnv` 类型是受限的。比如，**Global Environment Record** 的 OuterEnv 总是 `null`，而 **Module Environment Record** 的 OuterEnv 总是 **Global Environment Record**。
+
+前者容易理解，毕竟树形结构总有一个根结点。至于后者，我们可以看下面这个例子：
+
+```js
+// index.js
+var foo = 1;
+
+function onload() {
+  var bar = 2;
+  import('./dynamic.js');
+}
+```
+
+```js
+// dynamic.js
+var baz = 3;
+console.log(foo + bar + baz);
+```
+
+dynamic.js 所在的作用域，是一个 **Module Environment Record**，由于其 `OuterEnv` 是 **Global Environment Record**，因此它可以访问到 foo 变量，但是访问不到 bar 变量，于是在 console.log 那一行就会报错。
+
+## let 不存在变量提升
 
 ```js
 // var 的情况
@@ -19,7 +86,7 @@ console.log(bar); // 报错 ReferenceError
 let bar = 2;
 ```
 
-## 不允许重复声明
+## let 不允许重复声明
 
 `let` 不允许在相同作用域内，重复声明同一个变量。
 
@@ -107,7 +174,7 @@ if (true) {
 
 暂时性死区的本质就是，**只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用该变量**。
 
-### 其他形式的 TDZ
+## 其他形式的 TDZ
 
 ```js
 // typeof 不再是一个百分之百安全的操作

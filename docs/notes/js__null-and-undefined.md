@@ -48,13 +48,13 @@ let obj = null; // 表示 obj 现在为空，但将来可能会有对象
 
 ### 主要区别
 
-| 特性 | `undefined` | `null` |
-| --- | --- | --- |
-| **类型** | `undefined` | `object`（历史遗留问题） |
-| **语义** | 未定义、缺失 | 空对象、空引用 |
-| **产生方式** | 系统自动产生 | 需要主动赋值 |
-| **转数字** | `NaN` | `0` |
-| **转布尔** | `false` | `false` |
+| 特性         | `undefined`  | `null`                   |
+| ------------ | ------------ | ------------------------ |
+| **类型**     | `undefined`  | `object`（历史遗留问题） |
+| **语义**     | 未定义、缺失 | 空对象、空引用           |
+| **产生方式** | 系统自动产生 | 需要主动赋值             |
+| **转数字**   | `NaN`        | `0`                      |
+| **转布尔**   | `false`      | `false`                  |
 
 ```js
 // 类型检测
@@ -108,6 +108,17 @@ typeof null === 'object';
 更明确点讲，我们写在 JavaScript 代码中的 `undefined`，并不是 `undefined` 值本身。而是一个局部变量或者是全局对象的一个属性。但大部分时候它们的值是 `undefined`。`NaN` 和 `Infinity` 也同理。
 
 ![undefined 可以被赋值](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/js/SCR-20220509-g29.png)
+
+在 ES5 之前的 ES3 时代，全局的 undefined 是能被重写的，比如 `var undefined = 1` 是可以被正确执行的。
+
+虽然现代浏览器已经没有了这个顾虑，但是 undefined 还不是关键字，它依然可以作为变量名在局部上下文中声明：
+
+```js
+{
+  const undefined = 1;
+  console.log(typeof undefined); // "number"
+}
+```
 
 > **影响：**
 >
