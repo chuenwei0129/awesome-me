@@ -67,6 +67,8 @@
     "prettier-plugin-packagejson": "^2.2.18",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "rehype-mathjax": "^7.1.0",
+    "remark-math": "^6.0.0",
     "styled-components": "^6.1.19",
     "stylelint": "^14.9.1",
     "tailwind-merge": "^3.3.1",
