@@ -1,4 +1,4 @@
-"use strict";(self.webpackChunk_c6i_playground=self.webpackChunk_c6i_playground||[]).push([[1904],{16775:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},94781:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},52320:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},11171:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},57657:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},18017:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},59614:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},36735:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},22605:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},54934:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},42746:function(v,e,a){a.r(e),a.d(e,{demos:function(){return ua}});var o=a(70215),l=a.n(o),T=a(42122),O=a.n(T),D=a(17061),r=a.n(D),F=a(59400),f=a.n(F),m=a(17156),b=a.n(m),t=a(67294),x=a(30789),g=["as","children"],h,S,E,c,w,B,A,j,R,U,k,L,z,M,N,J,H,V,G,Y,X,Q,Z,q,_,aa,ea,na,ta,da,oa,ra,la,Ia,ua={"docs-notes-css-css-in-js-demo-0":{component:t.memo(t.lazy(b()(r()().mark(function i(){var u,I,d;return r()().wrap(function(s){for(;;)switch(s.prev=s.next){case 0:return s.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=s.sent,I=u.default,d=I.button(h||(h=f()([`
+"use strict";(self.webpackChunk_c6i_playground=self.webpackChunk_c6i_playground||[]).push([[1904],{98512:function(p,a,e){e.r(a),e.d(a,{default:function(){return A}});var d=e(56690),l=e.n(d),O=e(89728),T=e.n(O),A=function(){function r(M){l()(this,r),this.size=M;var v=M+31>>>5;this.data=new Uint32Array(v)}return T()(r,[{key:"_wordIndexAndMask",value:function(v){var i=v>>>5,f=v&31,t=1<<f;return{wordIndex:i,bitMask:t}}},{key:"set",value:function(v){var i=this._wordIndexAndMask(v),f=i.wordIndex,t=i.bitMask;this.data[f]|=t}},{key:"get",value:function(v){var i=this._wordIndexAndMask(v),f=i.wordIndex,t=i.bitMask;return(this.data[f]&t)!==0}},{key:"clear",value:function(v){var i=this._wordIndexAndMask(v),f=i.wordIndex,t=i.bitMask;this.data[f]&=~t}},{key:"and",value:function(v){for(var i=Math.min(this.data.length,v.data.length),f=0;f<i;f++)this.data[f]&=v.data[f]}},{key:"or",value:function(v){for(var i=Math.min(this.data.length,v.data.length),f=0;f<i;f++)this.data[f]|=v.data[f]}},{key:"clone",value:function(){var v=new r(this.size);return v.data.set(this.data),v}}]),r}()},48170:function(p,a,e){e.r(a),e.d(a,{allBrands:function(){return l},allColors:function(){return O},priceRanges:function(){return T},products:function(){return d}});var d=[{id:1,name:"iPhone 14",brand:"Apple",color:"Black",price:5999},{id:2,name:"iPhone 14 Pro",brand:"Apple",color:"Gold",price:8999},{id:3,name:"Galaxy S23",brand:"Samsung",color:"Black",price:5499},{id:4,name:"Galaxy A54",brand:"Samsung",color:"White",price:2599},{id:5,name:"Mate 50",brand:"Huawei",color:"Gold",price:4999},{id:6,name:"P50",brand:"Huawei",color:"White",price:3999},{id:7,name:"iPhone 13",brand:"Apple",color:"White",price:4599},{id:8,name:"Galaxy Z Flip",brand:"Samsung",color:"Gold",price:7599},{id:9,name:"Nova 11",brand:"Huawei",color:"Black",price:2899},{id:10,name:"P60",brand:"Huawei",color:"Black",price:5699}],l=["Apple","Samsung","Huawei"],O=["Black","White","Gold"],T=[{key:"0-3000",label:"0 - 3000",min:0,max:3e3},{key:"3000-5000",label:"3000 - 5000",min:3e3,max:5e3},{key:"5000+",label:"5000+",min:5e3,max:1/0}]},16775:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},94781:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},52320:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},11171:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},32337:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},75788:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},44923:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},9867:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},57657:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},18017:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},59614:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},36735:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},22605:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},54934:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},42746:function(p,a,e){e.r(a),e.d(a,{demos:function(){return ce}});var d=e(70215),l=e.n(d),O=e(42122),T=e.n(O),A=e(17061),r=e.n(A),M=e(59400),v=e.n(M),i=e(17156),f=e.n(i),t=e(67294),g=e(30789),y=["as","children"],h,S,w,I,E,j,P,R,N,z,U,k,L,D,F,K,H,G,V,Y,X,Z,Q,_,q,ee,ae,ne,te,de,oe,re,le,Ie,ce={"docs-notes-css-css-in-js-demo-0":{component:t.memo(t.lazy(f()(r()().mark(function m(){var u,c,o;return r()().wrap(function(x){for(;;)switch(x.prev=x.next){case 0:return x.next=2,Promise.resolve().then(e.bind(e,30789));case 2:return u=x.sent,c=u.default,o=c.button(h||(h=v()([`
   background: papayawhip;
   color: palevioletred;
   font-size: 1em;
@@ -11,7 +11,7 @@
     border: 2px solid papayawhip;
     cursor: pointer;
   }
-`]))),s.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(d,null,"hello styled-components"))}});case 6:case"end":return s.stop()}},i)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-0",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
+`]))),x.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(o,null,"hello styled-components"))}});case 6:case"end":return x.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-0",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
 
 const Button = styled.button\`
   background: papayawhip;
@@ -34,7 +34,7 @@ export default () => {
       <Button>hello styled-components</Button>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var i=b()(r()().mark(function I(){var d,p=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(d=n.sent).default.apply(d,p));case 3:case"end":return n.stop()}},I)}));function u(){return i.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-1":{component:t.memo(t.lazy(b()(r()().mark(function i(){var u,I,d;return r()().wrap(function(s){for(;;)switch(s.prev=s.next){case 0:return s.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=s.sent,I=u.default,d=I("button")(S||(S=f()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":g},renderOpts:{compile:function(){var m=f()(r()().mark(function c(){var o,s=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,e.e(250).then(e.bind(e,90250));case 2:return n.abrupt("return",(o=n.sent).default.apply(o,s));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-1":{component:t.memo(t.lazy(f()(r()().mark(function m(){var u,c,o;return r()().wrap(function(x){for(;;)switch(x.prev=x.next){case 0:return x.next=2,Promise.resolve().then(e.bind(e,30789));case 2:return u=x.sent,c=u.default,o=c("button")(S||(S=v()([`
   background: `,`;
   color: `,`;
   font-size: 1em;
@@ -42,7 +42,7 @@ export default () => {
   padding: 0.25em 1em;
   border: 2px solid #bf4f74;
   border-radius: 3px;
-`])),function(n){return n.$primary?"#BF4F74":"white"},function(n){return n.$primary?"white":"#BF4F74"}),s.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(d,null,"Default Button"),t.createElement(d,{$primary:!0},"Primary Button"))}});case 6:case"end":return s.stop()}},i)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-1",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
+`])),function(n){return n.$primary?"#BF4F74":"white"},function(n){return n.$primary?"white":"#BF4F74"}),x.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(o,null,"Default Button"),t.createElement(o,{$primary:!0},"Primary Button"))}});case 6:case"end":return x.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-1",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
 
 const Button = styled('button')\`
   background: \${(props) => (props.$primary ? '#BF4F74' : 'white')};
@@ -61,7 +61,7 @@ export default () => {
       <Button $primary>Primary Button</Button>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var i=b()(r()().mark(function I(){var d,p=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(d=n.sent).default.apply(d,p));case 3:case"end":return n.stop()}},I)}));function u(){return i.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-2":{component:t.memo(t.lazy(b()(r()().mark(function i(){var u,I,d,p;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=n.sent,I=u.default,d=I("button")(E||(E=f()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":g},renderOpts:{compile:function(){var m=f()(r()().mark(function c(){var o,s=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,e.e(250).then(e.bind(e,90250));case 2:return n.abrupt("return",(o=n.sent).default.apply(o,s));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-2":{component:t.memo(t.lazy(f()(r()().mark(function m(){var u,c,o,s;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,Promise.resolve().then(e.bind(e,30789));case 2:return u=n.sent,c=u.default,o=c("button")(w||(w=v()([`
   background: `,`;
   color: `,`;
   font-size: 1em;
@@ -69,10 +69,10 @@ export default () => {
   padding: 0.25em 1em;
   border: 2px solid #bf4f74;
   border-radius: 3px;
-`])),function(y){return y.$primary?"#BF4F74":"white"},function(y){return y.$primary?"white":"#BF4F74"}),p=I(d)(c||(c=f()([`
+`])),function(b){return b.$primary?"#BF4F74":"white"},function(b){return b.$primary?"white":"#BF4F74"}),s=c(o)(I||(I=v()([`
   border-style: dashed;
   color: black;
-`]))),n.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(d,null,"Default Button"),t.createElement(d,{$primary:!0},"Primary Button"),t.createElement(p,null,"Dashed Button"))}});case 7:case"end":return n.stop()}},i)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-2",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
+`]))),n.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(o,null,"Default Button"),t.createElement(o,{$primary:!0},"Primary Button"),t.createElement(s,null,"Dashed Button"))}});case 7:case"end":return n.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-2",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
 
 const Button = styled('button')\`
   background: \${(props) => (props.$primary ? '#BF4F74' : 'white')};
@@ -97,7 +97,7 @@ export default () => {
       <DashedButton>Dashed Button</DashedButton>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var i=b()(r()().mark(function I(){var d,p=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(d=n.sent).default.apply(d,p));case 3:case"end":return n.stop()}},I)}));function u(){return i.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-3":{component:t.memo(t.lazy(b()(r()().mark(function i(){var u,I,d,p,s;return r()().wrap(function(y){for(;;)switch(y.prev=y.next){case 0:return y.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=y.sent,I=u.default,d=I("button")(w||(w=f()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":g},renderOpts:{compile:function(){var m=f()(r()().mark(function c(){var o,s=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,e.e(250).then(e.bind(e,90250));case 2:return n.abrupt("return",(o=n.sent).default.apply(o,s));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-3":{component:t.memo(t.lazy(f()(r()().mark(function m(){var u,c,o,s,x;return r()().wrap(function(b){for(;;)switch(b.prev=b.next){case 0:return b.next=2,Promise.resolve().then(e.bind(e,30789));case 2:return u=b.sent,c=u.default,o=c("button")(E||(E=v()([`
   background: 'white';
   // a \u94FE\u63A5\u989C\u8272\u4F1A\u8986\u76D6
   color: '#BF4F74';
@@ -109,11 +109,11 @@ export default () => {
   padding: 0.25em 1em;
   border: 2px solid #bf4f74;
   border-radius: 3px;
-`])),function(C){return C.$primary?"white":"#BF4F74"}),p=function(P){return t.createElement(d,O()(O()({},P),{},{children:P.children.split("").reverse()}))},s=I.a(B||(B=f()([`
+`])),function(C){return C.$primary?"white":"#BF4F74"}),s=function(B){return t.createElement(o,T()(T()({},B),{},{children:B.children.split("").reverse()}))},x=c.a(j||(j=v()([`
   color: #bf4f74;
   text-decoration: none;
   font-weight: bold;
-`]))),y.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(d,{as:"a",href:"#"},"Link with Default Button"),t.createElement(d,{as:p},"Custom Button with Normal Button styles"))}});case 8:case"end":return y.stop()}},i)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-3",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
+`]))),b.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(o,{as:"a",href:"#"},"Link with Default Button"),t.createElement(o,{as:s},"Custom Button with Normal Button styles"))}});case 8:case"end":return b.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-3",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
 
 const Button = styled('button')\`
   background: 'white';
@@ -150,13 +150,13 @@ export default () => {
       </Button>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var i=b()(r()().mark(function I(){var d,p=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(d=n.sent).default.apply(d,p));case 3:case"end":return n.stop()}},I)}));function u(){return i.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-4":{component:t.memo(t.lazy(b()(r()().mark(function i(){var u,I,d,p,s;return r()().wrap(function(y){for(;;)switch(y.prev=y.next){case 0:return y.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=y.sent,I=u.default,d=function(P){var $=P.as,W=$===void 0?"button":$,K=P.children,ca=l()(P,g);return t.createElement(W,ca,K)},p=I(d)(A||(A=f()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":g},renderOpts:{compile:function(){var m=f()(r()().mark(function c(){var o,s=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,e.e(250).then(e.bind(e,90250));case 2:return n.abrupt("return",(o=n.sent).default.apply(o,s));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-4":{component:t.memo(t.lazy(f()(r()().mark(function m(){var u,c,o,s,x;return r()().wrap(function(b){for(;;)switch(b.prev=b.next){case 0:return b.next=2,Promise.resolve().then(e.bind(e,30789));case 2:return u=b.sent,c=u.default,o=function(B){var $=B.as,W=$===void 0?"button":$,J=B.children,ue=l()(B,y);return t.createElement(W,ue,J)},s=c(o)(P||(P=v()([`
   background: blue;
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-`]))),s=function(){return t.createElement("div",null,t.createElement(p,{forwardedAs:"a",href:"#"},"Click me"))},y.abrupt("return",{default:s});case 8:case"end":return y.stop()}},i)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-4",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
+`]))),x=function(){return t.createElement("div",null,t.createElement(s,{forwardedAs:"a",href:"#"},"Click me"))},b.abrupt("return",{default:x});case 8:case"end":return b.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-4",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
 
 // { as: Component = 'button' } \u662F\u4E00\u4E2A\u4F7F\u7528\u4E86\u9ED8\u8BA4\u53C2\u6570\u548C\u91CD\u547D\u540D\u7684\u89E3\u6784\u8D4B\u503C\u3002\u5982\u679C\u8C03\u7528 Button \u65F6\u6CA1\u6709\u63D0\u4F9B as \u5C5E\u6027\uFF0C\u90A3\u4E48 Component \u5C06\u9ED8\u8BA4\u4E3A 'button'\uFF0C\u5373\u8FD9\u4E2A\u7EC4\u4EF6\u5C06\u9ED8\u8BA4\u6E32\u67D3\u4E3A\u4E00\u4E2A <button> \u5143\u7D20\u3002
 const Button = ({ as: Component = 'button', children, ...props }) => {
@@ -181,12 +181,12 @@ const App = () => {
   );
 };
 
-export default App;`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var i=b()(r()().mark(function I(){var d,p=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(d=n.sent).default.apply(d,p));case 3:case"end":return n.stop()}},I)}));function u(){return i.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-5":{component:t.memo(t.lazy(b()(r()().mark(function i(){var u,I,d,p;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=n.sent,I=u.default,d=function(C){var P=C.className;return t.createElement("div",{className:P},t.createElement("h2",null,"hello world"))},p=I(d)(j||(j=f()([`
+export default App;`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":g},renderOpts:{compile:function(){var m=f()(r()().mark(function c(){var o,s=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,e.e(250).then(e.bind(e,90250));case 2:return n.abrupt("return",(o=n.sent).default.apply(o,s));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-5":{component:t.memo(t.lazy(f()(r()().mark(function m(){var u,c,o,s;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,Promise.resolve().then(e.bind(e,30789));case 2:return u=n.sent,c=u.default,o=function(C){var B=C.className;return t.createElement("div",{className:B},t.createElement("h2",null,"hello world"))},s=c(o)(R||(R=v()([`
   h2 {
     color: green;
     text-align: center;
   }
-`]))),n.abrupt("return",{default:function(){return t.createElement(p,null)}});case 7:case"end":return n.stop()}},i)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-5",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
+`]))),n.abrupt("return",{default:function(){return t.createElement(s,null)}});case 7:case"end":return n.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-5",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
 
 const OldComponent = ({ className }) => {
   return (
@@ -203,14 +203,14 @@ const StyledOldComponent = styled(OldComponent)\`
   }
 \`;
 
-export default () => <StyledOldComponent />;`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var i=b()(r()().mark(function I(){var d,p=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(d=n.sent).default.apply(d,p));case 3:case"end":return n.stop()}},I)}));function u(){return i.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-6":{component:t.memo(t.lazy(b()(r()().mark(function i(){var u,I,d;return r()().wrap(function(s){for(;;)switch(s.prev=s.next){case 0:return s.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=s.sent,I=u.default,d=I.input(R||(R=f()([`
+export default () => <StyledOldComponent />;`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":g},renderOpts:{compile:function(){var m=f()(r()().mark(function c(){var o,s=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,e.e(250).then(e.bind(e,90250));case 2:return n.abrupt("return",(o=n.sent).default.apply(o,s));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-6":{component:t.memo(t.lazy(f()(r()().mark(function m(){var u,c,o;return r()().wrap(function(x){for(;;)switch(x.prev=x.next){case 0:return x.next=2,Promise.resolve().then(e.bind(e,30789));case 2:return u=x.sent,c=u.default,o=c.input(N||(N=v()([`
   padding: 0.5em;
   margin: 0.5em;
   color: `,`;
   background: papayawhip;
   border: none;
   border-radius: 3px;
-`])),function(n){var y;return(y=n.$inputColor)!==null&&y!==void 0?y:"#BF4F74"}),s.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(d,{defaultValue:"@probablyup",type:"text"}),t.createElement(d,{defaultValue:"@geelen",type:"text",$inputColor:"rebeccapurple"}))}});case 6:case"end":return s.stop()}},i)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-6",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
+`])),function(n){var b;return(b=n.$inputColor)!==null&&b!==void 0?b:"#BF4F74"}),x.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(o,{defaultValue:"@probablyup",type:"text"}),t.createElement(o,{defaultValue:"@geelen",type:"text",$inputColor:"rebeccapurple"}))}});case 6:case"end":return x.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-6",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
 
 const MyInput = styled.input\`
   padding: 0.5em;
@@ -228,7 +228,7 @@ export default () => {
       <MyInput defaultValue="@geelen" type="text" $inputColor="rebeccapurple" />
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var i=b()(r()().mark(function I(){var d,p=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(d=n.sent).default.apply(d,p));case 3:case"end":return n.stop()}},I)}));function u(){return i.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-7":{component:t.memo(t.lazy(b()(r()().mark(function i(){var u,I,d,p;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return p=function(){return t.createElement("div",null,t.createElement(d,{$variant:"primary"},"Primary Button"),t.createElement(d,{$variant:"secondary"},"Secondary Button"))},n.next=3,Promise.resolve().then(a.bind(a,30789));case 3:return u=n.sent,I=u.default,d=I.button(U||(U=f()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":g},renderOpts:{compile:function(){var m=f()(r()().mark(function c(){var o,s=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,e.e(250).then(e.bind(e,90250));case 2:return n.abrupt("return",(o=n.sent).default.apply(o,s));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-7":{component:t.memo(t.lazy(f()(r()().mark(function m(){var u,c,o,s;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return s=function(){return t.createElement("div",null,t.createElement(o,{$variant:"primary"},"Primary Button"),t.createElement(o,{$variant:"secondary"},"Secondary Button"))},n.next=3,Promise.resolve().then(e.bind(e,30789));case 3:return u=n.sent,c=u.default,o=c.button(z||(z=v()([`
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -238,7 +238,7 @@ export default () => {
   &:hover {
     background-color: `,`;
   }
-`])),function(y){return y.$variant==="primary"?"blue":"gray"},function(y){return y.$variant==="primary"?"darkblue":"darkgray"}),n.abrupt("return",{default:p});case 7:case"end":return n.stop()}},i)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-7",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
+`])),function(b){return b.$variant==="primary"?"blue":"gray"},function(b){return b.$variant==="primary"?"darkblue":"darkgray"}),n.abrupt("return",{default:s});case 7:case"end":return n.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-7",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
 
 // \u5B9A\u4E49\u4E00\u4E2A StyledButton \u7EC4\u4EF6
 const StyledButton = styled.button\`
@@ -265,17 +265,17 @@ function App() {
   );
 }
 
-export default App;`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var i=b()(r()().mark(function I(){var d,p=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(d=n.sent).default.apply(d,p));case 3:case"end":return n.stop()}},I)}));function u(){return i.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-8":{component:t.memo(t.lazy(b()(r()().mark(function i(){var u,I,d,p;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=n.sent,I=u.default,d=I("div").withConfig({shouldForwardProp:function(C){return!["hidden"].includes(C)}}).attrs({className:"foo"})(k||(k=f()([`
+export default App;`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":g},renderOpts:{compile:function(){var m=f()(r()().mark(function c(){var o,s=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,e.e(250).then(e.bind(e,90250));case 2:return n.abrupt("return",(o=n.sent).default.apply(o,s));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-8":{component:t.memo(t.lazy(f()(r()().mark(function m(){var u,c,o,s;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,Promise.resolve().then(e.bind(e,30789));case 2:return u=n.sent,c=u.default,o=c("div").withConfig({shouldForwardProp:function(C){return!["hidden"].includes(C)}}).attrs({className:"foo"})(U||(U=v()([`
   color: red;
   &.foo {
     text-decoration: underline;
   }
-`]))),p=I("div").attrs({className:"foo"})(L||(L=f()([`
+`]))),s=c("div").attrs({className:"foo"})(k||(k=v()([`
   color: red;
   &.foo {
     text-decoration: underline;
   }
-`]))),n.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(d,{hidden:!0},"This is not a hidden Comp"),t.createElement(p,{hidden:!0},"This is a hidden Comp"))}});case 7:case"end":return n.stop()}},i)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-8",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
+`]))),n.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(o,{hidden:!0},"This is not a hidden Comp"),t.createElement(s,{hidden:!0},"This is a hidden Comp"))}});case 7:case"end":return n.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-8",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
 
 const Comp = styled('div')
   .withConfig({
@@ -302,7 +302,7 @@ export default () => {
       <HiddenComp hidden>This is a hidden Comp</HiddenComp>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var i=b()(r()().mark(function I(){var d,p=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(d=n.sent).default.apply(d,p));case 3:case"end":return n.stop()}},I)}));function u(){return i.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-9":{component:t.memo(t.lazy(b()(r()().mark(function i(){var u,I,d;return r()().wrap(function(s){for(;;)switch(s.prev=s.next){case 0:return s.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=s.sent,I=u.default,d=I.div(z||(z=f()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":g},renderOpts:{compile:function(){var m=f()(r()().mark(function c(){var o,s=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,e.e(250).then(e.bind(e,90250));case 2:return n.abrupt("return",(o=n.sent).default.apply(o,s));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-9":{component:t.memo(t.lazy(f()(r()().mark(function m(){var u,c,o;return r()().wrap(function(x){for(;;)switch(x.prev=x.next){case 0:return x.next=2,Promise.resolve().then(e.bind(e,30789));case 2:return u=x.sent,c=u.default,o=c.div(L||(L=v()([`
   color: blue; // \u9ED8\u8BA4\u989C\u8272\u4E3A\u84DD\u8272
 
   &:hover {
@@ -324,7 +324,7 @@ export default () => {
   .something-else & {
     border: 1px solid; // <Thing> \u5728\u53E6\u4E00\u4E2A\u5E26\u6709 ".something-else" \u7C7B\u7684\u5143\u7D20\u5185\uFF0C\u8FB9\u6846\u4E3A 1px \u5B9E\u7EBF
   }
-`]))),s.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(d,null,"Hello world!"),t.createElement(d,null,"How ya doing?"),t.createElement(d,{className:"something"},"The sun is shining..."),t.createElement("div",null,"Pretty nice day today."),t.createElement(d,null,"Don't you think?"),t.createElement("div",{className:"something-else"},t.createElement(d,null,"Splendid.")))}});case 6:case"end":return s.stop()}},i)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-9",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
+`]))),x.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(o,null,"Hello world!"),t.createElement(o,null,"How ya doing?"),t.createElement(o,{className:"something"},"The sun is shining..."),t.createElement("div",null,"Pretty nice day today."),t.createElement(o,null,"Don't you think?"),t.createElement("div",{className:"something-else"},t.createElement(o,null,"Splendid.")))}});case 6:case"end":return x.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-9",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
 
 const Thing = styled.div\`
   color: blue; // \u9ED8\u8BA4\u989C\u8272\u4E3A\u84DD\u8272
@@ -364,7 +364,7 @@ export default () => {
       </div>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var i=b()(r()().mark(function I(){var d,p=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(d=n.sent).default.apply(d,p));case 3:case"end":return n.stop()}},I)}));function u(){return i.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-10":{component:t.memo(t.lazy(b()(r()().mark(function i(){var u,I,d,p;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=n.sent,I=u.default,d=I.input.attrs(function(y){var C;return{type:"text",$size:(C=y.$size)!==null&&C!==void 0?C:"1em"}})(M||(M=f()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":g},renderOpts:{compile:function(){var m=f()(r()().mark(function c(){var o,s=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,e.e(250).then(e.bind(e,90250));case 2:return n.abrupt("return",(o=n.sent).default.apply(o,s));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-10":{component:t.memo(t.lazy(f()(r()().mark(function m(){var u,c,o,s;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,Promise.resolve().then(e.bind(e,30789));case 2:return u=n.sent,c=u.default,o=c.input.attrs(function(b){var C;return{type:"text",$size:(C=b.$size)!==null&&C!==void 0?C:"1em"}})(D||(D=v()([`
   color: #bf4f74;
   font-size: 1em;
   border: 2px solid #bf4f74;
@@ -373,7 +373,7 @@ export default () => {
   /* \u4F7F\u7528\u52A8\u6001\u8BA1\u7B97\u7684\u5C5E\u6027 */
   margin: `,`;
   padding: `,`;
-`])),function(y){return y.$size},function(y){return y.$size}),p=I(d).attrs({type:"password"})(N||(N=f()([""]))),n.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(d,{placeholder:"small text input"}),t.createElement(d,{placeholder:"bigger text input",$size:"2em"}),t.createElement(p,{placeholder:"bigger password input",$size:"2em"}))}});case 7:case"end":return n.stop()}},i)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-10",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
+`])),function(b){return b.$size},function(b){return b.$size}),s=c(o).attrs({type:"password"})(F||(F=v()([""]))),n.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(o,{placeholder:"small text input"}),t.createElement(o,{placeholder:"bigger text input",$size:"2em"}),t.createElement(s,{placeholder:"bigger password input",$size:"2em"}))}});case 7:case"end":return n.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-10",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
 
 const InputAttrs = styled.input.attrs((props) => ({
   // \u5B9A\u4E49\u9759\u6001\u5C5E\u6027
@@ -404,20 +404,20 @@ export default () => {
       <InputPasswordAttrs placeholder="bigger password input" $size="2em" />
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var i=b()(r()().mark(function I(){var d,p=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(d=n.sent).default.apply(d,p));case 3:case"end":return n.stop()}},I)}));function u(){return i.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-11":{component:t.memo(t.lazy(b()(r()().mark(function i(){var u,I,d,p,s,n,y;return r()().wrap(function(P){for(;;)switch(P.prev=P.next){case 0:return P.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=P.sent,I=u.default,d=u.css,p=d(J||(J=f()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":g},renderOpts:{compile:function(){var m=f()(r()().mark(function c(){var o,s=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,e.e(250).then(e.bind(e,90250));case 2:return n.abrupt("return",(o=n.sent).default.apply(o,s));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-11":{component:t.memo(t.lazy(f()(r()().mark(function m(){var u,c,o,s,x,n,b;return r()().wrap(function(B){for(;;)switch(B.prev=B.next){case 0:return B.next=2,Promise.resolve().then(e.bind(e,30789));case 2:return u=B.sent,c=u.default,o=u.css,s=o(K||(K=v()([`
   border: 2px solid black;
   padding: 0.6rem;
   border-radius: 30px;
   cursor: pointer;
-`]))),s=I.button(H||(H=f()([`
+`]))),x=c.button(H||(H=v()([`
   color: red;
-`]))),n=I.button(V||(V=f()([`
+`]))),n=c.button(G||(G=v()([`
   `,`
   color: yellow;
-`])),p),y=I(n)(G||(G=f()([`
+`])),s),b=c(n)(V||(V=v()([`
   `,`
   color: blue;
-`])),p),P.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(s,null,"CommonButton"),t.createElement(n,null,"FusionCommonButton"),t.createElement(y,null,"styledFusionCommonButton"))}});case 10:case"end":return P.stop()}},i)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-11",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled, { css } from 'styled-components';
+`])),s),B.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(x,null,"CommonButton"),t.createElement(n,null,"FusionCommonButton"),t.createElement(b,null,"styledFusionCommonButton"))}});case 10:case"end":return B.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-11",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled, { css } from 'styled-components';
 
 const mixinCommonCSS = css\`
   border: 2px solid black;
@@ -450,12 +450,12 @@ export default () => {
       </StyledFusionCommonButton>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var i=b()(r()().mark(function I(){var d,p=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(d=n.sent).default.apply(d,p));case 3:case"end":return n.stop()}},I)}));function u(){return i.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-12":{component:t.memo(t.lazy(b()(r()().mark(function i(){var u,I,d,p;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=n.sent,I=u.createGlobalStyle,d=I(Y||(Y=f()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":g},renderOpts:{compile:function(){var m=f()(r()().mark(function c(){var o,s=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,e.e(250).then(e.bind(e,90250));case 2:return n.abrupt("return",(o=n.sent).default.apply(o,s));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-12":{component:t.memo(t.lazy(f()(r()().mark(function m(){var u,c,o,s;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,Promise.resolve().then(e.bind(e,30789));case 2:return u=n.sent,c=u.createGlobalStyle,o=c(Y||(Y=v()([`
   a {
     text-decoration: none;
     color: inherit;
   }
-`]))),p=function(){return t.createElement(t.Fragment,null,t.createElement(d,null)," ",t.createElement("div",null,t.createElement("a",{href:"#"},"This is a link")))},n.abrupt("return",{default:p});case 7:case"end":return n.stop()}},i)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-12",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import { createGlobalStyle } from 'styled-components';
+`]))),s=function(){return t.createElement(t.Fragment,null,t.createElement(o,null)," ",t.createElement("div",null,t.createElement("a",{href:"#"},"This is a link")))},n.abrupt("return",{default:s});case 7:case"end":return n.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-12",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import { createGlobalStyle } from 'styled-components';
 
 // \u5B9A\u4E49\u5168\u5C40\u6837\u5F0F
 const GlobalStyle = createGlobalStyle\`
@@ -478,12 +478,12 @@ const App = () => {
   );
 };
 
-export default App;`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var i=b()(r()().mark(function I(){var d,p=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(d=n.sent).default.apply(d,p));case 3:case"end":return n.stop()}},I)}));function u(){return i.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-13":{component:t.memo(t.lazy(b()(r()().mark(function i(){var u,I,d,p,s,n;return r()().wrap(function(C){for(;;)switch(C.prev=C.next){case 0:return C.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=C.sent,I=u.default,d=u.createGlobalStyle,p=d(X||(X=f()([`
+export default App;`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":g},renderOpts:{compile:function(){var m=f()(r()().mark(function c(){var o,s=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,e.e(250).then(e.bind(e,90250));case 2:return n.abrupt("return",(o=n.sent).default.apply(o,s));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-13":{component:t.memo(t.lazy(f()(r()().mark(function m(){var u,c,o,s,x,n;return r()().wrap(function(C){for(;;)switch(C.prev=C.next){case 0:return C.next=2,Promise.resolve().then(e.bind(e,30789));case 2:return u=C.sent,c=u.default,o=u.createGlobalStyle,s=o(X||(X=v()([`
   :root {
     --my-primary-color: #4ca;
     --my-secondary-color: #ff5722;
   }
-`]))),s=I.button(Q||(Q=f()([`
+`]))),x=c.button(Z||(Z=v()([`
   background-color: var(--my-primary-color);
   color: white;
   font-size: var(--my-secondary-color);
@@ -495,7 +495,7 @@ export default App;`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"in
   &:hover {
     background-color: var(--my-secondary-color);
   }
-`]))),n=function(){return t.createElement(t.Fragment,null,t.createElement(p,null),t.createElement("div",{style:{padding:"20px"}},t.createElement(s,null,"Click Me")))},C.abrupt("return",{default:n});case 9:case"end":return C.stop()}},i)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-13",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled, { createGlobalStyle } from 'styled-components';
+`]))),n=function(){return t.createElement(t.Fragment,null,t.createElement(s,null),t.createElement("div",{style:{padding:"20px"}},t.createElement(x,null,"Click Me")))},C.abrupt("return",{default:n});case 9:case"end":return C.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-13",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled, { createGlobalStyle } from 'styled-components';
 
 // \u5B9A\u4E49\u5168\u5C40\u6837\u5F0F\uFF0C\u5305\u62EC CSS \u53D8\u91CF
 const GlobalStyle = createGlobalStyle\`
@@ -531,20 +531,20 @@ const App = () => {
   );
 };
 
-export default App;`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var i=b()(r()().mark(function I(){var d,p=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(d=n.sent).default.apply(d,p));case 3:case"end":return n.stop()}},I)}));function u(){return i.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-14":{component:t.memo(t.lazy(b()(r()().mark(function i(){var u,I,d,p,s,n;return r()().wrap(function(C){for(;;)switch(C.prev=C.next){case 0:return C.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=C.sent,I=u.default,d=u.css,p=I.input.attrs({type:"checkbox"})(Z||(Z=f()([""]))),s=I.label(q||(q=f()([`
+export default App;`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":g},renderOpts:{compile:function(){var m=f()(r()().mark(function c(){var o,s=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,e.e(250).then(e.bind(e,90250));case 2:return n.abrupt("return",(o=n.sent).default.apply(o,s));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-14":{component:t.memo(t.lazy(f()(r()().mark(function m(){var u,c,o,s,x,n;return r()().wrap(function(C){for(;;)switch(C.prev=C.next){case 0:return C.next=2,Promise.resolve().then(e.bind(e,30789));case 2:return u=C.sent,c=u.default,o=u.css,s=c.input.attrs({type:"checkbox"})(Q||(Q=v()([""]))),x=c.label(_||(_=v()([`
   align-items: center;
   display: flex;
   gap: 8px;
   margin-bottom: 8px;
-`]))),n=I.span(_||(_=f()([`
+`]))),n=c.span(q||(q=v()([`
   `,`
-`])),function(P){switch(P.$mode){case"dark":return d(aa||(aa=f()([`
+`])),function(B){switch(B.$mode){case"dark":return o(ee||(ee=v()([`
           background-color: black;
           color: white;
           `,`:checked + && {
             color: blue;
           }
-        `])),p);default:return d(ea||(ea=f()([`
+        `])),s);default:return o(ae||(ae=v()([`
           background-color: white;
           color: black;
           // && \u53CC\u548C\u7B26\u53F7\u6307\u7684\u662F\u7EC4\u4EF6\u7684\u4E00\u4E2A\u5B9E\u4F8B
@@ -552,7 +552,7 @@ export default App;`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"in
           `,`:checked + && {
             color: red;
           }
-        `])),p)}}),C.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(s,null,t.createElement(p,{defaultChecked:!0}),t.createElement(n,null,"Foo")),t.createElement(s,null,t.createElement(p,null),t.createElement(n,{$mode:"dark"},"Foo")))}});case 9:case"end":return C.stop()}},i)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-14",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled, { css } from 'styled-components';
+        `])),s)}}),C.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(x,null,t.createElement(s,{defaultChecked:!0}),t.createElement(n,null,"Foo")),t.createElement(x,null,t.createElement(s,null),t.createElement(n,{$mode:"dark"},"Foo")))}});case 9:case"end":return C.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-14",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled, { css } from 'styled-components';
 
 const Input = styled.input.attrs({ type: 'checkbox' })\`\`;
 
@@ -601,14 +601,14 @@ export default () => {
       </Label>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var i=b()(r()().mark(function I(){var d,p=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(d=n.sent).default.apply(d,p));case 3:case"end":return n.stop()}},I)}));function u(){return i.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-15":{component:t.memo(t.lazy(b()(r()().mark(function i(){var u,I,d,p,s;return r()().wrap(function(y){for(;;)switch(y.prev=y.next){case 0:return y.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=y.sent,I=u.default,d=u.ThemeProvider,p=I.button(na||(na=f()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":g},renderOpts:{compile:function(){var m=f()(r()().mark(function c(){var o,s=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,e.e(250).then(e.bind(e,90250));case 2:return n.abrupt("return",(o=n.sent).default.apply(o,s));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-15":{component:t.memo(t.lazy(f()(r()().mark(function m(){var u,c,o,s,x;return r()().wrap(function(b){for(;;)switch(b.prev=b.next){case 0:return b.next=2,Promise.resolve().then(e.bind(e,30789));case 2:return u=b.sent,c=u.default,o=u.ThemeProvider,s=c.button(ne||(ne=v()([`
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
   border-radius: 3px;
   color: `,`;
   border: 2px solid `,`;
-`])),function(C){return C.theme.main},function(C){return C.theme.main}),p.defaultProps={theme:{main:"palevioletred"}},s={main:"mediumseagreen"},y.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(p,null,"Normal Button"),t.createElement(d,{theme:s},t.createElement(p,null,"ThemeProvider Button")))}});case 9:case"end":return y.stop()}},i)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-15",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled, { ThemeProvider } from 'styled-components';
+`])),function(C){return C.theme.main},function(C){return C.theme.main}),s.defaultProps={theme:{main:"palevioletred"}},x={main:"mediumseagreen"},b.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(s,null,"Normal Button"),t.createElement(o,{theme:x},t.createElement(s,null,"ThemeProvider Button")))}});case 9:case"end":return b.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-15",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled, { ThemeProvider } from 'styled-components';
 
 // \u901A\u8FC7\u4F7F\u7528 props.theme \u53EF\u4EE5\u8BBF\u95EE\u5230 ThemeProvider \u4F20\u9012\u4E0B\u6765\u7684\u5BF9\u8C61
 const Button = styled.button\`
@@ -640,11 +640,11 @@ export default () => {
       </ThemeProvider>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var i=b()(r()().mark(function I(){var d,p=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(d=n.sent).default.apply(d,p));case 3:case"end":return n.stop()}},I)}));function u(){return i.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-16":{component:t.memo(t.lazy(b()(r()().mark(function i(){var u,I,d,p,s,n;return r()().wrap(function(C){for(;;)switch(C.prev=C.next){case 0:return C.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=C.sent,I=u.default,d=u.ThemeProvider,p=I.button(ta||(ta=f()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":g},renderOpts:{compile:function(){var m=f()(r()().mark(function c(){var o,s=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,e.e(250).then(e.bind(e,90250));case 2:return n.abrupt("return",(o=n.sent).default.apply(o,s));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-16":{component:t.memo(t.lazy(f()(r()().mark(function m(){var u,c,o,s,x,n;return r()().wrap(function(C){for(;;)switch(C.prev=C.next){case 0:return C.next=2,Promise.resolve().then(e.bind(e,30789));case 2:return u=C.sent,c=u.default,o=u.ThemeProvider,s=c.button(te||(te=v()([`
   color: `,`;
   border: 2px solid `,`;
   background: `,`;
-`])),function(P){return P.theme.fg},function(P){return P.theme.fg},function(P){return P.theme.bg}),s={fg:"palevioletred",bg:"white"},n=function($){var W=$.fg,K=$.bg;return{fg:K,bg:W}},C.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(p,{theme:{fg:"red",bg:"white"}},"Default Button"),t.createElement(d,{theme:s},t.createElement("div",null,t.createElement(p,null,"Default Button with Theme"),t.createElement(d,{theme:n},t.createElement(p,null,"Default Button with Inverted Theme")),t.createElement(p,{theme:{fg:"red",bg:"white"}},"Override Theme"))))}});case 9:case"end":return C.stop()}},i)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-16",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled, { ThemeProvider } from 'styled-components';
+`])),function(B){return B.theme.fg},function(B){return B.theme.fg},function(B){return B.theme.bg}),x={fg:"palevioletred",bg:"white"},n=function($){var W=$.fg,J=$.bg;return{fg:J,bg:W}},C.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(s,{theme:{fg:"red",bg:"white"}},"Default Button"),t.createElement(o,{theme:x},t.createElement("div",null,t.createElement(s,null,"Default Button with Theme"),t.createElement(o,{theme:n},t.createElement(s,null,"Default Button with Inverted Theme")),t.createElement(s,{theme:{fg:"red",bg:"white"}},"Override Theme"))))}});case 9:case"end":return C.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-16",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled, { ThemeProvider } from 'styled-components';
 
 const DefaultButton = styled.button\`
   color: \${(props) => props.theme.fg};
@@ -688,7 +688,7 @@ export default () => {
       </ThemeProvider>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var i=b()(r()().mark(function I(){var d,p=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(d=n.sent).default.apply(d,p));case 3:case"end":return n.stop()}},I)}));function u(){return i.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-17":{component:t.memo(t.lazy(b()(r()().mark(function i(){var u,I,d,p,s;return r()().wrap(function(y){for(;;)switch(y.prev=y.next){case 0:return y.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=y.sent,I=u.default,d=u.keyframes,p=d(da||(da=f()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":g},renderOpts:{compile:function(){var m=f()(r()().mark(function c(){var o,s=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,e.e(250).then(e.bind(e,90250));case 2:return n.abrupt("return",(o=n.sent).default.apply(o,s));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-17":{component:t.memo(t.lazy(f()(r()().mark(function m(){var u,c,o,s,x;return r()().wrap(function(b){for(;;)switch(b.prev=b.next){case 0:return b.next=2,Promise.resolve().then(e.bind(e,30789));case 2:return u=b.sent,c=u.default,o=u.keyframes,s=o(de||(de=v()([`
   from {
     transform: rotate(0deg);
   }
@@ -696,12 +696,12 @@ export default () => {
   to {
     transform: rotate(360deg);
   }
-`]))),s=I.div(oa||(oa=f()([`
+`]))),x=c.div(oe||(oe=v()([`
   display: inline-block;
   animation: `,` 2s linear infinite;
   padding: 2rem 1rem;
   font-size: 1.2rem;
-`])),p),y.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(s,null,"Hello World"))}});case 8:case"end":return y.stop()}},i)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-17",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled, { keyframes } from 'styled-components';
+`])),s),b.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(x,null,"Hello World"))}});case 8:case"end":return b.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-17",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled, { keyframes } from 'styled-components';
 
 const rotate = keyframes\`
   from {
@@ -726,7 +726,7 @@ export default () => {
       <Rotate>Hello World</Rotate>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var i=b()(r()().mark(function I(){var d,p=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(d=n.sent).default.apply(d,p));case 3:case"end":return n.stop()}},I)}));function u(){return i.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-18":{component:t.memo(t.lazy(b()(r()().mark(function i(){var u,I,d;return r()().wrap(function(s){for(;;)switch(s.prev=s.next){case 0:return s.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=s.sent,I=u.default,d=I.button(ra||(ra=f()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":g},renderOpts:{compile:function(){var m=f()(r()().mark(function c(){var o,s=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,e.e(250).then(e.bind(e,90250));case 2:return n.abrupt("return",(o=n.sent).default.apply(o,s));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-18":{component:t.memo(t.lazy(f()(r()().mark(function m(){var u,c,o;return r()().wrap(function(x){for(;;)switch(x.prev=x.next){case 0:return x.next=2,Promise.resolve().then(e.bind(e,30789));case 2:return u=x.sent,c=u.default,o=c.button(re||(re=v()([`
   background-color: #4caf50; /* Green */
   border: none;
   color: white;
@@ -750,7 +750,7 @@ export default () => {
     font-size: 12px;
     padding: 10px 24px;
   }
-`]))),s.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(d,null,"I am a Media Button"))}});case 6:case"end":return s.stop()}},i)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-18",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
+`]))),x.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(o,null,"I am a Media Button"))}});case 6:case"end":return x.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-18",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
 
 const MediaButton = styled.button\`
   background-color: #4caf50; /* Green */
@@ -784,7 +784,7 @@ export default () => {
       <MediaButton>I am a Media Button</MediaButton>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var i=b()(r()().mark(function I(){var d,p=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(d=n.sent).default.apply(d,p));case 3:case"end":return n.stop()}},I)}));function u(){return i.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-19":{component:t.memo(t.lazy(b()(r()().mark(function i(){var u,I,d,p;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=n.sent,I=u.default,d=I.button(la||(la=f()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":g},renderOpts:{compile:function(){var m=f()(r()().mark(function c(){var o,s=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,e.e(250).then(e.bind(e,90250));case 2:return n.abrupt("return",(o=n.sent).default.apply(o,s));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-19":{component:t.memo(t.lazy(f()(r()().mark(function m(){var u,c,o,s;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,Promise.resolve().then(e.bind(e,30789));case 2:return u=n.sent,c=u.default,o=c.button(le||(le=v()([`
   padding: 10px 20px;
   font-size: 16px;
   border: none;
@@ -796,7 +796,7 @@ export default () => {
   &:hover {
     background-color: #2980b9;
   }
-`]))),p=I.div(Ia||(Ia=f()([`
+`]))),s=c.div(Ie||(Ie=v()([`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -813,7 +813,7 @@ export default () => {
       cursor: not-allowed;
     }
   }
-`])),d),n.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(d,null,"\u4E0D\u5728 Container \u4E2D\u7684 Button"),t.createElement(p,null,t.createElement(d,null,"Enabled Button"),t.createElement(d,{disabled:!0},"Disabled Button")))}});case 7:case"end":return n.stop()}},i)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-19",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`// Button.js
+`])),o),n.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(o,null,"\u4E0D\u5728 Container \u4E2D\u7684 Button"),t.createElement(s,null,t.createElement(o,null,"Enabled Button"),t.createElement(o,{disabled:!0},"Disabled Button")))}});case 7:case"end":return n.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-19",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`// Button.js
 import styled from 'styled-components';
 
 const Button = styled.button\`
@@ -859,7 +859,7 @@ export default () => {
       </Container>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var i=b()(r()().mark(function I(){var d,p=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(d=n.sent).default.apply(d,p));case 3:case"end":return n.stop()}},I)}));function u(){return i.apply(this,arguments)}return u}()}}}},85991:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},44771:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},47465:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},813:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},24704:function(v,e,a){a.r(e),a.d(e,{demos:function(){return b}});var o=a(27424),l=a.n(o),T=a(42122),O=a.n(T),D=a(17061),r=a.n(D),F=a(17156),f=a.n(F),m=a(67294),b={"docs-notes-css-grid-layout-demo-0":{component:m.memo(m.lazy(f()(r()().mark(function t(){var x,g;return r()().wrap(function(S){for(;;)switch(S.prev=S.next){case 0:return x={display:"grid",gridTemplateColumns:"repeat(3, 100px)",gridTemplateRows:"repeat(3, 100px)",gap:"10px",justifyContent:"center",alignContent:"center",height:"400px",backgroundColor:"#f5f5f5"},g={backgroundColor:"#4CAF50",color:"white",display:"flex",justifyContent:"center",alignItems:"center",fontSize:"24px",fontWeight:"bold",borderRadius:"4px"},S.abrupt("return",{default:function(){return m.createElement("div",{style:x},[1,2,3,4,5,6,7,8,9].map(function(c){return m.createElement("div",{key:c,style:g},c)}))}});case 3:case"end":return S.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-0",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`const containerStyle = {
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":g},renderOpts:{compile:function(){var m=f()(r()().mark(function c(){var o,s=arguments;return r()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,e.e(250).then(e.bind(e,90250));case 2:return n.abrupt("return",(o=n.sent).default.apply(o,s));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}}}},85991:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},44771:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},47465:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},813:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},24704:function(p,a,e){e.r(a),e.d(a,{demos:function(){return f}});var d=e(27424),l=e.n(d),O=e(42122),T=e.n(O),A=e(17061),r=e.n(A),M=e(17156),v=e.n(M),i=e(67294),f={"docs-notes-css-grid-layout-demo-0":{component:i.memo(i.lazy(v()(r()().mark(function t(){var g,y;return r()().wrap(function(S){for(;;)switch(S.prev=S.next){case 0:return g={display:"grid",gridTemplateColumns:"repeat(3, 100px)",gridTemplateRows:"repeat(3, 100px)",gap:"10px",justifyContent:"center",alignContent:"center",height:"400px",backgroundColor:"#f5f5f5"},y={backgroundColor:"#4CAF50",color:"white",display:"flex",justifyContent:"center",alignItems:"center",fontSize:"24px",fontWeight:"bold",borderRadius:"4px"},S.abrupt("return",{default:function(){return i.createElement("div",{style:g},[1,2,3,4,5,6,7,8,9].map(function(I){return i.createElement("div",{key:I,style:y},I)}))}});case 3:case"end":return S.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-0",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`const containerStyle = {
   display: 'grid',
   gridTemplateColumns: 'repeat(3, 100px)',
   gridTemplateRows: 'repeat(3, 100px)',
@@ -891,7 +891,7 @@ export default () => {
       ))}
     </div>
   );
-};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=f()(r()().mark(function g(){var h,S=arguments;return r()().wrap(function(c){for(;;)switch(c.prev=c.next){case 0:return c.next=2,a.e(250).then(a.bind(a,90250));case 2:return c.abrupt("return",(h=c.sent).default.apply(h,S));case 3:case"end":return c.stop()}},g)}));function x(){return t.apply(this,arguments)}return x}()}},"docs-notes-css-grid-layout-demo-1":{component:m.memo(m.lazy(f()(r()().mark(function t(){var x,g,h;return r()().wrap(function(E){for(;;)switch(E.prev=E.next){case 0:return x={display:"grid",gridTemplateColumns:"repeat(auto-fill, minmax(200px, 1fr))",gridTemplateRows:"repeat(3, 100px)",gridAutoRows:"minmax(80px, auto)",gap:"10px",backgroundColor:"#f5f5f5",padding:"20px"},g=function(w){return{backgroundColor:w<12?"#2196F3":"#FF9800",color:"white",display:"flex",justifyContent:"center",alignItems:"center",fontSize:"18px",fontWeight:"bold",borderRadius:"4px",padding:"10px"}},h=Array.from({length:20},function(c,w){return{id:w+1,content:w===19?"\u8FD9\u662F\u4E00\u4E2A\u5185\u5BB9\u8F83\u591A\u7684\u5143\u7D20\uFF0C\u7528\u6765\u6F14\u793A minmax \u51FD\u6570\u5982\u4F55\u8BA9\u7F51\u683C\u81EA\u52A8\u6269\u5C55\u9AD8\u5EA6\u4EE5\u5BB9\u7EB3\u66F4\u591A\u5185\u5BB9":"".concat(w+1)}}),E.abrupt("return",{default:function(){return m.createElement("div",{style:x},h.map(function(w,B){return m.createElement("div",{key:w.id,style:g(B)},w.content)}))}});case 4:case"end":return E.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-1",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`const containerStyle = {
+};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=v()(r()().mark(function y(){var h,S=arguments;return r()().wrap(function(I){for(;;)switch(I.prev=I.next){case 0:return I.next=2,e.e(250).then(e.bind(e,90250));case 2:return I.abrupt("return",(h=I.sent).default.apply(h,S));case 3:case"end":return I.stop()}},y)}));function g(){return t.apply(this,arguments)}return g}()}},"docs-notes-css-grid-layout-demo-1":{component:i.memo(i.lazy(v()(r()().mark(function t(){var g,y,h;return r()().wrap(function(w){for(;;)switch(w.prev=w.next){case 0:return g={display:"grid",gridTemplateColumns:"repeat(auto-fill, minmax(200px, 1fr))",gridTemplateRows:"repeat(3, 100px)",gridAutoRows:"minmax(80px, auto)",gap:"10px",backgroundColor:"#f5f5f5",padding:"20px"},y=function(E){return{backgroundColor:E<12?"#2196F3":"#FF9800",color:"white",display:"flex",justifyContent:"center",alignItems:"center",fontSize:"18px",fontWeight:"bold",borderRadius:"4px",padding:"10px"}},h=Array.from({length:20},function(I,E){return{id:E+1,content:E===19?"\u8FD9\u662F\u4E00\u4E2A\u5185\u5BB9\u8F83\u591A\u7684\u5143\u7D20\uFF0C\u7528\u6765\u6F14\u793A minmax \u51FD\u6570\u5982\u4F55\u8BA9\u7F51\u683C\u81EA\u52A8\u6269\u5C55\u9AD8\u5EA6\u4EE5\u5BB9\u7EB3\u66F4\u591A\u5185\u5BB9":"".concat(E+1)}}),w.abrupt("return",{default:function(){return i.createElement("div",{style:g},h.map(function(E,j){return i.createElement("div",{key:E.id,style:y(j)},E.content)}))}});case 4:case"end":return w.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-1",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`const containerStyle = {
   display: 'grid',
   gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
   gridTemplateRows: 'repeat(3, 100px)',
@@ -931,11 +931,11 @@ export default () => {
       ))}
     </div>
   );
-};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=f()(r()().mark(function g(){var h,S=arguments;return r()().wrap(function(c){for(;;)switch(c.prev=c.next){case 0:return c.next=2,a.e(250).then(a.bind(a,90250));case 2:return c.abrupt("return",(h=c.sent).default.apply(h,S));case 3:case"end":return c.stop()}},g)}));function x(){return t.apply(this,arguments)}return x}()}},"docs-notes-css-grid-layout-demo-2":{component:m.memo(m.lazy(f()(r()().mark(function t(){var x,g,h,S,E,c;return r()().wrap(function(B){for(;;)switch(B.prev=B.next){case 0:return x={display:"grid",gridTemplateAreas:`
+};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=v()(r()().mark(function y(){var h,S=arguments;return r()().wrap(function(I){for(;;)switch(I.prev=I.next){case 0:return I.next=2,e.e(250).then(e.bind(e,90250));case 2:return I.abrupt("return",(h=I.sent).default.apply(h,S));case 3:case"end":return I.stop()}},y)}));function g(){return t.apply(this,arguments)}return g}()}},"docs-notes-css-grid-layout-demo-2":{component:i.memo(i.lazy(v()(r()().mark(function t(){var g,y,h,S,w,I;return r()().wrap(function(j){for(;;)switch(j.prev=j.next){case 0:return g={display:"grid",gridTemplateAreas:`
       "header header"
       "aside  tab"
       "aside  main"
-    `,gridTemplateRows:"60px 50px 1fr",gridTemplateColumns:"200px 1fr",gap:"10px",height:"500px",backgroundColor:"#f5f5f5",padding:"10px"},g={gridArea:"header",backgroundColor:"#1976D2",color:"white",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"20px",fontWeight:"bold",borderRadius:"4px"},h={gridArea:"aside",backgroundColor:"#424242",color:"white",padding:"20px",borderRadius:"4px",fontSize:"14px"},S={gridArea:"tab",backgroundColor:"#E0E0E0",display:"flex",alignItems:"center",padding:"0 20px",gap:"10px",borderRadius:"4px"},E={gridArea:"main",backgroundColor:"white",padding:"20px",borderRadius:"4px",overflow:"auto"},c={padding:"8px 16px",backgroundColor:"#1976D2",color:"white",border:"none",borderRadius:"4px",cursor:"pointer"},B.abrupt("return",{default:function(){return m.createElement("div",{style:x},m.createElement("div",{style:g},"\u540E\u53F0\u7BA1\u7406\u7CFB\u7EDF"),m.createElement("div",{style:h},m.createElement("div",{style:{marginBottom:"10px"}},"\u{1F4CA} Dashboard"),m.createElement("div",{style:{marginBottom:"10px"}},"\u{1F465} \u7528\u6237\u7BA1\u7406"),m.createElement("div",{style:{marginBottom:"10px"}},"\u{1F4DD} \u5185\u5BB9\u7BA1\u7406"),m.createElement("div",{style:{marginBottom:"10px"}},"\u2699\uFE0F \u7CFB\u7EDF\u8BBE\u7F6E")),m.createElement("div",{style:S},m.createElement("button",{style:c},"Tab 1"),m.createElement("button",{style:O()(O()({},c),{},{backgroundColor:"#757575"})},"Tab 2"),m.createElement("button",{style:O()(O()({},c),{},{backgroundColor:"#757575"})},"Tab 3")),m.createElement("div",{style:E},m.createElement("h2",null,"\u4E3B\u8981\u5185\u5BB9\u533A\u57DF"),m.createElement("p",null,"\u8FD9\u91CC\u662F\u4E3B\u8981\u7684\u5185\u5BB9\u5C55\u793A\u533A\u57DF\uFF0C\u53EF\u4EE5\u653E\u7F6E\u5404\u79CD\u6570\u636E\u8868\u683C\u3001\u56FE\u8868\u7B49\u5185\u5BB9\u3002"),m.createElement("p",null,"Grid \u5E03\u5C40\u8BA9\u8FD9\u79CD\u7ECF\u5178\u7684\u540E\u53F0\u7BA1\u7406\u7CFB\u7EDF\u5E03\u5C40\u53D8\u5F97\u975E\u5E38\u7B80\u5355\u3002")))}});case 7:case"end":return B.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-2",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`const containerStyle = {
+    `,gridTemplateRows:"60px 50px 1fr",gridTemplateColumns:"200px 1fr",gap:"10px",height:"500px",backgroundColor:"#f5f5f5",padding:"10px"},y={gridArea:"header",backgroundColor:"#1976D2",color:"white",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"20px",fontWeight:"bold",borderRadius:"4px"},h={gridArea:"aside",backgroundColor:"#424242",color:"white",padding:"20px",borderRadius:"4px",fontSize:"14px"},S={gridArea:"tab",backgroundColor:"#E0E0E0",display:"flex",alignItems:"center",padding:"0 20px",gap:"10px",borderRadius:"4px"},w={gridArea:"main",backgroundColor:"white",padding:"20px",borderRadius:"4px",overflow:"auto"},I={padding:"8px 16px",backgroundColor:"#1976D2",color:"white",border:"none",borderRadius:"4px",cursor:"pointer"},j.abrupt("return",{default:function(){return i.createElement("div",{style:g},i.createElement("div",{style:y},"\u540E\u53F0\u7BA1\u7406\u7CFB\u7EDF"),i.createElement("div",{style:h},i.createElement("div",{style:{marginBottom:"10px"}},"\u{1F4CA} Dashboard"),i.createElement("div",{style:{marginBottom:"10px"}},"\u{1F465} \u7528\u6237\u7BA1\u7406"),i.createElement("div",{style:{marginBottom:"10px"}},"\u{1F4DD} \u5185\u5BB9\u7BA1\u7406"),i.createElement("div",{style:{marginBottom:"10px"}},"\u2699\uFE0F \u7CFB\u7EDF\u8BBE\u7F6E")),i.createElement("div",{style:S},i.createElement("button",{style:I},"Tab 1"),i.createElement("button",{style:T()(T()({},I),{},{backgroundColor:"#757575"})},"Tab 2"),i.createElement("button",{style:T()(T()({},I),{},{backgroundColor:"#757575"})},"Tab 3")),i.createElement("div",{style:w},i.createElement("h2",null,"\u4E3B\u8981\u5185\u5BB9\u533A\u57DF"),i.createElement("p",null,"\u8FD9\u91CC\u662F\u4E3B\u8981\u7684\u5185\u5BB9\u5C55\u793A\u533A\u57DF\uFF0C\u53EF\u4EE5\u653E\u7F6E\u5404\u79CD\u6570\u636E\u8868\u683C\u3001\u56FE\u8868\u7B49\u5185\u5BB9\u3002"),i.createElement("p",null,"Grid \u5E03\u5C40\u8BA9\u8FD9\u79CD\u7ECF\u5178\u7684\u540E\u53F0\u7BA1\u7406\u7CFB\u7EDF\u5E03\u5C40\u53D8\u5F97\u975E\u5E38\u7B80\u5355\u3002")))}});case 7:case"end":return j.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-2",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`const containerStyle = {
   display: 'grid',
   gridTemplateAreas: \`
       "header header"
@@ -1024,7 +1024,7 @@ export default () => {
       </div>
     </div>
   );
-};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=f()(r()().mark(function g(){var h,S=arguments;return r()().wrap(function(c){for(;;)switch(c.prev=c.next){case 0:return c.next=2,a.e(250).then(a.bind(a,90250));case 2:return c.abrupt("return",(h=c.sent).default.apply(h,S));case 3:case"end":return c.stop()}},g)}));function x(){return t.apply(this,arguments)}return x}()}},"docs-notes-css-grid-layout-demo-3":{component:m.memo(m.lazy(f()(r()().mark(function t(){var x,g;return r()().wrap(function(S){for(;;)switch(S.prev=S.next){case 0:return x={display:"grid",gridTemplateColumns:"repeat(2, 200px)",gridTemplateRows:"repeat(3, 100px)",gridAutoFlow:"column",gridAutoColumns:"100px",gap:"10px",backgroundColor:"#f5f5f5",padding:"20px",overflowX:"auto"},g=function(c){return{backgroundColor:c<2?"#E91E63":"#9C27B0",color:"white",display:"flex",justifyContent:"center",alignItems:"center",fontSize:"18px",fontWeight:"bold",borderRadius:"4px",gridRow:c<2?"span 2":"auto"}},S.abrupt("return",{default:function(){return m.createElement("div",{style:x},Array.from({length:20},function(c,w){return m.createElement("div",{key:w+1,style:g(w)},String.fromCharCode(65+w))}))}});case 3:case"end":return S.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-3",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`const containerStyle = {
+};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=v()(r()().mark(function y(){var h,S=arguments;return r()().wrap(function(I){for(;;)switch(I.prev=I.next){case 0:return I.next=2,e.e(250).then(e.bind(e,90250));case 2:return I.abrupt("return",(h=I.sent).default.apply(h,S));case 3:case"end":return I.stop()}},y)}));function g(){return t.apply(this,arguments)}return g}()}},"docs-notes-css-grid-layout-demo-3":{component:i.memo(i.lazy(v()(r()().mark(function t(){var g,y;return r()().wrap(function(S){for(;;)switch(S.prev=S.next){case 0:return g={display:"grid",gridTemplateColumns:"repeat(2, 200px)",gridTemplateRows:"repeat(3, 100px)",gridAutoFlow:"column",gridAutoColumns:"100px",gap:"10px",backgroundColor:"#f5f5f5",padding:"20px",overflowX:"auto"},y=function(I){return{backgroundColor:I<2?"#E91E63":"#9C27B0",color:"white",display:"flex",justifyContent:"center",alignItems:"center",fontSize:"18px",fontWeight:"bold",borderRadius:"4px",gridRow:I<2?"span 2":"auto"}},S.abrupt("return",{default:function(){return i.createElement("div",{style:g},Array.from({length:20},function(I,E){return i.createElement("div",{key:E+1,style:y(E)},String.fromCharCode(65+E))}))}});case 3:case"end":return S.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-3",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`const containerStyle = {
   display: 'grid',
   gridTemplateColumns: 'repeat(2, 200px)',
   gridTemplateRows: 'repeat(3, 100px)',
@@ -1058,7 +1058,7 @@ export default () => {
       ))}
     </div>
   );
-};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=f()(r()().mark(function g(){var h,S=arguments;return r()().wrap(function(c){for(;;)switch(c.prev=c.next){case 0:return c.next=2,a.e(250).then(a.bind(a,90250));case 2:return c.abrupt("return",(h=c.sent).default.apply(h,S));case 3:case"end":return c.stop()}},g)}));function x(){return t.apply(this,arguments)}return x}()}},"docs-notes-css-grid-layout-demo-4":{component:m.memo(m.lazy(f()(r()().mark(function t(){return r()().wrap(function(g){for(;;)switch(g.prev=g.next){case 0:return g.abrupt("return",{default:function(){var S=m.useState(!1),E=l()(S,2),c=E[0],w=E[1],B={display:"grid",gridTemplateColumns:"repeat(3, 1fr)",gridAutoFlow:c?"row dense":"row",gap:"10px",backgroundColor:"#f5f5f5",padding:"20px",marginTop:"10px"},A=function(R){return{backgroundColor:[0,3,6].includes(R)?"#FF5722":"#03A9F4",color:"white",display:"flex",justifyContent:"center",alignItems:"center",fontSize:"18px",fontWeight:"bold",borderRadius:"4px",padding:"20px",gridColumn:[0,3,6].includes(R)?"span 2":"auto"}};return m.createElement("div",null,m.createElement("button",{onClick:function(){return w(!c)},style:{padding:"10px 20px",backgroundColor:"#4CAF50",color:"white",border:"none",borderRadius:"4px",cursor:"pointer",fontSize:"16px"}},c?"\u5173\u95ED dense":"\u5F00\u542F dense"),m.createElement("div",{style:B},Array.from({length:9},function(j,R){return m.createElement("div",{key:R+1,style:A(R)},R+1)})))}});case 1:case"end":return g.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-4",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`export default () => {
+};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=v()(r()().mark(function y(){var h,S=arguments;return r()().wrap(function(I){for(;;)switch(I.prev=I.next){case 0:return I.next=2,e.e(250).then(e.bind(e,90250));case 2:return I.abrupt("return",(h=I.sent).default.apply(h,S));case 3:case"end":return I.stop()}},y)}));function g(){return t.apply(this,arguments)}return g}()}},"docs-notes-css-grid-layout-demo-4":{component:i.memo(i.lazy(v()(r()().mark(function t(){return r()().wrap(function(y){for(;;)switch(y.prev=y.next){case 0:return y.abrupt("return",{default:function(){var S=i.useState(!1),w=l()(S,2),I=w[0],E=w[1],j={display:"grid",gridTemplateColumns:"repeat(3, 1fr)",gridAutoFlow:I?"row dense":"row",gap:"10px",backgroundColor:"#f5f5f5",padding:"20px",marginTop:"10px"},P=function(N){return{backgroundColor:[0,3,6].includes(N)?"#FF5722":"#03A9F4",color:"white",display:"flex",justifyContent:"center",alignItems:"center",fontSize:"18px",fontWeight:"bold",borderRadius:"4px",padding:"20px",gridColumn:[0,3,6].includes(N)?"span 2":"auto"}};return i.createElement("div",null,i.createElement("button",{onClick:function(){return E(!I)},style:{padding:"10px 20px",backgroundColor:"#4CAF50",color:"white",border:"none",borderRadius:"4px",cursor:"pointer",fontSize:"16px"}},I?"\u5173\u95ED dense":"\u5F00\u542F dense"),i.createElement("div",{style:j},Array.from({length:9},function(R,N){return i.createElement("div",{key:N+1,style:P(N)},N+1)})))}});case 1:case"end":return y.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-4",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`export default () => {
   const [useDense, setUseDense] = React.useState(false);
 
   const containerStyle = {
@@ -1109,7 +1109,7 @@ export default () => {
       </div>
     </div>
   );
-};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=f()(r()().mark(function g(){var h,S=arguments;return r()().wrap(function(c){for(;;)switch(c.prev=c.next){case 0:return c.next=2,a.e(250).then(a.bind(a,90250));case 2:return c.abrupt("return",(h=c.sent).default.apply(h,S));case 3:case"end":return c.stop()}},g)}));function x(){return t.apply(this,arguments)}return x}()}},"docs-notes-css-grid-layout-demo-5":{component:m.memo(m.lazy(f()(r()().mark(function t(){var x,g;return r()().wrap(function(S){for(;;)switch(S.prev=S.next){case 0:return x={display:"grid",gridTemplateColumns:"repeat(3, 1fr)",gap:"10px",backgroundColor:"#f5f5f5",padding:"20px"},g=function(c){return{backgroundColor:"#673AB7",color:"white",display:"flex",justifyContent:"center",alignItems:"center",fontSize:"18px",fontWeight:"bold",borderRadius:"4px",padding:"20px",order:c===8?-1:0,border:c===8?"3px solid #FFC107":"none"}},S.abrupt("return",{default:function(){return m.createElement("div",null,m.createElement("p",{style:{margin:"0 0 10px 0",color:"#666"}},"\u9EC4\u8272\u8FB9\u6846\u7684\u5143\u7D20\uFF08\u7F16\u53F7 9\uFF09\u5728 DOM \u4E2D\u662F\u6700\u540E\u4E00\u4E2A\uFF0C\u4F46\u901A\u8FC7 order: -1 \u663E\u793A\u5728\u6700\u524D\u9762"),m.createElement("div",{style:x},Array.from({length:9},function(c,w){return m.createElement("div",{key:w+1,style:g(w)},w+1)})))}});case 3:case"end":return S.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-5",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`const containerStyle = {
+};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=v()(r()().mark(function y(){var h,S=arguments;return r()().wrap(function(I){for(;;)switch(I.prev=I.next){case 0:return I.next=2,e.e(250).then(e.bind(e,90250));case 2:return I.abrupt("return",(h=I.sent).default.apply(h,S));case 3:case"end":return I.stop()}},y)}));function g(){return t.apply(this,arguments)}return g}()}},"docs-notes-css-grid-layout-demo-5":{component:i.memo(i.lazy(v()(r()().mark(function t(){var g,y;return r()().wrap(function(S){for(;;)switch(S.prev=S.next){case 0:return g={display:"grid",gridTemplateColumns:"repeat(3, 1fr)",gap:"10px",backgroundColor:"#f5f5f5",padding:"20px"},y=function(I){return{backgroundColor:"#673AB7",color:"white",display:"flex",justifyContent:"center",alignItems:"center",fontSize:"18px",fontWeight:"bold",borderRadius:"4px",padding:"20px",order:I===8?-1:0,border:I===8?"3px solid #FFC107":"none"}},S.abrupt("return",{default:function(){return i.createElement("div",null,i.createElement("p",{style:{margin:"0 0 10px 0",color:"#666"}},"\u9EC4\u8272\u8FB9\u6846\u7684\u5143\u7D20\uFF08\u7F16\u53F7 9\uFF09\u5728 DOM \u4E2D\u662F\u6700\u540E\u4E00\u4E2A\uFF0C\u4F46\u901A\u8FC7 order: -1 \u663E\u793A\u5728\u6700\u524D\u9762"),i.createElement("div",{style:g},Array.from({length:9},function(I,E){return i.createElement("div",{key:E+1,style:y(E)},E+1)})))}});case 3:case"end":return S.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-5",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`const containerStyle = {
   display: 'grid',
   gridTemplateColumns: 'repeat(3, 1fr)',
   gap: '10px',
@@ -1147,7 +1147,7 @@ export default () => {
       </div>
     </div>
   );
-};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=f()(r()().mark(function g(){var h,S=arguments;return r()().wrap(function(c){for(;;)switch(c.prev=c.next){case 0:return c.next=2,a.e(250).then(a.bind(a,90250));case 2:return c.abrupt("return",(h=c.sent).default.apply(h,S));case 3:case"end":return c.stop()}},g)}));function x(){return t.apply(this,arguments)}return x}()}},"docs-notes-css-grid-layout-demo-6":{component:m.memo(m.lazy(f()(r()().mark(function t(){var x,g,h,S,E;return r()().wrap(function(w){for(;;)switch(w.prev=w.next){case 0:return x={display:"grid",gridTemplateColumns:"repeat(2, 1fr)",gridTemplateRows:"100px",gridAutoRows:"80px",gap:"10px",backgroundColor:"#f5f5f5",padding:"20px",alignItems:"center"},g={backgroundColor:"#607D8B",color:"white",display:"flex",alignItems:"center",padding:"0 20px",fontSize:"18px",fontWeight:"bold",borderRadius:"4px"},h={backgroundColor:"#E3F2FD",display:"flex",alignItems:"center",justifyContent:"end",padding:"0 20px",fontSize:"16px",borderRadius:"4px",height:"100%"},S={backgroundColor:"#FFF3E0",display:"flex",alignItems:"center",justifyContent:"start",padding:"0 20px",fontSize:"16px",borderRadius:"4px",height:"100%"},E=[{name:"iPhone 15 Pro",stock:128},{name:"MacBook Pro M3",stock:45},{name:"iPad Air",stock:203},{name:"Apple Watch",stock:89},{name:"AirPods Pro",stock:156}],w.abrupt("return",{default:function(){return m.createElement("div",{style:x},m.createElement("div",{style:g},"\u4EA7\u54C1\u540D\u79F0"),m.createElement("div",{style:g},"\u5E93\u5B58\u6570\u91CF"),E.map(function(A,j){return m.createElement(m.Fragment,{key:j},m.createElement("div",{style:h},A.name),m.createElement("div",{style:S},A.stock," \u4EF6"))}))}});case 6:case"end":return w.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-6",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`const containerStyle = {
+};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=v()(r()().mark(function y(){var h,S=arguments;return r()().wrap(function(I){for(;;)switch(I.prev=I.next){case 0:return I.next=2,e.e(250).then(e.bind(e,90250));case 2:return I.abrupt("return",(h=I.sent).default.apply(h,S));case 3:case"end":return I.stop()}},y)}));function g(){return t.apply(this,arguments)}return g}()}},"docs-notes-css-grid-layout-demo-6":{component:i.memo(i.lazy(v()(r()().mark(function t(){var g,y,h,S,w;return r()().wrap(function(E){for(;;)switch(E.prev=E.next){case 0:return g={display:"grid",gridTemplateColumns:"repeat(2, 1fr)",gridTemplateRows:"100px",gridAutoRows:"80px",gap:"10px",backgroundColor:"#f5f5f5",padding:"20px",alignItems:"center"},y={backgroundColor:"#607D8B",color:"white",display:"flex",alignItems:"center",padding:"0 20px",fontSize:"18px",fontWeight:"bold",borderRadius:"4px"},h={backgroundColor:"#E3F2FD",display:"flex",alignItems:"center",justifyContent:"end",padding:"0 20px",fontSize:"16px",borderRadius:"4px",height:"100%"},S={backgroundColor:"#FFF3E0",display:"flex",alignItems:"center",justifyContent:"start",padding:"0 20px",fontSize:"16px",borderRadius:"4px",height:"100%"},w=[{name:"iPhone 15 Pro",stock:128},{name:"MacBook Pro M3",stock:45},{name:"iPad Air",stock:203},{name:"Apple Watch",stock:89},{name:"AirPods Pro",stock:156}],E.abrupt("return",{default:function(){return i.createElement("div",{style:g},i.createElement("div",{style:y},"\u4EA7\u54C1\u540D\u79F0"),i.createElement("div",{style:y},"\u5E93\u5B58\u6570\u91CF"),w.map(function(P,R){return i.createElement(i.Fragment,{key:R},i.createElement("div",{style:h},P.name),i.createElement("div",{style:S},P.stock," \u4EF6"))}))}});case 6:case"end":return E.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-6",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`const containerStyle = {
   display: 'grid',
   gridTemplateColumns: 'repeat(2, 1fr)',
   gridTemplateRows: '100px',
@@ -1212,7 +1212,7 @@ export default () => {
       ))}
     </div>
   );
-};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=f()(r()().mark(function g(){var h,S=arguments;return r()().wrap(function(c){for(;;)switch(c.prev=c.next){case 0:return c.next=2,a.e(250).then(a.bind(a,90250));case 2:return c.abrupt("return",(h=c.sent).default.apply(h,S));case 3:case"end":return c.stop()}},g)}));function x(){return t.apply(this,arguments)}return x}()}},"docs-notes-css-grid-layout-demo-7":{component:m.memo(m.lazy(f()(r()().mark(function t(){return r()().wrap(function(g){for(;;)switch(g.prev=g.next){case 0:return g.abrupt("return",{default:function(){var S=m.useState("center"),E=l()(S,2),c=E[0],w=E[1],B=m.useState("center"),A=l()(B,2),j=A[0],R=A[1],U={display:"grid",gridTemplateColumns:"repeat(3, 150px)",gridTemplateRows:"repeat(2, 100px)",gap:"10px",backgroundColor:"#f5f5f5",padding:"20px",justifyItems:c,alignItems:j},k={backgroundColor:"#00BCD4",color:"white",padding:"20px",fontSize:"16px",fontWeight:"bold",borderRadius:"4px"},L={display:"flex",gap:"10px",marginBottom:"10px",flexWrap:"wrap"},z={padding:"8px 16px",backgroundColor:"#4CAF50",color:"white",border:"none",borderRadius:"4px",cursor:"pointer",fontSize:"14px"};return m.createElement("div",null,m.createElement("div",{style:L},m.createElement("span",{style:{alignSelf:"center",fontWeight:"bold"}},"justify-items:"),["start","end","center","stretch"].map(function(M){return m.createElement("button",{key:M,onClick:function(){return w(M)},style:O()(O()({},z),{},{backgroundColor:c===M?"#2196F3":"#4CAF50"})},M)})),m.createElement("div",{style:L},m.createElement("span",{style:{alignSelf:"center",fontWeight:"bold"}},"align-items:"),["start","end","center","stretch"].map(function(M){return m.createElement("button",{key:M,onClick:function(){return R(M)},style:O()(O()({},z),{},{backgroundColor:j===M?"#2196F3":"#4CAF50"})},M)})),m.createElement("div",{style:U},Array.from({length:6},function(M,N){return m.createElement("div",{key:N+1,style:k},"Item ",N+1)})))}});case 1:case"end":return g.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-7",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`export default () => {
+};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=v()(r()().mark(function y(){var h,S=arguments;return r()().wrap(function(I){for(;;)switch(I.prev=I.next){case 0:return I.next=2,e.e(250).then(e.bind(e,90250));case 2:return I.abrupt("return",(h=I.sent).default.apply(h,S));case 3:case"end":return I.stop()}},y)}));function g(){return t.apply(this,arguments)}return g}()}},"docs-notes-css-grid-layout-demo-7":{component:i.memo(i.lazy(v()(r()().mark(function t(){return r()().wrap(function(y){for(;;)switch(y.prev=y.next){case 0:return y.abrupt("return",{default:function(){var S=i.useState("center"),w=l()(S,2),I=w[0],E=w[1],j=i.useState("center"),P=l()(j,2),R=P[0],N=P[1],z={display:"grid",gridTemplateColumns:"repeat(3, 150px)",gridTemplateRows:"repeat(2, 100px)",gap:"10px",backgroundColor:"#f5f5f5",padding:"20px",justifyItems:I,alignItems:R},U={backgroundColor:"#00BCD4",color:"white",padding:"20px",fontSize:"16px",fontWeight:"bold",borderRadius:"4px"},k={display:"flex",gap:"10px",marginBottom:"10px",flexWrap:"wrap"},L={padding:"8px 16px",backgroundColor:"#4CAF50",color:"white",border:"none",borderRadius:"4px",cursor:"pointer",fontSize:"14px"};return i.createElement("div",null,i.createElement("div",{style:k},i.createElement("span",{style:{alignSelf:"center",fontWeight:"bold"}},"justify-items:"),["start","end","center","stretch"].map(function(D){return i.createElement("button",{key:D,onClick:function(){return E(D)},style:T()(T()({},L),{},{backgroundColor:I===D?"#2196F3":"#4CAF50"})},D)})),i.createElement("div",{style:k},i.createElement("span",{style:{alignSelf:"center",fontWeight:"bold"}},"align-items:"),["start","end","center","stretch"].map(function(D){return i.createElement("button",{key:D,onClick:function(){return N(D)},style:T()(T()({},L),{},{backgroundColor:R===D?"#2196F3":"#4CAF50"})},D)})),i.createElement("div",{style:z},Array.from({length:6},function(D,F){return i.createElement("div",{key:F+1,style:U},"Item ",F+1)})))}});case 1:case"end":return y.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-7",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`export default () => {
   const [justifyItems, setJustifyItems] = React.useState('center');
   const [alignItems, setAlignItems] = React.useState('center');
 
@@ -1298,7 +1298,7 @@ export default () => {
       </div>
     </div>
   );
-};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=f()(r()().mark(function g(){var h,S=arguments;return r()().wrap(function(c){for(;;)switch(c.prev=c.next){case 0:return c.next=2,a.e(250).then(a.bind(a,90250));case 2:return c.abrupt("return",(h=c.sent).default.apply(h,S));case 3:case"end":return c.stop()}},g)}));function x(){return t.apply(this,arguments)}return x}()}}}},1523:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},6769:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},67850:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},50219:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},21:function(v,e,a){var o;a.r(e),a.d(e,{demos:function(){return F}});var l=a(17061),T=a.n(l),O=a(17156),D=a.n(O),r=a(67294),F={"docs-notes-css-tailwind-v-3-guide-demo-0":{component:r.memo(r.lazy(D()(T()().mark(function f(){var m,b;return T()().wrap(function(x){for(;;)switch(x.prev=x.next){case 0:return x.next=2,Promise.resolve().then(a.t.bind(a,67294,19));case 2:return m=x.sent,b=m.default,x.abrupt("return",{default:function(){return b.createElement(b.Fragment,null,b.createElement("div",{className:"flex rounded-lg bg-white shadow-lg max-w-sm"},b.createElement("img",{className:"block w-full h-auto",src:"https://placebear.com/100/100",alt:"Image"}),b.createElement("div",{className:"px-6 py-4"},b.createElement("h2",{className:"font-bold text-xl mb-2"},"Card Title"),b.createElement("p",{className:"text-gray-700 text-base"},"Card description goes here.")),b.createElement("div",{className:"px-6 pt-4 pb-2"},b.createElement("span",{className:"inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"},"#tag"))))}});case 5:case"end":return x.stop()}},f)})))),asset:{type:"BLOCK",id:"docs-notes-css-tailwind-v-3-guide-demo-0",refAtomIds:[],dependencies:{"index.tsx":{type:"FILE",value:`import React from 'react';
+};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=v()(r()().mark(function y(){var h,S=arguments;return r()().wrap(function(I){for(;;)switch(I.prev=I.next){case 0:return I.next=2,e.e(250).then(e.bind(e,90250));case 2:return I.abrupt("return",(h=I.sent).default.apply(h,S));case 3:case"end":return I.stop()}},y)}));function g(){return t.apply(this,arguments)}return g}()}}}},1523:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},6769:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},67850:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},50219:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},21:function(p,a,e){var d;e.r(a),e.d(a,{demos:function(){return M}});var l=e(17061),O=e.n(l),T=e(17156),A=e.n(T),r=e(67294),M={"docs-notes-css-tailwind-v-3-guide-demo-0":{component:r.memo(r.lazy(A()(O()().mark(function v(){var i,f;return O()().wrap(function(g){for(;;)switch(g.prev=g.next){case 0:return g.next=2,Promise.resolve().then(e.t.bind(e,67294,19));case 2:return i=g.sent,f=i.default,g.abrupt("return",{default:function(){return f.createElement(f.Fragment,null,f.createElement("div",{className:"flex rounded-lg bg-white shadow-lg max-w-sm"},f.createElement("img",{className:"block w-full h-auto",src:"https://placebear.com/100/100",alt:"Image"}),f.createElement("div",{className:"px-6 py-4"},f.createElement("h2",{className:"font-bold text-xl mb-2"},"Card Title"),f.createElement("p",{className:"text-gray-700 text-base"},"Card description goes here.")),f.createElement("div",{className:"px-6 pt-4 pb-2"},f.createElement("span",{className:"inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"},"#tag"))))}});case 5:case"end":return g.stop()}},v)})))),asset:{type:"BLOCK",id:"docs-notes-css-tailwind-v-3-guide-demo-0",refAtomIds:[],dependencies:{"index.tsx":{type:"FILE",value:`import React from 'react';
 
 export default () => (
   <>
@@ -1319,7 +1319,7 @@ export default () => (
       </div>
     </div>
   </>
-);`},react:{type:"NPM",value:"19.2.0"}},entry:"index.tsx"},context:{react:o||(o=a.t(r,2))},renderOpts:{compile:function(){var f=D()(T()().mark(function b(){var t,x=arguments;return T()().wrap(function(h){for(;;)switch(h.prev=h.next){case 0:return h.next=2,a.e(250).then(a.bind(a,90250));case 2:return h.abrupt("return",(t=h.sent).default.apply(t,x));case 3:case"end":return h.stop()}},b)}));function m(){return f.apply(this,arguments)}return m}()}}}},48824:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},60690:function(v,e,a){var o;a.r(e),a.d(e,{demos:function(){return b}});var l=a(17061),T=a.n(l),O=a(42122),D=a.n(O),r=a(17156),F=a.n(r),f=a(67294),m=a(98388),b={"docs-notes-css-taiwind-merge-and-clsx-demo-0":{component:f.memo(f.lazy(F()(T()().mark(function t(){var x,g,h;return T()().wrap(function(E){for(;;)switch(E.prev=E.next){case 0:return E.next=2,Promise.resolve().then(a.t.bind(a,67294,19));case 2:return x=E.sent,g=x.default,h=function(w){var B="border rounded px-[20px] py-[20px] ".concat(w.className||"");return g.createElement("input",D()(D()({},w),{},{className:B}))},E.abrupt("return",{default:function(){return g.createElement(h,{className:"p-[5px]"})}});case 6:case"end":return E.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-taiwind-merge-and-clsx-demo-0",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import React from 'react';
+);`},react:{type:"NPM",value:"19.2.0"}},entry:"index.tsx"},context:{react:d||(d=e.t(r,2))},renderOpts:{compile:function(){var v=A()(O()().mark(function f(){var t,g=arguments;return O()().wrap(function(h){for(;;)switch(h.prev=h.next){case 0:return h.next=2,e.e(250).then(e.bind(e,90250));case 2:return h.abrupt("return",(t=h.sent).default.apply(t,g));case 3:case"end":return h.stop()}},f)}));function i(){return v.apply(this,arguments)}return i}()}}}},48824:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},60690:function(p,a,e){var d;e.r(a),e.d(a,{demos:function(){return f}});var l=e(17061),O=e.n(l),T=e(42122),A=e.n(T),r=e(17156),M=e.n(r),v=e(67294),i=e(98388),f={"docs-notes-css-taiwind-merge-and-clsx-demo-0":{component:v.memo(v.lazy(M()(O()().mark(function t(){var g,y,h;return O()().wrap(function(w){for(;;)switch(w.prev=w.next){case 0:return w.next=2,Promise.resolve().then(e.t.bind(e,67294,19));case 2:return g=w.sent,y=g.default,h=function(E){var j="border rounded px-[20px] py-[20px] ".concat(E.className||"");return y.createElement("input",A()(A()({},E),{},{className:j}))},w.abrupt("return",{default:function(){return y.createElement(h,{className:"p-[5px]"})}});case 6:case"end":return w.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-taiwind-merge-and-clsx-demo-0",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import React from 'react';
 
 const MyInput = (props) => {
   const className = \`border rounded px-[20px] py-[20px] \${
@@ -1331,7 +1331,7 @@ const MyInput = (props) => {
 
 export default function Page() {
   return <MyInput className="p-[5px]" />;
-}`},react:{type:"NPM",value:"19.2.0"}},entry:"index.jsx"},context:{react:o||(o=a.t(f,2))},renderOpts:{compile:function(){var t=F()(T()().mark(function g(){var h,S=arguments;return T()().wrap(function(c){for(;;)switch(c.prev=c.next){case 0:return c.next=2,a.e(250).then(a.bind(a,90250));case 2:return c.abrupt("return",(h=c.sent).default.apply(h,S));case 3:case"end":return c.stop()}},g)}));function x(){return t.apply(this,arguments)}return x}()}},"docs-notes-css-taiwind-merge-and-clsx-demo-1":{component:f.memo(f.lazy(F()(T()().mark(function t(){var x,g,h,S,E;return T()().wrap(function(w){for(;;)switch(w.prev=w.next){case 0:return w.next=2,Promise.resolve().then(a.t.bind(a,67294,19));case 2:return x=w.sent,g=x.default,w.next=6,Promise.resolve().then(a.bind(a,98388));case 6:return h=w.sent,S=h.twMerge,E=function(A){var j=S("border rounded px-[20px] py-[20px] ".concat(A.className||""));return g.createElement("input",D()(D()({},A),{},{className:j}))},w.abrupt("return",{default:function(){return g.createElement(E,{className:"p-[5px]"})}});case 10:case"end":return w.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-taiwind-merge-and-clsx-demo-1",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import React from 'react';
+}`},react:{type:"NPM",value:"19.2.0"}},entry:"index.jsx"},context:{react:d||(d=e.t(v,2))},renderOpts:{compile:function(){var t=M()(O()().mark(function y(){var h,S=arguments;return O()().wrap(function(I){for(;;)switch(I.prev=I.next){case 0:return I.next=2,e.e(250).then(e.bind(e,90250));case 2:return I.abrupt("return",(h=I.sent).default.apply(h,S));case 3:case"end":return I.stop()}},y)}));function g(){return t.apply(this,arguments)}return g}()}},"docs-notes-css-taiwind-merge-and-clsx-demo-1":{component:v.memo(v.lazy(M()(O()().mark(function t(){var g,y,h,S,w;return O()().wrap(function(E){for(;;)switch(E.prev=E.next){case 0:return E.next=2,Promise.resolve().then(e.t.bind(e,67294,19));case 2:return g=E.sent,y=g.default,E.next=6,Promise.resolve().then(e.bind(e,98388));case 6:return h=E.sent,S=h.twMerge,w=function(P){var R=S("border rounded px-[20px] py-[20px] ".concat(P.className||""));return y.createElement("input",A()(A()({},P),{},{className:R}))},E.abrupt("return",{default:function(){return y.createElement(w,{className:"p-[5px]"})}});case 10:case"end":return E.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-taiwind-merge-and-clsx-demo-1",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import React from 'react';
 
 import { twMerge } from 'tailwind-merge';
 
@@ -1345,7 +1345,7 @@ const MyInput = (props) => {
 
 export default function Page() {
   return <MyInput className="p-[5px]" />;
-}`},react:{type:"NPM",value:"19.2.0"},"tailwind-merge":{type:"NPM",value:"3.4.0"}},entry:"index.jsx"},context:{react:o||(o=a.t(f,2)),"tailwind-merge":m},renderOpts:{compile:function(){var t=F()(T()().mark(function g(){var h,S=arguments;return T()().wrap(function(c){for(;;)switch(c.prev=c.next){case 0:return c.next=2,a.e(250).then(a.bind(a,90250));case 2:return c.abrupt("return",(h=c.sent).default.apply(h,S));case 3:case"end":return c.stop()}},g)}));function x(){return t.apply(this,arguments)}return x}()}}}},97717:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},85379:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},95295:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},44282:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},12862:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},34705:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},52059:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},55417:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},63833:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},93540:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},76136:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},59856:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},87721:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},45059:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},99099:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},17900:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},35328:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},48610:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},9827:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},48355:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},17343:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},56412:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},16311:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},38446:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},35597:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},22348:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},25247:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},227:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},83470:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},27295:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},29046:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},35480:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},73814:function(v,e,a){a.r(e),a.d(e,{demos:function(){return l}});var o=a(67294),l={}},20466:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"This is a guide example.",paraId:0}]},38528:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"\u5B98\u7F51\u5BFC\u822A",paraId:0},{value:"\u672C\u7AD9\u662F\u901A\u8FC7 ",paraId:1,tocIndex:0},{value:"create-dumi",paraId:1,tocIndex:0},{value:" \u521B\u5EFA\u7684 React \u6A21\u677F (",paraId:1,tocIndex:0},{value:"React \u9009\u9879",paraId:1,tocIndex:0},{value:")\u751F\u6210\u7684\uFF0C\u76EE\u5F55\u7ED3\u6784\u5927\u81F4\u5982\u4E0B\uFF1A",paraId:1,tocIndex:0},{value:"docs",paraId:2,tocIndex:0},{value:" \u5B58\u653E\u7B14\u8BB0\u3001\u535A\u5BA2\u3001\u788E\u7247\u5316\u77E5\u8BC6\u7B49\u3002",paraId:2,tocIndex:0},{value:"src",paraId:2,tocIndex:0},{value:" \u5B58\u653E\u5F00\u53D1 npm \u5305\u7684\u6E90\u7801\u3002",paraId:2,tocIndex:0},{value:"public",paraId:2,tocIndex:0},{value:" \u5B58\u653E\u9759\u6001\u8D44\u6E90\u3002",paraId:2,tocIndex:0},{value:".dumirc.ts",paraId:2,tocIndex:0},{value:" dumi \u7684\u914D\u7F6E\u6587\u4EF6\u3002",paraId:2,tocIndex:0},{value:".fatherrc.ts",paraId:2,tocIndex:0},{value:" father \u7684\u914D\u7F6E\u6587\u4EF6\uFF0C\u7528\u4E8E\u7EC4\u4EF6\u5E93\u6253\u5305\u3002",paraId:2,tocIndex:0},{value:`
+}`},react:{type:"NPM",value:"19.2.0"},"tailwind-merge":{type:"NPM",value:"3.4.0"}},entry:"index.jsx"},context:{react:d||(d=e.t(v,2)),"tailwind-merge":i},renderOpts:{compile:function(){var t=M()(O()().mark(function y(){var h,S=arguments;return O()().wrap(function(I){for(;;)switch(I.prev=I.next){case 0:return I.next=2,e.e(250).then(e.bind(e,90250));case 2:return I.abrupt("return",(h=I.sent).default.apply(h,S));case 3:case"end":return I.stop()}},y)}));function g(){return t.apply(this,arguments)}return g}()}}}},97717:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},85379:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},95295:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},44282:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},12862:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},34705:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},52059:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},13279:function(p,a,e){var d;e.r(a),e.d(a,{demos:function(){return y}});var l=e(17061),O=e.n(l),T=e(17156),A=e.n(T),r=e(67294),M=e(98512),v=e(48170),i=e(90512),f=e(6820),t=e(66764),g=e(98388),y={"docs-notes-js-bits-demo-app":{component:r.memo(r.lazy(function(){return e.e(2433).then(e.bind(e,35016))})),asset:{type:"BLOCK",id:"docs-notes-js-bits-demo-app",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:e(66005).Z},react:{type:"NPM",value:"19.2.0"},"./BitSet.js":{type:"FILE",value:e(48969).Z},"./products.js":{type:"FILE",value:e(39181).Z}},entry:"index.jsx"},context:{"./BitSet.js":M,"./products.js":v,react:d||(d=e.t(r,2)),"/home/runner/work/awesome-me/awesome-me/docs/notes/js/BitSet.js":M,"/home/runner/work/awesome-me/awesome-me/docs/notes/js/products.js":v},renderOpts:{compile:function(){var h=A()(O()().mark(function w(){var I,E=arguments;return O()().wrap(function(P){for(;;)switch(P.prev=P.next){case 0:return P.next=2,e.e(250).then(e.bind(e,90250));case 2:return P.abrupt("return",(I=P.sent).default.apply(I,E));case 3:case"end":return P.stop()}},w)}));function S(){return h.apply(this,arguments)}return S}()}},"docs-notes-js-bits-demo-todo":{component:r.memo(r.lazy(function(){return e.e(2433).then(e.bind(e,87592))})),asset:{type:"BLOCK",id:"docs-notes-js-bits-demo-todo",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:e(51987).Z},clsx:{type:"NPM",value:"2.1.1"},"framer-motion":{type:"NPM",value:"12.23.24"},"lucide-react":{type:"NPM",value:"0.554.0"},react:{type:"NPM",value:"19.2.0"},"tailwind-merge":{type:"NPM",value:"3.4.0"}},entry:"index.jsx"},context:{clsx:i,"framer-motion":f,"lucide-react":t,react:d||(d=e.t(r,2)),"tailwind-merge":g},renderOpts:{compile:function(){var h=A()(O()().mark(function w(){var I,E=arguments;return O()().wrap(function(P){for(;;)switch(P.prev=P.next){case 0:return P.next=2,e.e(250).then(e.bind(e,90250));case 2:return P.abrupt("return",(I=P.sent).default.apply(I,E));case 3:case"end":return P.stop()}},w)}));function S(){return h.apply(this,arguments)}return S}()}}}},55417:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},63833:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},93540:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},76136:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},59856:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},87721:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},45059:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},99099:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},17900:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},35328:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},48610:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},24285:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},48355:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},17343:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},56412:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},16311:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},38446:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},35597:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},22348:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},25247:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},227:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},83470:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},27295:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},48032:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},29046:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},35480:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},73814:function(p,a,e){e.r(a),e.d(a,{demos:function(){return l}});var d=e(67294),l={}},20466:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"This is a guide example.",paraId:0}]},38528:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"\u5B98\u7F51\u5BFC\u822A",paraId:0},{value:"\u672C\u7AD9\u662F\u901A\u8FC7 ",paraId:1,tocIndex:0},{value:"create-dumi",paraId:1,tocIndex:0},{value:" \u521B\u5EFA\u7684 React \u6A21\u677F (",paraId:1,tocIndex:0},{value:"React \u9009\u9879",paraId:1,tocIndex:0},{value:")\u751F\u6210\u7684\uFF0C\u76EE\u5F55\u7ED3\u6784\u5927\u81F4\u5982\u4E0B\uFF1A",paraId:1,tocIndex:0},{value:"docs",paraId:2,tocIndex:0},{value:" \u5B58\u653E\u7B14\u8BB0\u3001\u535A\u5BA2\u3001\u788E\u7247\u5316\u77E5\u8BC6\u7B49\u3002",paraId:2,tocIndex:0},{value:"src",paraId:2,tocIndex:0},{value:" \u5B58\u653E\u5F00\u53D1 npm \u5305\u7684\u6E90\u7801\u3002",paraId:2,tocIndex:0},{value:"public",paraId:2,tocIndex:0},{value:" \u5B58\u653E\u9759\u6001\u8D44\u6E90\u3002",paraId:2,tocIndex:0},{value:".dumirc.ts",paraId:2,tocIndex:0},{value:" dumi \u7684\u914D\u7F6E\u6587\u4EF6\u3002",paraId:2,tocIndex:0},{value:".fatherrc.ts",paraId:2,tocIndex:0},{value:" father \u7684\u914D\u7F6E\u6587\u4EF6\uFF0C\u7528\u4E8E\u7EC4\u4EF6\u5E93\u6253\u5305\u3002",paraId:2,tocIndex:0},{value:`
   `,paraId:3},{value:`
     `,paraId:4},{value:`
       docs
@@ -1593,7 +1593,56 @@ jobs:
         with:
           github_token: \${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs-dist
-`,paraId:62,tocIndex:17}]},51446:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[]},75130:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"\u60F3\u8C61\u4F60\u5728\u627E\u4E00\u4E2A\u53A8\u5E08\uFF0C\u4F60\u95EE\u7684\u95EE\u9898\u4E0D\u662F\u201C\u4ED6\u7092\u83DC\u597D\u4E0D\u597D\u5403\u201D\uFF0C\u800C\u662F\u66F4\u57FA\u7840\u2014\u2014",paraId:0,tocIndex:2},{value:`\u8FD9\u4F4D\u53A8\u5E08\uFF0C\u7406\u8BBA\u4E0A\u80FD\u4E0D\u80FD\u505A\u51FA\u4E16\u754C\u4E0A\u4EFB\u4F55\u4E00\u9053\u83DC\uFF1F
+`,paraId:62,tocIndex:17}]},51446:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[]},11268:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:'\u5982\u679C\u4F60\u5199\u8FC7\u4E00\u6BB5\u65F6\u95F4\u524D\u7AEF\uFF0C\u80AF\u5B9A\u542C\u8FC7\u4E24\u53E5\u4F3C\u4E4E\u6BEB\u65E0\u4E89\u8BAE\u7684"\u5E38\u8BC6"\uFF1A',paraId:0,tocIndex:0},{value:'"DOM \u64CD\u4F5C\u5F88\u6162\u3002"',paraId:1,tocIndex:0},{value:'"\u5C11\u64CD\u4F5C DOM\uFF0C\u591A\u5728 JavaScript \u91CC\u7B97\u5B8C\u518D\u4E00\u6B21\u6027\u66F4\u65B0\u3002"',paraId:2,tocIndex:0},{value:'\u8FD9\u4E9B\u5EFA\u8BAE\u88AB\u53CD\u590D\u8F6C\u8FF0\uFF0C\u51E0\u4E4E\u53D8\u6210\u4E86\u524D\u7AEF\u4E16\u754C\u91CC\u7684"\u7A7A\u6C14"\uFF0C\u4EBA\u4EBA\u90FD\u5728\u547C\u5438\uFF0C\u5374\u5F88\u5C11\u6709\u4EBA\u505C\u4E0B\u6765\u8BA4\u771F\u8FFD\u95EE\u4E00\u53E5\uFF1A',paraId:3,tocIndex:0},{value:"\u6162\uFF0C\u7A76\u7ADF\u6162\u5728\u4EC0\u4E48\u5730\u65B9\uFF1F",paraId:3,tocIndex:0},{value:" \u4E3A\u4EC0\u4E48\u660E\u660E\u5199\u7684\u90FD\u662F JavaScript\uFF0C\u6362\u4E2A API \u8C03\u7528\uFF0C\u6027\u80FD\u5C31\u80FD\u5DEE\u4E00\u4E2A\u6570\u91CF\u7EA7\uFF1F",paraId:3,tocIndex:0},{value:"\u66F4\u6709\u8DA3\u7684\u662F\uFF0C\u5F88\u591A\u4EBA\u5BF9\u6D4F\u89C8\u5668\u4E2D\u7684\u4E24\u4E2A\u8001\u719F\u4EBA\u2014\u2014",paraId:4,tocIndex:0},{value:"window",paraId:4,tocIndex:0},{value:" \u548C ",paraId:4,tocIndex:0},{value:"document",paraId:4,tocIndex:0},{value:"\u2014\u2014\u5176\u5B9E\u4E5F\u5E76\u4E0D\u771F\u7684\u7406\u89E3\u3002\u6709\u4EBA\u4F1A\u95EE\uFF1A",paraId:4,tocIndex:0},{value:"window",paraId:4,tocIndex:0},{value:" \u662F DOM \u5417\uFF1F\u4E3A\u4EC0\u4E48 MDN \u4E0A\u628A\u8FD9\u4E9B\u7EDF\u79F0\u4E3A ",paraId:4,tocIndex:0},{value:"Web API",paraId:4,tocIndex:0},{value:"\uFF08\u6D4F\u89C8\u5668\u63D0\u4F9B\u7684 Web \u7F16\u7A0B\u63A5\u53E3\uFF09\uFF0C\u800C\u4E0D\u662F DOM API\uFF1F",paraId:4,tocIndex:0},{value:"document",paraId:4,tocIndex:0},{value:" \u662F\u6587\u6863\u6839\u8282\u70B9\u90A3\u8FD8\u597D\u7406\u89E3\uFF0C\u53EF ",paraId:4,tocIndex:0},{value:"window",paraId:4,tocIndex:0},{value:" \u5230\u5E95\u7AD9\u5728\u4EC0\u4E48\u4F4D\u7F6E\u4E0A\uFF1F",paraId:4,tocIndex:0},{value:'\u8981\u771F\u6B63\u770B\u6E05\u8FD9\u4E00\u5207\uFF0C\u6211\u4EEC\u9700\u8981\u6682\u65F6\u79BB\u5F00"\u8BED\u6CD5"\u7684\u8212\u9002\u533A\uFF0C\u8F6C\u5411\u4E00\u4E2A\u66F4\u5E95\u5C42\u7684\u89C6\u89D2\uFF1A',paraId:5,tocIndex:0},{value:"\u6D4F\u89C8\u5668\u662F\u5982\u4F55\u628A JavaScript \u5F15\u64CE\u3001DOM\uFF08Document Object Model\uFF0C\u6587\u6863\u5BF9\u8C61\u6A21\u578B\uFF09\u3001\u6E32\u67D3\u5F15\u64CE\u6574\u5408\u5728\u4E00\u8D77\u7684\uFF1F",paraId:5,tocIndex:0},{value:" \u5F53\u6211\u4EEC\u6572\u4E0B ",paraId:5,tocIndex:0},{value:"div.innerHTML = 'hi'",paraId:5,tocIndex:0},{value:" \u8FD9\u6837\u4E00\u884C\u4EE3\u7801\u65F6\uFF0C\u80CC\u540E\u5230\u5E95\u53D1\u751F\u4E86\u4EC0\u4E48\uFF1F",paraId:5,tocIndex:0},{value:'\u7406\u89E3\u8FD9\u4E9B\uFF0C\u4F60\u5C31\u4E0D\u518D\u53EA\u662F"\u8BB0\u4F4F\u4E86\u67D0\u4E9B\u6027\u80FD\u5EFA\u8BAE"\uFF0C\u800C\u662F\u80FD\u4ECE\u539F\u7406\u4E0A\u5224\u65AD\uFF1A\u4EC0\u4E48\u662F\u503C\u5F97\u4F18\u5316\u7684\uFF0C\u4EC0\u4E48\u53EA\u662F\u4F20\u8A00\u3002',paraId:6,tocIndex:0},{value:"\u8981\u7406\u89E3 ",paraId:7,tocIndex:1},{value:"window",paraId:7,tocIndex:1},{value:" \u7684\u4F4D\u7F6E\uFF0C\u5F97\u5148\u628A\u51E0\u4E2A\u6982\u5FF5\u5206\u5F00\u6765\u3002",paraId:7,tocIndex:1},{value:"ECMAScript",paraId:8,tocIndex:1},{value:" \u662F JavaScript \u8BED\u8A00\u672C\u8EAB\u7684\u6807\u51C6\uFF0C\u5B83\u89C4\u5B9A\u4E86\u8BED\u6CD5\u3001\u7C7B\u578B\u7CFB\u7EDF\u3001\u5185\u7F6E\u5BF9\u8C61\uFF08\u4F8B\u5982 ",paraId:8,tocIndex:1},{value:"Object",paraId:8,tocIndex:1},{value:"\u3001",paraId:8,tocIndex:1},{value:"Array",paraId:8,tocIndex:1},{value:"\u3001",paraId:8,tocIndex:1},{value:"Function",paraId:8,tocIndex:1},{value:' \u7B49\uFF09\uFF0C\u4F46\u5B83\u5E76\u4E0D\u5173\u5FC3"\u6D4F\u89C8\u5668"\u3001"\u9875\u9762"\u3001"\u6807\u7B7E\u9875"\u8FD9\u4E9B\u4E1C\u897F\u3002\u6362\u53E5\u8BDD\u8BF4\uFF0C\u5982\u679C\u53EA\u6709 ECMAScript \u6807\u51C6\uFF0C\u4F60\u53EA\u80FD\u5199\u7EAF\u8BA1\u7B97\u903B\u8F91\uFF0C\u5B8C\u5168\u65E0\u6CD5\u8BBF\u95EE\u9875\u9762\u4E0A\u7684\u6309\u94AE\u3001\u8F93\u5165\u6846\uFF0C\u66F4\u522B\u8BF4\u6253\u5F00\u4E00\u4E2A\u65B0\u7A97\u53E3\u3002',paraId:8,tocIndex:1},{value:'\u771F\u6B63\u628A JavaScript \u548C"\u6D4F\u89C8\u5668\u4E16\u754C"\u8FDE\u63A5\u8D77\u6765\u7684\uFF0C\u662F',paraId:9,tocIndex:1},{value:"\u5BBF\u4E3B\u73AF\u5883\u63D0\u4F9B\u7684 API",paraId:9,tocIndex:1},{value:"\u3002\u5728\u6D4F\u89C8\u5668\u4E2D\uFF0C\u8FD9\u4E9B API \u88AB\u6574\u4F53\u79F0\u4E3A ",paraId:9,tocIndex:1},{value:"Web API",paraId:9,tocIndex:1},{value:'\uFF08\u6D4F\u89C8\u5668\u63D0\u4F9B\u7684 Web \u7F16\u7A0B\u63A5\u53E3\uFF09\uFF0C\u5176\u4E2D\u5305\u62EC\u6211\u4EEC\u719F\u6089\u7684 DOM\u3001BOM\uFF08Browser Object Model\uFF0C\u6D4F\u89C8\u5668\u5BF9\u8C61\u6A21\u578B\uFF09\u3001\u5B9A\u65F6\u5668\u3001\u7F51\u7EDC\u8BF7\u6C42\u7B49\u3002\u5B83\u4EEC\u4E0D\u662F\u8BED\u8A00\u7684\u4E00\u90E8\u5206\uFF0C\u800C\u662F"\u8FD0\u884C\u65F6\u7ED9\u4F60\u52A0\u7684\u80FD\u529B"\u3002',paraId:9,tocIndex:1},{value:"\u5728\u8FD9\u5957\u80FD\u529B\u4F53\u7CFB\u91CC\uFF0C",paraId:10,tocIndex:1},{value:"window",paraId:10,tocIndex:1},{value:" \u5360\u636E\u7740\u4E00\u4E2A\u975E\u5E38\u7279\u522B\u7684\u4F4D\u7F6E\u3002",paraId:10,tocIndex:1},{value:"window",paraId:10,tocIndex:1},{value:' \u4EE3\u8868\u5F53\u524D\u811A\u672C\u8FD0\u884C\u7684\u90A3\u4E2A"\u6D4F\u89C8\u4E0A\u4E0B\u6587"\uFF1A\u53EF\u4EE5\u7406\u89E3\u4E3A\u4E00\u4E2A\u6D4F\u89C8\u5668\u7A97\u53E3\u4E2D\u7684\u4E00\u4E2A\u6807\u7B7E\u9875\u3002\u5B83\u662F\u4E00\u4E2A\u5168\u5C40\u5BF9\u8C61\uFF0C\u4F60\u5728\u6D4F\u89C8\u5668\u63A7\u5236\u53F0\u91CC\u968F\u4FBF\u6572\u4E00\u4E2A\u672A\u58F0\u660E\u7684\u53D8\u91CF\uFF0C\u5F88\u53EF\u80FD\u6700\u7EC8\u90FD\u4F1A\u843D\u5230 ',paraId:10,tocIndex:1},{value:"window",paraId:10,tocIndex:1},{value:' \u4E0A\u53BB\u5B58\u53D6\u3002\u8FD9\u5C31\u662F\u4E3A\u4EC0\u4E48\u6211\u4EEC\u5E38\u8BF4"',paraId:10,tocIndex:1},{value:"window",paraId:10,tocIndex:1},{value:' \u662F\u6D4F\u89C8\u5668\u91CC\u7684\u5168\u5C40\u5BF9\u8C61"\u3002',paraId:10,tocIndex:1},{value:"\u4F46 ",paraId:11,tocIndex:1},{value:"window",paraId:11,tocIndex:1},{value:' \u5E76\u4E0D\u662F DOM \u8282\u70B9\uFF0C\u5B83\u4E0D\u662F\u9875\u9762\u4E0A\u7684\u67D0\u4E2A\u5143\u7D20\uFF0C\u800C\u662F\u6574\u4E2A"\u6D4F\u89C8\u9875"\u8FD9\u4E00\u73AF\u5883\u672C\u8EAB\u3002\u4E00\u4E2A\u73B0\u4EE3\u6D4F\u89C8\u5668\u91CC\uFF0C\u6BCF\u4E2A\u6807\u7B7E\u9875\u90FD\u6709\u81EA\u5DF1\u72EC\u7ACB\u7684 ',paraId:11,tocIndex:1},{value:"window",paraId:11,tocIndex:1},{value:" \u5BF9\u8C61\uFF0C\u540C\u4E00\u4E2A\u7269\u7406\u7A97\u53E3\u91CC\u7684\u591A\u4E2A\u6807\u7B7E\u9875\uFF0C\u4E5F\u4E0D\u4F1A\u5171\u4EAB ",paraId:11,tocIndex:1},{value:"window",paraId:11,tocIndex:1},{value:"\u3002\u6709\u4E9B\u65B9\u6CD5\uFF08\u6BD4\u5982 ",paraId:11,tocIndex:1},{value:"window.resizeTo",paraId:11,tocIndex:1},{value:"\u3001",paraId:11,tocIndex:1},{value:"window.resizeBy",paraId:11,tocIndex:1},{value:"\uFF09\u770B\u4F3C\u662F ",paraId:11,tocIndex:1},{value:"window",paraId:11,tocIndex:1},{value:" \u7684\u65B9\u6CD5\uFF0C\u5B9E\u9645\u4E0A\u64CD\u63A7\u7684\u662F\u6574\u4E2A\u6D4F\u89C8\u5668\u7A97\u53E3\u7684\u5916\u58F3\uFF0C\u800C\u4E0D\u662F\u9875\u9762\u4E2D\u7684\u67D0\u4E2A DOM \u5143\u7D20\u3002\u8FD9\u8FDB\u4E00\u6B65\u8BF4\u660E\u4E86\uFF1A",paraId:11,tocIndex:1},{value:"window",paraId:11,tocIndex:1},{value:' \u7684\u8EAB\u4EFD\uFF0C\u66F4\u50CF\u662F"\u5BBF\u4E3B\u5BB9\u5668"\uFF0C\u800C\u4E0D\u662F DOM \u6811\u91CC\u7684\u6210\u5458\u3002',paraId:11,tocIndex:1},{value:"\u90A3 ",paraId:12,tocIndex:1},{value:"document",paraId:12,tocIndex:1},{value:" \u5462\uFF1F",paraId:12,tocIndex:1},{value:"document",paraId:12,tocIndex:1},{value:" \u5C5E\u4E8E DOM\uFF0C\u5B83\u662F\u5F53\u524D\u6587\u6863\u7684\u6839\u8282\u70B9\uFF0C\u662F\u6574\u68F5 DOM \u6811\u7684\u5165\u53E3\u3002\u5728 ",paraId:12,tocIndex:1},{value:"window",paraId:12,tocIndex:1},{value:" \u8FD9\u680B\u5927\u697C\u91CC\uFF0C",paraId:12,tocIndex:1},{value:"document",paraId:12,tocIndex:1},{value:' \u50CF\u662F"\u56FE\u7EB8\u7684\u7B2C\u4E00\u9875"\uFF0C\u6240\u6709\u5177\u4F53\u7684\u5143\u7D20\u3001\u8282\u70B9\u3001\u6587\u672C\u53E5\u67C4\uFF0C\u90FD\u5728\u8FD9\u5F20\u56FE\u7EB8\u6240\u63CF\u8FF0\u7684\u90A3\u68F5\u6811\u4E0A\u3002',paraId:12,tocIndex:1},{value:"\u4E8E\u662F\uFF0C\u4E00\u4E2A\u66F4\u51C6\u786E\u7684\u56FE\u666F\u6D6E\u73B0\u51FA\u6765\uFF1A",paraId:13,tocIndex:1},{value:"\u6D4F\u89C8\u5668\u63D0\u4F9B\u4E86\u4E00\u4E2A\u540D\u4E3A ",paraId:14,tocIndex:1},{value:"window",paraId:14,tocIndex:1},{value:" \u7684\u5168\u5C40\u73AF\u5883\u5BF9\u8C61\uFF0C\u5185\u90E8\u6302\u8F7D\u7740\u5404\u79CD Web API\uFF0C\u5176\u4E2D\u6709\u4E00\u5927\u5757\u53EB\u505A DOM\uFF0C\u800C DOM \u7684\u6839\u5C31\u662F ",paraId:14,tocIndex:1},{value:"document",paraId:14,tocIndex:1},{value:"\u3002",paraId:14,tocIndex:1},{value:"\u6211\u4EEC\u4F1A\u9891\u7E41\u7528\u5230 ",paraId:15,tocIndex:1},{value:"window",paraId:15,tocIndex:1},{value:" \u548C ",paraId:15,tocIndex:1},{value:"document",paraId:15,tocIndex:1},{value:'\uFF0C\u4F46\u5B83\u4EEC\u5E76\u4E0D\u662F\u540C\u4E00\u5C42\u6B21\u7684\u6982\u5FF5\uFF1A\u524D\u8005\u662F"\u5916\u58F3"\uFF0C\u540E\u8005\u662F"\u6587\u6863\u7ED3\u6784\u672C\u8EAB"\u3002',paraId:15,tocIndex:1},{value:'\u5F53\u4F60\u5206\u6E05\u8FD9\u4E00\u70B9\uFF0C\u5173\u4E8E"',paraId:16,tocIndex:1},{value:"window",paraId:16,tocIndex:1},{value:' \u5230\u5E95\u662F\u4E0D\u662F DOM"\u8FD9\u79CD\u56F0\u60D1\uFF0C\u5C31\u4E0D\u518D\u91CD\u8981\u4E86\u3002\u66F4\u91CD\u8981\u7684\u662F\uFF1A\u4F60\u77E5\u9053\u81EA\u5DF1\u5728\u8DDF\u54EA\u4E2A\u5C42\u7EA7\u6253\u4EA4\u9053\u3002',paraId:16,tocIndex:1},{value:"\u5398\u6E05\u4E86 window \u7684\u4F4D\u7F6E\uFF0C\u4E0B\u4E00\u6B65\u5C31\u8BE5\u95EE\uFF1A\u90A3 DOM \u81EA\u8EAB\u7A76\u7ADF\u662F\u4EC0\u4E48\uFF1F",paraId:17,tocIndex:2},{value:"DOM\uFF08Document Object Model\uFF0C\u6587\u6863\u5BF9\u8C61\u6A21\u578B\uFF09",paraId:18,tocIndex:2},{value:" \u7684\u672C\u8D28\uFF0C\u662F\u6D4F\u89C8\u5668\u7ED9\u6587\u6863\u5EFA\u7ACB\u7684\u4E00\u5957\u5BF9\u8C61\u6A21\u578B\u3002\u4E00\u4EFD HTML \u6587\u6863\u88AB\u89E3\u6790\u540E\uFF0C\u4E0D\u518D\u53EA\u662F\u5B57\u7B26\u4E32\uFF0C\u800C\u662F\u4E00\u68F5\u7531\u8282\u70B9\uFF08Node\uFF09\u7EC4\u6210\u7684\u6811\uFF1B\u6BCF\u4E00\u4E2A\u6807\u7B7E\u3001\u6587\u672C\u3001\u6CE8\u91CA\uFF0C\u90FD\u88AB\u6620\u5C04\u4E3A\u4E00\u4E2A DOM \u5BF9\u8C61\u3002",paraId:18,tocIndex:2},{value:"\u8FD9\u4E9B DOM \u5BF9\u8C61\uFF0C\u5728 JavaScript \u4E16\u754C\u91CC\uFF0C",paraId:19,tocIndex:2},{value:"\u5C31\u662F\u5BF9\u8C61",paraId:19,tocIndex:2},{value:"\u3002",paraId:19,tocIndex:2},{value:"\u4E3A\u4E86\u7406\u89E3\u8FD9\u4E00\u70B9\uFF0C\u6211\u4EEC\u6765\u770B\u4E00\u4E2A\u5177\u4F53\u7684\u4F8B\u5B50\uFF1A\u4E00\u4E2A ",paraId:20,tocIndex:2},{value:"<input>",paraId:20,tocIndex:2},{value:" \u5143\u7D20\u3002\u5728 JavaScript \u4E2D\uFF0C\u5B83\u4F1A\u5BF9\u5E94\u5230\u4E00\u4E2A ",paraId:20,tocIndex:2},{value:"HTMLInputElement",paraId:20,tocIndex:2},{value:" \u5BF9\u8C61\u3002\u8FD9\u4E2A\u5BF9\u8C61\u5E76\u4E0D\u662F\u51ED\u7A7A\u957F\u51FA\u6765\u7684\uFF0C\u800C\u662F\u6CBF\u7740\u4E00\u6761\u7EE7\u627F\u94FE\u4E00\u8DEF\u53E0\u52A0\u80FD\u529B\uFF1A",paraId:20,tocIndex:2},{value:`// \u67E5\u770B DOM \u5BF9\u8C61\u7684\u539F\u578B\u94FE
+const input = document.createElement('input');
+console.log(input.constructor.name); // HTMLInputElement
+console.log(input instanceof HTMLElement); // true
+console.log(input instanceof Element); // true
+console.log(input instanceof Node); // true
+console.log(input instanceof EventTarget); // true
+console.log(input instanceof Object); // true
+`,paraId:21,tocIndex:2},{value:"\u8FD9\u6761\u7EE7\u627F\u94FE\u8BF4\u660E\u4E86\u4E00\u4E2A\u6734\u7D20\u800C\u91CD\u8981\u7684\u4E8B\u5B9E\uFF1A",paraId:22,tocIndex:2},{value:"DOM \u5BF9\u8C61\u6CA1\u6709\u4EC0\u4E48\u795E\u79D8\u4E4B\u5904\uFF0C\u672C\u8D28\u4E0A\u5C31\u662F Object \u7684\u5B50\u7C7B\u3002",paraId:23,tocIndex:2},{value:"\u5F53\u4F60\u901A\u8FC7 ",paraId:24,tocIndex:2},{value:"document.querySelector('input')",paraId:24,tocIndex:2},{value:' \u62FF\u5230\u4E00\u4E2A\u5143\u7D20\u65F6\uFF0C\u4F60\u5F97\u5230\u7684\u662F\u4E00\u4E2A\u7279\u6B8A\u7684 JavaScript \u5BF9\u8C61\u3002\u5B83\u4E4B\u6240\u4EE5"\u7279\u6B8A"\uFF0C\u4E0D\u662F\u56E0\u4E3A\u5B83\u8D85\u8131\u4E8E JavaScript \u8BED\u8A00\uFF0C\u800C\u662F\u5728\u4E8E\uFF1A',paraId:24,tocIndex:2},{value:"\u5B83\u5185\u90E8\u7684\u5C5E\u6027\u548C\u65B9\u6CD5\u4F1A\u88AB\u6D4F\u89C8\u5668\u5F15\u64CE\u6620\u5C04\u5230\u5E95\u5C42\u7684 DOM \u5F15\u64CE\u548C\u771F\u5B9E\u7684\u6587\u6863\u7ED3\u6784\u4E0A\u3002",paraId:24,tocIndex:2},{value:"\u8FD9\u5C31\u5F15\u51FA\u4E86\u53E6\u4E00\u4E2A\u5E38\u88AB\u5FFD\u7565\u7684\u7EC6\u8282\uFF1A",paraId:25,tocIndex:2},{value:"\u5F53\u4F60\u7ED9 DOM \u5BF9\u8C61\u968F\u624B\u6302\u4E00\u4E2A\u975E API \u5C5E\u6027\uFF0C\u6BD4\u5982\uFF1A",paraId:26,tocIndex:2},{value:`const input = document.querySelector('input');
+input._cache = { touched: true };
+`,paraId:27,tocIndex:2},{value:"\u8BBF\u95EE\u8FD9\u4E2A ",paraId:28,tocIndex:2},{value:"_cache",paraId:28,tocIndex:2},{value:" \u5C5E\u6027\u7684\u901F\u5EA6\uFF0C\u4F1A\u50CF\u64CD\u4F5C\u666E\u901A\u5BF9\u8C61\u90A3\u6837\u5FEB\uFF0C\u8FD8\u662F\u50CF\u8D70 DOM API \u90A3\u6837\u6162\uFF1F",paraId:28,tocIndex:2},{value:'\u7406\u8BBA\u4E0A\uFF0C\u6D4F\u89C8\u5668\u901A\u5E38\u4F1A\u5728 JavaScript \u5F15\u64CE\u8FD9\u8FB9\u4E3A DOM \u8282\u70B9\u521B\u5EFA\u4E00\u4E2A"\u5305\u88C5\u5BF9\u8C61"\uFF0C\u975E\u6807\u51C6\u5C5E\u6027\u5C31\u6302\u5728\u8FD9\u4E2A\u5305\u88C5\u5BF9\u8C61\u4E0A\uFF0C\u4E0D\u9700\u8981\u8FDB\u5165 DOM \u5F15\u64CE\uFF0C\u56E0\u6B64\u5728\u6027\u80FD\u4E0A\u66F4\u63A5\u8FD1\u666E\u901A\u5BF9\u8C61\u7684\u8BBF\u95EE\u3002\u4F46\u4E0D\u540C\u5F15\u64CE\u53EF\u80FD\u6709\u4E0D\u540C\u5B9E\u73B0\uFF0C\u5386\u53F2\u4E0A\u751A\u81F3\u6709 IE \u90A3\u6837\u7684\u5751\u2014\u2014DOM \u5BF9\u8C61\u548C JS \u5BF9\u8C61\u4E4B\u95F4\u7684\u5F15\u7528\u6CA1\u5904\u7406\u597D\uFF0C\u5BFC\u81F4\u4E25\u91CD\u7684\u5185\u5B58\u6CC4\u6F0F\u3002',paraId:29,tocIndex:2},{value:"\u6240\u4EE5\uFF0C\u7ECF\u9A8C\u4E0A\u66F4\u7A33\u59A5\u7684\u505A\u6CD5\u662F\uFF1A",paraId:30,tocIndex:2},{value:"\u4E0D\u8981\u628A DOM \u5143\u7D20\u5F53\u4F5C\u4E00\u4E2A\u968F\u4FBF\u5F80\u4E0A\u585E\u6570\u636E\u7684\u5927\u53F7 Map \u7528\u3002",paraId:31,tocIndex:2},{value:"\u7F13\u5B58\u6570\u636E\u53EF\u4EE5\u653E\u5728\u5355\u72EC\u7684 JavaScript \u6570\u636E\u7ED3\u6784\u91CC\uFF0C\u6BD4\u5982\u7528 ",paraId:32,tocIndex:2},{value:"Map",paraId:32,tocIndex:2},{value:" \u4EE5\u5143\u7D20\u4E3A\u952E\u5B58\u50A8\uFF0C\u6216\u8005\u76F4\u63A5\u5728\u72B6\u6001\u7BA1\u7406\u5C42\u7EF4\u62A4\uFF0CDOM \u53EA\u627F\u62C5\u754C\u9762\u6295\u5F71\u7684\u89D2\u8272\u3002",paraId:32,tocIndex:2},{value:'\u8FD9\u91CC\u6709\u4E00\u4E2A\u6709\u8DA3\u7684\u5BF9\u6BD4\uFF0C\u6709\u52A9\u4E8E\u4F60\u7406\u89E3"\u666E\u901A\u5BF9\u8C61"\u7684\u8FB9\u754C\uFF1A',paraId:33,tocIndex:2},{value:`// \u5178\u578B\u7684 JavaScript \u5BF9\u8C61\uFF0C\u7EE7\u627F\u81EA Object
+let obj = {};
+console.log(obj.toString); // \u0192 toString() { [native code] }
+
+// \u771F\u6B63"\u5E72\u51C0"\u7684\u5BF9\u8C61\uFF1A\u6CA1\u6709\u539F\u578B\u94FE\u4E0A\u7684\u9ED8\u8BA4\u65B9\u6CD5
+let pure = Object.create(null);
+console.log(pure.toString); // undefined
+
+// DOM \u5BF9\u8C61\uFF1A\u65E2\u662F\u5BF9\u8C61\uFF0C\u53C8\u8FDE\u63A5\u7740\u6D4F\u89C8\u5668\u5F15\u64CE
+let div = document.createElement('div');
+console.log(div.toString); // \u0192 toString() { [native code] }
+console.log(div.nodeType); // 1 - \u8FD9\u662F DOM \u7279\u6709\u7684\u5C5E\u6027
+`,paraId:34,tocIndex:2},{value:'\u628A\u8FD9\u4E24\u4E2A\u548C DOM \u5BF9\u8C61\u653E\u5728\u4E00\u8D77\u770B\uFF0C\u4F60\u5C31\u4F1A\u53D1\u73B0\uFF1ADOM \u5BF9\u8C61\u5728\u7C7B\u578B\u7CFB\u7EDF\u4E0A\u786E\u5B9E\u662F"\u5BF9\u8C61"\uFF0C\u4F46\u5B83\u80CC\u540E\u8FDE\u7740\u7684\u662F\u6D4F\u89C8\u5668\u7684 DOM \u5F15\u64CE\u548C\u771F\u5B9E\u9875\u9762\u7ED3\u6784\uFF0C\u800C\u4E0D\u53EA\u662F\u5355\u7EAF\u7684\u4E00\u5757\u5185\u5B58\u3002\u8FD9\u4E5F\u4E3A\u540E\u9762\u8981\u8BB2\u7684\u6027\u80FD\u95EE\u9898\u57CB\u4E0B\u4E86\u4F0F\u7B14\u3002',paraId:35,tocIndex:2},{value:'\u56DE\u5230\u90A3\u4E2A\u8001\u95EE\u9898\uFF1A\u4E3A\u4EC0\u4E48\u5927\u5BB6\u90FD\u8BF4"\u64CD\u4F5C DOM \u5F88\u8017\u6027\u80FD"\uFF1F',paraId:36,tocIndex:3},{value:"\u8981\u56DE\u7B54\u8FD9\u4E2A\u95EE\u9898\uFF0C\u9700\u8981\u628A\u89C6\u91CE\u4ECE\u5BF9\u8C61\u672C\u8EAB\u62C9\u56DE\u5230\u8FD0\u884C\u65F6\u3002\u73B0\u4EE3\u6D4F\u89C8\u5668\u91CC\uFF0C\u81F3\u5C11\u6709\u4E24\u5757\u91CD\u91CF\u7EA7\u7684\u7EC4\u4EF6\u5171\u4EAB\u7740\u540C\u4E00\u6761\u4E3B\u7EBF\u7A0B\uFF1A",paraId:37,tocIndex:3},{value:"JavaScript \u5F15\u64CE",paraId:37,tocIndex:3},{value:"\u548C ",paraId:37,tocIndex:3},{value:"DOM/\u6E32\u67D3\u5F15\u64CE",paraId:37,tocIndex:3},{value:"\u3002\u524D\u8005\u8D1F\u8D23\u6267\u884C\u4F60\u5199\u7684\u4EE3\u7801\uFF0C\u540E\u8005\u8D1F\u8D23\u7EF4\u62A4\u6587\u6863\u7ED3\u6784\u3001\u8BA1\u7B97\u5E03\u5C40\u3001\u7ED8\u5236\u50CF\u7D20\u3002",paraId:37,tocIndex:3},{value:'\u5F53\u4F60\u5728 JavaScript \u91CC\u8C03\u7528\u4E00\u4E2A DOM API\uFF0C\u4F8B\u5982\u8BFB\u53D6\u67D0\u4E2A\u5143\u7D20\u7684\u5C3A\u5BF8\uFF0C\u6216\u8005\u4FEE\u6539\u5B83\u7684\u6837\u5F0F\uFF0C\u5176\u5B9E\u662F\u5728\u505A\u4E00\u4EF6"\u8DE8\u4E16\u754C"\u7684\u4E8B\u60C5\u3002\u5927\u81F4\u7684\u8FC7\u7A0B\u53EF\u4EE5\u60F3\u8C61\u6210\u8FD9\u6837\uFF1A',paraId:38,tocIndex:3},{value:`// \u8868\u9762\u4E0A\u770B\u53EA\u662F\u4E00\u884C\u7B80\u5355\u7684 JavaScript
+const width = element.offsetWidth;
+
+// \u80CC\u540E\u53D1\u751F\u7684\u4E8B\u60C5\uFF1A
+// 1. JavaScript \u5F15\u64CE\u6682\u505C\u5F53\u524D\u6267\u884C
+// 2. \u5C06\u8C03\u7528\u8F6C\u6362\u4E3A DOM \u5F15\u64CE\u80FD\u7406\u89E3\u7684\u6307\u4EE4
+// 3. DOM/\u6E32\u67D3\u5F15\u64CE\u5904\u7406\u8BF7\u6C42\uFF08\u53EF\u80FD\u9700\u8981\u91CD\u65B0\u8BA1\u7B97\u5E03\u5C40\uFF09
+// 4. \u5C06\u7ED3\u679C\u8F6C\u6362\u56DE JavaScript \u8868\u793A\u5F62\u5F0F
+// 5. JavaScript \u5F15\u64CE\u6062\u590D\u6267\u884C
+`,paraId:39,tocIndex:3},{value:'\u8FD9\u4E00\u6574\u5957\u8FC7\u7A0B\uFF0C\u5C31\u50CF\u4E00\u6B21\u672C\u5730\u7684"\u8FDC\u7A0B\u8FC7\u7A0B\u8C03\u7528"\uFF08RPC\uFF09\u3002\u4F60\u867D\u7136\u53EA\u5199\u4E86\u4E00\u884C JavaScript\uFF0C\u4F46\u80CC\u540E\u662F\u4E24\u4E2A\u5B50\u7CFB\u7EDF\u4E4B\u95F4\u7684\u914D\u5408\uFF1A\u5E8F\u5217\u5316\u3001\u4E0A\u4E0B\u6587\u5207\u6362\u3001\u8C03\u5EA6\u3001\u53CD\u5E8F\u5217\u5316\u3002\u5355\u6B21\u8C03\u7528\u770B\u8D77\u6765\u5FAE\u4E0D\u8DB3\u9053\uFF0C\u4E00\u65E6\u9891\u7E41\u53D1\u751F\uFF0C\u5C31\u4F1A\u8FC5\u901F\u79EF\u7D2F\u6210\u663E\u8457\u7684\u6027\u80FD\u6210\u672C\u3002',paraId:40,tocIndex:3},{value:'\u66F4\u9EBB\u70E6\u7684\u662F\uFF0C\u5F88\u591A DOM API \u7684"\u8BFB"\u64CD\u4F5C\uFF0C\u5E76\u4E0D\u662F\u968F\u65F6\u90FD\u63E1\u6709\u6700\u65B0\u503C\u3002\u8981\u8FD4\u56DE\u4E00\u4E2A\u7CBE\u786E\u7684\u5C3A\u5BF8\u3001\u4F4D\u7F6E\u6216\u5E03\u5C40\u4FE1\u606F\uFF0C\u6D4F\u89C8\u5668\u5F80\u5F80\u9700\u8981\u5148\u628A"\u53EF\u80FD\u8FC7\u671F"\u7684\u5E03\u5C40\u91CD\u7B97\u4E00\u904D\uFF0C\u8FD9\u5C31\u662F\u6211\u4EEC\u5E38\u8BF4\u7684 ',paraId:41,tocIndex:3},{value:"reflow\uFF08\u56DE\u6D41\uFF0C\u91CD\u65B0\u8BA1\u7B97\u5E03\u5C40\uFF09",paraId:41,tocIndex:3},{value:"\u3002\u5982\u679C\u8FD9\u4E2A\u91CD\u65B0\u8BA1\u7B97\u6D89\u53CA\u5230\u6837\u5F0F\u3001\u7ED3\u6784\u53D8\u5316\uFF0C\u8FD8\u53EF\u80FD\u89E6\u53D1 ",paraId:41,tocIndex:3},{value:"repaint\uFF08\u91CD\u7ED8\uFF09",paraId:41,tocIndex:3},{value:"\uFF0C\u628A\u66F4\u65B0\u540E\u7684\u754C\u9762\u91CD\u65B0\u753B\u5230\u5C4F\u5E55\u4E0A\u3002",paraId:41,tocIndex:3},{value:`// \u7CDF\u7CD5\u7684\u5199\u6CD5\uFF1A\u5F3A\u5236\u540C\u6B65\u5E03\u5C40\uFF08\u5F3A\u5236\u91CD\u6392\uFF09
+function resizeParagraphs() {
+  for (let i = 0; i < paragraphs.length; i++) {
+    // \u6BCF\u6B21\u5FAA\u73AF\u90FD\u8BFB\u53D6 offsetHeight\uFF0C\u89E6\u53D1\u91CD\u6392
+    paragraphs[i].style.height = paragraphs[i].offsetHeight + 10 + 'px';
+  }
+}
+
+// \u6539\u8FDB\u7684\u5199\u6CD5\uFF1A\u5148\u8BFB\u53D6\uFF0C\u518D\u6279\u91CF\u4FEE\u6539
+function resizeParagraphsBetter() {
+  // \u4E00\u6B21\u6027\u8BFB\u53D6\u6240\u6709\u9700\u8981\u7684\u4FE1\u606F
+  const heights = paragraphs.map((p) => p.offsetHeight);
+
+  // \u6279\u91CF\u5E94\u7528\u4FEE\u6539
+  paragraphs.forEach((p, i) => {
+    p.style.height = heights[i] + 10 + 'px';
+  });
+}
+`,paraId:42,tocIndex:3},{value:'\u4E8E\u662F\uFF0C\u4E00\u4E2A\u770B\u4F3C\u65E0\u5BB3\u7684\u5C5E\u6027\u8BFB\u53D6\uFF0C\u5F88\u53EF\u80FD\u9690\u542B\u7740\u4E00\u6CE2\u8FDE\u9501\u53CD\u5E94\uFF1A\u91CD\u65B0\u8BA1\u7B97\u5E03\u5C40\u3001\u8C03\u6574\u8282\u70B9\u4F4D\u7F6E\u3001\u91CD\u753B\u90E8\u5206\u9875\u9762\uFF0C\u5168\u90E8\u53D1\u751F\u5728\u4F60\u4EE5\u4E3A\u662F"\u7B80\u5355 GET \u64CD\u4F5C"\u7684\u90A3\u4E00\u884C\u4EE3\u7801\u4E4B\u540E\u3002\u5982\u679C\u4F60\u5728\u4E00\u4E2A\u5FAA\u73AF\u91CC\u53CD\u590D\u8BFB\u53D6\u8FD9\u4E9B\u4F1A\u89E6\u53D1\u5E03\u5C40\u5237\u65B0\u7684\u5C5E\u6027\uFF0C\u6216\u5728\u77ED\u65F6\u95F4\u5185\u4EA4\u66FF\u8BFB\u5199\u5BFC\u81F4\u6D4F\u89C8\u5668\u65E0\u6CD5\u6279\u91CF\u4F18\u5316\uFF0C\u5C31\u7B49\u4E8E\u5728\u4E3B\u7EBF\u7A0B\u4E0A\u4E00\u6B21\u6B21\u62C9\u54CD"\u7D27\u6025\u91CD\u6392"\u7684\u8B66\u62A5\u3002',paraId:43,tocIndex:3},{value:'\u6240\u6709\u8FD9\u4E9B\u6D88\u8017\uFF0C\u6700\u540E\u6C47\u96C6\u5230\u4E00\u4E2A\u7ED3\u679C\u4E0A\uFF1ADOM \u5F15\u64CE\u5728\u4E3B\u7EBF\u7A0B\u4E0A\u5360\u7528\u65F6\u95F4\u8FC7\u957F\uFF0CJavaScript \u4E8B\u4EF6\u5904\u7406\u88AB\u63A8\u8FDF\uFF0C\u7528\u6237\u7684\u70B9\u51FB\u3001\u6EDA\u52A8\u611F\u89C9\u4E0D\u5230\u54CD\u5E94\uFF0C\u754C\u9762\u5F00\u59CB"\u5361"\u3002',paraId:44,tocIndex:3},{value:"\u6240\u4EE5\uFF0C\u6027\u80FD\u95EE\u9898\u7684\u6839\u6E90\u4E0D\u5728\u4E8E\u4F60\u5230\u5E95\u6709\u6CA1\u6709\u7528 jQuery\uFF0C\u4E5F\u4E0D\u5728\u4E8E\u4F60\u662F\u5426\u542F\u7528\u4E86\u67D0\u4E2A\u865A\u62DF DOM \u6846\u67B6\uFF0C\u800C\u5728\u4E8E\u8FD9\u4E00\u6761\u5E95\u5C42\u4E8B\u5B9E\uFF1A",paraId:45,tocIndex:3},{value:'\u5BF9 DOM \u7684\u6BCF\u4E00\u6B21\u8BBF\u95EE\uFF0C\u90FD\u662F\u4E00\u6B21\u8DE8\u5B50\u7CFB\u7EDF\u3001\u6F5C\u5728\u4F34\u968F\u5E03\u5C40\u91CD\u7B97\u7684\u6602\u8D35\u8C03\u7528\u3002\u4F60\u5728 JavaScript \u4E0E DOM \u4E4B\u95F4"\u5F80\u8FD4\u7684\u6B21\u6570"\uFF0C\u8FDC\u6BD4\u4F60\u9009\u62E9\u54EA\u4E2A\u5E93\u66F4\u91CD\u8981\u3002',paraId:46,tocIndex:3},{value:'\u65E2\u7136\u6602\u8D35\u7684\u662F"\u8C03\u7528\u6B21\u6570"\uFF0C\u81EA\u7136\u7684\u7B56\u7565\u5C31\u662F\uFF1A\u51CF\u5C11\u4E0D\u5FC5\u8981\u7684 DOM \u8C03\u7528\uFF0C\u628A\u903B\u8F91\u5C3D\u53EF\u80FD\u7559\u5728 JavaScript \u8FD9\u8FB9\u7B97\u5B8C\uFF0C\u53EA\u628A\u5FC5\u8981\u7684"\u6700\u7EC8\u66F4\u65B0"\u4E00\u6B21\u6027\u63A8\u7ED9 DOM\u3002',paraId:47,tocIndex:4},{value:"\u8FD9\u6B63\u662F\u73B0\u4EE3\u524D\u7AEF\u6846\u67B6\u80CC\u540E\u5171\u540C\u9075\u5FAA\u7684\u4E00\u6761\u5E95\u5C42\u601D\u8DEF\uFF1A\u5728 JavaScript \u4E2D\u7F13\u5B58\u5FC5\u8981\u7684\u6570\u636E\uFF0C\u8BA1\u7B97\u754C\u9762\u66F4\u65B0\u65F6\u7684\u72B6\u6001\u53D8\u5316\uFF0C\u53EA\u63D0\u4EA4\u6700\u7EC8\u9700\u8981\u5E94\u7528\u5230\u9875\u9762\u4E0A\u7684\u5DEE\u96C6\u3002",paraId:48,tocIndex:4},{value:'\u5728\u865A\u62DF DOM\uFF08Virtual DOM\uFF09\u65B9\u6848\u4E2D\uFF0C\u6846\u67B6\u4F1A\u7528 JavaScript \u5BF9\u8C61\u7ED3\u6784\u53BB\u63CF\u8FF0\u754C\u9762\u72B6\u6001\u3002\u4F60\u6BCF\u6B21"\u91CD\u6E32\u67D3"\u7EC4\u4EF6\uFF0C\u5B9E\u9645\u4E0A\u662F\u751F\u6210\u4E00\u68F5\u65B0\u7684\u865A\u62DF DOM \u6811\uFF0C\u7136\u540E\u62FF\u5B83\u4E0E\u4E0A\u4E00\u68F5\u865A\u62DF DOM \u6811\u8FDB\u884C diff\uFF0C\u7B97\u51FA\u8FD9\u6B21\u66F4\u65B0\u771F\u6B63\u9700\u8981\u843D\u5230\u771F\u5B9E DOM \u4E0A\u7684\u90A3\u4E00\u5C0F\u64AE\u53D8\u66F4\u3002\u6700\u7EC8\uFF0C\u6846\u67B6\u53EA\u628A\u8FD9\u5C0F\u90E8\u5206\u53D8\u66F4\u7FFB\u8BD1\u6210\u771F\u5B9E\u7684 DOM \u64CD\u4F5C\uFF0C\u53D1\u9001\u7ED9\u6D4F\u89C8\u5668\u6267\u884C\u3002\u524D\u9762\u90A3\u6BB5"\u8DE8\u4E16\u754C\u8C03\u7528"\u7684\u4EE3\u4EF7\uFF0C\u5C3D\u91CF\u88AB\u538B\u7F29\u5230\u6700\u5C11\u7684\u51E0\u6B21\u3002',paraId:49,tocIndex:4},{value:'\u6709\u7684\u6846\u67B6\u5219\u9009\u62E9\u4ECE\u6570\u636E\u5C42\u9762\u505A\u5DEE\u5206\uFF0C\u800C\u4E0D\u662F\u4ECE DOM \u7ED3\u6784\u505A\u5DEE\u5206\u3002\u5B83\u4EEC\u628A\u754C\u9762\u770B\u4F5C\u72B6\u6001\u7684\u6295\u5F71\uFF0C\u5148\u5728 JavaScript \u91CC\u6BD4\u8F83\u65B0\u65E7\u72B6\u6001\u7684\u5DEE\u5F02\uFF0C\u7136\u540E\u6839\u636E\u5DEE\u5F02\u63A8\u5BFC\u51FA\u5177\u4F53\u9700\u8981\u66F4\u65B0\u54EA\u4E9B DOM \u8282\u70B9\u3001\u54EA\u4E9B\u5C5E\u6027\u3002\u903B\u8F91\u4E0D\u540C\uFF0C\u4F46\u7CBE\u795E\u76F8\u540C\uFF1A\u4E0D\u628A DOM \u5F53\u4F5C\u8BA1\u7B97\u573A\uFF0C\u800C\u662F\u5F53\u4F5C"\u7ED3\u679C\u7684\u63A5\u6536\u8005"\u3002',paraId:50,tocIndex:4},{value:'\u5982\u679C\u4F60\u613F\u610F\u91C7\u7528\u4E00\u4E2A\u66F4\u5F62\u8C61\u7684\u6BD4\u55BB\uFF0C\u53EF\u4EE5\u628A\u771F\u5B9E DOM \u60F3\u8C61\u6210\u4E00\u4E2A\u8FDC\u7A0B\u670D\u52A1\uFF0C\u800C JavaScript \u662F\u672C\u5730\u7A0B\u5E8F\u3002\u5BF9\u8FD9\u4E2A\u8FDC\u7A0B\u670D\u52A1\u7684\u6BCF\u4E00\u6B21\u8C03\u7528\uFF0C\u65E2\u6709\u7F51\u7EDC\u822C\u7684\u5F00\u9500\uFF08\u4E0A\u4E0B\u6587\u5207\u6362\uFF09\uFF0C\u53C8\u53EF\u80FD\u89E6\u53D1\u670D\u52A1\u5668\u7AEF\u7684\u91CD\u8BA1\u7B97\uFF08\u5E03\u5C40\u4E0E\u91CD\u7ED8\uFF09\u3002\u5728\u8FD9\u79CD\u60C5\u51B5\u4E0B\uFF0C\u6BD4\u8F83\u806A\u660E\u7684\u505A\u6CD5\u4ECE\u6765\u4E0D\u662F"\u5728\u8FDC\u7A0B\u670D\u52A1\u4E0A\u5199\u4E1A\u52A1\u903B\u8F91"\uFF0C\u800C\u662F"\u5728\u672C\u5730\u628A\u6240\u6709\u4E1C\u897F\u7B97\u597D\uFF0C\u6700\u540E\u53EA\u53D1\u4E00\u5C01\u5305\u542B\u5FC5\u8981\u66F4\u65B0\u7684\u6307\u4EE4\u8FC7\u53BB"\u3002',paraId:51,tocIndex:4},{value:'\u8FD9\u5C31\u662F**"\u754C\u9762\u5DEE\u5206"\u601D\u7EF4**\u7684\u6838\u5FC3\uFF1A',paraId:52,tocIndex:4},{value:"\u628A\u9875\u9762\u7406\u89E3\u6210\u72B6\u6001\u51FD\u6570\u7684\u8F93\u51FA\uFF0C\u628A DOM \u64CD\u4F5C\u89C6\u4E3A\u6700\u7EC8\u3001\u5FC5\u8981\u3001\u4E14\u5E94\u5C3D\u91CF\u7A00\u5C11\u7684\u526F\u4F5C\u7528\u3002",paraId:53,tocIndex:4},{value:"\u5F53\u4F60\u4ECE\u8FD9\u4E2A\u89D2\u5EA6\u56DE\u671B\u4E00\u5F00\u59CB\u7684\u90A3\u4E9B\u95EE\u9898\u2014\u2014",paraId:54,tocIndex:5},{value:"window",paraId:54,tocIndex:5},{value:" \u7A76\u7ADF\u662F\u4E0D\u662F DOM\u3001DOM \u5BF9\u8C61\u7B97\u4E0D\u7B97 JavaScript \u5BF9\u8C61\u3001\u4E3A\u4EC0\u4E48\u64CD\u4F5C DOM \u4F1A\u6162\u2014\u2014\u4F60\u4F1A\u53D1\u73B0\uFF0C\u5B83\u4EEC\u5176\u5B9E\u90FD\u6307\u5411\u540C\u4E00\u4E2A\u4E3B\u9898\uFF1A",paraId:54,tocIndex:5},{value:"\u8FB9\u754C",paraId:54,tocIndex:5},{value:"\u3002",paraId:54,tocIndex:5},{value:"window",paraId:55,tocIndex:5},{value:" \u662F\u6D4F\u89C8\u5668\u4E16\u754C\u7684\u8FB9\u754C\uFF0C\u5B83\u628A\u4E00\u6574\u4E2A\u8FD0\u884C\u65F6\u7684\u80FD\u529B\u66B4\u9732\u7ED9\u4F60\uFF0C\u4F46\u5B83\u672C\u8EAB\u53C8\u7AD9\u5728 DOM \u4E4B\u4E0A\uFF0C\u7EDF\u6444\u7740\u6807\u7B7E\u9875\u8FD9\u4E00\u66F4\u9AD8\u5C42\u7EA7\u7684\u6982\u5FF5\uFF1B",paraId:55,tocIndex:5},{value:"document",paraId:55,tocIndex:5},{value:" \u662F\u6587\u6863\u4E16\u754C\u7684\u8FB9\u754C\uFF0C\u4ECE\u5B83\u51FA\u53D1\u4F60\u624D\u80FD\u89E6\u53CA\u90A3\u68F5\u4EE3\u8868\u9875\u9762\u7ED3\u6784\u7684\u6811\uFF1BDOM \u5BF9\u8C61\u65E2\u662F JavaScript \u5BF9\u8C61\uFF0C\u53C8\u627F\u8F7D\u7740\u6D4F\u89C8\u5668\u5185\u90E8\u5F15\u64CE\u7684\u72B6\u6001\uFF0C\u662F\u8BED\u8A00\u548C\u5BBF\u4E3B\u4E4B\u95F4\u7684\u4E00\u9053\u63A5\u53E3\u8FB9\u754C\uFF1B\u800C\u6027\u80FD\u95EE\u9898\uFF0C\u5219\u662F\u5728 JavaScript \u5F15\u64CE\u4E0E DOM/\u6E32\u67D3\u5F15\u64CE\u8FD9\u6761\u8FB9\u754C\u7EBF\u4E0A\u4E0D\u65AD\u5F80\u8FD4\u65F6\u4EA7\u751F\u7684\u6469\u64E6\u548C\u635F\u8017\u3002",paraId:55,tocIndex:5},{value:'\u5199\u524D\u7AEF\uFF0C\u8868\u9762\u4E0A\u662F\u5728\u5199\u7EC4\u4EF6\u3001\u5199\u6837\u5F0F\u3001\u5199\u4EA4\u4E92\uFF1B\u672C\u8D28\u4E0A\u5219\u662F\u5728\u4E0E\u8FD9\u4E9B\u8FB9\u754C\u6253\u4EA4\u9053\uFF1A\u4EC0\u4E48\u65F6\u5019\u628A\u903B\u8F91\u7559\u5728 JavaScript \u91CC\u7B97\u5B8C\uFF0C\u4EC0\u4E48\u65F6\u5019\u628A\u7ED3\u679C\u4EA4\u7ED9 DOM\uFF1B\u54EA\u4E9B\u72B6\u6001\u5E94\u8BE5\u53EA\u5B58\u5728\u4E8E\u5185\u5B58\uFF0C\u54EA\u4E9B\u624D\u503C\u5F97\u540C\u6B65\u5230\u754C\u9762\uFF1B\u4F55\u5904\u9002\u5408\u7CBE\u7EC6\u64CD\u4F5C\u8282\u70B9\uFF0C\u4F55\u5904\u53C8\u5E94\u8BE5\u9000\u4E00\u6B65\uFF0C\u7528"\u6574\u4F53\u91CD\u7B97 + \u5DEE\u5206\u66F4\u65B0"\u7684\u65B9\u5F0F\u6765\u6362\u53D6\u7B80\u6D01\u548C\u6027\u80FD\u3002',paraId:56,tocIndex:5},{value:'\u4E5F\u8BB8\u771F\u6B63\u503C\u5F97\u95EE\u81EA\u5DF1\u7684\u95EE\u9898\uFF0C\u4E0D\u518D\u662F"DOM \u64CD\u4F5C\u5230\u5E95\u6162\u4E0D\u6162"\uFF0C\u800C\u662F\uFF1A',paraId:57,tocIndex:5},{value:'"\u6211\u662F\u4E0D\u662F\u5728\u6EE5\u7528\u4E00\u6761\u672C\u6765\u5C31\u6602\u8D35\u7684\u8FB9\u754C\uFF1F"',paraId:58,tocIndex:5},{value:'"\u6211\u80FD\u4E0D\u80FD\u628A\u66F4\u591A\u7684\u590D\u6742\u5EA6\u6536\u62E2\u5728 JavaScript \u81EA\u5DF1\u7684\u4E16\u754C\u91CC\uFF0C\u53EA\u628A\u6700\u5C0F\u7684\u4E00\u90E8\u5206\u4EA4\u7ED9\u6D4F\u89C8\u5668\u53BB\u7ED8\u5236\uFF1F"',paraId:59,tocIndex:5},{value:"\u5F53\u4F60\u5F00\u59CB\u7528\u8FD9\u79CD\u65B9\u5F0F\u5BA1\u89C6\u81EA\u5DF1\u7684\u4EE3\u7801\u65F6\uFF0C\u4F60\u5C31\u4E0D\u518D\u53EA\u662F\u4E00\u4E2A API \u4F7F\u7528\u8005\uFF0C\u800C\u662F\u5728\u4E3B\u52A8\u8BBE\u8BA1 JavaScript \u4E16\u754C\u4E0E\u6D4F\u89C8\u5668\u4E16\u754C\u4E4B\u95F4\u7684\u5951\u7EA6\u3002\u754C\u9650\u6E05\u6670\uFF0C\u8C03\u7528\u514B\u5236\uFF0C\u526F\u4F5C\u7528\u53EF\u63A7\u2014\u2014\u8FD9\u6216\u8BB8\u624D\u662F\u524D\u7AEF\u5DE5\u7A0B\u5E08\u771F\u6B63\u7684\u4E13\u4E1A\u611F\u6240\u5728\u3002",paraId:60,tocIndex:5},{value:'\u81F3\u4E8E\u90A3\u4E00\u53E5\u88AB\u8BF4\u70C2\u4E86\u7684\u5FE0\u544A\u2014\u2014"\u5C11\u64CD\u4F5C DOM"\u2014\u2014\u5728\u4F60\u7406\u89E3\u4E86\u5B83\u80CC\u540E\u7684\u8FB9\u754C\u6545\u4E8B\u4E4B\u540E\uFF0C\u5C31\u4E0D\u518D\u53EA\u662F\u4E00\u4E2A\u6A21\u7CCA\u7684\u7ECF\u9A8C\u6CD5\u5219\uFF0C\u800C\u6210\u4E3A\u4E00\u79CD\u53EF\u4EE5\u5728\u6BCF\u4E2A\u5177\u4F53\u573A\u666F\u4E2D\u88AB\u63A8\u7406\u3001\u88AB\u9A8C\u8BC1\u3001\u88AB\u7CBE\u786E\u5E94\u7528\u7684\u601D\u7EF4\u5DE5\u5177\u3002',paraId:61,tocIndex:5}]},75130:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"\u60F3\u8C61\u4F60\u5728\u627E\u4E00\u4E2A\u53A8\u5E08\uFF0C\u4F60\u95EE\u7684\u95EE\u9898\u4E0D\u662F\u201C\u4ED6\u7092\u83DC\u597D\u4E0D\u597D\u5403\u201D\uFF0C\u800C\u662F\u66F4\u57FA\u7840\u2014\u2014",paraId:0,tocIndex:2},{value:`\u8FD9\u4F4D\u53A8\u5E08\uFF0C\u7406\u8BBA\u4E0A\u80FD\u4E0D\u80FD\u505A\u51FA\u4E16\u754C\u4E0A\u4EFB\u4F55\u4E00\u9053\u83DC\uFF1F
 \u53EA\u8981\u7ED9\u4ED6\u8DB3\u591F\u7684\u98DF\u6750\u3001\u65F6\u95F4\u548C\u9505\u7897\u74E2\u76C6\u3002`,paraId:1,tocIndex:2},{value:"\u5982\u679C\u7B54\u6848\u662F\u201C\u53EF\u4EE5\u201D\uFF0C\u90A3\u6211\u4EEC\u53EB\u4ED6\u201C\u70F9\u996A\u5B8C\u5907\u201D\u3002",paraId:2,tocIndex:2},{value:"\u56FE\u7075\u5B8C\u5907\u5C31\u662F\u4E00\u6837\u7684\u610F\u601D\uFF1A",paraId:3,tocIndex:2},{value:"\u56FE\u7075\u5B8C\u5907\u7684\u8BED\u8A00 = \u7406\u8BBA\u4E0A\u80FD\u63CF\u8FF0\u5E76\u8BA1\u7B97",paraId:4,tocIndex:2},{value:"\u6240\u6709\u53EF\u8BA1\u7B97\u7684\u95EE\u9898",paraId:4,tocIndex:2},{value:"\u7684\u8BED\u8A00\u3002",paraId:4,tocIndex:2},{value:"\u6CE8\u610F\u4E24\u53E5\u8BDD\uFF1A",paraId:5,tocIndex:2},{value:"\u662F\u201C\u7406\u8BBA\u4E0A\u201D\uFF0C\u4E0D\u8003\u8651\u65F6\u95F4\u591F\u4E0D\u591F\u3001\u5185\u5B58\u591F\u4E0D\u591F\u3002",paraId:6,tocIndex:2},{value:"\u662F\u201C\u6240\u6709",paraId:6,tocIndex:2},{value:"\u53EF\u8BA1\u7B97",paraId:6,tocIndex:2},{value:"\u7684\u95EE\u9898\u201D\uFF0C\u6709\u4E9B\u6570\u5B66\u95EE\u9898\u672C\u6765\u5C31\u4E0D\u53EF\u8BA1\u7B97\uFF08\u6BD4\u5982\u505C\u673A\u95EE\u9898\uFF09\uFF0C\u4EFB\u4F55\u8BED\u8A00\u90FD\u505A\u4E0D\u4E86\u3002",paraId:6,tocIndex:2},{value:"\u5728\u8BA1\u7B97\u673A\u7406\u8BBA\u91CC\uFF0C\u56FE\u7075\u5B8C\u5907\u6709\u591A\u79CD\u7B49\u4EF7\u7684\u8868\u8FF0\uFF0C\u5176\u4E2D\u4E00\u79CD\u6BD4\u8F83\u7ECF\u5178\u7684\u662F\uFF1A",paraId:7,tocIndex:3},{value:"\u5982\u679C\u4E00\u95E8\u8BED\u8A00\u80FD\u6A21\u62DF\u4E00\u53F0\u56FE\u7075\u673A\uFF08Turing Machine\uFF09\uFF0C\u90A3\u4E48\u5B83\u5C31\u662F\u56FE\u7075\u5B8C\u5907\u7684\u3002",paraId:8,tocIndex:3},{value:"\u56FE\u7075\u673A\u662F\u56FE\u7075\u8FD9\u4F4D\u201C\u8BA1\u7B97\u673A\u754C\u8001\u7956\u5B97\u201D\u4E3A\u4E86\u7814\u7A76\u201C\u4EC0\u4E48\u662F\u53EF\u8BA1\u7B97\u201D\u800C\u63D0\u51FA\u7684\u4E00\u4E2A\u6570\u5B66\u6A21\u578B\u3002\u4F60\u53EF\u4EE5\u7B80\u5355\u7406\u89E3\u4E3A\uFF1A\u201C\u6700\u62BD\u8C61\u4F46\u529F\u80FD\u5B8C\u6574\u7684\u4E00\u53F0\u7406\u8BBA\u8BA1\u7B97\u673A\u201D\u3002",paraId:9,tocIndex:3},{value:"\u5386\u53F2\u4E0A\uFF0C\u8BA1\u7B97\u673A\u8BED\u8A00\u57FA\u672C\u4E0A\u6765\u81EA\u4E24\u4E2A\u6570\u5B66\u4F53\u7CFB\uFF1A",paraId:10,tocIndex:4},{value:"\u56FE\u7075\u673A\uFF08Turing Machine\uFF09\uFF1A\u504F\u201C\u547D\u4EE4\u5F0F\u201D",paraId:11,tocIndex:4},{value:"\u03BB \u6F14\u7B97\uFF08Lambda Calculus\uFF09\uFF1A\u504F\u201C\u51FD\u6570\u5F0F / \u58F0\u660E\u5F0F\u201D",paraId:11,tocIndex:4},{value:"\u5BF9\u5E94\u5230\u7F16\u7A0B\u8BED\u8A00\uFF0C\u5927\u81F4\u6709\u4E24\u6761\u9053\u8DEF\u901A\u5F80\u56FE\u7075\u5B8C\u5907\u3002",paraId:12,tocIndex:4},{value:"\u6570\u5B66\u5BB6\u8BC1\u660E\u8FC7\uFF1A",paraId:13,tocIndex:5},{value:"\u53EA\u8981\u4F60\u6709\uFF1A",paraId:14,tocIndex:5},{value:"goto",paraId:15,tocIndex:5},{value:` \u8DF3\u8F6C\u8BED\u53E5
 \u6216\u8005`,paraId:15,tocIndex:5},{value:"if",paraId:15,tocIndex:5},{value:" \u5206\u652F + ",paraId:15,tocIndex:5},{value:"while",paraId:15,tocIndex:5},{value:" \u5FAA\u73AF",paraId:15,tocIndex:5},{value:"\u518D\u914D\u5408\u57FA\u672C\u7684\u8BFB\u5199\u548C\u5B58\u50A8\u6570\u636E\uFF0C\u4F60\u5C31\u53EF\u4EE5\u5B9E\u73B0\u56FE\u7075\u5B8C\u5907\u3002",paraId:16,tocIndex:5},{value:"\u4E5F\u5C31\u662F\u8BF4\uFF0C\u7EDD\u5927\u591A\u6570\u547D\u4EE4\u5F0F\u8BED\u8A00\uFF08C\u3001C++\u3001Java\u3001JavaScript\u3001Python \u7B49\uFF09\u5176\u5B9E\u5728\u5E95\u5C42\u90FD\u662F\u8FD9\u4E2A\u5957\u8DEF\uFF1A",paraId:17,tocIndex:5},{value:"\u7528\u6761\u4EF6\u8BED\u53E5\uFF08",paraId:18,tocIndex:5},{value:"if",paraId:18,tocIndex:5},{value:"\uFF09\u505A\u201C\u4E0D\u540C\u60C5\u51B5\u8D70\u4E0D\u540C\u8DEF\u201D",paraId:18,tocIndex:5},{value:"\u7528\u5FAA\u73AF\uFF08",paraId:18,tocIndex:5},{value:"while",paraId:18,tocIndex:5},{value:" / ",paraId:18,tocIndex:5},{value:"for",paraId:18,tocIndex:5},{value:"\uFF09\u505A\u201C\u91CD\u590D\u5F88\u591A\u6B21\u76F4\u5230\u6EE1\u8DB3\u6761\u4EF6\u201D",paraId:18,tocIndex:5},{value:"\u5C31\u5DF2\u7ECF\u8DB3\u591F\u8868\u8FBE\u4E00\u5207\u53EF\u8BA1\u7B97\u7684\u95EE\u9898\u4E86\u3002",paraId:19,tocIndex:5},{value:"\u53E6\u4E00\u6D3E\u6765\u81EA\u4E18\u5947\uFF08Church\uFF09\u7684 \u03BB \u6F14\u7B97\uFF08Lambda Calculus\uFF09\u3002",paraId:20,tocIndex:6},{value:"\u4F60\u53EF\u4EE5\u628A \u03BB \u6F14\u7B97\u7406\u89E3\u6210\uFF1A",paraId:21,tocIndex:6},{value:"\u4E00\u79CD\u53EA\u7528\u201C\u51FD\u6570\u201D\u548C\u201C\u66FF\u6362\u201D\u6765\u8BA1\u7B97\u4E00\u5207\u7684\u6570\u5B66\u4F53\u7CFB\u3002",paraId:22,tocIndex:6},{value:"\u8FD9\u91CC\u6700\u5173\u952E\u7684\u80FD\u529B\u662F\uFF1A",paraId:23,tocIndex:6},{value:"\u9012\u5F52",paraId:23,tocIndex:6},{value:"\u3002",paraId:23,tocIndex:6},{value:"\u51FD\u6570\u53EF\u4EE5\u8C03\u7528\u81EA\u5DF1",paraId:24,tocIndex:6},{value:"\u901A\u8FC7\u4E0D\u65AD\u201C\u81EA\u6211\u8C03\u7528 + \u9010\u6B65\u903C\u8FD1\u7EC8\u6B62\u6761\u4EF6\u201D\u6765\u5B8C\u6210\u5FAA\u73AF",paraId:24,tocIndex:6},{value:`\u5F88\u591A\u51FD\u6570\u5F0F\u8BED\u8A00\uFF08\u6BD4\u5982\u65E9\u671F\u7684 Lisp\u3001Haskell \u7B49\uFF09\u5C31\u662F\u8D70\u7684\u8FD9\u6761\u8DEF\uFF1A
 \u5B83\u4EEC\u4E0D\u4E00\u5B9A\u4E00\u5F00\u59CB\u5C31\u5F3A\u8C03 `,paraId:25,tocIndex:6},{value:"while",paraId:25,tocIndex:6},{value:" \u8FD9\u79CD\u5FAA\u73AF\u7ED3\u6784\uFF0C\u800C\u662F\u7528\u9012\u5F52\u6765\u5B9E\u73B0\u6240\u6709\u91CD\u590D\u903B\u8F91\u3002",paraId:25,tocIndex:6},{value:"\u73B0\u4EE3\u8BED\u8A00\u57FA\u672C\u4E0A\u5F88\u73B0\u5B9E\uFF1A",paraId:26,tocIndex:7},{value:"\u65E2\u652F\u6301 ",paraId:27,tocIndex:7},{value:"if",paraId:27,tocIndex:7},{value:" + ",paraId:27,tocIndex:7},{value:"while",paraId:27,tocIndex:7},{value:" \u90A3\u5957\u547D\u4EE4\u5F0F\u5199\u6CD5",paraId:27,tocIndex:7},{value:"\u53C8\u652F\u6301\u51FD\u6570\u9012\u5F52\uFF0C\u751A\u81F3\u51FD\u6570\u5F0F\u7279\u6027",paraId:27,tocIndex:7},{value:`\u6240\u4EE5\u4F60\u4F1A\u770B\u5230\uFF1A
@@ -1637,7 +1686,7 @@ Function<Parent>  // \u63A5\u53D7 Parent \u4F5C\u4E3A\u53C2\u6570\u7684\u51FD\u6
 \u8FD9\u4E2A\u65B9\u5411\u662F\u201C\u9006\u201D\u7684\uFF0C\u5C31\u53EB\u9006\u53D8\u3002`,paraId:131,tocIndex:27},{value:"\u4E00\u53E5\u8BDD\u603B\u7ED3\uFF1A",paraId:132,tocIndex:27},{value:"\u534F\u53D8\uFF1A",paraId:133,tocIndex:27},{value:"\u7ED3\u679C\u7C7B\u578B",paraId:133,tocIndex:27},{value:"\u65B9\u5411\u4E00\u81F4\u2014\u2014\u5B50\u53EF\u4EE5\u66FF\u7236\uFF08\u8D8A\u5177\u4F53\u8D8A\u6CA1\u95EE\u9898\uFF09",paraId:133,tocIndex:27},{value:"\u9006\u53D8\uFF1A",paraId:133,tocIndex:27},{value:"\u53C2\u6570\u7C7B\u578B",paraId:133,tocIndex:27},{value:"\u65B9\u5411\u76F8\u53CD\u2014\u2014\u7236\u53EF\u4EE5\u66FF\u5B50\uFF08\u8D8A\u5BBD\u6CDB\u8D8A\u5B89\u5168\uFF09",paraId:133,tocIndex:27},{value:"\u4E0D\u540C\u8BED\u8A00\u5BF9\u534F\u53D8\u3001\u9006\u53D8\u6709\u4E0D\u540C\u7684\u8BBE\u8BA1\uFF0C\u8FD9\u91CC\u53EA\u8981\u5148\u5F62\u6210\u76F4\u89C9\u5C31\u591F\u4E86\u3002",paraId:134,tocIndex:27},{value:"\u56DE\u5934\u770B\u4E00\u773C\u5B9E\u9645\u5DE5\u4F5C\u4E2D\u5E38\u89C1\u7684\u8BED\u8A00\uFF1A",paraId:135,tocIndex:28},{value:"JavaScript\uFF1A",paraId:136,tocIndex:28},{value:"\u52A8\u6001\u7C7B\u578B\u7CFB\u7EDF\uFF08\u7C7B\u578B\u4FE1\u606F\u5728\u8FD0\u884C\u65F6\u5B58\u5728\uFF0C\u53EF\u4EE5 ",paraId:137,tocIndex:28},{value:"typeof",paraId:137,tocIndex:28},{value:"\uFF09",paraId:137,tocIndex:28},{value:"\u5F31\u7C7B\u578B\uFF08\u5927\u91CF\u9690\u5F0F\u8F6C\u6362\uFF1A",paraId:137,tocIndex:28},{value:'1 + "2"',paraId:137,tocIndex:28},{value:"\u3001",paraId:137,tocIndex:28},{value:"==",paraId:137,tocIndex:28},{value:" \u7B49\uFF09",paraId:137,tocIndex:28},{value:"\u56FE\u7075\u5B8C\u5907\uFF1A\u9760 ",paraId:137,tocIndex:28},{value:"if",paraId:137,tocIndex:28},{value:" + ",paraId:137,tocIndex:28},{value:"while",paraId:137,tocIndex:28},{value:" + \u51FD\u6570\u9012\u5F52\u7B49\u5B9E\u73B0",paraId:137,tocIndex:28},{value:"TypeScript\uFF1A",paraId:138,tocIndex:28},{value:"\u9759\u6001\u7C7B\u578B\u7CFB\u7EDF\uFF08\u7C7B\u578B\u53EA\u5728\u7F16\u8BD1\u65F6\u5B58\u5728\uFF0C\u8FD0\u884C\u65F6\u4F1A\u88AB\u64E6\u9664\uFF09",paraId:139,tocIndex:28},{value:`\u7C7B\u578B\u7CFB\u7EDF\u652F\u6301\uFF1A
 `,paraId:139,tocIndex:28},{value:"\u590D\u5408\u7C7B\u578B\uFF08\u5BF9\u8C61\u7C7B\u578B\uFF09",paraId:140,tocIndex:28},{value:"\u51FD\u6570\u7C7B\u578B",paraId:140,tocIndex:28},{value:"\u5B50\u7C7B\u578B\uFF08\u63A5\u53E3\u6269\u5C55\u3001\u7C7B\u7EE7\u627F\uFF09",paraId:140,tocIndex:28},{value:"\u6CDB\u578B\uFF08",paraId:140,tocIndex:28},{value:"Array<T>",paraId:140,tocIndex:28},{value:"\u3001",paraId:140,tocIndex:28},{value:"Promise<T>",paraId:140,tocIndex:28},{value:" \u7B49\uFF09",paraId:140,tocIndex:28},{value:"\u534F\u53D8 / \u9006\u53D8\u7B49\u590D\u6742\u89C4\u5219\uFF08\u5F88\u591A\u9690\u85CF\u5728\u7C7B\u578B\u63A8\u5BFC\u91CC\uFF09",paraId:140,tocIndex:28},{value:"Java\uFF1A",paraId:141,tocIndex:28},{value:"\u9759\u6001\u7C7B\u578B\u4E3A\u4E3B + \u8FD0\u884C\u65F6\u53CD\u5C04\uFF08\u201C\u534A\u52A8\u6001\u534A\u9759\u6001\u201D\uFF09",paraId:142,tocIndex:28},{value:"\u76F8\u5BF9\u5F3A\u7C7B\u578B",paraId:142,tocIndex:28},{value:"\u540C\u6837\u56FE\u7075\u5B8C\u5907\uFF08",paraId:142,tocIndex:28},{value:"if",paraId:142,tocIndex:28},{value:" / ",paraId:142,tocIndex:28},{value:"while",paraId:142,tocIndex:28},{value:" / \u9012\u5F52\u90FD\u6709\uFF09",paraId:142,tocIndex:28},{value:"\u4F60\u4F1A\u53D1\u73B0\uFF1A",paraId:143,tocIndex:28},{value:`\u56FE\u7075\u5B8C\u5907 \u2192 \u5173\u5FC3\u201C\u8FD9\u95E8\u8BED\u8A00\u80FD\u4E0D\u80FD\u7406\u8BBA\u4E0A\u89E3\u51B3\u6240\u6709\u53EF\u8BA1\u7B97\u95EE\u9898\u201D
 \u52A8 / \u9759\u6001 \u2192 \u5173\u5FC3\u201C\u4E8B\u60C5\u5728\u8C01\u7684\u7535\u8111\u4E0A\u3001\u4EC0\u4E48\u65F6\u5019\u53D1\u751F\u201D
-\u7C7B\u578B\u7CFB\u7EDF \u2192 \u5173\u5FC3\u201C\u6570\u636E\u8D34\u4EC0\u4E48\u6807\u7B7E\u3001\u80FD\u628A\u9519\u627C\u6740\u5728\u591A\u65E9\u201D`,paraId:144,tocIndex:28},{value:"\u628A\u8FD9\u4E09\u5757\u5206\u6E05\u695A\uFF0C\u4F60\u770B\u8BED\u8A00\u7279\u6027\u7684\u65F6\u5019\u5C31\u4E0D\u4F1A\u88AB\u5404\u79CD\u672F\u8BED\u7ED5\u6655\u4E86\u3002",paraId:145,tocIndex:28}]},66061:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:'BEM \u662F "Block\uFF0CElement\uFF0CModifier" \u7684\u7F29\u5199\uFF0C\u662F\u4E00\u79CD\u7528\u4E8E\u547D\u540D CSS \u7C7B\u7684\u547D\u540D\u65B9\u6CD5\u8BBA\u3002\u8FD9\u79CD\u65B9\u6CD5\u7531\u4FC4\u7F57\u65AF\u7684 Yandex \u56E2\u961F\u63D0\u51FA\uFF0C\u65E8\u5728\u63D0\u9AD8\u4EE3\u7801\u7684\u53EF\u8BFB\u6027\u548C\u53EF\u7EF4\u62A4\u6027\u3002',paraId:0,tocIndex:0},{value:"BEM \u5C06\u7528\u6237\u754C\u9762\u5206\u89E3\u4E3A\u72EC\u7ACB\u7684\u5757 (Block)\uFF0C\u5143\u7D20 (Element) \u548C\u4FEE\u9970\u7B26 (Modifier)\uFF0C\u4ECE\u800C\u4F7F\u4EE3\u7801\u66F4\u52A0\u6A21\u5757\u5316\u548C\u53EF\u91CD\u7528\u3002",paraId:1,tocIndex:0},{value:"\u5728\u4F20\u7EDF\u7684 CSS \u5F00\u53D1\u4E2D\uFF0C\u6211\u4EEC\u5E38\u5E38\u9047\u5230\u4EE5\u4E0B\u95EE\u9898\uFF1A",paraId:2,tocIndex:1},{value:"\u547D\u540D\u51B2\u7A81",paraId:3,tocIndex:1},{value:"\uFF1A",paraId:3,tocIndex:1},{value:".title",paraId:3,tocIndex:1},{value:" \u8FD9\u6837\u7684\u901A\u7528\u7C7B\u540D\u5BB9\u6613\u5728\u4E0D\u540C\u7EC4\u4EF6\u4E2D\u51B2\u7A81",paraId:3,tocIndex:1},{value:"\u5C42\u7EA7\u5D4C\u5957\u8FC7\u6DF1",paraId:3,tocIndex:1},{value:"\uFF1A",paraId:3,tocIndex:1},{value:".header .nav .menu .item",paraId:3,tocIndex:1},{value:" \u8FD9\u6837\u7684\u9009\u62E9\u5668\u96BE\u4EE5\u7EF4\u62A4",paraId:3,tocIndex:1},{value:"\u6837\u5F0F\u8026\u5408",paraId:3,tocIndex:1},{value:"\uFF1A\u4FEE\u6539\u4E00\u4E2A\u6837\u5F0F\u53EF\u80FD\u5F71\u54CD\u5230\u5176\u4ED6\u4E0D\u76F8\u5173\u7684\u5143\u7D20",paraId:3,tocIndex:1},{value:"\u53EF\u8BFB\u6027\u5DEE",paraId:3,tocIndex:1},{value:"\uFF1A\u65E0\u6CD5\u4ECE\u7C7B\u540D\u76F4\u63A5\u770B\u51FA\u5143\u7D20\u7684\u4F5C\u7528\u548C\u5C42\u7EA7\u5173\u7CFB",paraId:3,tocIndex:1},{value:"BEM \u901A\u8FC7\u4E25\u683C\u7684\u547D\u540D\u7EA6\u5B9A\u89E3\u51B3\u4E86\u8FD9\u4E9B\u95EE\u9898\u3002",paraId:4,tocIndex:1},{value:"\u5757\u662F\u9875\u9762\u4E2D\u7684\u72EC\u7ACB\u5B9E\u4F53\uFF0C\u662F\u53EF\u4EE5\u88AB\u590D\u7528\u7684\u7EC4\u4EF6\u3002",paraId:5,tocIndex:3},{value:"\u5757\u540D\u5E94\u8BE5\u63CF\u8FF0\u5B83\u7684\u7528\u9014\uFF0C\u800C\u4E0D\u662F\u72B6\u6001",paraId:5,tocIndex:3},{value:"\u3002",paraId:5,tocIndex:3},{value:`.button {
+\u7C7B\u578B\u7CFB\u7EDF \u2192 \u5173\u5FC3\u201C\u6570\u636E\u8D34\u4EC0\u4E48\u6807\u7B7E\u3001\u80FD\u628A\u9519\u627C\u6740\u5728\u591A\u65E9\u201D`,paraId:144,tocIndex:28},{value:"\u628A\u8FD9\u4E09\u5757\u5206\u6E05\u695A\uFF0C\u4F60\u770B\u8BED\u8A00\u7279\u6027\u7684\u65F6\u5019\u5C31\u4E0D\u4F1A\u88AB\u5404\u79CD\u672F\u8BED\u7ED5\u6655\u4E86\u3002",paraId:145,tocIndex:28}]},66061:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:'BEM \u662F "Block\uFF0CElement\uFF0CModifier" \u7684\u7F29\u5199\uFF0C\u662F\u4E00\u79CD\u7528\u4E8E\u547D\u540D CSS \u7C7B\u7684\u547D\u540D\u65B9\u6CD5\u8BBA\u3002\u8FD9\u79CD\u65B9\u6CD5\u7531\u4FC4\u7F57\u65AF\u7684 Yandex \u56E2\u961F\u63D0\u51FA\uFF0C\u65E8\u5728\u63D0\u9AD8\u4EE3\u7801\u7684\u53EF\u8BFB\u6027\u548C\u53EF\u7EF4\u62A4\u6027\u3002',paraId:0,tocIndex:0},{value:"BEM \u5C06\u7528\u6237\u754C\u9762\u5206\u89E3\u4E3A\u72EC\u7ACB\u7684\u5757 (Block)\uFF0C\u5143\u7D20 (Element) \u548C\u4FEE\u9970\u7B26 (Modifier)\uFF0C\u4ECE\u800C\u4F7F\u4EE3\u7801\u66F4\u52A0\u6A21\u5757\u5316\u548C\u53EF\u91CD\u7528\u3002",paraId:1,tocIndex:0},{value:"\u5728\u4F20\u7EDF\u7684 CSS \u5F00\u53D1\u4E2D\uFF0C\u6211\u4EEC\u5E38\u5E38\u9047\u5230\u4EE5\u4E0B\u95EE\u9898\uFF1A",paraId:2,tocIndex:1},{value:"\u547D\u540D\u51B2\u7A81",paraId:3,tocIndex:1},{value:"\uFF1A",paraId:3,tocIndex:1},{value:".title",paraId:3,tocIndex:1},{value:" \u8FD9\u6837\u7684\u901A\u7528\u7C7B\u540D\u5BB9\u6613\u5728\u4E0D\u540C\u7EC4\u4EF6\u4E2D\u51B2\u7A81",paraId:3,tocIndex:1},{value:"\u5C42\u7EA7\u5D4C\u5957\u8FC7\u6DF1",paraId:3,tocIndex:1},{value:"\uFF1A",paraId:3,tocIndex:1},{value:".header .nav .menu .item",paraId:3,tocIndex:1},{value:" \u8FD9\u6837\u7684\u9009\u62E9\u5668\u96BE\u4EE5\u7EF4\u62A4",paraId:3,tocIndex:1},{value:"\u6837\u5F0F\u8026\u5408",paraId:3,tocIndex:1},{value:"\uFF1A\u4FEE\u6539\u4E00\u4E2A\u6837\u5F0F\u53EF\u80FD\u5F71\u54CD\u5230\u5176\u4ED6\u4E0D\u76F8\u5173\u7684\u5143\u7D20",paraId:3,tocIndex:1},{value:"\u53EF\u8BFB\u6027\u5DEE",paraId:3,tocIndex:1},{value:"\uFF1A\u65E0\u6CD5\u4ECE\u7C7B\u540D\u76F4\u63A5\u770B\u51FA\u5143\u7D20\u7684\u4F5C\u7528\u548C\u5C42\u7EA7\u5173\u7CFB",paraId:3,tocIndex:1},{value:"BEM \u901A\u8FC7\u4E25\u683C\u7684\u547D\u540D\u7EA6\u5B9A\u89E3\u51B3\u4E86\u8FD9\u4E9B\u95EE\u9898\u3002",paraId:4,tocIndex:1},{value:"\u5757\u662F\u9875\u9762\u4E2D\u7684\u72EC\u7ACB\u5B9E\u4F53\uFF0C\u662F\u53EF\u4EE5\u88AB\u590D\u7528\u7684\u7EC4\u4EF6\u3002",paraId:5,tocIndex:3},{value:"\u5757\u540D\u5E94\u8BE5\u63CF\u8FF0\u5B83\u7684\u7528\u9014\uFF0C\u800C\u4E0D\u662F\u72B6\u6001",paraId:5,tocIndex:3},{value:"\u3002",paraId:5,tocIndex:3},{value:`.button {
 } /* \u2705 \u597D\u7684\u547D\u540D */
 .header {
 }
@@ -1906,7 +1955,7 @@ Function<Parent>  // \u63A5\u53D7 Parent \u4F5C\u4E3A\u53C2\u6570\u7684\u51FD\u6
 <div className="{styles.card}">
   <div className="{styles.card__header}"></div>
 </div>
-`,paraId:36,tocIndex:22},{value:"BEM \u547D\u540D\u89C4\u8303\u7684\u6838\u5FC3\u4EF7\u503C\u5728\u4E8E\uFF1A",paraId:37,tocIndex:23},{value:"\u660E\u786E\u7684\u547D\u540D\u7EA6\u5B9A",paraId:38,tocIndex:23},{value:" - \u4E00\u773C\u5C31\u80FD\u770B\u51FA\u5143\u7D20\u7684\u5C42\u7EA7\u548C\u4F5C\u7528",paraId:38,tocIndex:23},{value:"\u964D\u4F4E\u6837\u5F0F\u51B2\u7A81",paraId:38,tocIndex:23},{value:" - \u907F\u514D\u5168\u5C40\u547D\u540D\u7A7A\u95F4\u6C61\u67D3",paraId:38,tocIndex:23},{value:"\u63D0\u9AD8\u53EF\u7EF4\u62A4\u6027",paraId:38,tocIndex:23},{value:" - \u7EC4\u4EF6\u72EC\u7ACB\uFF0C\u4FEE\u6539\u5F71\u54CD\u8303\u56F4\u53EF\u63A7",paraId:38,tocIndex:23},{value:"\u4FBF\u4E8E\u56E2\u961F\u534F\u4F5C",paraId:38,tocIndex:23},{value:" - \u7EDF\u4E00\u7684\u547D\u540D\u89C4\u5219\u964D\u4F4E\u6C9F\u901A\u6210\u672C",paraId:38,tocIndex:23},{value:"\u8BB0\u4F4F\uFF1A",paraId:39,tocIndex:23},{value:"BEM \u4E0D\u662F\u94F6\u5F39",paraId:39,tocIndex:23},{value:"\uFF0C\u5B83\u662F\u4E00\u4E2A\u5DE5\u5177\u3002\u5728\u5408\u9002\u7684\u573A\u666F\u4F7F\u7528\u5B83\uFF0C\u53EF\u4EE5\u5E2E\u52A9\u4F60\u7F16\u5199\u66F4\u6E05\u6670\u3001\u53EF\u7EF4\u62A4\u7684 CSS \u4EE3\u7801\u3002\u4E0D\u8981\u4E3A\u4E86\u4F7F\u7528 BEM \u800C\u4F7F\u7528 BEM\uFF0C\u9009\u62E9\u6700\u9002\u5408\u4F60\u9879\u76EE\u7684\u65B9\u6848\u624D\u662F\u6700\u91CD\u8981\u7684\u3002",paraId:39,tocIndex:23}]},79385:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"\u6D4F\u89C8\u5668\u4E3A HTML \u5143\u7D20\u63D0\u4F9B\u4E86\u4E00\u5957\u9ED8\u8BA4\u6837\u5F0F\uFF08User Agent Stylesheet\uFF09\uFF0C\u4F46\u8FD9\u4E9B\u6837\u5F0F\uFF1A",paraId:0,tocIndex:0},{value:"\u5728\u4E0D\u540C\u6D4F\u89C8\u5668\u95F4\u5B58\u5728\u5DEE\u5F02",paraId:1,tocIndex:0},{value:"\u5F80\u5F80\u4E0D\u7B26\u5408\u73B0\u4EE3\u8BBE\u8BA1\u9700\u6C42",paraId:1,tocIndex:0},{value:"\u4F1A\u5BFC\u81F4\u610F\u5916\u7684\u5E03\u5C40\u95EE\u9898",paraId:1,tocIndex:0},{value:"\u901A\u8FC7 ",paraId:2,tocIndex:0},{value:"TailwindCSS v3.4.4 \u7684 CSS Reset \u65B9\u6848",paraId:3,tocIndex:0},{value:"\uFF0C\u6211\u4EEC\u53EF\u4EE5\u7CFB\u7EDF\u6027\u5730\u4E86\u89E3\u6D4F\u89C8\u5668\u9ED8\u8BA4\u6837\u5F0F\u7684\u95EE\u9898\uFF0C\u4EE5\u53CA\u5982\u4F55\u6B63\u786E\u91CD\u7F6E\u5B83\u4EEC\u3002",paraId:2,tocIndex:0},{value:"\u672C\u6587\u6309\u7167 ",paraId:4,tocIndex:0},{value:"\u4E8C\u516B\u539F\u5219",paraId:4,tocIndex:0},{value:" \u7EC4\u7EC7\uFF1A\u91CD\u70B9\u8BE6\u89E3 80% \u5F00\u53D1\u4E2D\u6700\u5E38\u9047\u5230\u7684\u6837\u5F0F\u91CD\u7F6E\uFF0C\u7B80\u8981\u4ECB\u7ECD 20% \u4E0D\u5E38\u7528\u7684\u6837\u5F0F\u3002",paraId:4,tocIndex:0},{value:`*,
+`,paraId:36,tocIndex:22},{value:"BEM \u547D\u540D\u89C4\u8303\u7684\u6838\u5FC3\u4EF7\u503C\u5728\u4E8E\uFF1A",paraId:37,tocIndex:23},{value:"\u660E\u786E\u7684\u547D\u540D\u7EA6\u5B9A",paraId:38,tocIndex:23},{value:" - \u4E00\u773C\u5C31\u80FD\u770B\u51FA\u5143\u7D20\u7684\u5C42\u7EA7\u548C\u4F5C\u7528",paraId:38,tocIndex:23},{value:"\u964D\u4F4E\u6837\u5F0F\u51B2\u7A81",paraId:38,tocIndex:23},{value:" - \u907F\u514D\u5168\u5C40\u547D\u540D\u7A7A\u95F4\u6C61\u67D3",paraId:38,tocIndex:23},{value:"\u63D0\u9AD8\u53EF\u7EF4\u62A4\u6027",paraId:38,tocIndex:23},{value:" - \u7EC4\u4EF6\u72EC\u7ACB\uFF0C\u4FEE\u6539\u5F71\u54CD\u8303\u56F4\u53EF\u63A7",paraId:38,tocIndex:23},{value:"\u4FBF\u4E8E\u56E2\u961F\u534F\u4F5C",paraId:38,tocIndex:23},{value:" - \u7EDF\u4E00\u7684\u547D\u540D\u89C4\u5219\u964D\u4F4E\u6C9F\u901A\u6210\u672C",paraId:38,tocIndex:23},{value:"\u8BB0\u4F4F\uFF1A",paraId:39,tocIndex:23},{value:"BEM \u4E0D\u662F\u94F6\u5F39",paraId:39,tocIndex:23},{value:"\uFF0C\u5B83\u662F\u4E00\u4E2A\u5DE5\u5177\u3002\u5728\u5408\u9002\u7684\u573A\u666F\u4F7F\u7528\u5B83\uFF0C\u53EF\u4EE5\u5E2E\u52A9\u4F60\u7F16\u5199\u66F4\u6E05\u6670\u3001\u53EF\u7EF4\u62A4\u7684 CSS \u4EE3\u7801\u3002\u4E0D\u8981\u4E3A\u4E86\u4F7F\u7528 BEM \u800C\u4F7F\u7528 BEM\uFF0C\u9009\u62E9\u6700\u9002\u5408\u4F60\u9879\u76EE\u7684\u65B9\u6848\u624D\u662F\u6700\u91CD\u8981\u7684\u3002",paraId:39,tocIndex:23}]},79385:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"\u6D4F\u89C8\u5668\u4E3A HTML \u5143\u7D20\u63D0\u4F9B\u4E86\u4E00\u5957\u9ED8\u8BA4\u6837\u5F0F\uFF08User Agent Stylesheet\uFF09\uFF0C\u4F46\u8FD9\u4E9B\u6837\u5F0F\uFF1A",paraId:0,tocIndex:0},{value:"\u5728\u4E0D\u540C\u6D4F\u89C8\u5668\u95F4\u5B58\u5728\u5DEE\u5F02",paraId:1,tocIndex:0},{value:"\u5F80\u5F80\u4E0D\u7B26\u5408\u73B0\u4EE3\u8BBE\u8BA1\u9700\u6C42",paraId:1,tocIndex:0},{value:"\u4F1A\u5BFC\u81F4\u610F\u5916\u7684\u5E03\u5C40\u95EE\u9898",paraId:1,tocIndex:0},{value:"\u901A\u8FC7 ",paraId:2,tocIndex:0},{value:"TailwindCSS v3.4.4 \u7684 CSS Reset \u65B9\u6848",paraId:3,tocIndex:0},{value:"\uFF0C\u6211\u4EEC\u53EF\u4EE5\u7CFB\u7EDF\u6027\u5730\u4E86\u89E3\u6D4F\u89C8\u5668\u9ED8\u8BA4\u6837\u5F0F\u7684\u95EE\u9898\uFF0C\u4EE5\u53CA\u5982\u4F55\u6B63\u786E\u91CD\u7F6E\u5B83\u4EEC\u3002",paraId:2,tocIndex:0},{value:"\u672C\u6587\u6309\u7167 ",paraId:4,tocIndex:0},{value:"\u4E8C\u516B\u539F\u5219",paraId:4,tocIndex:0},{value:" \u7EC4\u7EC7\uFF1A\u91CD\u70B9\u8BE6\u89E3 80% \u5F00\u53D1\u4E2D\u6700\u5E38\u9047\u5230\u7684\u6837\u5F0F\u91CD\u7F6E\uFF0C\u7B80\u8981\u4ECB\u7ECD 20% \u4E0D\u5E38\u7528\u7684\u6837\u5F0F\u3002",paraId:4,tocIndex:0},{value:`*,
 ::before,
 ::after {
   box-sizing: border-box; /* \u9632\u6B62\u5185\u8FB9\u8DDD\u548C\u8FB9\u6846\u5F71\u54CD\u5143\u7D20\u5BBD\u5EA6 */
@@ -2307,7 +2356,7 @@ span,
   border: 0;
   /* \u79FB\u9664\u6240\u6709\u9ED8\u8BA4\u6837\u5F0F */
 }
-`,paraId:69,tocIndex:19},{value:"\u7279\u70B9\uFF1A\u6FC0\u8FDB\u7684\u91CD\u7F6E\uFF0C\u9700\u8981\u624B\u52A8\u91CD\u5EFA\u6240\u6709\u6837\u5F0F\u3002",paraId:70,tocIndex:19},{value:"\u7279\u70B9\uFF1A\u4FDD\u7559\u6709\u7528\u7684\u9ED8\u8BA4\u6837\u5F0F\uFF0C\u53EA\u4FEE\u590D\u6D4F\u89C8\u5668\u95F4\u7684\u5DEE\u5F02\u3002",paraId:71,tocIndex:20},{value:"\u6837\u5F0F",paraId:72,tocIndex:22},{value:"\u6D4F\u89C8\u5668\u9ED8\u8BA4\u95EE\u9898",paraId:72,tocIndex:22},{value:"\u91CD\u7F6E\u65B9\u6848",paraId:72,tocIndex:22},{value:"\u91CD\u8981\u6027",paraId:72,tocIndex:22},{value:"\u76D2\u6A21\u578B",paraId:72,tocIndex:22},{value:"content-box",paraId:72,tocIndex:22},{value:" \u5BFC\u81F4\u5BBD\u5EA6\u8BA1\u7B97\u4E0D\u76F4\u89C2",paraId:72,tocIndex:22},{value:"box-sizing: border-box",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"\u884C\u9AD8",paraId:72,tocIndex:22},{value:"1.2 \u592A\u7D27\u51D1",paraId:72,tocIndex:22},{value:"line-height: 1.5",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"body \u8FB9\u8DDD",paraId:72,tocIndex:22},{value:"8px \u5916\u8FB9\u8DDD",paraId:72,tocIndex:22},{value:"margin: 0",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"\u8868\u5355\u5143\u7D20",paraId:72,tocIndex:22},{value:"\u4E0D\u7EE7\u627F\u5B57\u4F53\uFF0C\u6837\u5F0F\u5DEE\u5F02\u5927",paraId:72,tocIndex:22},{value:"font: inherit",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"\u56FE\u7247",paraId:72,tocIndex:22},{value:"inline",paraId:72,tocIndex:22},{value:" \u5BFC\u81F4\u5E95\u90E8\u7A7A\u9699",paraId:72,tocIndex:22},{value:"display: block",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"\u94FE\u63A5",paraId:72,tocIndex:22},{value:"\u84DD\u8272 + \u4E0B\u5212\u7EBF",paraId:72,tocIndex:22},{value:"color: inherit; text-decoration: none",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"\u5217\u8868",paraId:72,tocIndex:22},{value:"\u9879\u76EE\u7B26\u53F7 + 40px \u7F29\u8FDB",paraId:72,tocIndex:22},{value:"list-style: none; padding: 0",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"\u7279\u6B8A\u6587\u672C\u5143\u7D20\uFF08abbr, code, sub/sup\uFF09",paraId:73,tocIndex:23},{value:"\u6D4F\u89C8\u5668\u7279\u5B9A\u524D\u7F00\uFF08-webkit-",paraId:73,tocIndex:23},{value:", -moz-",paraId:73,tocIndex:23},{value:"\uFF09",paraId:73,tocIndex:23},{value:"\u4E0D\u5E38\u7528\u5143\u7D20\uFF08dialog, progress, summary\uFF09",paraId:73,tocIndex:23},{value:"\u4E00\u81F4\u6027",paraId:74,tocIndex:24},{value:"\uFF1A\u6D88\u9664\u6D4F\u89C8\u5668\u4E4B\u95F4\u7684\u5DEE\u5F02",paraId:74,tocIndex:24},{value:"\u53EF\u9884\u6D4B\u6027",paraId:74,tocIndex:24},{value:"\uFF1A\u79FB\u9664\u610F\u5916\u7684\u9ED8\u8BA4\u6837\u5F0F",paraId:74,tocIndex:24},{value:"\u7075\u6D3B\u6027",paraId:74,tocIndex:24},{value:"\uFF1A\u4E3A\u81EA\u5B9A\u4E49\u6837\u5F0F\u63D0\u4F9B\u5E72\u51C0\u7684\u57FA\u7840",paraId:74,tocIndex:24}]},48877:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"CSS-in-JS \u662F\u4E00\u79CD\u5C06 CSS \u5199\u5728 JavaScript \u6587\u4EF6\u91CC\u7684\u6280\u672F\u65B9\u6848\uFF0C\u800C\u4E0D\u662F\u4F20\u7EDF\u7684 ",paraId:0,tocIndex:0},{value:".css",paraId:0,tocIndex:0},{value:" \u6216 ",paraId:0,tocIndex:0},{value:".scss",paraId:0,tocIndex:0},{value:" \u6587\u4EF6\u3002\u8FD9\u6837\u53EF\u4EE5\u5728\u6837\u5F0F\u4E2D\u4F7F\u7528 JavaScript \u7684\u53D8\u91CF\u3001\u51FD\u6570\u3001\u6761\u4EF6\u5224\u65AD\u7B49\u7F16\u7A0B\u80FD\u529B\u3002",paraId:0,tocIndex:0},{value:"CSS-in-JS \u4E0E React\u3001Vue \u7B49\u7EC4\u4EF6\u5316\u6846\u67B6\u7684\u6D41\u884C\u5BC6\u4E0D\u53EF\u5206\u3002\u7279\u522B\u662F React\uFF0C\u7531\u4E8E\u6CA1\u6709\u5B98\u65B9\u7684 CSS \u65B9\u6848\uFF0CCSS-in-JS \u5728\u793E\u533A\u5F97\u5230\u4E86\u5E7F\u6CDB\u5E94\u7528\u3002\u5E38\u89C1\u7684\u5E93\u5305\u62EC ",paraId:1,tocIndex:0},{value:"styled-components",paraId:1,tocIndex:0},{value:" \u548C ",paraId:1,tocIndex:0},{value:"Emotion",paraId:1,tocIndex:0},{value:"\u3002",paraId:1,tocIndex:0},{value:"CSS-in-JS \u4E3B\u8981\u5206\u4E3A\u4E24\u7C7B\uFF1A",paraId:2,tocIndex:0},{value:"\u8FD0\u884C\u65F6\u7C7B\u578B",paraId:3,tocIndex:0},{value:"\uFF1A\u5728\u6D4F\u89C8\u5668\u8FD0\u884C\u65F6\u751F\u6210\u6837\u5F0F\uFF08\u5982 styled-components\uFF09",paraId:3,tocIndex:0},{value:"\u7F16\u8BD1\u65F6\u7C7B\u578B",paraId:3,tocIndex:0},{value:"\uFF1A\u5728\u6784\u5EFA\u9636\u6BB5\u751F\u6210\u9759\u6001 CSS\uFF08\u5982 Linaria\u3001vanilla-extract\uFF09",paraId:3,tocIndex:0},{value:"\u5927\u578B\u7EC4\u4EF6\u5316\u5E94\u7528",paraId:4,tocIndex:2},{value:"React/Vue \u9879\u76EE\u4E2D\u9700\u8981\u4E25\u683C\u7684\u6837\u5F0F\u9694\u79BB",paraId:5,tocIndex:2},{value:"\u7EC4\u4EF6\u5E93\u5F00\u53D1\uFF0C\u9700\u8981\u4E3B\u9898\u5B9A\u5236\u80FD\u529B",paraId:5,tocIndex:2},{value:"\u591A\u79DF\u6237\u7CFB\u7EDF\uFF0C\u9700\u8981\u8FD0\u884C\u65F6\u52A8\u6001\u6362\u80A4",paraId:5,tocIndex:2},{value:"\u590D\u6742\u7684\u52A8\u6001\u6837\u5F0F\u9700\u6C42",paraId:6,tocIndex:2},{value:"\u6837\u5F0F\u9700\u8981\u6839\u636E\u5927\u91CF JavaScript \u72B6\u6001\u53D8\u5316",paraId:7,tocIndex:2},{value:"\u9700\u8981\u5728\u6837\u5F0F\u4E2D\u4F7F\u7528\u590D\u6742\u7684\u4E1A\u52A1\u903B\u8F91",paraId:7,tocIndex:2},{value:"\u9700\u8981\u6837\u5F0F\u4E0E\u7EC4\u4EF6\u903B\u8F91\u7D27\u5BC6\u914D\u5408",paraId:7,tocIndex:2},{value:"\u56E2\u961F\u534F\u4F5C\u4F18\u52BF",paraId:8,tocIndex:2},{value:"\u56E2\u961F\u5DF2\u719F\u6089 React/JavaScript \u751F\u6001",paraId:9,tocIndex:2},{value:"\u5E0C\u671B\u6837\u5F0F\u548C\u903B\u8F91\u5728\u540C\u4E00\u6587\u4EF6\u4E2D\u4FBF\u4E8E\u7EF4\u62A4",paraId:9,tocIndex:2},{value:"\u9700\u8981\u5229\u7528 TypeScript \u7C7B\u578B\u68C0\u67E5\u6837\u5F0F props",paraId:9,tocIndex:2},{value:"\u6027\u80FD\u654F\u611F\u7684\u5E94\u7528",paraId:10,tocIndex:3},{value:"\u9996\u5C4F\u52A0\u8F7D\u901F\u5EA6\u8981\u6C42\u6781\u9AD8\uFF08\u8FD0\u884C\u65F6\u65B9\u6848\u6709\u5F00\u9500\uFF09",paraId:11,tocIndex:3},{value:"\u9759\u6001\u5185\u5BB9\u4E3A\u4E3B\u7684\u7F51\u7AD9\uFF08\u535A\u5BA2\u3001\u6587\u6863\u7AD9\uFF09",paraId:11,tocIndex:3},{value:"\u9700\u8981\u6781\u81F4\u6027\u80FD\u7684\u79FB\u52A8\u7AEF\u5E94\u7528",paraId:11,tocIndex:3},{value:"\u56E2\u961F\u6280\u672F\u6808\u8003\u8651",paraId:12,tocIndex:3},{value:"\u56E2\u961F\u66F4\u719F\u6089\u4F20\u7EDF CSS \u65B9\u6848",paraId:13,tocIndex:3},{value:"\u5DF2\u6709\u6210\u719F\u7684 Sass/Less/CSS Modules \u4F53\u7CFB",paraId:13,tocIndex:3},{value:"\u9879\u76EE\u91C7\u7528 Tailwind CSS \u7B49\u539F\u5B50\u5316\u65B9\u6848",paraId:13,tocIndex:3},{value:"\u6280\u672F\u7EA6\u675F",paraId:14,tocIndex:3},{value:"\u9700\u8981\u5C06\u6837\u5F0F\u63D0\u53D6\u4E3A\u72EC\u7ACB CSS \u6587\u4EF6\uFF08CDN \u7F13\u5B58\uFF09",paraId:15,tocIndex:3},{value:"\u670D\u52A1\u7AEF\u6E32\u67D3 SSR \u590D\u6742\u5EA6\u8981\u6C42\u4F4E",paraId:15,tocIndex:3},{value:"\u4E0D\u5E0C\u671B\u589E\u52A0\u989D\u5916\u7684 JavaScript \u5305\u4F53\u79EF",paraId:15,tocIndex:3},{value:"\u65B9\u6848",paraId:16,tocIndex:4},{value:"\u9002\u7528\u573A\u666F",paraId:16,tocIndex:4},{value:"\u4F18\u52BF",paraId:16,tocIndex:4},{value:"\u52A3\u52BF",paraId:16,tocIndex:4},{value:"CSS-in-JS",paraId:16,tocIndex:4},{value:"\u52A8\u6001\u4E3B\u9898\u3001\u7EC4\u4EF6\u5E93",paraId:16,tocIndex:4},{value:"\u5B8C\u5168\u9694\u79BB\u3001JavaScript \u96C6\u6210",paraId:16,tocIndex:4},{value:"\u8FD0\u884C\u65F6\u5F00\u9500\u3001\u5305\u4F53\u79EF\u5927",paraId:16,tocIndex:4},{value:"CSS Modules",paraId:16,tocIndex:4},{value:"\u4E2D\u5927\u578B\u5E94\u7528",paraId:16,tocIndex:4},{value:"\u96F6\u8FD0\u884C\u65F6\u3001\u6027\u80FD\u597D",paraId:16,tocIndex:4},{value:"\u52A8\u6001\u6837\u5F0F\u80FD\u529B\u5F31",paraId:16,tocIndex:4},{value:"Tailwind CSS",paraId:16,tocIndex:4},{value:"\u5FEB\u901F\u5F00\u53D1",paraId:16,tocIndex:4},{value:"\u539F\u5B50\u5316\u3001\u9AD8\u590D\u7528",paraId:16,tocIndex:4},{value:"HTML \u53EF\u8BFB\u6027\u5DEE",paraId:16,tocIndex:4},{value:"\u4F20\u7EDF CSS/Sass",paraId:16,tocIndex:4},{value:"\u7B80\u5355\u9879\u76EE",paraId:16,tocIndex:4},{value:"\u7B80\u5355\u76F4\u63A5\u3001\u65E0\u4F9D\u8D56",paraId:16,tocIndex:4},{value:"\u5168\u5C40\u6C61\u67D3\u3001\u96BE\u4EE5\u7EF4\u62A4",paraId:16,tocIndex:4},{value:"1. \u5C40\u90E8\u4F5C\u7528\u57DF\u6837\u5F0F\uFF08\u89E3\u51B3\u6837\u5F0F\u51B2\u7A81\uFF09",paraId:17,tocIndex:6},{value:"\u4F20\u7EDF CSS \u5BB9\u6613\u51FA\u73B0\u7C7B\u540D\u51B2\u7A81\uFF1A",paraId:18,tocIndex:6},{value:`/* \u7B2C\u4E00\u4E2A\u7EC4\u4EF6 */
+`,paraId:69,tocIndex:19},{value:"\u7279\u70B9\uFF1A\u6FC0\u8FDB\u7684\u91CD\u7F6E\uFF0C\u9700\u8981\u624B\u52A8\u91CD\u5EFA\u6240\u6709\u6837\u5F0F\u3002",paraId:70,tocIndex:19},{value:"\u7279\u70B9\uFF1A\u4FDD\u7559\u6709\u7528\u7684\u9ED8\u8BA4\u6837\u5F0F\uFF0C\u53EA\u4FEE\u590D\u6D4F\u89C8\u5668\u95F4\u7684\u5DEE\u5F02\u3002",paraId:71,tocIndex:20},{value:"\u6837\u5F0F",paraId:72,tocIndex:22},{value:"\u6D4F\u89C8\u5668\u9ED8\u8BA4\u95EE\u9898",paraId:72,tocIndex:22},{value:"\u91CD\u7F6E\u65B9\u6848",paraId:72,tocIndex:22},{value:"\u91CD\u8981\u6027",paraId:72,tocIndex:22},{value:"\u76D2\u6A21\u578B",paraId:72,tocIndex:22},{value:"content-box",paraId:72,tocIndex:22},{value:" \u5BFC\u81F4\u5BBD\u5EA6\u8BA1\u7B97\u4E0D\u76F4\u89C2",paraId:72,tocIndex:22},{value:"box-sizing: border-box",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"\u884C\u9AD8",paraId:72,tocIndex:22},{value:"1.2 \u592A\u7D27\u51D1",paraId:72,tocIndex:22},{value:"line-height: 1.5",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"body \u8FB9\u8DDD",paraId:72,tocIndex:22},{value:"8px \u5916\u8FB9\u8DDD",paraId:72,tocIndex:22},{value:"margin: 0",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"\u8868\u5355\u5143\u7D20",paraId:72,tocIndex:22},{value:"\u4E0D\u7EE7\u627F\u5B57\u4F53\uFF0C\u6837\u5F0F\u5DEE\u5F02\u5927",paraId:72,tocIndex:22},{value:"font: inherit",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"\u56FE\u7247",paraId:72,tocIndex:22},{value:"inline",paraId:72,tocIndex:22},{value:" \u5BFC\u81F4\u5E95\u90E8\u7A7A\u9699",paraId:72,tocIndex:22},{value:"display: block",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"\u94FE\u63A5",paraId:72,tocIndex:22},{value:"\u84DD\u8272 + \u4E0B\u5212\u7EBF",paraId:72,tocIndex:22},{value:"color: inherit; text-decoration: none",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"\u5217\u8868",paraId:72,tocIndex:22},{value:"\u9879\u76EE\u7B26\u53F7 + 40px \u7F29\u8FDB",paraId:72,tocIndex:22},{value:"list-style: none; padding: 0",paraId:72,tocIndex:22},{value:"\u2B50\uFE0F\u2B50\uFE0F",paraId:72,tocIndex:22},{value:"\u7279\u6B8A\u6587\u672C\u5143\u7D20\uFF08abbr, code, sub/sup\uFF09",paraId:73,tocIndex:23},{value:"\u6D4F\u89C8\u5668\u7279\u5B9A\u524D\u7F00\uFF08-webkit-",paraId:73,tocIndex:23},{value:", -moz-",paraId:73,tocIndex:23},{value:"\uFF09",paraId:73,tocIndex:23},{value:"\u4E0D\u5E38\u7528\u5143\u7D20\uFF08dialog, progress, summary\uFF09",paraId:73,tocIndex:23},{value:"\u4E00\u81F4\u6027",paraId:74,tocIndex:24},{value:"\uFF1A\u6D88\u9664\u6D4F\u89C8\u5668\u4E4B\u95F4\u7684\u5DEE\u5F02",paraId:74,tocIndex:24},{value:"\u53EF\u9884\u6D4B\u6027",paraId:74,tocIndex:24},{value:"\uFF1A\u79FB\u9664\u610F\u5916\u7684\u9ED8\u8BA4\u6837\u5F0F",paraId:74,tocIndex:24},{value:"\u7075\u6D3B\u6027",paraId:74,tocIndex:24},{value:"\uFF1A\u4E3A\u81EA\u5B9A\u4E49\u6837\u5F0F\u63D0\u4F9B\u5E72\u51C0\u7684\u57FA\u7840",paraId:74,tocIndex:24}]},48877:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"CSS-in-JS \u662F\u4E00\u79CD\u5C06 CSS \u5199\u5728 JavaScript \u6587\u4EF6\u91CC\u7684\u6280\u672F\u65B9\u6848\uFF0C\u800C\u4E0D\u662F\u4F20\u7EDF\u7684 ",paraId:0,tocIndex:0},{value:".css",paraId:0,tocIndex:0},{value:" \u6216 ",paraId:0,tocIndex:0},{value:".scss",paraId:0,tocIndex:0},{value:" \u6587\u4EF6\u3002\u8FD9\u6837\u53EF\u4EE5\u5728\u6837\u5F0F\u4E2D\u4F7F\u7528 JavaScript \u7684\u53D8\u91CF\u3001\u51FD\u6570\u3001\u6761\u4EF6\u5224\u65AD\u7B49\u7F16\u7A0B\u80FD\u529B\u3002",paraId:0,tocIndex:0},{value:"CSS-in-JS \u4E0E React\u3001Vue \u7B49\u7EC4\u4EF6\u5316\u6846\u67B6\u7684\u6D41\u884C\u5BC6\u4E0D\u53EF\u5206\u3002\u7279\u522B\u662F React\uFF0C\u7531\u4E8E\u6CA1\u6709\u5B98\u65B9\u7684 CSS \u65B9\u6848\uFF0CCSS-in-JS \u5728\u793E\u533A\u5F97\u5230\u4E86\u5E7F\u6CDB\u5E94\u7528\u3002\u5E38\u89C1\u7684\u5E93\u5305\u62EC ",paraId:1,tocIndex:0},{value:"styled-components",paraId:1,tocIndex:0},{value:" \u548C ",paraId:1,tocIndex:0},{value:"Emotion",paraId:1,tocIndex:0},{value:"\u3002",paraId:1,tocIndex:0},{value:"CSS-in-JS \u4E3B\u8981\u5206\u4E3A\u4E24\u7C7B\uFF1A",paraId:2,tocIndex:0},{value:"\u8FD0\u884C\u65F6\u7C7B\u578B",paraId:3,tocIndex:0},{value:"\uFF1A\u5728\u6D4F\u89C8\u5668\u8FD0\u884C\u65F6\u751F\u6210\u6837\u5F0F\uFF08\u5982 styled-components\uFF09",paraId:3,tocIndex:0},{value:"\u7F16\u8BD1\u65F6\u7C7B\u578B",paraId:3,tocIndex:0},{value:"\uFF1A\u5728\u6784\u5EFA\u9636\u6BB5\u751F\u6210\u9759\u6001 CSS\uFF08\u5982 Linaria\u3001vanilla-extract\uFF09",paraId:3,tocIndex:0},{value:"\u5927\u578B\u7EC4\u4EF6\u5316\u5E94\u7528",paraId:4,tocIndex:2},{value:"React/Vue \u9879\u76EE\u4E2D\u9700\u8981\u4E25\u683C\u7684\u6837\u5F0F\u9694\u79BB",paraId:5,tocIndex:2},{value:"\u7EC4\u4EF6\u5E93\u5F00\u53D1\uFF0C\u9700\u8981\u4E3B\u9898\u5B9A\u5236\u80FD\u529B",paraId:5,tocIndex:2},{value:"\u591A\u79DF\u6237\u7CFB\u7EDF\uFF0C\u9700\u8981\u8FD0\u884C\u65F6\u52A8\u6001\u6362\u80A4",paraId:5,tocIndex:2},{value:"\u590D\u6742\u7684\u52A8\u6001\u6837\u5F0F\u9700\u6C42",paraId:6,tocIndex:2},{value:"\u6837\u5F0F\u9700\u8981\u6839\u636E\u5927\u91CF JavaScript \u72B6\u6001\u53D8\u5316",paraId:7,tocIndex:2},{value:"\u9700\u8981\u5728\u6837\u5F0F\u4E2D\u4F7F\u7528\u590D\u6742\u7684\u4E1A\u52A1\u903B\u8F91",paraId:7,tocIndex:2},{value:"\u9700\u8981\u6837\u5F0F\u4E0E\u7EC4\u4EF6\u903B\u8F91\u7D27\u5BC6\u914D\u5408",paraId:7,tocIndex:2},{value:"\u56E2\u961F\u534F\u4F5C\u4F18\u52BF",paraId:8,tocIndex:2},{value:"\u56E2\u961F\u5DF2\u719F\u6089 React/JavaScript \u751F\u6001",paraId:9,tocIndex:2},{value:"\u5E0C\u671B\u6837\u5F0F\u548C\u903B\u8F91\u5728\u540C\u4E00\u6587\u4EF6\u4E2D\u4FBF\u4E8E\u7EF4\u62A4",paraId:9,tocIndex:2},{value:"\u9700\u8981\u5229\u7528 TypeScript \u7C7B\u578B\u68C0\u67E5\u6837\u5F0F props",paraId:9,tocIndex:2},{value:"\u6027\u80FD\u654F\u611F\u7684\u5E94\u7528",paraId:10,tocIndex:3},{value:"\u9996\u5C4F\u52A0\u8F7D\u901F\u5EA6\u8981\u6C42\u6781\u9AD8\uFF08\u8FD0\u884C\u65F6\u65B9\u6848\u6709\u5F00\u9500\uFF09",paraId:11,tocIndex:3},{value:"\u9759\u6001\u5185\u5BB9\u4E3A\u4E3B\u7684\u7F51\u7AD9\uFF08\u535A\u5BA2\u3001\u6587\u6863\u7AD9\uFF09",paraId:11,tocIndex:3},{value:"\u9700\u8981\u6781\u81F4\u6027\u80FD\u7684\u79FB\u52A8\u7AEF\u5E94\u7528",paraId:11,tocIndex:3},{value:"\u56E2\u961F\u6280\u672F\u6808\u8003\u8651",paraId:12,tocIndex:3},{value:"\u56E2\u961F\u66F4\u719F\u6089\u4F20\u7EDF CSS \u65B9\u6848",paraId:13,tocIndex:3},{value:"\u5DF2\u6709\u6210\u719F\u7684 Sass/Less/CSS Modules \u4F53\u7CFB",paraId:13,tocIndex:3},{value:"\u9879\u76EE\u91C7\u7528 Tailwind CSS \u7B49\u539F\u5B50\u5316\u65B9\u6848",paraId:13,tocIndex:3},{value:"\u6280\u672F\u7EA6\u675F",paraId:14,tocIndex:3},{value:"\u9700\u8981\u5C06\u6837\u5F0F\u63D0\u53D6\u4E3A\u72EC\u7ACB CSS \u6587\u4EF6\uFF08CDN \u7F13\u5B58\uFF09",paraId:15,tocIndex:3},{value:"\u670D\u52A1\u7AEF\u6E32\u67D3 SSR \u590D\u6742\u5EA6\u8981\u6C42\u4F4E",paraId:15,tocIndex:3},{value:"\u4E0D\u5E0C\u671B\u589E\u52A0\u989D\u5916\u7684 JavaScript \u5305\u4F53\u79EF",paraId:15,tocIndex:3},{value:"\u65B9\u6848",paraId:16,tocIndex:4},{value:"\u9002\u7528\u573A\u666F",paraId:16,tocIndex:4},{value:"\u4F18\u52BF",paraId:16,tocIndex:4},{value:"\u52A3\u52BF",paraId:16,tocIndex:4},{value:"CSS-in-JS",paraId:16,tocIndex:4},{value:"\u52A8\u6001\u4E3B\u9898\u3001\u7EC4\u4EF6\u5E93",paraId:16,tocIndex:4},{value:"\u5B8C\u5168\u9694\u79BB\u3001JavaScript \u96C6\u6210",paraId:16,tocIndex:4},{value:"\u8FD0\u884C\u65F6\u5F00\u9500\u3001\u5305\u4F53\u79EF\u5927",paraId:16,tocIndex:4},{value:"CSS Modules",paraId:16,tocIndex:4},{value:"\u4E2D\u5927\u578B\u5E94\u7528",paraId:16,tocIndex:4},{value:"\u96F6\u8FD0\u884C\u65F6\u3001\u6027\u80FD\u597D",paraId:16,tocIndex:4},{value:"\u52A8\u6001\u6837\u5F0F\u80FD\u529B\u5F31",paraId:16,tocIndex:4},{value:"Tailwind CSS",paraId:16,tocIndex:4},{value:"\u5FEB\u901F\u5F00\u53D1",paraId:16,tocIndex:4},{value:"\u539F\u5B50\u5316\u3001\u9AD8\u590D\u7528",paraId:16,tocIndex:4},{value:"HTML \u53EF\u8BFB\u6027\u5DEE",paraId:16,tocIndex:4},{value:"\u4F20\u7EDF CSS/Sass",paraId:16,tocIndex:4},{value:"\u7B80\u5355\u9879\u76EE",paraId:16,tocIndex:4},{value:"\u7B80\u5355\u76F4\u63A5\u3001\u65E0\u4F9D\u8D56",paraId:16,tocIndex:4},{value:"\u5168\u5C40\u6C61\u67D3\u3001\u96BE\u4EE5\u7EF4\u62A4",paraId:16,tocIndex:4},{value:"1. \u5C40\u90E8\u4F5C\u7528\u57DF\u6837\u5F0F\uFF08\u89E3\u51B3\u6837\u5F0F\u51B2\u7A81\uFF09",paraId:17,tocIndex:6},{value:"\u4F20\u7EDF CSS \u5BB9\u6613\u51FA\u73B0\u7C7B\u540D\u51B2\u7A81\uFF1A",paraId:18,tocIndex:6},{value:`/* \u7B2C\u4E00\u4E2A\u7EC4\u4EF6 */
 .row {
   padding: 0.5rem;
   border: 1px solid #ddd;
@@ -2421,7 +2470,583 @@ const MyButton = () => {
 };
 
 export default MyButton;
-`,paraId:69},{value:"\u5728\u8FD9\u4E2A\u4F8B\u5B50\u4E2D\uFF0C\u901A\u8FC7\u4F7F\u7528 ",paraId:70},{value:"&&",paraId:70},{value:" \u63D0\u5347 ",paraId:70},{value:"styled-components",paraId:70},{value:" \u6837\u5F0F\u7684\u4F18\u5148\u7EA7\uFF0C\u6211\u4EEC\u786E\u4FDD\u4E86 ",paraId:70},{value:"StyledButton",paraId:70},{value:" \u7EC4\u4EF6\u7684\u6837\u5F0F\u5728\u4E0E\u666E\u901A CSS \u6587\u4EF6\u4E2D\u7684 ",paraId:70},{value:".button",paraId:70},{value:" \u7C7B\u6837\u5F0F\u51B2\u7A81\u65F6\u80FD\u591F\u80DC\u51FA\u3002\u8FD9\u6837\u53EF\u4EE5\u5728\u5904\u7406\u590D\u6742\u7684\u6837\u5F0F\u51B2\u7A81\u65F6\u63D0\u4F9B\u66F4\u597D\u7684\u63A7\u5236\u3002",paraId:70},{value:"\u7531\u4E8E styled-components \u9ED8\u8BA4\u5728 ",paraId:71},{value:"<head>",paraId:71},{value:" \u672B\u5C3E\u5728\u8FD0\u884C\u65F6\u6CE8\u5165\u5176\u6837\u5F0F\uFF0C\u5373\u4F7F\u4E0D\u4F7F\u7528 ",paraId:71},{value:"&&",paraId:71},{value:" \u63D0\u5347\u4F18\u5148\u7EA7\uFF0C",paraId:71},{value:"styled-components",paraId:71},{value:" \u7684\u6837\u5F0F\u4ECD\u7136\u4F1A\u8986\u76D6\u666E\u901A CSS \u6587\u4EF6\u4E2D\u7684\u6837\u5F0F\u3002",paraId:71},{value:"styled-components",paraId:72,tocIndex:24},{value:" \u901A\u8FC7\u5BFC\u51FA ",paraId:72,tocIndex:24},{value:"<ThemeProvider>",paraId:72,tocIndex:24},{value:" \u7EC4\u4EF6\u4ECE\u800C\u80FD\u652F\u6301\u4E3B\u9898\u5207\u6362\u3002",paraId:72,tocIndex:24},{value:"<ThemeProvider>",paraId:72,tocIndex:24},{value:" \u662F\u57FA\u4E8E React \u7684 Context API \u5B9E\u73B0\u7684\uFF0C\u53EF\u4EE5\u4E3A\u5176\u4E0B\u9762\u7684\u6240\u6709 React \u7EC4\u4EF6\u63D0\u4F9B\u4E00\u4E2A\u4E3B\u9898\u3002\u5728\u6E32\u67D3\u6811\u4E2D\uFF0C\u4EFB\u4F55\u5C42\u6B21\u7684\u6240\u6709\u6837\u5F0F\u7EC4\u4EF6\u90FD\u53EF\u4EE5\u8BBF\u95EE\u63D0\u4F9B\u7684\u4E3B\u9898\u3002\u4F8B\u5982\uFF1A",paraId:72,tocIndex:24},{value:"ThemeProvider",paraId:73},{value:" \u7684 ",paraId:73},{value:"theme",paraId:73},{value:" \u9664\u4E86\u53EF\u4EE5\u63A5\u53D7\u5BF9\u8C61\u4E4B\u5916\uFF0C\u8FD8\u53EF\u4EE5\u63A5\u53D7\u51FD\u6570\u3002\u51FD\u6570\u7684\u53C2\u6570\u662F\u7236\u7EA7\u7684 ",paraId:73},{value:"theme",paraId:73},{value:" \u5BF9\u8C61\u3002\u6B64\u5916\uFF0C\u8FD8\u53EF\u4EE5\u901A\u8FC7\u4F7F\u7528 theme prop \u6765\u5904\u7406 ",paraId:73},{value:"ThemeProvider",paraId:73},{value:" \u672A\u5B9A\u4E49\u7684\u60C5\u51B5 (\u8FD9\u8DDF\u4E0A\u9762\u7684 ",paraId:73},{value:"defaultProps",paraId:73},{value:" \u662F\u4E00\u6837\u7684\u6548\u679C)\uFF0C\u6216\u8986\u76D6 ",paraId:73},{value:"ThemeProvider",paraId:73},{value:" \u7684 theme\u3002\u4F8B\u5982\uFF1A",paraId:73},{value:"\u5728 ",paraId:74},{value:"styled-components",paraId:74},{value:" \u4E2D\uFF0C\u201CComponent as Selector\u201D \u662F\u6307\u4F60\u53EF\u4EE5\u5C06\u4E00\u4E2A\u5DF2\u7ECF\u5B9A\u4E49\u597D\u7684 ",paraId:74},{value:"styled-component",paraId:74},{value:" \u4F5C\u4E3A\u9009\u62E9\u5668\u6765\u5D4C\u5957\u6837\u5F0F\u3002\u8FD9\u79CD\u65B9\u5F0F\u8BA9\u4F60\u53EF\u4EE5\u5728\u4E00\u4E2A\u7EC4\u4EF6\u7684\u6837\u5F0F\u4E2D\u76F4\u63A5\u5F15\u7528\u548C\u4FEE\u6539\u53E6\u4E00\u4E2A\u7EC4\u4EF6\u7684\u6837\u5F0F\u3002",paraId:74},{value:"\u8FD9\u79CD\u65B9\u6CD5\u7684\u4E00\u4E2A\u5E38\u89C1\u7528\u4F8B\u662F\u5F53\u4F60\u60F3\u8981\u5728\u4E00\u4E2A\u7EC4\u4EF6\u5185\u90E8\u6709\u6761\u4EF6\u5730\u4FEE\u6539\u5B50\u7EC4\u4EF6\u7684\u6837\u5F0F\u65F6\u3002\u901A\u8FC7\u8FD9\u79CD\u65B9\u5F0F\uFF0C\u4F60\u53EF\u4EE5\u66F4\u597D\u5730\u7EC4\u7EC7\u548C\u7BA1\u7406\u4F60\u7684\u6837\u5F0F\u3002",paraId:75},{value:"\u8FD9\u79CD\u65B9\u6CD5\u7279\u522B\u9002\u7528\u4E8E\u5F53\u4F60\u60F3\u8981\u5728\u4E00\u4E2A\u7EC4\u4EF6\u5185\u90E8\u6709\u6761\u4EF6\u5730\u4FEE\u6539\u5B50\u7EC4\u4EF6\u7684\u6837\u5F0F\u65F6\u3002",paraId:76,tocIndex:27},{value:"\u4E0B\u9762\u662F\u4E00\u4E2A\u793A\u4F8B\uFF0C\u5C55\u793A\u5982\u4F55\u5728 ",paraId:77,tocIndex:27},{value:"styled-components",paraId:77,tocIndex:27},{value:" \u4E2D\u4F7F\u7528 \u201CComponent as Selector\u201D\uFF1A",paraId:77,tocIndex:27},{value:"\u5728\u8FD9\u4E2A\u793A\u4F8B\u4E2D\uFF0C",paraId:78},{value:"Container",paraId:78},{value:" \u7EC4\u4EF6\u5C06\u4F5C\u4E3A\u7236\u5BB9\u5668\uFF0C\u800C ",paraId:78},{value:"Button",paraId:78},{value:" \u7EC4\u4EF6\u5C06\u4F5C\u4E3A\u5B50\u7EC4\u4EF6\u88AB\u5D4C\u5957\u5728\u5176\u4E2D\u3002\u7531\u4E8E\u6211\u4EEC\u5728 ",paraId:78},{value:"Container",paraId:78},{value:" \u7684\u6837\u5F0F\u4E2D\u4F7F\u7528\u4E86 ",paraId:78},{value:"${Button}",paraId:78},{value:" \u4F5C\u4E3A\u9009\u62E9\u5668\uFF0C\u6240\u4EE5 ",paraId:78},{value:"Button",paraId:78},{value:" \u7EC4\u4EF6\u7684 ",paraId:78},{value:"margin",paraId:78},{value:" \u548C ",paraId:78},{value:"disabled",paraId:78},{value:" \u72B6\u6001\u4E0B\u7684\u6837\u5F0F\u90FD\u4F1A\u88AB\u5E94\u7528\u3002",paraId:78}]},10034:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"CVA (Class Variance Authority)",paraId:0,tocIndex:1},{value:" \u662F\u4E00\u4E2A\u7528\u4E8E\u7BA1\u7406\u7EC4\u4EF6\u6837\u5F0F\u53D8\u4F53\u7684 TypeScript \u5E93\u3002\u5B83\u63D0\u4F9B\u4E86\u4E00\u79CD\u7ED3\u6784\u5316\u3001\u7C7B\u578B\u5B89\u5168\u7684\u65B9\u5F0F\u6765\u5B9A\u4E49\u548C\u7BA1\u7406\u7EC4\u4EF6\u7684\u5404\u79CD\u53D8\u4F53\uFF08variants\uFF09\u3001\u5C3A\u5BF8\uFF08sizes\uFF09\u3001\u72B6\u6001\u7B49\u6837\u5F0F\u7EC4\u5408\u3002",paraId:0,tocIndex:1},{value:"CVA \u672C\u8D28\u4E0A\u662F\u5BF9 ",paraId:1,tocIndex:1},{value:"clsx",paraId:1,tocIndex:1},{value:" \u548C ",paraId:1,tocIndex:1},{value:"tailwind-merge",paraId:1,tocIndex:1},{value:" \u7684\u9AD8\u7EA7\u5C01\u88C5\uFF0C\u901A\u8FC7\u58F0\u660E\u5F0F\u7684\u914D\u7F6E\u6765\u7BA1\u7406\u590D\u6742\u7684\u6837\u5F0F\u903B\u8F91\u3002",paraId:1,tocIndex:1},{value:`import { cva } from 'class-variance-authority';
+`,paraId:69},{value:"\u5728\u8FD9\u4E2A\u4F8B\u5B50\u4E2D\uFF0C\u901A\u8FC7\u4F7F\u7528 ",paraId:70},{value:"&&",paraId:70},{value:" \u63D0\u5347 ",paraId:70},{value:"styled-components",paraId:70},{value:" \u6837\u5F0F\u7684\u4F18\u5148\u7EA7\uFF0C\u6211\u4EEC\u786E\u4FDD\u4E86 ",paraId:70},{value:"StyledButton",paraId:70},{value:" \u7EC4\u4EF6\u7684\u6837\u5F0F\u5728\u4E0E\u666E\u901A CSS \u6587\u4EF6\u4E2D\u7684 ",paraId:70},{value:".button",paraId:70},{value:" \u7C7B\u6837\u5F0F\u51B2\u7A81\u65F6\u80FD\u591F\u80DC\u51FA\u3002\u8FD9\u6837\u53EF\u4EE5\u5728\u5904\u7406\u590D\u6742\u7684\u6837\u5F0F\u51B2\u7A81\u65F6\u63D0\u4F9B\u66F4\u597D\u7684\u63A7\u5236\u3002",paraId:70},{value:"\u7531\u4E8E styled-components \u9ED8\u8BA4\u5728 ",paraId:71},{value:"<head>",paraId:71},{value:" \u672B\u5C3E\u5728\u8FD0\u884C\u65F6\u6CE8\u5165\u5176\u6837\u5F0F\uFF0C\u5373\u4F7F\u4E0D\u4F7F\u7528 ",paraId:71},{value:"&&",paraId:71},{value:" \u63D0\u5347\u4F18\u5148\u7EA7\uFF0C",paraId:71},{value:"styled-components",paraId:71},{value:" \u7684\u6837\u5F0F\u4ECD\u7136\u4F1A\u8986\u76D6\u666E\u901A CSS \u6587\u4EF6\u4E2D\u7684\u6837\u5F0F\u3002",paraId:71},{value:"styled-components",paraId:72,tocIndex:24},{value:" \u901A\u8FC7\u5BFC\u51FA ",paraId:72,tocIndex:24},{value:"<ThemeProvider>",paraId:72,tocIndex:24},{value:" \u7EC4\u4EF6\u4ECE\u800C\u80FD\u652F\u6301\u4E3B\u9898\u5207\u6362\u3002",paraId:72,tocIndex:24},{value:"<ThemeProvider>",paraId:72,tocIndex:24},{value:" \u662F\u57FA\u4E8E React \u7684 Context API \u5B9E\u73B0\u7684\uFF0C\u53EF\u4EE5\u4E3A\u5176\u4E0B\u9762\u7684\u6240\u6709 React \u7EC4\u4EF6\u63D0\u4F9B\u4E00\u4E2A\u4E3B\u9898\u3002\u5728\u6E32\u67D3\u6811\u4E2D\uFF0C\u4EFB\u4F55\u5C42\u6B21\u7684\u6240\u6709\u6837\u5F0F\u7EC4\u4EF6\u90FD\u53EF\u4EE5\u8BBF\u95EE\u63D0\u4F9B\u7684\u4E3B\u9898\u3002\u4F8B\u5982\uFF1A",paraId:72,tocIndex:24},{value:"ThemeProvider",paraId:73},{value:" \u7684 ",paraId:73},{value:"theme",paraId:73},{value:" \u9664\u4E86\u53EF\u4EE5\u63A5\u53D7\u5BF9\u8C61\u4E4B\u5916\uFF0C\u8FD8\u53EF\u4EE5\u63A5\u53D7\u51FD\u6570\u3002\u51FD\u6570\u7684\u53C2\u6570\u662F\u7236\u7EA7\u7684 ",paraId:73},{value:"theme",paraId:73},{value:" \u5BF9\u8C61\u3002\u6B64\u5916\uFF0C\u8FD8\u53EF\u4EE5\u901A\u8FC7\u4F7F\u7528 theme prop \u6765\u5904\u7406 ",paraId:73},{value:"ThemeProvider",paraId:73},{value:" \u672A\u5B9A\u4E49\u7684\u60C5\u51B5 (\u8FD9\u8DDF\u4E0A\u9762\u7684 ",paraId:73},{value:"defaultProps",paraId:73},{value:" \u662F\u4E00\u6837\u7684\u6548\u679C)\uFF0C\u6216\u8986\u76D6 ",paraId:73},{value:"ThemeProvider",paraId:73},{value:" \u7684 theme\u3002\u4F8B\u5982\uFF1A",paraId:73},{value:"\u5728 ",paraId:74},{value:"styled-components",paraId:74},{value:" \u4E2D\uFF0C\u201CComponent as Selector\u201D \u662F\u6307\u4F60\u53EF\u4EE5\u5C06\u4E00\u4E2A\u5DF2\u7ECF\u5B9A\u4E49\u597D\u7684 ",paraId:74},{value:"styled-component",paraId:74},{value:" \u4F5C\u4E3A\u9009\u62E9\u5668\u6765\u5D4C\u5957\u6837\u5F0F\u3002\u8FD9\u79CD\u65B9\u5F0F\u8BA9\u4F60\u53EF\u4EE5\u5728\u4E00\u4E2A\u7EC4\u4EF6\u7684\u6837\u5F0F\u4E2D\u76F4\u63A5\u5F15\u7528\u548C\u4FEE\u6539\u53E6\u4E00\u4E2A\u7EC4\u4EF6\u7684\u6837\u5F0F\u3002",paraId:74},{value:"\u8FD9\u79CD\u65B9\u6CD5\u7684\u4E00\u4E2A\u5E38\u89C1\u7528\u4F8B\u662F\u5F53\u4F60\u60F3\u8981\u5728\u4E00\u4E2A\u7EC4\u4EF6\u5185\u90E8\u6709\u6761\u4EF6\u5730\u4FEE\u6539\u5B50\u7EC4\u4EF6\u7684\u6837\u5F0F\u65F6\u3002\u901A\u8FC7\u8FD9\u79CD\u65B9\u5F0F\uFF0C\u4F60\u53EF\u4EE5\u66F4\u597D\u5730\u7EC4\u7EC7\u548C\u7BA1\u7406\u4F60\u7684\u6837\u5F0F\u3002",paraId:75},{value:"\u8FD9\u79CD\u65B9\u6CD5\u7279\u522B\u9002\u7528\u4E8E\u5F53\u4F60\u60F3\u8981\u5728\u4E00\u4E2A\u7EC4\u4EF6\u5185\u90E8\u6709\u6761\u4EF6\u5730\u4FEE\u6539\u5B50\u7EC4\u4EF6\u7684\u6837\u5F0F\u65F6\u3002",paraId:76,tocIndex:27},{value:"\u4E0B\u9762\u662F\u4E00\u4E2A\u793A\u4F8B\uFF0C\u5C55\u793A\u5982\u4F55\u5728 ",paraId:77,tocIndex:27},{value:"styled-components",paraId:77,tocIndex:27},{value:" \u4E2D\u4F7F\u7528 \u201CComponent as Selector\u201D\uFF1A",paraId:77,tocIndex:27},{value:"\u5728\u8FD9\u4E2A\u793A\u4F8B\u4E2D\uFF0C",paraId:78},{value:"Container",paraId:78},{value:" \u7EC4\u4EF6\u5C06\u4F5C\u4E3A\u7236\u5BB9\u5668\uFF0C\u800C ",paraId:78},{value:"Button",paraId:78},{value:" \u7EC4\u4EF6\u5C06\u4F5C\u4E3A\u5B50\u7EC4\u4EF6\u88AB\u5D4C\u5957\u5728\u5176\u4E2D\u3002\u7531\u4E8E\u6211\u4EEC\u5728 ",paraId:78},{value:"Container",paraId:78},{value:" \u7684\u6837\u5F0F\u4E2D\u4F7F\u7528\u4E86 ",paraId:78},{value:"${Button}",paraId:78},{value:" \u4F5C\u4E3A\u9009\u62E9\u5668\uFF0C\u6240\u4EE5 ",paraId:78},{value:"Button",paraId:78},{value:" \u7EC4\u4EF6\u7684 ",paraId:78},{value:"margin",paraId:78},{value:" \u548C ",paraId:78},{value:"disabled",paraId:78},{value:" \u72B6\u6001\u4E0B\u7684\u6837\u5F0F\u90FD\u4F1A\u88AB\u5E94\u7528\u3002",paraId:78}]},90190:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"CSS \u4E2D\u6709\u591A\u79CD\u9009\u62E9\u5668,\u7528\u4E8E\u9009\u62E9\u8981\u6837\u5F0F\u5316\u7684\u5143\u7D20\u3002\u4E0B\u9762\u6211\u4EEC\u901A\u8FC7\u4E00\u4E2A\u7EFC\u5408\u6848\u4F8B\u6765\u8BF4\u660E\u5E38\u7528\u9009\u62E9\u5668\u7684\u4F7F\u7528\u65B9\u6CD5\u3002",paraId:0,tocIndex:0},{value:`import './style.css';
+
+export default function page() {
+  return (
+    <div className="container">
+      <h1 id="title">Hello, CSS!</h1>
+      <p className="content">This is a content.</p>
+      <p className="content">This is another content.</p>
+      <ul id="list">
+        <li id="item">Item 1</li>
+        <li className="active">Item 2</li>
+        <li>Item 3</li>
+      </ul>
+      <div className="container">
+        <p>Inside container</p>
+      </div>
+    </div>
+  );
+}
+`,paraId:1,tocIndex:0},{value:`/* style.css */
+
+/* \u5143\u7D20\u9009\u62E9\u5668 + \u540E\u4EE3\u9009\u62E9\u5668 + \u4F2A\u7C7B\u9009\u62E9\u5668 */
+ul li:first-child {
+  color: bisque;
+}
+
+/* \u5B50\u5143\u7D20\u9009\u62E9\u5668\uFF1A\u4EC5\u9009\u62E9\u76F4\u63A5\u5B50\u5143\u7D20 */
+.container > p {
+  border: 1px solid red;
+}
+
+/* \u7C7B\u9009\u62E9\u5668\uFF1A\u9009\u62E9\u5177\u6709\u6307\u5B9A\u7C7B\u540D\u7684\u5143\u7D20 */
+li.active {
+  font-weight: bold;
+  color: red;
+}
+
+/* \u901A\u7528\u9009\u62E9\u5668\uFF1A\u9009\u62E9\u6240\u6709\u5143\u7D20 */
+.container * {
+  font-style: italic;
+}
+
+/* \u76F8\u90BB\u5144\u5F1F\u9009\u62E9\u5668\uFF1A\u9009\u62E9\u7D27\u63A5\u5728\u6307\u5B9A\u5143\u7D20\u4E4B\u540E\u7684\u540C\u7EA7\u5143\u7D20 */
+h1 + p {
+  background-color: blanchedalmond;
+}
+
+/* \u901A\u7528\u5144\u5F1F\u9009\u62E9\u5668\uFF1A\u9009\u62E9\u6307\u5B9A\u5143\u7D20\u4E4B\u540E\u7684\u6240\u6709\u540C\u7EA7\u5143\u7D20 */
+h1 ~ p {
+  color: red;
+}
+
+/* :not() \u4F2A\u7C7B\uFF1A\u9009\u62E9\u4E0D\u5339\u914D\u6307\u5B9A\u9009\u62E9\u5668\u7684\u5143\u7D20 */
+li:not(.active) {
+  text-decoration: underline;
+}
+
+/* \u5C5E\u6027\u9009\u62E9\u5668\uFF1A\u9009\u62E9\u5177\u6709\u6307\u5B9A\u5C5E\u6027\u6216\u5C5E\u6027\u503C\u7684\u5143\u7D20 */
+li[id^='item'] {
+  font-size: 30px;
+}
+`,paraId:2,tocIndex:0},{value:"\u9009\u62E9\u5668\u7C7B\u578B",paraId:3,tocIndex:1},{value:"\u8BED\u6CD5\u793A\u4F8B",paraId:3,tocIndex:1},{value:"\u8BF4\u660E",paraId:3,tocIndex:1},{value:"\u5143\u7D20\u9009\u62E9\u5668",paraId:3,tocIndex:1},{value:"p",paraId:3,tocIndex:1},{value:"\u3001",paraId:3,tocIndex:1},{value:"div",paraId:3,tocIndex:1},{value:"\u9009\u62E9\u6307\u5B9A\u7C7B\u578B\u7684\u6240\u6709\u5143\u7D20",paraId:3,tocIndex:1},{value:"\u7C7B\u9009\u62E9\u5668",paraId:3,tocIndex:1},{value:".className",paraId:3,tocIndex:1},{value:"\u9009\u62E9\u5177\u6709\u6307\u5B9A class \u7684\u5143\u7D20",paraId:3,tocIndex:1},{value:"ID \u9009\u62E9\u5668",paraId:3,tocIndex:1},{value:"#idName",paraId:3,tocIndex:1},{value:"\u9009\u62E9\u5177\u6709\u6307\u5B9A id \u7684\u5143\u7D20",paraId:3,tocIndex:1},{value:"\u5C5E\u6027\u9009\u62E9\u5668",paraId:3,tocIndex:1},{value:'[attr="value"]',paraId:3,tocIndex:1},{value:"\u9009\u62E9\u5177\u6709\u6307\u5B9A\u5C5E\u6027\u7684\u5143\u7D20",paraId:3,tocIndex:1},{value:"\u540E\u4EE3\u9009\u62E9\u5668",paraId:3,tocIndex:1},{value:"div p",paraId:3,tocIndex:1},{value:"\u9009\u62E9 div \u5185\u7684\u6240\u6709 p \u5143\u7D20",paraId:3,tocIndex:1},{value:"\u5B50\u5143\u7D20\u9009\u62E9\u5668",paraId:3,tocIndex:1},{value:"div > p",paraId:3,tocIndex:1},{value:"\u4EC5\u9009\u62E9 div \u7684\u76F4\u63A5\u5B50\u5143\u7D20 p",paraId:3,tocIndex:1},{value:"\u76F8\u90BB\u5144\u5F1F\u9009\u62E9\u5668",paraId:3,tocIndex:1},{value:"h1 + p",paraId:3,tocIndex:1},{value:"\u9009\u62E9\u7D27\u8DDF\u5728 h1 \u540E\u7684 p \u5143\u7D20",paraId:3,tocIndex:1},{value:"\u901A\u7528\u5144\u5F1F\u9009\u62E9\u5668",paraId:3,tocIndex:1},{value:"h1 ~ p",paraId:3,tocIndex:1},{value:"\u9009\u62E9 h1 \u540E\u7684\u6240\u6709 p \u5144\u5F1F\u5143\u7D20",paraId:3,tocIndex:1},{value:"\u5C5E\u6027\u9009\u62E9\u5668\u63D0\u4F9B\u4E86\u5F3A\u5927\u7684\u5143\u7D20\u5339\u914D\u80FD\u529B:",paraId:4,tocIndex:2},{value:`/* \u5B58\u5728\u5C5E\u6027 */
+[disabled] {
+  opacity: 0.5;
+}
+
+/* \u5B8C\u5168\u5339\u914D */
+[type='text'] {
+  border-color: blue;
+}
+
+/* \u4EE5...\u5F00\u5934 */
+[class^='btn-'] {
+  padding: 10px;
+}
+
+/* \u4EE5...\u7ED3\u5C3E */
+[href$='.pdf'] {
+  color: red;
+}
+
+/* \u5305\u542B... */
+[class*='icon'] {
+  display: inline-block;
+}
+
+/* \u7A7A\u683C\u5206\u9694\u7684\u8BCD\u5217\u8868\u4E2D\u5305\u542B */
+[class~='active'] {
+  font-weight: bold;
+}
+
+/* \u8FDE\u5B57\u7B26\u5206\u9694\u7684\u8BCD\u5217\u8868\u4E2D\u4EE5...\u5F00\u5934 */
+[lang|='en'] {
+  font-family: Arial;
+}
+`,paraId:5,tocIndex:2},{value:"\u63D0\u793A",paraId:6,tocIndex:2},{value:": \u5173\u4E8E\u5C5E\u6027\u9009\u62E9\u5668\u4E2D\u5F15\u53F7\u7684\u95EE\u9898,\u867D\u7136\u5728\u67D0\u4E9B\u60C5\u51B5\u4E0B\u53EF\u4EE5\u7701\u7565,\u4F46\u4E3A\u4E86\u4FDD\u9669\u8D77\u89C1\u548C\u66F4\u597D\u7684\u53EF\u8BFB\u6027,\u5EFA\u8BAE\u603B\u662F\u4F7F\u7528\u5F15\u53F7\u3002",paraId:6,tocIndex:2},{value:"\u5728\u7EBF\u5DE5\u5177\uFF1A",paraId:7,tocIndex:3},{value:"CSS Specificity Calculator",paraId:7,tocIndex:3},{value:"\u5185\u8054\u6837\u5F0F",paraId:8,tocIndex:4},{value:" > ",paraId:8,tocIndex:4},{value:"ID \u9009\u62E9\u5668",paraId:8,tocIndex:4},{value:" > ",paraId:8,tocIndex:4},{value:"\u7C7B/\u5C5E\u6027/\u4F2A\u7C7B\u9009\u62E9\u5668",paraId:8,tocIndex:4},{value:" > ",paraId:8,tocIndex:4},{value:"\u5143\u7D20/\u4F2A\u5143\u7D20\u9009\u62E9\u5668",paraId:8,tocIndex:4},{value:" > ",paraId:8,tocIndex:4},{value:"\u901A\u7528\u9009\u62E9\u5668",paraId:8,tocIndex:4},{value:"\u4F18\u5148\u7EA7\u53EF\u4EE5\u8868\u793A\u4E3A\u4E09\u4F4D\u6570 ",paraId:9,tocIndex:4},{value:"(ID\u6570-\u7C7B\u6570-\u5143\u7D20\u6570)",paraId:9,tocIndex:4},{value:",\u4F8B\u5982:",paraId:9,tocIndex:4},{value:"#nav .list li",paraId:10,tocIndex:4},{value:" \u7684\u4F18\u5148\u7EA7\u662F ",paraId:10,tocIndex:4},{value:"1-1-1",paraId:10,tocIndex:4},{value:".container > p",paraId:10,tocIndex:4},{value:" \u7684\u4F18\u5148\u7EA7\u662F ",paraId:10,tocIndex:4},{value:"0-1-1",paraId:10,tocIndex:4},{value:"div p",paraId:10,tocIndex:4},{value:" \u7684\u4F18\u5148\u7EA7\u662F ",paraId:10,tocIndex:4},{value:"0-0-2",paraId:10,tocIndex:4},{value:"\u5F53\u4F18\u5148\u7EA7\u76F8\u540C\u65F6,",paraId:11,tocIndex:4},{value:"\u540E\u5B9A\u4E49\u7684\u89C4\u5219\u4F1A\u8986\u76D6\u5148\u5B9A\u4E49\u7684\u89C4\u5219",paraId:11,tocIndex:4},{value:"!important",paraId:12,tocIndex:4},{value:" \u58F0\u660E\u4F18\u5148\u7EA7\u6700\u9AD8,\u4F46\u5E94\u8BE5\u8C28\u614E\u4F7F\u7528",paraId:12,tocIndex:4},{value:"\u901A\u7528\u9009\u62E9\u5668 ",paraId:13,tocIndex:5},{value:"*",paraId:13,tocIndex:5},{value:"\u3001\u7EC4\u5408\u7B26 (",paraId:13,tocIndex:5},{value:"+",paraId:13,tocIndex:5},{value:"\u3001",paraId:13,tocIndex:5},{value:">",paraId:13,tocIndex:5},{value:"\u3001",paraId:13,tocIndex:5},{value:"~",paraId:13,tocIndex:5},{value:") \u548C ",paraId:13,tocIndex:5},{value:":where()",paraId:13,tocIndex:5},{value:" \u4E0D\u5F71\u54CD\u4F18\u5148\u7EA7",paraId:13,tocIndex:5},{value:":not()",paraId:14,tocIndex:5},{value:" \u548C ",paraId:14,tocIndex:5},{value:":is()",paraId:14,tocIndex:5},{value:" \u672C\u8EAB\u4E0D\u5F71\u54CD\u4F18\u5148\u7EA7,\u4F46\u5B83\u4EEC\u7684\u53C2\u6570\u4F1A\u5F71\u54CD:",paraId:14,tocIndex:5},{value:"\u53C2\u6570\u4E2D\u4F18\u5148\u7EA7\u6700\u9AD8\u7684\u9009\u62E9\u5668\u5C06\u4F5C\u4E3A\u8BE5\u4F2A\u7C7B\u7684\u4F18\u5148\u7EA7",paraId:15,tocIndex:5},{value:"\u5185\u8054\u6837\u5F0F",paraId:16,tocIndex:5},{value:" \u7684\u4F18\u5148\u7EA7\u53EF\u4EE5\u7406\u89E3\u4E3A ",paraId:16,tocIndex:5},{value:"1-0-0-0",paraId:16,tocIndex:5},{value:"\u9009\u62E9\u5668",paraId:17,tocIndex:6},{value:"ID",paraId:17,tocIndex:6},{value:"\u7C7B",paraId:17,tocIndex:6},{value:"\u5143\u7D20",paraId:17,tocIndex:6},{value:"\u4F18\u5148\u7EA7",paraId:17,tocIndex:6},{value:"h1",paraId:17,tocIndex:6},{value:"0",paraId:17,tocIndex:6},{value:"0",paraId:17,tocIndex:6},{value:"1",paraId:17,tocIndex:6},{value:"0-0-1",paraId:17,tocIndex:6},{value:"h1 + p::first-letter",paraId:17,tocIndex:6},{value:"0",paraId:17,tocIndex:6},{value:"0",paraId:17,tocIndex:6},{value:"3",paraId:17,tocIndex:6},{value:"0-0-3",paraId:17,tocIndex:6},{value:'li > a[href*="en-US"] > .inline-warning',paraId:17,tocIndex:6},{value:"0",paraId:17,tocIndex:6},{value:"2",paraId:17,tocIndex:6},{value:"2",paraId:17,tocIndex:6},{value:"0-2-2",paraId:17,tocIndex:6},{value:"#identifier",paraId:17,tocIndex:6},{value:"1",paraId:17,tocIndex:6},{value:"0",paraId:17,tocIndex:6},{value:"0",paraId:17,tocIndex:6},{value:"1-0-0",paraId:17,tocIndex:6},{value:"button:not(#mainBtn, .cta)",paraId:17,tocIndex:6},{value:"1",paraId:17,tocIndex:6},{value:"0",paraId:17,tocIndex:6},{value:"1",paraId:17,tocIndex:6},{value:"1-0-1",paraId:17,tocIndex:6},{value:"\u91CD\u8981",paraId:18,tocIndex:7},{value:": \u5F53\u591A\u4E2A\u9009\u62E9\u5668\u4F18\u5148\u7EA7\u76F8\u540C\u65F6,\u6837\u5F0F\u53D6\u51B3\u4E8E\u5B83\u4EEC\u5728\u6837\u5F0F\u8868\u4E2D\u7684\u5B9A\u4E49\u987A\u5E8F,\u800C\u4E0D\u662F HTML \u4E2D class \u7684\u987A\u5E8F\u3002",paraId:18,tocIndex:7},{value:`.blue {
+  color: blue;
+}
+.red {
+  color: red;
+}
+`,paraId:19,tocIndex:7},{value:`<!-- \u65E0\u8BBA class \u987A\u5E8F\u5982\u4F55,\u6587\u5B57\u90FD\u662F\u7EA2\u8272,\u56E0\u4E3A .red \u5728 CSS \u4E2D\u540E\u5B9A\u4E49 -->
+<p class="blue red">\u6211\u662F\u7EA2\u8272</p>
+<p class="red blue">\u6211\u4E5F\u662F\u7EA2\u8272</p>
+`,paraId:20,tocIndex:7},{value:"\u6CE8\u610F",paraId:21,tocIndex:7},{value:": \u5982\u679C ",paraId:21,tocIndex:7},{value:".blue",paraId:21,tocIndex:7},{value:" \u548C ",paraId:21,tocIndex:7},{value:".red",paraId:21,tocIndex:7},{value:" \u5728\u4E0D\u540C\u7684 CSS \u6587\u4EF6\u4E2D,\u6700\u7EC8\u6837\u5F0F\u5C06\u53D6\u51B3\u4E8E CSS \u6587\u4EF6\u7684\u52A0\u8F7D\u987A\u5E8F\u3002",paraId:21,tocIndex:7},{value:"\u8FD9\u4E9B\u662F\u5F00\u53D1\u4E2D\u6700\u5E38\u7528\u7684\u4F2A\u7C7B:",paraId:22,tocIndex:9},{value:`/* \u94FE\u63A5\u72B6\u6001 - \u6309 LVHA \u987A\u5E8F\u4E66\u5199 (Link-Visited-Hover-Active) */
+a:link {
+  color: blue;
+} /* \u672A\u8BBF\u95EE\u7684\u94FE\u63A5 */
+a:visited {
+  color: purple;
+} /* \u5DF2\u8BBF\u95EE\u7684\u94FE\u63A5 */
+a:hover {
+  color: red;
+} /* \u9F20\u6807\u60AC\u505C */
+a:active {
+  color: orange;
+} /* \u6B63\u5728\u70B9\u51FB */
+
+/* \u8868\u5355\u72B6\u6001 */
+input:focus {
+  border-color: blue;
+} /* \u83B7\u5F97\u7126\u70B9 */
+input:focus-visible {
+  outline: 2px solid blue;
+} /* \u952E\u76D8\u7126\u70B9 */
+input:disabled {
+  opacity: 0.5;
+} /* \u7981\u7528\u72B6\u6001 */
+input:enabled {
+  cursor: pointer;
+} /* \u542F\u7528\u72B6\u6001 */
+input:checked {
+  background: green;
+} /* \u9009\u4E2D\u72B6\u6001 */
+input:valid {
+  border-color: green;
+} /* \u9A8C\u8BC1\u901A\u8FC7 */
+input:invalid {
+  border-color: red;
+} /* \u9A8C\u8BC1\u5931\u8D25 */
+input:required {
+  border-left: 3px solid red;
+} /* \u5FC5\u586B\u9879 */
+input:optional {
+  border-left: 3px solid gray;
+} /* \u53EF\u9009\u9879 */
+`,paraId:23,tocIndex:9},{value:"\u7528\u4E8E\u9009\u62E9\u7279\u5B9A\u4F4D\u7F6E\u7684\u5143\u7D20:",paraId:24,tocIndex:10},{value:`/* \u9009\u62E9\u7B2C\u4E00\u4E2A/\u6700\u540E\u4E00\u4E2A\u5B50\u5143\u7D20 */
+li:first-child {
+  font-weight: bold;
+}
+li:last-child {
+  border-bottom: none;
+}
+
+/* \u9009\u62E9\u7279\u5B9A\u7C7B\u578B\u7684\u7B2C\u4E00\u4E2A/\u6700\u540E\u4E00\u4E2A */
+p:first-of-type {
+  margin-top: 0;
+}
+p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* \u9009\u62E9\u552F\u4E00\u7684\u5B50\u5143\u7D20 */
+p:only-child {
+  text-align: center;
+}
+p:only-of-type {
+  font-style: italic;
+}
+
+/* \u6309\u516C\u5F0F\u9009\u62E9 */
+li:nth-child(2n) {
+  background: #f0f0f0;
+} /* \u5076\u6570\u9879 */
+li:nth-child(2n + 1) {
+  background: white;
+} /* \u5947\u6570\u9879 */
+li:nth-child(3n) {
+  font-weight: bold;
+} /* \u6BCF3\u4E2A */
+li:nth-last-child(2) {
+  color: red;
+} /* \u5012\u6570\u7B2C2\u4E2A */
+
+/* \u7B80\u5199\u5F62\u5F0F */
+li:nth-child(even) {
+  background: #f0f0f0;
+} /* \u7B49\u540C\u4E8E 2n */
+li:nth-child(odd) {
+  background: white;
+} /* \u7B49\u540C\u4E8E 2n+1 */
+`,paraId:25,tocIndex:10},{value:`/* :not() - \u6392\u9664\u7279\u5B9A\u5143\u7D20 */
+li:not(.active) {
+  opacity: 0.6;
+}
+input:not([type='submit']) {
+  border-radius: 4px;
+}
+
+/* :is() - \u5339\u914D\u5217\u8868\u4E2D\u4EFB\u4E00\u9009\u62E9\u5668 */
+:is(h1, h2, h3) {
+  margin-top: 0;
+}
+/* \u7B49\u540C\u4E8E h1, h2, h3 { margin-top: 0; } */
+
+/* :where() - \u7C7B\u4F3C :is() \u4F46\u4F18\u5148\u7EA7\u4E3A 0 */
+:where(article, section) p {
+  line-height: 1.6;
+}
+
+/* :has() - \u6839\u636E\u5B50\u5143\u7D20\u9009\u62E9\u7236\u5143\u7D20 (\u76F8\u5BF9\u8F83\u65B0) */
+div:has(> img) {
+  display: flex;
+}
+article:has(h2) {
+  padding-top: 20px;
+}
+`,paraId:26,tocIndex:11},{value:`/* \u9009\u62E9\u7A7A\u5143\u7D20 */
+div:empty {
+  display: none;
+}
+
+/* \u76EE\u6807\u5143\u7D20 (\u901A\u8FC7 URL \u951A\u70B9) */
+:target {
+  background: yellow;
+}
+
+/* \u6839\u5143\u7D20 (\u901A\u5E38\u662F <html>) */
+:root {
+  --main-color: #333;
+  --spacing: 8px;
+}
+`,paraId:27,tocIndex:12},{value:"\u66F4\u591A\u4F2A\u7C7B",paraId:28,tocIndex:12},{value:": \u67E5\u9605 ",paraId:28,tocIndex:12},{value:"MDN \u4F2A\u7C7B\u5B8C\u6574\u5217\u8868",paraId:28,tocIndex:12},{value:`/* \u8868\u5355\u9A8C\u8BC1\u7684\u5B8C\u6574\u6837\u5F0F\u65B9\u6848 */
+.form-field {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* \u5FC5\u586B\u5B57\u6BB5\u6807\u8BB0 */
+.form-field input:required + label::after {
+  content: '*';
+  color: red;
+  margin-left: 4px;
+}
+
+/* \u9A8C\u8BC1\u901A\u8FC7 */
+.form-field input:valid {
+  border-color: #4caf50;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%234CAF50' d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 20px;
+}
+
+/* \u9A8C\u8BC1\u5931\u8D25 */
+.form-field input:invalid:not(:placeholder-shown) {
+  border-color: #f44336;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23F44336' d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 20px;
+}
+
+/* \u805A\u7126\u72B6\u6001 */
+.form-field input:focus {
+  outline: none;
+  border-color: #2196f3;
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+/* \u7981\u7528\u72B6\u6001 */
+.form-field input:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+`,paraId:29,tocIndex:13},{value:"\u4F2A\u5143\u7D20\u521B\u5EFA\u4E0D\u5728 DOM \u4E2D\u7684\u5143\u7D20,\u7528\u53CC\u5192\u53F7 ",paraId:30,tocIndex:14},{value:"::",paraId:30,tocIndex:14},{value:" \u8868\u793A\u3002",paraId:30,tocIndex:14},{value:"\u6700\u5E38\u7528\u7684\u4F2A\u5143\u7D20,\u53EF\u7528\u4E8E\u6DFB\u52A0\u88C5\u9970\u6027\u5185\u5BB9:",paraId:31,tocIndex:15},{value:`/* \u57FA\u7840\u7528\u6CD5 */
+.icon::before {
+  content: '\u2192';
+  margin-right: 5px;
+}
+
+/* \u6E05\u9664\u6D6E\u52A8 */
+.clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* \u88C5\u9970\u6027\u56FE\u6807 */
+.external-link::after {
+  content: '\u2197';
+  font-size: 0.8em;
+  margin-left: 3px;
+}
+
+/* \u5FC5\u586B\u6807\u8BB0 */
+.required::before {
+  content: '*';
+  color: red;
+  margin-right: 2px;
+}
+
+/* \u5F15\u53F7 */
+blockquote::before {
+  content: '"';
+  font-size: 2em;
+  color: #999;
+}
+`,paraId:32,tocIndex:15},{value:"\u91CD\u8981",paraId:33,tocIndex:15},{value:": ",paraId:33,tocIndex:15},{value:"::before",paraId:33,tocIndex:15},{value:" \u548C ",paraId:33,tocIndex:15},{value:"::after",paraId:33,tocIndex:15},{value:" \u751F\u6210\u7684\u662F\u884C\u7EA7\u5143\u7D20,\u4E0D\u80FD\u5E94\u7528\u4E8E\u66FF\u6362\u5143\u7D20(\u5982 ",paraId:33,tocIndex:15},{value:"<img>",paraId:33,tocIndex:15},{value:"\u3001",paraId:33,tocIndex:15},{value:"<input>",paraId:33,tocIndex:15},{value:"),\u56E0\u4E3A\u5B83\u4EEC\u7684\u5185\u5BB9\u4F1A\u88AB\u66FF\u6362\u3002",paraId:33,tocIndex:15},{value:`/* \u9996\u5B57\u6BCD */
+p::first-letter {
+  font-size: 2em;
+  font-weight: bold;
+  float: left;
+}
+
+/* \u9996\u884C */
+p::first-line {
+  font-variant: small-caps;
+}
+
+/* \u9009\u4E2D\u7684\u6587\u672C */
+::selection {
+  background: yellow;
+  color: black;
+}
+
+/* \u5360\u4F4D\u7B26\u6587\u672C */
+input::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+/* \u5217\u8868\u6807\u8BB0 */
+li::marker {
+  color: #2196f3;
+  font-weight: bold;
+}
+`,paraId:34,tocIndex:16},{value:"\u66F4\u591A\u4F2A\u5143\u7D20",paraId:35,tocIndex:16},{value:": \u67E5\u9605 ",paraId:35,tocIndex:16},{value:"MDN \u4F2A\u5143\u7D20\u5B8C\u6574\u5217\u8868",paraId:35,tocIndex:16},{value:`/* \u4F7F\u7528\u4F2A\u5143\u7D20\u521B\u5EFA\u60AC\u505C\u6548\u679C */
+.card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+/* \u4F7F\u7528 ::before \u521B\u5EFA\u60AC\u505C\u906E\u7F69 */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(33, 150, 243, 0.8),
+    rgba(156, 39, 176, 0.8)
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 1;
+}
+
+/* \u4F7F\u7528 ::after \u521B\u5EFA\u88C5\u9970\u56FE\u6807 */
+.card::after {
+  content: '\u2192';
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 2em;
+  color: white;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.3s;
+  z-index: 2;
+}
+
+/* \u60AC\u505C\u65F6\u7684\u6548\u679C */
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* \u5361\u7247\u5185\u5BB9\u5728\u60AC\u505C\u65F6\u4FDD\u6301\u53EF\u89C1 */
+.card-content {
+  position: relative;
+  z-index: 3;
+}
+`,paraId:36,tocIndex:17},{value:"CSS \u9009\u62E9\u5668\u5217\u8868\u4F7F\u7528\u9017\u53F7 ",paraId:37,tocIndex:19},{value:",",paraId:37,tocIndex:19},{value:" \u5206\u9694\u591A\u4E2A\u9009\u62E9\u5668,\u5171\u4EAB\u76F8\u540C\u7684\u6837\u5F0F\u58F0\u660E:",paraId:37,tocIndex:19},{value:`/* \u8FD9\u4E09\u79CD\u5199\u6CD5\u6548\u679C\u76F8\u540C */
+span {
+  border: red 2px solid;
+}
+div {
+  border: red 2px solid;
+}
+
+/* \u9009\u62E9\u5668\u5217\u8868 */
+span,
+div {
+  border: red 2px solid;
+}
+
+/* \u4F7F\u7528 :is() */
+:is(span, div) {
+  border: red 2px solid;
+}
+`,paraId:38,tocIndex:19},{value:"\u9009\u62E9\u5668\u5217\u8868\u4E2D\u7684\u5355\u4E2A\u65E0\u6548\u9009\u62E9\u5668\u4F1A\u4F7F\u6574\u4E2A\u89C4\u5219\u5931\u6548",paraId:39,tocIndex:20},{value:":",paraId:39,tocIndex:20},{value:`/* \u7B2C\u4E00\u7EC4\u89C4\u5219 */
+h1 {
+  font-family: sans-serif;
+}
+h2:invalid-pseudo {
+  font-family: sans-serif;
+} /* \u65E0\u6548,\u4F46\u4E0D\u5F71\u54CD\u5176\u4ED6\u89C4\u5219 */
+h3 {
+  font-family: sans-serif;
+}
+
+/* \u7B2C\u4E8C\u7EC4\u89C4\u5219 */
+h1,
+h2:invalid-pseudo,
+h3 {
+  font-family: sans-serif; /* \u6574\u4E2A\u89C4\u5219\u5931\u6548,h1 \u548C h3 \u4E5F\u4E0D\u4F1A\u5E94\u7528\u6837\u5F0F */
+}
+`,paraId:40,tocIndex:20},{value:"\u4F7F\u7528 ",paraId:41,tocIndex:21},{value:":is()",paraId:41,tocIndex:21},{value:" \u6216 ",paraId:41,tocIndex:21},{value:":where()",paraId:41,tocIndex:21},{value:" \u53EF\u4EE5\u521B\u5EFA\u53EF\u5BB9\u9519\u7684\u9009\u62E9\u5668\u5217\u8868:",paraId:41,tocIndex:21},{value:`/* \u65E0\u6548\u7684\u9009\u62E9\u5668\u4F1A\u88AB\u5FFD\u7565,\u6709\u6548\u7684\u9009\u62E9\u5668\u7EE7\u7EED\u751F\u6548 */
+:is(h1, h2:invalid-pseudo, h3) {
+  font-family: sans-serif; /* h1 \u548C h3 \u6B63\u5E38\u5E94\u7528\u6837\u5F0F */
+}
+`,paraId:42,tocIndex:21},{value:`<div>
+  <p class="text1">\u6211\u662F\u6587\u672C1</p>
+  <p class="text2">\u6211\u662F\u6587\u672C2</p>
+  <p id="text3">\u6211\u662F\u6587\u672C3</p>
+</div>
+`,paraId:43,tocIndex:22},{value:`/* :is() - \u4F18\u5148\u7EA7\u4E3A\u53C2\u6570\u4E2D\u6700\u9AD8\u7684\u9009\u62E9\u5668 */
+:is(#text3, .text1, .text2) {
+  color: blue; /* \u4F18\u5148\u7EA7: 1-0-0 (ID \u9009\u62E9\u5668) */
+}
+
+/* :where() - \u4F18\u5148\u7EA7\u59CB\u7EC8\u4E3A 0 */
+:where(#text3, .text1, .text2) {
+  color: red; /* \u4F18\u5148\u7EA7: 0-0-0 */
+}
+
+/* \u666E\u901A\u9009\u62E9\u5668\u5217\u8868 - \u6BCF\u4E2A\u9009\u62E9\u5668\u4FDD\u6301\u5404\u81EA\u7684\u4F18\u5148\u7EA7 */
+#text3,
+.text1,
+.text2 {
+  color: yellow;
+  /* #text3 \u4F18\u5148\u7EA7: 1-0-0 */
+  /* .text1 \u4F18\u5148\u7EA7: 0-1-0 */
+  /* .text2 \u4F18\u5148\u7EA7: 0-1-0 */
+}
+`,paraId:44,tocIndex:22},{value:"\u7ED3\u679C\u5206\u6790",paraId:45,tocIndex:22},{value:":",paraId:45,tocIndex:22},{value:"text1 \u548C text2",paraId:46,tocIndex:22},{value:": \u84DD\u8272 (",paraId:46,tocIndex:22},{value:":is()",paraId:46,tocIndex:22},{value:" \u7684\u4F18\u5148\u7EA7 ",paraId:46,tocIndex:22},{value:"1-0-0",paraId:46,tocIndex:22},{value:" \u6700\u9AD8)",paraId:46,tocIndex:22},{value:"text3",paraId:46,tocIndex:22},{value:": \u9EC4\u8272 (",paraId:46,tocIndex:22},{value:":is()",paraId:46,tocIndex:22},{value:" \u548C ",paraId:46,tocIndex:22},{value:"#text3",paraId:46,tocIndex:22},{value:" \u4F18\u5148\u7EA7\u76F8\u540C,\u4F46 ",paraId:46,tocIndex:22},{value:"#text3",paraId:46,tocIndex:22},{value:" \u540E\u5B9A\u4E49)",paraId:46,tocIndex:22},{value:"\u4F7F\u7528\u5EFA\u8BAE",paraId:47,tocIndex:22},{value:":",paraId:47,tocIndex:22},{value:":is()",paraId:48,tocIndex:22},{value:" \u9002\u5408\u9700\u8981\u4FDD\u6301\u4E00\u5B9A\u4F18\u5148\u7EA7\u7684\u573A\u666F",paraId:48,tocIndex:22},{value:":where()",paraId:48,tocIndex:22},{value:" \u9002\u5408\u521B\u5EFA\u4F4E\u4F18\u5148\u7EA7\u7684\u57FA\u7840\u6837\u5F0F,\u4FBF\u4E8E\u540E\u7EED\u8986\u76D6",paraId:48,tocIndex:22},{value:"\u907F\u514D\u4F7F\u7528\u901A\u7528\u9009\u62E9\u5668",paraId:49,tocIndex:24},{value:`/* \u907F\u514D */
+* {
+  margin: 0;
+}
+.container * {
+  padding: 0;
+}
+
+/* \u63A8\u8350 */
+body,
+h1,
+h2,
+p {
+  margin: 0;
+}
+`,paraId:50,tocIndex:24},{value:"\u907F\u514D\u8FC7\u5EA6\u5D4C\u5957",paraId:51,tocIndex:24},{value:`/* \u907F\u514D */
+html body div.container ul li a {
+  color: blue;
+}
+
+/* \u63A8\u8350 */
+.nav-link {
+  color: blue;
+}
+`,paraId:52,tocIndex:24},{value:"\u4F18\u5148\u4F7F\u7528\u7C7B\u9009\u62E9\u5668\u800C\u975E\u6807\u7B7E\u9009\u62E9\u5668",paraId:53,tocIndex:24},{value:`/* \u6027\u80FD\u8F83\u5DEE */
+div p span {
+  font-size: 14px;
+}
+
+/* \u6027\u80FD\u66F4\u597D */
+.text-content {
+  font-size: 14px;
+}
+`,paraId:54,tocIndex:24},{value:"\u907F\u514D\u4F7F\u7528\u5C5E\u6027\u9009\u62E9\u5668\u7684\u901A\u914D\u7B26(\u7279\u522B\u662F\u5728\u5927\u578B DOM \u4E2D)",paraId:55,tocIndex:24},{value:`/* \u6027\u80FD\u8F83\u5DEE */
+[class*='icon'] {
+  display: inline-block;
+}
+
+/* \u63A8\u8350\u6DFB\u52A0\u66F4\u5177\u4F53\u7684\u9650\u5B9A */
+.btn [class*='icon'] {
+  display: inline-block;
+}
+`,paraId:56,tocIndex:24},{value:"\u6D4F\u89C8\u5668\u4ECE\u53F3\u5230\u5DE6\u89E3\u6790\u9009\u62E9\u5668,\u56E0\u6B64",paraId:57,tocIndex:25},{value:"\u6700\u53F3\u4FA7\u7684\u9009\u62E9\u5668(\u5173\u952E\u9009\u62E9\u5668)\u5BF9\u6027\u80FD\u5F71\u54CD\u6700\u5927",paraId:57,tocIndex:25},{value:":",paraId:57,tocIndex:25},{value:`/* \u6D4F\u89C8\u5668\u5148\u627E\u6240\u6709 a \u5143\u7D20,\u518D\u8FC7\u6EE4 li \u5185\u7684,\u518D\u8FC7\u6EE4 .nav \u5185\u7684 */
+.nav li a {
+  color: blue;
+}
+
+/* \u66F4\u9AD8\u6548:\u5148\u627E .nav-link,\u65E0\u9700\u989D\u5916\u8FC7\u6EE4 */
+.nav-link {
+  color: blue;
+}
+`,paraId:58,tocIndex:25},{value:"\u5F53\u6D4F\u89C8\u5668\u9047\u5230\u65E0\u6CD5\u89E3\u6790\u7684 CSS \u4EE3\u7801\u65F6\u7684\u884C\u4E3A:",paraId:59,tocIndex:27},{value:"\u65E0\u6548\u7684\u5C5E\u6027\u6216\u503C",paraId:60,tocIndex:27},{value:": \u6D4F\u89C8\u5668\u4F1A\u5FFD\u7565\u8BE5\u58F0\u660E,\u7EE7\u7EED\u89E3\u6790\u540E\u7EED\u7684 CSS",paraId:60,tocIndex:27},{value:"\u65E0\u6548\u7684\u9009\u62E9\u5668",paraId:60,tocIndex:27},{value:": \u6D4F\u89C8\u5668\u4F1A\u5FFD\u7565\u6574\u4E2A\u89C4\u5219\u96C6",paraId:60,tocIndex:27},{value:`/* \u5982\u679C\u6D4F\u89C8\u5668\u4E0D\u652F\u6301 :has(),\u6574\u4E2A\u89C4\u5219\u4F1A\u88AB\u5FFD\u7565 */
+div:has(> img) {
+  display: flex; /* \u4E0D\u4F1A\u5E94\u7528 */
+}
+
+/* \u6E10\u8FDB\u589E\u5F3A:\u5148\u63D0\u4F9B\u57FA\u7840\u6837\u5F0F */
+div {
+  display: block; /* \u964D\u7EA7\u65B9\u6848 */
+}
+div:has(> img) {
+  display: flex; /* \u652F\u6301\u7684\u6D4F\u89C8\u5668\u4F1A\u5E94\u7528\u8FD9\u4E2A */
+}
+`,paraId:61,tocIndex:27},{value:"\u4F7F\u7528\u8F83\u65B0\u7684\u9009\u62E9\u5668\u65F6\u9700\u8981\u8003\u8651\u6D4F\u89C8\u5668\u517C\u5BB9\u6027:",paraId:62,tocIndex:28},{value:":has()",paraId:63,tocIndex:28},{value:" - \u9700\u8981\u68C0\u67E5\u6D4F\u89C8\u5668\u652F\u6301\u5EA6",paraId:63,tocIndex:28},{value:":is()",paraId:63,tocIndex:28},{value:" - \u73B0\u4EE3\u6D4F\u89C8\u5668\u652F\u6301\u826F\u597D",paraId:63,tocIndex:28},{value:":where()",paraId:63,tocIndex:28},{value:" - \u73B0\u4EE3\u6D4F\u89C8\u5668\u652F\u6301\u826F\u597D",paraId:63,tocIndex:28},{value:":focus-visible",paraId:63,tocIndex:28},{value:" - \u9700\u8981\u8003\u8651\u964D\u7EA7\u65B9\u6848",paraId:63,tocIndex:28},{value:"\u53EF\u4EE5\u4F7F\u7528 ",paraId:64,tocIndex:28},{value:"@supports",paraId:64,tocIndex:28},{value:" \u8FDB\u884C\u7279\u6027\u68C0\u6D4B:",paraId:64,tocIndex:28},{value:`/* \u964D\u7EA7\u65B9\u6848 */
+.element {
+  outline: 2px solid blue;
+}
+
+/* \u5982\u679C\u652F\u6301 :focus-visible,\u4F7F\u7528\u66F4\u597D\u7684\u65B9\u6848 */
+@supports selector(:focus-visible) {
+  .element:focus {
+    outline: none;
+  }
+  .element:focus-visible {
+    outline: 2px solid blue;
+  }
+}
+`,paraId:65,tocIndex:28},{value:`/* \u7ED3\u5408\u591A\u79CD\u9009\u62E9\u5668\u5B9E\u73B0\u54CD\u5E94\u5F0F\u5BFC\u822A */
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+/* \u9009\u62E9\u6700\u540E\u4E00\u4E2A\u5BFC\u822A\u9879,\u79FB\u9664\u53F3\u8FB9\u8DDD */
+.nav-item:last-child {
+  margin-right: 0;
+}
+
+/* \u9009\u62E9\u5F53\u524D\u6FC0\u6D3B\u7684\u5BFC\u822A\u9879 */
+.nav-item.active,
+.nav-item:hover {
+  color: #2196f3;
+  border-bottom: 2px solid currentColor;
+}
+
+/* \u4F7F\u7528 :has() \u4E3A\u5305\u542B\u5B50\u83DC\u5355\u7684\u5BFC\u822A\u9879\u6DFB\u52A0\u6307\u793A\u5668 */
+.nav-item:has(.submenu)::after {
+  content: '\u25BC';
+  font-size: 0.8em;
+  margin-left: 5px;
+}
+
+/* \u4F7F\u7528 :not() \u6392\u9664\u7279\u5B9A\u9879 */
+.nav-item:not(.no-hover):hover {
+  background-color: rgba(33, 150, 243, 0.1);
+}
+
+/* \u4F7F\u7528 :nth-child() \u4E3A\u5947\u5076\u9879\u6DFB\u52A0\u4E0D\u540C\u6837\u5F0F */
+.nav-item:nth-child(odd) {
+  /* \u5947\u6570\u9879\u6837\u5F0F */
+}
+
+/* \u4F7F\u7528 :focus-visible \u6539\u5584\u952E\u76D8\u5BFC\u822A\u4F53\u9A8C */
+.nav-item:focus-visible {
+  outline: 2px solid #2196f3;
+  outline-offset: 4px;
+}
+`,paraId:66,tocIndex:29},{value:"CSS \u9009\u62E9\u5668 - MDN",paraId:67,tocIndex:30},{value:"\u9009\u62E9\u5668\u4F18\u5148\u7EA7 - MDN",paraId:67,tocIndex:30},{value:"\u4F2A\u7C7B\u5B8C\u6574\u5217\u8868 - MDN",paraId:67,tocIndex:30},{value:"\u4F2A\u5143\u7D20\u5B8C\u6574\u5217\u8868 - MDN",paraId:67,tocIndex:30},{value:"Can I Use - CSS \u9009\u62E9\u5668\u517C\u5BB9\u6027\u67E5\u8BE2",paraId:67,tocIndex:30},{value:":has() \u7236\u5143\u7D20\u9009\u62E9\u5668\u8BE6\u89E3",paraId:67,tocIndex:30}]},10034:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"CVA (Class Variance Authority)",paraId:0,tocIndex:1},{value:" \u662F\u4E00\u4E2A\u7528\u4E8E\u7BA1\u7406\u7EC4\u4EF6\u6837\u5F0F\u53D8\u4F53\u7684 TypeScript \u5E93\u3002\u5B83\u63D0\u4F9B\u4E86\u4E00\u79CD\u7ED3\u6784\u5316\u3001\u7C7B\u578B\u5B89\u5168\u7684\u65B9\u5F0F\u6765\u5B9A\u4E49\u548C\u7BA1\u7406\u7EC4\u4EF6\u7684\u5404\u79CD\u53D8\u4F53\uFF08variants\uFF09\u3001\u5C3A\u5BF8\uFF08sizes\uFF09\u3001\u72B6\u6001\u7B49\u6837\u5F0F\u7EC4\u5408\u3002",paraId:0,tocIndex:1},{value:"CVA \u672C\u8D28\u4E0A\u662F\u5BF9 ",paraId:1,tocIndex:1},{value:"clsx",paraId:1,tocIndex:1},{value:" \u548C ",paraId:1,tocIndex:1},{value:"tailwind-merge",paraId:1,tocIndex:1},{value:" \u7684\u9AD8\u7EA7\u5C01\u88C5\uFF0C\u901A\u8FC7\u58F0\u660E\u5F0F\u7684\u914D\u7F6E\u6765\u7BA1\u7406\u590D\u6742\u7684\u6837\u5F0F\u903B\u8F91\u3002",paraId:1,tocIndex:1},{value:`import { cva } from 'class-variance-authority';
 
 const button = cva('\u57FA\u7840\u6837\u5F0F', {
   variants: {
@@ -2943,7 +3568,7 @@ const className = cn(
 
 // \u4F7F\u7528
 <Button theme={currentTheme}>\u6309\u94AE</Button>;
-`,paraId:48,tocIndex:26},{value:"CVA \u5B98\u65B9\u6587\u6863",paraId:49,tocIndex:27},{value:"CVA GitHub",paraId:49,tocIndex:27},{value:"Tailwind CSS",paraId:49,tocIndex:27},{value:"shadcn/ui",paraId:49,tocIndex:27},{value:" - \u5927\u91CF\u4F7F\u7528 CVA \u7684\u7EC4\u4EF6\u5E93\u793A\u4F8B",paraId:49,tocIndex:27}]},51450:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"Grid \u7F51\u683C\u5E03\u5C40\u662F\u524D\u7AEF\u5F00\u53D1\u7684\u7EC8\u6781\u5E03\u5C40\u89E3\u51B3\u65B9\u6848\uFF0C\u6D89\u53CA 40+ \u4E2A CSS \u5C5E\u6027\uFF0C\u8986\u76D6\u4E86\u7EDD\u5927\u591A\u6570\u524D\u7AEF\u5E03\u5C40\u573A\u666F\u3002\u638C\u63E1 Grid \u5E03\u5C40\u7B49\u4E8E\u638C\u63E1\u4E86\u524D\u7AEF\u5E03\u5C40\u7684\u6838\u5FC3\u3002",paraId:0,tocIndex:0},{value:"Grid \u5E03\u5C40\u7684\u6240\u6709\u5C5E\u6027\u5206\u4E3A\u4E24\u5927\u7C7B\uFF1A",paraId:1,tocIndex:1},{value:"Grid Arrangement\uFF08\u7F51\u683C\u6392\u5217\uFF09",paraId:2,tocIndex:1},{value:"\uFF1A\u5B9A\u4E49\u7F51\u683C\u5982\u4F55\u7ED8\u5236\uFF0C\u63A7\u5236\u884C\u5217\u7684\u5206\u5E03",paraId:2,tocIndex:1},{value:"Item Placement\uFF08\u9879\u76EE\u653E\u7F6E\uFF09",paraId:2,tocIndex:1},{value:"\uFF1A\u63A7\u5236\u5143\u7D20\u5982\u4F55\u653E\u7F6E\u5230\u7F51\u683C\u4E2D\uFF0C\u662F\u5426\u8DE8\u8D8A\u591A\u4E2A\u5355\u5143\u683C\uFF0C\u4EE5\u53CA\u5BF9\u9F50\u65B9\u5F0F",paraId:2,tocIndex:1},{value:"\u521B\u5EFA\u4E00\u4E2A 3\xD73 \u7684\u4E5D\u5BAB\u683C\uFF0C9 \u4E2A\u5143\u7D20\u5747\u5300\u6392\u5217\uFF0C\u5E26\u6709\u95F4\u8DDD\uFF0C\u6574\u4F53\u5C45\u4E2D\u663E\u793A\u3002",paraId:3,tocIndex:3},{value:`.container {
+`,paraId:48,tocIndex:26},{value:"CVA \u5B98\u65B9\u6587\u6863",paraId:49,tocIndex:27},{value:"CVA GitHub",paraId:49,tocIndex:27},{value:"Tailwind CSS",paraId:49,tocIndex:27},{value:"shadcn/ui",paraId:49,tocIndex:27},{value:" - \u5927\u91CF\u4F7F\u7528 CVA \u7684\u7EC4\u4EF6\u5E93\u793A\u4F8B",paraId:49,tocIndex:27}]},51450:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"Grid \u7F51\u683C\u5E03\u5C40\u662F\u524D\u7AEF\u5F00\u53D1\u7684\u7EC8\u6781\u5E03\u5C40\u89E3\u51B3\u65B9\u6848\uFF0C\u6D89\u53CA 40+ \u4E2A CSS \u5C5E\u6027\uFF0C\u8986\u76D6\u4E86\u7EDD\u5927\u591A\u6570\u524D\u7AEF\u5E03\u5C40\u573A\u666F\u3002\u638C\u63E1 Grid \u5E03\u5C40\u7B49\u4E8E\u638C\u63E1\u4E86\u524D\u7AEF\u5E03\u5C40\u7684\u6838\u5FC3\u3002",paraId:0,tocIndex:0},{value:"Grid \u5E03\u5C40\u7684\u6240\u6709\u5C5E\u6027\u5206\u4E3A\u4E24\u5927\u7C7B\uFF1A",paraId:1,tocIndex:1},{value:"Grid Arrangement\uFF08\u7F51\u683C\u6392\u5217\uFF09",paraId:2,tocIndex:1},{value:"\uFF1A\u5B9A\u4E49\u7F51\u683C\u5982\u4F55\u7ED8\u5236\uFF0C\u63A7\u5236\u884C\u5217\u7684\u5206\u5E03",paraId:2,tocIndex:1},{value:"Item Placement\uFF08\u9879\u76EE\u653E\u7F6E\uFF09",paraId:2,tocIndex:1},{value:"\uFF1A\u63A7\u5236\u5143\u7D20\u5982\u4F55\u653E\u7F6E\u5230\u7F51\u683C\u4E2D\uFF0C\u662F\u5426\u8DE8\u8D8A\u591A\u4E2A\u5355\u5143\u683C\uFF0C\u4EE5\u53CA\u5BF9\u9F50\u65B9\u5F0F",paraId:2,tocIndex:1},{value:"\u521B\u5EFA\u4E00\u4E2A 3\xD73 \u7684\u4E5D\u5BAB\u683C\uFF0C9 \u4E2A\u5143\u7D20\u5747\u5300\u6392\u5217\uFF0C\u5E26\u6709\u95F4\u8DDD\uFF0C\u6574\u4F53\u5C45\u4E2D\u663E\u793A\u3002",paraId:3,tocIndex:3},{value:`.container {
   display: grid; /* \u5C06\u5BB9\u5668\u8F6C\u4E3A\u7F51\u683C\u5E03\u5C40 */
   grid-template-columns: 100px 100px 100px; /* \u5B9A\u4E49 3 \u5217\uFF0C\u6BCF\u5217 100px */
   grid-template-rows: 100px 100px 100px; /* \u5B9A\u4E49 3 \u884C\uFF0C\u6BCF\u884C 100px */
@@ -3039,7 +3664,7 @@ place-items: center center; /* \u5782\u76F4 \u6C34\u5E73 */
 /* \u5B50\u5143\u7D20\u4E2D */
 place-self: center end; /* \u5782\u76F4 \u6C34\u5E73 */
 `,paraId:64,tocIndex:44},{value:"\u5C5E\u6027",paraId:65,tocIndex:46},{value:"\u4F5C\u7528",paraId:65,tocIndex:46},{value:"\u5E38\u7528\u503C",paraId:65,tocIndex:46},{value:"grid-template-rows",paraId:65,tocIndex:46},{value:"\u5B9A\u4E49\u884C\u6570\u548C\u9AD8\u5EA6",paraId:65,tocIndex:46},{value:"100px 200px",paraId:65,tocIndex:46},{value:" / ",paraId:65,tocIndex:46},{value:"repeat(3, 1fr)",paraId:65,tocIndex:46},{value:"grid-template-columns",paraId:65,tocIndex:46},{value:"\u5B9A\u4E49\u5217\u6570\u548C\u5BBD\u5EA6",paraId:65,tocIndex:46},{value:"100px 1fr",paraId:65,tocIndex:46},{value:" / ",paraId:65,tocIndex:46},{value:"repeat(auto-fill, minmax(200px, 1fr))",paraId:65,tocIndex:46},{value:"grid-template-areas",paraId:65,tocIndex:46},{value:"\u547D\u540D\u7F51\u683C\u533A\u57DF",paraId:65,tocIndex:46},{value:"'header header' 'aside main'",paraId:65,tocIndex:46},{value:"grid-auto-rows",paraId:65,tocIndex:46},{value:"\u9690\u5F0F\u884C\u9AD8",paraId:65,tocIndex:46},{value:"80px",paraId:65,tocIndex:46},{value:" / ",paraId:65,tocIndex:46},{value:"minmax(80px, auto)",paraId:65,tocIndex:46},{value:"grid-auto-columns",paraId:65,tocIndex:46},{value:"\u9690\u5F0F\u5217\u5BBD",paraId:65,tocIndex:46},{value:"100px",paraId:65,tocIndex:46},{value:"grid-auto-flow",paraId:65,tocIndex:46},{value:"\u6392\u5217\u65B9\u5411",paraId:65,tocIndex:46},{value:"row",paraId:65,tocIndex:46},{value:" / ",paraId:65,tocIndex:46},{value:"column",paraId:65,tocIndex:46},{value:" / ",paraId:65,tocIndex:46},{value:"row dense",paraId:65,tocIndex:46},{value:"gap",paraId:65,tocIndex:46},{value:"\u95F4\u8DDD",paraId:65,tocIndex:46},{value:"10px",paraId:65,tocIndex:46},{value:" / ",paraId:65,tocIndex:46},{value:"10px 20px",paraId:65,tocIndex:46},{value:"justify-content",paraId:65,tocIndex:46},{value:"\u7F51\u683C\u6C34\u5E73\u5BF9\u9F50",paraId:65,tocIndex:46},{value:"start",paraId:65,tocIndex:46},{value:" / ",paraId:65,tocIndex:46},{value:"end",paraId:65,tocIndex:46},{value:" / ",paraId:65,tocIndex:46},{value:"center",paraId:65,tocIndex:46},{value:" / ",paraId:65,tocIndex:46},{value:"space-between",paraId:65,tocIndex:46},{value:"align-content",paraId:65,tocIndex:46},{value:"\u7F51\u683C\u5782\u76F4\u5BF9\u9F50",paraId:65,tocIndex:46},{value:"start",paraId:65,tocIndex:46},{value:" / ",paraId:65,tocIndex:46},{value:"end",paraId:65,tocIndex:46},{value:" / ",paraId:65,tocIndex:46},{value:"center",paraId:65,tocIndex:46},{value:"justify-items",paraId:65,tocIndex:46},{value:"\u9879\u76EE\u6C34\u5E73\u5BF9\u9F50",paraId:65,tocIndex:46},{value:"start",paraId:65,tocIndex:46},{value:" / ",paraId:65,tocIndex:46},{value:"end",paraId:65,tocIndex:46},{value:" / ",paraId:65,tocIndex:46},{value:"center",paraId:65,tocIndex:46},{value:" / ",paraId:65,tocIndex:46},{value:"stretch",paraId:65,tocIndex:46},{value:"align-items",paraId:65,tocIndex:46},{value:"\u9879\u76EE\u5782\u76F4\u5BF9\u9F50",paraId:65,tocIndex:46},{value:"start",paraId:65,tocIndex:46},{value:" / ",paraId:65,tocIndex:46},{value:"end",paraId:65,tocIndex:46},{value:" / ",paraId:65,tocIndex:46},{value:"center",paraId:65,tocIndex:46},{value:" / ",paraId:65,tocIndex:46},{value:"stretch",paraId:65,tocIndex:46},{value:"\u5C5E\u6027",paraId:66,tocIndex:47},{value:"\u4F5C\u7528",paraId:66,tocIndex:47},{value:"\u5E38\u7528\u503C",paraId:66,tocIndex:47},{value:"grid-column",paraId:66,tocIndex:47},{value:"\u8DE8\u8D8A\u5217",paraId:66,tocIndex:47},{value:"1 / 3",paraId:66,tocIndex:47},{value:" / ",paraId:66,tocIndex:47},{value:"span 2",paraId:66,tocIndex:47},{value:" / ",paraId:66,tocIndex:47},{value:"1 / -1",paraId:66,tocIndex:47},{value:"grid-row",paraId:66,tocIndex:47},{value:"\u8DE8\u8D8A\u884C",paraId:66,tocIndex:47},{value:"1 / 3",paraId:66,tocIndex:47},{value:" / ",paraId:66,tocIndex:47},{value:"span 2",paraId:66,tocIndex:47},{value:"grid-area",paraId:66,tocIndex:47},{value:"\u6307\u5B9A\u533A\u57DF\u6216\u8DE8\u8D8A",paraId:66,tocIndex:47},{value:"header",paraId:66,tocIndex:47},{value:" / ",paraId:66,tocIndex:47},{value:"1 / 1 / 2 / 3",paraId:66,tocIndex:47},{value:"justify-self",paraId:66,tocIndex:47},{value:"\u5355\u72EC\u6C34\u5E73\u5BF9\u9F50",paraId:66,tocIndex:47},{value:"start",paraId:66,tocIndex:47},{value:" / ",paraId:66,tocIndex:47},{value:"end",paraId:66,tocIndex:47},{value:" / ",paraId:66,tocIndex:47},{value:"center",paraId:66,tocIndex:47},{value:" / ",paraId:66,tocIndex:47},{value:"stretch",paraId:66,tocIndex:47},{value:"align-self",paraId:66,tocIndex:47},{value:"\u5355\u72EC\u5782\u76F4\u5BF9\u9F50",paraId:66,tocIndex:47},{value:"start",paraId:66,tocIndex:47},{value:" / ",paraId:66,tocIndex:47},{value:"end",paraId:66,tocIndex:47},{value:" / ",paraId:66,tocIndex:47},{value:"center",paraId:66,tocIndex:47},{value:" / ",paraId:66,tocIndex:47},{value:"stretch",paraId:66,tocIndex:47},{value:"order",paraId:66,tocIndex:47},{value:"\u663E\u793A\u987A\u5E8F",paraId:66,tocIndex:47},{value:"-1",paraId:66,tocIndex:47},{value:" / ",paraId:66,tocIndex:47},{value:"0",paraId:66,tocIndex:47},{value:" / ",paraId:66,tocIndex:47},{value:"1",paraId:66,tocIndex:47},{value:"\u5C5E\u6027\u547D\u540D\u89C4\u5F8B",paraId:67,tocIndex:48},{value:"\uFF1A",paraId:67,tocIndex:48},{value:"\u590D\u6570\u5F62\u5F0F\uFF08items/rows/columns/areas\uFF09\u2192 \u5199\u5728\u5BB9\u5668",paraId:68,tocIndex:48},{value:"\u5355\u6570\u5F62\u5F0F\uFF08item/row/column/area\uFF09\u2192 \u5199\u5728\u5B50\u5143\u7D20",paraId:68,tocIndex:48},{value:"\u8C03\u8BD5\u6280\u5DE7",paraId:69,tocIndex:48},{value:"\uFF1A",paraId:69,tocIndex:48},{value:"Chrome DevTools \u4E2D\u70B9\u51FB ",paraId:70,tocIndex:48},{value:"display: grid",paraId:70,tocIndex:48},{value:" \u65C1\u7684\u56FE\u6807\u53EF\u89C6\u5316\u7F51\u683C",paraId:70,tocIndex:48},{value:"\u4F7F\u7528\u7F51\u683C\u7F16\u8F91\u5668\u5FEB\u901F\u8C03\u6574 ",paraId:70,tocIndex:48},{value:"justify-content",paraId:70,tocIndex:48},{value:"\u3001",paraId:70,tocIndex:48},{value:"align-content",paraId:70,tocIndex:48},{value:" \u7B49\u5C5E\u6027",paraId:70,tocIndex:48},{value:"\u7B80\u5199\u5C5E\u6027\u4F7F\u7528\u5EFA\u8BAE",paraId:71,tocIndex:48},{value:"\uFF1A",paraId:71,tocIndex:48},{value:"\u7B80\u5355\u573A\u666F\u4F7F\u7528\u7B80\u5199\uFF08\u5982 ",paraId:72,tocIndex:48},{value:"gap",paraId:72,tocIndex:48},{value:"\u3001",paraId:72,tocIndex:48},{value:"grid-column",paraId:72,tocIndex:48},{value:"\uFF09",paraId:72,tocIndex:48},{value:"\u590D\u6742\u573A\u666F\u5206\u5F00\u5199\u66F4\u6E05\u6670\uFF08\u907F\u514D\u8FC7\u5EA6\u7B80\u5199\u964D\u4F4E\u53EF\u8BFB\u6027\uFF09",paraId:72,tocIndex:48},{value:"\u54CD\u5E94\u5F0F\u5E03\u5C40\u63A8\u8350\u5199\u6CD5",paraId:73,tocIndex:48},{value:"\uFF1A",paraId:73,tocIndex:48},{value:`grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-`,paraId:74,tocIndex:48},{value:"\u547D\u540D\u533A\u57DF\u7684\u4F18\u52BF",paraId:75,tocIndex:48},{value:"\uFF1A",paraId:75,tocIndex:48},{value:"\u8BED\u4E49\u5316\u5F3A\uFF0C\u4EE3\u7801\u53EF\u8BFB\u6027\u9AD8",paraId:76,tocIndex:48},{value:"\u4FEE\u6539\u5E03\u5C40\u65F6\u53EA\u9700\u8C03\u6574 ",paraId:76,tocIndex:48},{value:"grid-template-areas",paraId:76,tocIndex:48},{value:"CSS Grid \u662F\u8FC4\u4ECA\u4E3A\u6B62\u6700\u5F3A\u5927\u7684\u5E03\u5C40\u7CFB\u7EDF\uFF0C\u638C\u63E1\u4EE5\u4E0B\u8981\u70B9\u5373\u53EF\u5E94\u5BF9 99% \u7684\u5E03\u5C40\u9700\u6C42\uFF1A",paraId:77,tocIndex:49},{value:"\u2705 \u7406\u89E3\u663E\u5F0F\u7F51\u683C vs \u9690\u5F0F\u7F51\u683C",paraId:78,tocIndex:49},{value:"\u2705 \u719F\u7EC3\u4F7F\u7528 ",paraId:78,tocIndex:49},{value:"fr",paraId:78,tocIndex:49},{value:" \u5355\u4F4D\u548C ",paraId:78,tocIndex:49},{value:"minmax()",paraId:78,tocIndex:49},{value:" \u51FD\u6570",paraId:78,tocIndex:49},{value:"\u2705 \u638C\u63E1 ",paraId:78,tocIndex:49},{value:"grid-area",paraId:78,tocIndex:49},{value:" \u548C\u547D\u540D\u7F51\u683C\u533A\u57DF",paraId:78,tocIndex:49},{value:"\u2705 \u7406\u89E3 ",paraId:78,tocIndex:49},{value:"auto-fill",paraId:78,tocIndex:49},{value:" \u5B9E\u73B0\u54CD\u5E94\u5F0F\u5E03\u5C40",paraId:78,tocIndex:49},{value:"\u2705 \u533A\u5206\u5BB9\u5668\u5C5E\u6027\uFF08\u590D\u6570\uFF09\u548C\u9879\u76EE\u5C5E\u6027\uFF08\u5355\u6570\uFF09",paraId:78,tocIndex:49},{value:"\u914D\u5408 Flexbox \u5904\u7406\u4E00\u7EF4\u5E03\u5C40\uFF0CGrid \u5904\u7406\u4E8C\u7EF4\u5E03\u5C40\uFF0C\u4F60\u5C06\u5B8C\u5168\u638C\u63E1 CSS \u5E03\u5C40\uFF01",paraId:79,tocIndex:49}]},59780:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"CSS \u6A21\u5757\u5316\u662F\u6307\u5C06 CSS \u4EE3\u7801\u7EC4\u7EC7\u6210\u6A21\u5757\u7684\u5F00\u53D1\u65B9\u5F0F\u548C\u65B9\u6CD5\u3002\u4F20\u7EDF\u7684 CSS \u5168\u5C40\u4F5C\u7528\u57DF\u5B58\u5728\u4E00\u4E9B\u95EE\u9898\uFF0C\u5982\u6837\u5F0F\u51B2\u7A81\u3001\u547D\u540D\u51B2\u7A81\u3001\u96BE\u4EE5\u7EF4\u62A4\u548C\u6269\u5C55\u7B49\u3002",paraId:0,tocIndex:0},{value:"CSS Modules",paraId:1,tocIndex:0},{value:" \u662F\u4E00\u79CD\u7528\u4E8E\u89E3\u51B3 CSS \u6A21\u5757\u5316\u95EE\u9898\u7684\u6280\u672F\u3002\u5B83\u662F CSS \u7684\u4E00\u79CD\u6A21\u5757\u5316\u65B9\u6848\u3002",paraId:1,tocIndex:0},{value:"CSS Modules",paraId:2,tocIndex:0},{value:" \u52A0\u5165\u4E86\u5C40\u90E8\u4F5C\u7528\u57DF\u548C\u6A21\u5757\u4F9D\u8D56\uFF0C\u53EF\u4EE5\u4FDD\u8BC1\u67D0\u4E2A\u7EC4\u4EF6\u7684\u6837\u5F0F\u4E0D\u4F1A\u5F71\u54CD\u5230\u5176\u4ED6\u7EC4\u4EF6\u3002\u5177\u4F53\u800C\u8A00\uFF0C",paraId:2,tocIndex:0},{value:"CSS Modules",paraId:2,tocIndex:0},{value:" \u901A\u8FC7\u5DE5\u7A0B\u5316\u7684\u65B9\u6CD5\uFF0C\u53EF\u4EE5\u5C06\u7C7B\u540D\u7F16\u8BD1\u4E3A\u54C8\u5E0C\u5B57\u7B26\u4E32\uFF0C\u4ECE\u800C\u4F7F\u5F97\u6BCF\u4E2A\u7C7B\u540D\u90FD\u662F\u72EC\u4E00\u65E0\u4E8C\u7684\uFF0C\u4E0D\u4F1A\u4E0E\u5176\u4ED6\u7684\u9009\u62E9\u5668\u91CD\u540D\uFF0C\u7531\u6B64\u53EF\u4EE5\u4EA7\u751F\u5C40\u90E8\u4F5C\u7528\u57DF\u3002",paraId:2,tocIndex:0},{value:"\u53EF\u4EE5\u5C06 ",paraId:3,tocIndex:1},{value:"CSS Modules",paraId:3,tocIndex:1},{value:" \u4E0E ",paraId:3,tocIndex:1},{value:"Sass / Less",paraId:3,tocIndex:1},{value:" \u8FDB\u884C\u7EC4\u5408\u4F7F\u7528\uFF0C\u4ECE\u800C\u65E2\u80FD\u62E5\u6709 ",paraId:3,tocIndex:1},{value:"Sass / Less",paraId:3,tocIndex:1},{value:" \u7684 CSS \u9884\u5904\u7406\u5668\u7684\u80FD\u529B (\u89C4\u5219\u3001\u53D8\u91CF\u3001\u6DF7\u5165\u3001\u9009\u62E9\u5668\u3001\u7EE7\u627F\u7B49)\uFF0C\u53C8\u53EF\u4EE5\u62E5\u6709 ",paraId:3,tocIndex:1},{value:"CSS Modules",paraId:3,tocIndex:1},{value:" \u63D0\u4F9B\u7684\u5C40\u90E8\u4F5C\u7528\u57DF\u7684\u80FD\u529B\uFF0C\u907F\u514D\u5168\u5C40\u6C61\u67D3\u3002",paraId:3,tocIndex:1},{value:"\u8BA9\u6211\u4EEC\u4E3E\u4E2A\u4F8B\u5B50\uFF1A",paraId:4,tocIndex:1},{value:"Next.js",paraId:5,tocIndex:1},{value:" \u5185\u7F6E\u4E86\u5BF9 CSS \u6A21\u5757\u7684\u652F\u6301\u3002\u4F7F\u7528 CSS \u6A21\u5757\uFF0C\u4F60\u53EA\u9700\u8981\u4F7F\u7528 ",paraId:5,tocIndex:1},{value:".module.css",paraId:5,tocIndex:1},{value:" \u4F5C\u4E3A\u6587\u4EF6\u540E\u7F00\u540D\uFF0C",paraId:5,tocIndex:1},{value:"Next.js",paraId:5,tocIndex:1},{value:" \u5C31\u4F1A\u81EA\u52A8\u8FDB\u884C\u5904\u7406\u3002",paraId:5,tocIndex:1},{value:"\u9996\u5148\uFF0C\u521B\u5EFA\u4E00\u4E2A ",paraId:6,tocIndex:1},{value:"styles.module.scss",paraId:6,tocIndex:1},{value:" \u6587\u4EF6\uFF0C\u6837\u5F0F\u4E66\u5199\u65B9\u5F0F\u5982\u540C\u6B63\u5E38\u7684 ",paraId:6,tocIndex:1},{value:"SCSS",paraId:6,tocIndex:1},{value:" \u6587\u4EF6\uFF1A",paraId:6,tocIndex:1},{value:`/* app/css-modules/styles.module.scss */
+`,paraId:74,tocIndex:48},{value:"\u547D\u540D\u533A\u57DF\u7684\u4F18\u52BF",paraId:75,tocIndex:48},{value:"\uFF1A",paraId:75,tocIndex:48},{value:"\u8BED\u4E49\u5316\u5F3A\uFF0C\u4EE3\u7801\u53EF\u8BFB\u6027\u9AD8",paraId:76,tocIndex:48},{value:"\u4FEE\u6539\u5E03\u5C40\u65F6\u53EA\u9700\u8C03\u6574 ",paraId:76,tocIndex:48},{value:"grid-template-areas",paraId:76,tocIndex:48},{value:"CSS Grid \u662F\u8FC4\u4ECA\u4E3A\u6B62\u6700\u5F3A\u5927\u7684\u5E03\u5C40\u7CFB\u7EDF\uFF0C\u638C\u63E1\u4EE5\u4E0B\u8981\u70B9\u5373\u53EF\u5E94\u5BF9 99% \u7684\u5E03\u5C40\u9700\u6C42\uFF1A",paraId:77,tocIndex:49},{value:"\u2705 \u7406\u89E3\u663E\u5F0F\u7F51\u683C vs \u9690\u5F0F\u7F51\u683C",paraId:78,tocIndex:49},{value:"\u2705 \u719F\u7EC3\u4F7F\u7528 ",paraId:78,tocIndex:49},{value:"fr",paraId:78,tocIndex:49},{value:" \u5355\u4F4D\u548C ",paraId:78,tocIndex:49},{value:"minmax()",paraId:78,tocIndex:49},{value:" \u51FD\u6570",paraId:78,tocIndex:49},{value:"\u2705 \u638C\u63E1 ",paraId:78,tocIndex:49},{value:"grid-area",paraId:78,tocIndex:49},{value:" \u548C\u547D\u540D\u7F51\u683C\u533A\u57DF",paraId:78,tocIndex:49},{value:"\u2705 \u7406\u89E3 ",paraId:78,tocIndex:49},{value:"auto-fill",paraId:78,tocIndex:49},{value:" \u5B9E\u73B0\u54CD\u5E94\u5F0F\u5E03\u5C40",paraId:78,tocIndex:49},{value:"\u2705 \u533A\u5206\u5BB9\u5668\u5C5E\u6027\uFF08\u590D\u6570\uFF09\u548C\u9879\u76EE\u5C5E\u6027\uFF08\u5355\u6570\uFF09",paraId:78,tocIndex:49},{value:"\u914D\u5408 Flexbox \u5904\u7406\u4E00\u7EF4\u5E03\u5C40\uFF0CGrid \u5904\u7406\u4E8C\u7EF4\u5E03\u5C40\uFF0C\u4F60\u5C06\u5B8C\u5168\u638C\u63E1 CSS \u5E03\u5C40\uFF01",paraId:79,tocIndex:49}]},59780:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"CSS \u6A21\u5757\u5316\u662F\u6307\u5C06 CSS \u4EE3\u7801\u7EC4\u7EC7\u6210\u6A21\u5757\u7684\u5F00\u53D1\u65B9\u5F0F\u548C\u65B9\u6CD5\u3002\u4F20\u7EDF\u7684 CSS \u5168\u5C40\u4F5C\u7528\u57DF\u5B58\u5728\u4E00\u4E9B\u95EE\u9898\uFF0C\u5982\u6837\u5F0F\u51B2\u7A81\u3001\u547D\u540D\u51B2\u7A81\u3001\u96BE\u4EE5\u7EF4\u62A4\u548C\u6269\u5C55\u7B49\u3002",paraId:0,tocIndex:0},{value:"CSS Modules",paraId:1,tocIndex:0},{value:" \u662F\u4E00\u79CD\u7528\u4E8E\u89E3\u51B3 CSS \u6A21\u5757\u5316\u95EE\u9898\u7684\u6280\u672F\u3002\u5B83\u662F CSS \u7684\u4E00\u79CD\u6A21\u5757\u5316\u65B9\u6848\u3002",paraId:1,tocIndex:0},{value:"CSS Modules",paraId:2,tocIndex:0},{value:" \u52A0\u5165\u4E86\u5C40\u90E8\u4F5C\u7528\u57DF\u548C\u6A21\u5757\u4F9D\u8D56\uFF0C\u53EF\u4EE5\u4FDD\u8BC1\u67D0\u4E2A\u7EC4\u4EF6\u7684\u6837\u5F0F\u4E0D\u4F1A\u5F71\u54CD\u5230\u5176\u4ED6\u7EC4\u4EF6\u3002\u5177\u4F53\u800C\u8A00\uFF0C",paraId:2,tocIndex:0},{value:"CSS Modules",paraId:2,tocIndex:0},{value:" \u901A\u8FC7\u5DE5\u7A0B\u5316\u7684\u65B9\u6CD5\uFF0C\u53EF\u4EE5\u5C06\u7C7B\u540D\u7F16\u8BD1\u4E3A\u54C8\u5E0C\u5B57\u7B26\u4E32\uFF0C\u4ECE\u800C\u4F7F\u5F97\u6BCF\u4E2A\u7C7B\u540D\u90FD\u662F\u72EC\u4E00\u65E0\u4E8C\u7684\uFF0C\u4E0D\u4F1A\u4E0E\u5176\u4ED6\u7684\u9009\u62E9\u5668\u91CD\u540D\uFF0C\u7531\u6B64\u53EF\u4EE5\u4EA7\u751F\u5C40\u90E8\u4F5C\u7528\u57DF\u3002",paraId:2,tocIndex:0},{value:"\u53EF\u4EE5\u5C06 ",paraId:3,tocIndex:1},{value:"CSS Modules",paraId:3,tocIndex:1},{value:" \u4E0E ",paraId:3,tocIndex:1},{value:"Sass / Less",paraId:3,tocIndex:1},{value:" \u8FDB\u884C\u7EC4\u5408\u4F7F\u7528\uFF0C\u4ECE\u800C\u65E2\u80FD\u62E5\u6709 ",paraId:3,tocIndex:1},{value:"Sass / Less",paraId:3,tocIndex:1},{value:" \u7684 CSS \u9884\u5904\u7406\u5668\u7684\u80FD\u529B (\u89C4\u5219\u3001\u53D8\u91CF\u3001\u6DF7\u5165\u3001\u9009\u62E9\u5668\u3001\u7EE7\u627F\u7B49)\uFF0C\u53C8\u53EF\u4EE5\u62E5\u6709 ",paraId:3,tocIndex:1},{value:"CSS Modules",paraId:3,tocIndex:1},{value:" \u63D0\u4F9B\u7684\u5C40\u90E8\u4F5C\u7528\u57DF\u7684\u80FD\u529B\uFF0C\u907F\u514D\u5168\u5C40\u6C61\u67D3\u3002",paraId:3,tocIndex:1},{value:"\u8BA9\u6211\u4EEC\u4E3E\u4E2A\u4F8B\u5B50\uFF1A",paraId:4,tocIndex:1},{value:"Next.js",paraId:5,tocIndex:1},{value:" \u5185\u7F6E\u4E86\u5BF9 CSS \u6A21\u5757\u7684\u652F\u6301\u3002\u4F7F\u7528 CSS \u6A21\u5757\uFF0C\u4F60\u53EA\u9700\u8981\u4F7F\u7528 ",paraId:5,tocIndex:1},{value:".module.css",paraId:5,tocIndex:1},{value:" \u4F5C\u4E3A\u6587\u4EF6\u540E\u7F00\u540D\uFF0C",paraId:5,tocIndex:1},{value:"Next.js",paraId:5,tocIndex:1},{value:" \u5C31\u4F1A\u81EA\u52A8\u8FDB\u884C\u5904\u7406\u3002",paraId:5,tocIndex:1},{value:"\u9996\u5148\uFF0C\u521B\u5EFA\u4E00\u4E2A ",paraId:6,tocIndex:1},{value:"styles.module.scss",paraId:6,tocIndex:1},{value:" \u6587\u4EF6\uFF0C\u6837\u5F0F\u4E66\u5199\u65B9\u5F0F\u5982\u540C\u6B63\u5E38\u7684 ",paraId:6,tocIndex:1},{value:"SCSS",paraId:6,tocIndex:1},{value:" \u6587\u4EF6\uFF1A",paraId:6,tocIndex:1},{value:`/* app/css-modules/styles.module.scss */
 .appTitle {
   color: rgb(137, 213, 70);
 }
@@ -3197,7 +3822,7 @@ export default function Button({ primary, disabled }) {
     </button>
   );
 }
-`,paraId:37,tocIndex:9},{value:"CSS Modules \u662F\u4E00\u79CD\u4F18\u79C0\u7684 CSS \u6A21\u5757\u5316\u89E3\u51B3\u65B9\u6848\uFF0C\u5B83\u7684\u4E3B\u8981\u4F18\u52BF\u5305\u62EC\uFF1A",paraId:38,tocIndex:10},{value:"\u2705 ",paraId:39,tocIndex:10},{value:"\u5C40\u90E8\u4F5C\u7528\u57DF",paraId:39,tocIndex:10},{value:"\uFF1A\u907F\u514D\u6837\u5F0F\u51B2\u7A81\u548C\u5168\u5C40\u6C61\u67D3",paraId:39,tocIndex:10},{value:"\u2705 ",paraId:39,tocIndex:10},{value:"\u53EF\u7EC4\u5408\u6027",paraId:39,tocIndex:10},{value:"\uFF1A\u901A\u8FC7 ",paraId:39,tocIndex:10},{value:"composes",paraId:39,tocIndex:10},{value:" \u5B9E\u73B0\u6837\u5F0F\u590D\u7528",paraId:39,tocIndex:10},{value:"\u2705 ",paraId:39,tocIndex:10},{value:"\u53EF\u7EF4\u62A4\u6027",paraId:39,tocIndex:10},{value:"\uFF1A\u6837\u5F0F\u4E0E\u7EC4\u4EF6\u7D27\u5BC6\u5173\u8054\uFF0C\u6613\u4E8E\u7EF4\u62A4",paraId:39,tocIndex:10},{value:"\u2705 ",paraId:39,tocIndex:10},{value:"\u96F6\u5B66\u4E60\u6210\u672C",paraId:39,tocIndex:10},{value:"\uFF1A\u4F7F\u7528\u6807\u51C6 CSS \u8BED\u6CD5\uFF0C\u65E0\u9700\u5B66\u4E60\u65B0\u8BED\u6CD5",paraId:39,tocIndex:10},{value:"\u2705 ",paraId:39,tocIndex:10},{value:"\u5DE5\u5177\u652F\u6301\u597D",paraId:39,tocIndex:10},{value:"\uFF1A\u4E3B\u6D41\u6846\u67B6\uFF08Next.js\u3001Create React App\uFF09\u90FD\u5185\u7F6E\u652F\u6301",paraId:39,tocIndex:10},{value:"\u9002\u7528\u573A\u666F\uFF1A",paraId:40,tocIndex:10},{value:"React\u3001Vue \u7B49\u7EC4\u4EF6\u5316\u6846\u67B6\u7684\u9879\u76EE",paraId:41,tocIndex:10},{value:"\u9700\u8981\u907F\u514D\u6837\u5F0F\u51B2\u7A81\u7684\u5927\u578B\u9879\u76EE",paraId:41,tocIndex:10},{value:"\u9700\u8981\u826F\u597D\u6837\u5F0F\u9694\u79BB\u7684\u7EC4\u4EF6\u5E93\u5F00\u53D1",paraId:41,tocIndex:10},{value:"\u76F8\u6BD4\u5176\u4ED6 CSS \u65B9\u6848\uFF1A",paraId:42,tocIndex:10},{value:"\u6BD4\u4F20\u7EDF CSS \u66F4\u5B89\u5168\uFF0C\u907F\u514D\u5168\u5C40\u6C61\u67D3",paraId:43,tocIndex:10},{value:"\u6BD4 CSS-in-JS \u6027\u80FD\u66F4\u597D\uFF0C\u65E0\u8FD0\u884C\u65F6\u5F00\u9500",paraId:43,tocIndex:10},{value:"\u6BD4 BEM \u547D\u540D\u66F4\u7B80\u6D01\uFF0C\u7531\u5DE5\u5177\u81EA\u52A8\u5904\u7406",paraId:43,tocIndex:10}]},51792:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"CSS \u50CF\u7D20\u662F\u4E00\u4E2A",paraId:0,tocIndex:1},{value:"\u62BD\u8C61\u7684\u76F8\u5BF9\u957F\u5EA6\u5355\u4F4D",paraId:0,tocIndex:1},{value:"\uFF0C\u5728 CSS \u4E2D\u4EE5 ",paraId:0,tocIndex:1},{value:"px",paraId:0,tocIndex:1},{value:" \u4E3A\u540E\u7F00\u3002\u5B83\u662F Web \u5F00\u53D1\u4E2D\u7684\u903B\u8F91\u5355\u4F4D\uFF0C\u4E0D\u76F4\u63A5\u5BF9\u5E94\u7269\u7406\u50CF\u7D20\u3002",paraId:0,tocIndex:1},{value:"\u6838\u5FC3\u7279\u70B9\uFF1A",paraId:1,tocIndex:1},{value:"\u9002\u7528\u4E8E web \u7F16\u7A0B\uFF0C\u662F\u524D\u7AEF\u5F00\u53D1\u4E2D\u6700\u5E38\u7528\u7684\u957F\u5EA6\u5355\u4F4D",paraId:2,tocIndex:1},{value:"\u5728\u4E0D\u540C\u8BBE\u5907\u548C\u73AF\u5883\u4E2D\uFF0C1px \u4EE3\u8868\u7684\u7269\u7406\u5C3A\u5BF8\u53EF\u80FD\u4E0D\u540C",paraId:2,tocIndex:1},{value:"\u4F1A\u53D7\u5230\u9875\u9762\u7F29\u653E\u3001\u8BBE\u5907\u50CF\u7D20\u6BD4\uFF08DPR\uFF09\u7684\u5F71\u54CD",paraId:2,tocIndex:1},{value:"\u5728\u9ED8\u8BA4\u7F29\u653E\uFF08100%\uFF09\u4E0B\uFF0C1 \u4E2A CSS \u50CF\u7D20\u901A\u5E38\u7B49\u4E8E 1 \u4E2A\u8BBE\u5907\u72EC\u7ACB\u50CF\u7D20",paraId:2,tocIndex:1},{value:"\u8BBE\u5907\u50CF\u7D20\u662F\u8BBE\u5907\u5C4F\u5E55\u7684",paraId:3,tocIndex:2},{value:"\u6700\u5C0F\u7269\u7406\u663E\u793A\u5355\u5143",paraId:3,tocIndex:2},{value:"\uFF0C\u4ECE\u8BBE\u5907\u51FA\u5382\u65F6\u5C31\u56FA\u5B9A\u4E0D\u53D8\u3002",paraId:3,tocIndex:2},{value:"\u6838\u5FC3\u7279\u70B9\uFF1A",paraId:4,tocIndex:2},{value:"\u5C4F\u5E55\u4E0A\u5B9E\u9645\u7684\u7269\u7406\u50CF\u7D20\u70B9",paraId:5,tocIndex:2},{value:"\u7531\u7EA2\u3001\u7EFF\u3001\u84DD\u5B50\u50CF\u7D20\u7EC4\u6210\uFF0C\u901A\u8FC7\u4E0D\u540C\u4EAE\u5EA6\u6DF7\u5408\u51FA\u5404\u79CD\u989C\u8272",paraId:5,tocIndex:2},{value:"\u8BBE\u5907\u51FA\u5382\u540E\u6570\u91CF\u56FA\u5B9A\uFF0C\u65E0\u6CD5\u6539\u53D8",paraId:5,tocIndex:2},{value:"\u8BBE\u5907\u72EC\u7ACB\u50CF\u7D20\u662F\u4E00\u4E2A",paraId:6,tocIndex:3},{value:"\u4E0E\u8BBE\u5907\u65E0\u5173\u7684\u903B\u8F91\u50CF\u7D20\u5355\u4F4D",paraId:6,tocIndex:3},{value:"\uFF0C\u662F\u7A0B\u5E8F\u53EF\u4EE5\u63A7\u5236\u7684\u865A\u62DF\u50CF\u7D20\u3002",paraId:6,tocIndex:3},{value:"\u6838\u5FC3\u7279\u70B9\uFF1A",paraId:7,tocIndex:3},{value:"\u662F\u64CD\u4F5C\u7CFB\u7EDF\u63D0\u4F9B\u7684\u62BD\u8C61\u5355\u4F4D\uFF0CCSS \u50CF\u7D20\u5728\u65E0\u7F29\u653E\u65F6\u5BF9\u5E94\u8BBE\u5907\u72EC\u7ACB\u50CF\u7D20",paraId:8,tocIndex:3},{value:"\u5728 JavaScript \u4E2D\u53EF\u901A\u8FC7 ",paraId:8,tocIndex:3},{value:"window.screen.width",paraId:8,tocIndex:3},{value:" \u548C ",paraId:8,tocIndex:3},{value:"window.screen.height",paraId:8,tocIndex:3},{value:" \u67E5\u770B",paraId:8,tocIndex:3},{value:"\u4E00\u4E2A\u8BBE\u5907\u72EC\u7ACB\u50CF\u7D20\u53EF\u80FD\u5BF9\u5E94 1 \u4E2A\u6216\u591A\u4E2A\u7269\u7406\u50CF\u7D20",paraId:8,tocIndex:3},{value:"\u8BBE\u5907\u50CF\u7D20\u6BD4\u8868\u793A",paraId:9,tocIndex:4},{value:"\u8BBE\u5907\u72EC\u7ACB\u50CF\u7D20\u5230\u8BBE\u5907\u50CF\u7D20\u7684\u8F6C\u6362\u6BD4\u4F8B",paraId:9,tocIndex:4},{value:"\u3002",paraId:9,tocIndex:4},{value:"\u8BA1\u7B97\u516C\u5F0F\uFF1A",paraId:10,tocIndex:4},{value:`DPR = \u8BBE\u5907\u50CF\u7D20 / \u8BBE\u5907\u72EC\u7ACB\u50CF\u7D20
+`,paraId:37,tocIndex:9},{value:"CSS Modules \u662F\u4E00\u79CD\u4F18\u79C0\u7684 CSS \u6A21\u5757\u5316\u89E3\u51B3\u65B9\u6848\uFF0C\u5B83\u7684\u4E3B\u8981\u4F18\u52BF\u5305\u62EC\uFF1A",paraId:38,tocIndex:10},{value:"\u2705 ",paraId:39,tocIndex:10},{value:"\u5C40\u90E8\u4F5C\u7528\u57DF",paraId:39,tocIndex:10},{value:"\uFF1A\u907F\u514D\u6837\u5F0F\u51B2\u7A81\u548C\u5168\u5C40\u6C61\u67D3",paraId:39,tocIndex:10},{value:"\u2705 ",paraId:39,tocIndex:10},{value:"\u53EF\u7EC4\u5408\u6027",paraId:39,tocIndex:10},{value:"\uFF1A\u901A\u8FC7 ",paraId:39,tocIndex:10},{value:"composes",paraId:39,tocIndex:10},{value:" \u5B9E\u73B0\u6837\u5F0F\u590D\u7528",paraId:39,tocIndex:10},{value:"\u2705 ",paraId:39,tocIndex:10},{value:"\u53EF\u7EF4\u62A4\u6027",paraId:39,tocIndex:10},{value:"\uFF1A\u6837\u5F0F\u4E0E\u7EC4\u4EF6\u7D27\u5BC6\u5173\u8054\uFF0C\u6613\u4E8E\u7EF4\u62A4",paraId:39,tocIndex:10},{value:"\u2705 ",paraId:39,tocIndex:10},{value:"\u96F6\u5B66\u4E60\u6210\u672C",paraId:39,tocIndex:10},{value:"\uFF1A\u4F7F\u7528\u6807\u51C6 CSS \u8BED\u6CD5\uFF0C\u65E0\u9700\u5B66\u4E60\u65B0\u8BED\u6CD5",paraId:39,tocIndex:10},{value:"\u2705 ",paraId:39,tocIndex:10},{value:"\u5DE5\u5177\u652F\u6301\u597D",paraId:39,tocIndex:10},{value:"\uFF1A\u4E3B\u6D41\u6846\u67B6\uFF08Next.js\u3001Create React App\uFF09\u90FD\u5185\u7F6E\u652F\u6301",paraId:39,tocIndex:10},{value:"\u9002\u7528\u573A\u666F\uFF1A",paraId:40,tocIndex:10},{value:"React\u3001Vue \u7B49\u7EC4\u4EF6\u5316\u6846\u67B6\u7684\u9879\u76EE",paraId:41,tocIndex:10},{value:"\u9700\u8981\u907F\u514D\u6837\u5F0F\u51B2\u7A81\u7684\u5927\u578B\u9879\u76EE",paraId:41,tocIndex:10},{value:"\u9700\u8981\u826F\u597D\u6837\u5F0F\u9694\u79BB\u7684\u7EC4\u4EF6\u5E93\u5F00\u53D1",paraId:41,tocIndex:10},{value:"\u76F8\u6BD4\u5176\u4ED6 CSS \u65B9\u6848\uFF1A",paraId:42,tocIndex:10},{value:"\u6BD4\u4F20\u7EDF CSS \u66F4\u5B89\u5168\uFF0C\u907F\u514D\u5168\u5C40\u6C61\u67D3",paraId:43,tocIndex:10},{value:"\u6BD4 CSS-in-JS \u6027\u80FD\u66F4\u597D\uFF0C\u65E0\u8FD0\u884C\u65F6\u5F00\u9500",paraId:43,tocIndex:10},{value:"\u6BD4 BEM \u547D\u540D\u66F4\u7B80\u6D01\uFF0C\u7531\u5DE5\u5177\u81EA\u52A8\u5904\u7406",paraId:43,tocIndex:10}]},51792:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"CSS \u50CF\u7D20\u662F\u4E00\u4E2A",paraId:0,tocIndex:1},{value:"\u62BD\u8C61\u7684\u76F8\u5BF9\u957F\u5EA6\u5355\u4F4D",paraId:0,tocIndex:1},{value:"\uFF0C\u5728 CSS \u4E2D\u4EE5 ",paraId:0,tocIndex:1},{value:"px",paraId:0,tocIndex:1},{value:" \u4E3A\u540E\u7F00\u3002\u5B83\u662F Web \u5F00\u53D1\u4E2D\u7684\u903B\u8F91\u5355\u4F4D\uFF0C\u4E0D\u76F4\u63A5\u5BF9\u5E94\u7269\u7406\u50CF\u7D20\u3002",paraId:0,tocIndex:1},{value:"\u6838\u5FC3\u7279\u70B9\uFF1A",paraId:1,tocIndex:1},{value:"\u9002\u7528\u4E8E web \u7F16\u7A0B\uFF0C\u662F\u524D\u7AEF\u5F00\u53D1\u4E2D\u6700\u5E38\u7528\u7684\u957F\u5EA6\u5355\u4F4D",paraId:2,tocIndex:1},{value:"\u5728\u4E0D\u540C\u8BBE\u5907\u548C\u73AF\u5883\u4E2D\uFF0C1px \u4EE3\u8868\u7684\u7269\u7406\u5C3A\u5BF8\u53EF\u80FD\u4E0D\u540C",paraId:2,tocIndex:1},{value:"\u4F1A\u53D7\u5230\u9875\u9762\u7F29\u653E\u3001\u8BBE\u5907\u50CF\u7D20\u6BD4\uFF08DPR\uFF09\u7684\u5F71\u54CD",paraId:2,tocIndex:1},{value:"\u5728\u9ED8\u8BA4\u7F29\u653E\uFF08100%\uFF09\u4E0B\uFF0C1 \u4E2A CSS \u50CF\u7D20\u901A\u5E38\u7B49\u4E8E 1 \u4E2A\u8BBE\u5907\u72EC\u7ACB\u50CF\u7D20",paraId:2,tocIndex:1},{value:"\u8BBE\u5907\u50CF\u7D20\u662F\u8BBE\u5907\u5C4F\u5E55\u7684",paraId:3,tocIndex:2},{value:"\u6700\u5C0F\u7269\u7406\u663E\u793A\u5355\u5143",paraId:3,tocIndex:2},{value:"\uFF0C\u4ECE\u8BBE\u5907\u51FA\u5382\u65F6\u5C31\u56FA\u5B9A\u4E0D\u53D8\u3002",paraId:3,tocIndex:2},{value:"\u6838\u5FC3\u7279\u70B9\uFF1A",paraId:4,tocIndex:2},{value:"\u5C4F\u5E55\u4E0A\u5B9E\u9645\u7684\u7269\u7406\u50CF\u7D20\u70B9",paraId:5,tocIndex:2},{value:"\u7531\u7EA2\u3001\u7EFF\u3001\u84DD\u5B50\u50CF\u7D20\u7EC4\u6210\uFF0C\u901A\u8FC7\u4E0D\u540C\u4EAE\u5EA6\u6DF7\u5408\u51FA\u5404\u79CD\u989C\u8272",paraId:5,tocIndex:2},{value:"\u8BBE\u5907\u51FA\u5382\u540E\u6570\u91CF\u56FA\u5B9A\uFF0C\u65E0\u6CD5\u6539\u53D8",paraId:5,tocIndex:2},{value:"\u8BBE\u5907\u72EC\u7ACB\u50CF\u7D20\u662F\u4E00\u4E2A",paraId:6,tocIndex:3},{value:"\u4E0E\u8BBE\u5907\u65E0\u5173\u7684\u903B\u8F91\u50CF\u7D20\u5355\u4F4D",paraId:6,tocIndex:3},{value:"\uFF0C\u662F\u7A0B\u5E8F\u53EF\u4EE5\u63A7\u5236\u7684\u865A\u62DF\u50CF\u7D20\u3002",paraId:6,tocIndex:3},{value:"\u6838\u5FC3\u7279\u70B9\uFF1A",paraId:7,tocIndex:3},{value:"\u662F\u64CD\u4F5C\u7CFB\u7EDF\u63D0\u4F9B\u7684\u62BD\u8C61\u5355\u4F4D\uFF0CCSS \u50CF\u7D20\u5728\u65E0\u7F29\u653E\u65F6\u5BF9\u5E94\u8BBE\u5907\u72EC\u7ACB\u50CF\u7D20",paraId:8,tocIndex:3},{value:"\u5728 JavaScript \u4E2D\u53EF\u901A\u8FC7 ",paraId:8,tocIndex:3},{value:"window.screen.width",paraId:8,tocIndex:3},{value:" \u548C ",paraId:8,tocIndex:3},{value:"window.screen.height",paraId:8,tocIndex:3},{value:" \u67E5\u770B",paraId:8,tocIndex:3},{value:"\u4E00\u4E2A\u8BBE\u5907\u72EC\u7ACB\u50CF\u7D20\u53EF\u80FD\u5BF9\u5E94 1 \u4E2A\u6216\u591A\u4E2A\u7269\u7406\u50CF\u7D20",paraId:8,tocIndex:3},{value:"\u8BBE\u5907\u50CF\u7D20\u6BD4\u8868\u793A",paraId:9,tocIndex:4},{value:"\u8BBE\u5907\u72EC\u7ACB\u50CF\u7D20\u5230\u8BBE\u5907\u50CF\u7D20\u7684\u8F6C\u6362\u6BD4\u4F8B",paraId:9,tocIndex:4},{value:"\u3002",paraId:9,tocIndex:4},{value:"\u8BA1\u7B97\u516C\u5F0F\uFF1A",paraId:10,tocIndex:4},{value:`DPR = \u8BBE\u5907\u50CF\u7D20 / \u8BBE\u5907\u72EC\u7ACB\u50CF\u7D20
 `,paraId:11,tocIndex:4},{value:"\u5728 JavaScript \u4E2D\u83B7\u53D6\uFF1A",paraId:12,tocIndex:4},{value:`window.devicePixelRatio;
 `,paraId:13,tocIndex:4},{value:"\u663E\u793A\u5173\u7CFB\uFF1A",paraId:14,tocIndex:4},{value:"\u5F53 DPR = 1 \u65F6\uFF0C1 \u4E2A CSS \u50CF\u7D20 = 1\xD71 \u4E2A\u8BBE\u5907\u50CF\u7D20",paraId:15,tocIndex:4},{value:"\u5F53 DPR = 2 \u65F6\uFF0C1 \u4E2A CSS \u50CF\u7D20 = 2\xD72 \u4E2A\u8BBE\u5907\u50CF\u7D20\uFF084 \u4E2A\uFF09",paraId:15,tocIndex:4},{value:"\u5F53 DPR = 3 \u65F6\uFF0C1 \u4E2A CSS \u50CF\u7D20 = 3\xD73 \u4E2A\u8BBE\u5907\u50CF\u7D20\uFF089 \u4E2A\uFF09",paraId:15,tocIndex:4},{value:"PPI \u8868\u793A",paraId:16,tocIndex:5},{value:"\u6BCF\u82F1\u5BF8\u5305\u542B\u7684\u50CF\u7D20\u70B9\u6570\u76EE",paraId:16,tocIndex:5},{value:"\uFF0C\u662F\u5C4F\u5E55\u7684\u50CF\u7D20\u5BC6\u5EA6\u6307\u6807\u3002",paraId:16,tocIndex:5},{value:"\u8BA1\u7B97\u516C\u5F0F\uFF1A",paraId:17,tocIndex:5},{value:`PPI = \u221A(\u6C34\u5E73\u50CF\u7D20\xB2 + \u5782\u76F4\u50CF\u7D20\xB2) / \u5C4F\u5E55\u5BF9\u89D2\u7EBF\u82F1\u5BF8\u6570
 `,paraId:18,tocIndex:5},{value:"\u6838\u5FC3\u7279\u70B9\uFF1A",paraId:19,tocIndex:5},{value:"\u6570\u503C\u8D8A\u9AD8\uFF0C\u5C4F\u5E55\u663E\u793A\u8D8A\u6E05\u6670\u7EC6\u817B",paraId:20,tocIndex:5},{value:"\u6807\u51C6\u5C4F\u5E55\u5BC6\u5EA6\u4E3A 160 PPI",paraId:20,tocIndex:5},{value:"Retina \u5C4F\u5E55\u7684 PPI \u901A\u5E38\u5728 200 \u4EE5\u4E0A",paraId:20,tocIndex:5},{value:"\u5728 PC \u65F6\u4EE3\uFF0CCSS \u7684 1 \u4E2A\u50CF\u7D20\u901A\u5E38\u5BF9\u5E94\u5C4F\u5E55\u7684 1 \u4E2A\u7269\u7406\u50CF\u7D20\uFF0C\u8FD9\u8BA9\u6211\u4EEC\u8BEF\u4EE5\u4E3A CSS \u50CF\u7D20\u5C31\u7B49\u4E8E\u7269\u7406\u50CF\u7D20\u3002",paraId:21,tocIndex:7},{value:"\u4F46\u968F\u7740\u79FB\u52A8\u8BBE\u5907\u548C\u9AD8\u6E05\u5C4F\u5E55\u7684\u51FA\u73B0\uFF0C\u8FD9\u79CD\u7B80\u5355\u7684\u5BF9\u5E94\u5173\u7CFB\u88AB\u6253\u7834\u4E86\u3002",paraId:22,tocIndex:7},{value:"\u95EE\u9898\u573A\u666F\uFF1A",paraId:23,tocIndex:8},{value:"iPhone 3GS\uFF1A\u5C4F\u5E55\u5C3A\u5BF8 3.5 \u5BF8\uFF0C\u5206\u8FA8\u7387 320\xD7480\uFF08320 \u4E2A\u7269\u7406\u50CF\u7D20\u5BBD\u5EA6\uFF09",paraId:24,tocIndex:8},{value:"iPhone 4/4s\uFF1A\u5C4F\u5E55\u5C3A\u5BF8 3.5 \u5BF8\uFF0C\u5206\u8FA8\u7387 640\xD7960\uFF08640 \u4E2A\u7269\u7406\u50CF\u7D20\u5BBD\u5EA6\uFF09",paraId:24,tocIndex:8},{value:"\u5982\u679C\u6309\u7269\u7406\u50CF\u7D20\u5E03\u5C40\u4F1A\u600E\u6837\uFF1F",paraId:25,tocIndex:8},{value:"\u5047\u8BBE\u6211\u4EEC\u4E3A iPhone 3GS \u8BBE\u8BA1\u4E86\u4E00\u4E2A\u5BBD\u5EA6\u4E3A 320 \u7269\u7406\u50CF\u7D20\u7684\u9875\u9762\uFF1A",paraId:26,tocIndex:8},{value:"\u5728 iPhone 3GS \u4E0A\u663E\u793A\u6B63\u5E38\uFF08\u94FA\u6EE1\u5C4F\u5E55\uFF09",paraId:27,tocIndex:8},{value:"\u5728 iPhone 4/4s \u4E0A\u53EA\u5360\u4E00\u534A\u5BBD\u5EA6\uFF08\u5269\u4F59\u4E00\u534A\u7A7A\u767D\uFF09",paraId:27,tocIndex:8},{value:"\u4E3A\u4E86\u89E3\u51B3\u8FD9\u4E2A\u95EE\u9898\uFF0C\u64CD\u4F5C\u7CFB\u7EDF\u5F15\u5165\u4E86",paraId:28,tocIndex:9},{value:"\u8BBE\u5907\u72EC\u7ACB\u50CF\u7D20",paraId:28,tocIndex:9},{value:"\u7684\u6982\u5FF5\uFF1A",paraId:28,tocIndex:9},{value:"\u7EDF\u4E00\u5B9A\u4E49\uFF1AiPhone 3GS \u548C iPhone 4/4s \u90FD\u662F ",paraId:29,tocIndex:9},{value:"320 \u4E2A\u865A\u62DF\u50CF\u7D20",paraId:29,tocIndex:9},{value:"\u5BBD\u5EA6",paraId:29,tocIndex:9},{value:`\u8F6C\u6362\u673A\u5236\uFF1A
@@ -3400,7 +4025,7 @@ console.table({
 document.querySelectorAll('img').forEach((img) => {
   console.log(img.alt, img.currentSrc);
 });
-`,paraId:68,tocIndex:22},{value:"Chrome DevTools \u8BBE\u5907\u6A21\u62DF\uFF1A",paraId:69,tocIndex:22},{value:"F12",paraId:70,tocIndex:22},{value:" \u6253\u5F00\u5F00\u53D1\u8005\u5DE5\u5177",paraId:70,tocIndex:22},{value:"\u70B9\u51FB\u8BBE\u5907\u56FE\u6807\uFF08",paraId:70,tocIndex:22},{value:"Ctrl/Cmd + Shift + M",paraId:70,tocIndex:22},{value:"\uFF09",paraId:70,tocIndex:22},{value:"\u9009\u62E9\u4E0D\u540C\u8BBE\u5907\uFF0C\u67E5\u770B DPR \u5DEE\u5F02",paraId:70,tocIndex:22},{value:"\u81EA\u5B9A\u4E49\u8BBE\u5907 DPR \u8FDB\u884C\u6D4B\u8BD5",paraId:70,tocIndex:22}]},22160:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"\u5728\u4F7F\u7528 Tailwind CSS \u5F00\u53D1 React \u7EC4\u4EF6\u65F6\uFF0C\u6211\u4EEC\u7ECF\u5E38\u9700\u8981\u5904\u7406\u52A8\u6001\u7C7B\u540D\u548C\u6837\u5F0F\u51B2\u7A81\u7684\u95EE\u9898\u3002",paraId:0,tocIndex:0},{value:"clsx",paraId:0,tocIndex:0},{value:" \u548C ",paraId:0,tocIndex:0},{value:"tailwind-merge",paraId:0,tocIndex:0},{value:" \u662F\u4E24\u4E2A\u4E92\u8865\u7684\u5DE5\u5177\u5E93\uFF1A",paraId:0,tocIndex:0},{value:"clsx",paraId:1,tocIndex:0},{value:"\uFF1A\u7528\u4E8E",paraId:1,tocIndex:0},{value:"\u6761\u4EF6\u5316\u5730\u6784\u5EFA",paraId:1,tocIndex:0},{value:"\u7C7B\u540D\u5B57\u7B26\u4E32\uFF0C\u7B80\u5316\u52A8\u6001\u6837\u5F0F\u903B\u8F91",paraId:1,tocIndex:0},{value:"tailwind-merge",paraId:1,tocIndex:0},{value:"\uFF1A\u7528\u4E8E",paraId:1,tocIndex:0},{value:"\u667A\u80FD\u5408\u5E76",paraId:1,tocIndex:0},{value:"Tailwind \u7C7B\u540D\uFF0C\u81EA\u52A8\u89E3\u51B3\u6837\u5F0F\u51B2\u7A81",paraId:1,tocIndex:0},{value:"\u4E24\u8005\u7ED3\u5408\u4F7F\u7528\u53EF\u4EE5\u6784\u5EFA\u65E2\u7075\u6D3B\u53C8\u5065\u58EE\u7684\u7EC4\u4EF6\u6837\u5F0F\u7CFB\u7EDF\u3002",paraId:2,tocIndex:0},{value:"tailwind-merge",paraId:3,tocIndex:2},{value:" \u662F\u4E00\u4E2A\u7528\u4E8E\u5408\u5E76\u548C\u53BB\u91CD Tailwind CSS \u7C7B\u540D\u7684\u5E93\u3002\u5B83\u53EF\u4EE5\u667A\u80FD\u5730\u5408\u5E76\u7C7B\u540D\u5B57\u7B26\u4E32\uFF0C\u5E76\u81EA\u52A8\u5904\u7406\u51B2\u7A81\u7684\u7C7B\u540D\uFF0C\u4FDD\u8BC1\u6700\u7EC8\u7684\u7C7B\u540D\u5B57\u7B26\u4E32\u65E2\u7CBE\u7B80\u53C8\u4E0D\u4F1A\u56E0\u4E3A\u7C7B\u540D\u51B2\u7A81\u5BFC\u81F4\u6837\u5F0F\u51FA\u73B0\u95EE\u9898\u3002",paraId:3,tocIndex:2},{value:"\u5728\u6CA1\u6709 tailwind-merge \u7684\u60C5\u51B5\u4E0B\uFF0C\u5982\u679C\u6211\u4EEC\u76F4\u63A5\u5C06\u4F20\u5165\u7684\u7C7B\u540D\u4E0E\u7EC4\u4EF6\u7684\u9ED8\u8BA4\u7C7B\u540D\u5B57\u7B26\u4E32\u62FC\u63A5\uFF0C\u53EF\u80FD\u4F1A\u9047\u5230\u6837\u5F0F\u51B2\u7A81\u7684\u95EE\u9898\u3002\u5F53\u591A\u4E2A Tailwind \u7C7B\u540D\u4F5C\u7528\u4E8E\u540C\u4E00 CSS \u5C5E\u6027\u65F6\uFF08\u5982\u4E0D\u540C\u7684\u5185\u8FB9\u8DDD\u8BBE\u7F6E\uFF09\uFF0C\u7531\u4E8E CSS \u7279\u5F02\u6027\u548C Tailwind \u751F\u6210\u7684 CSS \u987A\u5E8F\u7684\u5F71\u54CD\uFF0C\u53EF\u80FD\u5BFC\u81F4\u6837\u5F0F\u8868\u73B0\u4E0D\u7B26\u5408\u9884\u671F\u3002",paraId:4,tocIndex:3},{value:"\u95EE\u9898\u793A\u4F8B\uFF1A\u4E0D\u4F7F\u7528 tailwind-merge",paraId:5,tocIndex:4},{value:"\u5982\u4E0A\u8FF0\u4EE3\u7801\u6240\u793A\uFF0C\u6211\u4EEC\u6709\u4E00\u4E2A ",paraId:6},{value:"MyInput",paraId:6},{value:" \u7EC4\u4EF6\uFF0C\u8BE5\u7EC4\u4EF6\u6709\u9ED8\u8BA4\u7684\u5185\u8FB9\u8DDD\u6837\u5F0F ",paraId:6},{value:"px-[20px] py-[20px]",paraId:6},{value:"\u3002\u5F53\u901A\u8FC7 props \u4F20\u5165\u4E00\u4E2A\u65B0\u7684\u5185\u8FB9\u8DDD ",paraId:6},{value:"p-[5px]",paraId:6},{value:" \u65F6\uFF0C\u671F\u671B\u7684\u7ED3\u679C\u662F\u7EC4\u4EF6\u7684\u5185\u8FB9\u8DDD\u53D8\u4E3A ",paraId:6},{value:"5px",paraId:6},{value:"\u3002",paraId:6},{value:"\u4F46\u662F\uFF0C\u6700\u7EC8\u7684\u7C7B\u540D\u5C06\u662F ",paraId:7},{value:"border rounded px-[20px] py-[20px] p-[5px]",paraId:7},{value:"\u3002\u7531\u4E8E\u8FD9\u4E9B\u7C7B\u540D\u90FD\u4F1A\u751F\u6210\u5BF9\u5E94\u7684 CSS \u89C4\u5219\uFF0C\u4E14\u5B83\u4EEC\u7684\u7279\u5F02\u6027\u76F8\u540C\uFF0C\u6700\u7EC8\u54EA\u4E2A\u751F\u6548\u53D6\u51B3\u4E8E Tailwind \u751F\u6210\u7684 CSS \u6587\u4EF6\u4E2D\u89C4\u5219\u7684\u5B9A\u4E49\u987A\u5E8F\uFF0C\u800C\u4E0D\u662F\u7C7B\u540D\u5B57\u7B26\u4E32\u4E2D\u7684\u987A\u5E8F\u3002\u8FD9\u4F1A\u5BFC\u81F4\u6837\u5F0F\u7ED3\u679C\u4E0D\u53EF\u9884\u671F\uFF0C\u901A\u5E38\u5185\u8FB9\u8DDD\u4E0D\u4F1A\u662F\u6211\u4EEC\u671F\u671B\u7684 ",paraId:7},{value:"5px",paraId:7},{value:"\u3002",paraId:7},{value:"\u89E3\u51B3\u65B9\u6848\uFF1A\u4F7F\u7528 tailwind-merge",paraId:8},{value:"\u4F7F\u7528 tailwind-merge\uFF0C\u6211\u4EEC\u53EF\u4EE5\u907F\u514D\u4E0A\u8FF0\u95EE\u9898\u3002\u901A\u8FC7 ",paraId:9},{value:"twMerge",paraId:9},{value:" \u51FD\u6570\u5408\u5E76\u7C7B\u540D\u65F6\uFF0C\u5B83\u4F1A\u81EA\u52A8\u5904\u7406\u8FD9\u4E9B\u51B2\u7A81\uFF0C\u786E\u4FDD\u6BCF\u4E2A\u6837\u5F0F\u53EA\u5E94\u7528\u4E00\u6B21\u6700\u7EC8\u7684\u503C\u3002\u5728\u4E0A\u8FF0\u4F8B\u5B50\u4E2D\uFF0C",paraId:9},{value:"twMerge",paraId:9},{value:" \u4F1A\u667A\u80FD\u5730\u89E3\u6790\u8FD9\u4E9B\u7C7B\u540D\uFF0C\u6700\u7EC8\u53EA\u4FDD\u7559 ",paraId:9},{value:"p-[5px]",paraId:9},{value:"\uFF0C\u4ECE\u800C\u786E\u4FDD\u5185\u8FB9\u8DDD\u662F\u6211\u4EEC\u671F\u671B\u7684 ",paraId:9},{value:"5px",paraId:9},{value:"\u3002",paraId:9},{value:"clsx",paraId:10,tocIndex:6},{value:" \u662F\u4E00\u4E2A\u5C0F\u578B\u7684 JavaScript \u5E93\uFF0C\u7528\u4E8E\u52A8\u6001\u5730\u6784\u5EFA className \u5B57\u7B26\u4E32\u3002\u5B83\u9002\u7528\u4E8E React \u7EC4\u4EF6\u4E2D\u9700\u8981\u6839\u636E\u67D0\u4E9B\u6761\u4EF6\u5E94\u7528\u4E0D\u540C\u7684 CSS \u7C7B\u3002",paraId:10,tocIndex:6},{value:"clsx",paraId:11,tocIndex:7},{value:" \u7B80\u5316\u4E86\u6839\u636E\u6761\u4EF6\u52A8\u6001\u5E94\u7528\u591A\u4E2A CSS \u7C7B\u7684\u903B\u8F91\uFF0C\u4F7F\u4EE3\u7801\u66F4\u6E05\u6670\u3001\u53EF\u7EF4\u62A4\u3002\u5C24\u5176\u5728\u590D\u6742\u573A\u666F\u4E2D\uFF0C",paraId:11,tocIndex:7},{value:"clsx",paraId:11,tocIndex:7},{value:" \u80FD\u6709\u6548\u51CF\u5C11\u6837\u677F\u4EE3\u7801\uFF0C\u9632\u6B62\u4EBA\u4E3A\u9519\u8BEF\u3002",paraId:11,tocIndex:7},{value:"\u5047\u8BBE\u6211\u4EEC\u6709\u4E00\u4E2A\u6309\u94AE\u7EC4\u4EF6\uFF0C\u5176\u6837\u5F0F\u6839\u636E\u6309\u94AE\u7684\u7C7B\u578B\uFF08",paraId:12,tocIndex:8},{value:"primary",paraId:12,tocIndex:8},{value:"\u3001",paraId:12,tocIndex:8},{value:"secondary",paraId:12,tocIndex:8},{value:"\uFF09\u53CA\u72B6\u6001\uFF08",paraId:12,tocIndex:8},{value:"active",paraId:12,tocIndex:8},{value:"\u3001",paraId:12,tocIndex:8},{value:"disabled",paraId:12,tocIndex:8},{value:"\uFF09\u53D8\u5316\u3002",paraId:12,tocIndex:8},{value:`import React from 'react';
+`,paraId:68,tocIndex:22},{value:"Chrome DevTools \u8BBE\u5907\u6A21\u62DF\uFF1A",paraId:69,tocIndex:22},{value:"F12",paraId:70,tocIndex:22},{value:" \u6253\u5F00\u5F00\u53D1\u8005\u5DE5\u5177",paraId:70,tocIndex:22},{value:"\u70B9\u51FB\u8BBE\u5907\u56FE\u6807\uFF08",paraId:70,tocIndex:22},{value:"Ctrl/Cmd + Shift + M",paraId:70,tocIndex:22},{value:"\uFF09",paraId:70,tocIndex:22},{value:"\u9009\u62E9\u4E0D\u540C\u8BBE\u5907\uFF0C\u67E5\u770B DPR \u5DEE\u5F02",paraId:70,tocIndex:22},{value:"\u81EA\u5B9A\u4E49\u8BBE\u5907 DPR \u8FDB\u884C\u6D4B\u8BD5",paraId:70,tocIndex:22}]},22160:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"\u5728\u4F7F\u7528 Tailwind CSS \u5F00\u53D1 React \u7EC4\u4EF6\u65F6\uFF0C\u6211\u4EEC\u7ECF\u5E38\u9700\u8981\u5904\u7406\u52A8\u6001\u7C7B\u540D\u548C\u6837\u5F0F\u51B2\u7A81\u7684\u95EE\u9898\u3002",paraId:0,tocIndex:0},{value:"clsx",paraId:0,tocIndex:0},{value:" \u548C ",paraId:0,tocIndex:0},{value:"tailwind-merge",paraId:0,tocIndex:0},{value:" \u662F\u4E24\u4E2A\u4E92\u8865\u7684\u5DE5\u5177\u5E93\uFF1A",paraId:0,tocIndex:0},{value:"clsx",paraId:1,tocIndex:0},{value:"\uFF1A\u7528\u4E8E",paraId:1,tocIndex:0},{value:"\u6761\u4EF6\u5316\u5730\u6784\u5EFA",paraId:1,tocIndex:0},{value:"\u7C7B\u540D\u5B57\u7B26\u4E32\uFF0C\u7B80\u5316\u52A8\u6001\u6837\u5F0F\u903B\u8F91",paraId:1,tocIndex:0},{value:"tailwind-merge",paraId:1,tocIndex:0},{value:"\uFF1A\u7528\u4E8E",paraId:1,tocIndex:0},{value:"\u667A\u80FD\u5408\u5E76",paraId:1,tocIndex:0},{value:"Tailwind \u7C7B\u540D\uFF0C\u81EA\u52A8\u89E3\u51B3\u6837\u5F0F\u51B2\u7A81",paraId:1,tocIndex:0},{value:"\u4E24\u8005\u7ED3\u5408\u4F7F\u7528\u53EF\u4EE5\u6784\u5EFA\u65E2\u7075\u6D3B\u53C8\u5065\u58EE\u7684\u7EC4\u4EF6\u6837\u5F0F\u7CFB\u7EDF\u3002",paraId:2,tocIndex:0},{value:"tailwind-merge",paraId:3,tocIndex:2},{value:" \u662F\u4E00\u4E2A\u7528\u4E8E\u5408\u5E76\u548C\u53BB\u91CD Tailwind CSS \u7C7B\u540D\u7684\u5E93\u3002\u5B83\u53EF\u4EE5\u667A\u80FD\u5730\u5408\u5E76\u7C7B\u540D\u5B57\u7B26\u4E32\uFF0C\u5E76\u81EA\u52A8\u5904\u7406\u51B2\u7A81\u7684\u7C7B\u540D\uFF0C\u4FDD\u8BC1\u6700\u7EC8\u7684\u7C7B\u540D\u5B57\u7B26\u4E32\u65E2\u7CBE\u7B80\u53C8\u4E0D\u4F1A\u56E0\u4E3A\u7C7B\u540D\u51B2\u7A81\u5BFC\u81F4\u6837\u5F0F\u51FA\u73B0\u95EE\u9898\u3002",paraId:3,tocIndex:2},{value:"\u5728\u6CA1\u6709 tailwind-merge \u7684\u60C5\u51B5\u4E0B\uFF0C\u5982\u679C\u6211\u4EEC\u76F4\u63A5\u5C06\u4F20\u5165\u7684\u7C7B\u540D\u4E0E\u7EC4\u4EF6\u7684\u9ED8\u8BA4\u7C7B\u540D\u5B57\u7B26\u4E32\u62FC\u63A5\uFF0C\u53EF\u80FD\u4F1A\u9047\u5230\u6837\u5F0F\u51B2\u7A81\u7684\u95EE\u9898\u3002\u5F53\u591A\u4E2A Tailwind \u7C7B\u540D\u4F5C\u7528\u4E8E\u540C\u4E00 CSS \u5C5E\u6027\u65F6\uFF08\u5982\u4E0D\u540C\u7684\u5185\u8FB9\u8DDD\u8BBE\u7F6E\uFF09\uFF0C\u7531\u4E8E CSS \u7279\u5F02\u6027\u548C Tailwind \u751F\u6210\u7684 CSS \u987A\u5E8F\u7684\u5F71\u54CD\uFF0C\u53EF\u80FD\u5BFC\u81F4\u6837\u5F0F\u8868\u73B0\u4E0D\u7B26\u5408\u9884\u671F\u3002",paraId:4,tocIndex:3},{value:"\u95EE\u9898\u793A\u4F8B\uFF1A\u4E0D\u4F7F\u7528 tailwind-merge",paraId:5,tocIndex:4},{value:"\u5982\u4E0A\u8FF0\u4EE3\u7801\u6240\u793A\uFF0C\u6211\u4EEC\u6709\u4E00\u4E2A ",paraId:6},{value:"MyInput",paraId:6},{value:" \u7EC4\u4EF6\uFF0C\u8BE5\u7EC4\u4EF6\u6709\u9ED8\u8BA4\u7684\u5185\u8FB9\u8DDD\u6837\u5F0F ",paraId:6},{value:"px-[20px] py-[20px]",paraId:6},{value:"\u3002\u5F53\u901A\u8FC7 props \u4F20\u5165\u4E00\u4E2A\u65B0\u7684\u5185\u8FB9\u8DDD ",paraId:6},{value:"p-[5px]",paraId:6},{value:" \u65F6\uFF0C\u671F\u671B\u7684\u7ED3\u679C\u662F\u7EC4\u4EF6\u7684\u5185\u8FB9\u8DDD\u53D8\u4E3A ",paraId:6},{value:"5px",paraId:6},{value:"\u3002",paraId:6},{value:"\u4F46\u662F\uFF0C\u6700\u7EC8\u7684\u7C7B\u540D\u5C06\u662F ",paraId:7},{value:"border rounded px-[20px] py-[20px] p-[5px]",paraId:7},{value:"\u3002\u7531\u4E8E\u8FD9\u4E9B\u7C7B\u540D\u90FD\u4F1A\u751F\u6210\u5BF9\u5E94\u7684 CSS \u89C4\u5219\uFF0C\u4E14\u5B83\u4EEC\u7684\u7279\u5F02\u6027\u76F8\u540C\uFF0C\u6700\u7EC8\u54EA\u4E2A\u751F\u6548\u53D6\u51B3\u4E8E Tailwind \u751F\u6210\u7684 CSS \u6587\u4EF6\u4E2D\u89C4\u5219\u7684\u5B9A\u4E49\u987A\u5E8F\uFF0C\u800C\u4E0D\u662F\u7C7B\u540D\u5B57\u7B26\u4E32\u4E2D\u7684\u987A\u5E8F\u3002\u8FD9\u4F1A\u5BFC\u81F4\u6837\u5F0F\u7ED3\u679C\u4E0D\u53EF\u9884\u671F\uFF0C\u901A\u5E38\u5185\u8FB9\u8DDD\u4E0D\u4F1A\u662F\u6211\u4EEC\u671F\u671B\u7684 ",paraId:7},{value:"5px",paraId:7},{value:"\u3002",paraId:7},{value:"\u89E3\u51B3\u65B9\u6848\uFF1A\u4F7F\u7528 tailwind-merge",paraId:8},{value:"\u4F7F\u7528 tailwind-merge\uFF0C\u6211\u4EEC\u53EF\u4EE5\u907F\u514D\u4E0A\u8FF0\u95EE\u9898\u3002\u901A\u8FC7 ",paraId:9},{value:"twMerge",paraId:9},{value:" \u51FD\u6570\u5408\u5E76\u7C7B\u540D\u65F6\uFF0C\u5B83\u4F1A\u81EA\u52A8\u5904\u7406\u8FD9\u4E9B\u51B2\u7A81\uFF0C\u786E\u4FDD\u6BCF\u4E2A\u6837\u5F0F\u53EA\u5E94\u7528\u4E00\u6B21\u6700\u7EC8\u7684\u503C\u3002\u5728\u4E0A\u8FF0\u4F8B\u5B50\u4E2D\uFF0C",paraId:9},{value:"twMerge",paraId:9},{value:" \u4F1A\u667A\u80FD\u5730\u89E3\u6790\u8FD9\u4E9B\u7C7B\u540D\uFF0C\u6700\u7EC8\u53EA\u4FDD\u7559 ",paraId:9},{value:"p-[5px]",paraId:9},{value:"\uFF0C\u4ECE\u800C\u786E\u4FDD\u5185\u8FB9\u8DDD\u662F\u6211\u4EEC\u671F\u671B\u7684 ",paraId:9},{value:"5px",paraId:9},{value:"\u3002",paraId:9},{value:"clsx",paraId:10,tocIndex:6},{value:" \u662F\u4E00\u4E2A\u5C0F\u578B\u7684 JavaScript \u5E93\uFF0C\u7528\u4E8E\u52A8\u6001\u5730\u6784\u5EFA className \u5B57\u7B26\u4E32\u3002\u5B83\u9002\u7528\u4E8E React \u7EC4\u4EF6\u4E2D\u9700\u8981\u6839\u636E\u67D0\u4E9B\u6761\u4EF6\u5E94\u7528\u4E0D\u540C\u7684 CSS \u7C7B\u3002",paraId:10,tocIndex:6},{value:"clsx",paraId:11,tocIndex:7},{value:" \u7B80\u5316\u4E86\u6839\u636E\u6761\u4EF6\u52A8\u6001\u5E94\u7528\u591A\u4E2A CSS \u7C7B\u7684\u903B\u8F91\uFF0C\u4F7F\u4EE3\u7801\u66F4\u6E05\u6670\u3001\u53EF\u7EF4\u62A4\u3002\u5C24\u5176\u5728\u590D\u6742\u573A\u666F\u4E2D\uFF0C",paraId:11,tocIndex:7},{value:"clsx",paraId:11,tocIndex:7},{value:" \u80FD\u6709\u6548\u51CF\u5C11\u6837\u677F\u4EE3\u7801\uFF0C\u9632\u6B62\u4EBA\u4E3A\u9519\u8BEF\u3002",paraId:11,tocIndex:7},{value:"\u5047\u8BBE\u6211\u4EEC\u6709\u4E00\u4E2A\u6309\u94AE\u7EC4\u4EF6\uFF0C\u5176\u6837\u5F0F\u6839\u636E\u6309\u94AE\u7684\u7C7B\u578B\uFF08",paraId:12,tocIndex:8},{value:"primary",paraId:12,tocIndex:8},{value:"\u3001",paraId:12,tocIndex:8},{value:"secondary",paraId:12,tocIndex:8},{value:"\uFF09\u53CA\u72B6\u6001\uFF08",paraId:12,tocIndex:8},{value:"active",paraId:12,tocIndex:8},{value:"\u3001",paraId:12,tocIndex:8},{value:"disabled",paraId:12,tocIndex:8},{value:"\uFF09\u53D8\u5316\u3002",paraId:12,tocIndex:8},{value:`import React from 'react';
 
 const Button = ({
   type,
@@ -3574,7 +4199,7 @@ export function cn(...inputs: ClassValue[]) {
     props.className,
   )}
 />;
-`,paraId:39,tocIndex:18},{value:"\u8FD9\u4E2A ",paraId:40,tocIndex:18},{value:"cn",paraId:40,tocIndex:18},{value:" \u51FD\u6570\u5DF2\u7ECF\u6210\u4E3A Tailwind CSS \u793E\u533A\u7684\u4E8B\u5B9E\u6807\u51C6\uFF0C\u5728 shadcn/ui \u7B49\u6D41\u884C\u7EC4\u4EF6\u5E93\u4E2D\u88AB\u5E7F\u6CDB\u4F7F\u7528\u3002",paraId:40,tocIndex:18}]},12202:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"\u8FD9\u662F\u4E00\u4E2A\u524D\u7AEF\u5C0F\u767D\u7684\u5B66\u4E60\u5386\u7A0B\uFF0C\u5982\u679C\u53EA\u5B66\u4E60\u800C\u4E0D\u8BB0\u5F55\u70B9\u4EC0\u4E48\u90A3\u57FA\u672C\u5C31\u7B49\u4E8E\u767D\u5B66\u4E86\u3002",paraId:0},{value:"\u8FD9\u91CC\u5B58\u653E\u4E00\u4E9B\u5F85\u6574\u7406\u3001\u5F52\u7EB3\u3001\u603B\u7ED3\u7684\u788E\u7247\u5316\u7684\u77E5\u8BC6\u3001\u6587\u7AE0\u7B49\u3002",paraId:1},{value:"\u96F6\u96F6\u6563\u6563\u5565\u90FD\u8BB0\u7CFB\u5217\uFF08\u4E0D\u5B9A\u671F\u66F4\u65B0\uFF09",paraId:2}]},74599:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"Object.prototype \u4E0B\u7684\u5C5E\u6027\u4E3A\u5565\u80FD\u5728\u63A7\u5236\u53F0\u76F4\u63A5\u8BBF\u95EE\uFF1F",paraId:0},{value:"JavaScript \u91CC\u6709\u4E24\u5927\u67E5\u627E\u8FC7\u7A0B\u662F\u94FE\u5F0F\u7684\uFF0C\u4E00\u4E2A\u662F\u53D8\u91CF\u7684\u67E5\u627E\uFF0C\u662F\u6CBF\u7740\u4F5C\u7528\u57DF\u94FE\u5411\u4E0A\u67E5\u3002\u4E00\u4E2A\u662F\u5BF9\u8C61\u5C5E\u6027\u7684\u67E5\u627E\uFF0C\u662F\u6CBF\u7740\u5BF9\u8C61\u7684\u539F\u578B\u94FE\u5411\u4E0A\u67E5\u3002",paraId:1,tocIndex:1},{value:"the global ",paraId:2,tocIndex:1},{value:"this",paraId:2,tocIndex:1},{value:" inherit from ",paraId:2,tocIndex:1},{value:"Object.prototype",paraId:2,tocIndex:1},{value:" Luckily",paraId:2,tocIndex:1},{value:", more modern JavaScript engines all seem to agree that the global ",paraId:2,tocIndex:1},{value:"this",paraId:2,tocIndex:1},{value:" must have ",paraId:2,tocIndex:1},{value:"Object.prototype",paraId:2,tocIndex:1},{value:" in its prototype chain.",paraId:2,tocIndex:1},{value:"\u672C\u6765\u8FD9\u4E24\u4E2A\u9886\u57DF\u662F\u4E92\u4E0D\u76F8\u5173\u7684\uFF0C\u4F46\u56E0\u4E3A\u5168\u5C40\u5BF9\u8C61\uFF08\u5B83\u662F\u4E00\u4E2A\u5BF9\u8C61\uFF0C\u6240\u4EE5\u5B58\u5728\u5BF9\u8C61\u5C5E\u6027\uFF0C\u540C\u65F6\u5B83\u4E5F\u662F\u4E00\u4E2A\u53D8\u91CF\u5BF9\u8C61\uFF09\u548C ",paraId:3,tocIndex:1},{value:"with",paraId:3,tocIndex:1},{value:" \u8BED\u53E5\u7684\u5B58\u5728\uFF0C\u5B83\u4FE9\u53EF\u4EE5\u8054\u7CFB\u5728\u4E00\u8D77\uFF0C\u90A3\u5C31\u662F\u53D8\u91CF\u67E5\u627E\u8F6C\u53D8\u6210\u5C5E\u6027\u7684\u67E5\u627E\uFF0C\u4E5F\u5C31\u662F\u8BF4\u53D8\u91CF\u90FD\u53EF\u80FD\u4F1A\u67E5\u627E\u5230 ",paraId:3,tocIndex:1},{value:"Object.prototype",paraId:3,tocIndex:1},{value:" \u4E0A\uFF0C",paraId:3,tocIndex:1},{value:"Object.prototype",paraId:3,tocIndex:1},{value:" \u4E0A\u7684\u5C5E\u6027\u90FD\u662F\u5168\u5C40\u53D8\u91CF",paraId:3,tocIndex:1},{value:"\u3002",paraId:3,tocIndex:1},{value:`// \u5728\u6D4F\u89C8\u5668\u73AF\u5883\u4E2D
+`,paraId:39,tocIndex:18},{value:"\u8FD9\u4E2A ",paraId:40,tocIndex:18},{value:"cn",paraId:40,tocIndex:18},{value:" \u51FD\u6570\u5DF2\u7ECF\u6210\u4E3A Tailwind CSS \u793E\u533A\u7684\u4E8B\u5B9E\u6807\u51C6\uFF0C\u5728 shadcn/ui \u7B49\u6D41\u884C\u7EC4\u4EF6\u5E93\u4E2D\u88AB\u5E7F\u6CDB\u4F7F\u7528\u3002",paraId:40,tocIndex:18}]},12202:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"\u8FD9\u662F\u4E00\u4E2A\u524D\u7AEF\u5C0F\u767D\u7684\u5B66\u4E60\u5386\u7A0B\uFF0C\u5982\u679C\u53EA\u5B66\u4E60\u800C\u4E0D\u8BB0\u5F55\u70B9\u4EC0\u4E48\u90A3\u57FA\u672C\u5C31\u7B49\u4E8E\u767D\u5B66\u4E86\u3002",paraId:0},{value:"\u8FD9\u91CC\u5B58\u653E\u4E00\u4E9B\u5F85\u6574\u7406\u3001\u5F52\u7EB3\u3001\u603B\u7ED3\u7684\u788E\u7247\u5316\u7684\u77E5\u8BC6\u3001\u6587\u7AE0\u7B49\u3002",paraId:1},{value:"\u96F6\u96F6\u6563\u6563\u5565\u90FD\u8BB0\u7CFB\u5217\uFF08\u4E0D\u5B9A\u671F\u66F4\u65B0\uFF09",paraId:2}]},74599:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"Object.prototype \u4E0B\u7684\u5C5E\u6027\u4E3A\u5565\u80FD\u5728\u63A7\u5236\u53F0\u76F4\u63A5\u8BBF\u95EE\uFF1F",paraId:0},{value:"JavaScript \u91CC\u6709\u4E24\u5927\u67E5\u627E\u8FC7\u7A0B\u662F\u94FE\u5F0F\u7684\uFF0C\u4E00\u4E2A\u662F\u53D8\u91CF\u7684\u67E5\u627E\uFF0C\u662F\u6CBF\u7740\u4F5C\u7528\u57DF\u94FE\u5411\u4E0A\u67E5\u3002\u4E00\u4E2A\u662F\u5BF9\u8C61\u5C5E\u6027\u7684\u67E5\u627E\uFF0C\u662F\u6CBF\u7740\u5BF9\u8C61\u7684\u539F\u578B\u94FE\u5411\u4E0A\u67E5\u3002",paraId:1,tocIndex:1},{value:"the global ",paraId:2,tocIndex:1},{value:"this",paraId:2,tocIndex:1},{value:" inherit from ",paraId:2,tocIndex:1},{value:"Object.prototype",paraId:2,tocIndex:1},{value:" Luckily",paraId:2,tocIndex:1},{value:", more modern JavaScript engines all seem to agree that the global ",paraId:2,tocIndex:1},{value:"this",paraId:2,tocIndex:1},{value:" must have ",paraId:2,tocIndex:1},{value:"Object.prototype",paraId:2,tocIndex:1},{value:" in its prototype chain.",paraId:2,tocIndex:1},{value:"\u672C\u6765\u8FD9\u4E24\u4E2A\u9886\u57DF\u662F\u4E92\u4E0D\u76F8\u5173\u7684\uFF0C\u4F46\u56E0\u4E3A\u5168\u5C40\u5BF9\u8C61\uFF08\u5B83\u662F\u4E00\u4E2A\u5BF9\u8C61\uFF0C\u6240\u4EE5\u5B58\u5728\u5BF9\u8C61\u5C5E\u6027\uFF0C\u540C\u65F6\u5B83\u4E5F\u662F\u4E00\u4E2A\u53D8\u91CF\u5BF9\u8C61\uFF09\u548C ",paraId:3,tocIndex:1},{value:"with",paraId:3,tocIndex:1},{value:" \u8BED\u53E5\u7684\u5B58\u5728\uFF0C\u5B83\u4FE9\u53EF\u4EE5\u8054\u7CFB\u5728\u4E00\u8D77\uFF0C\u90A3\u5C31\u662F\u53D8\u91CF\u67E5\u627E\u8F6C\u53D8\u6210\u5C5E\u6027\u7684\u67E5\u627E\uFF0C\u4E5F\u5C31\u662F\u8BF4\u53D8\u91CF\u90FD\u53EF\u80FD\u4F1A\u67E5\u627E\u5230 ",paraId:3,tocIndex:1},{value:"Object.prototype",paraId:3,tocIndex:1},{value:" \u4E0A\uFF0C",paraId:3,tocIndex:1},{value:"Object.prototype",paraId:3,tocIndex:1},{value:" \u4E0A\u7684\u5C5E\u6027\u90FD\u662F\u5168\u5C40\u53D8\u91CF",paraId:3,tocIndex:1},{value:"\u3002",paraId:3,tocIndex:1},{value:`// \u5728\u6D4F\u89C8\u5668\u73AF\u5883\u4E2D
 globalThis === window; // true
 
 // \u5168\u5C40\u5BF9\u8C61\u65E2\u662F\u53D8\u91CF\u5BB9\u5668\uFF0C\u53C8\u662F\u666E\u901A\u5BF9\u8C61
@@ -3629,7 +4254,7 @@ const a = [1, 2, 3][(1, 2, 3)].forEach(console.log); // \u62A5\u9519\uFF1ACannot
 const a = 1(function () {
   console.log('IIFE');
 })(); // \u62A5\u9519\uFF1A1 is not a function
-`,paraId:50,tocIndex:11},{value:"\u6700\u4F73\u5B9E\u8DF5\uFF1A",paraId:51,tocIndex:11},{value:"\u867D\u7136\u4E0D\u52A0\u5206\u53F7\u7684\u4EE3\u7801\u98CE\u683C\u5728\u793E\u533A\u6709\u4E00\u5B9A\u652F\u6301\u8005\uFF08\u5982 StandardJS\uFF09\uFF0C\u4F46\u5EFA\u8BAE\uFF1A",paraId:52,tocIndex:11},{value:"\u603B\u662F\u5728\u8BED\u53E5\u672B\u5C3E\u52A0\u5206\u53F7",paraId:53,tocIndex:11},{value:"\uFF0C\u8FD9\u6837\u53EF\u4EE5\u907F\u514D 99% \u7684 ASI \u95EE\u9898",paraId:53,tocIndex:11},{value:"\u5982\u679C\u9009\u62E9\u4E0D\u52A0\u5206\u53F7\uFF0C",paraId:53,tocIndex:11},{value:"\u5FC5\u987B\u5728\u4EE5 ",paraId:53,tocIndex:11},{value:"[",paraId:53,tocIndex:11},{value:"\u3001",paraId:53,tocIndex:11},{value:"(",paraId:53,tocIndex:11},{value:"\u3001",paraId:53,tocIndex:11},{value:"`",paraId:53,tocIndex:11},{value:"\u3001",paraId:53,tocIndex:11},{value:"+",paraId:53,tocIndex:11},{value:"\u3001",paraId:53,tocIndex:11},{value:"-",paraId:53,tocIndex:11},{value:" \u5F00\u5934\u7684\u8BED\u53E5\u524D\u52A0\u5206\u53F7",paraId:53,tocIndex:11},{value:"\u4F7F\u7528 ESLint \u7B49\u5DE5\u5177\u5F3A\u5236\u7EDF\u4E00\u4EE3\u7801\u98CE\u683C",paraId:53,tocIndex:11},{value:"\u8FD9\u662F\u4E00\u4E2A",paraId:54,tocIndex:11},{value:"\u5386\u53F2\u9057\u7559\u95EE\u9898\u5BFC\u81F4\u7684\u4E89\u8BAE",paraId:54,tocIndex:11},{value:"\uFF0C\u5982\u679C JavaScript \u8BBE\u8BA1\u4E4B\u521D\u5C31\u660E\u786E\u8981\u6C42\u5206\u53F7\uFF0C\u5C31\u4E0D\u4F1A\u6709\u8FD9\u4E48\u591A\u56F0\u6270\u4E86\u3002",paraId:54,tocIndex:11}]},94903:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"BigInt \u662F JavaScript \u4E2D\u7684\u4E00\u79CD\u6570\u503C\u7C7B\u578B\uFF0C\u7528\u4E8E\u8868\u793A\u4EFB\u610F\u7CBE\u5EA6\u7684\u6574\u6570\u3002\u5B83\u53EF\u4EE5\u5B89\u5168\u5730\u5B58\u50A8\u548C\u64CD\u4F5C\u8D85\u51FA Number \u7C7B\u578B\u5B89\u5168\u6574\u6570\u8303\u56F4\u7684\u6574\u6570\u3002",paraId:0,tocIndex:0},{value:"\u6709\u4E24\u79CD\u65B9\u5F0F\u521B\u5EFA BigInt\uFF1A",paraId:1,tocIndex:1},{value:"\u5728\u6574\u6570\u5B57\u9762\u91CF\u540E\u9762\u52A0 ",paraId:2,tocIndex:1},{value:"n",paraId:2,tocIndex:1},{value:"\uFF1A",paraId:2,tocIndex:1},{value:"10n",paraId:2,tocIndex:1},{value:"\u8C03\u7528 ",paraId:2,tocIndex:1},{value:"BigInt()",paraId:2,tocIndex:1},{value:" \u51FD\u6570\uFF08\u4E0D\u4F7F\u7528 ",paraId:2,tocIndex:1},{value:"new",paraId:2,tocIndex:1},{value:" \u8FD0\u7B97\u7B26\uFF09",paraId:2,tocIndex:1},{value:`const bigInt1 = 123n;
+`,paraId:50,tocIndex:11},{value:"\u6700\u4F73\u5B9E\u8DF5\uFF1A",paraId:51,tocIndex:11},{value:"\u867D\u7136\u4E0D\u52A0\u5206\u53F7\u7684\u4EE3\u7801\u98CE\u683C\u5728\u793E\u533A\u6709\u4E00\u5B9A\u652F\u6301\u8005\uFF08\u5982 StandardJS\uFF09\uFF0C\u4F46\u5EFA\u8BAE\uFF1A",paraId:52,tocIndex:11},{value:"\u603B\u662F\u5728\u8BED\u53E5\u672B\u5C3E\u52A0\u5206\u53F7",paraId:53,tocIndex:11},{value:"\uFF0C\u8FD9\u6837\u53EF\u4EE5\u907F\u514D 99% \u7684 ASI \u95EE\u9898",paraId:53,tocIndex:11},{value:"\u5982\u679C\u9009\u62E9\u4E0D\u52A0\u5206\u53F7\uFF0C",paraId:53,tocIndex:11},{value:"\u5FC5\u987B\u5728\u4EE5 ",paraId:53,tocIndex:11},{value:"[",paraId:53,tocIndex:11},{value:"\u3001",paraId:53,tocIndex:11},{value:"(",paraId:53,tocIndex:11},{value:"\u3001",paraId:53,tocIndex:11},{value:"`",paraId:53,tocIndex:11},{value:"\u3001",paraId:53,tocIndex:11},{value:"+",paraId:53,tocIndex:11},{value:"\u3001",paraId:53,tocIndex:11},{value:"-",paraId:53,tocIndex:11},{value:" \u5F00\u5934\u7684\u8BED\u53E5\u524D\u52A0\u5206\u53F7",paraId:53,tocIndex:11},{value:"\u4F7F\u7528 ESLint \u7B49\u5DE5\u5177\u5F3A\u5236\u7EDF\u4E00\u4EE3\u7801\u98CE\u683C",paraId:53,tocIndex:11},{value:"\u8FD9\u662F\u4E00\u4E2A",paraId:54,tocIndex:11},{value:"\u5386\u53F2\u9057\u7559\u95EE\u9898\u5BFC\u81F4\u7684\u4E89\u8BAE",paraId:54,tocIndex:11},{value:"\uFF0C\u5982\u679C JavaScript \u8BBE\u8BA1\u4E4B\u521D\u5C31\u660E\u786E\u8981\u6C42\u5206\u53F7\uFF0C\u5C31\u4E0D\u4F1A\u6709\u8FD9\u4E48\u591A\u56F0\u6270\u4E86\u3002",paraId:54,tocIndex:11}]},94903:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"BigInt \u662F JavaScript \u4E2D\u7684\u4E00\u79CD\u6570\u503C\u7C7B\u578B\uFF0C\u7528\u4E8E\u8868\u793A\u4EFB\u610F\u7CBE\u5EA6\u7684\u6574\u6570\u3002\u5B83\u53EF\u4EE5\u5B89\u5168\u5730\u5B58\u50A8\u548C\u64CD\u4F5C\u8D85\u51FA Number \u7C7B\u578B\u5B89\u5168\u6574\u6570\u8303\u56F4\u7684\u6574\u6570\u3002",paraId:0,tocIndex:0},{value:"\u6709\u4E24\u79CD\u65B9\u5F0F\u521B\u5EFA BigInt\uFF1A",paraId:1,tocIndex:1},{value:"\u5728\u6574\u6570\u5B57\u9762\u91CF\u540E\u9762\u52A0 ",paraId:2,tocIndex:1},{value:"n",paraId:2,tocIndex:1},{value:"\uFF1A",paraId:2,tocIndex:1},{value:"10n",paraId:2,tocIndex:1},{value:"\u8C03\u7528 ",paraId:2,tocIndex:1},{value:"BigInt()",paraId:2,tocIndex:1},{value:" \u51FD\u6570\uFF08\u4E0D\u4F7F\u7528 ",paraId:2,tocIndex:1},{value:"new",paraId:2,tocIndex:1},{value:" \u8FD0\u7B97\u7B26\uFF09",paraId:2,tocIndex:1},{value:`const bigInt1 = 123n;
 const bigInt2 = BigInt(123);
 const bigInt3 = BigInt('123');
 
@@ -3714,7 +4339,7 @@ const big2 = BigInt('123');
 // \u8F6C\u6362\uFF08\u6CE8\u610F\u7CBE\u5EA6\uFF09
 Number(1n); // 1
 BigInt(1); // 1n
-`,paraId:30,tocIndex:16}]},95772:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"C \u8BED\u8A00\u4EE5\u53CA\u4E0E\u5176\u517C\u5BB9\u7684 C++ \u8BED\u8A00\u4E2D\uFF0C\u662F\u6CA1\u6709 boolean \u7C7B\u578B\u7684\uFF0C\u4E5F\u6CA1\u6709 ",paraId:0,tocIndex:0},{value:"true",paraId:0,tocIndex:0},{value:" \u548C ",paraId:0,tocIndex:0},{value:"false",paraId:0,tocIndex:0},{value:" \u5173\u952E\u5B57\u3002",paraId:0,tocIndex:0},{value:"\u6240\u6709\u7684\u6761\u4EF6\u5224\u65AD\u8BED\u53E5\uFF0C\u5927\u4F53\u4E0A\u90FD\u57FA\u672C\u7B49\u4EF7\u4E8E ",paraId:1,tocIndex:0},{value:"expression != 0",paraId:1,tocIndex:0},{value:"\u3002",paraId:1,tocIndex:0},{value:"JavaScript \u7684\u8FD9\u4E2A\u7279\u6027\u4FBF\u6765\u81EA\u4E8E\u6B64\uFF0C\u4E5F\u5C31\u662F\u8BF4\u7406\u8BBA\u4E0A\u6765\u8BF4 ",paraId:2,tocIndex:0},{value:"if( expression )",paraId:2,tocIndex:0},{value:" \u5176\u5B9E\u662F ",paraId:2,tocIndex:0},{value:"if( expression is not false value )",paraId:2,tocIndex:0},{value:"\u5728 JavaScript \u4E2D\uFF0C\u53EA\u6709 ",paraId:3,tocIndex:1},{value:"7 \u79CD",paraId:3,tocIndex:1},{value:"\u503C\u53EF\u4EE5\u88AB\u8F6C\u6362\u6210 ",paraId:3,tocIndex:1},{value:"false",paraId:3,tocIndex:1},{value:"\uFF0C\u5176\u4ED6\u6240\u6709\u503C\u90FD\u4F1A\u88AB\u8F6C\u6362\u6210 ",paraId:3,tocIndex:1},{value:"true",paraId:3,tocIndex:1},{value:"\u3002",paraId:3,tocIndex:1},{value:"\u8FD9 7 \u79CD\u5047\u503C\u5206\u522B\u662F\uFF1A",paraId:4,tocIndex:1},{value:`console.log(Boolean(false)); // false - \u5E03\u5C14\u503C false \u672C\u8EAB
+`,paraId:30,tocIndex:16}]},65513:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[]},95772:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"C \u8BED\u8A00\u4EE5\u53CA\u4E0E\u5176\u517C\u5BB9\u7684 C++ \u8BED\u8A00\u4E2D\uFF0C\u662F\u6CA1\u6709 boolean \u7C7B\u578B\u7684\uFF0C\u4E5F\u6CA1\u6709 ",paraId:0,tocIndex:0},{value:"true",paraId:0,tocIndex:0},{value:" \u548C ",paraId:0,tocIndex:0},{value:"false",paraId:0,tocIndex:0},{value:" \u5173\u952E\u5B57\u3002",paraId:0,tocIndex:0},{value:"\u6240\u6709\u7684\u6761\u4EF6\u5224\u65AD\u8BED\u53E5\uFF0C\u5927\u4F53\u4E0A\u90FD\u57FA\u672C\u7B49\u4EF7\u4E8E ",paraId:1,tocIndex:0},{value:"expression != 0",paraId:1,tocIndex:0},{value:"\u3002",paraId:1,tocIndex:0},{value:"JavaScript \u7684\u8FD9\u4E2A\u7279\u6027\u4FBF\u6765\u81EA\u4E8E\u6B64\uFF0C\u4E5F\u5C31\u662F\u8BF4\u7406\u8BBA\u4E0A\u6765\u8BF4 ",paraId:2,tocIndex:0},{value:"if( expression )",paraId:2,tocIndex:0},{value:" \u5176\u5B9E\u662F ",paraId:2,tocIndex:0},{value:"if( expression is not false value )",paraId:2,tocIndex:0},{value:"\u5728 JavaScript \u4E2D\uFF0C\u53EA\u6709 ",paraId:3,tocIndex:1},{value:"7 \u79CD",paraId:3,tocIndex:1},{value:"\u503C\u53EF\u4EE5\u88AB\u8F6C\u6362\u6210 ",paraId:3,tocIndex:1},{value:"false",paraId:3,tocIndex:1},{value:"\uFF0C\u5176\u4ED6\u6240\u6709\u503C\u90FD\u4F1A\u88AB\u8F6C\u6362\u6210 ",paraId:3,tocIndex:1},{value:"true",paraId:3,tocIndex:1},{value:"\u3002",paraId:3,tocIndex:1},{value:"\u8FD9 7 \u79CD\u5047\u503C\u5206\u522B\u662F\uFF1A",paraId:4,tocIndex:1},{value:`console.log(Boolean(false)); // false - \u5E03\u5C14\u503C false \u672C\u8EAB
 
 console.log(Boolean(undefined)); // false - \u672A\u5B9A\u4E49
 console.log(Boolean(null)); // false - \u7A7A\u503C
@@ -3787,7 +4412,7 @@ if (count !== 0) {
 `,paraId:15,tocIndex:9},{value:"\u4F7F\u7528\u7A7A\u503C\u5408\u5E76\u8FD0\u7B97\u7B26",paraId:16,tocIndex:9},{value:"\uFF1A\u5F53\u53EA\u60F3\u5904\u7406 ",paraId:16,tocIndex:9},{value:"null",paraId:16,tocIndex:9},{value:" \u548C ",paraId:16,tocIndex:9},{value:"undefined",paraId:16,tocIndex:9},{value:" \u65F6\uFF0C\u4F7F\u7528 ",paraId:16,tocIndex:9},{value:"??",paraId:16,tocIndex:9},{value:" \u800C\u4E0D\u662F ",paraId:16,tocIndex:9},{value:"||",paraId:16,tocIndex:9},{value:`const value = input ?? defaultValue;
 `,paraId:17,tocIndex:9},{value:"\u660E\u786E\u610F\u56FE",paraId:18,tocIndex:9},{value:"\uFF1A\u5728\u9700\u8981\u5E03\u5C14\u503C\u7684\u5730\u65B9\uFF0C\u663E\u5F0F\u4F7F\u7528 ",paraId:18,tocIndex:9},{value:"Boolean()",paraId:18,tocIndex:9},{value:" \u6216 ",paraId:18,tocIndex:9},{value:"!!",paraId:18,tocIndex:9},{value:" \u8FDB\u884C\u8F6C\u6362",paraId:18,tocIndex:9},{value:`const hasValue = Boolean(value);
 const isValid = !!checkValidity();
-`,paraId:19,tocIndex:9}]},7442:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"\u89E3\u6784\u8D4B\u503C\uFF08Destructuring Assignment\uFF09\u662F ES6 \u5F15\u5165\u7684\u4E00\u79CD\u4FBF\u6377\u8BED\u6CD5\uFF0C\u5141\u8BB8\u4ECE\u6570\u7EC4\u6216\u5BF9\u8C61\u4E2D\u63D0\u53D6\u503C\uFF0C\u5E76\u5C06\u5B83\u4EEC\u8D4B\u503C\u7ED9\u53D8\u91CF\u3002\u8FD9\u79CD\u8BED\u6CD5\u6A21\u5F0F\u4F7F\u5F97\u4EE3\u7801\u66F4\u52A0\u7B80\u6D01\u548C\u6613\u8BFB\u3002",paraId:0,tocIndex:0},{value:"\u89E3\u6784\u8D4B\u503C\u7684\u672C\u8D28",paraId:1,tocIndex:0},{value:"\uFF1A\u6A21\u5F0F\u5339\u914D\u3002\u53EA\u8981\u7B49\u53F7\u4E24\u8FB9\u7684\u6A21\u5F0F\u76F8\u540C\uFF0C\u5DE6\u8FB9\u7684\u53D8\u91CF\u5C31\u4F1A\u88AB\u8D4B\u4E88\u5BF9\u5E94\u7684\u503C\u3002",paraId:1,tocIndex:0},{value:"\u4E3B\u8981\u4F18\u52BF",paraId:2,tocIndex:0},{value:"\uFF1A",paraId:2,tocIndex:0},{value:"\u7B80\u5316\u53D8\u91CF\u58F0\u660E\u548C\u8D4B\u503C",paraId:3,tocIndex:0},{value:"\u63D0\u53D6\u5BF9\u8C61\u5C5E\u6027\u66F4\u65B9\u4FBF",paraId:3,tocIndex:0},{value:"\u51FD\u6570\u53C2\u6570\u4F20\u9012\u66F4\u7075\u6D3B",paraId:3,tocIndex:0},{value:"\u4EE3\u7801\u53EF\u8BFB\u6027\u66F4\u5F3A",paraId:3,tocIndex:0},{value:"\u6570\u7EC4\u89E3\u6784\u6309\u7167\u4F4D\u7F6E\u987A\u5E8F\u8FDB\u884C\u5339\u914D\uFF1A",paraId:4,tocIndex:2},{value:`// \u57FA\u672C\u89E3\u6784
+`,paraId:19,tocIndex:9}]},7442:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"\u89E3\u6784\u8D4B\u503C\uFF08Destructuring Assignment\uFF09\u662F ES6 \u5F15\u5165\u7684\u4E00\u79CD\u4FBF\u6377\u8BED\u6CD5\uFF0C\u5141\u8BB8\u4ECE\u6570\u7EC4\u6216\u5BF9\u8C61\u4E2D\u63D0\u53D6\u503C\uFF0C\u5E76\u5C06\u5B83\u4EEC\u8D4B\u503C\u7ED9\u53D8\u91CF\u3002\u8FD9\u79CD\u8BED\u6CD5\u6A21\u5F0F\u4F7F\u5F97\u4EE3\u7801\u66F4\u52A0\u7B80\u6D01\u548C\u6613\u8BFB\u3002",paraId:0,tocIndex:0},{value:"\u89E3\u6784\u8D4B\u503C\u7684\u672C\u8D28",paraId:1,tocIndex:0},{value:"\uFF1A\u6A21\u5F0F\u5339\u914D\u3002\u53EA\u8981\u7B49\u53F7\u4E24\u8FB9\u7684\u6A21\u5F0F\u76F8\u540C\uFF0C\u5DE6\u8FB9\u7684\u53D8\u91CF\u5C31\u4F1A\u88AB\u8D4B\u4E88\u5BF9\u5E94\u7684\u503C\u3002",paraId:1,tocIndex:0},{value:"\u4E3B\u8981\u4F18\u52BF",paraId:2,tocIndex:0},{value:"\uFF1A",paraId:2,tocIndex:0},{value:"\u7B80\u5316\u53D8\u91CF\u58F0\u660E\u548C\u8D4B\u503C",paraId:3,tocIndex:0},{value:"\u63D0\u53D6\u5BF9\u8C61\u5C5E\u6027\u66F4\u65B9\u4FBF",paraId:3,tocIndex:0},{value:"\u51FD\u6570\u53C2\u6570\u4F20\u9012\u66F4\u7075\u6D3B",paraId:3,tocIndex:0},{value:"\u4EE3\u7801\u53EF\u8BFB\u6027\u66F4\u5F3A",paraId:3,tocIndex:0},{value:"\u6570\u7EC4\u89E3\u6784\u6309\u7167\u4F4D\u7F6E\u987A\u5E8F\u8FDB\u884C\u5339\u914D\uFF1A",paraId:4,tocIndex:2},{value:`// \u57FA\u672C\u89E3\u6784
 let [a, b, c] = [1, 2, 3];
 console.log(a, b, c); // 1 2 3
 
@@ -4097,7 +4722,404 @@ console.log(a); // undefined
 
 let [b = 1] = [,];
 console.log(b); // 1\uFF0C\u7A7A\u4F4D\u4F1A\u89E6\u53D1\u9ED8\u8BA4\u503C
-`,paraId:56,tocIndex:29},{value:"\u793A\u4F8B\u56FE\u793A",paraId:57,tocIndex:29},{value:"\uFF1A",paraId:57,tocIndex:29},{value:"\u91CD\u8981\u533A\u522B",paraId:58,tocIndex:29},{value:"\uFF1A",paraId:58,tocIndex:29},{value:'\u7A7A\u4F4D\uFF08hole\uFF09\uFF1A\u6570\u7EC4\u4E2D\u771F\u6B63\u7684"\u7A7A"\uFF0C',paraId:59,tocIndex:29},{value:"in",paraId:59,tocIndex:29},{value:" \u8FD0\u7B97\u7B26\u8FD4\u56DE ",paraId:59,tocIndex:29},{value:"false",paraId:59,tocIndex:29},{value:"undefined",paraId:59,tocIndex:29},{value:"\uFF1A\u663E\u5F0F\u7684\u503C\uFF0C",paraId:59,tocIndex:29},{value:"in",paraId:59,tocIndex:29},{value:" \u8FD0\u7B97\u7B26\u8FD4\u56DE ",paraId:59,tocIndex:29},{value:"true",paraId:59,tocIndex:29},{value:"\u6269\u5C55\u8FD0\u7B97\u7B26 ",paraId:59,tocIndex:29},{value:"...",paraId:59,tocIndex:29},{value:" \u4F1A\u5C06\u7A7A\u4F4D\u8F6C\u6362\u4E3A ",paraId:59,tocIndex:29},{value:"undefined",paraId:59,tocIndex:29},{value:"\u89E3\u6784\u8D4B\u503C\u662F ES6 \u4E2D\u975E\u5E38\u5B9E\u7528\u7684\u7279\u6027\uFF0C\u638C\u63E1\u4EE5\u4E0B\u8981\u70B9\uFF1A",paraId:60,tocIndex:30},{value:"\u57FA\u672C\u539F\u7406",paraId:61,tocIndex:30},{value:"\uFF1A\u6A21\u5F0F\u5339\u914D\uFF0C\u5DE6\u53F3\u4E24\u8FB9\u7ED3\u6784\u5BF9\u5E94",paraId:61,tocIndex:30},{value:"\u4E24\u79CD\u5F62\u5F0F",paraId:61,tocIndex:30},{value:"\uFF1A\u6570\u7EC4\u89E3\u6784\uFF08\u6309\u4F4D\u7F6E\uFF09\u548C\u5BF9\u8C61\u89E3\u6784\uFF08\u6309\u5C5E\u6027\u540D\uFF09",paraId:61,tocIndex:30},{value:"\u9ED8\u8BA4\u503C",paraId:61,tocIndex:30},{value:"\uFF1A\u53EA\u6709\u4E25\u683C\u7B49\u4E8E ",paraId:61,tocIndex:30},{value:"undefined",paraId:61,tocIndex:30},{value:" \u65F6\u624D\u751F\u6548",paraId:61,tocIndex:30},{value:"\u5D4C\u5957\u89E3\u6784",paraId:61,tocIndex:30},{value:"\uFF1A\u652F\u6301\u591A\u5C42\u5D4C\u5957\uFF0C\u4F46\u8981\u533A\u5206\u6A21\u5F0F\u548C\u53D8\u91CF",paraId:61,tocIndex:30},{value:"\u9002\u7528\u8303\u56F4",paraId:61,tocIndex:30},{value:"\uFF1A\u6570\u7EC4\u3001\u5BF9\u8C61\u3001\u5B57\u7B26\u4E32\u3001\u6570\u503C\u3001\u5E03\u5C14\u503C\u3001\u51FD\u6570\u53C2\u6570",paraId:61,tocIndex:30},{value:"\u5E38\u89C1\u7528\u9014",paraId:61,tocIndex:30},{value:"\uFF1A\u4EA4\u6362\u53D8\u91CF\u3001\u51FD\u6570\u8FD4\u56DE\u503C\u3001\u63D0\u53D6 JSON\u3001\u8BBE\u7F6E\u9ED8\u8BA4\u503C\u7B49",paraId:61,tocIndex:30},{value:"\u6CE8\u610F\u4E8B\u9879",paraId:61,tocIndex:30},{value:"\uFF1A\u5706\u62EC\u53F7\u4F7F\u7528\u9650\u5236\u3001",paraId:61,tocIndex:30},{value:"null/undefined",paraId:61,tocIndex:30},{value:" \u65E0\u6CD5\u89E3\u6784",paraId:61,tocIndex:30},{value:"\u5408\u7406\u4F7F\u7528\u89E3\u6784\u8D4B\u503C\u53EF\u4EE5\u8BA9\u4EE3\u7801\u66F4\u7B80\u6D01\u3001\u66F4\u6613\u8BFB\u3001\u66F4\u6613\u7EF4\u62A4\u3002",paraId:62,tocIndex:30}]},91524:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"\u4F5C\u7528\u57DF\uFF0C\u6216\u8005\u79F0\u4E4B\u4E3A\u201C\u4E0A\u4E0B\u6587\u201D\uFF0C\u662F\u53D8\u91CF\u88AB\u627F\u8F7D\u7684\u5BB9\u5668\u3002",paraId:0,tocIndex:0},{value:"\u5728\u6700\u65B0\u7684 ECMAScript \u89C4\u8303\u4E2D\uFF0C\u5B9A\u4E49\u4E86\u4E00\u4E2A\u53EB\u505A",paraId:1,tocIndex:0},{value:"\u73AF\u5883\u8BB0\u5F55\uFF08Environment Record\uFF09",paraId:1,tocIndex:0},{value:"\u7684\u62BD\u8C61\u6982\u5FF5\uFF0C\u53EF\u7406\u89E3\u4E3A\u5C31\u662F\u4F5C\u7528\u57DF\u3002\u4ECE ",paraId:1,tocIndex:0},{value:"Record",paraId:1,tocIndex:0},{value:" \u8FD9\u79CD\u8BCD\u6211\u4EEC\u5C31\u80FD\u8054\u60F3\u5230\u5B83\u662F\u7528\u6765\u8BB0\u5F55\u53D8\u91CF\u7684\u3002\u8FD9\u91CC\u7684\u53D8\u91CF\u4E0D\u4EC5\u4EC5\u5305\u62EC var \u58F0\u660E\u7684\u53D8\u91CF\uFF0C\u8FD8\u5305\u62EC ",paraId:1,tocIndex:0},{value:"const",paraId:1,tocIndex:0},{value:"\u3001",paraId:1,tocIndex:0},{value:"let",paraId:1,tocIndex:0},{value:"\u3001",paraId:1,tocIndex:0},{value:"class",paraId:1,tocIndex:0},{value:"\u3001",paraId:1,tocIndex:0},{value:"function",paraId:1,tocIndex:0},{value:"\u3001",paraId:1,tocIndex:0},{value:"with",paraId:1,tocIndex:0},{value:"\u3001",paraId:1,tocIndex:0},{value:"catch",paraId:1,tocIndex:0},{value:" \u7B49\u58F0\u660E\u7684\u53D8\u91CF\u6216\u53C2\u6570\u3002\u4E00\u65E6\u8FD9\u4E9B\u8BED\u53E5\u88AB\u6267\u884C\uFF0C\u90A3\u4E48\u5C31\u4F1A\u521B\u5EFA\u4E00\u4E2A\u65B0\u7684 Environment Record\u3002",paraId:1,tocIndex:0},{value:"Environment Record \u662F\u62BD\u8C61\u7684\uFF08abstract\uFF09\uFF0C\u5B83\u6709\u4E09\u4E2A\u5B50\u7C7B\uFF0C\u5206\u522B\u662F\uFF1A",paraId:2,tocIndex:0},{value:"Declarative Environment Record",paraId:3,tocIndex:0},{value:"\uFF0C\u5305\u62EC var\u3001const\u3001let\u3001class\u3001module\u3001function\u3001catch\uFF1B",paraId:3,tocIndex:0},{value:"Object Environment Record",paraId:3,tocIndex:0},{value:"\uFF0C\u5305\u62EC with\uFF1B",paraId:3,tocIndex:0},{value:"Global Environment Record",paraId:3,tocIndex:0},{value:"\uFF0C\u6D4F\u89C8\u5668\u4E2D\u6307 globalThis\uFF0CNode.js \u4E2D\u6307 global\u3002",paraId:3,tocIndex:0},{value:"\u5176\u4E2D\uFF0CDeclarative Environment Record \u8FD8\u6709\u4E24\u4E2A\u5B50\u7C7B\uFF1A",paraId:4,tocIndex:0},{value:"Function Environment Record",paraId:5,tocIndex:0},{value:" \u2014\u2014 function\uFF1B",paraId:5,tocIndex:0},{value:"Module Environment Record",paraId:5,tocIndex:0},{value:" \u2014\u2014 module\u3002",paraId:5,tocIndex:0},{value:"\u56E0\u6B64\uFF0C\u76EE\u524D\u5B98\u65B9\u89C4\u8303\u4E2D\u5B9A\u4E49\u7684\u8FD9\u51E0\u79CD\u4F5C\u7528\u57DF\u7684\u5173\u7CFB\u662F\uFF1A",paraId:6,tocIndex:0},{value:"\u6BCF\u4E00\u4E2A Environment Record \u6709\u4E00\u4E2A ",paraId:7,tocIndex:0},{value:"OuterEnv",paraId:7,tocIndex:0},{value:" \u5C5E\u6027\uFF0C\u6307\u5411\u53E6\u4E00\u4E2A Environment Record \u5B9E\u4F8B\u3002\u4ECE\u8FD9\u4E00\u70B9\u4E0A\u6211\u4EEC\u5C31\u80FD\u770B\u51FA\u6765\uFF0C",paraId:7,tocIndex:0},{value:"\u4F5C\u7528\u57DF\u662F\u6709\u4E0A\u4E0B\u5C42\u7EA7\u5173\u7CFB\u7684\uFF0C\u6240\u6709\u4F5C\u7528\u57DF\u5E94\u8BE5\u53EF\u4EE5\u7EC4\u6210\u4E00\u4E2A\u6811\u5F62\u7ED3\u6784",paraId:7,tocIndex:0},{value:"\uFF0C\u8FD9\u548C\u6211\u4EEC\u7684\u8BA4\u77E5\u662F\u4E00\u81F4\u7684\u3002\u6211\u4E3E\u4E00\u4E2A\u4F8B\u5B50\uFF1A",paraId:7,tocIndex:0},{value:`var foo = 1; // Env3
+`,paraId:56,tocIndex:29},{value:"\u793A\u4F8B\u56FE\u793A",paraId:57,tocIndex:29},{value:"\uFF1A",paraId:57,tocIndex:29},{value:"\u91CD\u8981\u533A\u522B",paraId:58,tocIndex:29},{value:"\uFF1A",paraId:58,tocIndex:29},{value:'\u7A7A\u4F4D\uFF08hole\uFF09\uFF1A\u6570\u7EC4\u4E2D\u771F\u6B63\u7684"\u7A7A"\uFF0C',paraId:59,tocIndex:29},{value:"in",paraId:59,tocIndex:29},{value:" \u8FD0\u7B97\u7B26\u8FD4\u56DE ",paraId:59,tocIndex:29},{value:"false",paraId:59,tocIndex:29},{value:"undefined",paraId:59,tocIndex:29},{value:"\uFF1A\u663E\u5F0F\u7684\u503C\uFF0C",paraId:59,tocIndex:29},{value:"in",paraId:59,tocIndex:29},{value:" \u8FD0\u7B97\u7B26\u8FD4\u56DE ",paraId:59,tocIndex:29},{value:"true",paraId:59,tocIndex:29},{value:"\u6269\u5C55\u8FD0\u7B97\u7B26 ",paraId:59,tocIndex:29},{value:"...",paraId:59,tocIndex:29},{value:" \u4F1A\u5C06\u7A7A\u4F4D\u8F6C\u6362\u4E3A ",paraId:59,tocIndex:29},{value:"undefined",paraId:59,tocIndex:29},{value:"\u89E3\u6784\u8D4B\u503C\u662F ES6 \u4E2D\u975E\u5E38\u5B9E\u7528\u7684\u7279\u6027\uFF0C\u638C\u63E1\u4EE5\u4E0B\u8981\u70B9\uFF1A",paraId:60,tocIndex:30},{value:"\u57FA\u672C\u539F\u7406",paraId:61,tocIndex:30},{value:"\uFF1A\u6A21\u5F0F\u5339\u914D\uFF0C\u5DE6\u53F3\u4E24\u8FB9\u7ED3\u6784\u5BF9\u5E94",paraId:61,tocIndex:30},{value:"\u4E24\u79CD\u5F62\u5F0F",paraId:61,tocIndex:30},{value:"\uFF1A\u6570\u7EC4\u89E3\u6784\uFF08\u6309\u4F4D\u7F6E\uFF09\u548C\u5BF9\u8C61\u89E3\u6784\uFF08\u6309\u5C5E\u6027\u540D\uFF09",paraId:61,tocIndex:30},{value:"\u9ED8\u8BA4\u503C",paraId:61,tocIndex:30},{value:"\uFF1A\u53EA\u6709\u4E25\u683C\u7B49\u4E8E ",paraId:61,tocIndex:30},{value:"undefined",paraId:61,tocIndex:30},{value:" \u65F6\u624D\u751F\u6548",paraId:61,tocIndex:30},{value:"\u5D4C\u5957\u89E3\u6784",paraId:61,tocIndex:30},{value:"\uFF1A\u652F\u6301\u591A\u5C42\u5D4C\u5957\uFF0C\u4F46\u8981\u533A\u5206\u6A21\u5F0F\u548C\u53D8\u91CF",paraId:61,tocIndex:30},{value:"\u9002\u7528\u8303\u56F4",paraId:61,tocIndex:30},{value:"\uFF1A\u6570\u7EC4\u3001\u5BF9\u8C61\u3001\u5B57\u7B26\u4E32\u3001\u6570\u503C\u3001\u5E03\u5C14\u503C\u3001\u51FD\u6570\u53C2\u6570",paraId:61,tocIndex:30},{value:"\u5E38\u89C1\u7528\u9014",paraId:61,tocIndex:30},{value:"\uFF1A\u4EA4\u6362\u53D8\u91CF\u3001\u51FD\u6570\u8FD4\u56DE\u503C\u3001\u63D0\u53D6 JSON\u3001\u8BBE\u7F6E\u9ED8\u8BA4\u503C\u7B49",paraId:61,tocIndex:30},{value:"\u6CE8\u610F\u4E8B\u9879",paraId:61,tocIndex:30},{value:"\uFF1A\u5706\u62EC\u53F7\u4F7F\u7528\u9650\u5236\u3001",paraId:61,tocIndex:30},{value:"null/undefined",paraId:61,tocIndex:30},{value:" \u65E0\u6CD5\u89E3\u6784",paraId:61,tocIndex:30},{value:"\u5408\u7406\u4F7F\u7528\u89E3\u6784\u8D4B\u503C\u53EF\u4EE5\u8BA9\u4EE3\u7801\u66F4\u7B80\u6D01\u3001\u66F4\u6613\u8BFB\u3001\u66F4\u6613\u7EF4\u62A4\u3002",paraId:62,tocIndex:30}]},37303:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"JavaScript \u4E2D\u7684\u9519\u8BEF\u7531 ",paraId:0,tocIndex:1},{value:"Error",paraId:0,tocIndex:1},{value:" \u5BF9\u8C61\u8868\u793A\uFF0C\u5B83\u5305\u542B\u4EE5\u4E0B\u4E3B\u8981\u5C5E\u6027\uFF1A",paraId:0,tocIndex:1},{value:"message",paraId:1,tocIndex:1},{value:"\uFF1A\u9519\u8BEF\u4FE1\u606F\u63CF\u8FF0",paraId:1,tocIndex:1},{value:"name",paraId:1,tocIndex:1},{value:"\uFF1A\u9519\u8BEF\u7C7B\u578B\u540D\u79F0\uFF08\u5982 ",paraId:1,tocIndex:1},{value:"Error",paraId:1,tocIndex:1},{value:"\u3001",paraId:1,tocIndex:1},{value:"TypeError",paraId:1,tocIndex:1},{value:"\u3001",paraId:1,tocIndex:1},{value:"ReferenceError",paraId:1,tocIndex:1},{value:" \u7B49\uFF09",paraId:1,tocIndex:1},{value:"stack",paraId:1,tocIndex:1},{value:"\uFF1A\u9519\u8BEF\u5806\u6808\u8DDF\u8E2A\uFF08\u975E\u6807\u51C6\uFF0C\u4F46\u88AB\u5E7F\u6CDB\u652F\u6301\uFF09",paraId:1,tocIndex:1},{value:`const error = new Error('\u51FA\u9519\u4E86');
+console.log(error.message); // "\u51FA\u9519\u4E86"
+console.log(error.name); // "Error"
+console.log(error.stack); // \u5806\u6808\u4FE1\u606F
+`,paraId:2,tocIndex:1},{value:"JavaScript \u5185\u7F6E\u4E86\u51E0\u79CD\u9519\u8BEF\u7C7B\u578B\uFF1A",paraId:3,tocIndex:1},{value:"Error",paraId:4,tocIndex:1},{value:"\uFF1A\u901A\u7528\u9519\u8BEF",paraId:4,tocIndex:1},{value:"TypeError",paraId:4,tocIndex:1},{value:"\uFF1A\u7C7B\u578B\u9519\u8BEF",paraId:4,tocIndex:1},{value:"ReferenceError",paraId:4,tocIndex:1},{value:"\uFF1A\u5F15\u7528\u9519\u8BEF",paraId:4,tocIndex:1},{value:"SyntaxError",paraId:4,tocIndex:1},{value:"\uFF1A\u8BED\u6CD5\u9519\u8BEF",paraId:4,tocIndex:1},{value:"RangeError",paraId:4,tocIndex:1},{value:"\uFF1A\u8303\u56F4\u9519\u8BEF",paraId:4,tocIndex:1},{value:"URIError",paraId:4,tocIndex:1},{value:"\uFF1AURI \u5904\u7406\u9519\u8BEF",paraId:4,tocIndex:1},{value:"\u53EF\u4EE5\u901A\u8FC7\u7EE7\u627F ",paraId:5,tocIndex:2},{value:"Error",paraId:5,tocIndex:2},{value:" \u7C7B\u6765\u521B\u5EFA\u81EA\u5B9A\u4E49\u9519\u8BEF\uFF1A",paraId:5,tocIndex:2},{value:`class ValidationError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'ValidationError';
+  }
+}
+
+class NetworkError extends Error {
+  constructor(message, statusCode) {
+    super(message);
+    this.name = 'NetworkError';
+    this.statusCode = statusCode;
+  }
+}
+
+// \u4F7F\u7528
+throw new ValidationError('\u6570\u636E\u9A8C\u8BC1\u5931\u8D25');
+throw new NetworkError('\u8BF7\u6C42\u5931\u8D25', 404);
+`,paraId:6,tocIndex:2},{value:"throw",paraId:7,tocIndex:3},{value:" \u8BED\u53E5\u7528\u4E8E\u629B\u51FA\u4E00\u4E2A\u5F02\u5E38\uFF0C\u53EF\u4EE5\u629B\u51FA\u4EFB\u4F55\u7C7B\u578B\u7684\u503C\uFF0C\u4F46\u63A8\u8350\u629B\u51FA ",paraId:7,tocIndex:3},{value:"Error",paraId:7,tocIndex:3},{value:" \u5BF9\u8C61\uFF1A",paraId:7,tocIndex:3},{value:`throw new Error('\u51FA\u9519\u4E86'); // \u63A8\u8350
+throw '\u9519\u8BEF\u4FE1\u606F'; // \u4E0D\u63A8\u8350
+throw 404; // \u4E0D\u63A8\u8350
+`,paraId:8,tocIndex:3},{value:"try-catch-finally",paraId:9,tocIndex:4},{value:" \u662F JavaScript \u4E2D\u5904\u7406\u5F02\u5E38\u7684\u57FA\u672C\u7ED3\u6784\uFF1A",paraId:9,tocIndex:4},{value:`try {
+  // \u53EF\u80FD\u629B\u51FA\u5F02\u5E38\u7684\u4EE3\u7801
+  console.log('\u5F00\u59CB\u6267\u884C');
+  throw new Error('\u51FA\u9519\u4E86');
+  console.log('\u8FD9\u884C\u4E0D\u4F1A\u6267\u884C'); // \u5F02\u5E38\u540E\u7684\u4EE3\u7801\u4E0D\u4F1A\u6267\u884C
+} catch (error) {
+  // \u6355\u83B7\u5E76\u5904\u7406\u5F02\u5E38
+  console.log('\u6355\u83B7\u5230\u9519\u8BEF\uFF1A', error.message);
+} finally {
+  // \u65E0\u8BBA\u662F\u5426\u53D1\u751F\u5F02\u5E38\u90FD\u4F1A\u6267\u884C
+  console.log('\u6E05\u7406\u8D44\u6E90');
+}
+`,paraId:10,tocIndex:4},{value:"\u6267\u884C\u89C4\u5219\uFF1A",paraId:11,tocIndex:4},{value:"try",paraId:12,tocIndex:4},{value:" \u5757\u4E2D\u53D1\u751F\u5F02\u5E38\u540E\uFF0C\u4F1A\u7ACB\u5373\u8DF3\u8F6C\u5230 ",paraId:12,tocIndex:4},{value:"catch",paraId:12,tocIndex:4},{value:" \u5757",paraId:12,tocIndex:4},{value:"finally",paraId:12,tocIndex:4},{value:" \u5757\u59CB\u7EC8\u4F1A\u6267\u884C\uFF0C\u5373\u4F7F\u5728 ",paraId:12,tocIndex:4},{value:"try",paraId:12,tocIndex:4},{value:" \u6216 ",paraId:12,tocIndex:4},{value:"catch",paraId:12,tocIndex:4},{value:" \u4E2D\u6709 ",paraId:12,tocIndex:4},{value:"return",paraId:12,tocIndex:4},{value:" \u8BED\u53E5",paraId:12,tocIndex:4},{value:"\u5982\u679C\u6CA1\u6709 ",paraId:12,tocIndex:4},{value:"catch",paraId:12,tocIndex:4},{value:" \u5757\uFF0C\u5F02\u5E38\u4F1A\u7EE7\u7EED\u5411\u4E0A\u629B\u51FA\uFF0C\u4F46 ",paraId:12,tocIndex:4},{value:"finally",paraId:12,tocIndex:4},{value:" \u4ECD\u4F1A\u6267\u884C",paraId:12,tocIndex:4},{value:`function test() {
+  try {
+    return 'try';
+  } finally {
+    return 'finally'; // \u6700\u7EC8\u8FD4\u56DE "finally"
+  }
+}
+`,paraId:13,tocIndex:4},{value:"\u540C\u6B65\u4EE3\u7801\u4E2D\u7684\u9519\u8BEF\u53EF\u4EE5\u76F4\u63A5\u7528 ",paraId:14,tocIndex:5},{value:"try-catch",paraId:14,tocIndex:5},{value:" \u6355\u83B7\uFF1A",paraId:14,tocIndex:5},{value:`const f = () => {
+  throw new Error('\u540C\u6B65\u9519\u8BEF');
+};
+
+try {
+  f();
+} catch (e) {
+  console.log(e.message); // "\u540C\u6B65\u9519\u8BEF"
+}
+`,paraId:15,tocIndex:5},{value:"async",paraId:16,tocIndex:7},{value:" \u51FD\u6570\u8FD4\u56DE\u4E00\u4E2A Promise\uFF0C\u51FD\u6570\u5185\u629B\u51FA\u7684\u9519\u8BEF\u4F1A\u5BFC\u81F4 Promise \u88AB rejected\u3002",paraId:16,tocIndex:7},{value:"\u9519\u8BEF\u793A\u4F8B\uFF1A\u65E0\u6CD5\u6355\u83B7",paraId:17,tocIndex:7},{value:`const f = async () => {
+  throw new Error('\u5F02\u6B65\u9519\u8BEF');
+};
+
+try {
+  f(); // \u6CA1\u6709 await\uFF0C\u53EA\u662F\u8C03\u7528\u51FD\u6570\u8FD4\u56DE Promise
+} catch (error) {
+  // \u65E0\u6CD5\u6355\u83B7\uFF0C\u56E0\u4E3A\u9519\u8BEF\u5728 Promise \u5185\u90E8
+  console.log(error.message);
+}
+`,paraId:18,tocIndex:7},{value:"\u6B63\u786E\u65B9\u5F0F 1\uFF1A\u4F7F\u7528 .catch()",paraId:19,tocIndex:7},{value:`const f = async () => {
+  throw new Error('\u5F02\u6B65\u9519\u8BEF');
+};
+
+f().catch((error) => {
+  console.log(error.message); // "\u5F02\u6B65\u9519\u8BEF"
+});
+`,paraId:20,tocIndex:7},{value:"\u6B63\u786E\u65B9\u5F0F 2\uFF1A\u4F7F\u7528 await + try-catch",paraId:21,tocIndex:7},{value:`const f = async () => {
+  throw new Error('\u5F02\u6B65\u9519\u8BEF');
+};
+
+(async () => {
+  try {
+    await f(); // \u4F7F\u7528 await \u7B49\u5F85 Promise
+  } catch (error) {
+    console.log(error.message); // "\u5F02\u6B65\u9519\u8BEF"
+  }
+})();
+`,paraId:22,tocIndex:7},{value:"\u5728 async \u51FD\u6570\u5185\u90E8\u4F7F\u7528 try-catch",paraId:23,tocIndex:7},{value:`(async () => {
+  try {
+    throw new Error('\u9519\u8BEF');
+  } catch (e) {
+    console.log(e.message); // "\u9519\u8BEF"
+  }
+})();
+`,paraId:24,tocIndex:7},{value:"\u6839\u636E ECMA-262 \u89C4\u8303\uFF0C",paraId:25,tocIndex:8},{value:"await",paraId:25,tocIndex:8},{value:" \u4F1A\u5C06\u503C\u8F6C\u6362\u4E3A Promise \u5E76\u7B49\u5F85\u5176\u5B8C\u6210\uFF1A",paraId:25,tocIndex:8},{value:"await v",paraId:26,tocIndex:8},{value:" \u4F1A\u5C06 ",paraId:26,tocIndex:8},{value:"v",paraId:26,tocIndex:8},{value:" \u8F6C\u6362\u4E3A Promise\uFF08\u4F7F\u7528 ",paraId:26,tocIndex:8},{value:"Promise.resolve(v)",paraId:26,tocIndex:8},{value:"\uFF09",paraId:26,tocIndex:8},{value:"\u5982\u679C Promise \u88AB rejected\uFF0C",paraId:26,tocIndex:8},{value:"await",paraId:26,tocIndex:8},{value:" \u4F1A\u629B\u51FA\u9519\u8BEF\uFF08\u7C7B\u4F3C ",paraId:26,tocIndex:8},{value:"throw",paraId:26,tocIndex:8},{value:"\uFF09",paraId:26,tocIndex:8},{value:"\u8FD9\u4E2A\u9519\u8BEF\u53EF\u4EE5\u88AB\u5916\u5C42\u7684 ",paraId:26,tocIndex:8},{value:"try-catch",paraId:26,tocIndex:8},{value:" \u6355\u83B7",paraId:26,tocIndex:8},{value:`async function fetchData() {
+  try {
+    const response = await fetch('/api/data');
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('\u8BF7\u6C42\u5931\u8D25\uFF1A', error);
+    throw error; // \u53EF\u4EE5\u9009\u62E9\u91CD\u65B0\u629B\u51FA
+  }
+}
+`,paraId:27,tocIndex:8},{value:"Promise \u6784\u9020\u51FD\u6570\u5185\u7684\u540C\u6B65\u9519\u8BEF\u4F1A\u88AB\u81EA\u52A8\u6355\u83B7\u5E76\u8F6C\u4E3A rejection\uFF1A",paraId:28,tocIndex:9},{value:`new Promise(() => {
+  throw new Error('\u540C\u6B65\u9519\u8BEF');
+}).catch((e) => {
+  console.log(e.message); // "\u540C\u6B65\u9519\u8BEF"
+});
+`,paraId:29,tocIndex:9},{value:"\u6CE8\u610F\uFF1A",paraId:30,tocIndex:9},{value:" \u8FD9\u662F Promise \u7684\u5185\u90E8\u673A\u5236\uFF0C\u5B83\u4F1A\u7528 ",paraId:30,tocIndex:9},{value:"try-catch",paraId:30,tocIndex:9},{value:" \u5305\u88F9\u6267\u884C\u5668\u51FD\u6570\uFF0C\u5E76\u5728\u6355\u83B7\u5230\u9519\u8BEF\u65F6\u8C03\u7528 ",paraId:30,tocIndex:9},{value:"reject",paraId:30,tocIndex:9},{value:"\u3002",paraId:30,tocIndex:9},{value:"Promise \u5185\u7684\u5F02\u6B65\u64CD\u4F5C\uFF08\u5982 ",paraId:31,tocIndex:10},{value:"setTimeout",paraId:31,tocIndex:10},{value:"\uFF09\u629B\u51FA\u7684\u9519\u8BEF\u65E0\u6CD5\u88AB\u81EA\u52A8\u6355\u83B7\uFF1A",paraId:31,tocIndex:10},{value:`// \u274C \u65E0\u6CD5\u6355\u83B7
+new Promise(() => {
+  setTimeout(() => {
+    throw new Error('\u5F02\u6B65\u9519\u8BEF'); // \u672A\u6355\u83B7\u9519\u8BEF
+  }, 0);
+}).catch((e) => {
+  console.log(e); // \u4E0D\u4F1A\u6267\u884C
+});
+`,paraId:32,tocIndex:10},{value:"\u5FC5\u987B\u624B\u52A8\u4F7F\u7528 ",paraId:33,tocIndex:10},{value:"reject",paraId:33,tocIndex:10},{value:" \u6216\u5728\u56DE\u8C03\u5185\u4F7F\u7528 ",paraId:33,tocIndex:10},{value:"try-catch",paraId:33,tocIndex:10},{value:"\uFF1A",paraId:33,tocIndex:10},{value:`// \u2705 \u6B63\u786E\u505A\u6CD5
+new Promise((resolve, reject) => {
+  setTimeout(() => {
+    try {
+      throw new Error('\u5F02\u6B65\u9519\u8BEF');
+    } catch (error) {
+      reject(error); // \u624B\u52A8 reject
+    }
+  }, 0);
+}).catch((e) => {
+  console.log(e.message); // "\u5F02\u6B65\u9519\u8BEF"
+});
+`,paraId:34,tocIndex:10},{value:"\u66F4\u597D\u7684\u65B9\u5F0F\u662F\u5728\u5F02\u6B65\u56DE\u8C03\u4E2D\u4F7F\u7528 async/await\uFF1A",paraId:35,tocIndex:10},{value:`new Promise(async (resolve, reject) => {
+  try {
+    await someAsyncOperation();
+    resolve('\u6210\u529F');
+  } catch (error) {
+    reject(error);
+  }
+});
+`,paraId:36,tocIndex:10},{value:"\u6DF7\u7528 ",paraId:37,tocIndex:12},{value:".then()",paraId:37,tocIndex:12},{value:" \u548C ",paraId:37,tocIndex:12},{value:"await",paraId:37,tocIndex:12},{value:" \u65F6\uFF0C\u53EA\u6709\u88AB ",paraId:37,tocIndex:12},{value:"await",paraId:37,tocIndex:12},{value:" \u7684 Promise \u9519\u8BEF\u80FD\u88AB ",paraId:37,tocIndex:12},{value:"try-catch",paraId:37,tocIndex:12},{value:" \u6355\u83B7\uFF1A",paraId:37,tocIndex:12},{value:`const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+(async () => {
+  try {
+    // \u573A\u666F 1\uFF1A\u6CA1\u6709 await \u7684 Promise
+    const p1 = wait(3000).then(() => {
+      console.log('3\u79D2\u540E');
+      throw new Error('\u9519\u8BEF 1');
+    }); // \u274C \u65E0\u6CD5\u6355\u83B7\uFF0C\u4F1A\u89E6\u53D1 unhandledrejection
+
+    // \u573A\u666F 2\uFF1A\u4F7F\u7528 await \u7684 Promise
+    await wait(2000).then(() => {
+      console.log('2\u79D2\u540E');
+      throw new Error('\u9519\u8BEF 2');
+    }); // \u2705 \u53EF\u4EE5\u6355\u83B7
+
+    console.log('\u8FD9\u884C\u4E0D\u4F1A\u6267\u884C');
+    await p1; // \u8FD9\u884C\u4E5F\u4E0D\u4F1A\u6267\u884C\uFF08\u5DF2\u7ECF\u8FDB\u5165 catch\uFF09
+  } catch (e) {
+    console.log('\u6355\u83B7\u5230\uFF1A', e.message); // "\u9519\u8BEF 2"
+  }
+})();
+`,paraId:38,tocIndex:12},{value:"\u89E3\u91CA\uFF1A",paraId:39,tocIndex:12},{value:"p1",paraId:40,tocIndex:12},{value:" \u7684\u9519\u8BEF\u53D1\u751F\u65F6\u6CA1\u6709\u88AB ",paraId:40,tocIndex:12},{value:"await",paraId:40,tocIndex:12},{value:"\uFF0C\u6240\u4EE5\u65E0\u6CD5\u88AB ",paraId:40,tocIndex:12},{value:"try-catch",paraId:40,tocIndex:12},{value:" \u6355\u83B7",paraId:40,tocIndex:12},{value:"await wait(2000)",paraId:40,tocIndex:12},{value:" \u7684\u9519\u8BEF\u4F1A\u88AB\u6355\u83B7\uFF0C\u5BFC\u81F4\u7ACB\u5373\u8DF3\u8F6C\u5230 ",paraId:40,tocIndex:12},{value:"catch",paraId:40,tocIndex:12},{value:" \u5757",paraId:40,tocIndex:12},{value:"\u4E00\u65E6\u8FDB\u5165 ",paraId:40,tocIndex:12},{value:"catch",paraId:40,tocIndex:12},{value:" \u5757\uFF0C",paraId:40,tocIndex:12},{value:"try",paraId:40,tocIndex:12},{value:" \u5757\u5269\u4F59\u4EE3\u7801\u4E0D\u4F1A\u6267\u884C",paraId:40,tocIndex:12},{value:"\u5EF6\u8FDF await \u7684\u60C5\u51B5\uFF1A",paraId:41,tocIndex:12},{value:`const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+(async () => {
+  try {
+    const p1 = wait(1000).then(() => {
+      throw new Error('\u9519\u8BEF');
+    });
+
+    await wait(3000); // \u7B49\u5F85 3 \u79D2
+    await p1; // \u6B64\u65F6 p1 \u5DF2\u7ECF rejected
+  } catch (e) {
+    console.log('\u6355\u83B7\u5230\uFF1A', e.message); // "\u9519\u8BEF"
+  }
+})();
+`,paraId:42,tocIndex:12},{value:"\u6267\u884C\u8FC7\u7A0B\uFF1A",paraId:43,tocIndex:12},{value:"1 \u79D2\u540E\uFF0C",paraId:44,tocIndex:12},{value:"p1",paraId:44,tocIndex:12},{value:" rejected\uFF0C\u89E6\u53D1 ",paraId:44,tocIndex:12},{value:"unhandledrejection",paraId:44,tocIndex:12},{value:" \u4E8B\u4EF6",paraId:44,tocIndex:12},{value:"3 \u79D2\u540E\uFF0C",paraId:44,tocIndex:12},{value:"await p1",paraId:44,tocIndex:12},{value:" \u6355\u83B7\u5230\u9519\u8BEF\uFF0C\u8FDB\u5165 ",paraId:44,tocIndex:12},{value:"catch",paraId:44,tocIndex:12},{value:" \u5757",paraId:44,tocIndex:12},{value:"unhandledrejection",paraId:44,tocIndex:12},{value:" \u4E8B\u4EF6\u88AB\u53D6\u6D88\uFF08\u9519\u8BEF\u5DF2\u88AB\u5904\u7406\uFF09",paraId:44,tocIndex:12},{value:"\u4E8B\u4EF6\u76D1\u542C\u5668\u4E2D\u7684\u9519\u8BEF\u65E0\u6CD5\u88AB\u5916\u90E8\u7684 ",paraId:45,tocIndex:13},{value:"try-catch",paraId:45,tocIndex:13},{value:" \u6216\u5168\u5C40\u9519\u8BEF\u5904\u7406\u5668\u6355\u83B7\uFF1A",paraId:45,tocIndex:13},{value:`// \u274C \u65E0\u6CD5\u6355\u83B7\u4E8B\u4EF6\u5185\u7684\u9519\u8BEF
+try {
+  document.querySelector('button').addEventListener('click', () => {
+    throw new Error('\u70B9\u51FB\u9519\u8BEF');
+  });
+} catch (e) {
+  // \u4E0D\u4F1A\u6267\u884C
+}
+`,paraId:46,tocIndex:13},{value:"\u5FC5\u987B\u5728\u4E8B\u4EF6\u5904\u7406\u5668\u5185\u90E8\u4F7F\u7528 ",paraId:47,tocIndex:13},{value:"try-catch",paraId:47,tocIndex:13},{value:"\uFF1A",paraId:47,tocIndex:13},{value:`// \u2705 \u6B63\u786E\u505A\u6CD5
+document.querySelector('button').addEventListener('click', async () => {
+  try {
+    await someAsyncOperation();
+  } catch (e) {
+    console.error('\u64CD\u4F5C\u5931\u8D25\uFF1A', e);
+  }
+});
+`,paraId:48,tocIndex:13},{value:"window.onerror",paraId:49,tocIndex:15},{value:" \u6216 ",paraId:49,tocIndex:15},{value:"error",paraId:49,tocIndex:15},{value:" \u4E8B\u4EF6\u53EF\u4EE5\u6355\u83B7\u5927\u90E8\u5206\u672A\u5904\u7406\u7684\u540C\u6B65\u9519\u8BEF\uFF1A",paraId:49,tocIndex:15},{value:`window.addEventListener('error', (event) => {
+  console.log('\u5168\u5C40\u9519\u8BEF\uFF1A', event.message);
+  console.log('\u6587\u4EF6\uFF1A', event.filename);
+  console.log('\u884C\u53F7\uFF1A', event.lineno);
+  console.log('\u5217\u53F7\uFF1A', event.colno);
+  console.log('\u9519\u8BEF\u5BF9\u8C61\uFF1A', event.error);
+
+  // \u963B\u6B62\u9ED8\u8BA4\u884C\u4E3A\uFF08\u63A7\u5236\u53F0\u62A5\u9519\uFF09
+  event.preventDefault();
+});
+`,paraId:50,tocIndex:15},{value:"\u6355\u83B7\u8303\u56F4\uFF1A",paraId:51,tocIndex:15},{value:"\u2705 \u540C\u6B65\u8FD0\u884C\u65F6\u9519\u8BEF",paraId:52,tocIndex:15},{value:"\u2705 \u8D44\u6E90\u52A0\u8F7D\u9519\u8BEF\uFF08\u9700\u4F7F\u7528\u6355\u83B7\u9636\u6BB5\uFF1A",paraId:52,tocIndex:15},{value:"useCapture: true",paraId:52,tocIndex:15},{value:"\uFF09",paraId:52,tocIndex:15},{value:"\u274C \u8BED\u6CD5\u9519\u8BEF\uFF08\u811A\u672C\u65E0\u6CD5\u6267\u884C\uFF09",paraId:52,tocIndex:15},{value:"\u274C Promise rejection\uFF08\u9700\u8981 ",paraId:52,tocIndex:15},{value:"unhandledrejection",paraId:52,tocIndex:15},{value:"\uFF09",paraId:52,tocIndex:15},{value:"\u274C async \u51FD\u6570\u672A\u6355\u83B7\u9519\u8BEF\uFF08\u9700\u8981 ",paraId:52,tocIndex:15},{value:"unhandledrejection",paraId:52,tocIndex:15},{value:"\uFF09",paraId:52,tocIndex:15},{value:"\u76D1\u542C\u672A\u88AB ",paraId:53,tocIndex:16},{value:".catch()",paraId:53,tocIndex:16},{value:" \u6355\u83B7\u7684 Promise rejection\uFF1A",paraId:53,tocIndex:16},{value:`window.addEventListener('unhandledrejection', (event) => {
+  console.log('\u672A\u5904\u7406\u7684 Promise rejection\uFF1A', event.reason);
+  console.log('Promise \u5BF9\u8C61\uFF1A', event.promise);
+
+  // \u963B\u6B62\u9ED8\u8BA4\u884C\u4E3A\uFF08\u63A7\u5236\u53F0\u8B66\u544A\uFF09
+  event.preventDefault();
+});
+`,paraId:54,tocIndex:16},{value:"\u793A\u4F8B\uFF1A",paraId:55,tocIndex:16},{value:`// \u89E6\u53D1 unhandledrejection
+Promise.reject('\u5931\u8D25\u539F\u56E0');
+
+// \u4E0D\u89E6\u53D1\uFF08\u5DF2\u88AB\u6355\u83B7\uFF09
+Promise.reject('\u5931\u8D25\u539F\u56E0').catch((e) => console.log(e));
+`,paraId:56,tocIndex:16},{value:`// \u540C\u6B65\u9519\u8BEF\u548C\u8D44\u6E90\u52A0\u8F7D\u9519\u8BEF
+window.addEventListener(
+  'error',
+  (event) => {
+    if (event.target !== window) {
+      // \u8D44\u6E90\u52A0\u8F7D\u9519\u8BEF
+      console.error('\u8D44\u6E90\u52A0\u8F7D\u5931\u8D25\uFF1A', event.target);
+    } else {
+      // \u8FD0\u884C\u65F6\u9519\u8BEF
+      console.error('\u8FD0\u884C\u65F6\u9519\u8BEF\uFF1A', event.message);
+    }
+    // \u4E0A\u62A5\u9519\u8BEF\u5230\u76D1\u63A7\u7CFB\u7EDF
+    reportError(event);
+  },
+  true, // \u4F7F\u7528\u6355\u83B7\u9636\u6BB5
+);
+
+// Promise rejection \u9519\u8BEF
+window.addEventListener('unhandledrejection', (event) => {
+  console.error('\u672A\u5904\u7406\u7684 Promise \u9519\u8BEF\uFF1A', event.reason);
+  // \u4E0A\u62A5\u9519\u8BEF\u5230\u76D1\u63A7\u7CFB\u7EDF
+  reportError(event.reason);
+  event.preventDefault();
+});
+`,paraId:57,tocIndex:17},{value:"\u5916\u90E8\u6570\u636E\uFF08API \u54CD\u5E94\u3001\u7528\u6237\u8F93\u5165\u3001localStorage \u7B49\uFF09\u662F\u4E0D\u53EF\u4FE1\u7684\uFF0C\u5E94\u8BE5\u4F7F\u7528\u9519\u8BEF\u5904\u7406\uFF1A",paraId:58,tocIndex:19},{value:`// \u2705 \u5B89\u5168\u7684 JSON \u89E3\u6790
+function safeParseJSON<T>(input: string, defaultValue: T): T {
+  try {
+    // \u6DFB\u52A0\u7C7B\u578B\u68C0\u67E5
+    if (typeof input !== 'string') {
+      return defaultValue;
+    }
+    return JSON.parse(input) as T;
+  } catch (error) {
+    console.warn('JSON \u89E3\u6790\u5931\u8D25\uFF1A', error);
+    return defaultValue;
+  }
+}
+
+// \u4F7F\u7528
+const data = safeParseJSON(localStorage.getItem('user'), { name: 'Guest' });
+`,paraId:59,tocIndex:19},{value:"\u5904\u7406 HTTP \u8BF7\u6C42\u65F6\u8981\u8003\u8651\u591A\u79CD\u9519\u8BEF\u60C5\u51B5\uFF1A",paraId:60,tocIndex:20},{value:`async function fetchUser(id: string) {
+  try {
+    const response = await fetch(\`/api/users/\${id}\`);
+
+    // \u68C0\u67E5 HTTP \u72B6\u6001
+    if (!response.ok) {
+      throw new NetworkError(\`\u8BF7\u6C42\u5931\u8D25: \${response.status}\`, response.status);
+    }
+
+    const data = await response.json();
+
+    // \u9A8C\u8BC1\u6570\u636E\u7ED3\u6784
+    if (!data || typeof data.name !== 'string') {
+      throw new ValidationError('\u6570\u636E\u683C\u5F0F\u4E0D\u6B63\u786E');
+    }
+
+    return data;
+  } catch (error) {
+    if (error instanceof NetworkError) {
+      // \u5904\u7406\u7F51\u7EDC\u9519\u8BEF
+      if (error.statusCode === 404) {
+        console.error('\u7528\u6237\u4E0D\u5B58\u5728');
+      } else if (error.statusCode >= 500) {
+        console.error('\u670D\u52A1\u5668\u9519\u8BEF');
+      }
+    } else if (error instanceof ValidationError) {
+      // \u5904\u7406\u6570\u636E\u9A8C\u8BC1\u9519\u8BEF
+      console.error('\u6570\u636E\u9A8C\u8BC1\u5931\u8D25');
+    } else {
+      // \u5904\u7406\u5176\u4ED6\u9519\u8BEF\uFF08\u5982\u7F51\u7EDC\u65AD\u5F00\uFF09
+      console.error('\u672A\u77E5\u9519\u8BEF', error);
+    }
+    throw error; // \u91CD\u65B0\u629B\u51FA\uFF0C\u8BA9\u4E0A\u5C42\u5904\u7406
+  }
+}
+`,paraId:61,tocIndex:20},{value:"\u4E0D\u662F\u6240\u6709\u4EE3\u7801\u90FD\u9700\u8981 ",paraId:62,tocIndex:21},{value:"try-catch",paraId:62,tocIndex:21},{value:"\uFF0C\u8FC7\u5EA6\u4F7F\u7528\u4F1A\u5BFC\u81F4\u4EE3\u7801\u5197\u4F59\uFF1A",paraId:62,tocIndex:21},{value:`// \u274C \u8FC7\u5EA6\u4F7F\u7528
+try {
+  const sum = 1 + 2;
+  console.log(sum);
+} catch (e) {
+  // \u8FD9\u6BB5\u4EE3\u7801\u4E0D\u4F1A\u629B\u51FA\u9519\u8BEF
+}
+
+// \u2705 \u53EA\u5728\u5FC5\u8981\u65F6\u4F7F\u7528
+function divide(a, b) {
+  if (b === 0) {
+    throw new Error('\u9664\u6570\u4E0D\u80FD\u4E3A 0');
+  }
+  return a / b;
+}
+`,paraId:63,tocIndex:21},{value:"\u9519\u8BEF\u4FE1\u606F\u5E94\u8BE5\u6E05\u6670\u3001\u5177\u4F53\uFF0C\u4FBF\u4E8E\u8C03\u8BD5\uFF1A",paraId:64,tocIndex:22},{value:`// \u274C \u4E0D\u597D\u7684\u9519\u8BEF\u4FE1\u606F
+throw new Error('\u9519\u8BEF');
+
+// \u2705 \u597D\u7684\u9519\u8BEF\u4FE1\u606F
+throw new ValidationError(\`\u7528\u6237\u540D\u957F\u5EA6\u5FC5\u987B\u5728 3-20 \u4E4B\u95F4\uFF0C\u5F53\u524D\u957F\u5EA6\uFF1A\${username.length}\`);
+`,paraId:65,tocIndex:22},{value:"\u4F7F\u7528 ",paraId:66,tocIndex:23},{value:"finally",paraId:66,tocIndex:23},{value:" \u786E\u4FDD\u8D44\u6E90\u88AB\u6B63\u786E\u91CA\u653E\uFF1A",paraId:66,tocIndex:23},{value:`let file;
+try {
+  file = await openFile('data.txt');
+  const content = await file.read();
+  return content;
+} catch (error) {
+  console.error('\u8BFB\u53D6\u6587\u4EF6\u5931\u8D25\uFF1A', error);
+  throw error;
+} finally {
+  // \u65E0\u8BBA\u6210\u529F\u6216\u5931\u8D25\u90FD\u5173\u95ED\u6587\u4EF6
+  if (file) {
+    await file.close();
+  }
+}
+`,paraId:67,tocIndex:23},{value:"\u6355\u83B7\u9519\u8BEF\u540E\u5E94\u8BE5\u8BB0\u5F55\u6216\u91CD\u65B0\u629B\u51FA\uFF0C\u4E0D\u8981\u9ED8\u9ED8\u541E\u6389\uFF1A",paraId:68,tocIndex:24},{value:`// \u274C \u541E\u6389\u9519\u8BEF
+try {
+  await importantOperation();
+} catch (e) {
+  // \u4EC0\u4E48\u90FD\u4E0D\u505A
+}
+
+// \u2705 \u8BB0\u5F55\u5E76\u5904\u7406
+try {
+  await importantOperation();
+} catch (e) {
+  console.error('\u64CD\u4F5C\u5931\u8D25\uFF1A', e);
+  // \u6839\u636E\u60C5\u51B5\u51B3\u5B9A\u662F\u5426\u91CD\u65B0\u629B\u51FA
+  throw e;
+}
+`,paraId:69,tocIndex:24},{value:'\u5728\u5B9E\u9645\u5F00\u53D1\u4E2D\uFF0C\u9519\u8BEF\u5904\u7406\u4E0D\u4EC5\u4EC5\u662F\u4E3A\u4E86\u9632\u6B62\u7A0B\u5E8F\u5D29\u6E83\uFF0C\u66F4\u91CD\u8981\u7684\u662F\u5904\u7406"\u4E0D\u53EF\u4FE1\u4EFB\u7684\u5916\u90E8\u6765\u6E90"\u3002',paraId:70,tocIndex:26},{value:"\u5E38\u89C1\u573A\u666F\uFF1AHTTP \u8BF7\u6C42",paraId:71,tocIndex:26},{value:"HTTP \u8BF7\u6C42\u901A\u5E38\u6709\u4E24\u7C7B\u9519\u8BEF\uFF1A",paraId:72,tocIndex:26},{value:"\u63A5\u53E3\u9519\u8BEF",paraId:73,tocIndex:26},{value:"\uFF1A\u540E\u7AEF\u8FD4\u56DE 4xx/5xx \u72B6\u6001\u7801",paraId:73,tocIndex:26},{value:"\u6570\u636E\u5904\u7406\u9519\u8BEF",paraId:73,tocIndex:26},{value:"\uFF1A\u6570\u636E\u7ED3\u6784\u4E0E\u9884\u671F\u4E0D\u7B26",paraId:73,tocIndex:26},{value:"\u7B2C\u4E8C\u7C7B\u662F\u6700\u5E38\u89C1\u7684 Bug \u6765\u6E90\uFF1A",paraId:74,tocIndex:26},{value:"\u63A5\u53E3\u53EA\u8FD4\u56DE\u6570\u636E\uFF0C\u4E0D\u8FD4\u56DE\u6570\u636E\u7C7B\u578B\u4FE1\u606F",paraId:74,tocIndex:26},{value:"\u3002",paraId:74,tocIndex:26},{value:"\u771F\u5B9E\u6848\u4F8B\uFF1A",paraId:75,tocIndex:26},{value:'\u4E00\u5F00\u59CB\u540E\u7AEF\u5BF9\u4E8E\u503C\u4E3A"\u7A7A"\u7684\u5B57\u6BB5\u76F4\u63A5\u4E0D\u8FD4\u56DE\u8BE5\u5B57\u6BB5\uFF0C\u6B64\u65F6\u524D\u7AEF\u7684\u9ED8\u8BA4\u503C\u8D4B\u503C\u53EF\u4EE5\u751F\u6548\uFF08',paraId:76,tocIndex:26},{value:"undefined ?? '\u9ED8\u8BA4\u503C'",paraId:76,tocIndex:26},{value:"\uFF09\u3002",paraId:76,tocIndex:26},{value:'\u540E\u6765\u540E\u7AEF\u65B0\u540C\u4E8B\u4FEE\u6539\u4E86\u914D\u7F6E\uFF0C\u503C\u4E3A"\u7A7A"\u7684\u5B57\u6BB5\u4E5F\u8FD4\u56DE\u4E86\uFF0C\u4F46\u503C\u662F ',paraId:77,tocIndex:26},{value:"null",paraId:77,tocIndex:26},{value:"\u3002",paraId:77,tocIndex:26},{value:"\u6B64\u65F6 ",paraId:78,tocIndex:26},{value:"null ?? '\u9ED8\u8BA4\u503C'",paraId:78,tocIndex:26},{value:" \u4E0D\u4F1A\u751F\u6548\uFF08",paraId:78,tocIndex:26},{value:"null",paraId:78,tocIndex:26},{value:" \u4E0D\u662F ",paraId:78,tocIndex:26},{value:"undefined",paraId:78,tocIndex:26},{value:"\uFF09\uFF0C\u540E\u7EED\u903B\u8F91\u76F4\u63A5\u62A5\u9519\u3002",paraId:78,tocIndex:26},{value:"\u89E3\u51B3\u65B9\u6848\uFF1A",paraId:79,tocIndex:26},{value:`interface UserResponse {
+  name?: string | null;
+  age?: number | null;
+}
+
+function normalizeUser(data: UserResponse) {
+  return {
+    name: data.name ?? '\u533F\u540D\u7528\u6237', // \u274C null \u4E0D\u4F1A\u89E6\u53D1\u9ED8\u8BA4\u503C
+    age: data.age ?? 0,
+  };
+}
+
+// \u2705 \u66F4\u5065\u58EE\u7684\u5904\u7406
+function normalizeUser(data: UserResponse) {
+  return {
+    name: data.name || '\u533F\u540D\u7528\u6237', // \u540C\u65F6\u5904\u7406 null \u548C undefined
+    age: data.age || 0,
+  };
+}
+
+// \u2705 \u6216\u8005\u4F7F\u7528\u7C7B\u578B\u5B88\u536B
+function normalizeUser(data: UserResponse) {
+  return {
+    name: typeof data.name === 'string' ? data.name : '\u533F\u540D\u7528\u6237',
+    age: typeof data.age === 'number' ? data.age : 0,
+  };
+}
+`,paraId:80,tocIndex:26},{value:`// \u901A\u7528\u8BF7\u6C42\u5C01\u88C5
+async function request<T>(url: string, options?: RequestInit): Promise<T> {
+  try {
+    const response = await fetch(url, options);
+
+    if (!response.ok) {
+      throw new NetworkError(\`HTTP \${response.status}: \${response.statusText}\`, response.status);
+    }
+
+    const data = await response.json();
+    return data as T;
+  } catch (error) {
+    if (error instanceof NetworkError) {
+      // \u6839\u636E\u72B6\u6001\u7801\u5904\u7406
+      handleNetworkError(error);
+    } else if (error instanceof SyntaxError) {
+      // JSON \u89E3\u6790\u9519\u8BEF
+      console.error('\u54CD\u5E94\u4E0D\u662F\u6709\u6548\u7684 JSON');
+    } else {
+      // \u7F51\u7EDC\u9519\u8BEF\u3001\u8D85\u65F6\u7B49
+      console.error('\u8BF7\u6C42\u5931\u8D25\uFF1A', error);
+    }
+    throw error;
+  }
+}
+
+function handleNetworkError(error: NetworkError) {
+  switch (true) {
+    case error.statusCode >= 500:
+      showToast('\u670D\u52A1\u5668\u9519\u8BEF\uFF0C\u8BF7\u7A0D\u540E\u91CD\u8BD5');
+      break;
+    case error.statusCode === 404:
+      showToast('\u8D44\u6E90\u4E0D\u5B58\u5728');
+      break;
+    case error.statusCode === 401:
+      redirectToLogin();
+      break;
+    default:
+      showToast('\u8BF7\u6C42\u5931\u8D25');
+  }
+}
+`,paraId:81,tocIndex:27},{value:"MDN - Error",paraId:82,tocIndex:28},{value:"MDN - try...catch",paraId:82,tocIndex:28},{value:"\u5728 JavaScript \u4E2D\u7528 try/catch \u662F\u4E0D\u662F\u5F88 low\uFF1F",paraId:82,tocIndex:28}]},91524:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"\u4F5C\u7528\u57DF\uFF0C\u6216\u8005\u79F0\u4E4B\u4E3A\u201C\u4E0A\u4E0B\u6587\u201D\uFF0C\u662F\u53D8\u91CF\u88AB\u627F\u8F7D\u7684\u5BB9\u5668\u3002",paraId:0,tocIndex:0},{value:"\u5728\u6700\u65B0\u7684 ECMAScript \u89C4\u8303\u4E2D\uFF0C\u5B9A\u4E49\u4E86\u4E00\u4E2A\u53EB\u505A",paraId:1,tocIndex:0},{value:"\u73AF\u5883\u8BB0\u5F55\uFF08Environment Record\uFF09",paraId:1,tocIndex:0},{value:"\u7684\u62BD\u8C61\u6982\u5FF5\uFF0C\u53EF\u7406\u89E3\u4E3A\u5C31\u662F\u4F5C\u7528\u57DF\u3002\u4ECE ",paraId:1,tocIndex:0},{value:"Record",paraId:1,tocIndex:0},{value:" \u8FD9\u79CD\u8BCD\u6211\u4EEC\u5C31\u80FD\u8054\u60F3\u5230\u5B83\u662F\u7528\u6765\u8BB0\u5F55\u53D8\u91CF\u7684\u3002\u8FD9\u91CC\u7684\u53D8\u91CF\u4E0D\u4EC5\u4EC5\u5305\u62EC var \u58F0\u660E\u7684\u53D8\u91CF\uFF0C\u8FD8\u5305\u62EC ",paraId:1,tocIndex:0},{value:"const",paraId:1,tocIndex:0},{value:"\u3001",paraId:1,tocIndex:0},{value:"let",paraId:1,tocIndex:0},{value:"\u3001",paraId:1,tocIndex:0},{value:"class",paraId:1,tocIndex:0},{value:"\u3001",paraId:1,tocIndex:0},{value:"function",paraId:1,tocIndex:0},{value:"\u3001",paraId:1,tocIndex:0},{value:"with",paraId:1,tocIndex:0},{value:"\u3001",paraId:1,tocIndex:0},{value:"catch",paraId:1,tocIndex:0},{value:" \u7B49\u58F0\u660E\u7684\u53D8\u91CF\u6216\u53C2\u6570\u3002\u4E00\u65E6\u8FD9\u4E9B\u8BED\u53E5\u88AB\u6267\u884C\uFF0C\u90A3\u4E48\u5C31\u4F1A\u521B\u5EFA\u4E00\u4E2A\u65B0\u7684 Environment Record\u3002",paraId:1,tocIndex:0},{value:"Environment Record \u662F\u62BD\u8C61\u7684\uFF08abstract\uFF09\uFF0C\u5B83\u6709\u4E09\u4E2A\u5B50\u7C7B\uFF0C\u5206\u522B\u662F\uFF1A",paraId:2,tocIndex:0},{value:"Declarative Environment Record",paraId:3,tocIndex:0},{value:"\uFF0C\u5305\u62EC var\u3001const\u3001let\u3001class\u3001module\u3001function\u3001catch\uFF1B",paraId:3,tocIndex:0},{value:"Object Environment Record",paraId:3,tocIndex:0},{value:"\uFF0C\u5305\u62EC with\uFF1B",paraId:3,tocIndex:0},{value:"Global Environment Record",paraId:3,tocIndex:0},{value:"\uFF0C\u6D4F\u89C8\u5668\u4E2D\u6307 globalThis\uFF0CNode.js \u4E2D\u6307 global\u3002",paraId:3,tocIndex:0},{value:"\u5176\u4E2D\uFF0CDeclarative Environment Record \u8FD8\u6709\u4E24\u4E2A\u5B50\u7C7B\uFF1A",paraId:4,tocIndex:0},{value:"Function Environment Record",paraId:5,tocIndex:0},{value:" \u2014\u2014 function\uFF1B",paraId:5,tocIndex:0},{value:"Module Environment Record",paraId:5,tocIndex:0},{value:" \u2014\u2014 module\u3002",paraId:5,tocIndex:0},{value:"\u56E0\u6B64\uFF0C\u76EE\u524D\u5B98\u65B9\u89C4\u8303\u4E2D\u5B9A\u4E49\u7684\u8FD9\u51E0\u79CD\u4F5C\u7528\u57DF\u7684\u5173\u7CFB\u662F\uFF1A",paraId:6,tocIndex:0},{value:"\u6BCF\u4E00\u4E2A Environment Record \u6709\u4E00\u4E2A ",paraId:7,tocIndex:0},{value:"OuterEnv",paraId:7,tocIndex:0},{value:" \u5C5E\u6027\uFF0C\u6307\u5411\u53E6\u4E00\u4E2A Environment Record \u5B9E\u4F8B\u3002\u4ECE\u8FD9\u4E00\u70B9\u4E0A\u6211\u4EEC\u5C31\u80FD\u770B\u51FA\u6765\uFF0C",paraId:7,tocIndex:0},{value:"\u4F5C\u7528\u57DF\u662F\u6709\u4E0A\u4E0B\u5C42\u7EA7\u5173\u7CFB\u7684\uFF0C\u6240\u6709\u4F5C\u7528\u57DF\u5E94\u8BE5\u53EF\u4EE5\u7EC4\u6210\u4E00\u4E2A\u6811\u5F62\u7ED3\u6784",paraId:7,tocIndex:0},{value:"\uFF0C\u8FD9\u548C\u6211\u4EEC\u7684\u8BA4\u77E5\u662F\u4E00\u81F4\u7684\u3002\u6211\u4E3E\u4E00\u4E2A\u4F8B\u5B50\uFF1A",paraId:7,tocIndex:0},{value:`var foo = 1; // Env3
 
 function onload() {
   var bar = 2; // Env2
@@ -4278,7 +5300,7 @@ globalThis === global; // true
 
 // Web Worker \u73AF\u5883
 globalThis === self; // true
-`,paraId:52,tocIndex:14},{value:"\u57AB\u7247\u5E93 ",paraId:53,tocIndex:14},{value:"global-this",paraId:53,tocIndex:14},{value:" \u6A21\u62DF\u4E86\u8FD9\u4E2A\u63D0\u6848\uFF0C\u53EF\u4EE5\u5728\u6240\u6709\u73AF\u5883\u62FF\u5230 ",paraId:53,tocIndex:14},{value:"globalThis",paraId:53,tocIndex:14},{value:"\u3002",paraId:53,tocIndex:14}]},58301:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"ES6 \u6A21\u5757\u662F JavaScript \u5B98\u65B9\u6807\u51C6\u7684\u6A21\u5757\u5316\u89E3\u51B3\u65B9\u6848\uFF0C\u901A\u8FC7 ",paraId:0,tocIndex:0},{value:"export",paraId:0,tocIndex:0},{value:" \u548C ",paraId:0,tocIndex:0},{value:"import",paraId:0,tocIndex:0},{value:" \u5173\u952E\u5B57\u5B9E\u73B0\u6A21\u5757\u7684\u5BFC\u51FA\u548C\u5BFC\u5165\u3002",paraId:0,tocIndex:0},{value:"\u9759\u6001\u7ED3\u6784",paraId:1,tocIndex:1},{value:"\uFF1A\u6A21\u5757\u7684\u5BFC\u5165\u5BFC\u51FA\u5728\u7F16\u8BD1\u65F6\u786E\u5B9A\uFF0C\u4E0D\u80FD\u52A8\u6001\u751F\u6210",paraId:1,tocIndex:1},{value:"\u81EA\u52A8\u4E25\u683C\u6A21\u5F0F",paraId:1,tocIndex:1},{value:"\uFF1AES6 \u7684\u6A21\u5757\u81EA\u52A8\u91C7\u7528\u4E25\u683C\u6A21\u5F0F\uFF0C\u4E0D\u9700\u8981\u624B\u52A8\u58F0\u660E ",paraId:1,tocIndex:1},{value:'"use strict;"',paraId:1,tocIndex:1},{value:"\u9876\u5C42 this",paraId:1,tocIndex:1},{value:"\uFF1AES6 \u6A21\u5757\u4E2D\uFF0C\u9876\u5C42\u7684 ",paraId:1,tocIndex:1},{value:"this",paraId:1,tocIndex:1},{value:" \u6307\u5411 ",paraId:1,tocIndex:1},{value:"undefined",paraId:1,tocIndex:1},{value:"\uFF0C\u800C\u4E0D\u662F\u5168\u5C40\u5BF9\u8C61",paraId:1,tocIndex:1},{value:"\u5355\u4F8B\u6A21\u5F0F",paraId:1,tocIndex:1},{value:"\uFF1A\u540C\u4E00\u4E2A\u6A21\u5757\u5982\u679C\u52A0\u8F7D\u591A\u6B21\uFF0C\u53EA\u4F1A\u6267\u884C\u4E00\u6B21",paraId:1,tocIndex:1},{value:"\u7279\u6027",paraId:2,tocIndex:2},{value:"ES6 \u6A21\u5757",paraId:2,tocIndex:2},{value:"CommonJS",paraId:2,tocIndex:2},{value:"\u52A0\u8F7D\u65F6\u673A",paraId:2,tocIndex:2},{value:"\u7F16\u8BD1\u65F6\uFF08\u9759\u6001\u52A0\u8F7D\uFF09",paraId:2,tocIndex:2},{value:"\u8FD0\u884C\u65F6\uFF08\u52A8\u6001\u52A0\u8F7D\uFF09",paraId:2,tocIndex:2},{value:"\u8F93\u51FA",paraId:2,tocIndex:2},{value:"\u503C\u7684\u5F15\u7528",paraId:2,tocIndex:2},{value:"\u503C\u7684\u62F7\u8D1D",paraId:2,tocIndex:2},{value:"this \u6307\u5411",paraId:2,tocIndex:2},{value:"undefined",paraId:2,tocIndex:2},{value:"\u5F53\u524D\u6A21\u5757",paraId:2,tocIndex:2},{value:"\u80FD\u5426\u52A8\u6001\u52A0\u8F7D",paraId:2,tocIndex:2},{value:"\u4E0D\u80FD\uFF08\u4F46\u53EF\u7528 import() \uFF09",paraId:2,tocIndex:2},{value:"\u53EF\u4EE5",paraId:2,tocIndex:2},{value:"\u5FAA\u73AF\u4F9D\u8D56",paraId:2,tocIndex:2},{value:"\u652F\u6301",paraId:2,tocIndex:2},{value:"\u652F\u6301\u4F46\u53EF\u80FD\u6709\u95EE\u9898",paraId:2,tocIndex:2},{value:"JavaScript \u662F\u8FB9\u7F16\u8BD1\u8FB9\u6267\u884C\u7684\u3002",paraId:3,tocIndex:3},{value:"import",paraId:4,tocIndex:3},{value:" \u5728\u7F16\u8BD1\u9636\u6BB5\u5C31\u505A\u4E86\u5904\u7406\uFF0C\u4E0E CommonJS \u7684\u8FD0\u884C\u65F6\u52A0\u8F7D\u6709\u672C\u8D28\u533A\u522B\uFF1A",paraId:4,tocIndex:3},{value:`import { readFile } from 'fs';
+`,paraId:52,tocIndex:14},{value:"\u57AB\u7247\u5E93 ",paraId:53,tocIndex:14},{value:"global-this",paraId:53,tocIndex:14},{value:" \u6A21\u62DF\u4E86\u8FD9\u4E2A\u63D0\u6848\uFF0C\u53EF\u4EE5\u5728\u6240\u6709\u73AF\u5883\u62FF\u5230 ",paraId:53,tocIndex:14},{value:"globalThis",paraId:53,tocIndex:14},{value:"\u3002",paraId:53,tocIndex:14}]},58301:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"ES6 \u6A21\u5757\u662F JavaScript \u5B98\u65B9\u6807\u51C6\u7684\u6A21\u5757\u5316\u89E3\u51B3\u65B9\u6848\uFF0C\u901A\u8FC7 ",paraId:0,tocIndex:0},{value:"export",paraId:0,tocIndex:0},{value:" \u548C ",paraId:0,tocIndex:0},{value:"import",paraId:0,tocIndex:0},{value:" \u5173\u952E\u5B57\u5B9E\u73B0\u6A21\u5757\u7684\u5BFC\u51FA\u548C\u5BFC\u5165\u3002",paraId:0,tocIndex:0},{value:"\u9759\u6001\u7ED3\u6784",paraId:1,tocIndex:1},{value:"\uFF1A\u6A21\u5757\u7684\u5BFC\u5165\u5BFC\u51FA\u5728\u7F16\u8BD1\u65F6\u786E\u5B9A\uFF0C\u4E0D\u80FD\u52A8\u6001\u751F\u6210",paraId:1,tocIndex:1},{value:"\u81EA\u52A8\u4E25\u683C\u6A21\u5F0F",paraId:1,tocIndex:1},{value:"\uFF1AES6 \u7684\u6A21\u5757\u81EA\u52A8\u91C7\u7528\u4E25\u683C\u6A21\u5F0F\uFF0C\u4E0D\u9700\u8981\u624B\u52A8\u58F0\u660E ",paraId:1,tocIndex:1},{value:'"use strict;"',paraId:1,tocIndex:1},{value:"\u9876\u5C42 this",paraId:1,tocIndex:1},{value:"\uFF1AES6 \u6A21\u5757\u4E2D\uFF0C\u9876\u5C42\u7684 ",paraId:1,tocIndex:1},{value:"this",paraId:1,tocIndex:1},{value:" \u6307\u5411 ",paraId:1,tocIndex:1},{value:"undefined",paraId:1,tocIndex:1},{value:"\uFF0C\u800C\u4E0D\u662F\u5168\u5C40\u5BF9\u8C61",paraId:1,tocIndex:1},{value:"\u5355\u4F8B\u6A21\u5F0F",paraId:1,tocIndex:1},{value:"\uFF1A\u540C\u4E00\u4E2A\u6A21\u5757\u5982\u679C\u52A0\u8F7D\u591A\u6B21\uFF0C\u53EA\u4F1A\u6267\u884C\u4E00\u6B21",paraId:1,tocIndex:1},{value:"\u7279\u6027",paraId:2,tocIndex:2},{value:"ES6 \u6A21\u5757",paraId:2,tocIndex:2},{value:"CommonJS",paraId:2,tocIndex:2},{value:"\u52A0\u8F7D\u65F6\u673A",paraId:2,tocIndex:2},{value:"\u7F16\u8BD1\u65F6\uFF08\u9759\u6001\u52A0\u8F7D\uFF09",paraId:2,tocIndex:2},{value:"\u8FD0\u884C\u65F6\uFF08\u52A8\u6001\u52A0\u8F7D\uFF09",paraId:2,tocIndex:2},{value:"\u8F93\u51FA",paraId:2,tocIndex:2},{value:"\u503C\u7684\u5F15\u7528",paraId:2,tocIndex:2},{value:"\u503C\u7684\u62F7\u8D1D",paraId:2,tocIndex:2},{value:"this \u6307\u5411",paraId:2,tocIndex:2},{value:"undefined",paraId:2,tocIndex:2},{value:"\u5F53\u524D\u6A21\u5757",paraId:2,tocIndex:2},{value:"\u80FD\u5426\u52A8\u6001\u52A0\u8F7D",paraId:2,tocIndex:2},{value:"\u4E0D\u80FD\uFF08\u4F46\u53EF\u7528 import() \uFF09",paraId:2,tocIndex:2},{value:"\u53EF\u4EE5",paraId:2,tocIndex:2},{value:"\u5FAA\u73AF\u4F9D\u8D56",paraId:2,tocIndex:2},{value:"\u652F\u6301",paraId:2,tocIndex:2},{value:"\u652F\u6301\u4F46\u53EF\u80FD\u6709\u95EE\u9898",paraId:2,tocIndex:2},{value:"JavaScript \u662F\u8FB9\u7F16\u8BD1\u8FB9\u6267\u884C\u7684\u3002",paraId:3,tocIndex:3},{value:"import",paraId:4,tocIndex:3},{value:" \u5728\u7F16\u8BD1\u9636\u6BB5\u5C31\u505A\u4E86\u5904\u7406\uFF0C\u4E0E CommonJS \u7684\u8FD0\u884C\u65F6\u52A0\u8F7D\u6709\u672C\u8D28\u533A\u522B\uFF1A",paraId:4,tocIndex:3},{value:`import { readFile } from 'fs';
 `,paraId:5,tocIndex:3},{value:"\u4EE3\u7801\u88AB JavaScript \u5F15\u64CE\u7F16\u8BD1\u65F6\uFF0C\u4F1A\u5C06 ",paraId:6,tocIndex:3},{value:"fs",paraId:6,tocIndex:3},{value:" \u6A21\u5757\u7684 ",paraId:6,tocIndex:3},{value:"readFile",paraId:6,tocIndex:3},{value:" \u5C5E\u6027",paraId:6,tocIndex:3},{value:"\u6307\u5411",paraId:6,tocIndex:3},{value:"\u5BF9\u5E94\u6A21\u5757\u7684\u5BFC\u51FA\u65B9\u6CD5\u3002\u6CE8\u610F\u8FD9\u91CC\u53EA\u662F\u505A\u4E86\u6307\u9488\u6307\u5411\uFF0C\u5E76\u4E0D\u4F1A\u6267\u884C fs \u6A21\u5757\u3002\u5F53\u771F\u6B63\u8C03\u7528 ",paraId:6,tocIndex:3},{value:"readFile()",paraId:6,tocIndex:3},{value:" \u65F6\uFF0C\u624D\u4F1A\u53BB\u6267\u884C\u6307\u9488\u6307\u5411\u7684\u4EE3\u7801\u3002",paraId:6,tocIndex:3},{value:"\u533A\u522B\u4E8E CommonJS \u6A21\u5757\uFF1A",paraId:7,tocIndex:3},{value:`let { stat, exists, readFile } = require('fs');
 
 // \u7B49\u540C\u4E8E
@@ -4446,7 +5468,608 @@ async function loadModule() {
 } else {
   import('./moduleB.js').then(/* ... */);
 }
-`,paraId:60,tocIndex:21},{value:"\u52A8\u6001\u6A21\u5757\u8DEF\u5F84",paraId:61,tocIndex:21},{value:"import(`./locales/${language}.js`).then(/* ... */);\n",paraId:62,tocIndex:21},{value:"JavaScript \u4E2D import() \u662F\u4E00\u4E2A\u51FD\u6570\u5417\uFF1F",paraId:63,tocIndex:22}]},21361:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"\u5728 JavaScript \u4E2D\uFF0C",paraId:0,tocIndex:0},{value:"null",paraId:0,tocIndex:0},{value:" \u548C ",paraId:0,tocIndex:0},{value:"undefined",paraId:0,tocIndex:0},{value:' \u662F\u4E24\u4E2A\u7279\u6B8A\u7684\u539F\u59CB\u503C\uFF0C\u90FD\u8868\u793A"\u7A7A"\u6216"\u65E0"\u7684\u6982\u5FF5\uFF0C\u4F46\u5B83\u4EEC\u6709\u7740\u4E0D\u540C\u7684\u8BED\u4E49\u548C\u4F7F\u7528\u573A\u666F\u3002',paraId:0,tocIndex:0},{value:"undefined",paraId:1,tocIndex:1},{value:" \u8868\u793A\u53D8\u91CF\u5DF2\u58F0\u660E\u4F46",paraId:1,tocIndex:1},{value:"\u672A\u521D\u59CB\u5316",paraId:1,tocIndex:1},{value:"\uFF0C\u6216\u8005\u5BF9\u8C61\u7684\u5C5E\u6027",paraId:1,tocIndex:1},{value:"\u4E0D\u5B58\u5728",paraId:1,tocIndex:1},{value:"\u3002\u5B83\u662F\u4E00\u4E2A",paraId:1,tocIndex:1},{value:"\u7CFB\u7EDF\u7EA7\u522B",paraId:1,tocIndex:1},{value:'\u7684"\u7A7A\u503C"\u3002',paraId:1,tocIndex:1},{value:"\u5E38\u89C1\u4EA7\u751F\u573A\u666F\uFF1A",paraId:2,tocIndex:1},{value:`// 1. \u53D8\u91CF\u58F0\u660E\u4F46\u672A\u8D4B\u503C
+`,paraId:60,tocIndex:21},{value:"\u52A8\u6001\u6A21\u5757\u8DEF\u5F84",paraId:61,tocIndex:21},{value:"import(`./locales/${language}.js`).then(/* ... */);\n",paraId:62,tocIndex:21},{value:"JavaScript \u4E2D import() \u662F\u4E00\u4E2A\u51FD\u6570\u5417\uFF1F",paraId:63,tocIndex:22}]},42092:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"\u672C\u6587\u6863\u6C47\u603B\u4E86 ES2016 \u81F3\u4ECA\u7684 JavaScript \u65B0\u7279\u6027\uFF0C\u5305\u62EC\u4EE3\u7801\u793A\u4F8B\u548C\u5B9E\u7528\u573A\u666F\u8BF4\u660E\u3002",paraId:0,tocIndex:0},{value:"\u68C0\u67E5\u6570\u7EC4\u662F\u5426\u5305\u542B\u67D0\u4E2A\u5143\u7D20\uFF0C\u8FD4\u56DE\u5E03\u5C14\u503C\u3002",paraId:1,tocIndex:2},{value:`const arr = [1, 2, 3, NaN];
+arr.includes(2); // true
+arr.includes(4); // false
+arr.includes(NaN); // true (\u76F8\u6BD4 indexOf \u7684\u4F18\u52BF)
+
+// \u53EF\u6307\u5B9A\u8D77\u59CB\u7D22\u5F15
+arr.includes(2, 2); // false
+`,paraId:2,tocIndex:2},{value:"\u4F18\u52BF",paraId:3,tocIndex:2},{value:": \u6BD4 ",paraId:3,tocIndex:2},{value:"indexOf",paraId:3,tocIndex:2},{value:" \u66F4\u8BED\u4E49\u5316\uFF0C\u4E14\u80FD\u6B63\u786E\u5224\u65AD ",paraId:3,tocIndex:2},{value:"NaN",paraId:3,tocIndex:2},{value:"\u3002",paraId:3,tocIndex:2},{value:"\u53F3\u7ED3\u5408\u7684\u5E42\u8FD0\u7B97\u7B26\uFF0C\u66FF\u4EE3 ",paraId:4,tocIndex:3},{value:"Math.pow()",paraId:4,tocIndex:3},{value:"\u3002",paraId:4,tocIndex:3},{value:`2 ** 3; // 8
+2 ** (3 ** 2); // 512 (\u76F8\u5F53\u4E8E 2 ** (3 ** 2))
+
+let a = 2;
+a **= 3; // a = 8
+`,paraId:5,tocIndex:3},{value:"\u83B7\u53D6\u5BF9\u8C61\u7684\u503C\u6570\u7EC4\u6216\u952E\u503C\u5BF9\u6570\u7EC4\u3002",paraId:6,tocIndex:5},{value:`const obj = { a: 1, b: 2, c: 3 };
+
+Object.values(obj); // [1, 2, 3]
+Object.entries(obj); // [['a', 1], ['b', 2], ['c', 3]]
+
+// \u5E38\u7528\u4E8E\u904D\u5386\u5BF9\u8C61
+Object.entries(obj).forEach(([key, value]) => {
+  console.log(\`\${key}: \${value}\`);
+});
+
+// \u8F6C\u6362\u4E3A Map
+const map = new Map(Object.entries(obj));
+`,paraId:7,tocIndex:5},{value:"\u5B57\u7B26\u4E32\u586B\u5145\u65B9\u6CD5\uFF0C\u7528\u4E8E\u5BF9\u9F50\u6587\u672C\u3002",paraId:8,tocIndex:6},{value:`'5'.padStart(3, '0'); // "005"
+'hello'.padEnd(10, '.'); // "hello....."
+
+// \u5B9E\u7528\u573A\u666F\uFF1A\u683C\u5F0F\u5316\u65F6\u95F4
+const minutes = '5';
+const seconds = '3';
+\`\${minutes.padStart(2, '0')}:\${seconds.padStart(2, '0')}\`; // "05:03"
+`,paraId:9,tocIndex:6},{value:"\u57FA\u4E8E Promise \u7684\u5F02\u6B65\u7F16\u7A0B\u8BED\u6CD5\u7CD6\u3002",paraId:10,tocIndex:7},{value:`async function fetchData() {
+  try {
+    const response = await fetch('/api/data');
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+// \u5E76\u884C\u6267\u884C
+async function parallel() {
+  const [result1, result2] = await Promise.all([
+    fetch('/api/1'),
+    fetch('/api/2'),
+  ]);
+}
+`,paraId:11,tocIndex:7},{value:"\u83B7\u53D6\u5BF9\u8C61\u6240\u6709\u81EA\u6709\u5C5E\u6027\u7684\u63CF\u8FF0\u7B26\u3002",paraId:12,tocIndex:8},{value:`const obj = {
+  name: 'Tom',
+  get age() {
+    return 18;
+  },
+};
+
+Object.getOwnPropertyDescriptors(obj);
+// {
+//   name: { value: 'Tom', writable: true, enumerable: true, configurable: true },
+//   age: { get: [Function: get age], set: undefined, enumerable: true, configurable: true }
+// }
+
+// \u5B9E\u7528\u573A\u666F\uFF1A\u6D45\u62F7\u8D1D\u5305\u542B getter/setter \u7684\u5BF9\u8C61
+const clone = Object.create(
+  Object.getPrototypeOf(obj),
+  Object.getOwnPropertyDescriptors(obj),
+);
+`,paraId:13,tocIndex:8},{value:"\u5141\u8BB8\u5728\u51FD\u6570\u53C2\u6570\u3001\u8C03\u7528\u65F6\u4F7F\u7528\u5C3E\u9017\u53F7\u3002",paraId:14,tocIndex:9},{value:`function foo(
+  param1,
+  param2,
+  param3, // \u5C3E\u9017\u53F7
+) {}
+
+foo(1, 2, 3); // \u8C03\u7528\u65F6\u4E5F\u53EF\u4EE5
+`,paraId:15,tocIndex:9},{value:"\u7528\u4E8E\u591A\u7EBF\u7A0B\u95F4\u5171\u4EAB\u5185\u5B58\uFF08Web Workers\uFF09\u3002",paraId:16,tocIndex:10},{value:"\u7528\u4E8E\u904D\u5386\u5F02\u6B65\u53EF\u8FED\u4EE3\u5BF9\u8C61\u3002",paraId:17,tocIndex:12},{value:`async function* asyncGenerator() {
+  yield await Promise.resolve(1);
+  yield await Promise.resolve(2);
+  yield await Promise.resolve(3);
+}
+
+(async () => {
+  for await (const num of asyncGenerator()) {
+    console.log(num); // 1, 2, 3
+  }
+})();
+
+// \u5B9E\u7528\u573A\u666F\uFF1A\u5904\u7406\u5F02\u6B65\u6570\u636E\u6D41
+async function processStream(stream) {
+  for await (const chunk of stream) {
+    console.log(chunk);
+  }
+}
+`,paraId:18,tocIndex:12},{value:"\u65E0\u8BBA Promise \u6210\u529F\u6216\u5931\u8D25\u90FD\u4F1A\u6267\u884C\u7684\u56DE\u8C03\u3002",paraId:19,tocIndex:13},{value:`fetch('/api/data')
+  .then((response) => response.json())
+  .catch((error) => console.error(error))
+  .finally(() => {
+    // \u603B\u662F\u6267\u884C\uFF0C\u5E38\u7528\u4E8E\u6E05\u7406\u64CD\u4F5C
+    hideLoadingSpinner();
+  });
+`,paraId:20,tocIndex:13},{value:"\u547D\u540D\u6355\u83B7\u7EC4",paraId:21,tocIndex:14},{value:": ",paraId:21,tocIndex:14},{value:"(?<name>...)",paraId:21,tocIndex:14},{value:"\u540E\u884C\u65AD\u8A00",paraId:21,tocIndex:14},{value:": ",paraId:21,tocIndex:14},{value:"(?<=...)",paraId:21,tocIndex:14},{value:" \u548C ",paraId:21,tocIndex:14},{value:"(?<!...)",paraId:21,tocIndex:14},{value:"dotAll \u6A21\u5F0F",paraId:21,tocIndex:14},{value:": ",paraId:21,tocIndex:14},{value:"s",paraId:21,tocIndex:14},{value:" \u6807\u5FD7\u8BA9 ",paraId:21,tocIndex:14},{value:".",paraId:21,tocIndex:14},{value:" \u5339\u914D\u6362\u884C\u7B26",paraId:21,tocIndex:14},{value:"Unicode \u5C5E\u6027\u8F6C\u4E49",paraId:21,tocIndex:14},{value:": ",paraId:21,tocIndex:14},{value:"\\p{...}",paraId:21,tocIndex:14},{value:`// \u547D\u540D\u6355\u83B7\u7EC4
+const re = /(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})/;
+const match = re.exec('2024-01-15');
+match.groups; // { year: '2024', month: '01', day: '15' }
+
+// \u540E\u884C\u65AD\u8A00
+/(?<=\\$)\\d+/.exec('$100'); // ["100"]
+/(?<!\\$)\\d+/.exec('100'); // ["100"]
+
+// dotAll \u6A21\u5F0F
+/hello.world/s.test('hello\\nworld'); // true
+
+// Unicode \u5C5E\u6027
+/^\\p{Script=Greek}+$/u.test('\u03BC\u03B5\u03C4\u03AC'); // true
+`,paraId:22,tocIndex:14},{value:`// Rest
+const { a, b, ...rest } = { a: 1, b: 2, c: 3, d: 4 };
+rest; // { c: 3, d: 4 }
+
+// Spread
+const obj1 = { a: 1, b: 2 };
+const obj2 = { ...obj1, c: 3 }; // { a: 1, b: 2, c: 3 }
+
+// \u6D45\u62F7\u8D1D
+const clone = { ...obj1 };
+
+// \u5408\u5E76\u5BF9\u8C61
+const merged = { ...obj1, ...obj2 };
+`,paraId:23,tocIndex:15},{value:"\u6570\u7EC4\u6241\u5E73\u5316\u65B9\u6CD5\u3002",paraId:24,tocIndex:17},{value:`// flat - \u6241\u5E73\u5316\u6570\u7EC4
+[1, 2, [3, 4]].flat(); // [1, 2, 3, 4]
+[1, [2, [3, [4]]]].flat(2); // [1, 2, 3, [4]]
+[1, [2, [3, [4]]]].flat(Infinity); // [1, 2, 3, 4]
+
+// flatMap - \u6620\u5C04\u540E\u6241\u5E73\u5316
+[1, 2, 3].flatMap((x) => [x, x * 2]); // [1, 2, 2, 4, 3, 6]
+
+// \u5B9E\u7528\u573A\u666F\uFF1A\u5904\u7406\u5D4C\u5957\u6570\u636E
+const sentences = ['Hello world', 'How are you'];
+sentences.flatMap((s) => s.split(' ')); // ['Hello', 'world', 'How', 'are', 'you']
+`,paraId:25,tocIndex:17},{value:"\u5C06\u952E\u503C\u5BF9\u6570\u7EC4\u8F6C\u6362\u4E3A\u5BF9\u8C61\uFF0C\u662F ",paraId:26,tocIndex:18},{value:"Object.entries()",paraId:26,tocIndex:18},{value:" \u7684\u9006\u64CD\u4F5C\u3002",paraId:26,tocIndex:18},{value:`const entries = [
+  ['name', 'Tom'],
+  ['age', 18],
+];
+Object.fromEntries(entries); // { name: 'Tom', age: 18 }
+
+// \u5B9E\u7528\u573A\u666F\uFF1A\u8FC7\u6EE4\u5BF9\u8C61\u5C5E\u6027
+const obj = { a: 1, b: 2, c: 3 };
+const filtered = Object.fromEntries(
+  Object.entries(obj).filter(([key, value]) => value > 1),
+);
+// { b: 2, c: 3 }
+
+// URL \u53C2\u6570\u8F6C\u5BF9\u8C61
+const params = new URLSearchParams('name=Tom&age=18');
+Object.fromEntries(params); // { name: 'Tom', age: '18' }
+`,paraId:27,tocIndex:18},{value:"\u66F4\u8BED\u4E49\u5316\u7684\u5B57\u7B26\u4E32\u4FEE\u526A\u65B9\u6CD5\uFF08\u522B\u540D\uFF1A",paraId:28,tocIndex:19},{value:"trimLeft",paraId:28,tocIndex:19},{value:"/",paraId:28,tocIndex:19},{value:"trimRight",paraId:28,tocIndex:19},{value:"\uFF09\u3002",paraId:28,tocIndex:19},{value:`'  hello  '.trimStart(); // "hello  "
+'  hello  '.trimEnd(); // "  hello"
+`,paraId:29,tocIndex:19},{value:"\u83B7\u53D6 Symbol \u7684\u63CF\u8FF0\u5B57\u7B26\u4E32\u3002",paraId:30,tocIndex:20},{value:`const sym = Symbol('my symbol');
+sym.description; // "my symbol"
+`,paraId:31,tocIndex:20},{value:"catch \u5757\u53EF\u4EE5\u7701\u7565\u9519\u8BEF\u53C2\u6570\u3002",paraId:32,tocIndex:21},{value:`try {
+  JSON.parse(invalidJSON);
+} catch {
+  // \u4E0D\u9700\u8981\u9519\u8BEF\u53C2\u6570\u65F6\u53EF\u7701\u7565
+  console.log('\u89E3\u6790\u5931\u8D25');
+}
+`,paraId:33,tocIndex:21},{value:"\u8FD4\u56DE\u7CBE\u786E\u7684\u6E90\u4EE3\u7801\u5B57\u7B26\u4E32\uFF0C\u5305\u62EC\u7A7A\u683C\u548C\u6CE8\u91CA\u3002",paraId:34,tocIndex:22},{value:`function /* comment */ foo() {}
+foo.toString(); // "function /* comment */ foo() {}"
+`,paraId:35,tocIndex:22},{value:"\u5B89\u5168\u8BBF\u95EE\u5D4C\u5957\u5C5E\u6027\uFF0C\u907F\u514D ",paraId:36,tocIndex:24},{value:"undefined",paraId:36,tocIndex:24},{value:" \u9519\u8BEF\u3002",paraId:36,tocIndex:24},{value:`const user = {
+  name: 'Tom',
+  address: {
+    city: 'Beijing',
+  },
+};
+
+// \u4F20\u7EDF\u65B9\u5F0F
+const zip = user && user.address && user.address.zipCode;
+
+// \u53EF\u9009\u94FE
+const zip = user?.address?.zipCode; // undefined
+
+// \u7528\u4E8E\u65B9\u6CD5\u8C03\u7528
+obj.method?.();
+
+// \u7528\u4E8E\u6570\u7EC4
+arr?.[0];
+
+// \u5B9E\u7528\u573A\u666F\uFF1AAPI \u54CD\u5E94\u5904\u7406
+const city = response?.data?.user?.address?.city;
+`,paraId:37,tocIndex:24},{value:"\u5F53\u5DE6\u4FA7\u4E3A ",paraId:38,tocIndex:25},{value:"null",paraId:38,tocIndex:25},{value:" \u6216 ",paraId:38,tocIndex:25},{value:"undefined",paraId:38,tocIndex:25},{value:" \u65F6\u8FD4\u56DE\u53F3\u4FA7\u503C\u3002",paraId:38,tocIndex:25},{value:`const value = null ?? 'default'; // "default"
+const value = 0 ?? 'default'; // 0 (\u4E0E || \u7684\u533A\u522B)
+const value = '' ?? 'default'; // "" (\u4E0E || \u7684\u533A\u522B)
+
+// \u5B9E\u7528\u573A\u666F\uFF1A\u8BBE\u7F6E\u9ED8\u8BA4\u503C
+const port = process.env.PORT ?? 3000;
+const count = data.count ?? 0;
+
+// \u53EF\u4E0E\u53EF\u9009\u94FE\u7ED3\u5408
+const name = user?.name ?? 'Anonymous';
+`,paraId:39,tocIndex:25},{value:"\u4EFB\u610F\u7CBE\u5EA6\u7684\u6574\u6570\u7C7B\u578B\u3002",paraId:40,tocIndex:26},{value:`// \u521B\u5EFA BigInt
+const big1 = 1234567890123456789012345678901234567890n;
+const big2 = BigInt('1234567890123456789012345678901234567890');
+
+// \u8FD0\u7B97
+const sum = 1n + 2n; // 3n
+const product = 2n * 3n; // 6n
+
+// \u6CE8\u610F\uFF1A\u4E0D\u80FD\u4E0E Number \u6DF7\u7528
+1n + 1; // TypeError
+1n + BigInt(1); // 2n
+
+// \u5B9E\u7528\u573A\u666F\uFF1A\u5904\u7406\u5927\u6574\u6570
+const maxSafeInteger = BigInt(Number.MAX_SAFE_INTEGER);
+`,paraId:41,tocIndex:26},{value:"\u7B49\u5F85\u6240\u6709 Promise \u5B8C\u6210\uFF08\u65E0\u8BBA\u6210\u529F\u6216\u5931\u8D25\uFF09\u3002",paraId:42,tocIndex:27},{value:`const promises = [
+  Promise.resolve(1),
+  Promise.reject('error'),
+  Promise.resolve(3),
+];
+
+Promise.allSettled(promises).then((results) => {
+  results.forEach((result) => {
+    if (result.status === 'fulfilled') {
+      console.log('\u6210\u529F:', result.value);
+    } else {
+      console.log('\u5931\u8D25:', result.reason);
+    }
+  });
+});
+// [
+//   { status: 'fulfilled', value: 1 },
+//   { status: 'rejected', reason: 'error' },
+//   { status: 'fulfilled', value: 3 }
+// ]
+`,paraId:43,tocIndex:27},{value:"\u7EDF\u4E00\u7684\u5168\u5C40\u5BF9\u8C61\u8BBF\u95EE\u65B9\u5F0F\u3002",paraId:44,tocIndex:28},{value:`// \u6D4F\u89C8\u5668\u73AF\u5883: window
+// Node.js: global
+// Web Workers: self
+
+// \u7EDF\u4E00\u4F7F\u7528
+globalThis.setTimeout === setTimeout; // true
+`,paraId:45,tocIndex:28},{value:"\u8FD4\u56DE\u6240\u6709\u5339\u914D\u7ED3\u679C\u7684\u8FED\u4EE3\u5668\u3002",paraId:46,tocIndex:29},{value:`const str = 'test1test2test3';
+const regex = /test(\\d)/g;
+
+for (const match of str.matchAll(regex)) {
+  console.log(match[0], match[1]);
+}
+// "test1" "1"
+// "test2" "2"
+// "test3" "3"
+
+// \u8F6C\u6362\u4E3A\u6570\u7EC4
+const matches = [...str.matchAll(regex)];
+`,paraId:47,tocIndex:29},{value:"\u6309\u9700\u52A0\u8F7D\u6A21\u5757\u3002",paraId:48,tocIndex:30},{value:`// \u52A8\u6001\u5BFC\u5165
+const module = await import('./module.js');
+
+// \u6761\u4EF6\u5BFC\u5165
+if (condition) {
+  const { feature } = await import('./feature.js');
+  feature();
+}
+
+// \u5B9E\u7528\u573A\u666F\uFF1A\u4EE3\u7801\u5206\u5272
+button.addEventListener('click', async () => {
+  const { default: Chart } = await import('./chart.js');
+  new Chart();
+});
+`,paraId:49,tocIndex:30},{value:"\u6A21\u5757\u7684\u5143\u4FE1\u606F\u3002",paraId:50,tocIndex:31},{value:`// \u5F53\u524D\u6A21\u5757\u7684 URL
+console.log(import.meta.url);
+
+// Vite \u4E2D\u7684\u73AF\u5883\u53D8\u91CF
+console.log(import.meta.env.VITE_API_URL);
+`,paraId:51,tocIndex:31},{value:"\u66FF\u6362\u6240\u6709\u5339\u914D\u9879\u3002",paraId:52,tocIndex:33},{value:`// \u4F20\u7EDF\u65B9\u5F0F
+'aabbcc'.replace(/a/g, 'x'); // "xxbbcc"
+
+// replaceAll
+'aabbcc'.replaceAll('a', 'x'); // "xxbbcc"
+
+// \u652F\u6301\u6B63\u5219
+'aabbcc'.replaceAll(/a/g, 'x'); // "xxbbcc"
+`,paraId:53,tocIndex:33},{value:"\u8FD4\u56DE\u7B2C\u4E00\u4E2A\u6210\u529F\u7684 Promise\u3002",paraId:54,tocIndex:34},{value:`const promises = [
+  Promise.reject('error1'),
+  Promise.resolve('success'),
+  Promise.resolve('success2'),
+];
+
+Promise.any(promises).then(console.log); // "success"
+
+// \u5168\u90E8\u5931\u8D25\u65F6\u629B\u51FA AggregateError
+Promise.any([Promise.reject(1), Promise.reject(2)]).catch((error) => {
+  console.log(error.errors); // [1, 2]
+});
+`,paraId:55,tocIndex:34},{value:"\u7EC4\u5408\u903B\u8F91\u8FD0\u7B97\u7B26\u548C\u8D4B\u503C\u3002",paraId:56,tocIndex:35},{value:`// \u903B\u8F91\u6216\u8D4B\u503C (||=)
+x ||= y; // \u7B49\u4EF7\u4E8E x || (x = y)
+
+// \u903B\u8F91\u4E0E\u8D4B\u503C (&&=)
+x &&= y; // \u7B49\u4EF7\u4E8E x && (x = y)
+
+// \u7A7A\u503C\u5408\u5E76\u8D4B\u503C (??=)
+x ??= y; // \u7B49\u4EF7\u4E8E x ?? (x = y)
+
+// \u5B9E\u7528\u573A\u666F
+const config = {};
+config.port ??= 3000; // \u4EC5\u5728 undefined/null \u65F6\u8D4B\u503C
+`,paraId:57,tocIndex:35},{value:"\u63D0\u9AD8\u5927\u6570\u5B57\u7684\u53EF\u8BFB\u6027\u3002",paraId:58,tocIndex:36},{value:`const billion = 1_000_000_000;
+const bytes = 0b1010_0001_1000_0101;
+const hex = 0x1a_2b_3c_4d;
+
+console.log(billion); // 1000000000
+`,paraId:59,tocIndex:36},{value:"\u5F31\u5F15\u7528\u548C\u6E05\u7406\u56DE\u8C03\uFF0C\u7528\u4E8E\u9AD8\u7EA7\u5185\u5B58\u7BA1\u7406\u3002",paraId:60,tocIndex:37},{value:`// \u5F31\u5F15\u7528
+const target = { name: 'object' };
+const weakRef = new WeakRef(target);
+
+// \u83B7\u53D6\u5F15\u7528\u7684\u5BF9\u8C61\uFF08\u53EF\u80FD\u5DF2\u88AB\u56DE\u6536\uFF09
+const obj = weakRef.deref();
+if (obj) {
+  console.log(obj.name);
+}
+
+// \u6E05\u7406\u56DE\u8C03
+const registry = new FinalizationRegistry((value) => {
+  console.log(\`\${value} \u88AB\u56DE\u6536\u4E86\`);
+});
+
+let obj = { name: 'test' };
+registry.register(obj, 'obj');
+`,paraId:61,tocIndex:37},{value:"\u5728\u7C7B\u4E2D\u76F4\u63A5\u58F0\u660E\u5B57\u6BB5\uFF0C\u5305\u62EC\u79C1\u6709\u5B57\u6BB5\u3002",paraId:62,tocIndex:39},{value:`class Counter {
+  // \u516C\u5171\u5B57\u6BB5
+  count = 0;
+
+  // \u79C1\u6709\u5B57\u6BB5
+  #privateCount = 0;
+
+  // \u9759\u6001\u5B57\u6BB5
+  static total = 0;
+
+  // \u9759\u6001\u79C1\u6709\u5B57\u6BB5
+  static #instances = 0;
+
+  constructor() {
+    Counter.#instances++;
+  }
+
+  increment() {
+    this.#privateCount++;
+    this.count++;
+  }
+
+  // \u79C1\u6709\u65B9\u6CD5
+  #reset() {
+    this.#privateCount = 0;
+  }
+}
+
+const counter = new Counter();
+counter.count; // 0
+counter.#privateCount; // SyntaxError: \u79C1\u6709\u5B57\u6BB5\u4E0D\u53EF\u8BBF\u95EE
+`,paraId:63,tocIndex:39},{value:"\u7528\u4E8E\u9759\u6001\u521D\u59CB\u5316\u903B\u8F91\u3002",paraId:64,tocIndex:40},{value:`class Database {
+  static connection;
+
+  static {
+    // \u9759\u6001\u521D\u59CB\u5316\u5757
+    this.connection = createConnection();
+    console.log('\u6570\u636E\u5E93\u5DF2\u8FDE\u63A5');
+  }
+}
+`,paraId:65,tocIndex:40},{value:"\u6A21\u5757\u9876\u5C42\u53EF\u4EE5\u4F7F\u7528 await\u3002",paraId:66,tocIndex:41},{value:`// module.js
+const data = await fetch('/api/data');
+export default data;
+
+// \u6761\u4EF6\u5BFC\u5165
+const locale = await getLocale();
+const messages = await import(\`./i18n/\${locale}.js\`);
+`,paraId:67,tocIndex:41},{value:"\u901A\u8FC7 ",paraId:68,tocIndex:42},{value:"d",paraId:68,tocIndex:42},{value:" \u6807\u5FD7\u83B7\u53D6\u5339\u914D\u4F4D\u7F6E\u3002",paraId:68,tocIndex:42},{value:`const str = 'hello world';
+const regex = /world/d;
+const match = regex.exec(str);
+
+match.indices; // [[6, 11]]
+match.indices[0]; // [6, 11] - 'world' \u7684\u8D77\u59CB\u548C\u7ED3\u675F\u4F4D\u7F6E
+`,paraId:69,tocIndex:42},{value:"\u9519\u8BEF\u94FE\uFF0C\u8BB0\u5F55\u539F\u59CB\u9519\u8BEF\u3002",paraId:70,tocIndex:43},{value:`try {
+  doSomething();
+} catch (error) {
+  throw new Error('\u64CD\u4F5C\u5931\u8D25', { cause: error });
+}
+
+// \u8BBF\u95EE\u539F\u59CB\u9519\u8BEF
+try {
+  // ...
+} catch (error) {
+  console.log(error.message); // "\u64CD\u4F5C\u5931\u8D25"
+  console.log(error.cause); // \u539F\u59CB\u9519\u8BEF\u5BF9\u8C61
+}
+`,paraId:71,tocIndex:43},{value:"\u652F\u6301\u8D1F\u7D22\u5F15\u7684\u8BBF\u95EE\u65B9\u6CD5\u3002",paraId:72,tocIndex:44},{value:`const arr = [1, 2, 3, 4, 5];
+arr.at(0); // 1
+arr.at(-1); // 5 (\u6700\u540E\u4E00\u4E2A\u5143\u7D20)
+arr.at(-2); // 4
+
+const str = 'hello';
+str.at(-1); // "o"
+
+// \u76F8\u6BD4\u4F20\u7EDF\u65B9\u5F0F\u66F4\u7B80\u6D01
+arr[arr.length - 1]; // \u4F20\u7EDF\u65B9\u5F0F
+arr.at(-1); // \u65B0\u65B9\u5F0F
+`,paraId:73,tocIndex:44},{value:"\u8FD9\u662F ES2022 \u5F15\u5165\u7684\u4E00\u4E2A\u91CD\u8981\u6539\u8FDB\uFF0C\u5EFA\u8BAE\u5728\u65B0\u9879\u76EE\u4E2D\u4F7F\u7528 ",paraId:74,tocIndex:45},{value:"Object.hasOwn()",paraId:74,tocIndex:45},{value:" \u66FF\u4EE3\u4F20\u7EDF\u7684 ",paraId:74,tocIndex:45},{value:"hasOwnProperty",paraId:74,tocIndex:45},{value:" \u65B9\u6CD5\u3002\u56E0\u4E3A ",paraId:74,tocIndex:45},{value:"Object.hasOwn()",paraId:74,tocIndex:45},{value:" \u66F4\u5B89\u5168\u3002",paraId:74,tocIndex:45},{value:"\u8BF4 ",paraId:75,tocIndex:45},{value:"Object.hasOwn()",paraId:75,tocIndex:45},{value:" \u66F4\u5B89\u5168\u4E3B\u8981\u6709\u4EE5\u4E0B\u51E0\u4E2A\u539F\u56E0\uFF1A",paraId:75,tocIndex:45},{value:"hasOwnProperty",paraId:76},{value:`// \u95EE\u9898\u573A\u666F\uFF1AhasOwnProperty \u88AB\u8986\u76D6
+const obj = {
+  name: 'Tom',
+  hasOwnProperty: function () {
+    return false; // \u6076\u610F\u6216\u610F\u5916\u7684\u8986\u76D6
+  },
+};
+
+// \u4F20\u7EDF\u65B9\u5F0F - \u6709\u95EE\u9898
+console.log(obj.hasOwnProperty('name')); // false \u274C \u9519\u8BEF\u7ED3\u679C
+
+// \u65B0\u65B9\u5F0F - \u6B63\u5E38\u5DE5\u4F5C
+console.log(Object.hasOwn(obj, 'name')); // true \u2705 \u6B63\u786E\u7ED3\u679C
+`,paraId:77,tocIndex:46},{value:`// \u521B\u5EFA\u6CA1\u6709\u539F\u578B\u7684\u5BF9\u8C61
+const nullProtoObj = Object.create(null);
+nullProtoObj.name = 'Tom';
+
+// \u4F20\u7EDF\u65B9\u5F0F - \u4F1A\u62A5\u9519
+try {
+  console.log(nullProtoObj.hasOwnProperty('name')); // \u274C TypeError
+} catch (e) {
+  console.log('\u9519\u8BEF:', e.message); // nullProtoObj.hasOwnProperty is not a function
+}
+
+// \u65B0\u65B9\u5F0F - \u6B63\u5E38\u5DE5\u4F5C
+console.log(Object.hasOwn(nullProtoObj, 'name')); // true \u2705
+`,paraId:78,tocIndex:47},{value:`const obj = { name: 'Tom' };
+
+// \u4F20\u7EDF\u65B9\u5F0F - \u5BB9\u6613\u6DF7\u6DC6
+obj.hasOwnProperty('name'); // \u8FD9\u662F\u65B9\u6CD5\u8C03\u7528
+
+// \u65B0\u65B9\u5F0F - \u660E\u786E\u662F\u9759\u6001\u65B9\u6CD5
+Object.hasOwn(obj, 'name'); // \u660E\u786E\u8868\u793A\u68C0\u67E5obj\u662F\u5426\u62E5\u6709'name'\u5C5E\u6027
+`,paraId:79,tocIndex:48},{value:`// \u5B89\u5168\u7684\u5C5E\u6027\u68C0\u67E5\u51FD\u6570
+function safeCheck(obj, prop) {
+  // \u4E0D\u5B89\u5168\u7684\u65B9\u5F0F
+  // return obj && obj.hasOwnProperty(prop);
+
+  // \u5B89\u5168\u7684\u65B9\u5F0F
+  return Object.hasOwn(obj, prop);
+}
+
+// \u5373\u4F7F\u5BF9\u8C61\u662F null \u6216 undefined \u4E5F\u80FD\u5B89\u5168\u5904\u7406
+console.log(safeCheck(null, 'name')); // false
+console.log(safeCheck(undefined, 'name')); // false
+console.log(safeCheck({ name: 'Tom' }, 'name')); // true
+`,paraId:80,tocIndex:49},{value:"\u4ECE\u6570\u7EC4\u672B\u5C3E\u67E5\u627E\u5143\u7D20\u3002",paraId:81,tocIndex:51},{value:`const arr = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+
+arr.findLast((x) => x > 3); // 4 (\u4ECE\u540E\u5411\u524D\u7B2C\u4E00\u4E2A\u5927\u4E8E3\u7684)
+arr.findLastIndex((x) => x > 3); // 5 (\u7D22\u5F15)
+
+// \u5B9E\u7528\u573A\u666F\uFF1A\u67E5\u627E\u6700\u540E\u4E00\u6761\u7B26\u5408\u6761\u4EF6\u7684\u8BB0\u5F55
+const logs = [
+  { level: 'info', msg: 'start' },
+  { level: 'error', msg: 'failed' },
+  { level: 'info', msg: 'retry' },
+];
+const lastError = logs.findLast((log) => log.level === 'error');
+`,paraId:82,tocIndex:51},{value:"\u4E0D\u53EF\u53D8\u7684\u6570\u7EC4\u65B9\u6CD5\uFF08\u8FD4\u56DE\u65B0\u6570\u7EC4\uFF09\u3002",paraId:83,tocIndex:52},{value:`const arr = [3, 1, 2];
+
+// toSorted - \u4E0D\u6539\u53D8\u539F\u6570\u7EC4\u7684\u6392\u5E8F
+const sorted = arr.toSorted(); // [1, 2, 3]
+console.log(arr); // [3, 1, 2] \u539F\u6570\u7EC4\u4E0D\u53D8
+
+// toReversed - \u4E0D\u6539\u53D8\u539F\u6570\u7EC4\u7684\u53CD\u8F6C
+const reversed = arr.toReversed(); // [2, 1, 3]
+
+// toSpliced - \u4E0D\u6539\u53D8\u539F\u6570\u7EC4\u7684\u62FC\u63A5
+const spliced = arr.toSpliced(1, 1, 99); // [3, 99, 2]
+
+// with - \u4E0D\u6539\u53D8\u539F\u6570\u7EC4\u7684\u66FF\u6362
+const replaced = arr.with(1, 99); // [3, 99, 2]
+`,paraId:84,tocIndex:52},{value:"\u4E0D\u6539\u53D8\u539F\u6570\u7EC4\u7684\u7D22\u5F15\u66FF\u6362\u3002",paraId:85,tocIndex:53},{value:`const arr = [1, 2, 3, 4];
+const newArr = arr.with(2, 99); // [1, 2, 99, 4]
+console.log(arr); // [1, 2, 3, 4] \u539F\u6570\u7EC4\u4E0D\u53D8
+
+// \u652F\u6301\u8D1F\u7D22\u5F15
+arr.with(-1, 99); // [1, 2, 3, 99]
+`,paraId:86,tocIndex:53},{value:"\u5141\u8BB8\u5728\u5168\u5C40 Symbol \u6CE8\u518C\u8868\u4E2D\u67E5\u627E Symbol\u3002",paraId:87,tocIndex:54},{value:"\u652F\u6301 Unix Shebang\uFF0C\u7528\u4E8E\u811A\u672C\u6587\u4EF6\u3002",paraId:88,tocIndex:55},{value:`#!/usr/bin/env node
+
+console.log('Hello from Node.js script');
+`,paraId:89,tocIndex:55},{value:"\u6570\u7EC4\u5206\u7EC4\u65B9\u6CD5\u3002",paraId:90,tocIndex:57},{value:`const items = [
+  { type: 'fruit', name: 'apple' },
+  { type: 'vegetable', name: 'carrot' },
+  { type: 'fruit', name: 'banana' },
+  { type: 'vegetable', name: 'lettuce' },
+];
+
+// Object.groupBy - \u5206\u7EC4\u4E3A\u5BF9\u8C61
+const grouped = Object.groupBy(items, (item) => item.type);
+// {
+//   fruit: [{ type: 'fruit', name: 'apple' }, { type: 'fruit', name: 'banana' }],
+//   vegetable: [{ type: 'vegetable', name: 'carrot' }, { type: 'vegetable', name: 'lettuce' }]
+// }
+
+// Map.groupBy - \u5206\u7EC4\u4E3A Map
+const groupedMap = Map.groupBy(items, (item) => item.type);
+`,paraId:91,tocIndex:57},{value:"\u66F4\u65B9\u4FBF\u5730\u521B\u5EFA\u53EF\u5916\u90E8\u63A7\u5236\u7684 Promise\u3002",paraId:92,tocIndex:58},{value:`// \u4F20\u7EDF\u65B9\u5F0F
+let resolve, reject;
+const promise = new Promise((res, rej) => {
+  resolve = res;
+  reject = rej;
+});
+
+// \u65B0\u65B9\u5F0F
+const { promise, resolve, reject } = Promise.withResolvers();
+
+// \u5B9E\u7528\u573A\u666F\uFF1A\u5EF6\u8FDF\u89E3\u6790
+class Queue {
+  #resolvers = [];
+
+  async dequeue() {
+    const { promise, resolve } = Promise.withResolvers();
+    this.#resolvers.push(resolve);
+    return promise;
+  }
+
+  enqueue(value) {
+    const resolve = this.#resolvers.shift();
+    resolve?.(value);
+  }
+}
+`,paraId:93,tocIndex:58},{value:`// ArrayBuffer.prototype.transfer()
+const buffer = new ArrayBuffer(8);
+const newBuffer = buffer.transfer(); // \u8F6C\u79FB\u6240\u6709\u6743
+
+// ArrayBuffer.prototype.resize()
+const resizable = new ArrayBuffer(8, { maxByteLength: 16 });
+resizable.resize(12);
+`,paraId:94,tocIndex:59},{value:"\u589E\u5F3A\u7684 Unicode \u652F\u6301\u3002",paraId:95,tocIndex:60},{value:`// \u652F\u6301 Unicode \u5C5E\u6027\u96C6\u5408
+/[\\p{Script=Greek}&&\\p{Letter}]/v.test('\u03B1'); // true
+
+// \u5B57\u7B26\u4E32\u5B57\u9762\u91CF\u5339\u914D
+/\\p{RGI_Emoji}/v.test('\u{1F468}\u200D\u{1F469}\u200D\u{1F467}\u200D\u{1F466}'); // true
+`,paraId:96,tocIndex:60},{value:"\u7C7B\u548C\u7C7B\u6210\u5458\u7684\u5143\u7F16\u7A0B\u3002",paraId:97,tocIndex:62},{value:`// \u7C7B\u88C5\u9970\u5668
+function logged(target) {
+  return class extends target {
+    constructor(...args) {
+      console.log(\`Creating instance of \${target.name}\`);
+      super(...args);
+    }
+  };
+}
+
+@logged
+class MyClass {}
+
+// \u65B9\u6CD5\u88C5\u9970\u5668
+function measure(target, context) {
+  return function (...args) {
+    const start = performance.now();
+    const result = target.call(this, ...args);
+    const end = performance.now();
+    console.log(\`\${context.name} took \${end - start}ms\`);
+    return result;
+  };
+}
+
+class Service {
+  @measure
+  fetchData() {
+    // ...
+  }
+}
+`,paraId:98,tocIndex:62},{value:"\u4E0D\u53EF\u53D8\u7684\u6570\u636E\u7ED3\u6784\u3002",paraId:99,tocIndex:63},{value:`// Record - \u4E0D\u53EF\u53D8\u5BF9\u8C61
+const record = #{ a: 1, b: 2 };
+
+// Tuple - \u4E0D\u53EF\u53D8\u6570\u7EC4
+const tuple = #[1, 2, 3];
+
+// \u6DF1\u5EA6\u4E0D\u53EF\u53D8
+const nested = #{
+  data: #[1, 2, 3],
+  metadata: #{ id: 1 },
+};
+`,paraId:100,tocIndex:63},{value:"\u73B0\u4EE3\u5316\u7684\u65E5\u671F\u65F6\u95F4 API\uFF0C\u66FF\u4EE3 Date\u3002",paraId:101,tocIndex:64},{value:`// Temporal.PlainDate
+const date = Temporal.PlainDate.from('2024-01-15');
+date.year; // 2024
+date.month; // 1
+date.day; // 15
+
+// Temporal.PlainTime
+const time = Temporal.PlainTime.from('13:30:00');
+
+// Temporal.ZonedDateTime
+const zoned = Temporal.ZonedDateTime.from(
+  '2024-01-15T13:30:00+08:00[Asia/Shanghai]',
+);
+
+// \u65E5\u671F\u8BA1\u7B97
+const nextWeek = date.add({ days: 7 });
+const diff = date.until(nextWeek).days; // 7
+`,paraId:102,tocIndex:64},{value:"\u51FD\u6570\u94FE\u5F0F\u8C03\u7528\u7684\u8BED\u6CD5\u7CD6\u3002",paraId:103,tocIndex:65},{value:`// \u4F20\u7EDF\u65B9\u5F0F
+const result = format(transform(parse(input)));
+
+// Pipeline \u64CD\u4F5C\u7B26
+const result = input |> parse(%) |> transform(%) |> format(%);
+
+// \u5B9E\u7528\u573A\u666F
+const total =
+  [1, 2, 3, 4]
+  |> %.map((x) => x * 2)
+  |> %.filter((x) => x > 4)
+  |> %.reduce((a, b) => a + b, 0);
+`,paraId:104,tocIndex:65},{value:"ES2019-ES2022 \u7279\u6027\u5927\u6C47\u603B",paraId:105,tocIndex:66},{value:"ES2023 \u65B0\u7279\u6027\u8BE6\u89E3",paraId:105,tocIndex:66},{value:"MDN JavaScript Reference",paraId:105,tocIndex:66},{value:"TC39 Proposals",paraId:105,tocIndex:66}]},21361:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"\u5728 JavaScript \u4E2D\uFF0C",paraId:0,tocIndex:0},{value:"null",paraId:0,tocIndex:0},{value:" \u548C ",paraId:0,tocIndex:0},{value:"undefined",paraId:0,tocIndex:0},{value:' \u662F\u4E24\u4E2A\u7279\u6B8A\u7684\u539F\u59CB\u503C\uFF0C\u90FD\u8868\u793A"\u7A7A"\u6216"\u65E0"\u7684\u6982\u5FF5\uFF0C\u4F46\u5B83\u4EEC\u6709\u7740\u4E0D\u540C\u7684\u8BED\u4E49\u548C\u4F7F\u7528\u573A\u666F\u3002',paraId:0,tocIndex:0},{value:"undefined",paraId:1,tocIndex:1},{value:" \u8868\u793A\u53D8\u91CF\u5DF2\u58F0\u660E\u4F46",paraId:1,tocIndex:1},{value:"\u672A\u521D\u59CB\u5316",paraId:1,tocIndex:1},{value:"\uFF0C\u6216\u8005\u5BF9\u8C61\u7684\u5C5E\u6027",paraId:1,tocIndex:1},{value:"\u4E0D\u5B58\u5728",paraId:1,tocIndex:1},{value:"\u3002\u5B83\u662F\u4E00\u4E2A",paraId:1,tocIndex:1},{value:"\u7CFB\u7EDF\u7EA7\u522B",paraId:1,tocIndex:1},{value:'\u7684"\u7A7A\u503C"\u3002',paraId:1,tocIndex:1},{value:"\u5E38\u89C1\u4EA7\u751F\u573A\u666F\uFF1A",paraId:2,tocIndex:1},{value:`// 1. \u53D8\u91CF\u58F0\u660E\u4F46\u672A\u8D4B\u503C
 let a;
 console.log(a); // undefined
 
@@ -4597,7 +6220,7 @@ function getValue(): string | undefined {
   return 'hello';
 }
 const result = getValue()!; // \u65AD\u8A00\u7ED3\u679C\u4E0D\u4E3A undefined
-`,paraId:46,tocIndex:16},{value:"undefined",paraId:47,tocIndex:17},{value:' \u662F\u7CFB\u7EDF\u7EA7\u7684"\u672A\u5B9A\u4E49"\uFF0C',paraId:47,tocIndex:17},{value:"null",paraId:47,tocIndex:17},{value:' \u662F\u7A0B\u5E8F\u7EA7\u7684"\u7A7A\u503C"',paraId:47,tocIndex:17},{value:"typeof null === 'object'",paraId:47,tocIndex:17},{value:" \u662F\u5386\u53F2\u9057\u7559\u95EE\u9898\uFF0C\u65E0\u6CD5\u4FEE\u590D",paraId:47,tocIndex:17},{value:"undefined",paraId:47,tocIndex:17},{value:" \u4E0D\u662F\u4FDD\u7559\u5B57\uFF0C\u4F46\u5168\u5C40\u7684 ",paraId:47,tocIndex:17},{value:"undefined",paraId:47,tocIndex:17},{value:" \u5C5E\u6027\u662F\u53EA\u8BFB\u7684",paraId:47,tocIndex:17},{value:"\u63A8\u8350\u4F7F\u7528 ",paraId:47,tocIndex:17},{value:"typeof x === 'undefined'",paraId:47,tocIndex:17},{value:" \u6216 ",paraId:47,tocIndex:17},{value:"x == null",paraId:47,tocIndex:17},{value:" \u6765\u68C0\u6D4B\u7A7A\u503C",paraId:47,tocIndex:17},{value:"\u5728\u73B0\u4EE3 JavaScript \u4E2D\uFF0C\u4F18\u5148\u4F7F\u7528 ",paraId:47,tocIndex:17},{value:"undefined",paraId:47,tocIndex:17},{value:'\uFF0C\u4EC5\u5728\u9700\u8981\u8868\u793A"\u7A7A\u5BF9\u8C61\u5F15\u7528"\u65F6\u4F7F\u7528 ',paraId:47,tocIndex:17},{value:"null",paraId:47,tocIndex:17},{value:"\u5584\u7528\u53EF\u9009\u94FE ",paraId:47,tocIndex:17},{value:"?.",paraId:47,tocIndex:17},{value:" \u548C\u7A7A\u503C\u5408\u5E76\u8FD0\u7B97\u7B26 ",paraId:47,tocIndex:17},{value:"??",paraId:47,tocIndex:17},{value:" \u6765\u5904\u7406\u7A7A\u503C\u60C5\u51B5",paraId:47,tocIndex:17}]},6697:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"\u56E0\u4E3A\u8BA1\u7B97\u673A\u53EA\u80FD\u5B58\u50A8 ",paraId:0,tocIndex:1},{value:"0",paraId:0,tocIndex:1},{value:" \u548C ",paraId:0,tocIndex:1},{value:"1",paraId:0,tocIndex:1},{value:" \u8FD9\u4E9B\u4E8C\u8FDB\u5236\u6570\u5B57\u3002\u6240\u4EE5\uFF0C\u65E0\u8BBA\u662F\u6211\u4EEC\u5B58\u50A8\u7684\u6570\u5B57\uFF0C\u5B57\u6BCD\uFF0C\u6C49\u5B57\uFF0Cemoji \u7B49\u5404\u79CD\u6587\u5B57\u90FD\u9700\u8981\u7531\u67D0\u79CD\u65B9\u5F0F\u8F6C\u6362\u6210\u4E8C\u8FDB\u5236\u6570\u5B57\u8FDB\u884C\u50A8\u5B58\uFF0C\u9700\u8981\u7684\u65F6\u5019\u5728\u8BFB\u51FA\u6765\u3002",paraId:0,tocIndex:1},{value:"\u6700\u65E9\u7684\u8BA1\u7B97\u673A\u5728\u8BBE\u8BA1\u65F6\u91C7\u7528 8 \u4E2A bit \u4F5C\u4E3A\u4E00\u4E2A byte\u3002\u4E00\u4E2A\u5B57\u8282\u4E00\u5171\u53EF\u4EE5\u7528\u6765\u8868\u793A ",paraId:1,tocIndex:1},{value:"2^8",paraId:1,tocIndex:1},{value:" \u79CD\u4E0D\u540C\u7684\u72B6\u6001\uFF0C\u6BCF\u4E00\u4E2A\u72B6\u6001\u5BF9\u5E94\u4E00\u4E2A\u5B57\u7B26\uFF0C\u5C31\u662F 256 \u4E2A\u5B57\u7B26\uFF0C\u4ECE ",paraId:1,tocIndex:1},{value:"00000000",paraId:1,tocIndex:1},{value:" \u5230 ",paraId:1,tocIndex:1},{value:"11111111",paraId:1,tocIndex:1},{value:"\u3002",paraId:1,tocIndex:1},{value:"1963 \u5E74 ANSI (\u7F8E\u56FD\u56FD\u5BB6\u6807\u51C6\u534F\u4F1A) \u63A8\u51FA\u4E86 ASCII (\u6587\u672C\u5B57\u7B26\u7F16\u7801\u6807\u51C6) \u7801\u8868\u3002\u89C4\u5B9A\u4E86\u6587\u5B57\u4E0E\u6570\u5B57\u7684\u4E00\u4E00\u5BF9\u5E94\u3002ASCII \u652F\u6301\u7684\u5B57\u7B26\u5305\u542B 0-9 \u7684\u963F\u62C9\u4F2F\u6570\u5B57\uFF0C\u5C0F\u5199\u82F1\u6587\u5B57\u6BCD\uFF0C\u5927\u5199\u82F1\u6587\u5B57\u6BCD\uFF0C\u5E38\u7528\u82F1\u6587\u7B26\u53F7\uFF0C\u63A7\u5236\u5B57\u7B26 (\u6362\u884C\u3001\u56DE\u8F66\u7B49\u7279\u6B8A\u7684\u63A7\u5236\u529F\u80FD)\u3002\u5982\u4E0B\u56FE\uFF1A",paraId:2,tocIndex:1},{value:"\u6BCF\u4E2A\u5B57\u7B26\u90FD\u6709\u4E00\u4E2A\u5BF9\u5E94\u7684\u6570\u5B57\uFF0C\u53EB\u505A\u7801\u70B9 (code point)\uFF0C\u4E5F\u79F0\u4E3A\u7801\u4F4D\u3002",paraId:3,tocIndex:1},{value:"ASCII \u5B57\u7B26\u7684\u7801\u70B9\u662F 0-127 \u4E4B\u95F4\u7684\u6570\u5B57\u3002\u6BD4\u5982\u5927\u5199\u5B57\u6BCD A \u5BF9\u5E94\u6570\u5B57 65\uFF0C\u5927\u5199\u5B57\u6BCD B \u5BF9\u5E94\u6570\u5B57 66\u3002",paraId:4,tocIndex:1},{value:"\u6240\u6709\u5B57\u7B26\u548C\u5BF9\u5E94\u7801\u70B9\u7684\u96C6\u5408\u5C31\u53EB\u505A\u5B57\u7B26\u96C6",paraId:4,tocIndex:1},{value:"\u3002\u4E5F\u53EF\u4EE5\u7406\u89E3\u4E3A\u4E00\u4E2A\u5B57\u7B26\u4E0E\u4E00\u4E2A\u6570\u5B57\u4E00\u4E00\u5BF9\u5E94\u7684\u4E00\u4E2A\u6620\u5C04\u8868\u3002",paraId:4,tocIndex:1},{value:"\u8BA1\u7B97\u673A\u5185\u90E8\u4F7F\u7528\u7684\u662F\u4E8C\u8FDB\u5236\u8FD0\u7B97\u3002\u6240\u4EE5",paraId:5,tocIndex:1},{value:"\u7F16\u53F7 (\u4E5F\u5C31\u662F\u7801\u70B9)",paraId:5,tocIndex:1},{value:" \u5E76\u4E0D\u662F\u6700\u7EC8\u5B58\u50A8\u5728\u8BA1\u7B97\u673A\u4E2D\u7684\u7ED3\u679C\u3002\u8BA1\u7B97\u673A\u9700\u8981\u628A\u7801\u70B9\u8F6C\u6362\u4E3A\u4E8C\u8FDB\u5236\u5B58\u50A8\u8D77\u6765\u3002\u8BA1\u7B97\u673A\u5E95\u5C42\u7684\u4E8C\u8FDB\u5236\u7801\u70B9\u901A\u8FC7\u5B57\u7B26\u96C6\u8F6C\u6362\u6210\u5C4F\u5E55\u4E0A\u6709\u610F\u4E49\u7684\u5B57\u7B26\u3002",paraId:5,tocIndex:1},{value:"\u6211\u4EEC\u5C06\u7801\u70B9\u8F6C\u6362\u4E3A\u8BA1\u7B97\u673A\u91CC\u5B58\u50A8\u7684\u4E8C\u8FDB\u5236\u7801\u70B9 (\u4E5F\u79F0\u5B57\u8282\u5E8F\u5217) \u7684\u89C4\u5219\u5C31\u79F0\u4E3A\u5B57\u7B26\u7F16\u7801\u3002",paraId:6,tocIndex:1},{value:"\u56E0\u4E3A ",paraId:7,tocIndex:2},{value:"ASCII",paraId:7,tocIndex:2},{value:" \u7F16\u7801\u65E0\u6CD5\u8868\u793A\u591A\u56FD\u8BED\u8A00\u7684\u7F16\u7801\uFF0C\u6BCF\u4E2A\u56FD\u5BB6\u4E3A\u4E86\u4F7F\u8BA1\u7B97\u673A\u80FD\u591F\u663E\u793A\u5F53\u5730\u8BED\u8A00\u548C\u5B57\u7B26\uFF0C\u4E5F\u7EB7\u7EB7\u8BBE\u8BA1\u51FA\u4E86\u5404\u79CD\u5B57\u7B26\u96C6\u548C\u5B57\u7B26\u7F16\u7801\u89C4\u5219\u3002\u5F53\u6807\u51C6\u4E0D\u7EDF\u4E00\u7684\u65F6\u5019\uFF0C\u4E71\u7801\u95EE\u9898\u4E5F\u5C31\u968F\u4E4B\u4EA7\u751F\u4E86\u3002\u56E0\u4E3A\u8BA1\u7B97\u673A\u5185\u5B58\u91CC\u7684\u540C\u4E00\u4E2A\u4E8C\u8FDB\u5236\u6570\u5B57\u5728\u4E0D\u540C\u7684\u5B57\u7B26\u96C6\u91CC\u4EE3\u8868\u7684\u53EF\u80FD\u662F\u5B8C\u5168\u4E0D\u540C\u7684\u5B57\u7B26\u3002\u5982\u4E0B\u56FE\uFF1A",paraId:7,tocIndex:2},{value:"\u4E3A\u4E86\u7EDF\u4E00\u6240\u6709\u6587\u5B57\u7684\u7F16\u7801\uFF0C",paraId:8,tocIndex:2},{value:"Unicode",paraId:8,tocIndex:2},{value:" \u5E94\u8FD0\u800C\u751F\u3002",paraId:8,tocIndex:2},{value:"Unicode",paraId:8,tocIndex:2},{value:" \u628A\u6240\u6709\u8BED\u8A00\u90FD\u7EDF\u4E00\u5230\u4E00\u5957\u7F16\u7801\u91CC\uFF0C\u8FD9\u6837\u5C31\u4E0D\u4F1A\u518D\u6709\u4E71\u7801\u95EE\u9898\u4E86\u3002",paraId:8,tocIndex:2},{value:"\u5BF9\u4E8E ",paraId:9,tocIndex:2},{value:"Unicode",paraId:9,tocIndex:2},{value:" \u6709\u4E00\u4E9B\u8BEF\u89E3\uFF0C\u5B83\u4EC5\u4EC5\u53EA\u662F\u4E00\u4E2A\u5B57\u7B26\u96C6\uFF0C\u89C4\u5B9A\u4E86\u7B26\u5408\u5BF9\u5E94\u7684\u4E8C\u8FDB\u5236\u4EE3\u7801\uFF0C\u81F3\u4E8E\u8FD9\u4E2A\u4E8C\u8FDB\u5236\u4EE3\u7801\u5982\u4F55\u5B58\u50A8\u5219\u6CA1\u6709\u4EFB\u4F55\u89C4\u5B9A\u3002",paraId:9,tocIndex:2},{value:"Unicode",paraId:10,tocIndex:2},{value:" \u53EA\u89C4\u5B9A\u4E86\u6BCF\u4E2A\u5B57\u7B26\u7684\u7801\u70B9\uFF0C\u5230\u5E95\u7528\u4EC0\u4E48\u6837\u7684\u5B57\u8282\u5E8F\u8868\u793A\u8FD9\u4E2A\u7801\u70B9\uFF0C\u5C31\u6D89\u53CA\u5230\u7F16\u7801\u65B9\u6CD5\u3002",paraId:10,tocIndex:2},{value:"Unicode",paraId:11,tocIndex:2},{value:" \u7F16\u7801\u5171\u6709\u4E09\u79CD\u5177\u4F53\u5B9E\u73B0\uFF0C\u5206\u522B\u4E3A ",paraId:11,tocIndex:2},{value:"utf-8",paraId:11,tocIndex:2},{value:"\uFF0C",paraId:11,tocIndex:2},{value:"utf-16",paraId:11,tocIndex:2},{value:"\uFF0C",paraId:11,tocIndex:2},{value:"utf-32",paraId:11,tocIndex:2},{value:"\u3002",paraId:11,tocIndex:2},{value:"\u6574\u4E2A Unicode \u5B57\u7B26\u96C6\u7684\u5927\u5C0F\u73B0\u5728\u662F ",paraId:12,tocIndex:2},{value:"2^21",paraId:12,tocIndex:2},{value:"\u3002",paraId:12,tocIndex:2},{value:"https://www.bilibili.com/video/BV11e4y1W7CF?p=8",paraId:13,tocIndex:3},{value:"JavaScript \u5185\u90E8\uFF0C\u5B57\u7B26\u4EE5 ",paraId:14,tocIndex:4},{value:"UTF-16",paraId:14,tocIndex:4},{value:" \u7684\u683C\u5F0F\u50A8\u5B58\u3002\u5BF9\u4E8E BMP\uFF08\u57FA\u672C\u591A\u6587\u79CD\u5E73\u9762\uFF0CU+0000 \u5230 U+FFFF\uFF09\u5185\u7684\u5B57\u7B26\uFF0C\u4F7F\u7528 2 \u4E2A\u5B57\u8282\u8868\u793A\uFF1B\u5BF9\u4E8E BMP \u4E4B\u5916\u7684\u5B57\u7B26\uFF08\u7801\u70B9\u5927\u4E8E ",paraId:14,tocIndex:4},{value:"0xFFFF",paraId:14,tocIndex:4},{value:"\uFF09\uFF0C\u4F7F\u7528\u4EE3\u7406\u5BF9\uFF08surrogate pair\uFF09\u8868\u793A\uFF0C\u5360\u7528 4 \u4E2A\u5B57\u8282\u3002ES6 \u4E4B\u524D\uFF0CJavaScript \u4F1A\u628A 4 \u5B57\u8282\u5B57\u7B26\u5F53\u4F5C\u4E24\u4E2A\u5B57\u7B26\u5904\u7406\u3002ES6 \u63D0\u4F9B\u4E86\u65B0\u7684\u65B9\u6CD5\u6765\u6B63\u786E\u5904\u7406\u8FD9\u4E9B\u5B57\u7B26\u3002",paraId:14,tocIndex:4},{value:"JavaScript",paraId:15,tocIndex:5},{value:" \u5141\u8BB8\u76F4\u63A5\u7528\u7801\u70B9\u8868\u793A ",paraId:15,tocIndex:5},{value:"Unicode",paraId:15,tocIndex:5},{value:" \u5B57\u7B26\uFF0C\u5199\u6CD5\u662F \u201C\u53CD\u659C\u6760+u+\u7801\u70B9\u201D\u3002",paraId:15,tocIndex:5},{value:`'\u597D' === '\\u597D'; // true
+`,paraId:46,tocIndex:16},{value:"undefined",paraId:47,tocIndex:17},{value:' \u662F\u7CFB\u7EDF\u7EA7\u7684"\u672A\u5B9A\u4E49"\uFF0C',paraId:47,tocIndex:17},{value:"null",paraId:47,tocIndex:17},{value:' \u662F\u7A0B\u5E8F\u7EA7\u7684"\u7A7A\u503C"',paraId:47,tocIndex:17},{value:"typeof null === 'object'",paraId:47,tocIndex:17},{value:" \u662F\u5386\u53F2\u9057\u7559\u95EE\u9898\uFF0C\u65E0\u6CD5\u4FEE\u590D",paraId:47,tocIndex:17},{value:"undefined",paraId:47,tocIndex:17},{value:" \u4E0D\u662F\u4FDD\u7559\u5B57\uFF0C\u4F46\u5168\u5C40\u7684 ",paraId:47,tocIndex:17},{value:"undefined",paraId:47,tocIndex:17},{value:" \u5C5E\u6027\u662F\u53EA\u8BFB\u7684",paraId:47,tocIndex:17},{value:"\u63A8\u8350\u4F7F\u7528 ",paraId:47,tocIndex:17},{value:"typeof x === 'undefined'",paraId:47,tocIndex:17},{value:" \u6216 ",paraId:47,tocIndex:17},{value:"x == null",paraId:47,tocIndex:17},{value:" \u6765\u68C0\u6D4B\u7A7A\u503C",paraId:47,tocIndex:17},{value:"\u5728\u73B0\u4EE3 JavaScript \u4E2D\uFF0C\u4F18\u5148\u4F7F\u7528 ",paraId:47,tocIndex:17},{value:"undefined",paraId:47,tocIndex:17},{value:'\uFF0C\u4EC5\u5728\u9700\u8981\u8868\u793A"\u7A7A\u5BF9\u8C61\u5F15\u7528"\u65F6\u4F7F\u7528 ',paraId:47,tocIndex:17},{value:"null",paraId:47,tocIndex:17},{value:"\u5584\u7528\u53EF\u9009\u94FE ",paraId:47,tocIndex:17},{value:"?.",paraId:47,tocIndex:17},{value:" \u548C\u7A7A\u503C\u5408\u5E76\u8FD0\u7B97\u7B26 ",paraId:47,tocIndex:17},{value:"??",paraId:47,tocIndex:17},{value:" \u6765\u5904\u7406\u7A7A\u503C\u60C5\u51B5",paraId:47,tocIndex:17}]},6697:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"\u56E0\u4E3A\u8BA1\u7B97\u673A\u53EA\u80FD\u5B58\u50A8 ",paraId:0,tocIndex:1},{value:"0",paraId:0,tocIndex:1},{value:" \u548C ",paraId:0,tocIndex:1},{value:"1",paraId:0,tocIndex:1},{value:" \u8FD9\u4E9B\u4E8C\u8FDB\u5236\u6570\u5B57\u3002\u6240\u4EE5\uFF0C\u65E0\u8BBA\u662F\u6211\u4EEC\u5B58\u50A8\u7684\u6570\u5B57\uFF0C\u5B57\u6BCD\uFF0C\u6C49\u5B57\uFF0Cemoji \u7B49\u5404\u79CD\u6587\u5B57\u90FD\u9700\u8981\u7531\u67D0\u79CD\u65B9\u5F0F\u8F6C\u6362\u6210\u4E8C\u8FDB\u5236\u6570\u5B57\u8FDB\u884C\u50A8\u5B58\uFF0C\u9700\u8981\u7684\u65F6\u5019\u5728\u8BFB\u51FA\u6765\u3002",paraId:0,tocIndex:1},{value:"\u6700\u65E9\u7684\u8BA1\u7B97\u673A\u5728\u8BBE\u8BA1\u65F6\u91C7\u7528 8 \u4E2A bit \u4F5C\u4E3A\u4E00\u4E2A byte\u3002\u4E00\u4E2A\u5B57\u8282\u4E00\u5171\u53EF\u4EE5\u7528\u6765\u8868\u793A ",paraId:1,tocIndex:1},{value:"2^8",paraId:1,tocIndex:1},{value:" \u79CD\u4E0D\u540C\u7684\u72B6\u6001\uFF0C\u6BCF\u4E00\u4E2A\u72B6\u6001\u5BF9\u5E94\u4E00\u4E2A\u5B57\u7B26\uFF0C\u5C31\u662F 256 \u4E2A\u5B57\u7B26\uFF0C\u4ECE ",paraId:1,tocIndex:1},{value:"00000000",paraId:1,tocIndex:1},{value:" \u5230 ",paraId:1,tocIndex:1},{value:"11111111",paraId:1,tocIndex:1},{value:"\u3002",paraId:1,tocIndex:1},{value:"1963 \u5E74 ANSI (\u7F8E\u56FD\u56FD\u5BB6\u6807\u51C6\u534F\u4F1A) \u63A8\u51FA\u4E86 ASCII (\u6587\u672C\u5B57\u7B26\u7F16\u7801\u6807\u51C6) \u7801\u8868\u3002\u89C4\u5B9A\u4E86\u6587\u5B57\u4E0E\u6570\u5B57\u7684\u4E00\u4E00\u5BF9\u5E94\u3002ASCII \u652F\u6301\u7684\u5B57\u7B26\u5305\u542B 0-9 \u7684\u963F\u62C9\u4F2F\u6570\u5B57\uFF0C\u5C0F\u5199\u82F1\u6587\u5B57\u6BCD\uFF0C\u5927\u5199\u82F1\u6587\u5B57\u6BCD\uFF0C\u5E38\u7528\u82F1\u6587\u7B26\u53F7\uFF0C\u63A7\u5236\u5B57\u7B26 (\u6362\u884C\u3001\u56DE\u8F66\u7B49\u7279\u6B8A\u7684\u63A7\u5236\u529F\u80FD)\u3002\u5982\u4E0B\u56FE\uFF1A",paraId:2,tocIndex:1},{value:"\u6BCF\u4E2A\u5B57\u7B26\u90FD\u6709\u4E00\u4E2A\u5BF9\u5E94\u7684\u6570\u5B57\uFF0C\u53EB\u505A\u7801\u70B9 (code point)\uFF0C\u4E5F\u79F0\u4E3A\u7801\u4F4D\u3002",paraId:3,tocIndex:1},{value:"ASCII \u5B57\u7B26\u7684\u7801\u70B9\u662F 0-127 \u4E4B\u95F4\u7684\u6570\u5B57\u3002\u6BD4\u5982\u5927\u5199\u5B57\u6BCD A \u5BF9\u5E94\u6570\u5B57 65\uFF0C\u5927\u5199\u5B57\u6BCD B \u5BF9\u5E94\u6570\u5B57 66\u3002",paraId:4,tocIndex:1},{value:"\u6240\u6709\u5B57\u7B26\u548C\u5BF9\u5E94\u7801\u70B9\u7684\u96C6\u5408\u5C31\u53EB\u505A\u5B57\u7B26\u96C6",paraId:4,tocIndex:1},{value:"\u3002\u4E5F\u53EF\u4EE5\u7406\u89E3\u4E3A\u4E00\u4E2A\u5B57\u7B26\u4E0E\u4E00\u4E2A\u6570\u5B57\u4E00\u4E00\u5BF9\u5E94\u7684\u4E00\u4E2A\u6620\u5C04\u8868\u3002",paraId:4,tocIndex:1},{value:"\u8BA1\u7B97\u673A\u5185\u90E8\u4F7F\u7528\u7684\u662F\u4E8C\u8FDB\u5236\u8FD0\u7B97\u3002\u6240\u4EE5",paraId:5,tocIndex:1},{value:"\u7F16\u53F7 (\u4E5F\u5C31\u662F\u7801\u70B9)",paraId:5,tocIndex:1},{value:" \u5E76\u4E0D\u662F\u6700\u7EC8\u5B58\u50A8\u5728\u8BA1\u7B97\u673A\u4E2D\u7684\u7ED3\u679C\u3002\u8BA1\u7B97\u673A\u9700\u8981\u628A\u7801\u70B9\u8F6C\u6362\u4E3A\u4E8C\u8FDB\u5236\u5B58\u50A8\u8D77\u6765\u3002\u8BA1\u7B97\u673A\u5E95\u5C42\u7684\u4E8C\u8FDB\u5236\u7801\u70B9\u901A\u8FC7\u5B57\u7B26\u96C6\u8F6C\u6362\u6210\u5C4F\u5E55\u4E0A\u6709\u610F\u4E49\u7684\u5B57\u7B26\u3002",paraId:5,tocIndex:1},{value:"\u6211\u4EEC\u5C06\u7801\u70B9\u8F6C\u6362\u4E3A\u8BA1\u7B97\u673A\u91CC\u5B58\u50A8\u7684\u4E8C\u8FDB\u5236\u7801\u70B9 (\u4E5F\u79F0\u5B57\u8282\u5E8F\u5217) \u7684\u89C4\u5219\u5C31\u79F0\u4E3A\u5B57\u7B26\u7F16\u7801\u3002",paraId:6,tocIndex:1},{value:"\u56E0\u4E3A ",paraId:7,tocIndex:2},{value:"ASCII",paraId:7,tocIndex:2},{value:" \u7F16\u7801\u65E0\u6CD5\u8868\u793A\u591A\u56FD\u8BED\u8A00\u7684\u7F16\u7801\uFF0C\u6BCF\u4E2A\u56FD\u5BB6\u4E3A\u4E86\u4F7F\u8BA1\u7B97\u673A\u80FD\u591F\u663E\u793A\u5F53\u5730\u8BED\u8A00\u548C\u5B57\u7B26\uFF0C\u4E5F\u7EB7\u7EB7\u8BBE\u8BA1\u51FA\u4E86\u5404\u79CD\u5B57\u7B26\u96C6\u548C\u5B57\u7B26\u7F16\u7801\u89C4\u5219\u3002\u5F53\u6807\u51C6\u4E0D\u7EDF\u4E00\u7684\u65F6\u5019\uFF0C\u4E71\u7801\u95EE\u9898\u4E5F\u5C31\u968F\u4E4B\u4EA7\u751F\u4E86\u3002\u56E0\u4E3A\u8BA1\u7B97\u673A\u5185\u5B58\u91CC\u7684\u540C\u4E00\u4E2A\u4E8C\u8FDB\u5236\u6570\u5B57\u5728\u4E0D\u540C\u7684\u5B57\u7B26\u96C6\u91CC\u4EE3\u8868\u7684\u53EF\u80FD\u662F\u5B8C\u5168\u4E0D\u540C\u7684\u5B57\u7B26\u3002\u5982\u4E0B\u56FE\uFF1A",paraId:7,tocIndex:2},{value:"\u4E3A\u4E86\u7EDF\u4E00\u6240\u6709\u6587\u5B57\u7684\u7F16\u7801\uFF0C",paraId:8,tocIndex:2},{value:"Unicode",paraId:8,tocIndex:2},{value:" \u5E94\u8FD0\u800C\u751F\u3002",paraId:8,tocIndex:2},{value:"Unicode",paraId:8,tocIndex:2},{value:" \u628A\u6240\u6709\u8BED\u8A00\u90FD\u7EDF\u4E00\u5230\u4E00\u5957\u7F16\u7801\u91CC\uFF0C\u8FD9\u6837\u5C31\u4E0D\u4F1A\u518D\u6709\u4E71\u7801\u95EE\u9898\u4E86\u3002",paraId:8,tocIndex:2},{value:"\u5BF9\u4E8E ",paraId:9,tocIndex:2},{value:"Unicode",paraId:9,tocIndex:2},{value:" \u6709\u4E00\u4E9B\u8BEF\u89E3\uFF0C\u5B83\u4EC5\u4EC5\u53EA\u662F\u4E00\u4E2A\u5B57\u7B26\u96C6\uFF0C\u89C4\u5B9A\u4E86\u7B26\u5408\u5BF9\u5E94\u7684\u4E8C\u8FDB\u5236\u4EE3\u7801\uFF0C\u81F3\u4E8E\u8FD9\u4E2A\u4E8C\u8FDB\u5236\u4EE3\u7801\u5982\u4F55\u5B58\u50A8\u5219\u6CA1\u6709\u4EFB\u4F55\u89C4\u5B9A\u3002",paraId:9,tocIndex:2},{value:"Unicode",paraId:10,tocIndex:2},{value:" \u53EA\u89C4\u5B9A\u4E86\u6BCF\u4E2A\u5B57\u7B26\u7684\u7801\u70B9\uFF0C\u5230\u5E95\u7528\u4EC0\u4E48\u6837\u7684\u5B57\u8282\u5E8F\u8868\u793A\u8FD9\u4E2A\u7801\u70B9\uFF0C\u5C31\u6D89\u53CA\u5230\u7F16\u7801\u65B9\u6CD5\u3002",paraId:10,tocIndex:2},{value:"Unicode",paraId:11,tocIndex:2},{value:" \u7F16\u7801\u5171\u6709\u4E09\u79CD\u5177\u4F53\u5B9E\u73B0\uFF0C\u5206\u522B\u4E3A ",paraId:11,tocIndex:2},{value:"utf-8",paraId:11,tocIndex:2},{value:"\uFF0C",paraId:11,tocIndex:2},{value:"utf-16",paraId:11,tocIndex:2},{value:"\uFF0C",paraId:11,tocIndex:2},{value:"utf-32",paraId:11,tocIndex:2},{value:"\u3002",paraId:11,tocIndex:2},{value:"\u6574\u4E2A Unicode \u5B57\u7B26\u96C6\u7684\u5927\u5C0F\u73B0\u5728\u662F ",paraId:12,tocIndex:2},{value:"2^21",paraId:12,tocIndex:2},{value:"\u3002",paraId:12,tocIndex:2},{value:"https://www.bilibili.com/video/BV11e4y1W7CF?p=8",paraId:13,tocIndex:3},{value:"JavaScript \u5185\u90E8\uFF0C\u5B57\u7B26\u4EE5 ",paraId:14,tocIndex:4},{value:"UTF-16",paraId:14,tocIndex:4},{value:" \u7684\u683C\u5F0F\u50A8\u5B58\u3002\u5BF9\u4E8E BMP\uFF08\u57FA\u672C\u591A\u6587\u79CD\u5E73\u9762\uFF0CU+0000 \u5230 U+FFFF\uFF09\u5185\u7684\u5B57\u7B26\uFF0C\u4F7F\u7528 2 \u4E2A\u5B57\u8282\u8868\u793A\uFF1B\u5BF9\u4E8E BMP \u4E4B\u5916\u7684\u5B57\u7B26\uFF08\u7801\u70B9\u5927\u4E8E ",paraId:14,tocIndex:4},{value:"0xFFFF",paraId:14,tocIndex:4},{value:"\uFF09\uFF0C\u4F7F\u7528\u4EE3\u7406\u5BF9\uFF08surrogate pair\uFF09\u8868\u793A\uFF0C\u5360\u7528 4 \u4E2A\u5B57\u8282\u3002ES6 \u4E4B\u524D\uFF0CJavaScript \u4F1A\u628A 4 \u5B57\u8282\u5B57\u7B26\u5F53\u4F5C\u4E24\u4E2A\u5B57\u7B26\u5904\u7406\u3002ES6 \u63D0\u4F9B\u4E86\u65B0\u7684\u65B9\u6CD5\u6765\u6B63\u786E\u5904\u7406\u8FD9\u4E9B\u5B57\u7B26\u3002",paraId:14,tocIndex:4},{value:"JavaScript",paraId:15,tocIndex:5},{value:" \u5141\u8BB8\u76F4\u63A5\u7528\u7801\u70B9\u8868\u793A ",paraId:15,tocIndex:5},{value:"Unicode",paraId:15,tocIndex:5},{value:" \u5B57\u7B26\uFF0C\u5199\u6CD5\u662F \u201C\u53CD\u659C\u6760+u+\u7801\u70B9\u201D\u3002",paraId:15,tocIndex:5},{value:`'\u597D' === '\\u597D'; // true
 `,paraId:16,tocIndex:5},{value:"\u4F46\u662F\uFF0C\u8FD9\u79CD\u8868\u793A\u6CD5\u5BF9 4 \u5B57\u8282\u7684\u7801\u70B9\u65E0\u6548\u3002ES6 \u4FEE\u6B63\u4E86\u8FD9\u4E2A\u95EE\u9898\uFF0C\u53EA\u8981\u5C06\u7801\u70B9\u653E\u5728\u5927\u62EC\u53F7\u5185\uFF0C\u5C31\u80FD\u6B63\u786E\u8BC6\u522B\u3002",paraId:17,tocIndex:5},{value:"ES6 \u65B0\u589E\u4E86\u51E0\u4E2A\u53EF\u4EE5\u5904\u7406 4 \u5B57\u8282\u7801\u70B9\u7684\u51FD\u6570\u3002",paraId:18,tocIndex:6},{value:`String.fromCodePoint(); // \u4ECE Unicode \u7801\u70B9\u8FD4\u56DE\u5BF9\u5E94\u5B57\u7B26
 String.prototype.codePointAt(); // \u4ECE\u5B57\u7B26\u8FD4\u56DE\u5BF9\u5E94\u7684\u7801\u70B9
 String.prototype.at(); // \u8FD4\u56DE\u5B57\u7B26\u4E32\u7ED9\u5B9A\u4F4D\u7F6E\u7684\u5B57\u7B26
@@ -4726,7 +6349,7 @@ console.log(String.raw\`\\\\\`); // '\\\\' (\u4E24\u4E2A\u53CD\u659C\u6760)
 // \u5B9E\u9645\u5E94\u7528\uFF1A\u5904\u7406\u6587\u4EF6\u8DEF\u5F84
 const path = String.raw\`C:\\Users\\Documents\\file.txt\`;
 console.log(path); // 'C:\\\\Users\\\\Documents\\\\file.txt'
-`,paraId:63,tocIndex:28}]},97620:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"ES6 \u5F15\u5165\u4E86\u4E00\u79CD\u65B0\u7684\u539F\u59CB\u6570\u636E\u7C7B\u578B ",paraId:0,tocIndex:0},{value:"Symbol",paraId:0,tocIndex:0},{value:"\uFF0C\u8868\u793A\u72EC\u4E00\u65E0\u4E8C\u7684\u503C\u3002\u5B83\u662F JavaScript \u7684\u7B2C\u4E03\u79CD\u6570\u636E\u7C7B\u578B\uFF0C\u4E0E ",paraId:0,tocIndex:0},{value:"undefined",paraId:0,tocIndex:0},{value:"\u3001",paraId:0,tocIndex:0},{value:"null",paraId:0,tocIndex:0},{value:"\u3001",paraId:0,tocIndex:0},{value:"Boolean",paraId:0,tocIndex:0},{value:"\u3001",paraId:0,tocIndex:0},{value:"String",paraId:0,tocIndex:0},{value:"\u3001",paraId:0,tocIndex:0},{value:"Number",paraId:0,tocIndex:0},{value:"\u3001",paraId:0,tocIndex:0},{value:"Object",paraId:0,tocIndex:0},{value:" \u5E76\u5217\u3002",paraId:0,tocIndex:0},{value:"\u552F\u4E00\u6027",paraId:1,tocIndex:1},{value:"\uFF1A\u6BCF\u4E2A Symbol \u503C\u90FD\u662F\u552F\u4E00\u7684\uFF0C\u5373\u4F7F\u63CF\u8FF0\u76F8\u540C",paraId:1,tocIndex:1},{value:"\u4E0D\u53EF\u53D8\u6027",paraId:1,tocIndex:1},{value:"\uFF1ASymbol \u503C\u521B\u5EFA\u540E\u4E0D\u53EF\u66F4\u6539",paraId:1,tocIndex:1},{value:"\u4E0D\u53EF\u679A\u4E3E",paraId:1,tocIndex:1},{value:"\uFF1A\u4F5C\u4E3A\u5BF9\u8C61\u5C5E\u6027\u65F6\uFF0C\u4E0D\u4F1A\u51FA\u73B0\u5728 ",paraId:1,tocIndex:1},{value:"for...in",paraId:1,tocIndex:1},{value:"\u3001",paraId:1,tocIndex:1},{value:"for...of",paraId:1,tocIndex:1},{value:" \u5FAA\u73AF\u4E2D",paraId:1,tocIndex:1},{value:"\u4E0D\u4F1A\u88AB\u81EA\u52A8\u8F6C\u6362",paraId:1,tocIndex:1},{value:"\uFF1A\u4E0D\u80FD\u9690\u5F0F\u8F6C\u6362\u4E3A\u5B57\u7B26\u4E32\u6216\u6570\u5B57",paraId:1,tocIndex:1},{value:`// \u521B\u5EFA Symbol
+`,paraId:63,tocIndex:28}]},97620:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"ES6 \u5F15\u5165\u4E86\u4E00\u79CD\u65B0\u7684\u539F\u59CB\u6570\u636E\u7C7B\u578B ",paraId:0,tocIndex:0},{value:"Symbol",paraId:0,tocIndex:0},{value:"\uFF0C\u8868\u793A\u72EC\u4E00\u65E0\u4E8C\u7684\u503C\u3002\u5B83\u662F JavaScript \u7684\u7B2C\u4E03\u79CD\u6570\u636E\u7C7B\u578B\uFF0C\u4E0E ",paraId:0,tocIndex:0},{value:"undefined",paraId:0,tocIndex:0},{value:"\u3001",paraId:0,tocIndex:0},{value:"null",paraId:0,tocIndex:0},{value:"\u3001",paraId:0,tocIndex:0},{value:"Boolean",paraId:0,tocIndex:0},{value:"\u3001",paraId:0,tocIndex:0},{value:"String",paraId:0,tocIndex:0},{value:"\u3001",paraId:0,tocIndex:0},{value:"Number",paraId:0,tocIndex:0},{value:"\u3001",paraId:0,tocIndex:0},{value:"Object",paraId:0,tocIndex:0},{value:" \u5E76\u5217\u3002",paraId:0,tocIndex:0},{value:"\u552F\u4E00\u6027",paraId:1,tocIndex:1},{value:"\uFF1A\u6BCF\u4E2A Symbol \u503C\u90FD\u662F\u552F\u4E00\u7684\uFF0C\u5373\u4F7F\u63CF\u8FF0\u76F8\u540C",paraId:1,tocIndex:1},{value:"\u4E0D\u53EF\u53D8\u6027",paraId:1,tocIndex:1},{value:"\uFF1ASymbol \u503C\u521B\u5EFA\u540E\u4E0D\u53EF\u66F4\u6539",paraId:1,tocIndex:1},{value:"\u4E0D\u53EF\u679A\u4E3E",paraId:1,tocIndex:1},{value:"\uFF1A\u4F5C\u4E3A\u5BF9\u8C61\u5C5E\u6027\u65F6\uFF0C\u4E0D\u4F1A\u51FA\u73B0\u5728 ",paraId:1,tocIndex:1},{value:"for...in",paraId:1,tocIndex:1},{value:"\u3001",paraId:1,tocIndex:1},{value:"for...of",paraId:1,tocIndex:1},{value:" \u5FAA\u73AF\u4E2D",paraId:1,tocIndex:1},{value:"\u4E0D\u4F1A\u88AB\u81EA\u52A8\u8F6C\u6362",paraId:1,tocIndex:1},{value:"\uFF1A\u4E0D\u80FD\u9690\u5F0F\u8F6C\u6362\u4E3A\u5B57\u7B26\u4E32\u6216\u6570\u5B57",paraId:1,tocIndex:1},{value:`// \u521B\u5EFA Symbol
 let s1 = Symbol();
 let s2 = Symbol('foo'); // 'foo' \u662F\u63CF\u8FF0\uFF0C\u7528\u4E8E\u8C03\u8BD5
 let s3 = Symbol('bar');
@@ -5032,7 +6655,7 @@ Object.getOwnPropertySymbols(obj); // [Symbol(a)]
 Reflect.ownKeys(obj); // ["b", Symbol(a)]
 `,paraId:42,tocIndex:22},{value:"\u4E0D\u662F\u5B8C\u5168\u79C1\u6709",paraId:43,tocIndex:22},{value:"\uFF1ASymbol \u5C5E\u6027\u53EF\u4EE5\u901A\u8FC7 ",paraId:43,tocIndex:22},{value:"Object.getOwnPropertySymbols()",paraId:43,tocIndex:22},{value:" \u548C ",paraId:43,tocIndex:22},{value:"Reflect.ownKeys()",paraId:43,tocIndex:22},{value:" \u8BBF\u95EE",paraId:43,tocIndex:22},{value:"\u4E0D\u80FD\u4F7F\u7528 new",paraId:44,tocIndex:22},{value:"\uFF1ASymbol \u662F\u539F\u59CB\u7C7B\u578B\uFF0C\u4E0D\u80FD\u4F7F\u7528 ",paraId:44,tocIndex:22},{value:"new",paraId:44,tocIndex:22},{value:" \u64CD\u4F5C\u7B26",paraId:44,tocIndex:22},{value:`// const s = new Symbol(); // TypeError: Symbol is not a constructor
 const s = Symbol(); // \u6B63\u786E
-`,paraId:45,tocIndex:22},{value:"\u5168\u5C40\u6CE8\u518C\u8868",paraId:46,tocIndex:22},{value:"\uFF1A\u4F7F\u7528 ",paraId:46,tocIndex:22},{value:"Symbol.for()",paraId:46,tocIndex:22},{value:" \u65F6\u8981\u6CE8\u610F\u5168\u5C40\u6CE8\u518C\u8868\u7684\u5F71\u54CD\uFF0C\u907F\u514D\u610F\u5916\u7684 Symbol \u5171\u4EAB",paraId:46,tocIndex:22},{value:"Symbol \u662F ES6 \u5F15\u5165\u7684\u65B0\u7684\u539F\u59CB\u6570\u636E\u7C7B\u578B\uFF0C\u8868\u793A\u72EC\u4E00\u65E0\u4E8C\u7684\u503C",paraId:47,tocIndex:23},{value:"\u4E3B\u8981\u7528\u9014\uFF1A\u9632\u6B62\u5C5E\u6027\u540D\u51B2\u7A81\u3001\u5B9A\u4E49\u5BF9\u8C61\u7684\u79C1\u6709\u5C5E\u6027\u3001\u5B9A\u4E49\u5E38\u91CF",paraId:47,tocIndex:23},{value:"\u901A\u8FC7 ",paraId:47,tocIndex:23},{value:"Symbol.for()",paraId:47,tocIndex:23},{value:" \u53EF\u4EE5\u521B\u5EFA\u5168\u5C40\u6CE8\u518C\u7684 Symbol",paraId:47,tocIndex:23},{value:"Well-Known Symbols \u7528\u4E8E\u81EA\u5B9A\u4E49\u5BF9\u8C61\u7684\u5185\u90E8\u884C\u4E3A",paraId:47,tocIndex:23},{value:"Symbol \u5C5E\u6027\u4E0D\u4F1A\u51FA\u73B0\u5728\u5E38\u89C4\u7684\u5C5E\u6027\u904D\u5386\u4E2D\uFF0C\u4F46\u4E0D\u662F\u5B8C\u5168\u79C1\u6709\u7684",paraId:47,tocIndex:23},{value:"\u5728\u9700\u8981\u771F\u6B63\u79C1\u6709\u5C5E\u6027\u65F6\uFF0C\u5E94\u4F7F\u7528 ES2022 \u7684\u79C1\u6709\u5B57\u6BB5\u8BED\u6CD5\uFF08",paraId:47,tocIndex:23},{value:"#",paraId:47,tocIndex:23},{value:" \u524D\u7F00\uFF09",paraId:47,tocIndex:23}]},20441:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"this",paraId:0,tocIndex:0},{value:" \u662F JavaScript \u4E2D\u7684\u4E00\u4E2A\u5173\u952E\u5B57\uFF0C",paraId:0,tocIndex:0},{value:"\u5B83\u7684\u503C\u5728\u51FD\u6570\u88AB\u8C03\u7528\u65F6\u786E\u5B9A\uFF0C\u6307\u5411\u8C03\u7528\u8BE5\u51FD\u6570\u7684\u5BF9\u8C61",paraId:0,tocIndex:0},{value:"\u3002",paraId:0,tocIndex:0},{value:"this",paraId:0,tocIndex:0},{value:" \u7684\u6307\u5411\u53D6\u51B3\u4E8E\u51FD\u6570\u7684\u8C03\u7528\u65B9\u5F0F\uFF0C\u800C\u4E0D\u662F\u51FD\u6570\u7684\u5B9A\u4E49\u4F4D\u7F6E\u3002",paraId:0,tocIndex:0},{value:"\u5168\u5C40\u73AF\u5883\u4F7F\u7528 ",paraId:1,tocIndex:2},{value:"this",paraId:1,tocIndex:2},{value:"\uFF0C\u5B83\u6307\u7684\u5C31\u662F\u9876\u5C42\u5BF9\u8C61 ",paraId:1,tocIndex:2},{value:"window",paraId:1,tocIndex:2},{value:"\u3002\u4E25\u683C\u6A21\u5F0F\u4E0B\u6307\u5411 ",paraId:1,tocIndex:2},{value:"undefined",paraId:1,tocIndex:2},{value:"\u3002",paraId:1,tocIndex:2},{value:`// \u6211\u4EEC\u4E0D\u9700\u8981\u663E\u5F0F\u5BFC\u5165\uFF0C\u56E0\u4E3A Jest \u4F1A\u81EA\u52A8\u5C06 describe, test, expect \u6CE8\u5165\u5230\u5168\u5C40
+`,paraId:45,tocIndex:22},{value:"\u5168\u5C40\u6CE8\u518C\u8868",paraId:46,tocIndex:22},{value:"\uFF1A\u4F7F\u7528 ",paraId:46,tocIndex:22},{value:"Symbol.for()",paraId:46,tocIndex:22},{value:" \u65F6\u8981\u6CE8\u610F\u5168\u5C40\u6CE8\u518C\u8868\u7684\u5F71\u54CD\uFF0C\u907F\u514D\u610F\u5916\u7684 Symbol \u5171\u4EAB",paraId:46,tocIndex:22},{value:"Symbol \u662F ES6 \u5F15\u5165\u7684\u65B0\u7684\u539F\u59CB\u6570\u636E\u7C7B\u578B\uFF0C\u8868\u793A\u72EC\u4E00\u65E0\u4E8C\u7684\u503C",paraId:47,tocIndex:23},{value:"\u4E3B\u8981\u7528\u9014\uFF1A\u9632\u6B62\u5C5E\u6027\u540D\u51B2\u7A81\u3001\u5B9A\u4E49\u5BF9\u8C61\u7684\u79C1\u6709\u5C5E\u6027\u3001\u5B9A\u4E49\u5E38\u91CF",paraId:47,tocIndex:23},{value:"\u901A\u8FC7 ",paraId:47,tocIndex:23},{value:"Symbol.for()",paraId:47,tocIndex:23},{value:" \u53EF\u4EE5\u521B\u5EFA\u5168\u5C40\u6CE8\u518C\u7684 Symbol",paraId:47,tocIndex:23},{value:"Well-Known Symbols \u7528\u4E8E\u81EA\u5B9A\u4E49\u5BF9\u8C61\u7684\u5185\u90E8\u884C\u4E3A",paraId:47,tocIndex:23},{value:"Symbol \u5C5E\u6027\u4E0D\u4F1A\u51FA\u73B0\u5728\u5E38\u89C4\u7684\u5C5E\u6027\u904D\u5386\u4E2D\uFF0C\u4F46\u4E0D\u662F\u5B8C\u5168\u79C1\u6709\u7684",paraId:47,tocIndex:23},{value:"\u5728\u9700\u8981\u771F\u6B63\u79C1\u6709\u5C5E\u6027\u65F6\uFF0C\u5E94\u4F7F\u7528 ES2022 \u7684\u79C1\u6709\u5B57\u6BB5\u8BED\u6CD5\uFF08",paraId:47,tocIndex:23},{value:"#",paraId:47,tocIndex:23},{value:" \u524D\u7F00\uFF09",paraId:47,tocIndex:23}]},20441:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"this",paraId:0,tocIndex:0},{value:" \u662F JavaScript \u4E2D\u7684\u4E00\u4E2A\u5173\u952E\u5B57\uFF0C",paraId:0,tocIndex:0},{value:"\u5B83\u7684\u503C\u5728\u51FD\u6570\u88AB\u8C03\u7528\u65F6\u786E\u5B9A\uFF0C\u6307\u5411\u8C03\u7528\u8BE5\u51FD\u6570\u7684\u5BF9\u8C61",paraId:0,tocIndex:0},{value:"\u3002",paraId:0,tocIndex:0},{value:"this",paraId:0,tocIndex:0},{value:" \u7684\u6307\u5411\u53D6\u51B3\u4E8E\u51FD\u6570\u7684\u8C03\u7528\u65B9\u5F0F\uFF0C\u800C\u4E0D\u662F\u51FD\u6570\u7684\u5B9A\u4E49\u4F4D\u7F6E\u3002",paraId:0,tocIndex:0},{value:"\u5168\u5C40\u73AF\u5883\u4F7F\u7528 ",paraId:1,tocIndex:2},{value:"this",paraId:1,tocIndex:2},{value:"\uFF0C\u5B83\u6307\u7684\u5C31\u662F\u9876\u5C42\u5BF9\u8C61 ",paraId:1,tocIndex:2},{value:"window",paraId:1,tocIndex:2},{value:"\u3002\u4E25\u683C\u6A21\u5F0F\u4E0B\u6307\u5411 ",paraId:1,tocIndex:2},{value:"undefined",paraId:1,tocIndex:2},{value:"\u3002",paraId:1,tocIndex:2},{value:`// \u6211\u4EEC\u4E0D\u9700\u8981\u663E\u5F0F\u5BFC\u5165\uFF0C\u56E0\u4E3A Jest \u4F1A\u81EA\u52A8\u5C06 describe, test, expect \u6CE8\u5165\u5230\u5168\u5C40
 // \u56E0\u4E3A Jest \u7684 describe \u7B49\u9690\u5F0F\u5BFC\u5165\u4F1A\u4F7F jest \u6D4B\u8BD5\u6587\u4EF6\u6210\u4E3A\u4E00\u4E2A ES \u6A21\u5757
 // \u800C ES \u6A21\u5757\u9ED8\u8BA4\u5C31\u662F\u4E25\u683C\u6A21\u5F0F\uFF0C\u6240\u4EE5\u8FD9\u4E2A\u6848\u5217\u5C31\u4E0D\u5199 Jest \u6D4B\u8BD5\u7528\u4F8B\u4E86\u3002
 
@@ -5266,12 +6889,12 @@ console.log($Bound, $Bound(2), new $Bound().fn());
 };
 
 $.first().second().third(); // \u4F9D\u6B21\u8F93\u51FA\uFF1A'first', 'second', 'third'
-`,paraId:48,tocIndex:15},{value:"\u8FD9\u79CD\u6A21\u5F0F\u5728 jQuery\u3001Promise \u7B49\u5E93\u4E2D\u5E7F\u6CDB\u4F7F\u7528\u3002",paraId:49,tocIndex:15},{value:"this \u7684\u6307\u5411\u89C4\u5219",paraId:50,tocIndex:16},{value:"\uFF1A",paraId:50,tocIndex:16},{value:"\u9ED8\u8BA4\u7ED1\u5B9A",paraId:51,tocIndex:16},{value:"\uFF1A\u5168\u5C40\u73AF\u5883\u6216\u666E\u901A\u51FD\u6570\u8C03\u7528\uFF0C\u6307\u5411 ",paraId:51,tocIndex:16},{value:"window",paraId:51,tocIndex:16},{value:"\uFF08\u4E25\u683C\u6A21\u5F0F\u4E0B\u4E3A ",paraId:51,tocIndex:16},{value:"undefined",paraId:51,tocIndex:16},{value:"\uFF09",paraId:51,tocIndex:16},{value:"\u9690\u5F0F\u7ED1\u5B9A",paraId:51,tocIndex:16},{value:"\uFF1A\u5BF9\u8C61\u65B9\u6CD5\u8C03\u7528\uFF0C\u6307\u5411\u8C03\u7528\u8BE5\u65B9\u6CD5\u7684\u5BF9\u8C61",paraId:51,tocIndex:16},{value:"\u663E\u5F0F\u7ED1\u5B9A",paraId:51,tocIndex:16},{value:"\uFF1A\u901A\u8FC7 ",paraId:51,tocIndex:16},{value:"call",paraId:51,tocIndex:16},{value:"\u3001",paraId:51,tocIndex:16},{value:"apply",paraId:51,tocIndex:16},{value:"\u3001",paraId:51,tocIndex:16},{value:"bind",paraId:51,tocIndex:16},{value:" \u6307\u5B9A ",paraId:51,tocIndex:16},{value:"this",paraId:51,tocIndex:16},{value:"new \u7ED1\u5B9A",paraId:51,tocIndex:16},{value:"\uFF1A\u6784\u9020\u51FD\u6570\u8C03\u7528\uFF0C\u6307\u5411\u65B0\u521B\u5EFA\u7684\u5B9E\u4F8B\u5BF9\u8C61",paraId:51,tocIndex:16},{value:"\u7BAD\u5934\u51FD\u6570",paraId:51,tocIndex:16},{value:"\uFF1A\u6CA1\u6709\u81EA\u5DF1\u7684 ",paraId:51,tocIndex:16},{value:"this",paraId:51,tocIndex:16},{value:"\uFF0C\u7EE7\u627F\u5916\u5C42\u4F5C\u7528\u57DF\u7684 ",paraId:51,tocIndex:16},{value:"this",paraId:51,tocIndex:16},{value:"\u4F18\u5148\u7EA7",paraId:52,tocIndex:16},{value:"\uFF1Anew \u7ED1\u5B9A > \u663E\u5F0F\u7ED1\u5B9A > \u9690\u5F0F\u7ED1\u5B9A > \u9ED8\u8BA4\u7ED1\u5B9A",paraId:52,tocIndex:16},{value:"\u5E38\u89C1\u9677\u9631",paraId:53,tocIndex:16},{value:"\uFF1A",paraId:53,tocIndex:16},{value:"\u65B9\u6CD5\u8D4B\u503C\u5BFC\u81F4 ",paraId:54,tocIndex:16},{value:"this",paraId:54,tocIndex:16},{value:" \u4E22\u5931",paraId:54,tocIndex:16},{value:"\u56DE\u8C03\u51FD\u6570\u4E2D\u7684 ",paraId:54,tocIndex:16},{value:"this",paraId:54,tocIndex:16},{value:" \u6307\u5411",paraId:54,tocIndex:16},{value:"\u5B9A\u65F6\u5668\u3001\u4E8B\u4EF6\u5904\u7406\u51FD\u6570\u4E2D\u7684 ",paraId:54,tocIndex:16},{value:"this",paraId:54,tocIndex:16},{value:"\u89E3\u51B3\u65B9\u6848",paraId:55,tocIndex:16},{value:"\uFF1A\u4F7F\u7528\u7BAD\u5934\u51FD\u6570\u3001",paraId:55,tocIndex:16},{value:"bind()",paraId:55,tocIndex:16},{value:"\u3001\u95ED\u5305\u7B49\u65B9\u5F0F\u56FA\u5B9A ",paraId:55,tocIndex:16},{value:"this",paraId:55,tocIndex:16},{value:" \u6307\u5411\u3002",paraId:55,tocIndex:16}]},20114:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"SX \u5B8C\u6574\u62E5\u62B1\u5927\u6C14\u5C42\u56FE\u6587\u6559\u7A0B",paraId:0,tocIndex:0},{value:"Switch \u6709\u771F\u5B9E\u7CFB\u7EDF\u548C\u865A\u62DF\u7CFB\u7EDF\uFF0C\u771F\u5B9E\u7CFB\u7EDF\u8FDB\u771F\u5B9E\u6B63\u7248\u7CFB\u7EDF\u8054\u7F51\u5347\u7EA7\uFF0C\u865A\u62DF\u7834\u89E3\u7CFB\u7EDF\u7528 Daybreak \u79BB\u7EBF\u5347\u7EA7\u3002",paraId:1,tocIndex:1},{value:"\u{1F4A1} \u66F4\u65B0\u5927\u6C14\u5C42\u548C\u5347\u7EA7 Switch \u7CFB\u7EDF\u662F\u4E24\u6B65\uFF0C\u56E0\u4E3A\u5927\u6C14\u5C42\u5411\u4E0B\u517C\u5BB9\uFF0C\u6240\u4EE5\u5148\u66F4\u65B0\u5927\u6C14\u5C42\uFF0C\u518D\u5347\u7EA7 Switch \u7CFB\u7EDF\u3002",paraId:2,tocIndex:1},{value:"\u{1F552} \u51C6\u5907\u5DE5\u4F5C\uFF1A",paraId:3,tocIndex:1},{value:"\u6587\u4EF6\u4F20\u8F93\u65B9\u5F0F\u53C2\u8003\uFF1A",paraId:4,tocIndex:1},{value:"Switch \u5927\u6C14\u5C42 Hekate \u4E0B\u7684 USB \u4F20\u8F93",paraId:4,tocIndex:1},{value:"\u6216\u7528",paraId:4,tocIndex:1},{value:"\u8BFB\u5361\u5668",paraId:4,tocIndex:1},{value:" (DBI \u4E0D\u652F\u6301\u5927\u6C14\u5C42\u6838\u5FC3\u6587\u4EF6\u4F20\u8F93)\u3002",paraId:4,tocIndex:1},{value:"\u{1F4CB} \u6CE8\u610F\u4E8B\u9879\uFF1A",paraId:5,tocIndex:1},{value:"emuMMC",paraId:6,tocIndex:1},{value:" \u76EE\u5F55\u662F\u5927\u6C14\u5C42\u865A\u62DF\u7CFB\u7EDF\u6240\u5728\u7684\u4F4D\u7F6E\uFF0C\u865A\u62DF\u7CFB\u7EDF\u91CC\u7684\u6E38\u620F\u548C\u5B58\u6863\u90FD\u5728\u91CC\u9762\uFF0C\u6240\u4EE5\u4E0D\u80FD\u5220\u3002",paraId:6,tocIndex:1},{value:"Nintendo",paraId:6,tocIndex:1},{value:" \u76EE\u5F55\u662F\u771F\u5B9E\u7CFB\u7EDF\u6240\u5728\u7684\u4F4D\u7F6E\u771F\u5B9E\u7CFB\u7EDF\u91CC\u7684\u6E38\u620F\u90FD\u5728\u91CC\u9762\uFF0C\u6240\u4EE5\u4E0D\u80FD\u5220",paraId:6,tocIndex:1},{value:"\u6240\u4EE5\u6700\u7A33\u5B9A\u7684\u5927\u6C14\u5C42\u66F4\u65B0\u65B9\u6CD5\uFF1A",paraId:6,tocIndex:1},{value:"\u4FDD\u7559 SD \u5361\u4E0A emuMMC \u548C Nintendo \u4E24\u4E2A\u76EE\u5F55\u540E\u5220\u9664\u5176\u5B83\u6587\u4EF6\uFF0C\u518D\u8986\u76D6\u6700\u65B0\u7684\u5927\u6C14\u5C42\u6574\u5408\u5305\u3002",paraId:6,tocIndex:1},{value:"\u{1F579}\uFE0F \u66F4\u65B0\u6B65\u9AA4\uFF1A",paraId:7,tocIndex:1},{value:"\u4E0B\u8F7D\u6700\u65B0\u5927\u6C14\u5C42\u6574\u5408\u5305\uFF1A",paraId:8,tocIndex:1},{value:"Atmosphere",paraId:8,tocIndex:1},{value:" \u5E76\u8986\u76D6\u66F4\u65B0\u5230 TF \u5361\u6839\u76EE\u5F55\u3002",paraId:8,tocIndex:1},{value:"\u4E0B\u8F7D Switch \u7248\u672C\u56FA\u4EF6\u5305\uFF1A",paraId:8,tocIndex:1},{value:"Switch Firmware \u56FA\u4EF6",paraId:8,tocIndex:1},{value:"\uFF0C\u5E76\u5C06\u56FA\u4EF6\u5305\u89E3\u538B\u540E\u4F20\u8F93\u5230 TF \u5361\u6839\u76EE\u5F55\u3002",paraId:8,tocIndex:1},{value:"\u542F\u52A8\u7CFB\u7EDF\u540E\uFF0C\u8FDB\u5165\u76F8\u518C\uFF0C\u8FD0\u884C Daybreak",paraId:8,tocIndex:1},{value:"\u{1F697} \u56FE\u6587\u6559\u7A0B\uFF1A",paraId:9,tocIndex:1},{value:"Mac \u4E0B\u7528 USB \u8FDE\u63A5 Switch \u9700\u8981 ",paraId:10,tocIndex:2},{value:"Android File Transfer",paraId:10,tocIndex:2},{value:" \u652F\u6301\u3002",paraId:10,tocIndex:2},{value:"\u{1F4BE} \u53C2\u8003\u8D44\u6599\uFF1A",paraId:11,tocIndex:2},{value:"Switch DBI \u56FE\u6587\u4F7F\u7528\u6559\u7A0B",paraId:11,tocIndex:2},{value:"TX \u62E5\u62B1\u5927\u6C14\u5C42\uFF0C\u4F7F\u7528 Mac \u66F4\u65B0\u56FA\u4EF6\u5230 13.2.1 \u65F6\uFF0C\u9047\u5230\u62A5\u9519",paraId:12,tocIndex:3},{value:`\u201Cfailed to get update information, result: 0x00234a02\u201D
+`,paraId:48,tocIndex:15},{value:"\u8FD9\u79CD\u6A21\u5F0F\u5728 jQuery\u3001Promise \u7B49\u5E93\u4E2D\u5E7F\u6CDB\u4F7F\u7528\u3002",paraId:49,tocIndex:15},{value:"this \u7684\u6307\u5411\u89C4\u5219",paraId:50,tocIndex:16},{value:"\uFF1A",paraId:50,tocIndex:16},{value:"\u9ED8\u8BA4\u7ED1\u5B9A",paraId:51,tocIndex:16},{value:"\uFF1A\u5168\u5C40\u73AF\u5883\u6216\u666E\u901A\u51FD\u6570\u8C03\u7528\uFF0C\u6307\u5411 ",paraId:51,tocIndex:16},{value:"window",paraId:51,tocIndex:16},{value:"\uFF08\u4E25\u683C\u6A21\u5F0F\u4E0B\u4E3A ",paraId:51,tocIndex:16},{value:"undefined",paraId:51,tocIndex:16},{value:"\uFF09",paraId:51,tocIndex:16},{value:"\u9690\u5F0F\u7ED1\u5B9A",paraId:51,tocIndex:16},{value:"\uFF1A\u5BF9\u8C61\u65B9\u6CD5\u8C03\u7528\uFF0C\u6307\u5411\u8C03\u7528\u8BE5\u65B9\u6CD5\u7684\u5BF9\u8C61",paraId:51,tocIndex:16},{value:"\u663E\u5F0F\u7ED1\u5B9A",paraId:51,tocIndex:16},{value:"\uFF1A\u901A\u8FC7 ",paraId:51,tocIndex:16},{value:"call",paraId:51,tocIndex:16},{value:"\u3001",paraId:51,tocIndex:16},{value:"apply",paraId:51,tocIndex:16},{value:"\u3001",paraId:51,tocIndex:16},{value:"bind",paraId:51,tocIndex:16},{value:" \u6307\u5B9A ",paraId:51,tocIndex:16},{value:"this",paraId:51,tocIndex:16},{value:"new \u7ED1\u5B9A",paraId:51,tocIndex:16},{value:"\uFF1A\u6784\u9020\u51FD\u6570\u8C03\u7528\uFF0C\u6307\u5411\u65B0\u521B\u5EFA\u7684\u5B9E\u4F8B\u5BF9\u8C61",paraId:51,tocIndex:16},{value:"\u7BAD\u5934\u51FD\u6570",paraId:51,tocIndex:16},{value:"\uFF1A\u6CA1\u6709\u81EA\u5DF1\u7684 ",paraId:51,tocIndex:16},{value:"this",paraId:51,tocIndex:16},{value:"\uFF0C\u7EE7\u627F\u5916\u5C42\u4F5C\u7528\u57DF\u7684 ",paraId:51,tocIndex:16},{value:"this",paraId:51,tocIndex:16},{value:"\u4F18\u5148\u7EA7",paraId:52,tocIndex:16},{value:"\uFF1Anew \u7ED1\u5B9A > \u663E\u5F0F\u7ED1\u5B9A > \u9690\u5F0F\u7ED1\u5B9A > \u9ED8\u8BA4\u7ED1\u5B9A",paraId:52,tocIndex:16},{value:"\u5E38\u89C1\u9677\u9631",paraId:53,tocIndex:16},{value:"\uFF1A",paraId:53,tocIndex:16},{value:"\u65B9\u6CD5\u8D4B\u503C\u5BFC\u81F4 ",paraId:54,tocIndex:16},{value:"this",paraId:54,tocIndex:16},{value:" \u4E22\u5931",paraId:54,tocIndex:16},{value:"\u56DE\u8C03\u51FD\u6570\u4E2D\u7684 ",paraId:54,tocIndex:16},{value:"this",paraId:54,tocIndex:16},{value:" \u6307\u5411",paraId:54,tocIndex:16},{value:"\u5B9A\u65F6\u5668\u3001\u4E8B\u4EF6\u5904\u7406\u51FD\u6570\u4E2D\u7684 ",paraId:54,tocIndex:16},{value:"this",paraId:54,tocIndex:16},{value:"\u89E3\u51B3\u65B9\u6848",paraId:55,tocIndex:16},{value:"\uFF1A\u4F7F\u7528\u7BAD\u5934\u51FD\u6570\u3001",paraId:55,tocIndex:16},{value:"bind()",paraId:55,tocIndex:16},{value:"\u3001\u95ED\u5305\u7B49\u65B9\u5F0F\u56FA\u5B9A ",paraId:55,tocIndex:16},{value:"this",paraId:55,tocIndex:16},{value:" \u6307\u5411\u3002",paraId:55,tocIndex:16}]},20114:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"SX \u5B8C\u6574\u62E5\u62B1\u5927\u6C14\u5C42\u56FE\u6587\u6559\u7A0B",paraId:0,tocIndex:0},{value:"Switch \u6709\u771F\u5B9E\u7CFB\u7EDF\u548C\u865A\u62DF\u7CFB\u7EDF\uFF0C\u771F\u5B9E\u7CFB\u7EDF\u8FDB\u771F\u5B9E\u6B63\u7248\u7CFB\u7EDF\u8054\u7F51\u5347\u7EA7\uFF0C\u865A\u62DF\u7834\u89E3\u7CFB\u7EDF\u7528 Daybreak \u79BB\u7EBF\u5347\u7EA7\u3002",paraId:1,tocIndex:1},{value:"\u{1F4A1} \u66F4\u65B0\u5927\u6C14\u5C42\u548C\u5347\u7EA7 Switch \u7CFB\u7EDF\u662F\u4E24\u6B65\uFF0C\u56E0\u4E3A\u5927\u6C14\u5C42\u5411\u4E0B\u517C\u5BB9\uFF0C\u6240\u4EE5\u5148\u66F4\u65B0\u5927\u6C14\u5C42\uFF0C\u518D\u5347\u7EA7 Switch \u7CFB\u7EDF\u3002",paraId:2,tocIndex:1},{value:"\u{1F552} \u51C6\u5907\u5DE5\u4F5C\uFF1A",paraId:3,tocIndex:1},{value:"\u6587\u4EF6\u4F20\u8F93\u65B9\u5F0F\u53C2\u8003\uFF1A",paraId:4,tocIndex:1},{value:"Switch \u5927\u6C14\u5C42 Hekate \u4E0B\u7684 USB \u4F20\u8F93",paraId:4,tocIndex:1},{value:"\u6216\u7528",paraId:4,tocIndex:1},{value:"\u8BFB\u5361\u5668",paraId:4,tocIndex:1},{value:" (DBI \u4E0D\u652F\u6301\u5927\u6C14\u5C42\u6838\u5FC3\u6587\u4EF6\u4F20\u8F93)\u3002",paraId:4,tocIndex:1},{value:"\u{1F4CB} \u6CE8\u610F\u4E8B\u9879\uFF1A",paraId:5,tocIndex:1},{value:"emuMMC",paraId:6,tocIndex:1},{value:" \u76EE\u5F55\u662F\u5927\u6C14\u5C42\u865A\u62DF\u7CFB\u7EDF\u6240\u5728\u7684\u4F4D\u7F6E\uFF0C\u865A\u62DF\u7CFB\u7EDF\u91CC\u7684\u6E38\u620F\u548C\u5B58\u6863\u90FD\u5728\u91CC\u9762\uFF0C\u6240\u4EE5\u4E0D\u80FD\u5220\u3002",paraId:6,tocIndex:1},{value:"Nintendo",paraId:6,tocIndex:1},{value:" \u76EE\u5F55\u662F\u771F\u5B9E\u7CFB\u7EDF\u6240\u5728\u7684\u4F4D\u7F6E\u771F\u5B9E\u7CFB\u7EDF\u91CC\u7684\u6E38\u620F\u90FD\u5728\u91CC\u9762\uFF0C\u6240\u4EE5\u4E0D\u80FD\u5220",paraId:6,tocIndex:1},{value:"\u6240\u4EE5\u6700\u7A33\u5B9A\u7684\u5927\u6C14\u5C42\u66F4\u65B0\u65B9\u6CD5\uFF1A",paraId:6,tocIndex:1},{value:"\u4FDD\u7559 SD \u5361\u4E0A emuMMC \u548C Nintendo \u4E24\u4E2A\u76EE\u5F55\u540E\u5220\u9664\u5176\u5B83\u6587\u4EF6\uFF0C\u518D\u8986\u76D6\u6700\u65B0\u7684\u5927\u6C14\u5C42\u6574\u5408\u5305\u3002",paraId:6,tocIndex:1},{value:"\u{1F579}\uFE0F \u66F4\u65B0\u6B65\u9AA4\uFF1A",paraId:7,tocIndex:1},{value:"\u4E0B\u8F7D\u6700\u65B0\u5927\u6C14\u5C42\u6574\u5408\u5305\uFF1A",paraId:8,tocIndex:1},{value:"Atmosphere",paraId:8,tocIndex:1},{value:" \u5E76\u8986\u76D6\u66F4\u65B0\u5230 TF \u5361\u6839\u76EE\u5F55\u3002",paraId:8,tocIndex:1},{value:"\u4E0B\u8F7D Switch \u7248\u672C\u56FA\u4EF6\u5305\uFF1A",paraId:8,tocIndex:1},{value:"Switch Firmware \u56FA\u4EF6",paraId:8,tocIndex:1},{value:"\uFF0C\u5E76\u5C06\u56FA\u4EF6\u5305\u89E3\u538B\u540E\u4F20\u8F93\u5230 TF \u5361\u6839\u76EE\u5F55\u3002",paraId:8,tocIndex:1},{value:"\u542F\u52A8\u7CFB\u7EDF\u540E\uFF0C\u8FDB\u5165\u76F8\u518C\uFF0C\u8FD0\u884C Daybreak",paraId:8,tocIndex:1},{value:"\u{1F697} \u56FE\u6587\u6559\u7A0B\uFF1A",paraId:9,tocIndex:1},{value:"Mac \u4E0B\u7528 USB \u8FDE\u63A5 Switch \u9700\u8981 ",paraId:10,tocIndex:2},{value:"Android File Transfer",paraId:10,tocIndex:2},{value:" \u652F\u6301\u3002",paraId:10,tocIndex:2},{value:"\u{1F4BE} \u53C2\u8003\u8D44\u6599\uFF1A",paraId:11,tocIndex:2},{value:"Switch DBI \u56FE\u6587\u4F7F\u7528\u6559\u7A0B",paraId:11,tocIndex:2},{value:"TX \u62E5\u62B1\u5927\u6C14\u5C42\uFF0C\u4F7F\u7528 Mac \u66F4\u65B0\u56FA\u4EF6\u5230 13.2.1 \u65F6\uFF0C\u9047\u5230\u62A5\u9519",paraId:12,tocIndex:3},{value:`\u201Cfailed to get update information, result: 0x00234a02\u201D
 `,paraId:13,tocIndex:3},{value:"\u7ECF\u8FC7 Google\uFF0C\u5728\u8FD9\u4E2A ",paraId:14,tocIndex:3},{value:"Error trying to update with Daybreak",paraId:14,tocIndex:3},{value:" \u8BA8\u8BBA\u4E0B\u7684 ",paraId:14,tocIndex:3},{value:"#17",paraId:14,tocIndex:3},{value:" \u5F97\u5230\u4E86\u6211\u4EEC\u60F3\u8981\u7684\u7B54\u6848\u3002",paraId:14,tocIndex:3},{value:"\u95EE\u9898\u53CA\u89E3\u51B3\u65B9\u6848",paraId:15,tocIndex:3},{value:" (\u5907\u4EFD)",paraId:15,tocIndex:3},{value:"\u5982\u679C\u4F60\u5E73\u5E38\u662F\u7528 PC \u6765\u7BA1\u7406 SD \u5361\u4E2D\u7684\u5185\u5BB9\uFF0C\u800C\u5F53\u4F60\u67D0\u6B21\u628A SD \u5361\u63D2\u5165 Mac \u4E2D\uFF0C\u518D\u63D2\u56DE NS \u4E2D\uFF0C\u5F80\u5F80\u5C31\u4F1A\u62A5\u9519\u65E0\u6CD5\u5F00\u673A\u3002\u5176\u539F\u56E0\u4E3B\u8981\u548C Archive Bit \u6709\u5173\u3002",paraId:16,tocIndex:3},{value:`Some of you have noticed, that thinks like Homebrew-Launcher and LayeredFS-Injects aren\u2019t working as expected when using MacOS for SD-Card-Management.
 
 The problem is, MacOS is setting an \u201Carchive flag\u201D on every sd-card mounted and the switch won\u2019t read that folders.
 `,paraId:17,tocIndex:3},{value:"\u6B65\u9AA4\u4E00",paraId:18,tocIndex:3},{value:"\u3001\u5220\u9664 macOS \u4EA7\u751F\u7684\u5783\u573E",paraId:18,tocIndex:3},{value:"\u5728\u5C06 SD \u5361\u63D2\u5165 Mac\uFF0C\u5E76\u590D\u5236\u3001\u4FEE\u6539\u5B8C\u6587\u4EF6\u540E\uFF0CmacOS \u7CFB\u7EDF\u4F1A\u5728 SD \u5361\u5185\u4EA7\u751F\u4F8B\u5982 ",paraId:19,tocIndex:3},{value:".DS_Store",paraId:19,tocIndex:3},{value:" \u7B49\u5783\u573E\u6587\u4EF6\uFF0C\u6211\u4EEC\u53EF\u4EE5\u4E0B\u8F7D ",paraId:19,tocIndex:3},{value:"CleanEject",paraId:19,tocIndex:3},{value:" \u8FDB\u884C\u6E05\u7406\uFF0C\u4F1A\u81EA\u52A8\u6E05\u7406\u5B8C\u5E76\u5F39\u51FA SD \u5361\u3002",paraId:19,tocIndex:3},{value:"\u5173\u4E8E CleanEject \u542F\u52A8\u65F6\u63D0\u793A\uFF0C\u672A\u83B7\u5F97\u6388\u6743\u5C06 Apple \u4E8B\u4EF6\u53D1\u9001\u7ED9 Finder\u3002",paraId:20,tocIndex:3},{value:"\u539F\u56E0\u662F Mac \u66F4\u65B0\u540E\uFF0C\u81EA\u52A8\u5316\u65E0\u6CD5\u624B\u52A8\u6DFB\u52A0\uFF0C\u6211\u4EEC\u53EF\u4EE5\u4F7F\u7528 Terminal \u65B9\u5F0F\u6765\u8FD0\u884C\u8F6F\u4EF6\u3002",paraId:21,tocIndex:3},{value:"\u8FD0\u884C\u7EC8\u7AEF\uFF0C\u628A iTerm \u6DFB\u52A0\u5230\u81EA\u52A8\u5316\u4E2D\u5373\u53EF\u3002",paraId:22,tocIndex:3},{value:"\u6B65\u9AA4\u4E8C",paraId:23,tocIndex:3},{value:"\u3001\u4FEE\u590D archive flag \u95EE\u9898",paraId:23,tocIndex:3},{value:"\u5176\u5B9E\u8FD9\u4E2A\u529F\u80FD\u5728 Hekate \u4E2D\u5C31\u5185\u7F6E\u4E86\uFF0C\u53EF\u4EE5\u901A\u8FC7\u4EE5\u4E0B\u6B65\u9AA4\u6765\u89E3\u51B3\uFF1A",paraId:24,tocIndex:3},{value:`\u5982\u679C\u4F60\u6253\u5F00\u4E86\u81EA\u52A8\u8FDB\u5165\u865A\u62DF\u7CFB\u7EDF (\u9ED8\u8BA4\u6253\u5F00)\uFF0C\u5219\u9700\u8981\u5728\u542F\u52A8\u65F6\uFF0C\u770B\u5230\u5F00\u673A Logo \u5C31\u6309\u4F4F - \u952E\uFF0C\u8FDB\u5165 Hekate \u83DC\u5355
-\u9009\u62E9 `,paraId:25,tocIndex:3},{value:"Tools > Arch bit \u2022 RCM \u2022 Touch \u2022 Partition > Fix Archive Bit",paraId:25,tocIndex:3},{value:" \u8FDB\u884C\u4FEE\u590D",paraId:25,tocIndex:3},{value:"\u89E3\u51B3\u65B9\u6848\u6765\u81EA\uFF1A",paraId:26,tocIndex:3},{value:"\u5982\u4F55\u4F18\u96C5\u5730\u5728 macOS \u4E0A\u7BA1\u7406 NS",paraId:26,tocIndex:3},{value:"\u53C2\u7167\uFF1A",paraId:27,tocIndex:4},{value:"\u5229\u7528 ClashX Pro\uFF0C\u52A0\u901F\u4F60\u7684 Switch",paraId:27,tocIndex:4},{value:"\u6253\u5F00 ClashX Pro\uFF0C\u5E76\u542F\u7528\u589E\u5F3A\u6A21\u5F0F",paraId:28,tocIndex:5},{value:"\u786E\u8BA4\u4F60\u7684\u4EE3\u7406\u8282\u70B9\u652F\u6301 UDP \u8F6C\u53D1",paraId:28,tocIndex:5},{value:"\u5728\u672C\u673A\u7684\u7F51\u7EDC\u8BBE\u7F6E\u4E2D\u67E5\u770B\u672C\u673A IP\uFF1A",paraId:29,tocIndex:6},{value:"\u5728 Switch \u7684\u7F51\u7EDC\u8BBE\u7F6E\u4E2D\uFF0C\u8FDE\u63A5\u4E0E Mac \u76F8\u540C\u7684 WiFi\uFF0C\u7136\u540E\u4FEE\u6539\u7F51\u7EDC\u8BBE\u7F6E\uFF1A",paraId:30,tocIndex:6},{value:"\u5C06 ",paraId:31,tocIndex:6},{value:"IP \u5730\u5740\u8BBE\u7F6E",paraId:31,tocIndex:6},{value:" \u6539\u4E3A ",paraId:31,tocIndex:6},{value:"\u624B\u52A8",paraId:31,tocIndex:6},{value:"\uFF0C\u5E76\u586B\u5199\u4E00\u4E2A IP \u5730\u5740\uFF08\u5982\u679C\u4F60\u7684\u7535\u8111 IP \u662F ",paraId:31,tocIndex:6},{value:"192.168.1.XXX",paraId:31,tocIndex:6},{value:"\uFF0C\u8FD9\u91CC\u9700\u8981\u586B\u5199 ",paraId:31,tocIndex:6},{value:"192.168.1.YYY",paraId:31,tocIndex:6},{value:"\uFF0C\u524D\u4E09\u6BB5\u4FDD\u6301\u76F8\u540C\uFF09\u3002",paraId:31,tocIndex:6},{value:"\u5C06 ",paraId:31,tocIndex:6},{value:"\u7F51\u5173",paraId:31,tocIndex:6},{value:" \u548C ",paraId:31,tocIndex:6},{value:"\u9996\u9009 DNS",paraId:31,tocIndex:6},{value:" \u586B\u5199\u4E3A Mac \u7684 IP\u3002",paraId:31,tocIndex:6},{value:"\u4FDD\u5B58\u8BBE\u7F6E\uFF0C\u7136\u540E\u91CD\u65B0\u8FDE\u63A5\u7F51\u7EDC\uFF0C\u5C31\u53EF\u4EE5\u4EAB\u53D7\u52A0\u901F\u6548\u679C\u4E86\u3002",paraId:32,tocIndex:6}]},69030:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"TS-Pattern \u662F\u4E00\u4E2A\u4E3A TypeScript \u8BBE\u8BA1\u7684\u8BE6\u5C3D\u6A21\u5F0F\u5339\u914D\u5E93\uFF0C\u5B83\u63D0\u4F9B\u4E86\u667A\u80FD\u7684\u7C7B\u578B\u63A8\u65AD\uFF0C\u4F7F\u6761\u4EF6\u903B\u8F91\u66F4\u52A0\u53EF\u8BFB\u548C\u5B89\u5168\u3002\u901A\u8FC7\u6A21\u5F0F\u5339\u914D\uFF0C\u4F60\u53EF\u4EE5\u7528\u58F0\u660E\u5F0F\u7684\u65B9\u5F0F\u5904\u7406\u590D\u6742\u7684\u6570\u636E\u7ED3\u6784\uFF0C\u540C\u65F6\u83B7\u5F97\u5B8C\u6574\u7684\u7C7B\u578B\u5B89\u5168\u4FDD\u8BC1\u3002",paraId:0,tocIndex:1},{value:"\u7C7B\u578B\u5B89\u5168",paraId:1,tocIndex:2},{value:"\uFF1A\u81EA\u52A8\u63A8\u65AD\u7C7B\u578B\uFF0C\u51CF\u5C11\u7C7B\u578B\u9519\u8BEF",paraId:1,tocIndex:2},{value:"\u8BE6\u5C3D\u6027\u68C0\u67E5",paraId:1,tocIndex:2},{value:"\uFF1A\u7F16\u8BD1\u65F6\u786E\u4FDD\u6240\u6709\u60C5\u51B5\u90FD\u88AB\u5904\u7406",paraId:1,tocIndex:2},{value:"\u53EF\u8BFB\u6027\u5F3A",paraId:1,tocIndex:2},{value:"\uFF1A\u58F0\u660E\u5F0F\u8BED\u6CD5\u6BD4\u4F20\u7EDF\u7684 if-else \u66F4\u6E05\u6670",paraId:1,tocIndex:2},{value:"\u529F\u80FD\u5F3A\u5927",paraId:1,tocIndex:2},{value:"\uFF1A\u652F\u6301\u590D\u6742\u7684\u5D4C\u5957\u6A21\u5F0F\u3001\u5B88\u536B\u6761\u4EF6\u7B49",paraId:1,tocIndex:2},{value:"\u4F60\u53EF\u4EE5\u4F7F\u7528\u4EFB\u4F55\u5305\u7BA1\u7406\u5668\u5B89\u88C5 ts-pattern\uFF1A",paraId:2,tocIndex:3},{value:`# npm
+\u9009\u62E9 `,paraId:25,tocIndex:3},{value:"Tools > Arch bit \u2022 RCM \u2022 Touch \u2022 Partition > Fix Archive Bit",paraId:25,tocIndex:3},{value:" \u8FDB\u884C\u4FEE\u590D",paraId:25,tocIndex:3},{value:"\u89E3\u51B3\u65B9\u6848\u6765\u81EA\uFF1A",paraId:26,tocIndex:3},{value:"\u5982\u4F55\u4F18\u96C5\u5730\u5728 macOS \u4E0A\u7BA1\u7406 NS",paraId:26,tocIndex:3},{value:"\u53C2\u7167\uFF1A",paraId:27,tocIndex:4},{value:"\u5229\u7528 ClashX Pro\uFF0C\u52A0\u901F\u4F60\u7684 Switch",paraId:27,tocIndex:4},{value:"\u6253\u5F00 ClashX Pro\uFF0C\u5E76\u542F\u7528\u589E\u5F3A\u6A21\u5F0F",paraId:28,tocIndex:5},{value:"\u786E\u8BA4\u4F60\u7684\u4EE3\u7406\u8282\u70B9\u652F\u6301 UDP \u8F6C\u53D1",paraId:28,tocIndex:5},{value:"\u5728\u672C\u673A\u7684\u7F51\u7EDC\u8BBE\u7F6E\u4E2D\u67E5\u770B\u672C\u673A IP\uFF1A",paraId:29,tocIndex:6},{value:"\u5728 Switch \u7684\u7F51\u7EDC\u8BBE\u7F6E\u4E2D\uFF0C\u8FDE\u63A5\u4E0E Mac \u76F8\u540C\u7684 WiFi\uFF0C\u7136\u540E\u4FEE\u6539\u7F51\u7EDC\u8BBE\u7F6E\uFF1A",paraId:30,tocIndex:6},{value:"\u5C06 ",paraId:31,tocIndex:6},{value:"IP \u5730\u5740\u8BBE\u7F6E",paraId:31,tocIndex:6},{value:" \u6539\u4E3A ",paraId:31,tocIndex:6},{value:"\u624B\u52A8",paraId:31,tocIndex:6},{value:"\uFF0C\u5E76\u586B\u5199\u4E00\u4E2A IP \u5730\u5740\uFF08\u5982\u679C\u4F60\u7684\u7535\u8111 IP \u662F ",paraId:31,tocIndex:6},{value:"192.168.1.XXX",paraId:31,tocIndex:6},{value:"\uFF0C\u8FD9\u91CC\u9700\u8981\u586B\u5199 ",paraId:31,tocIndex:6},{value:"192.168.1.YYY",paraId:31,tocIndex:6},{value:"\uFF0C\u524D\u4E09\u6BB5\u4FDD\u6301\u76F8\u540C\uFF09\u3002",paraId:31,tocIndex:6},{value:"\u5C06 ",paraId:31,tocIndex:6},{value:"\u7F51\u5173",paraId:31,tocIndex:6},{value:" \u548C ",paraId:31,tocIndex:6},{value:"\u9996\u9009 DNS",paraId:31,tocIndex:6},{value:" \u586B\u5199\u4E3A Mac \u7684 IP\u3002",paraId:31,tocIndex:6},{value:"\u4FDD\u5B58\u8BBE\u7F6E\uFF0C\u7136\u540E\u91CD\u65B0\u8FDE\u63A5\u7F51\u7EDC\uFF0C\u5C31\u53EF\u4EE5\u4EAB\u53D7\u52A0\u901F\u6548\u679C\u4E86\u3002",paraId:32,tocIndex:6}]},69030:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"TS-Pattern \u662F\u4E00\u4E2A\u4E3A TypeScript \u8BBE\u8BA1\u7684\u8BE6\u5C3D\u6A21\u5F0F\u5339\u914D\u5E93\uFF0C\u5B83\u63D0\u4F9B\u4E86\u667A\u80FD\u7684\u7C7B\u578B\u63A8\u65AD\uFF0C\u4F7F\u6761\u4EF6\u903B\u8F91\u66F4\u52A0\u53EF\u8BFB\u548C\u5B89\u5168\u3002\u901A\u8FC7\u6A21\u5F0F\u5339\u914D\uFF0C\u4F60\u53EF\u4EE5\u7528\u58F0\u660E\u5F0F\u7684\u65B9\u5F0F\u5904\u7406\u590D\u6742\u7684\u6570\u636E\u7ED3\u6784\uFF0C\u540C\u65F6\u83B7\u5F97\u5B8C\u6574\u7684\u7C7B\u578B\u5B89\u5168\u4FDD\u8BC1\u3002",paraId:0,tocIndex:1},{value:"\u7C7B\u578B\u5B89\u5168",paraId:1,tocIndex:2},{value:"\uFF1A\u81EA\u52A8\u63A8\u65AD\u7C7B\u578B\uFF0C\u51CF\u5C11\u7C7B\u578B\u9519\u8BEF",paraId:1,tocIndex:2},{value:"\u8BE6\u5C3D\u6027\u68C0\u67E5",paraId:1,tocIndex:2},{value:"\uFF1A\u7F16\u8BD1\u65F6\u786E\u4FDD\u6240\u6709\u60C5\u51B5\u90FD\u88AB\u5904\u7406",paraId:1,tocIndex:2},{value:"\u53EF\u8BFB\u6027\u5F3A",paraId:1,tocIndex:2},{value:"\uFF1A\u58F0\u660E\u5F0F\u8BED\u6CD5\u6BD4\u4F20\u7EDF\u7684 if-else \u66F4\u6E05\u6670",paraId:1,tocIndex:2},{value:"\u529F\u80FD\u5F3A\u5927",paraId:1,tocIndex:2},{value:"\uFF1A\u652F\u6301\u590D\u6742\u7684\u5D4C\u5957\u6A21\u5F0F\u3001\u5B88\u536B\u6761\u4EF6\u7B49",paraId:1,tocIndex:2},{value:"\u4F60\u53EF\u4EE5\u4F7F\u7528\u4EFB\u4F55\u5305\u7BA1\u7406\u5668\u5B89\u88C5 ts-pattern\uFF1A",paraId:2,tocIndex:3},{value:`# npm
 npm install ts-pattern
 
 # pnpm
@@ -5678,14 +7301,57 @@ match(value)
 match(value)
   .with(P.set(P.number), (set) => 'set of numbers')
   .with(P.map('key', P.number), (map) => 'map');
-`,paraId:45,tocIndex:35},{value:"TS-Pattern \u7684\u8BBE\u8BA1\u5DF2\u7ECF\u76F8\u5F53\u9AD8\u6548\uFF0C\u4F46\u5982\u679C\u9700\u8981\u6781\u81F4\u6027\u80FD\uFF0C\u53EF\u4EE5\u8003\u8651\u4F7F\u7528 ",paraId:46,tocIndex:36},{value:"Pattycake",paraId:46,tocIndex:36},{value:" \u2014\u2014 \u4E00\u4E2A TS-Pattern \u7684\u4F18\u5316\u7F16\u8BD1\u5668\uFF0C\u5B83\u53EF\u4EE5\u5C06\u6A21\u5F0F\u5339\u914D\u8F6C\u6362\u4E3A\u9AD8\u6548\u7684 if \u8BED\u53E5\uFF0C\u5B9E\u73B0\u96F6\u8FD0\u884C\u65F6\u5F00\u9500\u3002",paraId:46,tocIndex:36},{value:"TS-Pattern \u662F\u4E00\u4E2A\u5F3A\u5927\u800C\u4F18\u96C5\u7684\u5E93\uFF0C\u5B83\u5C06\u6A21\u5F0F\u5339\u914D\u5E26\u5165 TypeScript \u751F\u6001\u7CFB\u7EDF\u3002\u901A\u8FC7\uFF1A",paraId:47,tocIndex:37},{value:"\u7C7B\u578B\u5B89\u5168\u7684\u6A21\u5F0F\u5339\u914D",paraId:48,tocIndex:37},{value:"\uFF1A\u6D88\u9664\u8FD0\u884C\u65F6\u9519\u8BEF",paraId:48,tocIndex:37},{value:"\u8BE6\u5C3D\u6027\u68C0\u67E5",paraId:48,tocIndex:37},{value:"\uFF1A\u786E\u4FDD\u5904\u7406\u6240\u6709\u60C5\u51B5",paraId:48,tocIndex:37},{value:"\u4E30\u5BCC\u7684 API",paraId:48,tocIndex:37},{value:"\uFF1A\u6EE1\u8DB3\u5404\u79CD\u590D\u6742\u573A\u666F",paraId:48,tocIndex:37},{value:"\u4F18\u79C0\u7684\u7C7B\u578B\u63A8\u65AD",paraId:48,tocIndex:37},{value:"\uFF1A\u51CF\u5C11\u624B\u52A8\u7C7B\u578B\u6CE8\u89E3",paraId:48,tocIndex:37},{value:"\u4F60\u53EF\u4EE5\u7F16\u5199\u66F4\u52A0\u5065\u58EE\u3001\u53EF\u8BFB\u548C\u53EF\u7EF4\u62A4\u7684 TypeScript \u4EE3\u7801\u3002\u65E0\u8BBA\u662F\u5904\u7406\u590D\u6742\u7684\u72B6\u6001\u673A\u3001\u9A8C\u8BC1\u5916\u90E8\u6570\u636E\uFF0C\u8FD8\u662F\u7B80\u5316\u6761\u4EF6\u903B\u8F91\uFF0CTS-Pattern \u90FD\u662F\u4E00\u4E2A\u503C\u5F97\u4FE1\u8D56\u7684\u5DE5\u5177\u3002",paraId:49,tocIndex:37},{value:"\u5B98\u65B9 GitHub \u4ED3\u5E93",paraId:50,tocIndex:38},{value:"\u5B8C\u6574 API \u6587\u6863",paraId:50,tocIndex:38},{value:"v4 \u5230 v5 \u8FC1\u79FB\u6307\u5357",paraId:50,tocIndex:38}]},15497:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[]},57274:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"\u5BF9\u4E8E ",paraId:0,tocIndex:0},{value:"PicGo-electron",paraId:0,tocIndex:0},{value:" \u7528\u6237\uFF0C\u9700\u8981\u5728 VSCode \u4E2D\u914D\u7F6E PicGo \u6269\u5C55\u4F7F\u7528\u76F8\u540C\u7684\u914D\u7F6E\u6587\u4EF6\u8DEF\u5F84\uFF1A",paraId:0,tocIndex:0},{value:"PicGo \u6269\u5C55\u63D0\u4F9B\u4E86\u4FBF\u6377\u7684\u5FEB\u6377\u952E\u64CD\u4F5C\uFF1A",paraId:1,tocIndex:1},{value:"\u4E0A\u4F20\u56FE\u7247",paraId:2,tocIndex:1},{value:"\uFF1A",paraId:2,tocIndex:1},{value:"Ctrl + Alt + U",paraId:2,tocIndex:1},{value:"\uFF08Windows/Linux\uFF09\u6216 ",paraId:2,tocIndex:1},{value:"Cmd + Opt + U",paraId:2,tocIndex:1},{value:"\uFF08macOS\uFF09",paraId:2,tocIndex:1},{value:"\u5176\u4ED6\u64CD\u4F5C\u53EF\u901A\u8FC7\u547D\u4EE4\u9762\u677F\uFF08",paraId:2,tocIndex:1},{value:"Ctrl+Shift+P",paraId:2,tocIndex:1},{value:'\uFF09\u641C\u7D22 "PicGo" \u67E5\u770B',paraId:2,tocIndex:1},{value:"\u66F4\u591A\u8BE6\u7EC6\u4FE1\u606F\uFF0C\u8BF7\u8BBF\u95EE ",paraId:3,tocIndex:1},{value:"vs-picgo \u6269\u5C55\u9875\u9762",paraId:3,tocIndex:1},{value:"\u3002",paraId:3,tocIndex:1},{value:"\u9996\u5148\u786E\u4FDD\u60A8\u62E5\u6709 GitHub \u8D26\u53F7\uFF0C\u7136\u540E\u521B\u5EFA\u4E00\u4E2A\u65B0\u7684\u516C\u5171\u4ED3\u5E93\uFF1A",paraId:4,tocIndex:3},{value:"\u8BF7\u8BB0\u4E0B\u60A8\u8BBE\u7F6E\u7684\u4ED3\u5E93\u540D\u79F0\u3002",paraId:5,tocIndex:3},{value:"\u8BBF\u95EE ",paraId:6,tocIndex:4},{value:"GitHub Token \u8BBE\u7F6E\u9875\u9762",paraId:6,tocIndex:4},{value:"\uFF0C\u70B9\u51FB ",paraId:6,tocIndex:4},{value:"Generate new token",paraId:6,tocIndex:4},{value:"\uFF1A",paraId:6,tocIndex:4},{value:"\u5728\u6743\u9650\u8BBE\u7F6E\u4E2D\uFF0C\u81F3\u5C11\u52FE\u9009 ",paraId:7,tocIndex:4},{value:"repo",paraId:7,tocIndex:4},{value:" \u6743\u9650\uFF0C\u7136\u540E\u6EDA\u52A8\u5230\u9875\u9762\u5E95\u90E8\u70B9\u51FB ",paraId:7,tocIndex:4},{value:"Generate token",paraId:7,tocIndex:4},{value:"\uFF1A",paraId:7,tocIndex:4},{value:"\u91CD\u8981\u63D0\u793A",paraId:8,tocIndex:4},{value:"\uFF1AToken \u751F\u6210\u540E\u53EA\u4F1A\u663E\u793A\u4E00\u6B21\uFF0C\u8BF7\u7ACB\u5373\u590D\u5236\u5E76\u59A5\u5584\u4FDD\u5B58\uFF1A",paraId:8,tocIndex:4},{value:"\u5728 VSCode PicGo \u6269\u5C55\u914D\u7F6E\u4E2D\u586B\u5199\u4EE5\u4E0B\u4FE1\u606F\uFF1A",paraId:9,tocIndex:5},{value:`{
+`,paraId:45,tocIndex:35},{value:"TS-Pattern \u7684\u8BBE\u8BA1\u5DF2\u7ECF\u76F8\u5F53\u9AD8\u6548\uFF0C\u4F46\u5982\u679C\u9700\u8981\u6781\u81F4\u6027\u80FD\uFF0C\u53EF\u4EE5\u8003\u8651\u4F7F\u7528 ",paraId:46,tocIndex:36},{value:"Pattycake",paraId:46,tocIndex:36},{value:" \u2014\u2014 \u4E00\u4E2A TS-Pattern \u7684\u4F18\u5316\u7F16\u8BD1\u5668\uFF0C\u5B83\u53EF\u4EE5\u5C06\u6A21\u5F0F\u5339\u914D\u8F6C\u6362\u4E3A\u9AD8\u6548\u7684 if \u8BED\u53E5\uFF0C\u5B9E\u73B0\u96F6\u8FD0\u884C\u65F6\u5F00\u9500\u3002",paraId:46,tocIndex:36},{value:"TS-Pattern \u662F\u4E00\u4E2A\u5F3A\u5927\u800C\u4F18\u96C5\u7684\u5E93\uFF0C\u5B83\u5C06\u6A21\u5F0F\u5339\u914D\u5E26\u5165 TypeScript \u751F\u6001\u7CFB\u7EDF\u3002\u901A\u8FC7\uFF1A",paraId:47,tocIndex:37},{value:"\u7C7B\u578B\u5B89\u5168\u7684\u6A21\u5F0F\u5339\u914D",paraId:48,tocIndex:37},{value:"\uFF1A\u6D88\u9664\u8FD0\u884C\u65F6\u9519\u8BEF",paraId:48,tocIndex:37},{value:"\u8BE6\u5C3D\u6027\u68C0\u67E5",paraId:48,tocIndex:37},{value:"\uFF1A\u786E\u4FDD\u5904\u7406\u6240\u6709\u60C5\u51B5",paraId:48,tocIndex:37},{value:"\u4E30\u5BCC\u7684 API",paraId:48,tocIndex:37},{value:"\uFF1A\u6EE1\u8DB3\u5404\u79CD\u590D\u6742\u573A\u666F",paraId:48,tocIndex:37},{value:"\u4F18\u79C0\u7684\u7C7B\u578B\u63A8\u65AD",paraId:48,tocIndex:37},{value:"\uFF1A\u51CF\u5C11\u624B\u52A8\u7C7B\u578B\u6CE8\u89E3",paraId:48,tocIndex:37},{value:"\u4F60\u53EF\u4EE5\u7F16\u5199\u66F4\u52A0\u5065\u58EE\u3001\u53EF\u8BFB\u548C\u53EF\u7EF4\u62A4\u7684 TypeScript \u4EE3\u7801\u3002\u65E0\u8BBA\u662F\u5904\u7406\u590D\u6742\u7684\u72B6\u6001\u673A\u3001\u9A8C\u8BC1\u5916\u90E8\u6570\u636E\uFF0C\u8FD8\u662F\u7B80\u5316\u6761\u4EF6\u903B\u8F91\uFF0CTS-Pattern \u90FD\u662F\u4E00\u4E2A\u503C\u5F97\u4FE1\u8D56\u7684\u5DE5\u5177\u3002",paraId:49,tocIndex:37},{value:"\u5B98\u65B9 GitHub \u4ED3\u5E93",paraId:50,tocIndex:38},{value:"\u5B8C\u6574 API \u6587\u6863",paraId:50,tocIndex:38},{value:"v4 \u5230 v5 \u8FC1\u79FB\u6307\u5357",paraId:50,tocIndex:38}]},15497:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[]},60563:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"Git \u652F\u6301\u4E24\u79CD\u5E38\u89C1\u7684\u8FDC\u7A0B\u8FDE\u63A5\u65B9\u5F0F\uFF1A",paraId:0,tocIndex:0},{value:"HTTPS",paraId:0,tocIndex:0},{value:" \u548C ",paraId:0,tocIndex:0},{value:"SSH",paraId:0,tocIndex:0},{value:"\u3002",paraId:0,tocIndex:0},{value:"\u65E0\u8BBA\u4F60\u4F7F\u7528 GitHub\u3001GitLab\u3001Gitee\u3001Bitbucket\uFF0C\u90FD\u51E0\u4E4E\u5B8C\u5168\u4E00\u81F4\u3002",paraId:1,tocIndex:0},{value:"\u968F\u7740\u4F01\u4E1A\u5B89\u5168\u8981\u6C42\u4E0D\u65AD\u63D0\u9AD8\u3001GitHub \u5BF9 token \u7684\u5168\u9762\u63A8\u884C\uFF0C",paraId:2,tocIndex:0},{value:"\u4F7F\u7528 SSH \u8FDB\u884C Git \u64CD\u4F5C\u5DF2\u7ECF\u6210\u4E3A\u73B0\u4EE3\u56E2\u961F\u7684\u4E3B\u6D41\u9009\u62E9",paraId:2,tocIndex:0},{value:"\u3002",paraId:2,tocIndex:0},{value:"\u7136\u800C\u8BB8\u591A\u5F00\u53D1\u8005\u5728\u4F7F\u7528 SSH \u65F6\u4F1A\u9047\u5230\u5404\u79CD\u95EE\u9898\uFF1A",paraId:3,tocIndex:0},{value:"\u201CPermission denied (publickey)\u201D",paraId:4,tocIndex:0},{value:"\u201Cno mutual signature supported\u201D",paraId:4,tocIndex:0},{value:"\u201CHost key verification failed\u201D",paraId:4,tocIndex:0},{value:"Mac \u7981\u7528\u4E86 ssh-rsa \u600E\u4E48\u529E\uFF1F",paraId:4,tocIndex:0},{value:"\u591A\u4E2A GitHub \u8D26\u53F7\u5982\u4F55\u5207\u6362\uFF1F",paraId:4,tocIndex:0},{value:"\u600E\u6837\u907F\u514D\u6BCF\u6B21\u8F93\u5BC6\u7801\uFF1F",paraId:4,tocIndex:0},{value:"\u672C\u7BC7\u6587\u7AE0\u5C06\u4ECE ",paraId:5,tocIndex:0},{value:"\u539F\u7406 \u2192 \u914D\u7F6E \u2192 \u5B9E\u6218 \u2192 \u591A\u8D26\u53F7 \u2192 \u6392\u9519",paraId:5,tocIndex:0},{value:" \u7528\u6700\u6E05\u6670\u7684\u65B9\u5F0F\u5E26\u4F60\u5B8C\u5168\u641E\u61C2 SSH\u3002",paraId:5,tocIndex:0},{value:"Git \u65B0\u624B\uFF0C\u60F3\u514D\u5BC6\u7801\u63D0\u4EA4\u4EE3\u7801",paraId:6,tocIndex:1},{value:"\u4F7F\u7528 HTTPS \u5E38\u5E38\u56E0\u4E3A\u5BC6\u7801/token \u7684\u95EE\u9898\u611F\u5230\u9EBB\u70E6",paraId:6,tocIndex:1},{value:"\u60F3\u641E\u61C2 SSH \u7684\u771F\u5B9E\u5DE5\u4F5C\u539F\u7406",paraId:6,tocIndex:1},{value:"\u6709\u591A\u5957 GitHub/GitLab \u8D26\u53F7",paraId:6,tocIndex:1},{value:"\u7ECF\u5E38\u9047\u5230 SSH \u8FDE\u63A5\u5931\u8D25\u7B49\u62A5\u9519",paraId:6,tocIndex:1},{value:"macOS \u7528\u6237\u9047\u5230 \u201Cxxxx no mutual signature\u201D \u95EE\u9898",paraId:6,tocIndex:1},{value:"\u4E3A\u4EC0\u4E48\u63A8\u8350\u4F7F\u7528 SSH\uFF1F",paraId:7,tocIndex:2},{value:"SSH \u662F\u5982\u4F55\u5DE5\u4F5C\u7684\uFF08\u56FE\u89E3\uFF09",paraId:8,tocIndex:2},{value:"\u751F\u6210 SSH Key\uFF08macOS / Windows / Linux\uFF09",paraId:9,tocIndex:2},{value:"\u628A\u516C\u94A5\u6DFB\u52A0\u5230 GitHub",paraId:10,tocIndex:2},{value:"\u914D\u7F6E SSH\uFF08ssh-agent + ssh-config\uFF09",paraId:11,tocIndex:2},{value:"\u6D4B\u8BD5 SSH \u662F\u5426\u6210\u529F",paraId:12,tocIndex:2},{value:"\u591A\u8D26\u53F7\u3001\u591A\u4ED3\u5E93 SSH \u914D\u7F6E\u65B9\u6848",paraId:13,tocIndex:2},{value:"\u5E38\u89C1\u9519\u8BEF\u4E0E\u5B8C\u6574\u89E3\u51B3\u65B9\u6848",paraId:14,tocIndex:2},{value:"\u6700\u4F73\u5B9E\u8DF5\u603B\u7ED3",paraId:15,tocIndex:2},{value:"\u5148\u6765\u770B\u6700\u91CD\u8981\u7684\u95EE\u9898\uFF1A",paraId:16,tocIndex:3},{value:"\u4E3A\u4EC0\u4E48\u4F60\u5E94\u8BE5\u7528 SSH \u800C\u4E0D\u662F HTTPS\uFF1F",paraId:16,tocIndex:3},{value:"\u9700\u8981\u8F93\u5165\u8D26\u53F7\u5BC6\u7801",paraId:17,tocIndex:4},{value:"2021 \u4EE5\u540E GitHub \u7981\u6B62\u5BC6\u7801\uFF0C\u5FC5\u987B\u4F7F\u7528 ",paraId:17,tocIndex:4},{value:"Personal Access Token",paraId:17,tocIndex:4},{value:"token \u4F1A\u8FC7\u671F\u3001\u88AB revoke\uFF0C\u5F88\u9EBB\u70E6",paraId:17,tocIndex:4},{value:"\u591A\u8D26\u53F7\u6781\u96BE\u7BA1\u7406",paraId:17,tocIndex:4},{value:"\u4F60\u751F\u6210\u5BC6\u94A5\u540E\uFF0Cpush/pull \u4E0D\u9700\u8981\u518D\u8F93\u5165\u4EFB\u4F55\u5BC6\u7801\u3002",paraId:18,tocIndex:6},{value:`\u79C1\u94A5\u7559\u5728\u672C\u673A\uFF0C\u4E0D\u4F1A\u4E0A\u4F20\u6216\u6CC4\u9732\u3002
+GitHub \u53EA\u4FDD\u5B58\u4F60\u7684\u516C\u94A5\uFF0C\u5916\u6CC4\u4E5F\u6CA1\u98CE\u9669\u3002`,paraId:19,tocIndex:7},{value:"\u4F60\u53EF\u4EE5\u4E3A\u516C\u53F8\u8D26\u53F7\u3001\u4E2A\u4EBA\u8D26\u53F7\u521B\u5EFA\u591A\u628A key\uFF0C\u4E92\u4E0D\u5F71\u54CD\u3002",paraId:20,tocIndex:8},{value:"\u642D\u914D ssh-agent + config \u53EF\u4E00\u52B3\u6C38\u9038\u3002",paraId:21,tocIndex:9},{value:"\u{1F449} ",paraId:22,tocIndex:9},{value:"SSH \u662F\u73B0\u4EE3 Git \u64CD\u4F5C\u7684\u6700\u4F73\u5B9E\u8DF5\u3002",paraId:22,tocIndex:9},{value:"\u8FD9\u662F\u6700\u5BB9\u6613\u88AB\u5FFD\u7565\u4F46\u53C8\u6700\u91CD\u8981\u7684\u90E8\u5206\u3002",paraId:23,tocIndex:10},{value:"SSH \u8BA4\u8BC1\u57FA\u4E8E\uFF1A",paraId:24,tocIndex:11},{value:"\u79C1\u94A5\uFF08private key\uFF09",paraId:25,tocIndex:11},{value:"\uFF1A\u4FDD\u5B58\u5728\u4F60\u7535\u8111\u672C\u5730",paraId:25,tocIndex:11},{value:"\u516C\u94A5\uFF08public key\uFF09",paraId:25,tocIndex:11},{value:"\uFF1A\u653E\u5728 GitHub/GitLab \u8D26\u53F7\u91CC",paraId:25,tocIndex:11},{value:"\u5F53\u4F60\u6267\u884C\uFF1A",paraId:26,tocIndex:11},{value:`git push
+`,paraId:27,tocIndex:11},{value:"GitHub \u4F1A\u8981\u6C42\u4F60\u8BC1\u660E\u201C\u4F60\u62E5\u6709\u5BF9\u5E94\u7684\u79C1\u94A5\u201D\u3002",paraId:28,tocIndex:11},{value:"SSH \u4F1A\u505A\u4EC0\u4E48\uFF1F",paraId:29,tocIndex:11},{value:"GitHub \u627E\u5230\u4F60\u4E0A\u4F20\u8FC7\u7684\u516C\u94A5",paraId:30,tocIndex:11},{value:"GitHub \u53D1\u4E00\u4E2A\u968F\u673A\u5B57\u7B26\u4E32\uFF0C\u8BA9\u4F60\u7528 ",paraId:30,tocIndex:11},{value:"\u79C1\u94A5\u7B7E\u540D",paraId:30,tocIndex:11},{value:"GitHub \u7528\u516C\u94A5\u9A8C\u8BC1\u7B7E\u540D",paraId:30,tocIndex:11},{value:"\u5982\u679C\u5339\u914D \u2192 \u4F60\u5C31\u662F\u5BC6\u94A5\u6301\u6709\u8005 \u2192 \u6388\u6743\u6210\u529F",paraId:30,tocIndex:11},{value:"\u{1F449} ",paraId:31,tocIndex:11},{value:"SSH \u4E0D\u8BC6\u522B\u4F60\u7684\u673A\u5668\uFF0C\u4E0D\u8BC6\u522B\u4F60\u7684\u8D26\u53F7\uFF0C\u53EA\u9A8C\u8BC1\u201C\u4F60\u662F\u5426\u62E5\u6709\u8BE5\u79C1\u94A5\u201D\u3002",paraId:31,tocIndex:11},{value:"\u5EFA\u8BAE\u4F7F\u7528 ",paraId:32,tocIndex:12},{value:"ed25519",paraId:32,tocIndex:12},{value:"\uFF08\u5B89\u5168\u3001\u77ED\u3001\u73B0\u4EE3\u7B97\u6CD5\uFF09\u3002",paraId:32,tocIndex:12},{value:`ssh-keygen -t ed25519 -C "your_email@example.com"
+`,paraId:33,tocIndex:13},{value:"\u6309\u56DE\u8F66\u5373\u53EF\u3002",paraId:34,tocIndex:13},{value:"\u5B83\u4F1A\u5728\uFF1A",paraId:35,tocIndex:13},{value:`~/.ssh/id_ed25519
+~/.ssh/id_ed25519.pub
+`,paraId:36,tocIndex:13},{value:"\u751F\u6210\u79C1\u94A5\u548C\u516C\u94A5\u3002",paraId:37,tocIndex:13},{value:"\u6253\u5F00 Git Bash\uFF1A",paraId:38,tocIndex:14},{value:`ssh-keygen -t ed25519 -C "your_email@example.com"
+`,paraId:39,tocIndex:14},{value:"\u8DEF\u5F84\u540C\u6837\u662F ",paraId:40,tocIndex:14},{value:"~/.ssh/",paraId:40,tocIndex:14},{value:" \u4E0B\u3002",paraId:40,tocIndex:14},{value:`cat ~/.ssh/id_ed25519.pub
+`,paraId:41,tocIndex:16},{value:"\u590D\u5236\u51FA\u6765\uFF08\u4ECE ",paraId:42,tocIndex:16},{value:"ssh-ed25519",paraId:42,tocIndex:16},{value:" \u5F00\u5934\uFF09\u3002",paraId:42,tocIndex:16},{value:"\u6DFB\u52A0\u4E00\u4E2A\u65B0\u7684 SSH key\u3002",paraId:43,tocIndex:17},{value:"\u5C31\u8FD9\u4E9B\u3002",paraId:44,tocIndex:17},{value:"macOS\uFF1A",paraId:45,tocIndex:19},{value:`eval "$(ssh-agent -s)"
+`,paraId:46,tocIndex:19},{value:`ssh-add ~/.ssh/id_ed25519
+`,paraId:47,tocIndex:20},{value:"\u{1F449} \u4ECE\u6B64\u65E0\u9700\u6BCF\u6B21\u90FD\u8F93\u5165\u5BC6\u7801\u3002",paraId:48,tocIndex:20},{value:"\u7F16\u8F91\u6587\u4EF6\uFF1A",paraId:49,tocIndex:21},{value:`nano ~/.ssh/config
+`,paraId:50,tocIndex:21},{value:"\u5199\u5165\uFF1A",paraId:51,tocIndex:21},{value:`Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519
+    AddKeysToAgent yes
+`,paraId:52,tocIndex:21},{value:"\u4F5C\u7528\uFF1A",paraId:53,tocIndex:21},{value:"\u6307\u5B9A GitHub \u9ED8\u8BA4\u4F7F\u7528 id_ed25519",paraId:54,tocIndex:21},{value:"\u81EA\u52A8\u4F5C agent",paraId:54,tocIndex:21},{value:"\u591A\u8D26\u53F7\u65F6\u53EF\u4EE5\u8986\u76D6 Host \u540D\u79F0\uFF08\u89C1\u540E\u6587\uFF09",paraId:54,tocIndex:21},{value:"\u76F4\u63A5\u8FD0\u884C\uFF1A",paraId:55,tocIndex:22},{value:`ssh -T git@github.com
+`,paraId:56,tocIndex:22},{value:"\u8F93\u51FA\u7C7B\u4F3C\uFF1A",paraId:57,tocIndex:22},{value:`Hi username! You've successfully authenticated, but GitHub does not provide shell access.
+`,paraId:58,tocIndex:22},{value:"\u{1F389} \u5B8C\u6210\uFF01",paraId:59,tocIndex:22},{value:"\u8FD9\u662F\u5F00\u53D1\u8005\u6700\u56F0\u6270\u7684\u95EE\u9898\u3002\u4E0B\u9762\u7ED9\u4F60 ",paraId:60,tocIndex:23},{value:"\u6807\u51C6\u53EF\u7528\u7684\u6700\u4F73\u89E3\u6CD5",paraId:60,tocIndex:23},{value:"\u3002",paraId:60,tocIndex:23},{value:"\u4E2A\u4EBA GitHub\uFF1A",paraId:61,tocIndex:24},{value:"id_ed25519_personal",paraId:61,tocIndex:24},{value:"\u516C\u53F8 GitHub\uFF1A",paraId:61,tocIndex:24},{value:"id_ed25519_work",paraId:61,tocIndex:24},{value:`ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_personal -C "you@gmail.com"
+ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_work -C "you@company.com"
+`,paraId:62,tocIndex:25},{value:`# Personal
+Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_personal
+
+# Company
+Host github-company
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_work
+`,paraId:63,tocIndex:26},{value:"\u4E2A\u4EBA\u4ED3\u5E93\uFF1A",paraId:64,tocIndex:27},{value:`git clone git@github.com:username/repo.git
+`,paraId:65,tocIndex:27},{value:"\u516C\u53F8\u4ED3\u5E93\uFF1A",paraId:66,tocIndex:27},{value:`git clone git@github-company:company/repo.git
+`,paraId:67,tocIndex:27},{value:"\u{1F449} \u901A\u8FC7\u5207\u6362 Host \u5B9E\u73B0\u591A\u8D26\u53F7\u9694\u79BB\uFF0C\u65E0\u51B2\u7A81\u3001\u65E0\u5BC6\u7801\u3001\u6700\u7A33\u5B9A\u3002",paraId:68,tocIndex:27},{value:"\u4E0B\u9762\u662F\u5F00\u53D1\u8005\u6700\u5E38\u89C1\u7684 SSH \u62A5\u9519\u3002",paraId:69,tocIndex:28},{value:"\u539F\u56E0\uFF1A",paraId:70,tocIndex:29},{value:"\u516C\u94A5\u6CA1\u52A0\u5230 GitHub",paraId:71,tocIndex:29},{value:"config \u5199\u9519",paraId:71,tocIndex:29},{value:"key \u6CA1\u52A0\u5230 agent",paraId:71,tocIndex:29},{value:"\u6743\u9650\u4E0D\u5BF9\uFF08macOS \u5E38\u89C1\uFF09",paraId:71,tocIndex:29},{value:"\u89E3\u51B3\uFF1A",paraId:72,tocIndex:29},{value:`chmod 600 ~/.ssh/id_ed25519
+chmod 700 ~/.ssh
+ssh-add ~/.ssh/id_ed25519
+`,paraId:73,tocIndex:29},{value:"\u4ECE macOS Ventura \u5F00\u59CB\u7981\u7528 ssh-rsa\u3002",paraId:74,tocIndex:30},{value:"\u4E0D\u8981\u542F\u7528\u8001\u65E7 ssh-rsa\uFF01",paraId:75,tocIndex:30},{value:"\u6B63\u786E\u89E3\u51B3\u65B9\u6CD5\uFF1A",paraId:76,tocIndex:30},{value:"\u{1F449} ",paraId:77,tocIndex:30},{value:"\u91CD\u65B0\u751F\u6210 ed25519 key",paraId:77,tocIndex:30},{value:"\uFF08\u6700\u5B89\u5168\uFF09",paraId:77,tocIndex:30},{value:`ssh-keygen -t ed25519 -C "your_email"
+`,paraId:78,tocIndex:30},{value:"\u539F\u56E0\uFF1AGitHub \u7684\u670D\u52A1\u5668 key \u53D8\u5316\uFF08\u6216\u4F60\u9996\u6B21\u8FDE\u63A5\uFF09\u3002",paraId:79,tocIndex:31},{value:"\u89E3\u51B3\uFF1A",paraId:80,tocIndex:31},{value:`ssh-keygen -R github.com
+ssh -T git@github.com
+`,paraId:81,tocIndex:31},{value:"\u2714 \u4F18\u5148\u4F7F\u7528 ",paraId:82,tocIndex:32},{value:"ed25519",paraId:82,tocIndex:32},{value:`
+\u2714 \u4F7F\u7528 `,paraId:82,tocIndex:32},{value:"ssh-agent",paraId:82,tocIndex:32},{value:` \u81EA\u52A8\u52A0\u8F7D\u79C1\u94A5
+\u2714 \u59CB\u7EC8\u914D\u7F6E `,paraId:82,tocIndex:32},{value:"~/.ssh/config",paraId:82,tocIndex:32},{value:`
+\u2714 \u591A\u8D26\u53F7\u4F7F\u7528\u591A\u4E2A Host\uFF08github & github-company\uFF09
+\u2714 \u4E0D\u8981\u518D\u4F7F\u7528 HTTPS + token\uFF08\u7E41\u7410 & \u5BB9\u6613\u8FC7\u671F\uFF09
+\u2714 \u9047\u5230 macOS \u7B7E\u540D\u62A5\u9519 \u2192 \u7528 ED25519 \u91CD\u5EFA key`,paraId:82,tocIndex:32}]},57274:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"\u5BF9\u4E8E ",paraId:0,tocIndex:0},{value:"PicGo-electron",paraId:0,tocIndex:0},{value:" \u7528\u6237\uFF0C\u9700\u8981\u5728 VSCode \u4E2D\u914D\u7F6E PicGo \u6269\u5C55\u4F7F\u7528\u76F8\u540C\u7684\u914D\u7F6E\u6587\u4EF6\u8DEF\u5F84\uFF1A",paraId:0,tocIndex:0},{value:"PicGo \u6269\u5C55\u63D0\u4F9B\u4E86\u4FBF\u6377\u7684\u5FEB\u6377\u952E\u64CD\u4F5C\uFF1A",paraId:1,tocIndex:1},{value:"\u4E0A\u4F20\u56FE\u7247",paraId:2,tocIndex:1},{value:"\uFF1A",paraId:2,tocIndex:1},{value:"Ctrl + Alt + U",paraId:2,tocIndex:1},{value:"\uFF08Windows/Linux\uFF09\u6216 ",paraId:2,tocIndex:1},{value:"Cmd + Opt + U",paraId:2,tocIndex:1},{value:"\uFF08macOS\uFF09",paraId:2,tocIndex:1},{value:"\u5176\u4ED6\u64CD\u4F5C\u53EF\u901A\u8FC7\u547D\u4EE4\u9762\u677F\uFF08",paraId:2,tocIndex:1},{value:"Ctrl+Shift+P",paraId:2,tocIndex:1},{value:'\uFF09\u641C\u7D22 "PicGo" \u67E5\u770B',paraId:2,tocIndex:1},{value:"\u66F4\u591A\u8BE6\u7EC6\u4FE1\u606F\uFF0C\u8BF7\u8BBF\u95EE ",paraId:3,tocIndex:1},{value:"vs-picgo \u6269\u5C55\u9875\u9762",paraId:3,tocIndex:1},{value:"\u3002",paraId:3,tocIndex:1},{value:"\u9996\u5148\u786E\u4FDD\u60A8\u62E5\u6709 GitHub \u8D26\u53F7\uFF0C\u7136\u540E\u521B\u5EFA\u4E00\u4E2A\u65B0\u7684\u516C\u5171\u4ED3\u5E93\uFF1A",paraId:4,tocIndex:3},{value:"\u8BF7\u8BB0\u4E0B\u60A8\u8BBE\u7F6E\u7684\u4ED3\u5E93\u540D\u79F0\u3002",paraId:5,tocIndex:3},{value:"\u8BBF\u95EE ",paraId:6,tocIndex:4},{value:"GitHub Token \u8BBE\u7F6E\u9875\u9762",paraId:6,tocIndex:4},{value:"\uFF0C\u70B9\u51FB ",paraId:6,tocIndex:4},{value:"Generate new token",paraId:6,tocIndex:4},{value:"\uFF1A",paraId:6,tocIndex:4},{value:"\u5728\u6743\u9650\u8BBE\u7F6E\u4E2D\uFF0C\u81F3\u5C11\u52FE\u9009 ",paraId:7,tocIndex:4},{value:"repo",paraId:7,tocIndex:4},{value:" \u6743\u9650\uFF0C\u7136\u540E\u6EDA\u52A8\u5230\u9875\u9762\u5E95\u90E8\u70B9\u51FB ",paraId:7,tocIndex:4},{value:"Generate token",paraId:7,tocIndex:4},{value:"\uFF1A",paraId:7,tocIndex:4},{value:"\u91CD\u8981\u63D0\u793A",paraId:8,tocIndex:4},{value:"\uFF1AToken \u751F\u6210\u540E\u53EA\u4F1A\u663E\u793A\u4E00\u6B21\uFF0C\u8BF7\u7ACB\u5373\u590D\u5236\u5E76\u59A5\u5584\u4FDD\u5B58\uFF1A",paraId:8,tocIndex:4},{value:"\u5728 VSCode PicGo \u6269\u5C55\u914D\u7F6E\u4E2D\u586B\u5199\u4EE5\u4E0B\u4FE1\u606F\uFF1A",paraId:9,tocIndex:5},{value:`{
   "repo": "\u7528\u6237\u540D/\u4ED3\u5E93\u540D", // \u4F8B\u5982\uFF1Achuenwei0129/my-picgo-repo
   "token": "\u60A8\u7684GitHubToken", // \u4E0A\u4E00\u6B65\u751F\u6210\u7684 token
   "path": "img/", // \u56FE\u7247\u5B58\u50A8\u8DEF\u5F84\uFF08\u53EF\u9009\uFF09
   "customUrl": "", // \u81EA\u5B9A\u4E49\u57DF\u540D\uFF08\u53EF\u9009\uFF09
   "branch": "main" // \u5206\u652F\u540D\u79F0\uFF0C\u9ED8\u8BA4\u4E3A main
 }
-`,paraId:10,tocIndex:5},{value:"\u914D\u7F6E\u5B8C\u6210\u540E\uFF0C\u70B9\u51FB\u786E\u5B9A\u4FDD\u5B58\u8BBE\u7F6E\uFF0C\u5E76\u53EF\u5C06 GitHub \u56FE\u5E8A\u8BBE\u4E3A\u9ED8\u8BA4\u56FE\u5E8A\u3002",paraId:11,tocIndex:5},{value:"\u4E0A\u4F20\u56FE\u7247\u6D4B\u8BD5\u914D\u7F6E\u662F\u5426\u6210\u529F\uFF0C\u6210\u529F\u540E\u60A8\u5C06\u5728\u4ED3\u5E93\u4E2D\u770B\u5230\u65B0\u589E\u7684\u56FE\u7247\u6587\u4EF6\uFF1A",paraId:12,tocIndex:6},{value:"\u5982\u9700\u4E86\u89E3\u66F4\u591A\u9AD8\u7EA7\u529F\u80FD\u548C\u914D\u7F6E\u9009\u9879\uFF0C\u8BF7\u53C2\u9605 ",paraId:13,tocIndex:7},{value:"PicGo \u5B98\u65B9\u6587\u6863",paraId:13,tocIndex:7},{value:"\u3002",paraId:13,tocIndex:7}]},78841:function(v,e,a){a.r(e),a.d(e,{texts:function(){return o}});const o=[{value:"\u5728 ",paraId:0,tocIndex:1},{value:"Code > Preferences",paraId:0,tocIndex:1},{value:" \u4E2D\u9009\u62E9 ",paraId:0,tocIndex:1},{value:"User Snippets",paraId:0,tocIndex:1},{value:" \u5728\u5F39\u51FA\u6846\u91CC\u9009\u62E9\u5BF9\u5E94\u7684\u4EE3\u7801\u7247\u6BB5\u8BED\u8A00\u3002",paraId:0,tocIndex:1},{value:"\u5728\u6253\u5F00\u7684 ",paraId:1,tocIndex:1},{value:"json",paraId:1,tocIndex:1},{value:" \u4E2D\u6709\u793A\u4F8B\u4EE3\u7801\uFF1A",paraId:1,tocIndex:1},{value:`"Print to console": {
+`,paraId:10,tocIndex:5},{value:"\u914D\u7F6E\u5B8C\u6210\u540E\uFF0C\u70B9\u51FB\u786E\u5B9A\u4FDD\u5B58\u8BBE\u7F6E\uFF0C\u5E76\u53EF\u5C06 GitHub \u56FE\u5E8A\u8BBE\u4E3A\u9ED8\u8BA4\u56FE\u5E8A\u3002",paraId:11,tocIndex:5},{value:"\u4E0A\u4F20\u56FE\u7247\u6D4B\u8BD5\u914D\u7F6E\u662F\u5426\u6210\u529F\uFF0C\u6210\u529F\u540E\u60A8\u5C06\u5728\u4ED3\u5E93\u4E2D\u770B\u5230\u65B0\u589E\u7684\u56FE\u7247\u6587\u4EF6\uFF1A",paraId:12,tocIndex:6},{value:"\u5982\u9700\u4E86\u89E3\u66F4\u591A\u9AD8\u7EA7\u529F\u80FD\u548C\u914D\u7F6E\u9009\u9879\uFF0C\u8BF7\u53C2\u9605 ",paraId:13,tocIndex:7},{value:"PicGo \u5B98\u65B9\u6587\u6863",paraId:13,tocIndex:7},{value:"\u3002",paraId:13,tocIndex:7}]},78841:function(p,a,e){e.r(a),e.d(a,{texts:function(){return d}});const d=[{value:"\u5728 ",paraId:0,tocIndex:1},{value:"Code > Preferences",paraId:0,tocIndex:1},{value:" \u4E2D\u9009\u62E9 ",paraId:0,tocIndex:1},{value:"User Snippets",paraId:0,tocIndex:1},{value:" \u5728\u5F39\u51FA\u6846\u91CC\u9009\u62E9\u5BF9\u5E94\u7684\u4EE3\u7801\u7247\u6BB5\u8BED\u8A00\u3002",paraId:0,tocIndex:1},{value:"\u5728\u6253\u5F00\u7684 ",paraId:1,tocIndex:1},{value:"json",paraId:1,tocIndex:1},{value:" \u4E2D\u6709\u793A\u4F8B\u4EE3\u7801\uFF1A",paraId:1,tocIndex:1},{value:`"Print to console": {
     "prefix": "log",
     "body": [
         "console.log('$1');",
@@ -5777,4 +7443,512 @@ match(value)
     ],
     "description": "Vue\u6A21\u677F"
   }
-`,paraId:48,tocIndex:18},{value:"snippet-generator.app",paraId:49,tocIndex:19}]}}]);
+`,paraId:48,tocIndex:18},{value:"snippet-generator.app",paraId:49,tocIndex:19}]},66005:function(p,a){a.Z=`// App.jsx
+import { useMemo, useState } from 'react';
+import BitSet from './BitSet';
+import { allBrands, allColors, priceRanges, products } from './products';
+
+function App() {
+  const [keyword, setKeyword] = useState('');
+  const [selectedBrands, setSelectedBrands] = useState([]);
+  const [selectedColors, setSelectedColors] = useState([]);
+  const [selectedPriceKeys, setSelectedPriceKeys] = useState([]);
+
+  const total = products.length;
+
+  // \u9884\u6784\u5EFA\uFF1A\u6BCF\u4E2A\u6761\u4EF6\u5BF9\u5E94\u4E00\u4E2A BitSet\uFF08\u4F4D\u56FE\u7D22\u5F15\uFF09
+  const { brandBitmap, colorBitmap, priceBitmap } = useMemo(() => {
+    const brandBitmap = {};
+    allBrands.forEach((b) => (brandBitmap[b] = new BitSet(total)));
+
+    const colorBitmap = {};
+    allColors.forEach((c) => (colorBitmap[c] = new BitSet(total)));
+
+    const priceBitmap = {};
+    priceRanges.forEach((pr) => {
+      priceBitmap[pr.key] = new BitSet(total);
+    });
+
+    products.forEach((p, index) => {
+      // \u54C1\u724C
+      brandBitmap[p.brand].set(index);
+      // \u989C\u8272
+      colorBitmap[p.color].set(index);
+      // \u4EF7\u683C\u533A\u95F4
+      priceRanges.forEach((pr) => {
+        if (p.price >= pr.min && p.price < pr.max) {
+          priceBitmap[pr.key].set(index);
+        }
+      });
+    });
+
+    return { brandBitmap, colorBitmap, priceBitmap };
+  }, [total]);
+
+  // \u4F4D\u8FD0\u7B97\u8FC7\u6EE4
+  const filteredProducts = useMemo(() => {
+    if (total === 0) return [];
+
+    // \u5148\u5EFA\u4E00\u4E2A\u5168 1 \u7684 BitSet\uFF08\u5168\u90E8\u5546\u54C1\u90FD\u5019\u9009\uFF09
+    const result = new BitSet(total);
+    for (let i = 0; i < total; i++) {
+      result.set(i);
+    }
+
+    // \u54C1\u724C\uFF1A\u591A\u9009 OR\uFF0C\u7136\u540E AND \u6C47\u603B
+    if (selectedBrands.length > 0) {
+      const union = brandBitmap[selectedBrands[0]].clone();
+      for (let i = 1; i < selectedBrands.length; i++) {
+        union.or(brandBitmap[selectedBrands[i]]);
+      }
+      result.and(union);
+    }
+
+    // \u989C\u8272
+    if (selectedColors.length > 0) {
+      const union = colorBitmap[selectedColors[0]].clone();
+      for (let i = 1; i < selectedColors.length; i++) {
+        union.or(colorBitmap[selectedColors[i]]);
+      }
+      result.and(union);
+    }
+
+    // \u4EF7\u683C\u533A\u95F4
+    if (selectedPriceKeys.length > 0) {
+      const union = priceBitmap[selectedPriceKeys[0]].clone();
+      for (let i = 1; i < selectedPriceKeys.length; i++) {
+        union.or(priceBitmap[selectedPriceKeys[i]]);
+      }
+      result.and(union);
+    }
+
+    // \u4ECE\u4F4D\u56FE\u62FF\u51FA\u771F\u6B63\u7684\u5546\u54C1\u5217\u8868
+    let res = [];
+    for (let i = 0; i < total; i++) {
+      if (result.get(i)) {
+        res.push(products[i]);
+      }
+    }
+
+    // \u6700\u540E\u518D\u505A\u6587\u672C\u641C\u7D22\uFF08\u6309\u540D\u79F0\uFF09
+    if (keyword.trim()) {
+      const kw = keyword.trim().toLowerCase();
+      res = res.filter((p) => p.name.toLowerCase().includes(kw));
+    }
+
+    return res;
+  }, [
+    total,
+    brandBitmap,
+    colorBitmap,
+    priceBitmap,
+    selectedBrands,
+    selectedColors,
+    selectedPriceKeys,
+    keyword,
+  ]);
+
+  const toggleArrayItem = (arr, value) =>
+    arr.includes(value) ? arr.filter((v) => v !== value) : [...arr, value];
+
+  return (
+    <div style={{ padding: 20, fontFamily: 'sans-serif' }}>
+      <h2>React + \u4F4D\u56FE\u7D22\u5F15 Demo\uFF1A\u591A\u6761\u4EF6\u8FC7\u6EE4</h2>
+
+      {/* \u641C\u7D22 */}
+      <div style={{ marginBottom: 16 }}>
+        <label>
+          \u641C\u7D22\uFF08\u6309\u540D\u79F0\uFF09\uFF1A
+          <input
+            style={{ marginLeft: 8 }}
+            value={keyword}
+            onChange={(e) => setKeyword(e.target.value)}
+            placeholder="iphone / galaxy / mate..."
+          />
+        </label>
+      </div>
+
+      {/* \u54C1\u724C */}
+      <div style={{ marginBottom: 16 }}>
+        <div>\u54C1\u724C\uFF08\u591A\u9009 OR\uFF09\uFF1A</div>
+        {allBrands.map((b) => (
+          <label key={b} style={{ marginRight: 12 }}>
+            <input
+              type="checkbox"
+              checked={selectedBrands.includes(b)}
+              onChange={() =>
+                setSelectedBrands((prev) => toggleArrayItem(prev, b))
+              }
+            />
+            {b}
+          </label>
+        ))}
+      </div>
+
+      {/* \u989C\u8272 */}
+      <div style={{ marginBottom: 16 }}>
+        <div>\u989C\u8272\uFF08\u591A\u9009 OR\uFF09\uFF1A</div>
+        {allColors.map((c) => (
+          <label key={c} style={{ marginRight: 12 }}>
+            <input
+              type="checkbox"
+              checked={selectedColors.includes(c)}
+              onChange={() =>
+                setSelectedColors((prev) => toggleArrayItem(prev, c))
+              }
+            />
+            {c}
+          </label>
+        ))}
+      </div>
+
+      {/* \u4EF7\u683C\u533A\u95F4 */}
+      <div style={{ marginBottom: 16 }}>
+        <div>\u4EF7\u683C\u533A\u95F4\uFF08\u591A\u9009 OR\uFF09\uFF1A</div>
+        {priceRanges.map((pr) => (
+          <label key={pr.key} style={{ marginRight: 12 }}>
+            <input
+              type="checkbox"
+              checked={selectedPriceKeys.includes(pr.key)}
+              onChange={() =>
+                setSelectedPriceKeys((prev) => toggleArrayItem(prev, pr.key))
+              }
+            />
+            {pr.label}
+          </label>
+        ))}
+      </div>
+
+      {/* \u7ED3\u679C */}
+      <div>
+        <h3>
+          \u7ED3\u679C\uFF08{filteredProducts.length} / {products.length}\uFF09
+        </h3>
+        <table
+          border="1"
+          cellPadding="8"
+          style={{ borderCollapse: 'collapse', minWidth: 500 }}
+        >
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>\u540D\u79F0</th>
+              <th>\u54C1\u724C</th>
+              <th>\u989C\u8272</th>
+              <th>\u4EF7\u683C</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredProducts.map((p) => (
+              <tr key={p.id}>
+                <td>{p.id}</td>
+                <td>{p.name}</td>
+                <td>{p.brand}</td>
+                <td>{p.color}</td>
+                <td>{p.price}</td>
+              </tr>
+            ))}
+            {filteredProducts.length === 0 && (
+              <tr>
+                <td colSpan="5" style={{ textAlign: 'center' }}>
+                  \u6CA1\u6709\u7B26\u5408\u6761\u4EF6\u7684\u5546\u54C1
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+export default App;
+`},48969:function(p,a){a.Z=`// BitSet.js
+export default class BitSet {
+  constructor(size) {
+    this.size = size;
+    const wordCount = (size + 31) >>> 5; // \u5411\u4E0A\u53D6\u6574(size / 32)
+    this.data = new Uint32Array(wordCount);
+  }
+
+  _wordIndexAndMask(index) {
+    const wordIndex = index >>> 5; // index / 32
+    const bitOffset = index & 31; // index % 32
+    const bitMask = 1 << bitOffset;
+    return { wordIndex, bitMask };
+  }
+
+  set(index) {
+    const { wordIndex, bitMask } = this._wordIndexAndMask(index);
+    this.data[wordIndex] |= bitMask;
+  }
+
+  get(index) {
+    const { wordIndex, bitMask } = this._wordIndexAndMask(index);
+    return (this.data[wordIndex] & bitMask) !== 0;
+  }
+
+  clear(index) {
+    const { wordIndex, bitMask } = this._wordIndexAndMask(index);
+    this.data[wordIndex] &= ~bitMask;
+  }
+
+  // \u5C31\u5730 AND\uFF08\u4EA4\u96C6\uFF09
+  and(other) {
+    const len = Math.min(this.data.length, other.data.length);
+    for (let i = 0; i < len; i++) {
+      this.data[i] &= other.data[i];
+    }
+  }
+
+  // \u5C31\u5730 OR\uFF08\u5E76\u96C6\uFF09
+  or(other) {
+    const len = Math.min(this.data.length, other.data.length);
+    for (let i = 0; i < len; i++) {
+      this.data[i] |= other.data[i];
+    }
+  }
+
+  clone() {
+    const bs = new BitSet(this.size);
+    bs.data.set(this.data);
+    return bs;
+  }
+}
+`},51987:function(p,a){a.Z=`import { clsx } from 'clsx';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Calendar, Check, Plus, Sparkles, Trash2 } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { twMerge } from 'tailwind-merge';
+
+// \u5DE5\u5177\u51FD\u6570\uFF1A\u5408\u5E76 Tailwind \u7C7B\u540D
+function cn(...inputs) {
+  return twMerge(clsx(inputs));
+}
+
+// \u83B7\u53D6\u4ECA\u5929\u7684\u65E5\u671F\u5B57\u7B26\u4E32
+const getTodayDate = () => {
+  const options = { weekday: 'long', month: 'long', day: 'numeric' };
+  return new Date().toLocaleDateString('en-US', options);
+};
+
+function App() {
+  // \u72B6\u6001\u7BA1\u7406
+  const [todos, setTodos] = useState(() => {
+    const saved = localStorage.getItem('my-todos');
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [inputValue, setInputValue] = useState('');
+  const [filter, setFilter] = useState('all'); // all, active, completed
+
+  // \u6301\u4E45\u5316\u5B58\u50A8
+  useEffect(() => {
+    localStorage.setItem('my-todos', JSON.stringify(todos));
+  }, [todos]);
+
+  // \u6DFB\u52A0\u4EFB\u52A1
+  const addTodo = (e) => {
+    e.preventDefault();
+    if (!inputValue.trim()) return;
+
+    const newTodo = {
+      id: Date.now(),
+      text: inputValue.trim(),
+      completed: false,
+    };
+
+    setTodos([newTodo, ...todos]);
+    setInputValue('');
+  };
+
+  // \u5207\u6362\u72B6\u6001
+  const toggleTodo = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo,
+      ),
+    );
+  };
+
+  // \u5220\u9664\u4EFB\u52A1
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
+  // \u8FC7\u6EE4\u4EFB\u52A1
+  const filteredTodos = todos.filter((todo) => {
+    if (filter === 'active') return !todo.completed;
+    if (filter === 'completed') return todo.completed;
+    return true;
+  });
+
+  // \u8BA1\u7B97\u8FDB\u5EA6
+  const completedCount = todos.filter((t) => t.completed).length;
+  const totalCount = todos.length;
+  const progress = totalCount === 0 ? 0 : (completedCount / totalCount) * 100;
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-4 sm:p-8">
+      <div className="w-full max-w-md bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden ring-1 ring-white/50">
+        {/* \u5934\u90E8\u533A\u57DF */}
+        <div className="p-8 pb-4">
+          <div className="flex justify-between items-start mb-6">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-800 flex items-center gap-2">
+                Tasks{' '}
+                <Sparkles className="w-6 h-6 text-yellow-500 fill-yellow-500" />
+              </h1>
+              <p className="text-gray-500 text-sm mt-1 flex items-center gap-1">
+                <Calendar className="w-3.5 h-3.5" /> {getTodayDate()}
+              </p>
+            </div>
+            <div className="text-right">
+              <div className="text-2xl font-bold text-indigo-600">
+                {completedCount}/{totalCount}
+              </div>
+              <div className="text-xs text-gray-400 uppercase font-semibold tracking-wider">
+                Done
+              </div>
+            </div>
+          </div>
+
+          {/* \u8FDB\u5EA6\u6761 */}
+          <div className="w-full bg-gray-100 rounded-full h-2 mb-8 overflow-hidden">
+            <motion.div
+              className="h-full bg-gradient-to-r from-indigo-500 to-pink-500 rounded-full"
+              initial={{ width: 0 }}
+              animate={{ width: \`\${progress}%\` }}
+              transition={{ duration: 0.5, ease: 'easeInOut' }}
+            />
+          </div>
+
+          {/* \u8F93\u5165\u6846 */}
+          <form onSubmit={addTodo} className="relative group">
+            <input
+              type="text"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              placeholder="What needs to be done?"
+              className="w-full pl-4 pr-14 py-4 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-indigo-500/50 outline-none transition-all placeholder:text-gray-400 text-gray-700 shadow-inner"
+            />
+            <button
+              type="submit"
+              className="absolute right-2 top-2 bottom-2 aspect-square bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl flex items-center justify-center transition-colors shadow-lg shadow-indigo-200"
+            >
+              <Plus className="w-5 h-5" />
+            </button>
+          </form>
+        </div>
+
+        {/* \u8FC7\u6EE4\u5668 */}
+        <div className="px-8 flex gap-4 text-sm font-medium text-gray-400 border-b border-gray-100 pb-4">
+          {['all', 'active', 'completed'].map((f) => (
+            <button
+              key={f}
+              onClick={() => setFilter(f)}
+              className={cn(
+                'capitalize transition-colors hover:text-indigo-500',
+                filter === f && 'text-indigo-600',
+              )}
+            >
+              {f}
+            </button>
+          ))}
+        </div>
+
+        {/* \u5217\u8868\u533A\u57DF */}
+        <div className="p-4 h-[400px] overflow-y-auto custom-scrollbar">
+          <ul className="space-y-3">
+            <AnimatePresence mode="popLayout">
+              {filteredTodos.length === 0 ? (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  className="text-center text-gray-400 mt-20"
+                >
+                  <p>No tasks found</p>
+                </motion.div>
+              ) : (
+                filteredTodos.map((todo) => (
+                  <motion.li
+                    key={todo.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{
+                      opacity: 0,
+                      scale: 0.9,
+                      transition: { duration: 0.2 },
+                    }}
+                    whileHover={{ scale: 1.02 }}
+                    className="group flex items-center gap-3 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all"
+                  >
+                    <button
+                      onClick={() => toggleTodo(todo.id)}
+                      className={cn(
+                        'w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-300',
+                        todo.completed
+                          ? 'bg-green-500 border-green-500 text-white'
+                          : 'border-gray-300 text-transparent hover:border-indigo-400',
+                      )}
+                    >
+                      <Check className="w-3.5 h-3.5" strokeWidth={3} />
+                    </button>
+
+                    <span
+                      className={cn(
+                        'flex-1 text-gray-700 font-medium transition-all duration-300',
+                        todo.completed && 'text-gray-400 line-through',
+                      )}
+                    >
+                      {todo.text}
+                    </span>
+
+                    <button
+                      onClick={() => deleteTodo(todo.id)}
+                      className="opacity-0 group-hover:opacity-100 p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </motion.li>
+                ))
+              )}
+            </AnimatePresence>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;
+`},39181:function(p,a){a.Z=`// products.js
+export const products = [
+  { id: 1, name: 'iPhone 14', brand: 'Apple', color: 'Black', price: 5999 },
+  { id: 2, name: 'iPhone 14 Pro', brand: 'Apple', color: 'Gold', price: 8999 },
+  { id: 3, name: 'Galaxy S23', brand: 'Samsung', color: 'Black', price: 5499 },
+  { id: 4, name: 'Galaxy A54', brand: 'Samsung', color: 'White', price: 2599 },
+  { id: 5, name: 'Mate 50', brand: 'Huawei', color: 'Gold', price: 4999 },
+  { id: 6, name: 'P50', brand: 'Huawei', color: 'White', price: 3999 },
+  { id: 7, name: 'iPhone 13', brand: 'Apple', color: 'White', price: 4599 },
+  {
+    id: 8,
+    name: 'Galaxy Z Flip',
+    brand: 'Samsung',
+    color: 'Gold',
+    price: 7599,
+  },
+  { id: 9, name: 'Nova 11', brand: 'Huawei', color: 'Black', price: 2899 },
+  { id: 10, name: 'P60', brand: 'Huawei', color: 'Black', price: 5699 },
+];
+
+export const allBrands = ['Apple', 'Samsung', 'Huawei'];
+export const allColors = ['Black', 'White', 'Gold'];
+
+export const priceRanges = [
+  { key: '0-3000', label: '0 - 3000', min: 0, max: 3000 },
+  { key: '3000-5000', label: '3000 - 5000', min: 3000, max: 5000 },
+  { key: '5000+', label: '5000+', min: 5000, max: Infinity },
+];
+`}}]);
