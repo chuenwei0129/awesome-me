@@ -2,7 +2,6 @@
 import { useMemo, useState } from 'react';
 import BitSet from './BitSet';
 import { allBrands, allColors, priceRanges, products } from './products';
-import './t.css';
 
 function App() {
   const [keyword, setKeyword] = useState('');
