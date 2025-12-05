@@ -10,12 +10,15 @@ toc: content
 ### Shell 是什么？🧐
 
 1. **定义**：
+
    - Shell 是一个命令行解释器，它提供了一个用户界面，用于访问操作系统的服务。用户可以在 shell 中输入命令，shell 解释并执行这些命令。
 
 2. **类型**：
+
    - 常见的 shell 包括 Bash (Bourne Again Shell)、Zsh (Z Shell)、Ksh (Korn Shell)、Fish (Friendly Interactive Shell) 等。
 
 3. **功能**：
+
    - 解释和执行用户输入的命令。
    - 提供编程功能，如变量、循环、条件判断等。
    - 允许用户编写脚本以自动化任务。
@@ -26,12 +29,15 @@ toc: content
 ### Terminal 是什么？😎
 
 1. **定义**：
+
    - Terminal (终端) 是一个用户界面设备，用于与计算机进行交互。现代终端通常是软件实现的，提供一个窗口，用户可以在其中与 shell 互动。
 
 2. **类型**：
+
    - 终端可以是物理的 (如早期的电传打字机) 或虚拟的 (如现代的终端仿真器)。常见的终端仿真器包括 GNOME Terminal、Konsole、iTerm2、Windows Terminal 等。
 
 3. **功能**：
+
    - 提供一个环境，让用户可以与 shell 互动。
    - 支持文本输入和输出，显示 shell 的输出结果。
 
@@ -225,9 +231,11 @@ fish
 每个 Shell 都有自己的配置文件，用于设置环境变量、别名和其他配置项。例如：
 
 - **Bash**:
+
   - `~/.bashrc` 或 `~/.bash_profile`
 
 - **Zsh**:
+
   - `~/.zshrc`
 
 - **Fish**:
@@ -251,12 +259,15 @@ source ~/.bashrc
 #### `~/.bash_profile`
 
 1. **用途**：
+
    - `~/.bash_profile` 是为登录 Shell 会话 (login shell session) 设计的配置文件。当你登录到一个系统时，比如通过 SSH 连接，或者在终端中打开一个新的登录 Shell 会话时，Bash 会读取并执行这个文件。
 
 2. **加载时机**：
+
    - 仅在启动登录 Shell 时加载。
 
 3. **典型内容**：
+
    - 设置环境变量 (如 `PATH`)。
    - 运行其他配置文件 (如 `~/.bashrc`)。
 
@@ -277,12 +288,15 @@ source ~/.bashrc
 #### `~/.bashrc`
 
 1. **用途**：
+
    - `~/.bashrc` 是为交互式非登录 Shell 会话 (interactive non-login shell session) 设计的配置文件。当你打开一个新的终端窗口或标签页时，Bash 会读取并执行这个文件。
 
 2. **加载时机**：
+
    - 仅在启动交互式非登录 Shell 时加载。
 
 3. **典型内容**：
+
    - 设置命令别名 (aliases)。
    - 定义 Shell 函数。
    - 设置 Shell 提示符 (prompt)。
