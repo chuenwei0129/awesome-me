@@ -6,375 +6,395 @@ group:
   title: 基础知识
 ---
 
-## npm 版本号发布规则
+> 本文从「字段说明 → 依赖管理 → 最佳实践 → 实战模板」完整整理 `package.json`，统一术语和风格，并修正常见误解。示例中使用的带注释 JSON（`jsonc`）仅用于讲解，**真实的 `package.json` 必须是合法 JSON：不允许任何注释，也不能有多余的逗号**。
 
-[官方文档](https://docs.npmjs.com/about-semantic-versioning)中建议的 npm 库的版本号的发布规则如下：
-
-| 场景               | 阶段       | 规则                                    | 例子    |
-| ------------------ | ---------- | --------------------------------------- | ------- |
-| 首次发布           | 新产品     | 从 `1.0.0` 开始                         | `1.0.0` |
-| 向后兼容的bug修复  | 发布补丁   | 第三位数字值递增                        | `1.0.1` |
-| 向后兼容的新特性   | 小版本更新 | 第二位数字递增且将第三位数字重置为0     | `1.1.0` |
-| 破坏向后兼容的修改 | 大版本更新 | 第一位数字递增且将第二、三为数字重置为0 | `2.0.0` |
-
-这些规则可以图解为：
-
-![20240421173455](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240421173455.png)
-
-尽管理论上清晰，现实中许多库并未严格遵循这些规则，有时导致了一些混乱。
-
-## `package.json` 与 `package-lock.json` 的协同作用
-
-> `package.json` 与 `package-lock.json` 组合的用法应该理解为工程实践上的一种权衡。**同时考虑便利性和可靠性而做出的一种权衡。**
-
-### 为什么 `package.json` 允许定义版本范围
-
-在 `package.json` 文件中，明确指定依赖版本，如 `"my-package": "1.0.1"`，确保了您使用的是特定的库版本。然而，这种做法可能会限制您及时获取库更新的机会。例如，**如果某个库发布了性能改进的补丁或新增了实用功能，固定版本号会导致您错过这些更新**。为了解决这个问题，`package.json` 允许您定义一个版本范围，从而在保持一定稳定性的同时，也能享受到依赖库的及时更新。
-
-以下是不同场景下的版本范围定义示例及其解释：
-
-| 场景                             | 示例范围                                     | 描述                                                                                    |
-| -------------------------------- | -------------------------------------------- | --------------------------------------------------------------------------------------- |
-| 指定大版本的最新补丁             | `"some-lib": "1.0"` 或 `"some-lib": "1.0.x"` | 可以安装`1.0.x`中最新的补丁版本，例如`1.0.2`、`1.0.6`等。                               |
-| 指定小版本以上的最新补丁         | `"some-lib": "~1.0.4"`                       | 可以安装`1.0.x`中，`1.0.4`及以上的最新补丁版本，但不会安装低于`1.0.4`的版本。           |
-| 指定大版本的最新小版本和补丁     | `"some-lib": "1"` 或 `"some-lib": "1.x"`     | 可以安装`1.x.x`中的任意最新小版本和补丁版本，例如`1.0.6`、`1.1.6`、`1.2.3`、`1.3.0`等。 |
-| 指定小版本以上的最新小版本和补丁 | `"some-lib": "^1.1.4"`                       | 可以安装`1.x.x`中，`1.1.4`及以上的最新小版本和补丁版本，但不会安装低于`1.1.4`的版本。   |
-| 安装最新版本                     | `"some-lib": "*"` 或 `"some-lib": "x"`       | 可以安装最新版本的库，不受大版本、小版本或补丁版本的限制。                              |
-
-> 注意：以上都是以项目中没有 `package-lock.json` 为前提假设，`package-lock.json` 的存在会对依赖安装过程产生影响，这一点将在后续部分讨论。
-
-### `package-lock.json` 的必要性与作用
-
-在使用 npm 安装项目依赖时，package.json 允许我们为依赖指定一个版本范围。这种灵活性的好处是可以自动接收到依赖的安全补丁和小更新，但它也带来了一个问题：如何确保在不同的开发环境或者在不同时间点上使用 `npm install` 安装的依赖是完全一致的？
-
-这就是 `package-lock.json` 文件的作用所在。它记录了安装时每个依赖项的确切版本，以及这些依赖项的依赖树，从而确保了无论何时运行 `npm install`，不论依赖项的中间版本如何更新，都能生成一模一样的依赖树。
-
-假设在项目的 `package.json` 中，我们有这样一个依赖声明：
-
-```json
-"lodash": "^4.17.20"
-```
-
-这意味着安装 `lodash` 时，可以安装 `4.17.20` 以上的版本，但不会安装到下一个大版本 (即不会安装到 `5.x.x`)。如果在项目初始化时，最新的 `lodash` 版本是 `4.17.21`，那么 `npm install` 将安装 `4.17.21` 版本的 `lodash`。
-
-此时，`package-lock.json` 将记录下 `lodash` 的具体版本为 `4.17.21`。后续，即使 `lodash` 发布了新的补丁版本 (比如 `4.17.22`)，再次运行 `npm install` 时，由于 `package-lock.json` 的存在，将仍然安装 `4.17.21` 版本，确保所有开发者和部署环境中的依赖完全一致。
-
-`package-lock.json` 的作用 —— 当 `npm install` 时发现本地有 `package-lock.json`，就会严格按照 `package-lock.json` 的版本来安装。
-
-> 官方文档原文：
-> It describes the exact tree that was generated，such that subsequent installs are able to generate identical trees，regardless of intermediate dependency updates。
-
-(注意：这个行为在某些 npm 版本里是有问题的 —— 如 npm 5.1.0 中这个行为一度被废弃，即如果 npm 发现符合 package.json 里的新版本的库依然会忽视 `package-lock.json` 安装新版本。
-
-### 该不该将 `package-lock.json` 上传到 git
-
-基于 Npm 最新版本 (v8.x) 的官方文档 [`package-lock.json` | npm Docs](https://docs.npmjs.com/cli/v8/configuring-npm/package-lock-json/)
-
-结论是**应该把 `package-lock.json` 上传到 git**。
-
-![20240421174644](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240421174644.png)
-
-将 `package-lock.json` 文件上传到 Git 的好处：
-
-1. **确保依赖一致性**：`package-lock.json` 记录了项目依赖树的确切状态，包括每个包的具体版本和来源。这意味着无论何时何地运行 `npm install`，只要 `package-lock.json` 存在，就能保证安装的依赖与其他开发者和生产环境完全一致。这对于避免 “在我这里可以运行，但在你那里却不行” 的问题至关重要。
-
-2. **减少不必要的网络请求**：当存在 `package-lock.json` 时，npm 可以直接使用文件中的信息来安装依赖，而不需要额外的网络请求去查询每个包的最新版本。这不仅加快了依赖安装的过程，还减少了因网络问题导致的安装失败的可能性。
-
-3. **方便代码审查**：更新 `package-lock.json` 并将其提交到 Git，可以让团队成员通过 Git 的 Diff 功能清楚地看到依赖的变化。这对于审查代码、跟踪依赖更新及其可能带来的影响非常有帮助。
-
-4. **避免重复解析 `package.json`**：从 npm v7 版本开始，`package-lock.json` 已经能够完整地描述 `package.json` 中定义的依赖关系，这意味着 npm 可以直接使用 `package-lock.json` 中的信息，而无需再次解析 `package.json`。这进一步提高了安装过程的效率。
-
-5. **简化项目设置**：通过将 `package-lock.json` 加入版本控制，新团队成员或构建系统在克隆项目后可以立即使用 `npm install` 安装确切的依赖版本，无需担心依赖不一致的问题。这使得项目设置变得更加简单和可靠。
-
-### 定期更新依赖
-
-我们的目的是保证团队中使用的依赖一致或者稳定，而不是永远不去更新这些依赖。实际开发场景下，我们虽然不需要每次都去安装新的版本，仍然需要定时去升级依赖版本，来让我们享受依赖包升级带来的问题修复、性能提升、新特性更新。
-
-![20240421214323](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240421214323.png)
-
-使用 `npm outdated` 可以帮助我们列出有哪些还没有升级到最新版本的依赖：
-
-- 黄色表示不符合我们指定的语意化版本范围 - 不需要升级
-- 红色表示符合指定的语意化版本范围 - 需要升级
-
-执行 `npm update` 会升级所有的红色依赖。
-
-### 最佳实践
-
-#### 选择合适的版本策略
-
-- **对于核心和关键依赖**，推荐使用更稳定的版本号策略。精确版本号 (例如 `1.2.3` 而非 `^1.2.3` 或 `~1.2.3`) 可以保证依赖的稳定性，避免自动更新可能带来的不兼容问题。这种做法对于确保项目的长期稳定性尤为重要。
-- **对于非关键依赖**，可以考虑使用模糊版本号 (如使用 `^` 或 `~`)，以便自动接收补丁和小更新。这样做可以帮助项目保持更新，同时减少潜在的安全风险。
-
-#### 定期审查和更新依赖
-
-- **定期审查项目依赖**，确保依赖库仍然得到维护，并且没有已知的安全问题。使用如 `npm audit` 这样的工具可以帮助检测存在安全漏洞的依赖。
-- **计划性地更新依赖**，而非仅仅依赖自动更新。虽然自动更新可以帮助快速修复问题，但手动审查更新可以确保更新不会引入新的问题。
-
-#### 管理 `package-lock.json`
-
-- **始终将 `package-lock.json` 文件提交到版本控制系统**。这有助于确保所有开发者和部署环境使用完全相同的依赖版本，从而避免 “在我的机器上可以运行” 这类问题。
-- **定期更新 `package-lock.json`**，尤其是在更新项目依赖后，确保它反映了项目依赖的最新状态。
-
-#### 对于不活跃的依赖库
-
-- **对于个人维护或不再活跃的库**，使用精确版本号来锁定依赖。这可以减少因库的不稳定更新而带来的风险。
-- **考虑替代方案**。如果某个依赖不再活跃，且存在已知问题或不再满足需求，寻找更加稳定和活跃的替代库可能是一个好选择。
+---
 
 ## package.json 简述
 
-package.json 是一个 JSON 文件，用于描述项目信息，比如项目名称、版本号、依赖等信息。
+`package.json` 是 Node.js / 前端工程中最核心的配置文件之一，用来描述：
 
-当我们新建一个名称为 my-app 的项目时，使用 `npm init -y` 命令后，在项目目录下会新增一个 package.json 文件，内容如下：
+- 项目信息（名称、版本、描述、作者等）
+- 依赖管理（依赖、开发依赖、对等依赖等）
+- 运行与构建脚本（scripts）
+- 打包入口（main / module / exports / browser 等）
+- 运行环境约束（engines、os 等）
 
-```json
+在空目录中执行：
+
+```bash
+npm init -y
+```
+
+会自动生成一个基础的 `package.json`：
+
+```jsonc
 {
-  "name": "my-app", # 项目名称
-  "version": "1.0.0", # 项目版本
-  "description": "", # 用于编写描述信息。有助于人们在npm库中搜索的时候发现你的模块。
-  "main": "index.js", # 入口文件
-  "scripts": { # 指定运行脚本命令的 npm 命令行缩写
+  "name": "my-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [], # 关键词。有助于人们在npm库中搜索的时候发现你的模块。
-  "author": "", # 作者
-  "license": "ISC" # 开源许可证 在所有副本中保留版权声明和许可证声明，使用者就可以拿你的代码做任何想做的事情，你也无需承担任何责任
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
 ```
 
-更多配置项可以参考[官方文档](https://docs.npmjs.com/cli/v10/configuring-npm/package-json)。
+> 再次强调：上述示例使用 `jsonc` 语法展示。实际项目中的 `package.json` 不允许出现注释和多余逗号。
 
-## package.json 里 npm 官方的字段
+更多配置项可以参考 [npm 官方文档](https://docs.npmjs.com/cli/v10/configuring-npm/package-json)。
+
+---
+
+## npm 官方字段
 
 ### name, version
 
-- name 必须小于等于 214 个字符，不能以 `.` 或 `_` 开头，不能有大写字母，因为名称最终成为 URL 的一部分因此不能包含任何非 URL 安全字符。npm 官方建议我们不要使用与核心节点模块相同的名称。不要在名称中加 js 或 node。
-- version 定义项目的版本号，格式为：`大版本号.次版本号.修订号`，每次发布时 version 不能与已存在的一致。
-- name 和 version 只有作为包发布时才是必须字段。
+- `name`（包名）
+  - 长度必须 ≤ 214 字节；
+  - 不能以 `.` 或 `_` 开头；
+  - 不能包含大写字母；
+  - 不能包含空格或非 URL 安全字符（如 `~)('!*` 等）；
+  - 支持作用域名：`@scope/package-name`；
+  - 建议不要与 Node 核心模块（如 `fs`、`http`）重名，也不建议刻意加 `js` / `node`。
+- `version`（版本号）
+  - 必须符合语义化版本 SemVer：`主版本.次版本.补丁`，如 `1.2.3`；
+  - 每次发布到 npm 的版本号必须唯一。
 
-    ![20240421172842](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240421172842.png)
+> `name` 和 `version` 在包要发布到 npm registry 时是必填字段，对于只在本地使用的私有项目可不强求，但建议也保持规范。
 
-#### bin
+---
 
-`bin` 项用来指定每个内部命令对应的可执行文件的位置。如果你编写的是一个 node 工具的时候一定会用到 `bin` 字段。
+### scripts
 
-当我们编写一个 `cli` 工具的时候，需要指定工具的运行命令，比如常用的 `webpack` 模块，他的运行命令就是 `webpack`。
+`scripts` 字段用来定义各种 npm 脚本命令，便于统一管理开发、构建、测试等操作：
 
-```json
+```jsonc
 {
-  "bin": {
-    "webpack": "bin/index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,md}\""
   }
 }
 ```
 
-当我们执行 `webpack` 命令的时候就会执行 `bin/index.js` 文件中的代码。
+执行方式：
 
-> PATH 环境变量，是告诉系统，当要求系统运行一个程序而没有告诉它程序所在的完整路径时，系统除了在当前目录下面寻找此程序外，还应到哪些目录下去寻找。
->
-> 在 terminal 中执行命令时，命令会在 PATH 环境变量里包含的路径中去寻找相同名字的可执行文件。局部安装的包只在 `./node_modules/.bin` 中注册了它们的可执行文件，不会被包含在 PATH 环境变量中，这个时候在 terminal 中输入命令将会报无法找到的错误。
->
-> 那为什么通过 `npm run` 可以执行局部安装的命令行包呢？
->
-> 是因为每当执行 `npm run` 时，会自动新建一个 Shell，这个 Shell 会将当前项目的 `node_modules/.bin` 的绝对路径加入到环境变量 PATH 中，执行结束后，再将环境变量 PATH 恢复原样。
->
-> 如果是全局安装，npm 将会使用符号链接把可执行文件链接到 `/usr/local/bin`，如果是本地安装，会链接到 `./node_modules/.bin/`。
+```bash
+npm run dev
+npm run build
+npm run lint
+```
+
+当你运行 `npm run xxx` 时，npm 会临时创建一个 Shell，并将当前项目的 `node_modules/.bin` 目录加入 `PATH`，因此可以在脚本中直接调用本地安装的 CLI 命令（如 `vite`、`eslint`）。
+
+常见脚本约定：
+
+- `dev`：本地开发服务器
+- `build`：生产环境打包
+- `test` / `test:watch`：测试
+- `lint` / `format`：代码风格与格式
+- `prepare`：包安装后自动执行的脚本，常用于 Husky 等 Git hook 初始化
+
+---
+
+### bin
+
+`bin` 用于定义 CLI 工具的命令名与入口文件映射。
+
+```jsonc
+{
+  "name": "my-webpack-cli",
+  "version": "1.0.0",
+  "bin": {
+    "webpack": "bin/index.js"
+  }
+}
+```
+
+`bin/index.js` 一般形如：
+
+```js
+#!/usr/bin/env node
+
+console.log('Hello from CLI');
+```
+
+并赋予可执行权限：
+
+```bash
+chmod +x bin/index.js
+```
+
+- 当用户**全局安装**你的包（或使用 `npx`，或在 `npm run` 环境中）：
+  - 在终端执行 `webpack` 时，就会执行 `bin/index.js`
+- `PATH` 相关说明：
+  - 系统执行命令时，会根据环境变量 `PATH` 查找可执行文件；
+  - 本地安装的包只会在 `./node_modules/.bin` 中注册命令，不会加入全局 PATH；
+  - `npm run` / `npx` 会临时把 `node_modules/.bin` 加入 PATH。
+
+---
 
 ### config
 
-`config` 字段用于添加命令行的环境变量。
+`config` 用于定义通过 npm 覆盖的配置项，这些配置会在 `npm run` 执行脚本时，注入到环境变量中。
 
-```json
+```jsonc
 {
-  "name" : "webpack",
-  "config" : { "port" : "8080" },
-  "scripts" : { "start" : "node server.js" }
+  "name": "webpack",
+  "config": {
+    "port": "8080"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
 }
-
 ```
 
-然后，在 `server.js` 脚本就可以引用 `config` 字段的值。
+在 `server.js` 中可以这样访问：
 
 ```js
 console.log(process.env.npm_package_config_port); // 8080
 ```
 
-用户可以通过 `npm config set` 来修改这个值。
+用户可以通过 `npm config set` 覆盖默认值：
 
-```sh
+```bash
 npm config set webpack:port 8000
 ```
 
+> 现在新项目中较少主动使用 `config`，但遇到时要能看懂。
+
+---
+
 ### author, contributors
 
-`author` 是具体一个人，`contributors` 表示一群人，他们都表示当前项目的共享者。同时每个人都是一个对象。具有 `name` 字段和可选的 `url` 及 `email` 字段。
+- `author`：单一作者信息
+- `contributors`：贡献者列表
 
-```json
+两者都可以用对象或字符串表示：
+
+```jsonc
 {
   "author": {
-    "name" : "yourname",
-    "email" : "youremail@xx.com",
-    "url" : "https://yoururl.com/"
+    "name": "yourname",
+    "email": "youremail@xx.com",
+    "url": "https://yoururl.com/"
+  },
+  "contributors": ["name <b@rubble.com> (http://barnyrubble.tumblr.com/)"]
+}
+```
+
+---
+
+### dependencies, devDependencies, optionalDependencies
+
+- `dependencies`
+  - 运行时依赖：项目在**运行中**需要的包；
+  - 例如 React、Vue、Ant Design、Axios 等。
+- `devDependencies`
+  - 开发/构建依赖：只在**开发或构建阶段**需要；
+  - 例如 webpack、Vite、Babel、ESLint、TypeScript、Jest 等。
+- `optionalDependencies`
+  - 可选依赖：安装失败不会导致整个安装失败；
+  - 常用于某些平台特定的依赖或可选特性。
+
+版本值可以是：
+
+- 版本范围（推荐做法）
+  - 如：`"axios": "^1.7.0"`、`"lodash": "~4.17.21"` 等，遵循 SemVer。
+- tarball 地址
+  - 如：`"my-lib": "https://cdn.com/my-lib-1.0.0.tgz"`。
+- 本地路径（适合本地调试）
+  - 如：`"my-lib": "file:../packages/my-lib"`。
+- GitHub 简写
+  - 如：`"antd": "ant-design/ant-design#4.0.0-alpha.8"`。
+- 完整 Git URL
+  - 如：`"my-lib": "git+https://github.com/user/repo.git#v1.2.3"`。
+
+示例：
+
+```jsonc
+{
+  "dependencies": {
+    "antd": "ant-design/ant-design#4.0.0-alpha.8",
+    "axios": "^1.7.0",
+    "core-js": "^3.37.0",
+    "my-local-lib": "file:../packages/my-local-lib",
+    "remote-lib": "https://cdn.com/remote-lib-1.0.0.tgz"
   }
 }
 ```
 
-也可以写成一个字符串：
+> 对于**应用项目**，框架和 UI 库通常放在 `dependencies`；
+> 对于**组件库**，很多时候应该放在 `peerDependencies`（见下文）。
 
-```json
-{
-  "contributors": [
-    "name <b@rubble.com> (http://barnyrubble.tumblr.com/)"
-  ]
-}
-```
-
-### dependencies, devDependencies
-
-- **`dependencies` 字段指定了项目运行所依赖的模块**：可以理解为我们的项目在生产环境运行中要用到的东西。比如说我们常用的 antd 只能哪个代码块就会用到里面的组件，所以要放到 `dependencies` 里面去。
-- **`devDependencies` 字段指定了项目开发所需要的模块**：开发环境会用到的东西，比如说 webpack。我们打包的时候会用到，但是项目运行的时候却用不到，所以只需要放到 `devDependencies` 中去就好了。
-
-依赖的模块遵循下面几种配置规则：
-
-- `依赖包名称:VERSION`
-  - `VERSION` 是一个遵循 `SemVer` 规范的版本号配置，`npm install` 时将到 npm 服务器下载符合指定版本范围的包。
-- `依赖包名称:DWONLOAD_URL`
-  - `DWONLOAD_URL` 是一个可下载的 `tarball` 压缩包地址，模块安装时会将这个 `.tar` 下载并安装到本地。
-- `依赖包名称:LOCAL_PATH`
-  - `LOCAL_PATH` 是一个本地的依赖包路径，例如 `file:../pacakges/pkgName`。适用于你在本地测试一个 `npm` 包，不应该将这种方法应用于线上。
-- `依赖包名称:GITHUB_URL`
-  - `GITHUB_URL` 即 `github` 的 `username/modulename` 的写法，例如：`ant-design/ant-design`，你还可以在后面指定 `tag` 和 `commit id`。
-- `依赖包名称:GIT_URL`
-  - `GIT_URL` 即我们平时 clone 代码库的 `git url`，其遵循以下形式：`<protocol>://[<user>[:<password>]@]<hostname>[:<port>][:][/]<path>[#<commit-ish> | #semver:<semver>]`
-
-```json
-"dependencies": {
-    "antd": "ant-design/ant-design#4.0.0-alpha.8",
-    "axios": "^1.2.0",
-    "test-js": "file:../test",
-    "test2-js": "http://cdn.com/test2-js.tar.gz",
-    "core-js": "^1.1.5",
-}
-```
+---
 
 ### peerDependencies
 
-对等依赖的作用：
+`peerDependencies`（对等依赖）主要用于**库 / 插件**场景：
 
-1. 减小打包体积：例如使用 react 开发的组件库，安装 react 是必不可少的，而使用组件库的开发者，本地项目肯定安装了 react，因此开发的组件库中不必把 react 打包进去 (期望项目的使用者来提供这些模块的实现)。
-2. 版本一致性：使用你的组件库的开发者需要确保他们项目中安装了与你声明的对等依赖版本兼容的包，以确保组件库正常运行。
+- 你的包要依赖某个“宿主”库（如 React/Vue），但不希望把它打包进来；
+- 要求使用你库的人，在他们的项目中自行安装且保持版本兼容。
 
-示例：声明要使用组件库，需在项目中安装大于 `17.0.1` 版本的 react。
+示例：React 组件库要求使用者安装 `>=17.0.1` 的 React：
 
-```json
-"peerDependencies": {
-  "react": "> 17.0.1"
+```jsonc
+{
+  "peerDependencies": {
+    "react": ">=17.0.1",
+    "react-dom": ">=17.0.1"
+  }
 }
 ```
+
+关键点：
+
+1. 体积优化
+   - 使用你的组件库的人本地已经安装了 React，你再打包一份会导致多份 React 共存和体积膨胀。
+2. 版本一致性
+   - 要求使用者使用与你兼容的 React 版本，否则会产生警告或运行时错误。
+
+> 行为差异：
+>
+> - npm 6 及之前：不会自动安装 `peerDependencies`，只给出警告，必须使用者手动安装；
+> - npm 7+：会尝试自动安装，但遇到版本冲突仍会报错，所以声明范围要谨慎。
+> - 对于可选 peer 依赖可以配合 `peerDependenciesMeta` 使用。
+
+---
 
 ### engines
 
-> engines 声明了对 npm 或 node 的版本要求
->
-> 目前对 npm 来说，engines 只是起一个说明的作用，即使用户安装的版本不符合要求，也不影响依赖包的安装。但使用 pnpm 和 yarn 安装，如果版本不符合要求会导致安装失败。
+`engines` 用来声明对 Node/npm 版本的要求：
 
-```json
-"engines": {
-  "node": ">=8.10.3 <12.13.0",
-  "npm": ">=6.9.0"
+```jsonc
+{
+  "engines": {
+    "node": ">=16.0.0 <22.0.0",
+    "npm": ">=8.0.0"
+  }
 }
 ```
 
+不同工具的处理：
+
+- npm：默认只警告，不阻止安装（可通过配置 `engine-strict=true` 变严格）；
+- Yarn / pnpm：通常更严格，但也可通过配置关闭检查。
+
+---
+
 ### workspaces
 
-单个代码库中统一管理多个包 (monorepo)，在 workspaces 声明目录下的 package 会软链到根目录的 `node_modules` 中。
+`workspaces` 用于在一个仓库中管理多个包（monorepo），被声明的子包会通过软链接形式统一管理。
 
-1. 初始化项目：
+1. 初始化根项目：
 
-    ```bash
-    npm init -y
-    ```
+   ```bash
+   npm init -y
+   ```
 
-2. 声明本项目是 workspaces 模式
+2. 在根目录 `package.json` 中启用 workspaces：
 
-    ```json
-    "private":"true",
-    "workspaces": [
-      "packages/*"
-    ],
-    ```
+   ```jsonc
+   {
+     "private": true,
+     "workspaces": ["packages/*"]
+   }
+   ```
 
-3. 声明子项目 p1
+   > `private: true` 可以避免根包被误发布到 npm。
 
-    ```sh
-    npm init -w packages/p1 -y
-    ```
+3. 新建子项目 p1：
 
-    在 `node_modules/.package-lock.json` 中可以看到 `"link": true` 链接符号信息
+   ```bash
+   npm init -w packages/p1 -y
+   ```
 
-4. 声明子项目 p2
+   会生成 `packages/p1/package.json`，`name` 默认是 `p1`。
 
-    ```sh
-    npm init -w packages/p2 -y
-    ```
+4. 新建子项目 p2：
 
-5. 新建 packages/p1/index.js
+   ```bash
+   npm init -w packages/p2 -y
+   ```
 
-    ```js
-    const add = (a, b) => {
-      return a + b
-    }
+5. 在 `packages/p1/index.js` 中导出函数：
 
-    module.exports = {
-      add,
-    }
-    ```
+   ```js
+   const add = (a, b) => a + b;
+   module.exports = { add };
+   ```
 
-6. 在 packages/p2/index.js 引入 p1
+6. 在 p2 中声明对 p1 的依赖：
 
-    ```sh
-    npm i p1 -w p2
-    ```
+   ```bash
+   npm i p1 -w packages/p2
+   ```
 
-    安装，卸载等命令与 npm 命令都是一样的，只是多了 “--workspace=” 参数 (简写 `-w`)，用来指定在哪个包中执行命令
+   `-w` / `--workspace` 用来指定在某个 workspace 下执行命令。
 
-7. 在 `packages/p2/index.js` 中使用 p1
+7. 在 `packages/p2/index.js` 中使用：
 
-    ```js
-    const { add } = require('p1')
-    console.log(add(1, 2))
-    ```
+   ```js
+   const { add } = require('p1');
+   console.log(add(1, 2)); // 3
+   ```
 
-    执行 `node packages/p2/index.js` 输出 3
+   然后执行：
+
+   ```bash
+   node packages/p2/index.js
+   ```
+
+---
 
 ### files
 
-> files 属性用于描述你 `npm publish` 后推送到 npm 服务器的文件列表，如果指定文件夹，则文件夹内的所有内容都会包含进来。
+`files` 指定 `npm publish` 时要包含的文件/目录列表：
 
-示例：只推送 `index.js` 和 dist 包到 npm 服务器。
-
-```json
-"files": [
-  "index.js",
-  "dist"
-]
+```jsonc
+{
+  "files": ["dist", "index.js", "README.md"]
+}
 ```
 
-可以在项目根目录新建一个 `.npmignore` 文件，说明不需要提交到 npm 服务器的文件，类似 `.gitignore`。**写在这个文件中的文件即便被写在 files 属性里也会被排除在外。**
+- 指定目录时，会包含目录下所有内容；
+- 可以通过 `.npmignore` 声明不发布的文件（类似 `.gitignore`）；
+- 如果同时存在 `files` 和 `.npmignore`，**`.npmignore` 优先**，即 `.npmignore` 中的文件会被排除。
 
-`.gitignore` 文件也可以充当 `.npmignore` 文件。
+当没有 `.npmignore` 时，npm 会使用 `.gitignore` 作为默认忽略规则。
+
+---
 
 ### main
 
-指定 CommonJS 模块或 ES 模块入口文件。如果不指定该字段，默认是根目录下的 `index.js`。
+`main` 指定包的默认入口文件：
 
-提示：从 `Node.js 12.20.0` 版本开始，“main” 字段也可以指定 ES 模块的入口文件
+```jsonc
+{
+  "main": "dist/index.cjs"
+}
+```
+
+- 不指定时默认是 `index.js`；
+- Node.js 在加载 CommonJS 包（`require('your-package')`）时，如果没有 `exports` 字段，会使用 `main` 作为入口；
+- 文件是 CommonJS 还是 ESM，取决于文件扩展名（`.cjs` / `.mjs`）和 `type` 字段（见后文）。
+
+---
 
 ### publishConfig
 
-在发布包时指定特定的配置，示例：指定包发布的注册表 URL，指定所有用户都可以访问 (私有的会收费)。
+`publishConfig` 用于在**发布时**覆盖部分配置，例如发布到特定 registry：
 
-```json
+```jsonc
 {
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
@@ -383,17 +403,31 @@ npm config set webpack:port 8000
 }
 ```
 
+私有包可以设置不同的 registry 与 access 策略。
+
+---
+
 ### browser
 
-指定浏览器使用的入口文件，例如 umd 模块。
+`browser` 字段通常由打包工具使用，用于指定浏览器环境的入口或替换实现：
+
+```jsonc
+{
+  "main": "dist/index.cjs",
+  "browser": "dist/index.umd.js"
+}
+```
+
+- Node.js 本身不会使用 `browser`；
+- Webpack/Rollup 等工具可以根据配置优先使用 `browser` 字段。
+
+---
 
 ### description, keywords
 
-![20240421211414](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240421211414.png)
+`description` 和 `keywords` 会影响 npm 搜索排名和曝光度：
 
-> 当你使用 npm search 检索模块时，会到 description 和 keywords 中进行匹配。写好 description 和 keywords 有利于你的模块获得更多更精准的曝光。
-
-```json
+```jsonc
 {
   "description": "An enterprise-class UI design language and React components implementation",
   "keywords": [
@@ -410,103 +444,561 @@ npm config set webpack:port 8000
 }
 ```
 
+`npm search` 或 npm 官网搜索时，会匹配这些字段。
+
+---
+
 ### homepage, bugs, repository
 
-![20240421211552](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240421211552.png)
-
-- `homepage` 用于指定该模块的主页。
-- `repository` 用于指定模块的代码仓库。
-- `bugs` 指定一个地址或者一个邮箱，对你的模块存在疑问的人可以到这里提出问题。
-
-```json
+```jsonc
 {
-  "homepage": "http://ant.design/",
+  "homepage": "https://ant.design/",
   "bugs": {
     "url": "https://github.com/ant-design/ant-design/issues"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/ant-design/ant-design"
-  },
+  }
 }
 ```
+
+- `homepage`：项目主页（文档站、官网等）；
+- `repository`：代码仓库地址；
+- `bugs`：问题反馈入口（issue 地址或邮箱）。
+
+---
 
 ### license
 
-> license 字段用于指定软件的开源协议，开源协议里面详尽表述了其他人获得你代码后拥有的权利，可以对你的的代码进行何种操作，何种操作又是被禁止的。
+`license` 指定项目的开源协议，决定他人可以如何使用、修改、分发你的代码。
 
-以下就是几种主流的开源协议：
+常见协议：
 
-![20240421213001](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240421213001.png)
+- MIT
+- Apache-2.0
+- GPL-3.0
+- BSD-2-Clause / BSD-3-Clause 等
+
+合理选择并声明 license 对开源项目非常重要，避免法律风险。
+
+---
 
 ### private
 
-如果将 private 属性设置为 true，npm 将拒绝发布它，这是为了防止一个私有模块被无意间发布出去。
-
-### os
-
-假如你开发了一个模块，只能跑在 darwin 系统下，你需要保证 windows 用户不会安装到你的模块，从而避免发生不必要的错误。
-
-```json
-# 指定你的模块只能被安装在某些系统下
-"os" : [ "darwin", "linux" ]
-# 指定一个不能安装的系统黑名单
-"os" : [ "!win32" ]
-```
-
-## 非 npm 官方字段
-
-### `package.json` 的演进
-
-1. **npm 的崛起**：npm 最初作为 Node.js 的包管理工具，随着时间的发展，它逐渐成为前端开发的中心。这一转变标志着 JavaScript 生态的融合，前后端代码的界限变得模糊。
-2. **多入口支持**：随着 `browser`、`module`、和 `main` 等字段的引入，`package.json` 允许开发者为不同环境指定不同的入口文件。这对于构建跨平台的库和应用尤其重要。
-3. **TypeScript 的集成**：`types` 字段的引入为 TypeScript 提供了官方的类型定义入口。这促进了 TypeScript 在前端项目中的广泛应用，加强了代码的类型安全。
-4. **工具和配置的集成**：`package.json` 也成为了配置项目工具 (如 Babel、ESLint、Prettier、Husky 等) 的地方，使得项目配置更加集中和一致。
-
-### module
-
-> module 字段用来指定 ES Module 的入口文件。
-
-1. 默认情况下，npm 会将 `package.json` 中的 main 字段作为 CommonJS 的入口文件。
-2. 如果 `package.json` 中没有 main 字段，npm 会将 `package.json` 中的 module 字段作为 ES Module 的入口文件。
-
-### exports
-
-当打包工具 (如 Webpack 或 Rollup) 支持 exports 字段时，main、browser、module 和 types 这四个字段都将被忽略。
-
-exports 字段提供了一个更细粒度的控制，允许指定不同模块系统和环境的导出路径：
-
-- “`.`” 表示默认导出
-- “import”：指定了 ES module (ESM) 规范下的导出文件路径
-- “require”：指定了 CommonJS 规范下的导出文件路径
-- “browser”：指定了用于浏览器环境的导出文件路径
-- “types”：指定了类型声明文件的路径
-
-```json
-"exports": {
-  ".": {
-    "import": "./dist/index.esm.js",
-    "require": "./dist/index.cjs.js",
-    "browser": "./dist/index.umd.js",
-    "types": "./dist/index.d.ts"
-  }
-  "./main": "./src/main.js"
+```jsonc
+{
+  "private": true
 }
 ```
 
-在其他项目中，可以使用以下方式导入模块：
+`private: true` 会阻止 npm 发布该包，常用于：
 
-```js
-import package from 'packageName'; // . 方式定义的
-import main from 'packageName/main'; // ./main 方式定义的
+- 私有应用项目（前端 SPA / 后台）
+- monorepo 根目录（配合 `workspaces`）
+
+---
+
+### os
+
+`os` 用于限制包在哪些操作系统上可安装：
+
+只允许 macOS 和 Linux：
+
+```jsonc
+{
+  "os": ["darwin", "linux"]
+}
 ```
 
-### type
+黑名单形式：禁止在 Windows 上安装：
 
-指定模块系统的使用方式，“commonjs”，“module”，“umd”，“json”
-
-示例：指定模块系统为 ES module 模式，使用 CommonJS 文件时，需显式的定义为 `.cjs` 文件扩展名，来明确指定这些文件为 CommonJS 模块
-
-```json
-"type": "module"
+```jsonc
+{
+  "os": ["!win32"]
+}
 ```
+
+---
+
+## 非 npm 官方字段（构建与工具集成）
+
+### package.json 的演进
+
+1. npm 成为前端包管理中心
+   - 前后端统一使用 npm 生态，JavaScript 依赖管理集中到 `package.json`。
+2. 多入口支持
+   - `main`、`browser`、`module`、`exports` 等字段出现，让包能针对 Node、浏览器、打包器提供不同构建。
+3. TypeScript 集成
+   - `types` / `typings` 字段作为类型入口，加速 TS 普及。
+4. 工具配置集中化
+   - 许多工具支持直接在 `package.json` 中内联配置（Babel、ESLint、Prettier、Husky 等），虽然大型项目往往更倾向使用独立配置文件。
+
+---
+
+### types / typings
+
+为 TypeScript 提供类型声明入口：
+
+```jsonc
+{
+  "main": "dist/index.cjs",
+  "types": "dist/index.d.ts"
+}
+```
+
+- `types` / `typings` 都可以被 TypeScript 识别；
+- 纯 JS 库如果同时发布 `.d.ts`，可以大幅提升使用体验。
+
+---
+
+### module（构建工具约定字段）
+
+`module` 不是 Node/npm 官方字段，而是**打包工具约定**用来指向 ES Module 入口：
+
+```jsonc
+{
+  "main": "dist/index.cjs",
+  "module": "dist/index.esm.js"
+}
+```
+
+- Node.js 不会读取 `module`；
+- Webpack/Rollup 等工具可以优先使用 `module` 的 ESM 版本，以实现更好的 tree-shaking。
+
+---
+
+### exports（推荐的现代入口声明）
+
+`exports` 是 Node.js 官方推荐的现代入口声明方式，可以精细控制不同环境和导入路径。
+
+示例：
+
+```jsonc
+{
+  "name": "packageName",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs",
+      "browser": "./dist/index.umd.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./main": "./src/main.js"
+  }
+}
+```
+
+说明：
+
+- `"."`：默认导出（`import pkg from 'packageName'`）；
+- `"import"`：ES Module 环境入口；
+- `"require"`：CommonJS 环境入口；
+- `"browser"`：浏览器环境入口（具体使用由工具决定）；
+- `"types"`：类型声明文件路径（TS 编译器使用）；
+- `"./main"`：子路径导出，对应 `import main from 'packageName/main'`。
+
+> 当构建工具和运行时都支持 `exports` 时，一般会优先使用 `exports`，`main` / `module` / `browser` 更多作为兼容旧工具的补充。
+
+---
+
+### type（模块系统）
+
+`type` 用来声明包中 `.js` 文件的默认模块系统：
+
+```jsonc
+{
+  "type": "module"
+}
+```
+
+合法值只有两个：
+
+- `"module"`：
+  - `.js` → 视为 ES Module；
+  - `.cjs` → 强制视为 CommonJS。
+- `"commonjs"`（默认）：
+  - `.js` → 视为 CommonJS；
+  - `.mjs` → 强制视为 ES Module。
+
+> UMD 不是 `type` 的合法值，它只是构建产物的一种打包格式（通常由打包工具生成到 `dist/*.umd.js`）。
+
+---
+
+### sideEffects（tree-shaking 相关）
+
+`sideEffects` 是打包工具使用的字段，用于指示哪些文件存在副作用，直接影响 tree-shaking 效果。
+
+典型写法：
+
+```jsonc
+{
+  "sideEffects": false
+}
+```
+
+含义：
+
+- `"sideEffects": false`
+  - 表示**所有导入未使用的模块都可以被安全地移除**；
+  - 适用于纯函数式的组件库/工具库（没有在模块顶层修改全局变量、注入 polyfill 等副作用逻辑）。
+
+如果某些文件有副作用（例如全局样式、polyfill），可以用数组形式：
+
+```jsonc
+{
+  "sideEffects": ["./src/polyfills.js", "./src/styles/global.css"]
+}
+```
+
+含义：
+
+- 除数组中列出的文件之外，其它模块都被视为“无副作用”，可以被消除；
+- 数组中的文件即使只被导入但未使用，也不会被 tree-shaking 移除。
+
+实践建议：
+
+- 对于**组件库**：
+  - 提前设计模块结构，尽量做到无副作用，启用 `"sideEffects": false`；
+  - 如有全局样式/注册逻辑，列入 `sideEffects` 数组。
+- 对于**应用项目**：
+  - 一般不需要设置（由框架和打包器处理即可）；
+  - 若需要精细优化打包体积，可视情况使用。
+
+---
+
+## package.json 与 package-lock.json
+
+> `package.json` 负责“声明你想要什么范围的版本”；
+> `package-lock.json` 负责“记录实际安装的具体版本和依赖树”。
+
+### 为什么 package.json 允许版本范围
+
+如果在 `package.json` 里写死版本：
+
+```jsonc
+{
+  "dependencies": {
+    "my-package": "1.0.1"
+  }
+}
+```
+
+虽然可以保证每次安装都是同一版本，但会错过 `1.0.2`、`1.0.3` 等补丁更新。
+因此 npm 支持语义化版本范围，让你在**稳定性**和**更新速度**之间做平衡。
+
+常见写法：
+
+| 场景                    | 示例范围                     | 描述                                                   |
+| ----------------------- | ---------------------------- | ------------------------------------------------------ |
+| 同一小版本的补丁更新    | `"some-lib": "1.0.x"`        | 安装 `1.0.x` 中最新补丁，如 `1.0.6`。                  |
+| 从 1.0.4 起的补丁更新   | `"some-lib": "~1.0.4"`       | 安装 `1.0.x` 中 `>=1.0.4` 最新版本。                   |
+| 大版本 1 的最新小版本   | `"some-lib": "1.x"` 或 `"1"` | 安装 `1.x.x` 中的最新版本，如 `1.3.0`。                |
+| 从 1.1.4 起的所有小版本 | `"some-lib": "^1.1.4"`       | 安装 `1.x.x` 中 `>=1.1.4` 的最新版本，不会升到 `2.x`。 |
+| 永远安装最新            | `"some-lib": "*"` 或 `"x"`   | 安装 registry 上的最新版本。                           |
+
+> 这些只是“允许范围”，**真正安装的具体版本还受 `package-lock.json` 影响**。
+
+---
+
+### package-lock.json 的作用
+
+`package-lock.json` 会记录：
+
+- 顶层依赖及其**实际安装版本**；
+- 每个依赖的子依赖树（嵌套依赖）；
+- 下载源（registry、tarball URL 等）；
+
+目的：保证不同时间、不同机器运行 `npm install`，得到**完全一致**的依赖树。
+
+举例：
+
+```jsonc
+{
+  "dependencies": {
+    "lodash": "^4.17.20"
+  }
+}
+```
+
+- 第一次安装时，如果最新可用版本是 `4.17.21`，`npm install` 会安装 `4.17.21`；
+- `package-lock.json` 会记录 `"version": "4.17.21"`；
+- 后续即便发布了 `4.17.22`，在不修改锁文件的前提下再执行 `npm install`，仍会安装 `4.17.21`。
+
+官方说明：
+
+> It describes the exact tree that was generated, such that subsequent installs are able to generate identical trees, regardless of intermediate dependency updates.
+
+相关工具的锁文件：
+
+- npm：`package-lock.json` / `npm-shrinkwrap.json`；
+- Yarn：`yarn.lock`；
+- pnpm：`pnpm-lock.yaml`。
+
+---
+
+### package-lock.json 是否应该提交到 Git
+
+基于 npm v8 官方文档，推荐**将 `package-lock.json` 提交到版本控制系统**。
+
+好处：
+
+1. **依赖一致性**
+   - 所有开发者、测试环境、生产环境使用完全一致的依赖版本。
+2. **安装更快、更稳定**
+   - 减少解析版本范围和网络请求，降低安装失败概率。
+3. **可审计性**
+   - 通过锁文件的 diff 可以清晰查看依赖变更，便于代码审查和安全审计。
+4. **简化新环境配置**
+   - 新同事或 CI/CD 只需 `npm ci` / `npm install` 即可复原依赖环境。
+
+> 对于 npm 项目，推荐使用 `npm ci` 在 CI 环境中根据 `package-lock.json` 进行干净安装。
+
+---
+
+### 定期更新依赖
+
+目标不是“永远不动依赖”，而是在可控范围内享受更新带来的修复和优化。
+
+- 使用 `npm outdated` 查看可更新的依赖：
+
+  ```bash
+  npm outdated
+  ```
+
+  关注三列：
+
+  - `Current`：当前安装版本；
+  - `Wanted`：在 `package.json` 版本范围内可安装的最新版本；
+  - `Latest`：registry 上最新发布版本。
+
+- 使用 `npm update` 在版本范围允许的前提下更新到 `Wanted` 版本，并更新锁文件：
+
+  ```bash
+  npm update
+  ```
+
+> 不同 npm 版本的颜色策略略有差异，**不要过分依赖颜色判断**，重点看 `Current / Wanted / Latest` 三列，结合自己的版本策略决定是否升级。
+
+---
+
+### 依赖管理最佳实践（总结）
+
+1. **选择合适的版本策略**
+
+   - 核心依赖（框架、ORM、驱动等）：
+     - 倾向稳定，可使用较严格的版本范围 + 锁文件控制更新节奏。
+   - 非核心依赖：
+     - 可以使用 `^` / `~` 接收补丁或小版本更新。
+
+2. **定期审查和更新**
+
+   - 使用 `npm audit` 检查安全漏洞；
+   - 使用 `npm outdated` 定期梳理可更新列表；
+   - 以“版本周期”为单位（每个大版本或每月/每季度）做一次集中升级。
+
+3. **管理锁文件**
+
+   - 始终提交 `package-lock.json` 到版本控制；
+   - 更新依赖时同步更新锁文件，并跑一轮基础测试。
+
+4. **处理不活跃依赖**
+   - 对于不再维护的依赖，建议锁定版本，防范意外变更；
+   - 如果有明显问题或安全风险，尽量迁移到更活跃的替代品。
+
+---
+
+## 实战示例：库项目与应用项目的 package.json 模板
+
+下面给出两类最常见项目的 `package.json` 模板，可以直接在项目中裁剪使用。
+
+> 说明：以下示例使用 `jsonc` 带注释，真实项目请删除所有注释。
+
+### 1. 组件库项目示例（以 React UI 库为例）
+
+特点：会发布到 npm；要考虑对外入口、类型、tree-shaking、peerDependencies 等。
+
+```jsonc
+{
+  "name": "@your-scope/ui-lib", // 包名，推荐使用作用域
+  "version": "0.1.0",
+  "description": "Your awesome React UI library",
+  "keywords": ["react", "ui", "components"],
+  "license": "MIT",
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/ui-lib.git"
+  },
+  "homepage": "https://github.com/your-org/ui-lib#readme",
+  "bugs": {
+    "url": "https://github.com/your-org/ui-lib/issues"
+  },
+
+  "type": "module", // 默认 .js 按 ESM 处理
+
+  // 传统入口（给旧工具兜底）
+  "main": "dist/index.cjs", // CommonJS 入口
+  "module": "dist/index.esm.js", // ESM 入口（打包工具）
+  "types": "dist/index.d.ts", // TS 类型入口
+  "browser": "dist/index.umd.js", // 浏览器 UMD 构建（如需）
+
+  // 推荐：统一通过 exports 管理入口
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs",
+      "browser": "./dist/index.umd.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./hooks": {
+      "import": "./dist/hooks.esm.js",
+      "require": "./dist/hooks.cjs",
+      "types": "./dist/hooks.d.ts"
+    }
+  },
+
+  // 只发布构建产物和文档
+  "files": ["dist", "README.md", "LICENSE"],
+
+  // 默认认为模块无副作用，利于 tree-shaking
+  "sideEffects": false,
+
+  // 宿主库作为 peer 依赖，不随包一起安装
+  "peerDependencies": {
+    "react": ">=17.0.0 <19.0.0",
+    "react-dom": ">=17.0.0 <19.0.0"
+  },
+
+  // 库自身运行时需要的依赖（会一并安装）
+  "dependencies": {
+    "clsx": "^2.0.0"
+  },
+
+  // 开发/构建阶段依赖
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "vite": "^5.0.0",
+    "rollup": "^4.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "eslint": "^9.0.0",
+    "jest": "^29.0.0"
+  },
+
+  "scripts": {
+    "dev": "vite", // 文档站 / demo 开发
+    "build": "vite build && npm run build:types",
+    "build:types": "tsc -p tsconfig.build.json",
+    "test": "jest",
+    "lint": "eslint src --ext .ts,.tsx",
+    "prepare": "npm run build" // 发布前自动构建（可选）
+  },
+
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
+```
+
+**组件库关键点：**
+
+- 宿主框架（如 React / Vue）放在 `peerDependencies`；
+- 对外入口优先通过 `exports` 管理，同时保留 `main` / `module` / `types` / `browser` 兼容旧工具；
+- 使用 `"sideEffects": false`，并确保模块设计无顶层副作用，以提升 tree-shaking 效果；
+- 通过 `files` 控制发布内容，只包含必要的构建产物和文档。
+
+---
+
+### 2. 前端应用项目示例（SPA / 管理后台）
+
+特点：不会发布到 npm（只构建部署）；更关注运行时依赖、脚本和工具链。
+
+```jsonc
+{
+  "name": "my-awesome-app",
+  "version": "0.1.0",
+  "private": true, // 应用项目通常不发布到 npm，必须设为 true
+  "description": "My awesome front-end SPA",
+  "keywords": ["react", "spa"],
+  "license": "MIT",
+
+  "homepage": ".", // 有时用于 gh-pages / 静态托管
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/my-awesome-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/my-awesome-app/issues"
+  },
+
+  "type": "module",
+
+  "scripts": {
+    "dev": "vite", // 本地开发
+    "build": "vite build", // 生产构建
+    "preview": "vite preview", // 预览构建产物
+
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,md}\"",
+    "typecheck": "tsc --noEmit",
+
+    "test": "vitest run",
+    "test:watch": "vitest",
+
+    "prepare": "husky install" // 安装 git hooks（可选）
+  },
+
+  // 运行时依赖：会被打包到最终产物中
+  "dependencies": {
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "react-router-dom": "^6.22.0",
+    "axios": "^1.7.0",
+    "zustand": "^4.5.0",
+    "immer": "^10.0.0"
+  },
+
+  // 开发/构建工具依赖
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^5.5.0",
+
+    "vite": "^5.0.0",
+    "@vitejs/plugin-react-swc": "^4.0.0",
+
+    "eslint": "^9.0.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.0",
+    "prettier": "^3.2.0",
+
+    "vitest": "^1.5.0",
+    "@vitest/ui": "^1.5.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/jest-dom": "^6.0.0",
+
+    "husky": "^9.0.0",
+    "lint-staged": "^15.0.0"
+  },
+
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write"]
+  },
+
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+```
+
+**应用项目关键点：**
+
+- 一定要 `private: true`，避免误发布；
+- 框架和 UI 库（React / Vue / AntD 等）放在 `dependencies`，因为运行时代码会直接使用；
+- 入口由构建工具（Vite/Webpack）配置决定，一般不需要 `exports` / `main` / `module`；
+- 重点是合理设计 `scripts` 和工具链（ESLint、Prettier、测试框架等）。

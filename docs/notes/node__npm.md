@@ -1,10 +1,4 @@
-# Node.js 版本管理与 npm 进阶指南
-
-本文从「Node.js 版本管理」出发，依次介绍 npm / npx 基础、命令行使用、版本与依赖管理、团队协作与私有仓库，以及一些进阶工具与实践建议。
-
----
-
-## 一、如何管理 Node.js 版本？
+## 如何管理 Node.js 版本？
 
 以下是三款常用的 Node.js 版本管理工具（**请仅选择其一安装，多工具并存可能导致冲突**）：
 
@@ -18,7 +12,7 @@
 
 ---
 
-### 1.1 在 macOS 上安装 nvm
+### 在 macOS 上安装 nvm
 
 **方法一：使用 Homebrew**
 
@@ -45,7 +39,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 ---
 
-### 1.2 常用 nvm 命令
+### 常用 nvm 命令
 
 | 命令                          | 用途                                              |
 | ----------------------------- | ------------------------------------------------- |
@@ -60,7 +54,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 ---
 
-### 1.3 M1 芯片 Mac 兼容旧版 Node.js
+### M1 芯片 Mac 兼容旧版 Node.js
 
 低版本 Node.js 未适配 arm64 架构，在 M1 芯片上需通过 Rosetta 2 运行：
 
@@ -75,7 +69,7 @@ nvm install <version>
 
 ---
 
-### 1.4 查看 Node.js 安装位置
+### 查看 Node.js 安装位置
 
 - 查看当前使用的 Node.js 路径：
 
@@ -93,7 +87,7 @@ nvm install <version>
 
 ---
 
-### 1.5 多版本环境下的 npm 使用须知
+### 多版本环境下的 npm 使用须知
 
 自 Node.js 10.0.0 起，每个 Node.js 主要版本会捆绑一个特定版本的 npm，以确保兼容性。例如 Node.js 12.x 通常搭配 npm 6.x。由于 npm 更新更频繁，同一 Node.js 主版本下也可能兼容多个 npm 版本，但建议保持版本匹配以维持稳定运行。
 
@@ -108,15 +102,7 @@ nvm install <version>
   nvm install v18.0.0 --reinstall-packages-from=v16.0.0
   ```
 
----
-
-## 二、npm 与 npx 的基础概念
-
-本部分先介绍 npm 是什么，再说明 npx 在命令执行中的角色。
-
----
-
-### 2.1 npm 的三重身份
+## npm 的三重身份
 
 npm 是一个具有多重含义的术语，具体可指以下三个层面：
 
@@ -129,159 +115,269 @@ npm 是一个具有多重含义的术语，具体可指以下三个层面：
 3. **命令行工具（CLI）**
    npm CLI 是与包管理器交互的命令行界面，支持安装、卸载、更新、发布包以及运行脚本等操作。它的核心作用是从仓库获取包信息，下载并按规范组织文件，使 Node.js 能通过 `require()` 或 `import` 正确加载模块。不同 CLI 的目录排布规则可能不同，主要出于依赖体积与安装速度的优化考虑。
 
----
+## npm 配置
 
-### 2.2 什么是 npx？
+### 一、npm 配置来源与优先级
 
-#### npm exec
+npm 配置可以来自多个渠道，最终生效配置取决于**优先级**。从高到低，一般可以理解为：
 
-`npm exec` (或者在一些 npm 版本中作为 `npx` 出现) 是一个 npm 命令，用于在 npm 包管理的环境中执行任意命令。这个命令的一个常见用途是执行安装在项目本地或全局的 npm 包中的可执行文件，而不需要全局安装这些包或者直接引用它们的路径。这使得在不同项目之间共享和使用开发工具变得更加简单和一致。
+1. 命令行参数
+2. 环境变量（`npm_config_` 前缀）
+3. 项目级 `.npmrc`（项目根目录）
+4. 用户级 `.npmrc`（`~/.npmrc` 或用户目录）
+5. 全局级 `.npmrc`（`$PREFIX/etc/npmrc`）
+6. npm 内置默认配置
 
-##### 基本用法
-
-- **执行本地安装的包**：如果你在项目中本地安装了一个包 (例如，`eslint`)，你可以使用 `npm exec eslint` 来执行它，而不需要知道它的具体安装路径。
-- **无需事先安装直接执行包**：`npm exec` 还允许你执行尚未安装的 npm 包。例如，`npm exec --package=eslint -- eslint .` 会临时安装 `eslint` (如果尚未安装) 并在当前目录执行它。
-
-##### 选项和参数
-
-- `-w` 或 `--workspace`：指定要在哪个工作空间执行命令 (仅在使用 npm workspaces 时适用)。
-- `--`：用于明确分隔 `npm exec` 命令的选项和要执行的实际命令及其参数。
-- `--package`：允许指定要临时安装并执行的包，这对于一次性运行某个命令非常有用，无需永久添加到项目依赖中。
-
-##### 示例
-
-- **执行本地安装的命令**：`npm exec tsc` (假设 `tsc`，即 TypeScript 编译器，已作为本地依赖安装)。
-- **指定工作空间执行命令**：`npm exec -w some-workspace -- some-command` (在名为 `some-workspace` 的工作空间中执行 `some-command`)。
-- **临时安装并执行包**：`npm exec --package=cowsay -- cowsay "Hello, World!"` (临时安装 `cowsay` 并执行它)。
-
-`npm exec` 命令提供了一种便捷的方式来执行 npm 包中的命令，无论它们是全局安装的、项目本地安装的，还是即时下载执行的。这在开发过程中提高了效率，尤其是在处理多个项目和依赖时。
-
-npx 是随 Node.js 安装附带的另一个指令，可以更方便的调用 Node.js 生态中的包 (通常是一些 Node CLI 工具)，
-
-npx 解决的是一些比较细节方面的需求，例如：
-
-1. 用于简化在终端中对 **node_modules** 下 `.bin` 文件的直接执行。
-2. 使用某个全局命令行工具时候，下载使用完就自动删除，避免污染全局环境。
-
-#### 2.2.1 简化终端中对 node_modules/.bin 目录下可执行文件的调用
-
-以 Taro 开发框架为例，如果在终端通过 `taro` 命令编译代码，可在项目内部安装 `taro cli`，并进入项目根目录运行：
+当同一个配置项在多个来源中都被设置时，上层会覆盖下层。例如，如果你在项目 `.npmrc` 中设置了 `registry`，又在命令行中使用：
 
 ```sh
-node_modules/.bin/taro build --type weapp
+npm install --registry=https://registry.npmmirror.com
 ```
 
-如果你只是想要在终端临时执行命令，而并不想把命令配置到 `package.json` 的 `scripts` 字段下，这时可以在终端通过 `npx` 进行简化
+那么这次安装会使用命令行指定的 `registry`，而不是 `.npmrc` 中的配置。
+
+> 提示：具体优先级在不同 npm 版本中细节略有差异，但整体顺序和“就近覆盖”原则是一致的。
+
+---
+
+### 二、方式一：命令行参数（CLI Options）
+
+命令行参数是**最高优先级**的配置方式，适合一次性、临时改动。例如：
 
 ```sh
-npx taro build --type weapp
-# 等效于: node_modules/.bin/taro build --type weapp
+# 临时使用指定 registry 安装依赖
+npm install --registry=https://registry.npmmirror.com
 ```
 
-#### 2.2.2 避免污染全局环境
+这次安装会使用你在命令行中指定的 registry，而不会修改 `.npmrc` 或全局配置。
 
-npx 的另外一个作用是过多的全局命令行工具避免污染全局环境。
+**与 `npm run` 脚本参数的区别：**
 
-有很多框架的上手教程里会使用 `npx` 来下载脚手架并初始化项目，它们的意思其实是：
+在 `npm` 命令行工具中，当执行一个脚本命令 (如 `npm run start`) 时，`npm` 本身也接受一些参数。这些参数用于控制 `npm` 的行为，如 `--silent`、`--verbose` 等。这就带来了一个问题：如果你想向 `npm` 脚本中指定的命令传递参数，如何区分这些参数是给 `npm` 本身的，还是要传递给 `npm` 脚本中指定的命令？
 
-> 如果你只是下个 demo 玩一玩的话，就不污染全局环境给你添麻烦了。
+为了解决这个问题，`npm` 使用了双横线 `--` 作为一个特殊的标记，来区分参数是给 `npm` 还是给脚本中的命令。当 `npm` 在命令行中遇到 `--` 时，它会停止解析自己的参数，而把 `--` 后面的所有内容作为参数传递给脚本中指定的命令。这样，你就可以在 `npm` 脚本中使用命令行参数了，而不会与 `npm` 的参数混淆。
 
-例如下面的 `npx` 命令，会下载 `create-react-app` 并用其初始化 `my-app` 项目，用完就将 `create-react-app` 删除。
+例如：
+
+```json
+{
+  "start": "webpack"
+}
+```
+
+如果你执行 `npm start -- --config my-config.js`，`npm` 会执行 `start` 脚本中指定的 `webpack` 命令，并将 `--config my-config.js` 作为参数传递给它。这里的 `--` 告诉 `npm`，`--config my-config.js` 不是 `npm` 的参数，而是要传递给 `webpack` 命令的。
+
+---
+
+### 三、方式二：环境变量（`npm_config_` 前缀）
+
+npm 会自动识别以 `npm_config_` 为前缀的环境变量，将其视为配置项。比如：
 
 ```sh
-npx create-react-app my-app
+# 类 Unix 系统（macOS / Linux）
+export npm_config_package_lock=false
+npm install
 ```
 
-#### 2.2.3 npx 执行命令和 package.json/script 执行命令的区别
+这表示：在当前 shell 会话中执行 `npm install` 时，npm 将视 `package-lock` 配置为 `false`，即不生成 `package-lock.json`。
 
-- 相同点：都是先从 `node_modules/.bin` 路径下寻找执行文件，然后再从全局寻找命令
-- 不同点：
-  - 对于 `npx`，当局部和全局都没有找到执行命令会下载安装然后使用。
-  - 对于 package.json 下 `scripts` 字段配置的命令，**如果没有找到就报错了。**
+#### 2.1 环境变量的基本操作
 
----
+- 查看环境变量（以类 Unix 系统为例）：
 
-## 三、npm CLI 与常用命令
+  ```sh
+  echo $npm_config_package_lock
+  ```
 
-这一部分集中讲「如何用 npm 命令行」，包括配置、镜像源和常见命令。
+- 删除环境变量（当前 shell 会话中）：
 
----
+  ```sh
+  unset npm_config_package_lock
+  ```
 
-### 3.1 配置 npm
+- Windows 中的写法：
 
-npm 配置是一个强大的功能，允许开发者预设和自定义项目的行为。掌握 npm 配置能够提高开发效率并确保项目的一致性。
+  ```bat
+  REM cmd
+  set npm_config_package_lock=false
+  npm install
+  ```
 
-npm 配置可通过多种方式设定，具体取决于以下来源的**优先级**：
+  ```powershell
+  # PowerShell
+  $env:npm_config_package_lock = "false"
+  npm install
+  ```
 
-1. **命令行参数** - 直接在命令行中设置，如：
+#### 2.2 普通环境变量 vs npm 配置变量
 
-   ```sh
-   npm run serve -- --params=123
-   ```
+容易混淆的一点是：普通环境变量（如 `NODE_ENV`）与 npm 配置变量不是一回事。
 
-   此命令会设置 `params` 的值为 `123`，覆盖其他来源的同名配置。可通过 `process.env.npm_config_params` 访问。
+- `NODE_ENV`：约定俗成的应用环境变量（如 `development`/`production`），通常由应用逻辑使用，与 npm 配置无关。
+- `npm_config_xxx`：npm 会识别并将其视为配置项，比如 `npm_config_registry`、`npm_config_package_lock` 等。
 
-2. **环境变量** - 环境变量中的 `npm_config_` 前缀将识别为 npm 配置。
+例如：
 
-   ```sh
-   export npm_config_package_lock=false
-   ```
-
-   执行 `npm install` 时，npm 不会生成 package-lock.json 文件，因为它采用了环境变量的配置。
-
-   查看和删除环境变量的命令分别是：
-
-   ```sh
-   echo $NODE_ENV
-   unset NODE_ENV
-   ```
-
-3. **npmrc 文件** - 编辑这些文件以直接修改配置，它们的访问优先级如下：
-
-`.npmrc` 文件是 npm 的配置文件，它包含了一些 npm 的配置信息，比如代理、镜像、命令别名等。通过修改 `.npmrc` 文件，可以更改 npm 的默认行为。
-
-全局中，`.npmrc` 文件通常位于用户主目录下 (Linux 和 Mac 是 `~/.npmrc`)。
-
-也可以在项目根目录下创建一个 `.npmrc` 文件，此时该项目下执行 npm 将会复用此份配置。
-
-更多配置项可以参考 [npm 的官方文档](https://docs.npmjs.com/cli/v10/configuring-npm/npmrc)。
-
-- **项目级** `.npmrc`：仅在当前项目中有效。
-- **用户级** `.npmrc`：位于 `~/.npmrc` 或通过 `npm config get userconfig` 查看。
-- **全局级** `.npmrc`：位于 `$PREFIX/etc/npmrc` 或通过 `npm config get globalconfig` 查看。
-- **npm 内置** `.npmrc`：不可更改的默认配置文件。
-
-4. **npm config** - 默认配置参数，可通过以下命令查看和修改：
-
-   ```sh
-   # 设置配置项
-   npm config set <key> <value>
-   # 获取配置项
-   npm config get <key>
-   # 删除配置项（无法删除项目级配置）
-   npm config delete <key>
-   # 查看所有配置项，包括默认配置
-   npm config list
-   # 在编辑器中编辑配置文件
-   npm config edit
-   ```
+```sh
+export NODE_ENV=production             # 应用逻辑用
+export npm_config_registry=https://registry.npmmirror.com  # npm 使用
+npm install
+```
 
 ---
 
-### 3.2 镜像源管理
+### 四、方式三：`.npmrc` 配置文件
 
-npm 默认的镜像源地址是：<https://registry.npmjs.org/>，
+`.npmrc` 是 npm 的配置文件，用于持久化设置。常见的配置包括：
 
-国内访问较慢，通常会使用淘宝开源的镜像站：<https://registry.npmmirror.com/>。
+- `registry`：镜像源地址
+- 私有仓库地址与 token
+- 缓存路径、代理设置
+- 安装策略（如 `save-prefix`、`save-exact` 等）
 
-#### 手动切换
+根据作用范围不同，`.npmrc` 大致分为四级：
 
-- 查看当前的镜像源：`npm config get registry`
-- 设置当前的镜像源为淘宝源：`npm config set registry https://registry.npmmirror.com`
+1. 项目级 `.npmrc`：位于项目根目录，仅对当前项目生效。
+2. 用户级 `.npmrc`：
+   - macOS/Linux：通常位于 `~/.npmrc`
+   - Windows：通常位于 `C:\Users\<用户名>\.npmrc`
+   - 可通过 `npm config get userconfig` 查看路径。
+3. 全局级 `.npmrc`：
+   - 一般位于 `$PREFIX/etc/npmrc`
+   - 可通过 `npm config get globalconfig` 查看路径。
+4. npm 内置 `.npmrc`：默认配置，通常不直接修改。
 
-#### 使用镜像源管理工具
+> 优先级上：项目级 > 用户级 > 全局级 > 内置配置。
 
-手动设置不够灵活，推荐使用 npm 镜像管理工具 nrm。
+#### 3.1 `.npmrc` 示例
+
+一个简单的 `.npmrc` 示例：
+
+```ini
+# 使用国内镜像
+registry=https://registry.npmmirror.com/
+
+# 安装时版本前缀策略
+save-prefix=~           # 版本写入 package.json 为 ~1.2.3
+strict-ssl=true         # 强制使用 HTTPS 且验证证书
+
+# 自定义缓存目录（按需）
+# cache=/path/to/.npm-cache
+```
+
+私有 npm 仓库常见配置（示意，注意不要泄露真实 token）：
+
+```ini
+registry=https://registry.npmmirror.com/
+
+# 为特定 scope 配置私有仓库
+@your-scope:registry=https://registry.your-company.com/
+
+# 私有仓库 token（建议只配置在 CI 环境变量或用户级 .npmrc 中）
+# //registry.your-company.com/:_authToken=XXXXXX
+```
+
+#### 3.2 团队与 CI 中的推荐做法
+
+- 项目级 `.npmrc`：
+  - 固定 `registry`（可为公司私有源）
+  - 固定安装策略（如 `save-prefix`、`engine-strict` 等）
+- 用户级 `.npmrc`：
+  - 配置个人偏好（代理、全局缓存、默认 registry 等）
+- CI / Docker：
+  - 优先通过环境变量和项目级 `.npmrc` 配置 registry 和鉴权信息。
+  - 避免将 token 写入仓库中，使用 CI 工具的“机密变量”能力注入。
+
+---
+
+### 五、方式四：`npm config` 命令
+
+npm 提供了一组内置命令，用于直接管理配置：
+
+```sh
+# 设置配置项
+npm config set <key> <value>
+
+# 获取配置项
+npm config get <key>
+
+# 删除配置项（默认删除用户级配置）
+npm config delete <key>
+
+# 查看所有配置项（包含默认值）
+npm config list
+
+# 在编辑器中编辑配置文件（默认编辑用户级 .npmrc）
+npm config edit
+```
+
+#### 4.1 设置与获取配置
+
+示例：
+
+```sh
+# 设置用户级 registry
+npm config set registry https://registry.npmmirror.com
+
+# 查看当前 registry
+npm config get registry
+```
+
+此时，会在你的用户级 `.npmrc` 中写入相应配置。
+
+#### 4.2 删除配置与项目级配置
+
+```sh
+npm config delete registry
+```
+
+- 默认情况下，该命令会删除**用户级配置中的 registry**。
+- 项目级 `.npmrc` 中的配置一般不会被 `delete` 自动删除，通常需要你直接编辑项目根目录的 `.npmrc` 文件。
+
+在较新的 npm 版本（npm 9+）中，部分命令支持 `--location` 参数，例如：
+
+```sh
+# 针对项目级配置操作
+npm config set registry https://registry.npmmirror.com --location=project
+```
+
+这样更方便在项目层面管理配置项。
+
+---
+
+### 六、镜像源与 nrm：加速国内依赖安装
+
+npm 默认的镜像源地址是：
+
+```text
+https://registry.npmjs.org/
+```
+
+在国内直接访问往往会较慢，因此很多团队会使用淘宝的镜像站：
+
+```text
+https://registry.npmmirror.com/
+```
+
+#### 6.1 手动配置镜像源
+
+- 查看当前镜像源：
+
+  ```sh
+  npm config get registry
+  ```
+
+- 将当前镜像源设置为淘宝源：
+
+  ```sh
+  npm config set registry https://registry.npmmirror.com
+  ```
+
+这种方式适合个人环境长期使用，但在团队和 CI 环境中，如果每个人的 registry 都不一致，可能导致依赖版本、锁文件不一致，因此更推荐在**项目级 `.npmrc` 中统一配置**。
+
+#### 6.2 使用 nrm 管理多个镜像源
+
+手动切换镜像不够灵活时，可以使用 npm 镜像管理工具 nrm。
 
 **全局安装 nrm：**
 
@@ -289,9 +385,15 @@ npm 默认的镜像源地址是：<https://registry.npmjs.org/>，
 npm install nrm -g
 ```
 
-安装完成后，输入命令 `nrm ls`，可以看到默认的 6 个源 (带 `*` 号的为当前使用的源)
+安装完成后，可以使用：
 
 ```sh
+nrm ls
+```
+
+示例输出（以某一版本为例）：
+
+```text
   npm ---------- https://registry.npmjs.org/
   yarn --------- https://registry.yarnpkg.com/
   tencent ------ https://mirrors.cloud.tencent.com/npm/
@@ -300,27 +402,154 @@ npm install nrm -g
   npmMirror ---- https://skimdb.npmjs.com/registry/
 ```
 
-输入 `nrm use taobao`，即切换 registry 到 taobao，即可使用淘宝的源进行下载了。
+带 `*` 的为当前使用的源。
 
-**nrm 常用命令：**
+切换到 taobao 源：
 
-|              命令               |                        功能                         |
-| :-----------------------------: | :-------------------------------------------------: |
-|             nrm ls              |           查看所有配置好的源以及对应名称            |
-| nrm add xxx <http://npm.xxx.cn> | 添加自定义源，xxx 是自定义名称，后面是源的 url 地址 |
-|           nrm del xxx           |                    删除对应的源                     |
-|          nrm test xxx           |      测试源的速度，不加名称，测试所有源的速度       |
-|           nrm use xxx           |            切换源，即可使用对应名称的源             |
+```sh
+nrm use taobao
+```
 
-更多命令在命令行输入 `nrm` 即可查看。
+之后执行 `npm install` 就会使用该源进行下载。
 
----
+#### 6.3 nrm 常用命令
 
-### 3.3 常用 npm 指令
+| 命令                            | 功能说明                         |
+| ------------------------------- | -------------------------------- |
+| `nrm ls`                        | 查看所有配置好的源及当前使用的源 |
+| `nrm add xxx http://npm.xxx.cn` | 添加自定义源，`xxx` 是自定义名称 |
+| `nrm del xxx`                   | 删除对应名称的源                 |
+| `nrm test` / `nrm test xxx`     | 测试所有源或某个源的响应速度     |
+| `nrm use xxx`                   | 切换源，后续 npm 操作会使用该源  |
+
+**注意事项：**
+
+- 第三方镜像可能存在同步延迟或安全风险，生产环境（特别是 CI/CD）中建议团队统一策略。
+- 建议将“团队统一的 registry”写在项目级 `.npmrc` 或 CI 配置中，而不是只依赖开发者本地的 nrm 设置。
+- 对于已经不再维护的镜像源（如部分旧 cnpm 域名），不建议继续使用。
+
+## npx
+
+### 1. npm exec 与 npx
+
+`npm exec`（通常以其别名 `npx` 调用）是 npm 包管理器的内置命令，用于在 Node.js 环境中执行软件包中的命令行工具。一个常见的误解是将其视为独立工具，实际上：
+
+- **`npx` 是 `npm exec` 的别名**：自 `npm@5.2.0` 起，`npx` 被预装为 `npm` 的一部分，提供了一个更短、更便捷的调用方式。
+- **行为统一**：在 `npm@7` 及更高版本中，`npm exec` 与 `npx` 在功能上已完全一致，可以互换使用。
+
+它的核心价值在于：**无需全局安装，即可安全、便捷地运行任何来自 npm 仓库的 CLI 工具或一次性脚本**。
+
+### 2. 核心机制：npx 如何工作？
+
+理解 `npx` 的工作流程，能帮助你更精准地使用它。其执行遵循一个明确的优先级和决策链：
+
+```mermaid
+flowchart TD
+    A[npx &lt;command&gt;] --> B{查找本地 node_modules/.bin}
+    B -- 找到 --> C[直接执行]
+    B -- 未找到 --> D{查找全局 PATH}
+    D -- 找到 --> C
+    D -- 未找到 --> E{检查 --no-install 标志?}
+    E -- 是 --> F[报错: 命令未找到]
+    E -- 否（默认） --> G[从 npm 仓库临时下载包]
+    G --> H[在隔离缓存中执行命令]
+    H --> I[执行完毕，清理缓存（默认）]
+```
+
+**关键行为说明：**
+
+- **临时安装与缓存**：当启用“临时安装”模式时，包被下载到系统级缓存目录（如 `~/.npm/_npx/`），而非当前项目。这保证了项目的 `node_modules` 纯净，且同一版本的包在不同项目中可复用缓存，节省磁盘空间和安装时间。
+- **`--no-install` 标志**：强制 `npx` 仅使用已在本地或全局安装的包，若未找到则直接报错。适用于要求环境严格一致或禁止网络请求的场景。
+
+### 3. 主要优势与应用场景
+
+#### 3.1 优势：为何选择 npx？
+
+- **避免全局污染**：无需将 `create-react-app`、`vite` 等脚手架工具永久安装到全局，保持全局环境简洁。
+- **支持多版本并行**：轻松运行特定版本的 CLI 工具（如 `npx webpack@4.44.0`），无需管理复杂的全局版本切换。
+- **提升项目可复现性**：在脚本或文档中使用 `npx` 调用工具，明确指定了工具的版本来源（npm 仓库），增强了项目在不同环境下的行为一致性。
+- **简化入门流程**：新手无需先学习“全局安装”，可以直接运行命令开始创建项目。
+
+#### 3.2 典型应用场景与示例
+
+##### 场景一：快速初始化或体验新项目
+
+这是最常见的使用场景，用于运行项目脚手架。
+
+```bash
+# 使用最新版 Vite 创建项目 (推荐明确指定 `@latest`)
+npx --yes create-vite@latest my-vite-app --template react-ts
+
+# 使用特定版本的 Create React App 创建项目
+npx --yes create-react-app@5.0.1 my-cra-app
+```
+
+> **`--yes` (`-y`) 标志至关重要**：它跳过“是否允许安装包”的交互式确认，使得命令可用于脚本和 CI/CD 环境。
+
+##### 场景二：执行项目中的本地工具
+
+在已安装依赖的项目中，`npx` 是调用这些工具最直接的方式。
+
+```bash
+# 假设项目已安装 eslint, prettier, jest
+npx eslint .
+npx prettier --write src/
+npx jest --coverage
+```
+
+##### 场景三：运行一次性命令或特定版本工具
+
+无需为了一个命令而将工具添加到 `package.json`。
+
+```bash
+# 查看 webpack 某个版本的帮助信息
+npx -y webpack@4.44.0 --help
+
+# 使用一个临时工具检查包的大小
+npx -y bundle-phobia-cli date-fns
+
+# 快速启动一个静态服务器
+npx -y serve ./dist
+```
+
+##### 场景四：在 Monorepo 中指定工作空间执行
+
+在使用了 npm Workspaces 的 Monorepo 项目中，可以精确地在某个子包内执行命令。
+
+```bash
+# 在名为 `packages/web-app` 的工作空间中执行构建命令
+npx -w packages/web-app --yes vite build
+```
+
+### 4. npx vs npm run-script vs 直接执行：如何选择？
+
+| 特性/方式     | `npx <command>`                          | `npm run <script>`                                         | `./node_modules/.bin/<command>`                |
+| :------------ | :--------------------------------------- | :--------------------------------------------------------- | :--------------------------------------------- |
+| **命令来源**  | 本地 `.bin`、全局 `PATH` 或 **临时安装** | `package.json` 中定义的 `scripts` 字段                     | 仅限本地 `node_modules/.bin` 目录              |
+| **环境 PATH** | 标准 `PATH` 查找顺序                     | **优先**包含本项目 `node_modules/.bin`                     | 无，直接指定了可执行文件路径                   |
+| **临时安装**  | 支持（默认开启）                         | 不支持                                                     | 不支持                                         |
+| **典型用途**  | **临时/一次性**执行 CLI 工具、初始化项目 | 执行**预定义、可复用**的项目任务（dev, build, test, lint） | 在 **Shell 脚本** 或复杂命令中精确调用本地工具 |
+| **版本管理**  | 可通过 `@version` 指定                   | 通过 `package.json` 的 `devDependencies` 管理              | 同 `npm run`                                   |
+
+**简单决策指南：**
+
+- **想快速试用或运行一个不属于当前项目常规流程的命令？** -> 用 `npx`。
+- **运行项目内定义好的构建、测试、启动等标准任务？** -> 用 `npm run`。
+- **在编写一个 Shell 脚本，需要明确调用本项目安装的某个工具？** -> 用 `./node_modules/.bin/<command>`。
+
+### 5. 注意事项与最佳实践
+
+1.  **安全第一**：`npx` 会从网络下载并执行代码。**切勿运行来源不明或不受信任的包**。在执行前，可先通过 `npm info <package-name>` 查看包信息。
+2.  **为生产环境明确依赖**：对于构建、测试、代码检查等在 CI/CD 流水线中**必须存在**的工具，应将其版本固定到 `package.json` 的 `devDependencies` 中，而不是依赖 `npx` 的临时安装。这确保了构建的可重复性和稳定性。
+3.  **善用 `--yes` (`-y`)**：在自动化脚本、CI 配置或文档中，总是添加 `-y` 标志以避免命令被交互式提示阻塞。
+4.  **理解版本选择**：`npx create-react-app` 会安装并执行**最新版本**。为保持一致性，建议显式指定版本，如 `npx -y create-react-app@5`。
+5.  **性能考量**：首次运行未缓存的包时有网络下载开销。在要求极致速度的场景（如热更新编译），应优先使用本地安装的工具。
+
+## 常用 npm 指令
 
 #### npm init
 
-使用 `npm init` 初始化一个新的项目时会提示你去填写一些项目描述信息。如果觉得填写这些信息比较麻烦的话，可以使用-y 标记表示接受 package.json 中的一些默认值：
+使用 `npm init` 初始化一个新的项目时会提示你去填写一些项目描述信息。如果觉得填写这些信息比较麻烦的话，可以使用 -y 标记表示接受 package.json 中的一些默认值：
 
 ```sh
 npm init -y
@@ -334,6 +563,26 @@ npm config set init-author-email 'yourdoemail@qq.com'
 npm config set init-author-url 'http://yourdomain.com'
 npm config set init-license 'MIT'
 ```
+
+`npm init` 是一个众所周知的命令，但它还藏着一个鲜为人知的强大功能：
+
+> 使用 `npm init <initializer>` 可以快速启动项目构建。
+
+这里的 `<initializer>` 指的是一个名为 `create-<initializer>` 的 npm 包。当你运行 `npm init` 命令时，它会通过 `npx` 自动安装这个包，并执行包内 `package.json` 文件中 `bin` 字段指定的脚本。这个过程不仅创建或更新了 `package.json` 文件，还执行了初始化项目所需的其他操作。
+
+转换规则如下：
+
+- 执行 `npm init foo` 相当于运行 `npx create-foo`
+- 执行 `npm init @usr/foo` 相当于运行 `npx @usr/create-foo`
+- 执行 `npm init @usr` 相当于运行 `npx @usr/create`
+
+以 `Vite` 为例，官方推荐的初始化命令：
+
+```sh
+npm init vite@latest # npx create-vite@latest
+```
+
+实际上也就是通过 `npx` 去下载 `create-vite` 最新的包。
 
 #### npm list
 
@@ -375,6 +624,28 @@ npm install [<@scope>/]<name>@<tag>
 npm install <tarball url>
 # eg: npm install git://github.com/package/path.git
 ```
+
+`npm install` 大概流程如图所示：
+
+![20240421222714](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240421222714.png)
+
+详细概述：
+
+1. **检查 `.npmrc` 文件的优先级顺序**：系统在处理 npm 配置时，会按照以下顺序考虑 `.npmrc` 文件的设置：首先是项目级别的 `.npmrc` 文件，其次是用户级别的，然后是全局级别的，最后是 npm 内置的配置文件。
+
+2. **检查项目中是否存在 `lock` 文件**：
+   - **若不存在 `lock` 文件**：
+     1. 系统将从 npm 远程仓库获取包的信息。
+     2. 根据 `package.json` 文件构建依赖树。在这个过程中，无论是直接依赖还是间接依赖，系统优先尝试将其放置在 `node_modules` 的根目录下。如果遇到相同的模块，系统会检查已存在的模块版本是否满足新模块的版本要求。如果满足，则跳过；如果不满足，则会在当前模块的 `node_modules` 目录下放置新的模块版本。
+     3. 接下来，系统会在缓存中查找每个依赖包：
+        - 如果**缓存不存在**，系统会从 npm 远程仓库下载包，并进行完整性校验。如果校验失败，系统会尝试重新下载；校验成功后，则将包复制到 npm 缓存目录，并按照依赖结构解压到 `node_modules` 目录中。
+        - 如果**缓存存在**，则直接将缓存的包按照依赖结构解压到 `node_modules` 目录中。
+     4. 最后，系统会生成 `lock` 文件，以锁定依赖版本。
+   - **若存在 `lock` 文件**：
+     1. 系统首先检查 `package.json` 中的依赖版本与 `package-lock.json` 中记录的版本是否存在冲突。
+     2. 如果没有冲突，系统将直接使用 `lock` 文件中的信息来查找缓存中的包，跳过获取包信息和构建依赖树的过程，后续操作与无 `lock` 文件时相同。
+
+为了深入了解每个包的具体安装过程和细节，您可以执行命令 `npm install package --timing=true --loglevel=verbose`。这将启用详细日志记录，同时显示包安装的时间统计信息，帮助您更好地理解 npm 包的安装流程。
 
 #### npm update
 
@@ -499,15 +770,16 @@ npm unlink dep
 npm unlink dep
 ```
 
----
+#### 其他实用命令
 
-## 四、版本与依赖管理（SemVer、依赖树、锁文件）
+- **查看项目脚本**：要快速查看当前项目的 npm 脚本，您可以直接在项目的 `package.json` 文件中查找 `scripts` 部分。或者，使用 `npm run` 命令来列出所有可用的脚本。
+- **查看环境变量**：运行 `npm run env` 命令可以显示当前的环境变量。这对于调试和确保正确的环境配置很有帮助。
+- **环境自检**：使用 `npm doctor` 命令，您可以执行一系列检查，以确保您的环境配置适合 npm 操作。这包括连接到 npm 服务的能力、`node` 与 `npm` 的版本校验、npm 源检查以及缓存文件权限验证。
+- **安全漏洞检查**：运行 `npm audit` 来检查项目依赖中的安全漏洞。添加 `--json` 标志可以以 JSON 格式输出报告，便于进一步的分析。
+- **依赖版本锁定**：默认情况下，npm 使用脱字符 `^` 来限制安装的模块的主版本号。您可以通过运行 `npm config set save-prefix="~"` 来改用波浪符 `~`，或者使用 `npm config set save-exact true` 来仅安装精确版本的模块。
+- **跨目录运行脚本**：如果您有多个应用程序分布在不同的目录中，可以使用 `--prefix` 标志配合 `npm run` 命令来指定在哪个目录下运行脚本，例如：`npm run dev --prefix /path/to/your/folder`，从而避免了多次使用 `cd` 命令切换目录。
 
-这部分围绕「版本号」和「依赖结构」展开，是理解 npm 行为的核心。
-
----
-
-### 4.1 语义化版本控制 (SemVer)
+## 语义化版本控制 (SemVer)
 
 在 `npm` 生态系统中，模块的版本管理遵循一个被广泛认可的标准：语义化版本控制 (Semantic Versioning)，简称为 `SemVer`。这一规范是由 `GitHub` 提出的，旨在通过版本号提供更多关于软件变更的信息。
 
@@ -560,9 +832,7 @@ console.log(semver.diff('1.0.0', '1.0.1')); // 输出：patch
 
 这些是 `semver` 包的基础用法，更多高级功能和详细文档，请访问 [semver 文档](https://github.com/npm/node-semver)。
 
----
-
-### 4.2 理解 npm 的依赖包层级关系
+## 理解 npm 的依赖包层级关系
 
 在现代 JavaScript 项目中，依赖管理是一个核心环节。项目 `App` 依赖于三个模块 `A`、`B`、和 `C`，它们各自又依赖于不同版本的模块 `D`，构成了一个典型的依赖场景：
 
@@ -580,7 +850,7 @@ console.log(semver.diff('1.0.0', '1.0.1')); // 输出：patch
 - B@1.0.0 -> D@2.0.0
 - C@1.0.0 -> D@2.0.0
 
-#### 嵌套安装
+### 嵌套安装
 
 在 `npm 2.x` 版本中，这种依赖关系通过递归方式安装，形成了一种树状的目录结构。每个包都会在自己的 `node_modules` 目录下安装它所依赖的包：
 
@@ -599,7 +869,7 @@ console.log(semver.diff('1.0.0', '1.0.1')); // 输出：patch
 
 这种方式虽然简单直接，但可能导致模块的大量冗余和深层嵌套。
 
-#### 扁平化安装
+### 扁平化安装
 
 从 `npm 3.x` 版本开始，npm 引入了一种扁平化的安装策略，旨在将依赖尽可能地安装在项目的顶层 `node_modules` 目录，这样做可以显著减少模块的冗余和嵌套深度。
 
@@ -682,25 +952,19 @@ console.log(semver.diff('1.0.0', '1.0.1')); // 输出：patch
 
 通过这种方式，`npm` 旨在优化项目的依赖管理，减少不必要的模块重复和深层嵌套。
 
----
-
-### 4.3 为什么 lock 文件至关重要：确保依赖结构的一致性
+## 为什么 lock 文件至关重要：确保依赖结构的一致性
 
 在分析 npm 的依赖包层级时，我们注意到 npm 3.x 版本引入了扁平化安装策略。尽管这种策略有其优势，但它也带来了一个挑战：依赖结构的不确定性。这种不确定性可能导致不同的安装环境之间出现差异，从而影响项目的可移植性和可复现性。
 
 为了解决这一问题，npm 5.x 版本引入了 package-lock.json 文件。这个文件的目的是锁定依赖结构，确保每次执行 `npm install` 时，无论在何种环境下，都能重现相同的 node_modules 结构。这样，开发者可以确信，他们的代码在所有环境中都将按照相同的方式运行，从而减少了与依赖相关的问题。
 
----
-
-### 4.4 package-lock.json 文件结构
+## package-lock.json 文件结构
 
 > package-lock.json 文件缓存了项目依赖包的确切版本信息和下载链接，避免了对远程仓库的重复查询。这种机制可以直接跳转到文件完整性校验阶段，显著减少了网络请求的数量。
 
 ![20240421223059](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240421223059.png)
 
----
-
-### 4.5 npm 缓存管理
+## npm 缓存管理
 
 当您运行 `npm install` 或 `npm update` 命令以下载项目依赖时，npm 不仅会在项目的 `node_modules` 目录中安装这些包，而且还会在本地的缓存目录中存储这些包的副本。
 
@@ -722,43 +986,7 @@ npm 利用 `package-lock.json` 文件中的信息，如包的 `integrity`、`ver
 
 通过合理使用这些缓存管理策略和离线模式，开发者可以在各种环境下高效地使用 npm 进行包管理。
 
----
-
-### 4.6 校验文件完整性
-
-在下载依赖包之前，我们一般就能拿到 npm 对该依赖包计算的 hash 值，例如我们执行 `npm info` 命令，紧跟 tarball (下载链接) 的就是 shasum(hash)。
-
-用户下载依赖包到本地后，需要确定在下载过程中没有出现错误，所以在下载完成之后需要在本地在计算一次文件的 hash 值，如果两个 hash 值是相同的，则确保下载的依赖是完整的，如果不同，则进行重新下载。
-
----
-
-### 4.7 npm install 整体流程
-
-`npm install` 大概流程如图所示：
-
-![20240421222714](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240421222714.png)
-
-详细概述：
-
-1. **检查 `.npmrc` 文件的优先级顺序**：系统在处理 npm 配置时，会按照以下顺序考虑 `.npmrc` 文件的设置：首先是项目级别的 `.npmrc` 文件，其次是用户级别的，然后是全局级别的，最后是 npm 内置的配置文件。
-
-2. **检查项目中是否存在 `lock` 文件**：
-   - **若不存在 `lock` 文件**：
-     1. 系统将从 npm 远程仓库获取包的信息。
-     2. 根据 `package.json` 文件构建依赖树。在这个过程中，无论是直接依赖还是间接依赖，系统优先尝试将其放置在 `node_modules` 的根目录下。如果遇到相同的模块，系统会检查已存在的模块版本是否满足新模块的版本要求。如果满足，则跳过；如果不满足，则会在当前模块的 `node_modules` 目录下放置新的模块版本。
-     3. 接下来，系统会在缓存中查找每个依赖包：
-        - 如果**缓存不存在**，系统会从 npm 远程仓库下载包，并进行完整性校验。如果校验失败，系统会尝试重新下载；校验成功后，则将包复制到 npm 缓存目录，并按照依赖结构解压到 `node_modules` 目录中。
-        - 如果**缓存存在**，则直接将缓存的包按照依赖结构解压到 `node_modules` 目录中。
-     4. 最后，系统会生成 `lock` 文件，以锁定依赖版本。
-   - **若存在 `lock` 文件**：
-     1. 系统首先检查 `package.json` 中的依赖版本与 `package-lock.json` 中记录的版本是否存在冲突。
-     2. 如果没有冲突，系统将直接使用 `lock` 文件中的信息来查找缓存中的包，跳过获取包信息和构建依赖树的过程，后续操作与无 `lock` 文件时相同。
-
-为了深入了解每个包的具体安装过程和细节，您可以执行命令 `npm install package --timing=true --loglevel=verbose`。这将启用详细日志记录，同时显示包安装的时间统计信息，帮助您更好地理解 npm 包的安装流程。
-
----
-
-### 4.8 npm 模块标签 (tag) 简介
+## npm 模块标签 (tag) 简介
 
 如果你不是经常发布 npm 包，可能会对 “模块标签 (tag)” 感到陌生。以 Vue.js 为例，你可以通过运行 `npm dist-tag ls vue` 来查看 Vue.js 包的所有标签。
 
@@ -785,9 +1013,7 @@ npm dist-tag add vue@1.0.2-0 latest  # 将1.0.2-0版本的标签设置为latest
 npm dist-tag ls vue                   # 现在latest标签对应1.0.2-0版本
 ```
 
----
-
-### 4.9 理解和发布域级包 (Scoped Packages)
+## 理解和发布域级包 (Scoped Packages)
 
 在 `package.json` 文件中，您可能会遇到两种不同类型的依赖声明：
 
@@ -800,7 +1026,7 @@ npm dist-tag ls vue                   # 现在latest标签对应1.0.2-0版本
 
 这里，以 `@` 符号开头的包名表示它是一个域级包 (scoped package)。域级包的设计初衷是为了把一系列相关的包组织在同一个命名空间之下。这样做不仅便于统一管理，还有助于避免不同包之间的命名冲突。
 
-#### 如何发布您的域级包
+### 如何发布您的域级包
 
 若要发布一个域级包，您需要在 `package.json` 文件的 `name` 字段中包含域 (scope) 的声明。这可以通过以下命令轻松完成：
 
@@ -826,7 +1052,7 @@ npm publish --access=public
 
 重要提示：**尽管所有私有包都是域级包，但并不是所有域级包都是私有的**。
 
-#### 安装域级包
+### 安装域级包
 
 当您想要安装一个域级包时，您需要使用其完整的名字，如下所示：
 
@@ -836,9 +1062,80 @@ npm install @scopeName/package
 
 通过这种方式，您可以确保正确地安装了所需的域级包。
 
----
+## 实用工具
 
-### 4.10 作为一个库的开发者，如何去保证依赖包之间的强制的最低版本的要求？
+- [分析将 npm 软件包添加到项目的成本](https://bundlephobia.com/)
+- [分析 npm 模块和依赖关系](https://npmgraph.js.org/)
+- [分析 npm 包内容中的 TypeScript 类型问题](https://arethetypeswrong.github.io/)
+- [比较一段时间内的 npm 软件包下载数量](https://npmtrends.com/)
+
+## 或许是在项目中使用 npm 的最佳的实操建议
+
+1. 优先使用 npm 的官方稳定版本，确保 npm 具备先进性和稳定性。
+2. 初始搭建项目时，运行 `npm install` 来安装依赖，并提交 `package.json` 与 `package-lock.json` 文件。`node_modules` 目录无需提交。
+3. 作为项目新成员，在 `checkout/clone` 项目后，执行 `npm install` 以安装所需依赖。
+4. 需要升级依赖时：
+   - 对于小版本更新，使用 `npm update`。
+   - 对于大版本更新，使用 `npm install <package>@<version>`。
+   - 可以直接在 `package.json` 中修改版本号，然后运行 `npm install`。
+   - 升级并测试无误后，提交新的 `package.json` 和 `package-lock.json` 文件。
+5. 降级依赖时，使用 `npm install <package>@<version>`，确认无误后提交更新的文件。
+6. 移除依赖时：
+   - 执行 `npm uninstall <package>`，验证后提交更新的 `package.json` 和 `package-lock.json`。
+   - 或直接从 `package.json` 中删除依赖，然后运行 `npm install`，验证后提交更新。
+7. 提交更新的 `package.json` 和 `package-lock.json` 后，通知团队成员以同步更新依赖。
+8. 避免手动修改 `package-lock.json` 文件，以免引发问题。
+9. 若 `package-lock.json` 出现问题，建议删除本地文件，从远端获取无冲突的版本，再执行 `npm install`。
+
+## 一个项目中，你使用 yarn，我使用 npm，会不会有问题呢？
+
+在项目开发中，选择合适的包管理工具对于确保依赖管理的一致性和效率至关重要。虽然 `yarn` 和 `npm` 都是流行的 JavaScript 包管理工具，它们在某些方面存在差异，尤其是当它们在同一项目中被混合使用时，可能会引发一系列问题。
+
+### 什么是 yarn？
+
+`yarn` 是一款于 2016 年发布的包管理工具，旨在解决当时 `npm` (尤其是其 V3 版本) 存在的一些问题，如依赖管理的不稳定性和安装速度慢等。`npm` 在那个时期还没有引入 `package-lock.json` 文件，这是 `yarn` 发布的背景。
+
+![20240422003156](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240422003156.png)
+
+`yarn` 采用了类似于 `npm v3` 的扁平依赖结构，并在安装依赖时自动生成 `yarn.lock` 文件，以确保项目依赖的一致性和稳定性。
+
+```sh
+"@babel/cli@^7.1.6", "@babel/cli@^7.5.5":
+  version "7.8.4"
+  resolved "http://npm.in.zhihu.com/@babel%2fcli/-/cli-7.8.4.tgz#505fb053721a98777b2b175323ea4f090b7d3c1c"
+  integrity sha1-UF+wU3IamHd7KxdTI+pPCQt9PBw=
+  dependencies:
+    commander "^4.0.1"
+    convert-source-map "^1.1.0"
+    fs-readdir-recursive "^1.1.0"
+    glob "^7.0.0"
+    lodash "^4.17.13"
+    make-dir "^2.1.0"
+    slash "^2.0.0"
+    source-map "^0.5.0"
+  optionalDependencies:
+    chokidar "^2.1.8"
+```
+
+与 `package-lock.json` 相比，**`yarn.lock` 使用了一种独特的格式**，并且其对子依赖版本的处理方式不同，这意味着**为了确定 `node_modules` 目录的结构，需要将 `yarn.lock` 与 `package.json` 文件一起使用，而 `package-lock.json` 则可以独立确定依赖结构**。
+
+### 混用 yarn 和 npm 可能引发的问题
+
+在同一个项目中同时使用 `yarn` 和 `npm` 可能会导致一系列问题。尽管这两个工具的主要目标都是为 JavaScript 项目管理依赖，但它们在依赖解析算法、锁文件的生成方式以及行为细节上存在差异。以下是混用它们可能导致的问题：
+
+#### 锁文件冲突
+
+- **不同的锁文件**：`yarn` 依赖 `yarn.lock` 文件，而 `npm` 则使用 `package-lock.json` (或在早期版本中为 `npm-shrinkwrap.json`) 来锁定依赖版本。如果团队成员间使用不同的工具，每次依赖的安装或更新都可能只更新其中一个锁文件，导致依赖版本的不一致。
+- **版本不一致**：由于 `yarn` 和 `npm` 可能采用不同的依赖解析策略，即便是相同的 `package.json` 文件，两者解析出的依赖树也可能不同，这可能导致不同开发环境中应用的行为不一致。
+
+#### 命令差异
+
+- **命令不同**：虽然 `yarn` 和 `npm` 在许多命令上相似，但它们并不完全相同。例如，`yarn add` 和 `npm install` 都是用于添加依赖的命令，但它们的参数和具体行为可能存在差异，这可能导致误用命令，影响依赖管理。
+- **行为差异**：即使是功能相似的命令，在两个工具中的具体行为也可能存在细微差异，如处理依赖冲突和版本升级的策略等。
+
+这些问题提示我们，在一个项目中统一使用 `yarn` 或 `npm` 是维持依赖管理一致性和稳定性的最佳实践。
+
+## 作为一个库的开发者，如何去保证依赖包之间的强制的最低版本的要求？
 
 作为一个库的开发者，确保依赖包之间满足强制的最低版本要求是维护项目稳定性的关键。以 Vue 为例，Vue 官方强调，每当发布新版本的 Vue 包时，相应版本的 vue-template-compiler 也会同步发布。为了确保 vue-loader 能够生成与运行时代码兼容的代码，编译器的版本必须与 Vue 包的版本同步更新。
 
@@ -925,98 +1222,20 @@ function verifyPackageTree() {
 
 这样做的目的是确保这些核心依赖项的特定版本，从而维护 create-react-app 源码的功能稳定性。通过在构建过程中强制执行这些版本要求，create-react-app 提高了其工具的可靠性，为开发者提供了更加一致和顺畅的开发体验。
 
----
-
-## 五、团队协作、工作流与私有仓库
-
-这一部分关注「多人协作与企业环境」：如何用 npm 最佳实践、如何和 yarn 相处，以及公司内部如何搭建私有 npm 仓库等。
-
----
-
-### 5.1 或许是在项目中使用 npm 的最佳的实操建议
-
-1. 优先使用 npm 的官方稳定版本，确保 npm 具备先进性和稳定性。
-2. 初始搭建项目时，运行 `npm install` 来安装依赖，并提交 `package.json` 与 `package-lock.json` 文件。`node_modules` 目录无需提交。
-3. 作为项目新成员，在 `checkout/clone` 项目后，执行 `npm install` 以安装所需依赖。
-4. 需要升级依赖时：
-   - 对于小版本更新，使用 `npm update`。
-   - 对于大版本更新，使用 `npm install <package>@<version>`。
-   - 可以直接在 `package.json` 中修改版本号，然后运行 `npm install`。
-   - 升级并测试无误后，提交新的 `package.json` 和 `package-lock.json` 文件。
-5. 降级依赖时，使用 `npm install <package>@<version>`，确认无误后提交更新的文件。
-6. 移除依赖时：
-   - 执行 `npm uninstall <package>`，验证后提交更新的 `package.json` 和 `package-lock.json`。
-   - 或直接从 `package.json` 中删除依赖，然后运行 `npm install`，验证后提交更新。
-7. 提交更新的 `package.json` 和 `package-lock.json` 后，通知团队成员以同步更新依赖。
-8. 避免手动修改 `package-lock.json` 文件，以免引发问题。
-9. 若 `package-lock.json` 出现问题，建议删除本地文件，从远端获取无冲突的版本，再执行 `npm install`。
-
----
-
-### 5.2 一个项目中，你使用 yarn，我使用 npm，会不会有问题呢？
-
-在项目开发中，选择合适的包管理工具对于确保依赖管理的一致性和效率至关重要。虽然 `yarn` 和 `npm` 都是流行的 JavaScript 包管理工具，它们在某些方面存在差异，尤其是当它们在同一项目中被混合使用时，可能会引发一系列问题。
-
-#### 什么是 yarn？
-
-`yarn` 是一款于 2016 年发布的包管理工具，旨在解决当时 `npm` (尤其是其 V3 版本) 存在的一些问题，如依赖管理的不稳定性和安装速度慢等。`npm` 在那个时期还没有引入 `package-lock.json` 文件，这是 `yarn` 发布的背景。
-
-![20240422003156](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240422003156.png)
-
-`yarn` 采用了类似于 `npm v3` 的扁平依赖结构，并在安装依赖时自动生成 `yarn.lock` 文件，以确保项目依赖的一致性和稳定性。
-
-```sh
-"@babel/cli@^7.1.6", "@babel/cli@^7.5.5":
-  version "7.8.4"
-  resolved "http://npm.in.zhihu.com/@babel%2fcli/-/cli-7.8.4.tgz#505fb053721a98777b2b175323ea4f090b7d3c1c"
-  integrity sha1-UF+wU3IamHd7KxdTI+pPCQt9PBw=
-  dependencies:
-    commander "^4.0.1"
-    convert-source-map "^1.1.0"
-    fs-readdir-recursive "^1.1.0"
-    glob "^7.0.0"
-    lodash "^4.17.13"
-    make-dir "^2.1.0"
-    slash "^2.0.0"
-    source-map "^0.5.0"
-  optionalDependencies:
-    chokidar "^2.1.8"
-```
-
-与 `package-lock.json` 相比，**`yarn.lock` 使用了一种独特的格式**，并且其对子依赖版本的处理方式不同，这意味着**为了确定 `node_modules` 目录的结构，需要将 `yarn.lock` 与 `package.json` 文件一起使用，而 `package-lock.json` 则可以独立确定依赖结构**。
-
-#### 混用 yarn 和 npm 可能引发的问题
-
-在同一个项目中同时使用 `yarn` 和 `npm` 可能会导致一系列问题。尽管这两个工具的主要目标都是为 JavaScript 项目管理依赖，但它们在依赖解析算法、锁文件的生成方式以及行为细节上存在差异。以下是混用它们可能导致的问题：
-
-##### 锁文件冲突
-
-- **不同的锁文件**：`yarn` 依赖 `yarn.lock` 文件，而 `npm` 则使用 `package-lock.json` (或在早期版本中为 `npm-shrinkwrap.json`) 来锁定依赖版本。如果团队成员间使用不同的工具，每次依赖的安装或更新都可能只更新其中一个锁文件，导致依赖版本的不一致。
-- **版本不一致**：由于 `yarn` 和 `npm` 可能采用不同的依赖解析策略，即便是相同的 `package.json` 文件，两者解析出的依赖树也可能不同，这可能导致不同开发环境中应用的行为不一致。
-
-##### 命令差异
-
-- **命令不同**：虽然 `yarn` 和 `npm` 在许多命令上相似，但它们并不完全相同。例如，`yarn add` 和 `npm install` 都是用于添加依赖的命令，但它们的参数和具体行为可能存在差异，这可能导致误用命令，影响依赖管理。
-- **行为差异**：即使是功能相似的命令，在两个工具中的具体行为也可能存在细微差异，如处理依赖冲突和版本升级的策略等。
-
-这些问题提示我们，在一个项目中统一使用 `yarn` 或 `npm` 是维持依赖管理一致性和稳定性的最佳实践。
-
----
-
-### 5.3 使用 verdaccio 搭建公司 npm 私有库
+## 使用 verdaccio 搭建公司 npm 私有库
 
 随着公司前端项目数量的增加，我们发现了许多可复用的业务组件和逻辑。为了提高开发效率、便于维护，并避免重复在项目之间复制粘贴相同的代码，我们计划将这些可复用的组件和逻辑封装成 npm 包，并通过 npm 包的形式引入。但鉴于这些都是公司内部的业务逻辑，我们一般不希望将它们发布到全球公共的 npm 仓库中。因此，搭建一个属于公司自己的私有 npm 仓库变得尤为重要。
 
-#### 搭建 npm 私有库的优势
+### 搭建 npm 私有库的优势
 
 - **保护业务代码和核心技术**：在公司内部网络中托管组件库和封装的 SDK，能有效保护公司的业务代码和核心技术不被外泄。
 - **加速依赖包安装**：**使用像 verdaccio 这样的私有库，能缓存从 npm 公共库安装过的包**，再次安装时会直接从私有库下载，大大提升安装速度。
 
-#### verdaccio 简介
+### verdaccio 简介
 
 [verdaccio](https://verdaccio.org/) 是一个简洁、无需配置的本地私有 npm 包代理注册表。简而言之，verdaccio 允许我们在自己的服务器上搭建一个 npm 仓库，发布 npm 包。当项目中执行 `npm i` 安装依赖时，根据配置文件的指定，系统会优先从 verdaccio 私有库中查找依赖包，如果找到则直接下载，如果没有则从公共 npm 包仓库中下载。
 
-#### 安装 verdaccio
+### 安装 verdaccio
 
 首先，我们通过 npm 全局安装 verdaccio：
 
@@ -1044,7 +1263,7 @@ pm2 start verdaccio
 
 ![20240422170629](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240422170629.png)
 
-#### 配置 verdaccio
+### 配置 verdaccio
 
 为了保证安全，我们需要对注册账号、发布和删除 npm 包进行权限控制。verdaccio 提供了灵活的权限配置方案。编辑 verdaccio 的配置文件 (启动服务时会显示配置文件的位置)。
 
@@ -1087,86 +1306,29 @@ packages:
 
 verdaccio 还提供了许多其他配置选项，包括配置 HTTPS、可视化界面展示配置、发布离线包等，具体可参考[官方文档](https://verdaccio.org/docs/configuration/)了解详细信息。
 
----
-
-### 5.4 使用 patch-package 给 npm 包打补丁
+## 使用 patch-package 给 npm 包打补丁
 
 https://juejin.cn/post/6962554654643191815
 https://juejin.cn/post/7156518889151528997
 https://juejin.cn/post/7159169143323754503
 
----
-
-### 5.5 如何写一个全面兼容的 npm 库
+## 如何写一个全面兼容的 npm 库
 
 https://innei.in/posts/tech/write-a-universally-compatible-js-library-with-fully-types
 
----
+## npm 版本号发布规则
 
-## 六、进阶命令、工具与技巧
+[官方文档](https://docs.npmjs.com/about-semantic-versioning)中建议的 npm 库的版本号的发布规则如下：
 
-最后一部分放一些「进阶能力」：复杂初始化、诊断命令、在线工具，以及命令参数的小细节。
+| 场景                | 阶段       | 规则                                     | 例子    |
+| ------------------- | ---------- | ---------------------------------------- | ------- |
+| 首次发布            | 新产品     | 从 `1.0.0` 开始                          | `1.0.0` |
+| 向后兼容的 bug 修复 | 发布补丁   | 第三位数字值递增                         | `1.0.1` |
+| 向后兼容的新特性    | 小版本更新 | 第二位数字递增且将第三位数字重置为 0     | `1.1.0` |
+| 破坏向后兼容的修改  | 大版本更新 | 第一位数字递增且将第二、三为数字重置为 0 | `2.0.0` |
 
----
+这些规则可以图解为：
 
-### 6.1 深入探索 npm init
+![20240421173455](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240421173455.png)
 
-`npm init` 是一个众所周知的命令，用于建立新的 npm 包，但它还藏着一个鲜为人知的强大功能：
-
-> 使用 `npm init <initializer>` 可以快速启动项目构建。
-
-这里的 `<initializer>` 指的是一个名为 `create-<initializer>` 的 npm 包。当你运行 `npm init` 命令时，它会通过 `npx` 自动安装这个包，并执行包内 `package.json` 文件中 `bin` 字段指定的脚本。这个过程不仅创建或更新了 `package.json` 文件，还执行了初始化项目所需的其他操作。
-
-转换规则如下：
-
-- 执行 `npm init foo` 相当于运行 `npx create-foo`
-- 执行 `npm init @usr/foo` 相当于运行 `npx @usr/create-foo`
-- 执行 `npm init @usr` 相当于运行 `npx @usr/create`
-
-以 `Vite` 为例，官方推荐的初始化命令：
-
-```sh
-npm init vite@latest # npx create-vite@latest
-```
-
-实际上也就是通过 `npx` 去下载 `create-vite` 最新的包。
-
----
-
-### 6.2 npm 实用命令
-
-- **查看项目脚本**：要快速查看当前项目的 npm 脚本，您可以直接在项目的 `package.json` 文件中查找 `scripts` 部分。或者，使用 `npm run` 命令来列出所有可用的脚本。
-- **查看环境变量**：运行 `npm run env` 命令可以显示当前的环境变量。这对于调试和确保正确的环境配置很有帮助。
-- **环境自检**：使用 `npm doctor` 命令，您可以执行一系列检查，以确保您的环境配置适合 npm 操作。这包括连接到 npm 服务的能力、`node` 与 `npm` 的版本校验、npm 源检查以及缓存文件权限验证。
-- **安全漏洞检查**：运行 `npm audit` 来检查项目依赖中的安全漏洞。添加 `--json` 标志可以以 JSON 格式输出报告，便于进一步的分析。
-- **依赖版本锁定**：默认情况下，npm 使用脱字符 `^` 来限制安装的模块的主版本号。您可以通过运行 `npm config set save-prefix="~"` 来改用波浪符 `~`，或者使用 `npm config set save-exact true` 来仅安装精确版本的模块。
-- **跨目录运行脚本**：如果您有多个应用程序分布在不同的目录中，可以使用 `--prefix` 标志配合 `npm run` 命令来指定在哪个目录下运行脚本，例如：`npm run dev --prefix /path/to/your/folder`，从而避免了多次使用 `cd` 命令切换目录。
-
----
-
-### 6.3 实用工具
-
-- [分析将 npm 软件包添加到项目的成本](https://bundlephobia.com/)
-- [分析 npm 模块和依赖关系](https://npmgraph.js.org/)
-- [分析 npm 包内容中的 TypeScript 类型问题](https://arethetypeswrong.github.io/)
-- [比较一段时间内的 npm 软件包下载数量](https://npmtrends.com/)
-
----
-
-### 6.4 npm 执行命令传递参数时，为何需要双横线？
-
-在 `npm` 命令行工具中，当执行一个脚本命令 (如 `npm start`) 时，`npm` 本身也接受一些参数。这些参数用于控制 `npm` 的行为，如 `--silent`、`--verbose` 等。这就带来了一个问题：如果你想向 `npm` 脚本中指定的命令传递参数，如何区分这些参数是给 `npm` 本身的，还是要传递给 `npm` 脚本中指定的命令？
-
-为了解决这个问题，`npm` 使用了双横线 `--` 作为一个特殊的标记，来区分参数是给 `npm` 还是给脚本中的命令。当 `npm` 在命令行中遇到 `--` 时，它会停止解析自己的参数，而把 `--` 后面的所有内容作为参数传递给脚本中指定的命令。这样，你就可以在 `npm` 脚本中使用命令行参数了，而不会与 `npm` 的参数混淆。
-
-例如：
-
-```json
-{
-  "start": "webpack"
-}
-```
-
-如果你执行 `npm start -- --config my-config.js`，`npm` 会执行 `start` 脚本中指定的 `webpack` 命令，并将 `--config my-config.js` 作为参数传递给它。这里的 `--` 告诉 `npm`，`--config my-config.js` 不是 `npm` 的参数，而是要传递给 `webpack` 命令的。
-
-这种设计允许 `npm` 脚本非常灵活地接受和处理命令行参数，同时避免了参数解析上的混淆。
+尽管理论上清晰，现实中许多库并未严格遵循这些规则，有时导致了一些混乱。
