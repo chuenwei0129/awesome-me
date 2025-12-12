@@ -1,5 +1,5 @@
 ---
-title: package.json
+title: 深入 package.json
 order: 2
 toc: content
 ---
