@@ -2097,145 +2097,606 @@ npm / Yarn 在安装时：
 
 ## 十二、Verdaccio：搭建企业内部 npm 私有仓库
 
-当公司前端项目多起来之后，通常会发现大量可复用组件、业务模块、SDK 等。如果都发到公共 npm 仓库：
+### 一、目标与场景
 
-- 会暴露业务逻辑和内部接口；
-- 管理和权限控制也不方便。
+你现在的场景是：
 
-合理的选择是：**搭建公司自己的 npm 私有仓库**。
+- 开发环境主要在一台 Mac（M1）上；
+- 这台 Mac 同时是“开发机 + 本地服务机”；
+- 希望在这台 Mac 上跑一个 Verdaccio 实例，把它当作公司的 npm 私有仓库原型；
+- 所有本地项目（甚至局域网内其他设备）都可以通过这个 Mac 的地址访问私服。
 
-Verdaccio 是其中最轻量、易用的方案之一。
+想解决的问题：
 
----
-
-### 12.1 Verdaccio 概览
-
-[Verdaccio](https://verdaccio.org/) 是一个：
-
-- 用 Node 写的；
-- 零配置即可运行；
-- 支持本地存储 + 代理 npm 官方源；
-- 带简单 Web UI 的私有 npm Registry。
-
-核心能力：
-
-- 作为 **私有包仓库**；
-- 同时作为 **npm 官方源的缓存代理**：
-  - 首次安装时从 npmjs.org 拉取并缓存；
-  - 后续从私服直接拉取，安装更快、对外网依赖更少。
+- 多个项目重复实现类似组件（按钮、弹窗、表单、SDK）；
+- 修 bug 后很难同步到所有项目；
+- 不适合把业务实现发到公共 npm；
+- 想先在本机验证整个私服方案，再推广给团队。
 
 ---
 
-### 12.2 安装与运行
+### 二、在 Mac 上安装和启动 Verdaccio
 
-**安装：**
+#### 2.1 检查 Node.js 环境
 
-```sh
+推荐 Node.js 18+。在终端（Terminal/iTerm）中执行：
+
+```bash
+node -v
+```
+
+如果版本 < 18，建议通过 nvm 或 Homebrew 升级（略）。
+
+#### 2.2 全局安装 Verdaccio（本机）
+
+在终端执行：
+
+```bash
 npm install -g verdaccio
 ```
 
-**启动：**
+安装完成后执行：
 
-```sh
+```bash
 verdaccio
 ```
 
-启动后终端会输出：
+你会看到类似输出（路径以你本机为准）：
 
-- 配置文件路径（`config.yaml`）；
-- 存储目录路径；
-- 服务监听地址（默认 `http://localhost:4873`）。
+```text
+info --- Verdaccio started
+info --- address: http://localhost:4873/
+info --- config file: /Users/你的用户名/.config/verdaccio/config.yaml
+info --- storage: /Users/你的用户名/.local/share/verdaccio/storage
+```
 
-访问 `http://localhost:4873` 即可看到 Web UI。
+在浏览器打开：
 
-**后台守护（可选）：**
+```text
+http://localhost:4873/
+```
 
-- 可使用 `pm2` 等进程管理工具：
-
-  ```sh
-  npm install -g pm2
-  pm2 start verdaccio
-  ```
+可以看到 Verdaccio 的 Web UI，这就是你本机的 npm 私有仓库主页。
 
 ---
 
-### 12.3 基本配置：存储与权限（config.yaml）
+### 三、从默认 config.yaml 演进到企业配置（以本机 Mac 为例）
 
-在 `config.yaml` 中，常见配置包括：
+#### 3.1 找到并打开默认配置文件
+
+根据启动日志，配置文件在类似位置：
+
+```text
+/Users/你的用户名/.config/verdaccio/config.yaml
+```
+
+默认配置的特点是：
+
+- 使用 `htpasswd` 做认证；
+- 默认允许“无限注册”用户；
+- 所有包都可以通过上游 `registry.npmjs.org` 代理；
+- 适合本地试用，不适合企业安全要求。
+
+简化一下默认的关键部分，大概是这样的：
 
 ```yaml
-# 存储私有包和缓存包的位置
-storage: /path/to/verdaccio/storage
+storage: /Users/你/.local/share/verdaccio/storage
 
 auth:
   htpasswd:
-    file: ./htpasswd # 存储账号密码的文件
-    max_users: 1000 # 超过后禁止注册（可设为 -1 禁止新注册）
+    file: ./htpasswd
+    # max_users: 1000
+    # 可设置为 -1 以禁用注册
+
+uplinks:
+  npmjs:
+    url: https://registry.npmjs.org/
 
 packages:
   '@*/*':
-    # 所有 scope 包默认策略
-    access: $authenticated # 只有登录用户能读取
-    publish: yourname # 特定用户可发布
-    unpublish: yourname # 特定用户可撤销发布
-    proxy: npmjs # 未命中时代理 npmjs 官方源
+    access: $all
+    publish: $authenticated
+    unpublish: $authenticated
+    proxy: npmjs
 
   '**':
-    access: $authenticated
-    publish: yourname othername
-    unpublish: yourname
+    access: $all
+    publish: $authenticated
+    unpublish: $authenticated
+    proxy: npmjs
+
+listen: 0.0.0.0:4873
+```
+
+直接用这个在本机玩玩没问题，但如果要当作“企业私服原型”，建议做 3 件事：
+
+1. 禁用 npm 自助注册，改为管理员手工建账号；
+2. 为公司的 scope（如 `@geektech/*`）单独设权限，并关闭上游代理；
+3. 将上游源从官方 npm 改为国内镜像，并开启缓存。
+
+#### 3.2 锁住账号注册方式（max_users: -1）
+
+在 `auth.htpasswd` 下增加配置：
+
+```yaml
+auth:
+  htpasswd:
+    file: ./htpasswd
+    # 禁用自助注册（不允许 npm adduser）
+    max_users: -1
+    # 建议使用 bcrypt 存储密码
+    algorithm: bcrypt
+    rounds: 10
+```
+
+解释：
+
+- 默认不写 `max_users` 相当于“无限注册”（`+inf`）；
+- 官方注释明确写了：**`-1` 表示禁用注册**；
+- 这样，在你的 Mac 上跑的 Verdaccio，就不会允许任何人用 `npm adduser` 自助注册账号了，所有账号都要你在本机通过 `htpasswd` 命令创建。
+
+#### 3.3 为公司 scope 写专门规则（并关闭 proxy）
+
+在 `packages:` 部分，为你的公司 scope（例如 `@geektech/*`）增加一段规则：
+
+```yaml
+packages:
+  '@geektech/*':
+    access: $authenticated # 仅登录用户可读
+    publish: $authenticated # 仅登录用户可发布
+    unpublish: admin1 admin2 # 仅少数维护者可撤销发布
+    proxy: false # 不向上游 npm 查找这个 scope
+
+  '@*/*':
+    access: $all
+    publish: $authenticated
+    unpublish: admin1
+    proxy: npmjs
+
+  '**':
+    access: $all
+    publish: $authenticated
+    unpublish: admin1
     proxy: npmjs
 ```
 
-要点：
+说明：
 
-- 可以用空格分隔多个用户名：`publish: yourname othername`；
-- 可以根据公司角色配置精细权限：
-  - 一部分人可以发布；
-  - 一部分人只能读。
+- `@geektech/*` 是公司内部包；
+- `proxy: false` 避免“依赖混淆”：即使公网上有人抢注了同名包，你的 Verdaccio 也不会去外面拉；
+- `admin1 admin2` 请替换成你实际的维护者用户名。
 
-更多高级配置可以参考官方文档，如：
+#### 3.4 上游源换成国内镜像（npmmirror）
 
-- 启用 HTTPS；
-- 自定义 UI；
-- 设置只缓存不转发等策略。
+在 `uplinks` 中把 `registry.npmjs.org` 换成国内镜像，例如：
+
+```yaml
+uplinks:
+  npmjs:
+    url: https://registry.npmmirror.com/
+    cache: true
+```
+
+`cache: true` 表示 Verdaccio 会把从 npmmirror 拉下来的包缓存在本机 `storage` 中，之后本机其它项目安装相同版本就非常快。
+
+#### 3.5 一份适合“本机 Mac + 企业规则”的完整配置示例
+
+综合上面几步，你可以把配置整理成类似这样（路径按你本地为准）：
+
+```yaml
+storage: /Users/你的用户名/.local/share/verdaccio/storage
+plugins: ./plugins
+
+web:
+  title: GeekTech npm Registry (Local)
+
+auth:
+  htpasswd:
+    file: ./htpasswd
+    max_users: -1 # 禁用自助注册
+    algorithm: bcrypt
+    rounds: 10
+
+uplinks:
+  npmjs:
+    url: https://registry.npmmirror.com/
+    cache: true
+
+packages:
+  '@geektech/*':
+    access: $authenticated
+    publish: $authenticated
+    unpublish: admin1 admin2
+    proxy: false
+
+  '@*/*':
+    access: $all
+    publish: $authenticated
+    unpublish: admin1
+    proxy: npmjs
+
+  '**':
+    access: $all
+    publish: $authenticated
+    unpublish: admin1
+    proxy: npmjs
+
+server:
+  keepAliveTimeout: 60
+
+# 本机开发环境：localhost 或 0.0.0.0 都可以
+# - localhost:4873：只本机访问
+# - 0.0.0.0:4873：局域网其它设备也可以访问你的 Mac 私服
+listen: localhost:4873
+
+middlewares:
+  audit:
+    enabled: true
+
+log:
+  type: stdout
+  format: pretty
+  level: http
+# 如果想在本机上试 npm token 子命令，可以打开
+# experiments:
+#   token: true
+```
+
+修改完 `config.yaml` 后，重新启动 Verdaccio：
+
+```bash
+# 在开着 verdaccio 的终端中按 Ctrl + C 结束
+verdaccio
+# 再次启动
+verdaccio
+```
 
 ---
 
-### 12.4 项目端接入 Verdaccio
+### 四、在本机上创建账号（htpasswd，macOS 版本）
 
-在项目中，通过 `.npmrc` 指定：某些 scope 用私服，其余依然走公共源。
+因为我们把 `max_users` 设成了 `-1`，所以不能通过 `npm adduser` 自助注册账号，必须在本机命令行用 `htpasswd` 创建。
 
-**示例：**
+在 macOS 上，可以这样安装 `htpasswd`：
+
+```bash
+# 如果你已安装 Homebrew
+brew install httpd
+```
+
+安装完成后，`htpasswd` 通常会出现在 `/opt/homebrew/bin/htpasswd`（Apple Silicon）或 `/usr/local/bin/htpasswd` 路径下，直接在终端执行：
+
+```bash
+htpasswd -h
+```
+
+能看到帮助就说明可以用了。
+
+然后在 Verdaccio 配置目录中创建用户（这个目录就是 `config.yaml` 所在位置）：
+
+```bash
+cd /Users/你的用户名/.config/verdaccio
+
+# 创建第一个用户（admin1，-c 表示创建新文件）
+htpasswd -c htpasswd admin1
+
+# 创建第二个用户（admin2，不要再用 -c）
+htpasswd htpasswd admin2
+```
+
+完成之后，重启 Verdaccio：
+
+```bash
+verdaccio
+#（如果原本开着就先 Ctrl + C，然后再重启一次）
+```
+
+现在你可以在本机任何一个终端中，用这两个账号进行 login：
+
+```bash
+npm login --registry=http://localhost:4873/
+# 按提示输入 admin1 / 密码
+```
+
+---
+
+### 五、在 Mac 上发布第一个内部包（@geektech/button）
+
+假设你想在这个本地私服上发布一个“公司统一按钮组件”。
+
+#### 5.1 创建组件项目
+
+在你的 Mac 上开一个终端：
+
+```bash
+mkdir geek-button
+cd geek-button
+npm init -y
+```
+
+修改 `package.json`：
+
+```json
+{
+  "name": "@geektech/button",
+  "version": "1.0.0",
+  "description": "极客科技统一按钮组件",
+  "main": "index.js",
+  "private": false
+}
+```
+
+创建 `index.js`（CommonJS，避免 ESM 兼容问题）：
+
+```javascript
+// 一个极简示例：返回 HTML 字符串
+const Button = ({ children, type = 'primary' }) => {
+  const styles = {
+    primary: 'bg-blue-500 text-white',
+    danger: 'bg-red-500 text-white',
+  };
+
+  const cls = styles[type] || styles.primary;
+  return `<button class="${cls}">${children}</button>`;
+};
+
+module.exports = { Button };
+```
+
+#### 5.2 为这个项目指定私服源（本机地址）
+
+在 `geek-button` 项目根目录创建 `.npmrc`：
 
 ```ini
-# 默认仍使用公共源（可换为淘宝镜像等）
+# 公司内部 scope 走本机私服
+@geektech:registry=http://localhost:4873/
+
+# 其他包走公共镜像（npmmirror）
 registry=https://registry.npmmirror.com/
-
-# 公司内部包走私服
-@your-scope:registry=http://your-verdaccio-host:4873/
 ```
 
-此时：
+#### 5.3 登录并发布
 
-- `npm install` 时安装 `@your-scope/*` 会从 Verdaccio 获取；
-- 安装其他包则从公共源（或其镜像）获取。
+第一次需要 login（使用刚才的 admin1/admin2）：
 
-**发布到私服：**
-
-```sh
-# 登录私服（注意你的 registry 配置）
-npm login --registry=http://your-verdaccio-host:4873/
-
-# 在包项目中发布
-npm publish --registry=http://your-verdaccio-host:4873/
+```bash
+npm login --registry=http://localhost:4873/
+# 输入 admin1 / 密码 / 邮箱（邮箱随便填）
 ```
 
-实践建议：
+然后执行发布：
 
-- 在公司 VPN / 内网中部署 Verdaccio；
-- 通过 Nginx 反向代理 + HTTPS 提供服务；
-- 使用 CI 账号 + token 来在流水线中发布包。
+```bash
+npm publish --registry=http://localhost:4873/
+```
+
+看到类似输出：
+
+```text
++ @geektech/button@1.0.0
+```
+
+说明已经成功发布到你本机的 Verdaccio 里了。
+
+建议在 `package.json` 中加一段：
+
+```json
+"publishConfig": {
+  "registry": "http://localhost:4873/"
+}
+```
+
+以后在本项目里只需 `npm publish` 即可，默认就发到本机私服。
+
+#### 5.4 在浏览器查看本机私服
+
+打开：
+
+```text
+http://localhost:4873/
+```
+
+你可以在左侧看到 `@geektech/button`，点击可查看版本等信息。
+
+---
+
+### 六、在其它本地项目中使用私有包
+
+现在你在本机另一个项目（例如电商项目）中使用这个按钮组件。
+
+#### 6.1 在电商项目中配置 `.npmrc`
+
+进入电商项目根目录，在该目录创建或修改 `.npmrc`：
+
+```ini
+@geektech:registry=http://localhost:4873/
+registry=https://registry.npmmirror.com/
+```
+
+#### 6.2 安装内部包
+
+在项目根目录执行：
+
+```bash
+npm install @geektech/button
+```
+
+#### 6.3 使用组件
+
+```javascript
+// ES Module 写法
+import { Button } from '@geektech/button';
+
+// Node.js CommonJS 写法
+// const { Button } = require('@geektech/button');
+
+const App = () => {
+  return Button({
+    children: '立即购买',
+    type: 'primary',
+  });
+};
+```
+
+到这一步，你已经在“一台 Mac 本机上”跑通了：
+
+- 本机 Verdaccio；
+- 本机发布内部包；
+- 本机其它项目从私服安装和使用内部包。
+
+---
+
+### 七、在本机上理解和使用 npm token（用于 CI）
+
+即便私服跑在你本机上，你可能仍然希望：
+
+- 在本机跑 GitLab Runner / GitHub Actions Runner / Jenkins；
+- CI 自动执行 `npm publish` 到本机 Verdaccio。
+
+CI 不能像人一样输入用户名密码，所以需要 npm 的 token 机制。
+
+#### 7.1 npm token 是什么？
+
+可以把它理解为一个“npm 访问令牌”：
+
+- 当你执行 `npm login --registry=http://localhost:4873/` 时，Verdaccio 会给你签发一个 token，并写入你本机的 `~/.npmrc`；
+- 这行配置通常长这样：
+
+  ```ini
+  //localhost:4873/:_authToken=xxxxx-xxxx-xxxx
+  ```
+
+- npm 以后访问 `http://localhost:4873/` 时，就会在 HTTP 请求里带上这个 token，来证明“我是 admin1”。
+
+在 CI 中，我们一般这么用：
+
+1. 把这条 `_authToken` 的值提取出来；
+2. 配置为 CI 的环境变量 `NPM_TOKEN`；
+3. 在 CI 脚本里生成一个 `.npmrc`，写入：
+
+   ```ini
+   //localhost:4873/:_authToken=${NPM_TOKEN}
+   ```
+
+4. 然后在 CI 中执行 `npm publish --registry=http://localhost:4873/`，就等价于在命令行中以你本人身份发布。
+
+#### 7.2 如何在本机上获得 NPM_TOKEN？
+
+步骤非常简单：
+
+1. 在你 Mac 上执行一次登录（前面已经做过）：
+
+   ```bash
+   npm login --registry=http://localhost:4873/
+   ```
+
+2. 然后查看你的 `~/.npmrc`（注意是你用户目录下的，不是项目目录下）：
+
+   ```bash
+   cat ~/.npmrc
+   ```
+
+   找到类似一行：
+
+   ```ini
+   //localhost:4873/:_authToken=xxxxx-xxxx-xxxx
+   ```
+
+3. 把 `xxxxx-xxxx-xxxx` 这一串复制出来，就是你的 `NPM_TOKEN`。
+
+#### 7.3 在本机 CI 中使用 token（示例）
+
+假设你在 Mac 上跑了一个 GitLab Runner（或者以后跑），可以在项目里写一个 `.gitlab-ci.yml`：
+
+```yaml
+stages:
+  - test
+  - deploy
+
+publish:
+  stage: deploy
+  script:
+    # 为当前 CI 任务生成 .npmrc，注入 token
+    - echo "//localhost:4873/:_authToken=${NPM_TOKEN}" > .npmrc
+    - npm ci
+    - npm test
+    - npm publish --registry=http://localhost:4873/
+  only:
+    - tags
+```
+
+然后在 GitLab CI 变量中配置：
+
+- `NPM_TOKEN=xxxxx-xxxx-xxxx`（刚刚从 `~/.npmrc` 复制出来的值）。
+
+> 可选：如果你在 `config.yaml` 中打开了 `experiments.token: true`，还可以在本机执行 `npm token create --registry=http://localhost:4873/` 来生成新的 token，并在 `npm token list` 中管理它们。对于日常使用，上面“从 `~/.npmrc` 拿 token”的方法已经足够。
+
+---
+
+### 八、可选：让局域网同事也能访问你这台 Mac 的私服
+
+如果你愿意把这台 Mac 临时当作团队的私服服务器，可以做两件事：
+
+1. 在 `config.yaml` 中把 `listen` 改成：
+
+   ```yaml
+   listen: 0.0.0.0:4873
+   ```
+
+   表示“监听所有网卡地址”，而不仅仅是本机。
+
+2. 让同事在浏览器打开：
+
+   ```text
+   http://你的Mac局域网IP:4873/
+   ```
+
+   比如 `http://192.168.1.23:4873/`；在他们的项目 `.npmrc` 中配置：
+
+   ```ini
+   @geektech:registry=http://192.168.1.23:4873/
+   ```
+
+> 注意：这只是“把你的 Mac 暂时当服务器用”，网络和安全问题需要你自己评估。正式生产环境一般还是会用专门的服务器或云主机。
+
+---
+
+### 九、常见问题（针对本机场景）
+
+#### Q1：在项目中安装包报 404 / 找不到包？
+
+检查项目根目录 `.npmrc`：
+
+```bash
+cat .npmrc
+```
+
+确认里面有：
+
+```ini
+@geektech:registry=http://localhost:4873/
+```
+
+同时检查全局 npm 配置是否覆盖：
+
+```bash
+npm config get @geektech:registry
+npm config get registry
+```
+
+如果有其它地方设置了 scope registry，把它改回来即可。
+
+#### Q2：npm login 提示认证失败？
+
+- 确认你在 `~/.config/verdaccio/htpasswd` 中确实创建了这个用户（用 `cat` 看看）；
+- 确认 `config.yaml` 中 `auth.htpasswd.file` 配置指向的路径与实际一致（如果你手动改过路径）；
+- 修改完后记得重启 Verdaccio。
+
+#### Q3：Node/包管理器说 `Unexpected token export` 之类的错误？
+
+- 说明你发布的包用的是 ESM 语法，但 `package.json` 没有声明 `"type": "module"` 或输出的 `main` 指向 ESM 文件；
+- 本文使用 CommonJS（`module.exports`），就是为了避免这类问题；
+- 如果你后续要升级到 ESM + 构建，记得同步更新 `package.json`（`type`、`main`、`exports` 等）。
 
 ---
 
