@@ -7,514 +7,392 @@ toc: content
 order: 13
 ---
 
-## Iterator
+### 从 Iterator 到 Generator：揭秘现代 JS 异步编程的基石
 
-Iterator 接口的目的，就是**为所有数据结构，提供了一种统一的访问机制**，即 `for...of` 循环。当使用 `for...of` 循环遍历某种数据结构时，该循环会自动去寻找 Iterator 接口。
+#### 引言：为何需要统一的「遍历」？
 
-ES6 规定，默认的 Iterator 接口部署在数据结构的 `Symbol.iterator` 属性，或者说，一个数据结构只要具有 `Symbol.iterator` 属性，就可以认为是 “可遍历的”。
+在 ES6 之前，JavaScript 的世界里充满了五花八门的遍历方式：我们用 `for` 循环遍历数组，用 `for...in` 遍历对象属性，还有 `forEach`、`map` 等高阶函数……每一种数据结构似乎都有自己的一套「玩法」。
 
-`Symbol.iterator` 属性**本身是一个函数**，就是当前数据结构默认的遍历器生成函数。**执行这个属性，会返回一个遍历器对象**。该对象的根本特征就是具有 `next` 方法。每次调用 `next` 方法，都会返回一个代表当前成员的信息对象，具有 `value` 和 `done` 两个属性。`value` 属性返回当前位置的成员，`done` 属性是一个布尔值，表示遍历是否结束，即是否还有必要再一次调用 `next` 方法。
+想象一下，如果我们有一种新的数据结构，比如一个二叉树，难道又要为它设计一套新的遍历 API 吗？
 
-> 对于遍历器对象来说，`done: false` 和 `value: undefined` 属性都是可以省略的。
+为了终结这种混乱，ES6 引入了 **Iterator（迭代器）机制**。它的核心使命只有一个：
 
-**原生具备 `Iterator` 接口的数据结构如下**。
+> 为所有数据结构提供一种统一的访问机制。
 
-- **Array**
-- **Map**
-- **Set**
-- **String**
-- **TypedArray**
-- **arguments**
-- **NodeList**
+这不仅仅是为了 `for...of` 循环的优雅，还为后来的 `async/await`、异步迭代器等现代异步能力打下了重要的概念基础。本文将带你从 Iterator 协议细节，深入到 Generator 的魔法，并最终揭示它与 `async/await` 之间的血缘关系。
 
-**对象如果要具备可被 `for...of` 循环调用的 Iterator 接口**，就必须在 `Symbol.iterator` 的属性上部署遍历器生成方法 (**原型链上的对象具有该方法也可**)。
+---
 
-对于类似数组的对象 (存在数值键名和 length 属性)，部署 Iterator 接口，有一个简便方法，就是 **`Symbol.iterator` 方法直接引用数组的 Iterator 接口**。
+### 1. 迭代协议：JavaScript 的「遍历规范」
 
-**调用 Iterator 接口的场合：**
+要真正理解 Iterator，首先必须区分两个核心协议：**可迭代协议（Iterable Protocol）** 和 **迭代器协议（Iterator Protocol）**。
 
-有一些场合会默认调用 Iterator 接口 (即 `Symbol.iterator` 方法)，除了 `for...of` 循环，还有几个别的场合。
+#### 1.1 可迭代协议（Iterable Protocol）
 
-1. 解构赋值
-2. 扩展运算符
-3. **`yield*`**：`yield*` 后面跟的是一个可遍历的结构，它会调用该结构的遍历器接口。
-4. 由于数组的遍历会调用遍历器接口，所以任何接受数组作为参数的场合，其实都调用了遍历器接口。
-   - `for...of`
-   - `Array.from()`
-   - `Map()`, `Set()`, `WeakMap()`, `WeakSet()`
-   - `Promise.all()`
-   - `Promise.race()`
+如果一个对象希望自己能被 `for...of` 等语法消费，它就必须遵守「可迭代协议」。该协议非常简单，规定：
 
-遍历器对象除了具有 `next()` 方法，还可以具有 `return()` 方法和 `throw()` 方法。如果你自己写遍历器对象生成函数，那么 **`next()` 方法是必须部署的，`return()` 方法和 `throw()` 方法是否部署是可选的。**
-
-`return()` 方法的使用场合是，如果 `for...of` 循环提前退出 (**通常是因为出错，或者有 `break` 语句**)，就会调用 `return()` 方法。
-
-`throw()` 方法主要是配合 Generator 函数使用，一般的遍历器对象用不到这个方法。
-
-**计算生成的数据结构：**
-
-有些数据结构是在现有数据结构的基础上，计算生成的。比如，ES6 的数组、`Set`、`Map` 都部署了以下三个方法，调用后都返回遍历器对象。
-
-- `entries()` 返回一个遍历器对象，用来遍历 `[键名, 键值]` 组成的数组。对于数组，键名就是索引值；对于 `Set`，键名与键值相同。`Map` 结构的 Iterator 接口，默认就是调用 `entries` 方法。
-- `keys()` 返回一个遍历器对象，用来遍历所有的键名。
-- `values()` 返回一个遍历器对象，用来遍历所有的键值。
+- 对象必须拥有一个键为 `[Symbol.iterator]` 的属性；
+- 该属性的值必须是一个**可调用的函数**，调用后返回一个「迭代器对象」。
 
 ```js
-const arrLike = {
-  1: 'b',
-  2: 'c',
-  length: 3,
+const myIterableObject = {
+  data: [1, 2, 3],
+  [Symbol.iterator]: function () {
+    // 这个函数需要返回一个「迭代器对象」
+    // ...
+  },
 };
-
-console.log(Array.from(arrLike)); // [ undefined, 'b', 'c' ]
-
-arrLike[Symbol.iterator] = function () {
-  let nextIndex = 0;
-  return {
-    next: () => {
-      return nextIndex < this.length
-        ? { value: this[nextIndex++], done: false }
-        : { value: undefined, done: true };
-    },
-    return: () => {
-      console.log('return called');
-      // TypeError: Iterator result undefined is not an object
-      return { value: undefined, done: true };
-    },
-  };
-};
-
-const it = arrLike[Symbol.iterator]();
-
-// 普通调用
-console.log(it.next()); // { value: undefined, done: false }
-console.log(it.next()); // { value: 'b', done: false }
-console.log(it.next()); // { value: 'c', done: false }
-console.log(it.next()); // { value: undefined, done: true }
-console.log(it.next()); // { value: undefined, done: true }
-
-for (const it of arrLike) {
-  if (it === undefined) {
-    // break 和 error 都会触发 return
-    // throw new Error('it is undefined')
-    break;
-  }
-}
 ```
 
-### Iterator 接口与 Generator 函数
+> 许多语言特性，如 `for...of`、展开运算符（`...`）、`Array.from()`、解构赋值等，都会优先尝试调用目标的 `[Symbol.iterator]` 来获取迭代器。
 
-`Symbol.iterator()` 方法的最简单实现，是使用 Generator 函数。
+#### 1.2 迭代器协议（Iterator Protocol）
+
+「迭代器协议」定义了迭代行为的标准。一个对象如果想成为「迭代器」，就必须遵守该协议：
+
+- 对象必须拥有一个名为 `next` 的方法；
+- 调用 `next()` 方法后，必须返回一个包含 `value` 和 `done` 两个属性的对象：
+  - `value`：当前遍历到的值；
+  - `done`：布尔值，`true` 表示遍历已结束，`false` 表示遍历仍在进行。
+
+**两者的关系：**
+
+> 一个「可迭代对象」调用它的 `[Symbol.iterator]()` 方法后，会返回一个「迭代器对象」。
 
 ```js
-const myIterable = {
-  [Symbol.iterator]: function* () {
-    yield 1;
-    yield 2;
-    yield 3;
+const arr = ['a', 'b'];
+const iterator = arr[Symbol.iterator](); // arr 是可迭代的，执行后返回一个迭代器
+
+console.log(iterator.next()); // { value: 'a', done: false }
+console.log(iterator.next()); // { value: 'b', done: false }
+console.log(iterator.next()); // { value: undefined, done: true }
+```
+
+#### 1.3 原生可迭代对象
+
+在现代 JavaScript 环境中，许多内置类型已经为我们实现了可迭代协议，例如：
+
+- `Array`
+- `String`
+- `Map`
+- `Set`
+- `TypedArray`
+- `arguments` 对象（现代实现中）
+- `NodeList`（现代浏览器中）
+
+这意味着它们不仅可以被 `for...of` 遍历，还可以直接使用展开运算符 `...` 等特性。
+
+#### 1.4 为普通对象部署 Iterator 接口
+
+默认情况下，普通对象（`{}`）是不可迭代的。但我们可以手动为其部署 `[Symbol.iterator]` 方法，让它变得可迭代。
+
+```js
+const myObject = {
+  items: ['A', 'B', 'C'],
+  [Symbol.iterator]: function () {
+    let index = 0;
+    const items = this.items;
+
+    // 返回一个遵循「迭代器协议」的对象
+    return {
+      next: () => {
+        if (index < items.length) {
+          return { value: items[index++], done: false };
+        } else {
+          return { value: undefined, done: true };
+        }
+      },
+    };
   },
 };
 
-for (const it of myIterable) {
-  console.log(it); // 1 2 3
+for (const item of myObject) {
+  console.log(item); // A B C
 }
+```
 
-// 或者采用下面的简洁写法
-let it1 = {
+这样一来，任何消费「可迭代对象」的语法（`for...of`、`...`、`Array.from` 等）都能直接作用在 `myObject` 上。
+
+---
+
+### 2. Generator 函数：迭代器的「超级工厂」
+
+手动编写迭代器对象相对繁琐，你需要自己管理遍历的内部状态（如 `index`）。因此，ES6 提供了一个强大的「语法糖」——**Generator 函数**，它可以极大地简化迭代器的创建过程。
+
+Generator 函数有两个鲜明的特征：
+
+1. `function` 关键字与函数名之间有一个星号 `*`；
+2. 函数体内部使用 `yield` 表达式来产出值并「暂停」。
+
+```js
+// 用 Generator 函数重写上面的例子
+const myObjectWithGenerator = {
+  items: ['A', 'B', 'C'],
   *[Symbol.iterator]() {
-    yield 'hello';
-    yield 'world';
-    return 'end';
+    // 注意这里的简洁写法
+    for (const item of this.items) {
+      yield item;
+    }
   },
 };
 
-console.log([...it1]); // [ 'hello', 'world' ]
+for (const item of myObjectWithGenerator) {
+  console.log(item); // A B C
+}
 ```
 
-上面代码中，`Symbol.iterator()` 方法几乎不用部署任何代码，只要用 `yield` 命令给出每一步的返回值即可。
+调用 Generator 函数**不会立即执行**，而是返回一个迭代器对象。`yield` 关键字就像一个「暂停路标」：
 
-## Generator 函数
+- 每次调用迭代器的 `next()` 方法，函数就会从上一次暂停的位置继续执行，直到遇到下一个 `yield`；
+- 此时函数暂停，并将 `yield` 后面的值作为 `{ value }` 返回。
 
-### 简介
+---
 
-**Generator 函数的语法特征：**
+### 3. 深入 Generator 函数
 
-1. **`function` 关键字与函数名之间有一个星号 `*`**
-2. **函数体内部使用 `yield` 表达式，定义不同的内部状态**
+#### 3.1 `next` 参数：双向通信的桥梁
+
+`yield` 表达式本身没有返回值（或者说默认是 `undefined`）。但 `next()` 方法可以接受一个参数，**这个参数会作为上一个 `yield` 表达式的返回值**。
+
+这使得我们可以在 Generator 函数执行期间，从外部向内部「注入」值，从而实现双向通信。
 
 ```js
-function* helloWorldGenerator() {
-  yield 'hello';
-  yield 'world';
-  return 'ending';
+function* createQuestionnaire() {
+  const name = yield 'What is your name?';
+  console.log(`Hello, ${name}!`);
+
+  const hobby = yield 'What is your hobby?';
+  console.log(`${name}'s hobby is ${hobby}.`);
+
+  return 'Questionnaire finished.';
 }
 
-// 调用 Generator 函数后，该函数并不执行，返回的也不是函数运行结果
-// 而是一个指向内部状态的指针对象，也就是遍历器对象（Iterator Object）
-const hw = helloWorldGenerator();
+const questionnaire = createQuestionnaire();
+
+console.log(questionnaire.next().value); // "What is your name?"
+console.log(questionnaire.next('Alice').value); // "What is your hobby?"
+// 内部打印 "Hello, Alice!"
+console.log(questionnaire.next('coding').value); // "Questionnaire finished."
+// 内部打印 "Alice's hobby is coding."
 ```
 
-由于 Generator 函数返回的遍历器对象，只有调用 `next` 方法才会遍历下一个内部状态，所以其实提供了一种可以暂停执行的函数。`yield` 表达式就是暂停标志。
+> 注意：**第一次**调用 `next()` 传入的参数是无效的，因为它没有「上一个 `yield`」可以接收这个值。
 
-遍历器对象的 `next` 方法的运行逻辑如下。
+#### 3.2 `throw()` 和 `return()`：从外部控制执行流程
 
-1. 遇到 `yield` 表达式，就暂停执行后面的操作，并将紧跟在 `yield` 后面的那个表达式的值，作为返回的对象的 `value` 属性值。
+除了 `next()`，迭代器还有两个重要方法：`throw()` 和 `return()`。
 
-2. 下一次调用 `next` 方法时，再继续往下执行，直到遇到下一个 `yield` 表达式。
-
-3. 如果没有再遇到新的 `yield` 表达式，就一直运行到函数结束，直到 `return` 语句为止，并将 `return` 语句后面的表达式的值，作为返回的对象的 `value` 属性值。
-
-4. 如果该函数没有 `return` 语句，则返回的对象的 `value` 属性值为 `undefined`。
-
-需要注意的是，`yield` 表达式后面的表达式，只有当调用 `next` 方法、内部指针指向该语句时才会执行，因此等于为 JavaScript 提供了手动的 “惰性求值” (Lazy Evaluation) 的语法功能。
+- `iterator.throw(error)`
+  在 Generator 外部向内部抛入一个错误。这个错误会出现在**上一个 `yield` 表达式**的位置。如果函数内部有 `try...catch`，就可以捕获该错误；否则错误会向外抛出。
+- `iterator.return(value)`
+  可以提前终止 Generator 的执行，并给出一个返回值。`finally` 语句块仍然会执行。
 
 ```js
-function* gen() {
-  yield 1;
-  yield 2;
-  yield 3;
-  return 'ending';
-}
-
-const it = gen();
-console.log(it.next()); // { value: 1, done: false }
-console.log(it.next()); // { value: 2, done: false }
-console.log(it.next()); // { value: 3, done: false }
-// 最后一次调用会把 value 值设置为 return 的值
-console.log(it.next()); // { value: 'ending', done: true }
-// 已经结束了，再调用 next，value 为 undefined
-console.log(it.next()); // { value: undefined, done: true }
-```
-
-> **注意**：`for...of` 循环、扩展运算符（`...`）等会自动遍历 Generator 函数，且不需要调用 `next` 方法。但是，它们**不会返回 `return` 语句的返回值**。
->
-> ```js
-> function* foo() {
->   yield 1;
->   yield 2;
->   return 3;
-> }
->
-> for (let v of foo()) {
->   console.log(v); // 1 2
-> }
->
-> console.log([...foo()]); // [1, 2]
-> ```
-
-### next 方法的参数
-
-`yield` 表达式本身没有返回值，或者说总是返回 `undefined`。**`next` 方法可以带一个参数，该参数就会被当作上一个 `yield` 表达式的返回值**。
-
-通过 `next` 方法的参数，就有办法在 Generator 函数开始运行之后，继续**向函数体内部注入值**。也就是说，可以在 Generator 函数运行的不同阶段，从外部向内部注入不同的值，从而调整函数行为。
-
-```js
-//! next 方法可以带一个参数，该参数就会被当作上一个 yield 表达式的返回值。
-function* gen2() {
-  const retVal1 = yield 1;
-  console.log(retVal1);
-  const retVal2 = yield 2;
-  console.log(retVal2);
-  const retVal3 = yield 3;
-  console.log(retVal3);
-  return 'ending';
-}
-
-const it2 = gen2();
-it2.next();
-it2.next(`retVal1`); // retVal1
-it2.next(`retVal2`); // retVal2
-it2.next(`retVal3`); // retVal3
-```
-
-### next()、throw()、return()
-
-`next()`、`throw()`、`return()` 这三个方法本质上是同一件事，可以放在一起理解。它们的作用都是让 Generator 函数恢复执行，并且使用不同的语句替换 `yield` 表达式。
-
-**`next()` 是将 `yield` 表达式替换成一个值**。
-
-```js
-const g = function* (x, y) {
-  let result = yield x + y;
-  return result;
-};
-
-const gen = g(1, 2);
-gen.next(); // Object {value: 3, done: false}
-
-gen.next(1); // Object {value: 1, done: true}
-// 相当于将 let result = yield x + y
-// 替换成 let result = 1;
-```
-
-上面代码中，第二个 `next(1)` 方法就相当于将 `yield` 表达式替换成一个值 `1`。如果 `next` 方法没有参数，就相当于替换成 `undefined`。
-
-**`throw()` 是将 `yield` 表达式替换成一个 `throw` 语句。**
-
-> 应用：[`await` 会把 `rejected promise` 转变成了一个 `throw`。](https://www.zhihu.com/question/522726685)
-
-```js
-gen.throw(new Error('出错了')); // Uncaught Error: 出错了
-// 相当于将 let result = yield x + y
-// 替换成 let result = throw(new Error('出错了'));
-```
-
-**`return()` 是将 `yield` 表达式替换成一个 `return` 语句**。
-
-```js
-gen.return(2); // Object {value: 2, done: true}
-// 相当于将 let result = yield x + y
-// 替换成 let result = return 2;
-```
-
-### yield\* 表达式
-
-任何数据结构只要有 Iterator 接口，就可以被 `yield*` 遍历。
-
-**`yield*` 表达式用于在一个 Generator 函数里面执行另一个 Generator 函数**（或任何可遍历的数据结构）。
-
-```js
-function* foo() {
-  yield 'a';
-  yield 'b';
-}
-
-function* bar() {
-  yield 'x';
-  // 相当于 for (let v of foo()) yield v;
-  yield* foo();
-  yield 'y';
-}
-
-// 等同于
-function* bar() {
-  yield 'x';
-  yield 'a';
-  yield 'b';
-  yield 'y';
-}
-
-for (let v of bar()) {
-  console.log(v);
-}
-// x
-// a
-// b
-// y
-```
-
-**`yield*` 后面的 Generator 函数如果有 `return` 值，需要用变量接收：**
-
-```js
-function* genFuncWithReturn() {
-  yield 'a';
-  yield 'b';
-  return 'The result';
-}
-
-function* logReturned(genObj) {
-  let result = yield* genObj;
-  console.log(result);
-}
-
-[...logReturned(genFuncWithReturn())]; // The result
-```
-
-**使用 `yield*` 遍历嵌套数组：**
-
-```js
-function* iterTree(tree) {
-  if (Array.isArray(tree)) {
-    for (let i = 0; i < tree.length; i++) {
-      yield* iterTree(tree[i]);
-    }
-  } else {
-    yield tree;
-  }
-}
-
-const tree = ['a', ['b', 'c'], ['d', 'e']];
-
-for (let x of iterTree(tree)) {
-  console.log(x); // a b c d e
-}
-
-console.log([...iterTree(tree)]); // ['a', 'b', 'c', 'd', 'e']
-```
-
-### Generator 函数的应用
-
-**1. 状态机**
-
-Generator 是实现状态机的最佳结构。
-
-```js
-function* stateMachine() {
-  while (true) {
-    console.log('State A');
-    yield;
-    console.log('State B');
-    yield;
-  }
-}
-
-const sm = stateMachine();
-sm.next(); // State A
-sm.next(); // State B
-sm.next(); // State A
-```
-
-**2. 异步操作的同步化表达**
-
-Generator 函数可以暂停执行和恢复执行，这是它能封装异步任务的根本原因。
-
-```js
-function* loadUI() {
-  showLoadingScreen();
-  yield loadUIDataAsynchronously();
-  hideLoadingScreen();
-}
-
-const loader = loadUI();
-// 加载UI
-loader.next();
-
-// 卸载UI
-loader.next();
-```
-
-**3. 控制流管理**
-
-如果有一个多步操作非常耗时，采用回调函数可能会写成这样：
-
-```js
-step1(function (value1) {
-  step2(value1, function (value2) {
-    step3(value2, function (value3) {
-      step4(value3, function (value4) {
-        // Do something with value4
-      });
-    });
-  });
-});
-```
-
-使用 Generator 函数可以改写成：
-
-```js
-function* longRunningTask(value1) {
+function* stoppableTask() {
   try {
-    const value2 = yield step1(value1);
-    const value3 = yield step2(value2);
-    const value4 = yield step3(value3);
-    const value5 = yield step4(value4);
-    // Do something with value5
+    yield 'Step 1';
+    yield 'Step 2';
+    yield 'Step 3';
   } catch (e) {
-    // Handle any error from step1 through step4
-  }
-}
-```
-
-### 总结
-
-以下是一个综合示例，展示了 Generator 函数的各种特性：
-
-```js
-const g = function* (x, y) {
-  console.log('start');
-
-  // 第一个 yield
-  let ret1 = yield x + y;
-  console.log('ret1', ret1);
-
-  // 第二个 yield
-  let ret2 = yield ret1 * y;
-  console.log('ret2', ret2);
-
-  // 第三个 yield - 可能会抛出错误
-  try {
-    yield ret2.join('');
-  } catch (error) {
-    console.log('error', error.message);
-  }
-
-  // 第四个 yield - 演示 finally 块
-  try {
-    yield ret2 * x;
+    console.log('Caught error inside:', e.message);
   } finally {
-    console.log('finally');
+    console.log('Task is stopping.');
   }
-
-  // 第五个 yield
-  let ret3 = yield ret2 * y;
-  console.log('ret3', ret3);
-  return ret3;
-};
-
-// 执行流程示例：
-const _it = g(1, 2);
-
-// 第 1 次调用：执行到第一个 yield，输出 'start'
-let _ret1 = _it.next();
-// 输出: start
-// 返回: { value: 3, done: false }  (x + y = 1 + 2 = 3)
-
-// 第 2 次调用：将 3 赋值给 ret1，执行到第二个 yield
-let _ret2 = _it.next(_ret1.value);
-// 输出: ret1 3
-// 返回: { value: 6, done: false }  (ret1 * y = 3 * 2 = 6)
-
-// 第 3 次调用：将 6 赋值给 ret2，执行到第三个 yield
-// 注意：ret2 是数字 6，没有 join 方法，所以会在 try 块内抛出错误
-// 错误被 catch 捕获，继续执行到第四个 yield
-_it.next();
-// 输出: ret2 6
-// 输出: error ret2.join is not a function
-// 返回: { value: 6, done: false }  (ret2 * x = 6 * 1 = 6)
-
-// 第 4 次调用：执行 finally 块，然后到第五个 yield
-_it.next();
-// 输出: finally
-// 返回: { value: 12, done: false }  (ret2 * y = 6 * 2 = 12)
-
-// 第 5 次调用：将 _ret2.value (6) 赋值给 ret3，函数结束
-_it.next(_ret2.value);
-// 输出: ret3 6
-// 返回: { value: 6, done: true }  (return ret3)
-```
-
-**关于 `throw()` 的补充说明：**
-
-```js
-// 如果在第 2 次 next 之后调用 throw，会发生以下情况：
-const _it2 = g(1, 2);
-_it2.next(); // 执行到第一个 yield
-_it2.next(3); // 执行到第二个 yield
-
-// throw() 会将 yield ret1 * y 替换成 throw new Error('error')
-// 即：let ret2 = throw new Error('error')
-// 由于这个 yield 外部没有 try-catch，错误会向外传播
-try {
-  _it2.throw(new Error('error'));
-} catch (error) {
-  console.log('外部捕获', error.message); // 输出: 外部捕获 error
+  return 'This will not be reached if forced to return.';
 }
 
-// 一旦抛出未被内部捕获的错误，Generator 就会终止，后续 next() 无效
-_it2.next(); // { value: undefined, done: true }
+// 演示 throw
+const task1 = stoppableTask();
+task1.next();
+try {
+  task1.throw(new Error('Something went wrong!'));
+} catch (e) {
+  console.log('Caught error outside:', e.message); // 不会执行，因为内部捕获了
+}
+// 控制台输出：
+// Caught error inside: Something went wrong!
+// Task is stopping.
+
+// 演示 return
+const task2 = stoppableTask();
+task2.next();
+const result = task2.return('Manually stopping now.');
+console.log(result);
+// 控制台输出：
+// Task is stopping.
+// { value: 'Manually stopping now.', done: true }
 ```
 
-**关于 `return()` 的补充说明：**
+#### 3.3 `yield*` 表达式：委托执行
+
+`yield*` 用于在一个 Generator 内部，将执行权「委托」给另一个可迭代对象（如另一个 Generator、数组、字符串等）。
 
 ```js
-const _it3 = g(1, 2);
-_it3.next(); // { value: 3, done: false }
-_it3.next(3); // { value: 6, done: false }
+function* inner() {
+  yield 'b';
+  yield 'c';
+  return 'inner done';
+}
 
-// return() 会将当前的 yield 替换成 return 语句，并终止 Generator
-_it3.return(100); // { value: 100, done: true }
+function* outer() {
+  yield 'a';
+  const innerResult = yield* inner(); // 委托给 inner
+  console.log('Inner returned:', innerResult);
+  yield 'd';
+}
 
-// 后续 next() 调用无效
-_it3.next(); // { value: undefined, done: true }
+const it = outer();
+console.log([...it]); // ['a', 'b', 'c', 'd']
+// 期间控制台输出 "Inner returned: inner done"
 ```
 
+这里有两个关键点：
+
+- 扩展（`...it`）拿到的是所有 `yield` 出来的值：`a`、`b`、`c`、`d`；
+- `yield*` 表达式本身的值，是被委托迭代器的 **return 值**（这里是 `'inner done'`）。
+
+---
+
+### 4. 异步编程的革命：Generator 与 async/await
+
+Generator 最令人兴奋的应用之一，在于它改变了 JavaScript 的异步编程范式。
+
+在只有回调的年代，我们饱受「回调地狱」折磨；Promise 出现后情况好很多，但在复杂业务中 `.then()` 链依然不够直观。
+
+Generator 的「暂停」能力，让我们能用看起来**像同步代码**的风格来编写异步逻辑。
+
+```js
+// 一个模拟的异步请求
+function fetchData(url) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(`Data from ${url}`);
+    }, 1000);
+  });
+}
+
+// 使用 Generator 编排异步任务
+function* main() {
+  console.log('Starting fetch...');
+  const result1 = yield fetchData('/api/user'); // 暂停，直到 Promise 完成
+  console.log(result1);
+
+  const result2 = yield fetchData('/api/posts'); // 再次暂停
+  console.log(result2);
+
+  return 'All data fetched!';
+}
+```
+
+看到这里你可能会问：`yield` 后面是 Promise，`main` 函数如何知道「等 Promise 完成再继续」？答案是：**Generator 自己并不知道**。它需要一个**「执行器」（Runner）**来驱动。
+
+#### 4.1 Generator 自动执行器：理解 async/await 的前身
+
+`async/await` 可以看成是一种「内建在语言里的高级 Generator 执行器」。我们可以手写一个简化版来理解其原理：
+
+```js
+// Generator 自动执行器
+function run(generator) {
+  const iterator = generator(); // 得到迭代器
+
+  function go(result) {
+    if (result.done) {
+      return Promise.resolve(result.value);
+    }
+
+    // 将 yield 表达式的结果（通常是 Promise）包装成 Promise
+    return Promise.resolve(result.value).then(
+      (value) => go(iterator.next(value)), // 成功时把值塞回 Generator
+      (error) => go(iterator.throw(error)), // 失败时把错误抛回 Generator
+    );
+  }
+
+  // 返回一个 Promise，方便外部链式调用
+  return go(iterator.next());
+}
+
+// 现在，我们可以「运行」上面的 main 函数了！
+run(main).then((final) => {
+  console.log(final); // "All data fetched!"
+});
+
+// 控制台输出：
+// Starting fetch...
+// (1 秒后) Data from /api/user
+// (又 1 秒后) Data from /api/posts
+// All data fetched!
+```
+
+对比一下 `async/await` 版本：
+
+```js
+async function mainAsync() {
+  console.log('Starting fetch...');
+  const result1 = await fetchData('/api/user');
+  console.log(result1);
+
+  const result2 = await fetchData('/api/posts');
+  console.log(result2);
+
+  return 'All data fetched!';
+}
+
+mainAsync().then(console.log);
+```
+
+两者在行为上非常接近：都是按顺序等待两个异步请求，最终拿到返回值。
+
+> 心智模型上，你可以这样理解：
+>
+> - `async` 函数 ≈「JS 引擎帮你自动生成的 Generator + 内置执行器」；
+> - `await` ≈ 在内部对 Promise 做了一次「`yield`」，然后引擎自动做了类似上面 `run` 函数的事情；
+> - 实际规范和实现上它们并不是同一个东西，但这个类比有助于理解 `async/await` 的核心思路。
+
+---
+
+### 5. 其他应用场景：状态机与惰性数据流
+
+除了异步编排，Generator 还有不少非常实用的场景。
+
+#### 5.1 状态机
+
+每一个 `yield` 可以看成一个状态，`next` 则驱动状态流转。对复杂的 UI 流程控制、协议解析等，Generator 是一种天然的状态机表达方式。
+
+#### 5.2 惰性求值与无限数据流
+
+你可以创建一个「永不终止」的 Generator，按需生成数据，而不是一次性把所有数据都放在内存中。
+
+```js
+function* idMaker() {
+  let index = 0;
+  while (true) {
+    yield index++;
+  }
+}
+
+const gen = idMaker();
+
+console.log(gen.next().value); // 0
+console.log(gen.next().value); // 1
+// …可以无限生成下去
+```
+
+在处理分页数据、滚动加载、流式处理（如日志流、消息流）等场景时，这种「按需生产」的能力非常受用。
+
+> 进一步地，现代 JS 还提供了**异步 Generator**（`async function*`）和 `for await...of`，用来按需消费异步数据流（如网络数据流、文件读写、消息队列等），这也是本文这条「从 Iterator 到 Generator」路线的自然延伸。
+
+---
+
+### 结论
+
+回顾一下本文的核心要点：
+
+- **Iterator 协议**是 JavaScript 中实现**统一遍历**的基础，由 `[Symbol.iterator]` 和 `next()` 方法共同定义。
+- **Generator 函数**是创建迭代器的**强大语法糖**，通过 `yield` 实现函数的**暂停与恢复**。
+- `next(value)` 实现了**外部向 Generator 内部的数据注入**，`throw` / `return` / `yield*` 则提供了更强大的流程控制能力。
+- 通过一个「执行器」，Generator 可以优雅地编排 Promise 异步逻辑；理解这一点，有助于从原理上看懂 `async/await`。
+- 在现代实际开发中：
+  - 写业务代码时，**首选 `async/await`**；
+  - 理解 Iterator / Generator，则能帮助你看懂框架源码、维护老代码，并对 JavaScript 的核心运行机制建立更扎实的直觉。
+
+掌握 Iterator 和 Generator，不仅能让你写出更优雅、更易维护的代码，更能让你在面对复杂异步场景时做到「知其然，亦知其所以然」。如果你已经熟悉 `async/await`，不妨回头再用 Generator 的视角看一眼，你会对 JS 的异步世界有一种「抽丝剥茧」的通透感。
