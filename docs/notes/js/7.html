@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      :root {
+        --c-bg: #f8fafc; /* Outer Background */
+        --c-canvas: #ffffff; /* Diagram Background */
+        --c-border: #cbd5e1; /* Slate-300 */
+        --c-text-main: #0f172a; /* Slate-900 */
+        --c-text-sub: #64748b; /* Slate-500 */
+        --c-accent: #0f172a; /* Black Accent */
+        --font-ui: 'Inter', Helvetica, Arial, sans-serif;
+        --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+      }
+
+      body {
+        background-color: var(--c-bg);
+        color: var(--c-text-main);
+        font-family: var(--font-ui);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+      }
+
+      /* Canvas Container */
+      .blueprint-canvas {
+        background-color: var(--c-canvas);
+        border: 1px solid var(--c-border);
+        width: 100%;
+        max-width: 600px;
+        box-sizing: border-box;
+        /* No shadows, strictly flat */
+      }
+
+      /* Header Section */
+      .bp-header {
+        border-bottom: 2px solid var(--c-border);
+        padding: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
+      .bp-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+        margin: 0;
+      }
+
+      .bp-meta {
+        font-family: var(--font-mono);
+        color: var(--c-text-sub);
+        font-size: 0.75rem;
+        text-align: right;
+      }
+
+      /* Controls/Input Area */
+      .bp-controls {
+        display: flex;
+        border-bottom: 1px solid var(--c-border);
+      }
+
+      .bp-input {
+        flex-grow: 1;
+        border: none;
+        padding: 16px 24px;
+        font-family: var(--font-mono);
+        font-size: 0.9rem;
+        color: var(--c-text-main);
+        outline: none;
+      }
+
+      .bp-input::placeholder {
+        color: #94a3b8;
+      }
+
+      .bp-btn-add {
+        background: var(--c-canvas);
+        border: none;
+        border-left: 1px solid var(--c-border);
+        color: var(--c-text-main);
+        font-family: var(--font-mono);
+        font-weight: 700;
+        padding: 0 24px;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+      }
+
+      .bp-btn-add:hover {
+        background-color: #f1f5f9;
+      }
+
+      /* Task List */
+      .bp-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .bp-item {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid var(--c-border);
+        padding: 16px 24px;
+        gap: 16px;
+      }
+
+      .bp-item:last-child {
+        border-bottom: none;
+      }
+
+      /* Custom Checkbox (Flat Square) */
+      .bp-checkbox {
+        width: 16px;
+        height: 16px;
+        border: 2px solid var(--c-text-main);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        flex-shrink: 0;
+      }
+
+      .bp-checkbox input {
+        display: none;
+      }
+
+      .bp-checkbox-inner {
+        width: 8px;
+        height: 8px;
+        background-color: var(--c-text-main);
+        display: none;
+      }
+
+      /* Checked State */
+      .bp-item.completed .bp-checkbox-inner {
+        display: block;
+      }
+
+      .bp-item.completed .bp-task-text {
+        text-decoration: line-through;
+        color: var(--c-text-sub);
+      }
+
+      /* Task Content */
+      .bp-task-content {
+        flex-grow: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .bp-task-text {
+        font-size: 0.95rem;
+      }
+
+      /* Badge (Technical Spec Style) */
+      .bp-badge {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        border: 1px solid var(--c-border);
+        padding: 4px 8px;
+        color: var(--c-text-sub);
+        text-transform: uppercase;
+      }
+
+      .bp-badge.high {
+        border-color: var(--c-text-main);
+        color: var(--c-text-main);
+        font-weight: 700;
+      }
+
+      /* Footer / Status Bar */
+      .bp-footer {
+        border-top: 1px solid var(--c-border);
+        background-color: #f8fafc;
+        padding: 12px 24px;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--c-text-sub);
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blueprint-canvas">
+      <!-- Header: Title + Subtitle -->
+      <header class="bp-header">
+        <div>
+          <h1 class="bp-title">Operation Protocol</h1>
+          <span
+            style="
+              font-size: 0.8rem;
+              color: var(--c-text-sub);
+              text-transform: uppercase;
+              letter-spacing: 0.05em;
+            "
+            >/ Task_Manifest_v1.0</span
+          >
+        </div>
+        <div class="bp-meta">
+          SYS_STATUS: NOMINAL<br />
+          UID: 0X-8821
+        </div>
+      </header>
+
+      <!-- Controls -->
+      <div class="bp-controls">
+        <input
+          type="text"
+          class="bp-input"
+          placeholder="// INPUT_NEW_DIRECTIVE..."
+          autofocus
+        />
+        <button class="bp-btn-add">[EXECUTE_ADD]</button>
+      </div>
+
+      <!-- Task List -->
+      <ul class="bp-list">
+        <!-- Item 1 -->
+        <li class="bp-item">
+          <label class="bp-checkbox">
+            <input type="checkbox" />
+            <div class="bp-checkbox-inner"></div>
+          </label>
+          <div class="bp-task-content">
+            <span class="bp-task-text">Compile system architecture docs</span>
+            <span class="bp-badge high">PRIORITY: P0</span>
+          </div>
+        </li>
+
+        <!-- Item 2 -->
+        <li class="bp-item completed">
+          <label class="bp-checkbox">
+            <input type="checkbox" checked />
+            <div class="bp-checkbox-inner"></div>
+          </label>
+          <div class="bp-task-content">
+            <span class="bp-task-text">Refactor grid alignment CSS</span>
+            <span class="bp-badge">ID: #402</span>
+          </div>
+        </li>
+
+        <!-- Item 3 -->
+        <li class="bp-item">
+          <label class="bp-checkbox">
+            <input type="checkbox" />
+            <div class="bp-checkbox-inner"></div>
+          </label>
+          <div class="bp-task-content">
+            <span class="bp-task-text">Validate API response schemas</span>
+            <span class="bp-badge">PENDING</span>
+          </div>
+        </li>
+      </ul>
+
+      <!-- Footer Status Bar -->
+      <div class="bp-footer">
+        <span>TASKS: 3 TOTAL</span>
+        <span>MEMORY_USAGE: 12KB</span>
+      </div>
+    </div>
+
+    <script>
+      // Simple JS for interaction demonstration
+      const list = document.querySelector('.bp-list');
+      const items = document.querySelectorAll('.bp-item');
+
+      items.forEach((item) => {
+        const checkbox = item.querySelector('input[type="checkbox"]');
+        checkbox.addEventListener('change', () => {
+          if (checkbox.checked) {
+            item.classList.add('completed');
+          } else {
+            item.classList.remove('completed');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -8,7 +8,3 @@ order: 99
 ---
 
 ## 位运算
-
-<code src="./js/App.jsx"></code>
-
-<code src="./js/Todo.jsx"></code>

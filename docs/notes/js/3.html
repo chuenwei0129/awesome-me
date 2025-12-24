@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ENGINEERING_BLOG_THEME_V1</title>
+    <style>
+      /* --- 核心变量 (遵循 Blueprint 规范) --- */
+      :root {
+        --c-bg: #f8fafc; /* 外部背景 */
+        --c-canvas: #ffffff; /* 内容背景 */
+        --c-border: #cbd5e1; /* 结构边框 */
+        --c-text-main: #0f172a; /* 主内容 */
+        --c-text-sub: #64748b; /* 元数据 */
+        --c-accent: #0f172a; /* 强调色 */
+
+        --font-ui: 'Inter', system-ui, sans-serif;
+        --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+
+        --spacing-unit: 24px;
+      }
+
+      /* --- Reset & Base --- */
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: var(--c-bg);
+        color: var(--c-text-main);
+        font-family: var(--font-ui);
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      /* --- 布局容器 --- */
+      .layout-container {
+        max-width: 1200px;
+        margin: 40px auto;
+        background: var(--c-canvas);
+        border: 1px solid var(--c-border);
+        min-height: 90vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* --- 顶部导航 (System Header) --- */
+      .sys-header {
+        border-bottom: 1px solid var(--c-border);
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        height: 60px;
+      }
+
+      .brand-block {
+        padding: 0 24px;
+        border-right: 1px solid var(--c-border);
+        display: flex;
+        align-items: center;
+        font-weight: 800;
+        font-size: 18px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .brand-block span {
+        color: var(--c-text-sub);
+        margin-left: 8px;
+        font-size: 12px;
+        font-weight: normal;
+        font-family: var(--font-mono);
+      }
+
+      .nav-menu {
+        display: flex;
+        flex-grow: 1;
+      }
+
+      .nav-item {
+        display: flex;
+        align-items: center;
+        padding: 0 24px;
+        border-right: 1px solid var(--c-border);
+        font-family: var(--font-mono);
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--c-text-sub);
+        transition: all 0.2s;
+      }
+
+      .nav-item:hover,
+      .nav-item.active {
+        background: var(--c-text-main);
+        color: var(--c-canvas);
+      }
+
+      /* --- 主体网格 (Grid System) --- */
+      .sys-body {
+        display: grid;
+        grid-template-columns: 280px 1fr; /* 左侧栏固定，右侧内容自适应 */
+        min-height: 800px;
+      }
+
+      /* 左侧边栏 (Control Panel) */
+      .sidebar {
+        border-right: 1px solid var(--c-border);
+        padding: var(--spacing-unit);
+        background-color: #fcfcfc;
+      }
+
+      .widget {
+        margin-bottom: 40px;
+      }
+
+      .widget-title {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--c-text-sub);
+        border-bottom: 1px dashed var(--c-border);
+        padding-bottom: 8px;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+      }
+
+      .cat-link {
+        display: block;
+        padding: 8px 0;
+        font-size: 14px;
+        border-bottom: 1px solid transparent;
+        display: flex;
+        justify-content: space-between;
+      }
+      .cat-link:hover {
+        color: var(--c-text-main);
+        border-bottom-color: var(--c-text-main);
+      }
+      .cat-count {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--c-text-sub);
+      }
+
+      /* 右侧内容区 (Log Feed) */
+      .content-area {
+        padding: 0;
+      }
+
+      .content-header {
+        padding: 24px var(--spacing-unit);
+        border-bottom: 1px solid var(--c-border);
+        background-color: #fafafa;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--c-text-sub);
+      }
+
+      /* --- 文章卡片 (Log Entry) --- */
+      .log-entry {
+        border-bottom: 1px solid var(--c-border);
+        padding: 40px var(--spacing-unit);
+        position: relative;
+      }
+
+      .log-entry:last-child {
+        border-bottom: none;
+      }
+
+      .log-meta {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--c-text-sub);
+        margin-bottom: 12px;
+        display: flex;
+        gap: 16px;
+      }
+
+      .log-id {
+        background: var(--c-text-main);
+        color: #fff;
+        padding: 0 4px;
+      }
+
+      .log-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin: 0 0 16px 0;
+        letter-spacing: -0.5px;
+      }
+      .log-title a:hover {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+      }
+
+      .log-excerpt {
+        font-size: 16px;
+        color: #334155;
+        margin-bottom: 24px;
+        max-width: 700px;
+      }
+
+      /* 按钮复用 (Blueprint Button) */
+      .btn-read {
+        display: inline-flex;
+        align-items: center;
+        height: 36px;
+        padding: 0 16px;
+        border: 1px solid var(--c-text-main);
+        background: transparent;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+      .btn-read:hover {
+        background: var(--c-text-main);
+        color: #fff;
+      }
+
+      /* --- 详情页元素 (Markdown Styles) --- */
+      .markdown-body pre {
+        background: #f1f5f9;
+        border: 1px solid var(--c-border);
+        padding: 16px;
+        border-radius: 0;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        overflow-x: auto;
+      }
+
+      .markdown-body blockquote {
+        margin: 24px 0;
+        padding-left: 20px;
+        border-left: 4px solid var(--c-text-main);
+        color: var(--c-text-sub);
+        font-style: italic;
+      }
+
+      /* --- 底部 (System Footer) --- */
+      .sys-footer {
+        border-top: 1px solid var(--c-border);
+        padding: 24px;
+        display: flex;
+        justify-content: space-between;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--c-text-sub);
+        background: #f8fafc;
+      }
+
+      /* 响应式调整 */
+      @media (max-width: 768px) {
+        .sys-body {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          border-right: none;
+          border-bottom: 1px solid var(--c-border);
+        }
+        .nav-menu {
+          display: none;
+        } /* 简化处理 */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout-container">
+      <!-- HEADER -->
+      <header class="sys-header">
+        <div class="brand-block">DEV_LOG <span>// V.2.0</span></div>
+        <nav class="nav-menu">
+          <a href="#" class="nav-item active">INDEX</a>
+          <a href="#" class="nav-item">ARCHIVES</a>
+          <a href="#" class="nav-item">ABOUT</a>
+          <a href="#" class="nav-item">RSS_FEED</a>
+        </nav>
+        <div
+          class="nav-item"
+          style="border-left: 1px solid var(--c-border); border-right: none"
+        >
+          STATUS: ONLINE
+        </div>
+      </header>
+
+      <!-- BODY GRID -->
+      <div class="sys-body">
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar">
+          <!-- Profile Widget -->
+          <div class="widget">
+            <div class="widget-title">OPERATOR_PROFILE</div>
+            <div
+              style="
+                border: 1px solid var(--c-border);
+                padding: 16px;
+                text-align: center;
+                margin-bottom: 12px;
+              "
+            >
+              <div
+                style="
+                  width: 60px;
+                  height: 60px;
+                  background: #e2e8f0;
+                  margin: 0 auto 12px;
+                  border: 1px solid var(--c-text-main);
+                "
+              ></div>
+              <div style="font-weight: 700; font-size: 14px">ENGINEER_LI</div>
+              <div
+                style="
+                  font-family: var(--font-mono);
+                  font-size: 11px;
+                  color: var(--c-text-sub);
+                "
+              >
+                FULL_STACK_ARCHITECT
+              </div>
+            </div>
+          </div>
+
+          <!-- Categories -->
+          <div class="widget">
+            <div class="widget-title">PARAMETERS / TAGS</div>
+            <ul>
+              <li>
+                <a href="#" class="cat-link"
+                  ><span>FRONTEND_ENG</span>
+                  <span class="cat-count">[12]</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="cat-link"
+                  ><span>SYSTEM_DESIGN</span>
+                  <span class="cat-count">[08]</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="cat-link"
+                  ><span>DEVOPS_LOGS</span>
+                  <span class="cat-count">[05]</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="cat-link"
+                  ><span>ALGORITHMS</span>
+                  <span class="cat-count">[03]</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <section class="content-area">
+          <!-- View Metadata -->
+          <div class="content-header">
+            PATH: /home/recent_logs &nbsp;|&nbsp; QUERY_RESULT: 3 ENTRIES FOUND
+          </div>
+
+          <!-- Log Entry 1 -->
+          <article class="log-entry">
+            <div class="log-meta">
+              <span class="log-id">LOG_042</span>
+              <span>2024-05-20</span>
+              <span>CATEGORY: CSS_ARCH</span>
+            </div>
+            <h2 class="log-title">
+              <a href="#"
+                >Implementing Atomic CSS Architecture in Large Scale Systems</a
+              >
+            </h2>
+            <div class="log-excerpt">
+              An analysis of the performance benefits and maintainability
+              trade-offs when switching from BEM to Utility-first CSS in
+              enterprise dashboards. This report covers the migration
+              strategy...
+            </div>
+            <a href="#" class="btn-read">View Full Report -></a>
+          </article>
+
+          <!-- Log Entry 2 -->
+          <article class="log-entry">
+            <div class="log-meta">
+              <span class="log-id">LOG_041</span>
+              <span>2024-05-18</span>
+              <span>CATEGORY: BACKEND</span>
+            </div>
+            <h2 class="log-title">
+              <a href="#">Post-Mortem: Redis Cache Stampede Incident</a>
+            </h2>
+            <div class="log-excerpt">
+              Detailed breakdown of the outage occurred on May 15th.
+              Investigating the failure of the locking mechanism and the
+              subsequent DB overload. Includes patch notes and future prevention
+              measures.
+            </div>
+
+            <!-- Example of Engineering Element inside post -->
+            <div class="markdown-body">
+              <pre>
+ERR: Connection_Refused at 14:00:22 UTC
+WARN: CPU usage exceeded 90% threshold</pre
+              >
+            </div>
+            <br />
+            <a href="#" class="btn-read">View Full Report -></a>
+          </article>
+
+          <!-- Log Entry 3 -->
+          <article class="log-entry">
+            <div class="log-meta">
+              <span class="log-id">LOG_040</span>
+              <span>2024-05-10</span>
+              <span>CATEGORY: TOOLS</span>
+            </div>
+            <h2 class="log-title">
+              <a href="#">Setup Guide: Local Development Environment v3</a>
+            </h2>
+            <div class="log-excerpt">
+              Updated blueprint for the team's Docker setup. Now includes
+              hot-reloading for microservices and an automated seeding script
+              for the local PostgreSQL instance.
+            </div>
+            <a href="#" class="btn-read">View Full Report -></a>
+          </article>
+        </section>
+      </div>
+
+      <!-- FOOTER -->
+      <footer class="sys-footer">
+        <div>© 2024 ENGINEERING_BLUEPRINT_THEME</div>
+        <div>RENDER_TIME: 0.04ms // SERVER: NODE_HK_01</div>
+      </footer>
+    </div>
+  </body>
+</html>

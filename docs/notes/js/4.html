@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LOG_042: MIGRATION_PROTOCOL</title>
+    <style>
+      /* --- Shared Variables (Same as Index) --- */
+      :root {
+        --c-bg: #f8fafc;
+        --c-canvas: #ffffff;
+        --c-border: #cbd5e1;
+        --c-text-main: #0f172a;
+        --c-text-sub: #64748b;
+        --c-code-bg: #f1f5f9;
+
+        --font-ui: 'Inter', system-ui, sans-serif;
+        --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+      }
+
+      /* --- Base Reset --- */
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background-color: var(--c-bg);
+        color: var(--c-text-main);
+        font-family: var(--font-ui);
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* --- Layout Shell --- */
+      .layout-canvas {
+        max-width: 1000px; /* Narrower for reading */
+        margin: 40px auto;
+        background: var(--c-canvas);
+        border: 1px solid var(--c-border);
+        min-height: 100vh;
+      }
+
+      /* --- Header (Compact) --- */
+      .sys-header {
+        border-bottom: 1px solid var(--c-border);
+        height: 50px;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        background: #fafafa;
+      }
+      .breadcrumb {
+        color: var(--c-text-sub);
+      }
+      .breadcrumb a:hover {
+        color: var(--c-text-main);
+        text-decoration: underline;
+      }
+      .header-spacer {
+        flex-grow: 1;
+      }
+
+      /* --- Article Container --- */
+      .article-container {
+        padding: 60px 80px;
+      }
+      @media (max-width: 768px) {
+        .article-container {
+          padding: 30px 20px;
+        }
+      }
+
+      /* --- Post Header (The "Spec Sheet") --- */
+      .post-header {
+        margin-bottom: 60px;
+        border-bottom: 2px solid var(--c-text-main);
+        padding-bottom: 20px;
+      }
+
+      .post-id {
+        display: inline-block;
+        background: var(--c-text-main);
+        color: white;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        padding: 2px 8px;
+        margin-bottom: 16px;
+      }
+
+      h1.entry-title {
+        font-size: 36px;
+        font-weight: 800;
+        margin: 0 0 24px 0;
+        line-height: 1.2;
+        letter-spacing: -1px;
+        text-transform: uppercase;
+      }
+
+      /* Metadata Grid */
+      .meta-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-top: 1px solid var(--c-border);
+        border-left: 1px solid var(--c-border);
+      }
+      .meta-item {
+        border-right: 1px solid var(--c-border);
+        border-bottom: 1px solid var(--c-border);
+        padding: 12px;
+      }
+      .meta-label {
+        display: block;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--c-text-sub);
+        margin-bottom: 4px;
+        text-transform: uppercase;
+      }
+      .meta-value {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      /* --- Content Typography --- */
+      .entry-content {
+        font-size: 18px; /* Larger for reading */
+        max-width: 100%;
+      }
+
+      .entry-content h2 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-top: 60px;
+        margin-bottom: 24px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--c-border);
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+      /* Adding "Section ID" to headers */
+      .entry-content h2::after {
+        content: 'SEC_0' counter(section);
+        counter-increment: section;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--c-text-sub);
+      }
+      body {
+        counter-reset: section;
+      }
+
+      .entry-content p {
+        margin-bottom: 24px;
+        color: #334155;
+      }
+
+      /* --- Engineering Elements --- */
+
+      /* 1. Code Block (Terminal Style) */
+      .code-frame {
+        border: 1px solid var(--c-border);
+        margin: 30px 0;
+        background: var(--c-code-bg);
+      }
+      .code-header {
+        border-bottom: 1px solid var(--c-border);
+        padding: 8px 12px;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--c-text-sub);
+        background: #fff;
+        display: flex;
+        justify-content: space-between;
+      }
+      .code-body {
+        padding: 20px;
+        overflow-x: auto;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        line-height: 1.5;
+        color: #333;
+      }
+
+      /* 2. Alert / Warning Box */
+      .alert-box {
+        border: 1px solid var(--c-text-main);
+        padding: 20px;
+        margin: 30px 0;
+        background: #fff;
+        position: relative;
+        /* Hatch pattern background */
+        background-image: repeating-linear-gradient(
+          45deg,
+          #ffffff 0,
+          #ffffff 10px,
+          #f8fafc 10px,
+          #f8fafc 12px
+        );
+      }
+      .alert-title {
+        font-family: var(--font-mono);
+        font-weight: 700;
+        font-size: 12px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .alert-box::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: var(--c-text-main);
+      }
+
+      /* 3. Figure / Image */
+      .figure-box {
+        border: 1px solid var(--c-border);
+        padding: 10px;
+        margin: 40px 0;
+        background: #fff;
+      }
+      .figure-placeholder {
+        background: #f1f5f9;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-mono);
+        color: var(--c-text-sub);
+        border: 1px dashed var(--c-border);
+      }
+      .figure-caption {
+        margin-top: 10px;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--c-text-sub);
+        text-align: center;
+      }
+
+      /* --- Footer Area --- */
+      .post-footer {
+        margin-top: 80px;
+        padding-top: 40px;
+        border-top: 1px solid var(--c-border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .tag-list {
+        display: flex;
+        gap: 8px;
+      }
+      .tag {
+        border: 1px solid var(--c-border);
+        padding: 4px 10px;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        text-transform: uppercase;
+      }
+      .tag:hover {
+        background: var(--c-text-main);
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout-canvas">
+      <!-- System Header -->
+      <header class="sys-header">
+        <div class="breadcrumb">
+          <a href="#">&lt; INDEX</a> &nbsp;/&nbsp;
+          <a href="#">LOGS</a> &nbsp;/&nbsp; LOG_042
+        </div>
+        <div class="header-spacer"></div>
+        <div>MODE: READ_ONLY</div>
+      </header>
+
+      <!-- Article Body -->
+      <article class="article-container">
+        <!-- Title Block -->
+        <header class="post-header">
+          <span class="post-id">LOG ENTRY #042</span>
+          <h1 class="entry-title">
+            Migration Protocol: Moving from REST to gRPC
+          </h1>
+
+          <!-- Meta Grid -->
+          <div class="meta-grid">
+            <div class="meta-item">
+              <span class="meta-label">Author</span>
+              <span class="meta-value">Arch. Sarah L.</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Date</span>
+              <span class="meta-value">2024-05-21</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Category</span>
+              <span class="meta-value">Backend</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Est. Time</span>
+              <span class="meta-value">12 mins</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="entry-content">
+          <p class="lead">
+            <strong>Abstract:</strong> This document outlines the technical
+            justification and execution plan for migrating our core microservice
+            communication layer. Initial benchmarks suggest a 30% reduction in
+            latency.
+          </p>
+
+          <h2>1. Problem Analysis</h2>
+          <p>
+            Our current JSON/REST architecture has hit a bottleneck during peak
+            load. The overhead of serializing large payloads is consuming
+            excessive CPU cycles on the gateway. Furthermore, the lack of strict
+            typing between services has led to runtime errors that are difficult
+            to debug in production.
+          </p>
+
+          <div class="alert-box">
+            <div class="alert-title">
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+              >
+                <path d="M12 2L2 22h20L12 2zM12 16v2M12 8v6" />
+              </svg>
+              CRITICAL DEPRECATION NOTICE
+            </div>
+            <p style="margin: 0; font-size: 14px">
+              The legacy <code>v1/api/sync</code> endpoint will be permanently
+              decommissioned by Q3 2024. All dependent services must implement
+              the new protocol interface before the cutoff date.
+            </p>
+          </div>
+
+          <h2>2. Implementation Strategy</h2>
+          <p>
+            We will adopt a phased approach. The "Order Processing" service will
+            be the pilot candidate. Below is the proposed definition for the new
+            protobuf structure.
+          </p>
+
+          <!-- Code Block Component -->
+          <div class="code-frame">
+            <div class="code-header">
+              <span>FILE: /proto/orders/v1/service.proto</span>
+              <span>LANG: PROTOBUF</span>
+            </div>
+            <pre class="code-body">
+syntax = "proto3";
+
+package orders.v1;
+
+service OrderService {
+  // Initiates a new transaction
+  rpc CreateOrder (OrderRequest) returns (OrderResponse);
+}
+
+message OrderRequest {
+  string user_id = 1;
+  repeated Item items = 2;
+  bool is_expedited = 3;
+}
+        </pre
+            >
+          </div>
+
+          <p>
+            By compiling this schema, we generate strictly typed clients for
+            both Go and TypeScript services, ensuring compile-time safety across
+            the network boundary.
+          </p>
+
+          <h2>3. Performance Benchmarks</h2>
+          <p>
+            The following architectural diagram illustrates the reduction in
+            network hops and payload size. Notice the removal of the redundant
+            serialization step in the intermediate layer.
+          </p>
+
+          <!-- Figure Component -->
+          <figure class="figure-box">
+            <div class="figure-placeholder">
+              [ DIAGRAM_RENDER: Network Topology Comparison ]
+            </div>
+            <figcaption class="figure-caption">
+              FIG 1.1 - LATENCY COMPARISON (REST VS GRPC)
+            </figcaption>
+          </figure>
+
+          <h2>4. Rollout Plan</h2>
+          <p>
+            We will utilize a canary deployment strategy. 5% of traffic will be
+            routed to the gRPC-enabled pods initially. If error rates remain
+            below 0.1% for 24 hours, we will proceed to 50% traffic.
+          </p>
+        </div>
+
+        <!-- Footer -->
+        <footer class="post-footer">
+          <div class="tag-list">
+            <a href="#" class="tag">#GRPC</a>
+            <a href="#" class="tag">#BACKEND</a>
+            <a href="#" class="tag">#OPTIMIZATION</a>
+          </div>
+
+          <div
+            style="
+              font-family: var(--font-mono);
+              font-size: 12px;
+              text-align: right;
+            "
+          >
+            <a href="#" style="display: block; color: var(--c-text-sub)"
+              >NEXT LOG -></a
+            >
+            <a href="#" style="font-weight: 700">Database Sharding Strategy</a>
+          </div>
+        </footer>
+      </article>
+    </div>
+  </body>
+</html>

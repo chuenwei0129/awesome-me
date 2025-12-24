@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CHUENWEI_ENG_LOGS_DARK</title>
+    <style>
+      /* --- DARK MODE VARIABLES --- */
+      :root {
+        --c-bg: #020617; /* Outer Void (Slate-950) */
+        --c-canvas: #0f172a; /* Terminal Screen (Slate-900) */
+        --c-panel: #1e293b; /* Panels/Sidebars (Slate-800) */
+        --c-border: #334155; /* Grid Lines (Slate-700) */
+
+        --c-text-main: #f1f5f9; /* High Contrast Text (Slate-100) */
+        --c-text-sub: #94a3b8; /* Muted Text (Slate-400) */
+        --c-accent: #38bdf8; /* Optional: Cyan for links/status (Sky-400) */
+
+        --font-ui: 'Inter', Helvetica, Arial, sans-serif;
+        --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: var(--c-bg);
+        color: var(--c-text-main);
+        font-family: var(--font-ui);
+        margin: 0;
+        padding: 20px;
+        line-height: 1.5;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: color 0.2s;
+      }
+      a:hover {
+        color: #fff;
+      }
+
+      /* --- MAIN CONTAINER --- */
+      .system-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        background: var(--c-canvas);
+        border: 1px solid var(--c-border);
+        min-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        /* Subtle inner glow for monitor effect */
+        box-shadow: 0 0 0 1px #1e293b, 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+      }
+
+      /* --- HEADER SECTION --- */
+      .sys-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        border-bottom: 1px solid var(--c-border);
+        height: 60px;
+        background: rgba(15, 23, 42, 0.95);
+      }
+
+      .brand-box {
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        font-weight: 800;
+        font-size: 16px;
+        letter-spacing: 1px;
+        border-right: 1px solid var(--c-border);
+        color: #fff;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      }
+
+      .nav-bar {
+        display: flex;
+        flex-grow: 1;
+      }
+
+      .nav-item {
+        display: flex;
+        align-items: center;
+        padding: 0 24px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 600;
+        border-right: 1px solid var(--c-border);
+        color: var(--c-text-sub);
+        transition: all 0.2s;
+      }
+
+      /* Active/Hover state: "Lit up" pixel */
+      .nav-item:hover,
+      .nav-item.active {
+        background: var(--c-panel);
+        color: #fff;
+        box-shadow: inset 0 -2px 0 var(--c-text-main); /* Bottom highlight */
+      }
+
+      .utility-box {
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        gap: 16px;
+      }
+
+      .icon-btn {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        color: var(--c-text-sub);
+        transition: color 0.2s;
+      }
+      .icon-btn:hover {
+        color: #fff;
+      }
+
+      /* --- GRID LAYOUT --- */
+      .main-grid {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        flex-grow: 1;
+      }
+
+      /* --- SIDEBAR --- */
+      .sidebar {
+        border-right: 1px solid var(--c-border);
+        padding: 30px 20px;
+        background: #0b1221; /* Slightly darker than canvas */
+      }
+
+      .profile-block {
+        margin-bottom: 40px;
+        text-align: left;
+      }
+
+      .avatar-frame {
+        width: 60px;
+        height: 60px;
+        border: 1px solid var(--c-border);
+        background: var(--c-panel);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        margin-bottom: 16px;
+        color: var(--c-text-sub);
+      }
+
+      .profile-name {
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 4px;
+        color: #fff;
+      }
+      .profile-role {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--c-text-sub);
+      }
+
+      .widget-label {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--c-text-sub);
+        border-bottom: 1px dashed var(--c-border);
+        padding-bottom: 8px;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .status-row {
+        display: flex;
+        justify-content: space-between;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        margin-bottom: 8px;
+        color: var(--c-text-sub);
+      }
+      .status-row span:last-child {
+        color: var(--c-text-main);
+      } /* Values are brighter */
+
+      .status-indicator {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background: #10b981; /* Terminal Green */
+        border-radius: 0;
+        margin-right: 6px;
+        box-shadow: 0 0 8px rgba(16, 185, 129, 0.4); /* Glow effect */
+      }
+
+      /* --- CONTENT AREA --- */
+      .content-header {
+        padding: 16px 30px;
+        border-bottom: 1px solid var(--c-border);
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--c-text-sub);
+        background: var(--c-canvas); /* Solid background */
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .log-entry {
+        padding: 40px 30px;
+        border-bottom: 1px solid var(--c-border);
+        position: relative;
+        transition: background 0.2s;
+      }
+      .log-entry:last-child {
+        border-bottom: none;
+      }
+
+      /* Hover effect: Light up the background slightly */
+      .log-entry:hover {
+        background: #131c2e;
+      }
+      .log-entry:hover::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #fff; /* High contrast indicator */
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      }
+
+      .entry-meta {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--c-text-sub);
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .date-badge {
+        border: 1px solid var(--c-border);
+        padding: 2px 6px;
+        background: var(--c-panel);
+        color: var(--c-text-main);
+      }
+
+      .entry-title {
+        font-size: 22px;
+        font-weight: 700;
+        margin: 0 0 16px 0;
+        letter-spacing: -0.02em;
+        color: #fff;
+      }
+
+      .entry-excerpt {
+        font-size: 15px;
+        color: #94a3b8; /* Slate-400 */
+        max-width: 700px;
+        margin-bottom: 20px;
+      }
+
+      .tag-container {
+        display: flex;
+        gap: 8px;
+      }
+
+      .tag {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--c-text-sub);
+        background: transparent;
+        padding: 4px 8px;
+        border: 1px solid var(--c-border);
+        transition: all 0.2s;
+      }
+      .log-entry:hover .tag {
+        border-color: var(--c-text-sub);
+        color: var(--c-text-main);
+        background: var(--c-panel);
+      }
+
+      /* --- FOOTER --- */
+      .sys-footer {
+        border-top: 1px solid var(--c-border);
+        padding: 20px 30px;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--c-text-sub);
+        text-align: right;
+        background: #0b1221;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .main-grid {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          display: none;
+        }
+        .nav-item {
+          padding: 0 12px;
+          font-size: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="system-container">
+      <!-- TOP HEADER -->
+      <header class="sys-header">
+        <div class="brand-box">
+          CHUENWEI_LOGS
+          <span
+            style="font-weight: 400; color: var(--c-text-sub); margin-left: 8px"
+            >// v2.4_NIGHT</span
+          >
+        </div>
+
+        <nav class="nav-bar">
+          <a href="#" class="nav-item active">BLOG</a>
+          <a href="#" class="nav-item">PROJECT</a>
+          <a href="#" class="nav-item">ABOUT</a>
+          <a href="#" class="nav-item">RESUME</a>
+        </nav>
+
+        <div class="utility-box">
+          <!-- Search -->
+          <svg
+            class="icon-btn"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="square"
+              stroke-linejoin="miter"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+          <!-- Mode Toggle (Sun Icon for switching back) -->
+          <svg
+            class="icon-btn"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="square"
+              stroke-linejoin="miter"
+              stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+            />
+          </svg>
+        </div>
+      </header>
+
+      <!-- MAIN GRID -->
+      <div class="main-grid">
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar">
+          <div class="profile-block">
+            <div class="avatar-frame">[IMG_NULL]</div>
+            <div class="profile-name">CHUENWEI</div>
+            <div class="profile-role">SOFTWARE ENGINEER</div>
+          </div>
+
+          <div class="widget-label">SYSTEM STATUS</div>
+          <div class="status-row">
+            <span>AVAILABILITY</span>
+            <span><span class="status-indicator"></span>ONLINE</span>
+          </div>
+          <div class="status-row">
+            <span>UPTIME</span>
+            <span>99.9%</span>
+          </div>
+          <div class="status-row">
+            <span>LAST_UPDATE</span>
+            <span>2024-12-29</span>
+          </div>
+
+          <div style="height: 40px"></div>
+
+          <div class="widget-label">FILTER / TAGS</div>
+          <div class="status-row">
+            <span>[+] AI / LLM</span> <span>04</span>
+          </div>
+          <div class="status-row"><span>[+] BACKEND</span> <span>12</span></div>
+          <div class="status-row">
+            <span>[+] SYSTEM_DESIGN</span> <span>08</span>
+          </div>
+          <div class="status-row">
+            <span>[+] OPEN_SOURCE</span> <span>03</span>
+          </div>
+        </aside>
+
+        <!-- CONTENT FEED -->
+        <main>
+          <div class="content-header">
+            <span>DIRECTORY: /home/blog/entries</span>
+            <span>SORT: DATE_DESC</span>
+          </div>
+
+          <!-- POST 1 -->
+          <article class="log-entry">
+            <div class="entry-meta">
+              <span class="date-badge">2024-12-29</span>
+              <span>ID: LOG_241229</span>
+            </div>
+            <h2 class="entry-title">
+              <a href="#"
+                >Building a RAG System with Google Gemini and LangChain</a
+              >
+            </h2>
+            <div class="entry-excerpt">
+              In the rapidly evolving landscape of Artificial Intelligence,
+              Retrieval-Augmented Generation (RAG) has emerged as a key
+              architecture for grounding LLMs with custom data...
+            </div>
+            <div class="tag-container">
+              <span class="tag">AI</span>
+              <span class="tag">LLM</span>
+              <span class="tag">RAG</span>
+            </div>
+          </article>
+
+          <!-- POST 2 -->
+          <article class="log-entry">
+            <div class="entry-meta">
+              <span class="date-badge">2024-11-15</span>
+              <span>ID: LOG_241115</span>
+            </div>
+            <h2 class="entry-title">
+              <a href="#">Understanding the Basics of Distributed Systems</a>
+            </h2>
+            <div class="entry-excerpt">
+              Distributed systems are the backbone of modern internet services.
+              This article breaks down the CAP theorem, consistency models, and
+              how to design for failure in scale...
+            </div>
+            <div class="tag-container">
+              <span class="tag">SYSTEM DESIGN</span>
+              <span class="tag">BACKEND</span>
+            </div>
+          </article>
+
+          <!-- POST 3 -->
+          <article class="log-entry">
+            <div class="entry-meta">
+              <span class="date-badge">2024-10-02</span>
+              <span>ID: LOG_241002</span>
+            </div>
+            <h2 class="entry-title">
+              <a href="#">My Journey into Open Source</a>
+            </h2>
+            <div class="entry-excerpt">
+              Contributing to open source software has been one of the most
+              rewarding experiences. From my first PR to maintaining a library,
+              here is what I learned along the way...
+            </div>
+            <div class="tag-container">
+              <span class="tag">OPEN SOURCE</span>
+              <span class="tag">COMMUNITY</span>
+            </div>
+          </article>
+        </main>
+      </div>
+
+      <!-- FOOTER -->
+      <footer class="sys-footer">
+        © 2024 CHUENWEI // TERMINAL_MODE: ACTIVE
+      </footer>
+    </div>
+  </body>
+</html>
