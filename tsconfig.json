@@ -11,8 +11,8 @@
     "baseUrl": "./",
     "paths": {
       "@@/*": [".dumi/tmp/*"],
-      "@c6i/playground": ["src"],
-      "@c6i/playground/*": ["src/*", "*"],
+      "@c6i/ui": ["src"],
+      "@c6i/ui/*": ["src/*", "*"],
       "@js/*": ["docs/notes/js/*"]
     }
   },
