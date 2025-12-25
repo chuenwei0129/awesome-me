@@ -2,7 +2,7 @@
 module.exports = {
   // 关闭 tailwindcss 提供的浏览器样式预设
   corePlugins: {
-    preflight: false,
+    // preflight: false,
   },
   // 指定 tailwindcss 的作用范围
   content: ['./docs/**/*.{md,js,jsx,ts,tsx}'],

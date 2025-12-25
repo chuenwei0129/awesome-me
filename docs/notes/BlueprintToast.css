@@ -1,0 +1,197 @@
+:root {
+  /* Design Tokens */
+  --bp-bg: #f8fafc;
+  --bp-canvas: #ffffff;
+  --bp-border: #cbd5e1;
+  --bp-text-main: #0f172a;
+  --bp-text-sub: #64748b;
+  --bp-font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  --bp-font-mono: 'JetBrains Mono', 'Consolas', monospace;
+
+  /* Semantic Accents (High Contrast) */
+  --bp-accent-info: #0f172a; /* Black for neutral/info */
+  --bp-accent-success: #15803d; /* Engineering Green */
+  --bp-accent-warning: #b45309; /* Amber-700 */
+  --bp-accent-error: #b91c1c; /* Red-700 */
+  --bp-accent-loading: #64748b; /* Slate-500 */
+}
+
+/* ...保留之前的 root 变量... */
+
+/* 更新容器：确保堆叠时即使超出屏幕也能滚动或正确显示，但在 Toast 场景通常不需要滚动，
+   这里我们保持固定定位，让新消息把旧消息“顶”下去或者按顺序排列 */
+.bp-toast-container {
+  /* ...之前的样式... */
+
+  /* 增加最大高度限制，防止无限堆叠遮挡屏幕 */
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: var(--bp-font-ui);
+  max-height: 90vh;
+  overflow-y: hidden; /* 隐藏溢出，保持整洁 */
+  pointer-events: none; /* 允许点击底层元素 */
+}
+
+/* 确保 Toast 本身可以接收点击 */
+.bp-toast {
+  pointer-events: auto;
+  width: 380px;
+  background-color: var(--bp-canvas);
+  border: 2px solid var(--bp-border);
+  box-shadow: none; /* Explicitly removed */
+  border-radius: 0; /* Explicitly square */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.2s ease-out;
+  animation: slideIn 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* --- 新增：倒计时数据栏 --- */
+.bp-toast-footer {
+  border-top: 1px solid var(--bp-border);
+  background-color: #f1f5f9; /* 极淡的灰色，区分内容区 */
+  padding: 4px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bp-timer-label {
+  font-family: var(--bp-font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--bp-text-sub);
+  letter-spacing: 0.5px;
+}
+
+.bp-timer-value {
+  font-family: var(--bp-font-mono);
+  font-size: 12px;
+  color: var(--bp-text-main);
+}
+
+.bp-toast.is-closing {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+/* Header Section */
+.bp-toast-header {
+  background-color: var(--bp-bg);
+  border-bottom: 1px solid var(--bp-border);
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bp-toast-type-label {
+  font-family: var(--bp-font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: var(--bp-text-sub);
+}
+
+/* Close Button (Engineering Style) */
+.bp-toast-close-btn {
+  background: none;
+  border: 1px solid var(--bp-border);
+  color: var(--bp-text-sub);
+  cursor: pointer;
+  font-family: var(--bp-font-mono);
+  font-size: 12px;
+  padding: 2px 6px;
+  line-height: 1;
+  border-radius: 0;
+}
+
+.bp-toast-close-btn:hover {
+  background-color: var(--bp-text-main);
+  color: var(--bp-canvas);
+  border-color: var(--bp-text-main);
+}
+
+/* Content Section */
+.bp-toast-body {
+  padding: 16px 12px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+/* Icons */
+.bp-toast-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--bp-border);
+  background: var(--bp-bg);
+}
+
+.bp-toast-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Semantic Colors for Icon Borders/Strokes */
+.bp-toast-info .bp-toast-icon {
+  border-color: var(--bp-accent-info);
+  color: var(--bp-accent-info);
+}
+.bp-toast-success .bp-toast-icon {
+  border-color: var(--bp-accent-success);
+  color: var(--bp-accent-success);
+}
+.bp-toast-warning .bp-toast-icon {
+  border-color: var(--bp-accent-warning);
+  color: var(--bp-accent-warning);
+}
+.bp-toast-error .bp-toast-icon {
+  border-color: var(--bp-accent-error);
+  color: var(--bp-accent-error);
+}
+.bp-toast-loading .bp-toast-icon {
+  border-color: var(--bp-accent-loading);
+  color: var(--bp-accent-loading);
+}
+
+/* Message Text */
+.bp-toast-message {
+  font-size: 14px;
+  color: var(--bp-text-main);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* Loading Spinner (Monospace animation) */
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.bp-icon-spin {
+  animation: spin 1s steps(8) infinite;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

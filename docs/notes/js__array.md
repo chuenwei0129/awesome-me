@@ -7,6 +7,14 @@ toc: content
 order: 7
 ---
 
+<code src="./7.tsx"></code>
+
+<!-- <code src="./1.tsx"></code> -->
+
+<!-- <code src="./2.tsx"></code> -->
+
+<!-- <code src="./5.tsx"></code> -->
+
 ## 数组的本质
 
 ### JavaScript 里的 Array 为什么能直接添加属性？

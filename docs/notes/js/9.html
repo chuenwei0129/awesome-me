@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      :root {
+        --c-bg: #f8fafc; /* Outer Background */
+        --c-canvas: #ffffff; /* Diagram Background */
+        --c-border: #cbd5e1; /* Slate-300 */
+        --c-text-main: #0f172a; /* Slate-900 */
+        --c-text-sub: #64748b; /* Slate-500 */
+        --font-ui: 'Inter', Helvetica, Arial, sans-serif;
+        --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+      }
+
+      body {
+        background-color: var(--c-bg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        font-family: var(--font-ui);
+        color: var(--c-text-main);
+      }
+
+      /* Core Canvas */
+      .diagram-canvas {
+        background-color: var(--c-canvas);
+        border: 1px solid var(--c-border);
+        width: 600px;
+        padding: 24px;
+        box-shadow: none; /* No shadows allowed */
+      }
+
+      /* Header Section */
+      .spec-header {
+        border-bottom: 2px solid var(--c-text-main);
+        padding-bottom: 12px;
+        margin-bottom: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+
+      .spec-title {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .spec-meta {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--c-text-sub);
+      }
+
+      /* Accordion Container */
+      .accordion-group {
+        border: 1px solid var(--c-border);
+        border-bottom: none; /* Last item closes it */
+      }
+
+      /* Accordion Item */
+      .acc-item {
+        border-bottom: 1px solid var(--c-border);
+      }
+
+      /* Item Header (Trigger) */
+      .acc-header {
+        display: flex;
+        align-items: center;
+        padding: 16px 20px;
+        cursor: pointer;
+        background: transparent;
+        transition: background 0.2s;
+      }
+
+      .acc-header:hover {
+        background-color: #f1f5f9;
+      }
+
+      .acc-index {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--c-text-sub);
+        margin-right: 16px;
+        padding: 2px 6px;
+        border: 1px solid var(--c-border);
+      }
+
+      .acc-label {
+        flex-grow: 1;
+        font-weight: 600;
+        font-size: 15px;
+      }
+
+      .acc-icon {
+        width: 16px;
+        height: 16px;
+        stroke: var(--c-text-main);
+        stroke-width: 2;
+        fill: none;
+      }
+
+      /* Content Panel */
+      .acc-content {
+        display: none;
+        padding: 20px 20px 24px 56px; /* Indent to align with text */
+        border-top: 1px dashed var(--c-border);
+        background-color: #f8fafc; /* Slight contrast for data area */
+      }
+
+      .acc-text {
+        font-family: var(--font-mono); /* Data style for content */
+        font-size: 13px;
+        line-height: 1.6;
+        color: var(--c-text-sub);
+        margin: 0;
+      }
+
+      /* State: Active/Expanded */
+      .acc-item.active .acc-content {
+        display: block;
+      }
+
+      .acc-item.active .acc-header {
+        background-color: #ffffff;
+      }
+
+      .acc-item.active .acc-icon {
+        transform: rotate(180deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="diagram-canvas">
+      <!-- Spec Sheet Header -->
+      <div class="spec-header">
+        <div class="spec-title">FAQ_Module_Structure</div>
+        <div class="spec-meta">ID: COMP_08 // REV: 2.1</div>
+      </div>
+
+      <!-- Accordion Component -->
+      <div class="accordion-group">
+        <!-- Item 01 (Expanded) -->
+        <div class="acc-item active">
+          <div class="acc-header">
+            <span class="acc-index">01</span>
+            <span class="acc-label">What is Base UI?</span>
+            <!-- Chevron Up Icon -->
+            <svg class="acc-icon" viewBox="0 0 24 24">
+              <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+          </div>
+          <div class="acc-content">
+            <p class="acc-text">
+              Base UI is a library of high-quality unstyled React components for
+              design systems and web apps.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 02 -->
+        <div class="acc-item">
+          <div class="acc-header">
+            <span class="acc-index">02</span>
+            <span class="acc-label">How do I get started?</span>
+            <!-- Chevron Down Icon -->
+            <svg class="acc-icon" viewBox="0 0 24 24">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+          <div class="acc-content">
+            <p class="acc-text">
+              Installation guidelines and initial setup procedures are detailed
+              in the documentation documentation block.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 03 -->
+        <div class="acc-item">
+          <div class="acc-header">
+            <span class="acc-index">03</span>
+            <span class="acc-label">Can I use it for my project?</span>
+            <!-- Chevron Down Icon -->
+            <svg class="acc-icon" viewBox="0 0 24 24">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+          <div class="acc-content">
+            <p class="acc-text">
+              Yes. The license allows for commercial and personal usage without
+              restrictions on the number of projects.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

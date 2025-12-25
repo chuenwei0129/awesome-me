@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solara Player - Engineering Blueprint</title>
+    <style>
+      :root {
+        --c-bg: #f8fafc; /* Outer Background */
+        --c-canvas: #ffffff; /* Diagram Background */
+        --c-border: #cbd5e1; /* Slate-300 */
+        --c-text-main: #0f172a; /* Slate-900 */
+        --c-text-sub: #64748b; /* Slate-500 */
+        --c-accent: #0f172a; /* Black Accent */
+
+        --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+          Roboto, Helvetica, Arial, sans-serif;
+        --font-mono: 'JetBrains Mono', 'Consolas', 'Monaco', 'Courier New',
+          monospace;
+
+        --s-padding: 24px;
+        --s-gap: 16px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: var(--c-bg);
+        font-family: var(--font-ui);
+        color: var(--c-text-main);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 40px;
+      }
+
+      /* Utility Classes */
+      .mono {
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+      }
+      .flex {
+        display: flex;
+      }
+      .flex-col {
+        flex-direction: column;
+      }
+      .items-center {
+        align-items: center;
+      }
+      .justify-between {
+        justify-content: space-between;
+      }
+      .justify-center {
+        justify-content: center;
+      }
+      .w-full {
+        width: 100%;
+      }
+      .h-full {
+        height: 100%;
+      }
+      .border-r {
+        border-right: 1px solid var(--c-border);
+      }
+      .border-b {
+        border-bottom: 1px solid var(--c-border);
+      }
+      .border-all {
+        border: 1px solid var(--c-border);
+      }
+      .p-sm {
+        padding: 12px;
+      }
+      .p-md {
+        padding: var(--s-padding);
+      }
+      .gap-sm {
+        gap: 8px;
+      }
+      .gap-md {
+        gap: var(--s-gap);
+      }
+      .text-sub {
+        color: var(--c-text-sub);
+      }
+      .text-sm {
+        font-size: 0.875rem;
+      }
+      .text-xs {
+        font-size: 0.75rem;
+      }
+      .uppercase {
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      /* Diagram Canvas */
+      .diagram-canvas {
+        background-color: var(--c-canvas);
+        border: 1px solid var(--c-border);
+        width: 1200px;
+        max-width: 100%;
+        box-shadow: 0 0 0 1px #e2e8f0; /* Subtle outer rim */
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Header */
+      header {
+        padding: var(--s-padding);
+        border-bottom: 2px solid var(--c-text-main);
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .header-meta {
+        font-family: var(--font-mono);
+        color: var(--c-text-sub);
+        font-size: 0.75rem;
+      }
+
+      /* Top Control Bar */
+      .top-bar {
+        padding: var(--s-padding);
+        border-bottom: 1px solid var(--c-border);
+        background: #fdfdfd;
+      }
+
+      .search-container {
+        display: flex;
+        gap: -1px; /* Collapse borders */
+      }
+
+      .input-field {
+        flex: 1;
+        padding: 12px 16px;
+        border: 1px solid var(--c-border);
+        font-family: var(--font-mono);
+        color: var(--c-text-main);
+        background: #fff;
+        outline: none;
+      }
+
+      .select-field {
+        padding: 0 24px;
+        border: 1px solid var(--c-border);
+        border-left: none;
+        background: #f8fafc;
+        font-family: var(--font-ui);
+        font-size: 0.875rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-search {
+        background: var(--c-text-main);
+        color: white;
+        border: 1px solid var(--c-text-main);
+        padding: 0 32px;
+        font-weight: 600;
+        font-size: 0.875rem;
+        cursor: pointer;
+      }
+
+      /* Main Content Grid */
+      .main-grid {
+        display: grid;
+        grid-template-columns: 280px 1fr 320px;
+        min-height: 400px;
+      }
+
+      /* Panel Common */
+      .panel {
+        padding: var(--s-padding);
+        position: relative;
+      }
+
+      .panel-label {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        font-family: var(--font-mono);
+        font-size: 0.6rem;
+        color: var(--c-border);
+        border: 1px solid var(--c-border);
+        padding: 2px 4px;
+        text-transform: uppercase;
+      }
+
+      /* Left Panel: Album Art */
+      .album-art-placeholder {
+        width: 100%;
+        aspect-ratio: 1;
+        border: 1px dashed var(--c-text-sub);
+        background: #f1f5f9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: 24px;
+      }
+
+      .cross-lines {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+      .cross-lines::before,
+      .cross-lines::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 1px;
+        background: var(--c-border);
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+      .cross-lines::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+
+      .track-meta-block {
+        border-left: 2px solid var(--c-text-main);
+        padding-left: 12px;
+      }
+
+      .track-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .artist-name {
+        color: var(--c-text-sub);
+      }
+
+      /* Middle Panel: List */
+      .playlist-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.875rem;
+      }
+
+      .playlist-table tr {
+        border-bottom: 1px solid #f1f5f9;
+      }
+
+      .playlist-table td {
+        padding: 12px 8px;
+      }
+
+      .playlist-table tr.active {
+        background-color: #f1f5f9;
+        font-weight: 600;
+      }
+
+      .playlist-table tr.active td:first-child::before {
+        content: '▶';
+        font-size: 0.6rem;
+        margin-right: 8px;
+      }
+
+      .status-badge {
+        display: inline-block;
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        border: 1px solid var(--c-border);
+        padding: 2px 6px;
+        margin-left: 8px;
+      }
+
+      /* Right Panel: Data/Lyrics */
+      .data-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+        font-size: 0.85rem;
+        border-bottom: 1px dotted var(--c-border);
+        padding-bottom: 4px;
+      }
+
+      .data-key {
+        color: var(--c-text-sub);
+      }
+      .data-val {
+        font-family: var(--font-mono);
+        text-align: right;
+      }
+
+      .lyric-highlight {
+        background: #f1f5f9;
+        border: 1px solid var(--c-border);
+        padding: 12px;
+        margin: 20px 0;
+        text-align: center;
+        font-family: serif; /* Stylistic choice for lyrics inside tech view */
+        font-style: italic;
+        color: var(--c-text-main);
+      }
+
+      /* Footer: Controls */
+      .control-footer {
+        border-top: 2px solid var(--c-text-main);
+        padding: 20px 32px;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+      }
+
+      .btn-control {
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--c-text-main);
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.1s;
+      }
+
+      .btn-control:hover {
+        background: var(--c-text-main);
+        color: white;
+      }
+      .btn-control.primary {
+        background: var(--c-text-main);
+        color: white;
+      }
+
+      .progress-section {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .progress-track {
+        flex: 1;
+        height: 4px;
+        background: #f1f5f9;
+        border: 1px solid var(--c-border);
+        position: relative;
+      }
+
+      .progress-fill {
+        width: 35%; /* Demo progress */
+        height: 100%;
+        background: var(--c-text-main);
+      }
+
+      .time-display {
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        min-width: 48px;
+      }
+
+      .extras-section {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .badge-hq {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        border: 1px solid var(--c-text-main);
+        padding: 4px 8px;
+        font-weight: 600;
+      }
+
+      /* Icons */
+      svg {
+        width: 16px;
+        height: 16px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: square;
+        stroke-linejoin: miter;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="diagram-canvas">
+      <!-- HEADER -->
+      <header>
+        <div class="flex items-center gap-md">
+          <h1>SOLARA<span style="font-weight: 300">.UI</span></h1>
+          <div class="header-meta">// VER 2.4.0 // BLD-8921</div>
+        </div>
+        <div class="header-meta text-sub">
+          SYS: ONLINE <span style="margin-left: 12px">●</span>
+        </div>
+      </header>
+
+      <!-- CONTROL BAR -->
+      <section class="top-bar">
+        <div class="search-container">
+          <input
+            type="text"
+            class="input-field"
+            placeholder="INPUT_QUERY: SONG / ARTIST / ALBUM_ID..."
+            value=""
+          />
+          <div class="select-field">
+            <span>SRC: NETEASE_CLOUD</span>
+            <svg viewBox="0 0 24 24">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+          <button class="btn-search">EXECUTE_SEARCH</button>
+        </div>
+      </section>
+
+      <!-- MAIN GRID -->
+      <section class="main-grid">
+        <!-- COL 1: META -->
+        <div class="panel border-r">
+          <div class="panel-label">FIG 1.0 META</div>
+
+          <div class="album-art-placeholder">
+            <div class="cross-lines"></div>
+            <span
+              class="mono text-sub"
+              style="
+                margin-top: -10px;
+                z-index: 1;
+                background: white;
+                padding: 4px;
+              "
+              >IMG_REF: 0xA2F9</span
+            >
+          </div>
+
+          <div class="track-meta-block">
+            <div class="track-title">把回忆拼好给你</div>
+            <div class="artist-name mono">ARTIST_ID: 王贰浪</div>
+          </div>
+        </div>
+
+        <!-- COL 2: PLAYLIST -->
+        <div class="panel border-r" style="padding: 0">
+          <div class="panel-label" style="right: 16px; top: 16px; z-index: 10">
+            FIG 1.1 QUEUE
+          </div>
+          <div
+            class="flex justify-between items-center p-sm border-b"
+            style="background: #fcfcfc"
+          >
+            <span class="mono text-xs text-sub">INDEX: 7 ITEMS</span>
+            <svg
+              viewBox="0 0 24 24"
+              style="
+                width: 14px;
+                height: 14px;
+                color: var(--c-text-sub);
+                cursor: pointer;
+              "
+            >
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path
+                d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+              ></path>
+            </svg>
+          </div>
+          <table class="playlist-table">
+            <tr>
+              <td>爱我还是他</td>
+              <td class="text-sub mono text-xs text-right">Tao Zhe</td>
+            </tr>
+            <tr class="active">
+              <td>把回忆拼好给你 <span class="status-badge">PLAYING</span></td>
+              <td class="text-sub mono text-xs text-right">Wang Erlang</td>
+            </tr>
+            <tr>
+              <td>悬溺</td>
+              <td class="text-sub mono text-xs text-right">Ge Dongqi</td>
+            </tr>
+            <tr>
+              <td>褪黑素 2.0</td>
+              <td class="text-sub mono text-xs text-right">Jiangnan</td>
+            </tr>
+            <tr>
+              <td>两难</td>
+              <td class="text-sub mono text-xs text-right">Jia Mu</td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- COL 3: DETAILS -->
+        <div class="panel">
+          <div class="panel-label">FIG 1.2 DATA</div>
+
+          <div style="margin-top: 24px">
+            <div class="data-row">
+              <span class="data-key">ARRANGER</span>
+              <span class="data-val">YAN JIN</span>
+            </div>
+            <div class="data-row">
+              <span class="data-key">PRODUCER</span>
+              <span class="data-val">WANG JIAYI</span>
+            </div>
+            <div class="data-row">
+              <span class="data-key">SAMPLE_SRC</span>
+              <span class="data-val">願い～あの頃のキミへ～</span>
+            </div>
+          </div>
+
+          <div class="lyric-highlight">"中文填词: 一只然"</div>
+
+          <div class="mono text-xs text-sub" style="line-height: 1.6">
+            > OP: TV TOKYO Music<br />
+            > RIGHTS: AUTHORIZED<br />
+            > STATUS: VERIFIED
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER CONTROLS -->
+      <footer class="control-footer">
+        <div class="flex gap-sm">
+          <button class="btn-control" title="Loop">
+            <svg viewBox="0 0 24 24">
+              <path d="M17 1l4 4-4 4"></path>
+              <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+              <path d="M7 23l-4-4 4-4"></path>
+              <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+            </svg>
+          </button>
+          <button class="btn-control" title="Previous">
+            <svg viewBox="0 0 24 24">
+              <polygon points="19 20 9 12 19 4 19 20"></polygon>
+              <line x1="5" y1="19" x2="5" y2="5"></line>
+            </svg>
+          </button>
+          <button class="btn-control primary" title="Pause">
+            <svg viewBox="0 0 24 24" style="fill: white; stroke: none">
+              <rect x="6" y="4" width="4" height="16"></rect>
+              <rect x="14" y="4" width="4" height="16"></rect>
+            </svg>
+          </button>
+          <button class="btn-control" title="Next">
+            <svg viewBox="0 0 24 24">
+              <polygon points="5 4 15 12 5 20 5 4"></polygon>
+              <line x1="19" y1="5" x2="19" y2="19"></line>
+            </svg>
+          </button>
+        </div>
+
+        <div class="progress-section">
+          <span class="time-display text-sub">00:14</span>
+          <div class="progress-track">
+            <div class="progress-fill"></div>
+          </div>
+          <span class="time-display">06:21</span>
+        </div>
+
+        <div class="extras-section">
+          <div class="badge-hq">HQ_AUDIO</div>
+          <svg viewBox="0 0 24 24">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path
+              d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"
+            ></path>
+          </svg>
+          <button
+            class="btn-control"
+            style="width: auto; padding: 0 16px; gap: 8px"
+          >
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon
+                points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"
+              ></polygon>
+            </svg>
+            <span class="mono text-xs">RADAR</span>
+          </button>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
