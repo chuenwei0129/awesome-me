@@ -3,13 +3,14 @@
  */
 
 import {
-  AlertTriangle, // 新增
+  AlertTriangle,
   Check,
   ChevronDown,
   ChevronRight,
   Clipboard,
   Clock,
   Cpu,
+  Database,
   Edit2,
   Hash,
   List,
@@ -17,27 +18,28 @@ import {
   Plus,
   Save,
   Search,
-  Sun,
+  Sun, // 新增图标：用于 Metadata
+  Tag,
   Terminal,
   Trash2,
 } from 'lucide-react';
 import mermaid from 'mermaid';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react'; // 引入 useMemo
 import ReactMarkdown from 'react-markdown';
 import './ReactNotesApp.css';
 
-// Markdown & Katex Imports
+// Markdown Imports
 import 'katex/dist/katex.min.css';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 import rehypeSanitize, { defaultSchema } from 'rehype-sanitize';
+import remarkFrontmatter from 'remark-frontmatter'; // <--- 新增插件
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 
-// ==========================================
-// 工具函数 (保持不变)
-// ==========================================
+// ... (slugify, extractHeadings, MermaidDiagram, CodeBlock 保持不变，省略以节省空间) ...
+// 请保留之前的 CodeBlock, MermaidDiagram, NoteItem 组件代码
 const slugify = (text) => {
   if (!text) return '';
   return String(text)
@@ -55,50 +57,103 @@ const extractHeadings = (markdown) => {
   const headingRegex = /^(#{1,6})\s+(.*)$/;
   lines.forEach((line) => {
     const match = line.match(headingRegex);
-    if (match) {
+    if (match)
       headings.push({
         level: match[1].length,
         text: match[2],
         id: slugify(match[2]),
       });
-    }
   });
   return headings;
 };
 
+// ... (MermaidDiagram, CodeBlock, NoteItem 代码同上一次回答) ...
+// 为了代码简洁，这里假设你已经保留了 MermaidDiagram, CodeBlock, NoteItem 组件
+
 // ==========================================
-// 组件：Mermaid (保持不变)
+// 工具：Front Matter 解析器
 // ==========================================
-const MermaidDiagram = ({ chart, themeName }) => {
-  const containerRef = useRef(null);
-  useEffect(() => {
-    mermaid.initialize({
-      startOnLoad: false,
-      theme: themeName === 'dark' ? 'dark' : 'default',
-      fontFamily: "'JetBrains Mono', monospace",
-      securityLevel: 'loose',
-    });
-    const renderChart = async () => {
-      if (!containerRef.current) return;
-      try {
-        const id = `mermaid-${Math.random().toString(36).substr(2, 9)}`;
-        containerRef.current.innerHTML = '';
-        const { svg } = await mermaid.render(id, chart);
-        if (containerRef.current) containerRef.current.innerHTML = svg;
-      } catch (error) {
-        if (containerRef.current)
-          containerRef.current.innerHTML = `<div style="color:red; font-size:12px; font-family:monospace">SYNTAX ERROR</div>`;
+const parseFrontMatter = (text) => {
+  if (!text) return { metadata: {}, content: '' };
+
+  // 匹配开头的 YAML 块
+  const regex = /^---\s*[\r\n]+([\s\S]*?)[\r\n]+---/;
+  const match = text.match(regex);
+
+  if (match) {
+    const yamlBlock = match[1];
+    const content = text.replace(regex, '').trim(); // 去除头部后的正文
+    const metadata = {};
+
+    // 简单的 YAML 解析 (Key: Value)
+    yamlBlock.split('\n').forEach((line) => {
+      const parts = line.split(':');
+      if (parts.length >= 2) {
+        const key = parts[0].trim();
+        const value = parts
+          .slice(1)
+          .join(':')
+          .trim()
+          .replace(/(^"|"$)/g, '')
+          .replace(/(^'|'$)/g, ''); // 去引号
+        // 处理数组格式 [a, b, c]
+        if (value.startsWith('[') && value.endsWith(']')) {
+          metadata[key] = value
+            .slice(1, -1)
+            .split(',')
+            .map((v) => v.trim());
+        } else {
+          metadata[key] = value;
+        }
       }
-    };
-    renderChart();
-  }, [chart, themeName]);
-  return <div className="markdown__mermaid" ref={containerRef} />;
+    });
+
+    return { metadata, content };
+  }
+
+  return { metadata: {}, content: text };
 };
 
 // ==========================================
-// 组件：TOC (保持不变)
+// 组件：Metadata Panel (侧边栏显示元数据)
 // ==========================================
+const MetadataPanel = ({ metadata }) => {
+  const keys = Object.keys(metadata);
+  if (keys.length === 0) return null;
+
+  return (
+    <div className="meta-panel">
+      <div className="meta-panel__header">
+        <Database size={12} /> <span>METADATA_LAYER</span>
+      </div>
+      <div className="meta-panel__grid">
+        {keys.map((key) => (
+          <div key={key} className="meta-row">
+            <span className="meta-key">{key}</span>
+            <span className="meta-val">
+              {Array.isArray(metadata[key]) ? (
+                <div className="meta-tags">
+                  {metadata[key].map((tag, i) => (
+                    <span key={i} className="meta-tag">
+                      <Tag size={8} /> {tag}
+                    </span>
+                  ))}
+                </div>
+              ) : (
+                metadata[key]
+              )}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// ... (CodeBlock, NoteItem, TOC 组件同上) ...
+// 必须重新定义一次 TableOfContents 及其依赖，确保完整性
 const TableOfContents = ({ markdown }) => {
+  // 这里的 markdown 应该是去除 metadata 后的 content
   const headings = extractHeadings(markdown);
   if (headings.length === 0)
     return <div className="toc-empty">NO_HEADERS_FOUND</div>;
@@ -126,23 +181,17 @@ const TableOfContents = ({ markdown }) => {
   );
 };
 
-// ==========================================
-// 组件：CodeBlock (新增功能核心)
-// ==========================================
 const CodeBlock = ({ language, children, className, ...props }) => {
   const [copied, setCopied] = useState(false);
   const codeRef = useRef(null);
-
   const handleCopy = () => {
     if (codeRef.current) {
-      // 获取 DOM 文本，避免获取到 HTML 标签，同时兼容高亮后的结构
       const text = codeRef.current.innerText || codeRef.current.textContent;
-      navigator.clipboard.writeText(text.replace(/\n$/, '')); // 移除末尾多余换行
+      navigator.clipboard.writeText(text.replace(/\n$/, ''));
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }
   };
-
   return (
     <div className="code-block">
       <div className="code-block__header">
@@ -152,13 +201,12 @@ const CodeBlock = ({ language, children, className, ...props }) => {
             copied ? 'code-block__copy--active' : ''
           }`}
           onClick={handleCopy}
-          title="Copy to clipboard"
+          title="Copy"
         >
-          {copied ? <Check size={14} /> : <Clipboard size={14} />}
+          {copied ? <Check size={14} /> : <Clipboard size={14} />}{' '}
           <span>{copied ? 'COPIED' : 'COPY'}</span>
         </button>
       </div>
-      {/* 使用 pre 包裹 code，并应用 code-block__pre 样式重置默认 margin */}
       <pre className="code-block__pre">
         <code ref={codeRef} className={className} {...props}>
           {children}
@@ -168,9 +216,32 @@ const CodeBlock = ({ language, children, className, ...props }) => {
   );
 };
 
-// ==========================================
-// 组件：NoteItem (保持不变)
-// ==========================================
+const MermaidDiagram = ({ chart, themeName }) => {
+  const containerRef = useRef(null);
+  useEffect(() => {
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: themeName === 'dark' ? 'dark' : 'default',
+      fontFamily: "'JetBrains Mono', monospace",
+      securityLevel: 'loose',
+    });
+    const renderChart = async () => {
+      if (!containerRef.current) return;
+      try {
+        const id = `mermaid-${Math.random().toString(36).substr(2, 9)}`;
+        containerRef.current.innerHTML = '';
+        const { svg } = await mermaid.render(id, chart);
+        if (containerRef.current) containerRef.current.innerHTML = svg;
+      } catch (error) {
+        if (containerRef.current)
+          containerRef.current.innerHTML = `<div style="color:red; font-size:12px; font-family:monospace">SYNTAX ERROR</div>`;
+      }
+    };
+    renderChart();
+  }, [chart, themeName]);
+  return <div className="markdown__mermaid" ref={containerRef} />;
+};
+
 const NoteItem = ({ note, isActive, onClick }) => {
   const [expanded, setExpanded] = useState(false);
   return (
@@ -201,19 +272,19 @@ const NoteItem = ({ note, isActive, onClick }) => {
     </div>
   );
 };
-
 const generateId = () => Math.floor(Math.random() * 9000 + 1000).toString();
 
 // ==========================================
-// 主组件：ReactNotesApp
+// 主组件
 // ==========================================
 const ReactNotesApp = () => {
   const [themeMode, setThemeMode] = useState('light');
+  // 更新默认笔记，包含 metadata 示例
   const [notes, setNotes] = useState([
     {
       id: '8024',
       title: 'System Architecture',
-      content: `# 01. SYSTEM SPECS\nThe system relies on a **flux capacitor** design.\n\n## 02. CODE EXAMPLE\nHere is the core logic:\n\n\`\`\`javascript\nconst calculateFlux = (v, rho) => {\n  // Calculate Lift Coefficient\n  const cl = 0.5 * rho * Math.pow(v, 2);\n  return cl;\n};\nconsole.log("Flux initialized");\n\`\`\`\n\n## 03. DIAGRAMS\n\`\`\`mermaid\ngraph LR\n    A[Client] -->|HTTP/JSON| B(API Gateway)\n    B --> C{Service}\n    D[(Database)]\n\`\`\``,
+      content: `---\nauthor: Dr. Brown\nstatus: Confidential\ntags: [flux, time-travel, physics]\nversion: 1.2.0\n---\n\n# 01. SYSTEM SPECS\nThe system relies on a **flux capacitor** design.\n\n## 02. CODE\n\`\`\`javascript\nconst time = Date.now();\n\`\`\``,
       updatedAt: new Date().toISOString(),
     },
     {
@@ -252,7 +323,7 @@ const ReactNotesApp = () => {
     const newNote = {
       id: generateId(),
       title: 'UNTITLED',
-      content: '',
+      content: '---\ncreated: now\n---\n',
       updatedAt: new Date().toISOString(),
     };
     setNotes([newNote, ...notes]);
@@ -280,6 +351,14 @@ const ReactNotesApp = () => {
     setShowDeleteDialog(false);
   };
 
+  // --- 关键：实时解析 Metadata ---
+  // 使用 useMemo 避免每次渲染都重新解析
+  const { metadata: parsedMetadata, content: parsedContent } = useMemo(() => {
+    const targetContent = isEditing ? editDraft?.content : activeNote?.content;
+    return parseFrontMatter(targetContent);
+  }, [isEditing, editDraft?.content, activeNote?.content]);
+
+  // --- Config ---
   const sanitizeSchema = {
     ...defaultSchema,
     attributes: {
@@ -315,7 +394,11 @@ const ReactNotesApp = () => {
   };
 
   const markdownConfig = {
-    remarkPlugins: [remarkGfm, remarkMath],
+    remarkPlugins: [
+      remarkGfm,
+      remarkMath,
+      remarkFrontmatter, // 告诉 remark 忽略 frontmatter 部分的渲染
+    ],
     rehypePlugins: [
       rehypeRaw,
       [rehypeSanitize, sanitizeSchema],
@@ -335,28 +418,23 @@ const ReactNotesApp = () => {
           {alt && <figcaption className="markdown__caption">{alt}</figcaption>}
         </figure>
       ),
-      // --- 关键修改：重写 pre 和 code ---
-      pre: ({ children }) => <>{children}</>, // 禁用默认的 pre 包装，完全由 code 组件控制
+      pre: ({ children }) => <>{children}</>,
       code({ node, inline, className, children, ...props }) {
         const match = /language-(\w+)/.exec(className || '');
         const isMermaid = match && match[1] === 'mermaid';
-
-        // 1. 内联代码 (`code`)：保持原样
-        if (inline) {
+        if (inline)
           return (
             <code className={className} {...props}>
               {children}
             </code>
           );
-        }
-
-        // 2. Mermaid 图表：保持逻辑
-        if (isMermaid) {
-          const codeString = String(children).replace(/\n$/, '');
-          return <MermaidDiagram chart={codeString} themeName={themeMode} />;
-        }
-
-        // 3. 块级代码 (```code```)：使用自定义 CodeBlock
+        if (isMermaid)
+          return (
+            <MermaidDiagram
+              chart={String(children).replace(/\n$/, '')}
+              themeName={themeMode}
+            />
+          );
         return (
           <CodeBlock
             language={match ? match[1].toUpperCase() : null}
@@ -375,6 +453,7 @@ const ReactNotesApp = () => {
       {/* Sidebar 保持不变 */}
       <aside className="panel sidebar">
         <div className="sidebar__header">
+          {/* ... Header Content ... */}
           <div className="sidebar__top-row">
             <div className="sidebar__title">
               <Cpu size={18} />
@@ -419,7 +498,7 @@ const ReactNotesApp = () => {
         </div>
       </aside>
 
-      {/* Editor Panel 保持不变 */}
+      {/* Editor Panel */}
       <main className="panel editor">
         {!activeNote ? (
           <div className="editor__empty">
@@ -433,8 +512,9 @@ const ReactNotesApp = () => {
                 <Hash size={14} className="editor__breadcrumb-icon" />
                 <span>ROOT</span>
                 <ChevronRight size={12} />
+                {/* 优先显示 metadata 中的 title，如果没有则显示数据库 title */}
                 <strong className="editor__breadcrumb-text">
-                  {activeNote.title || 'UNTITLED'}
+                  {parsedMetadata.title || activeNote.title || 'UNTITLED'}
                 </strong>
               </div>
               <div className="editor__actions">
@@ -507,8 +587,9 @@ const ReactNotesApp = () => {
                       <span className="pane-label">OUTPUT // PREVIEW</span>
                       <div className="editor__viewer editor__viewer--preview">
                         <div className="markdown">
+                          {/* 预览模式下：只显示去除 metadata 后的 content */}
                           <ReactMarkdown {...markdownConfig}>
-                            {editDraft.content}
+                            {parsedContent}
                           </ReactMarkdown>
                         </div>
                       </div>
@@ -520,8 +601,9 @@ const ReactNotesApp = () => {
                   <div className="read-layout__main">
                     <div className="pane-wrapper pane-wrapper--title">
                       <span className="pane-label">DOC // HEADER</span>
+                      {/* 这里也优先展示 Metadata 的标题 */}
                       <h1 className="editor__viewer-title">
-                        {activeNote.title}
+                        {parsedMetadata.title || activeNote.title}
                       </h1>
                       <div className="editor__meta">
                         <Clock size={12} style={{ marginRight: 6 }} />
@@ -533,21 +615,26 @@ const ReactNotesApp = () => {
                       <span className="pane-label">DOC // BODY</span>
                       <div className="editor__viewer-content">
                         <div className="markdown">
+                          {/* 阅读模式下：只显示去除 metadata 后的 content */}
                           <ReactMarkdown {...markdownConfig}>
-                            {activeNote.content}
+                            {parsedContent}
                           </ReactMarkdown>
                         </div>
                       </div>
                     </div>
                   </div>
+
                   <div className="read-layout__sidebar">
                     <div className="pane-wrapper pane-wrapper--scroll">
-                      <span className="pane-label">NAV // TOC</span>
+                      <span className="pane-label">SYS // INFO</span>
                       <div className="toc-container">
+                        {/* 新增：Metadata 面板 */}
+                        <MetadataPanel metadata={parsedMetadata} />
+
                         <div className="toc-header">
                           <List size={14} /> <span>INDEX</span>
                         </div>
-                        <TableOfContents markdown={activeNote.content} />
+                        <TableOfContents markdown={parsedContent} />
                       </div>
                     </div>
                   </div>
@@ -558,7 +645,7 @@ const ReactNotesApp = () => {
         )}
       </main>
 
-      {/* Modal 保持不变 */}
+      {/* Modal 部分 */}
       {showDeleteDialog && (
         <div
           className="modal-overlay"

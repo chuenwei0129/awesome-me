@@ -9,7 +9,6 @@ import {
   Play,
   Volume2,
 } from 'lucide-react';
-import React from 'react';
 
 const MarkdownBlueprint = () => {
   return (

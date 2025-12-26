@@ -1,7 +1,7 @@
 ---
 title: 首页
 hero:
-  title: 🐷 猪栏絮语
+  title: Dumi
   description: 🌀 在代码的泥潭里快乐打滚，幻想自己是头手持砂纸的豪猪，试图把生活这团毛线球打磨成瑞士军刀 —— 功能贼多，但主要用来开快递。
   actions:
     - text: 逛逛

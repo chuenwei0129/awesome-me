@@ -1134,3 +1134,69 @@ body {
   font-size: 13px;
   color: var(--text-color); /* 覆盖默认高亮前的颜色 */
 }
+
+/* ==========================================
+   FEATURE: Metadata Panel (Side View)
+   ========================================== */
+.meta-panel {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed var(--border-dim);
+}
+
+.meta-panel__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 12px;
+  color: var(--accent-color);
+  margin-bottom: 12px;
+}
+
+.meta-panel__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.meta-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.meta-key {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+.meta-val {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--text-color);
+  word-break: break-all;
+}
+
+.meta-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.meta-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--item-hover-bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--text-color);
+  border: 1px solid var(--border-dim);
+}
