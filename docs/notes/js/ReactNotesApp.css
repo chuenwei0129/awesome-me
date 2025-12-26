@@ -919,3 +919,131 @@ body {
 .editor__viewer .pane-wrapper .markdown {
   padding-top: 16px;
 }
+
+/* ==========================================
+   FEATURE: Read Mode Layout (With TOC)
+   ========================================== */
+
+/* 1. Read Mode Grid Layout */
+.read-layout {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.read-layout__main {
+  flex: 1; /* 占据主要空间 */
+  padding: 0 32px 32px; /* 与之前的 editor__viewer 保持一致 */
+  overflow-y: auto; /* 独立滚动 */
+  min-width: 0; /* 防止 flex 子项溢出 */
+}
+
+.read-layout__sidebar {
+  width: 240px; /* 固定宽度的目录栏 */
+  border-left: 1px solid var(--border-color);
+  background: var(--bg-color);
+  flex-shrink: 0;
+}
+
+/* 复用一些 viewer 的内部 padding */
+.editor__viewer-content {
+  padding-top: 16px;
+  padding-bottom: 60px;
+}
+
+/* 2. Table of Contents (TOC) Styles */
+.toc-container {
+  padding: 32px 16px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.toc-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 12px;
+  color: var(--text-color);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed var(--border-dim);
+}
+
+.toc__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc__item {
+  margin-bottom: 4px;
+  cursor: pointer;
+}
+
+.toc__link {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.toc__prefix {
+  color: var(--accent-color);
+  opacity: 0.5;
+  font-size: 9px;
+  flex-shrink: 0;
+}
+
+.toc__link:hover {
+  background: var(--item-hover-bg);
+  color: var(--accent-color);
+}
+
+.toc-empty {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--border-dim);
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Indentation based on Header Level */
+.toc__item--h1 .toc__link {
+  font-weight: 700;
+  color: var(--text-color);
+}
+.toc__item--h2 .toc__link {
+  padding-left: 12px;
+}
+.toc__item--h3 .toc__link {
+  padding-left: 24px;
+}
+.toc__item--h4 .toc__link {
+  padding-left: 36px;
+}
+.toc__item--h5 .toc__link {
+  padding-left: 48px;
+}
+.toc__item--h6 .toc__link {
+  padding-left: 60px;
+}
+
+/* 适配：当屏幕较窄时，TOC 可能需要隐藏或变小 (可选) */
+@media (max-width: 1000px) {
+  .read-layout__sidebar {
+    width: 180px;
+  }
+}

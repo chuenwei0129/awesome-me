@@ -1,3 +1,7 @@
+/**
+ * iframe: true;
+ */
+
 import {
   AlertTriangle,
   ChevronDown,
@@ -6,6 +10,7 @@ import {
   Cpu,
   Edit2,
   Hash,
+  List,
   Moon,
   Plus,
   Save,
@@ -28,9 +33,47 @@ import rehypeSanitize, { defaultSchema } from 'rehype-sanitize';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 
-// ... (MermaidDiagram 组件保持不变，省略以节省空间) ...
+// ==========================================
+// 工具函数：Slug 生成 (用于 TOC 锚点)
+// ==========================================
+const slugify = (text) => {
+  if (!text) return '';
+  return String(text)
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w\u4e00-\u9fa5\-]+/g, '')
+    .replace(/\-\-+/g, '-');
+};
+
+// ==========================================
+// 工具函数：提取标题生成目录结构
+// ==========================================
+const extractHeadings = (markdown) => {
+  if (!markdown) return [];
+  const lines = markdown.split('\n');
+  const headings = [];
+  const headingRegex = /^(#{1,6})\s+(.*)$/;
+
+  lines.forEach((line) => {
+    const match = line.match(headingRegex);
+    if (match) {
+      headings.push({
+        level: match[1].length,
+        text: match[2],
+        id: slugify(match[2]),
+      });
+    }
+  });
+  return headings;
+};
+
+// ==========================================
+// 组件：Mermaid 流程图
+// ==========================================
 const MermaidDiagram = ({ chart, themeName }) => {
   const containerRef = useRef(null);
+
   useEffect(() => {
     mermaid.initialize({
       startOnLoad: false,
@@ -38,26 +81,70 @@ const MermaidDiagram = ({ chart, themeName }) => {
       fontFamily: "'JetBrains Mono', monospace",
       securityLevel: 'loose',
     });
+
     const renderChart = async () => {
       if (!containerRef.current) return;
       try {
         const id = `mermaid-${Math.random().toString(36).substr(2, 9)}`;
         containerRef.current.innerHTML = '';
         const { svg } = await mermaid.render(id, chart);
-        if (containerRef.current) containerRef.current.innerHTML = svg;
+        if (containerRef.current) {
+          containerRef.current.innerHTML = svg;
+        }
       } catch (error) {
-        if (containerRef.current)
+        if (containerRef.current) {
           containerRef.current.innerHTML = `<div style="color:red; font-size:12px; font-family:monospace">SYNTAX ERROR</div>`;
+        }
       }
     };
     renderChart();
   }, [chart, themeName]);
+
   return <div className="markdown__mermaid" ref={containerRef} />;
 };
 
-// ... (NoteItem 组件保持不变，省略以节省空间) ...
+// ==========================================
+// 组件：Table Of Contents (目录)
+// ==========================================
+const TableOfContents = ({ markdown }) => {
+  const headings = extractHeadings(markdown);
+
+  if (headings.length === 0)
+    return <div className="toc-empty">NO_HEADERS_FOUND</div>;
+
+  const handleScroll = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  return (
+    <nav className="toc">
+      <ul className="toc__list">
+        {headings.map((heading, index) => (
+          <li
+            key={index}
+            className={`toc__item toc__item--h${heading.level}`}
+            onClick={() => handleScroll(heading.id)}
+          >
+            <span className="toc__link">
+              <span className="toc__prefix">{'>'.repeat(heading.level)}</span>
+              {heading.text}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+};
+
+// ==========================================
+// 组件：侧边栏笔记项
+// ==========================================
 const NoteItem = ({ note, isActive, onClick }) => {
   const [expanded, setExpanded] = useState(false);
+
   return (
     <div
       className={`note-item ${isActive ? 'note-item--active' : ''}`}
@@ -93,13 +180,12 @@ const generateId = () => Math.floor(Math.random() * 9000 + 1000).toString();
 // 主组件：ReactNotesApp
 // ==========================================
 const ReactNotesApp = () => {
-  // ... (State 逻辑保持不变) ...
   const [themeMode, setThemeMode] = useState('light');
   const [notes, setNotes] = useState([
     {
       id: '8024',
       title: 'System Architecture',
-      content: `# 01. SYSTEM SPECS\nThe system relies on a **flux capacitor** design.\n\n## 02. MATH MODEL\n$$ L = \\frac{1}{2} \\rho v^2 S C_L $$\n\n## 03. DIAGRAMS\n\`\`\`mermaid\ngraph LR\n    A[Client] -->|HTTP/JSON| B(API Gateway)\n    B --> C{Service}\n    D[(Database)]\n\`\`\``,
+      content: `# 01. SYSTEM SPECS\nThe system relies on a **flux capacitor** design.\n\n## 02. MATH MODEL\n$$ L = \\frac{1}{2} \\rho v^2 S C_L $$\n\n## 03. DIAGRAMS\n\`\`\`mermaid\ngraph LR\n    A[Client] -->|HTTP/JSON| B(API Gateway)\n    B --> C{Service}\n    D[(Database)]\n\`\`\`\n\n### 3.1 Detail View\nThis is a detail section.\n\n# 04. CONCLUSION\nSystem works as expected.`,
       updatedAt: new Date().toISOString(),
     },
     {
@@ -128,6 +214,7 @@ const ReactNotesApp = () => {
   };
 
   const activeNote = notes.find((n) => n.id === activeNoteId);
+
   const filteredNotes = notes.filter(
     (n) =>
       n.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -159,6 +246,7 @@ const ReactNotesApp = () => {
   };
 
   const handleDeleteRequest = () => setShowDeleteDialog(true);
+
   const confirmDelete = () => {
     setNotes(notes.filter((n) => n.id !== activeNoteId));
     setActiveNoteId(null);
@@ -166,12 +254,12 @@ const ReactNotesApp = () => {
     setShowDeleteDialog(false);
   };
 
-  // Markdown 配置
+  // --- Markdown 配置 ---
   const sanitizeSchema = {
     ...defaultSchema,
     attributes: {
       ...defaultSchema.attributes,
-      '*': ['className', 'style', 'class'],
+      '*': ['className', 'style', 'class', 'id'],
     },
     tagNames: [
       ...defaultSchema.tagNames,
@@ -186,6 +274,24 @@ const ReactNotesApp = () => {
     ],
   };
 
+  // 生成带 ID 的标题组件，用于 TOC 跳转
+  const HeadingRenderer = ({ level, children, ...props }) => {
+    // 提取纯文本内容用于生成 ID
+    const textContent = Array.isArray(children)
+      ? children.filter((c) => typeof c === 'string').join('')
+      : typeof children === 'string'
+      ? children
+      : '';
+
+    const id = slugify(textContent);
+    const Tag = `h${level}`;
+    return (
+      <Tag id={id} {...props}>
+        {children}
+      </Tag>
+    );
+  };
+
   const markdownConfig = {
     remarkPlugins: [remarkGfm, remarkMath],
     rehypePlugins: [
@@ -195,6 +301,14 @@ const ReactNotesApp = () => {
       rehypeKatex,
     ],
     components: {
+      // 自定义标题渲染，确保 ID 与 TOC 一致
+      h1: (props) => <HeadingRenderer level={1} {...props} />,
+      h2: (props) => <HeadingRenderer level={2} {...props} />,
+      h3: (props) => <HeadingRenderer level={3} {...props} />,
+      h4: (props) => <HeadingRenderer level={4} {...props} />,
+      h5: (props) => <HeadingRenderer level={5} {...props} />,
+      h6: (props) => <HeadingRenderer level={6} {...props} />,
+
       img: ({ src, alt }) => (
         <figure className="markdown__figure">
           <img className="markdown__img" src={src} alt={alt} />
@@ -205,12 +319,8 @@ const ReactNotesApp = () => {
         const match = /language-(\w+)/.exec(className || '');
         const isMermaid = match && match[1] === 'mermaid';
         if (isMermaid) {
-          return (
-            <MermaidDiagram
-              chart={String(children).replace(/\n$/, '')}
-              themeName={themeMode}
-            />
-          );
+          const codeString = String(children).replace(/\n$/, '');
+          return <MermaidDiagram chart={codeString} themeName={themeMode} />;
         }
         return (
           <code className={className} {...props}>
@@ -223,7 +333,7 @@ const ReactNotesApp = () => {
 
   return (
     <div className={`app app--${themeMode}`}>
-      {/* Sidebar 保持不变 */}
+      {/* --- Sidebar --- */}
       <aside className="panel sidebar">
         <div className="sidebar__header">
           <div className="sidebar__top-row">
@@ -232,7 +342,11 @@ const ReactNotesApp = () => {
               <span>React</span>
               <span className="sidebar__title-highlight">NOTES_OS</span>
             </div>
-            <button className="btn btn--icon" onClick={toggleTheme}>
+            <button
+              className="btn btn--icon"
+              onClick={toggleTheme}
+              title="Toggle System Mode"
+            >
               {themeMode === 'light' ? <Moon size={16} /> : <Sun size={16} />}
             </button>
           </div>
@@ -270,7 +384,7 @@ const ReactNotesApp = () => {
         </div>
       </aside>
 
-      {/* Editor Panel */}
+      {/* --- Editor / Reader Panel --- */}
       <main className="panel editor">
         {!activeNote ? (
           <div className="editor__empty">
@@ -279,6 +393,7 @@ const ReactNotesApp = () => {
           </div>
         ) : (
           <>
+            {/* Toolbar */}
             <div className="editor__toolbar">
               <div className="editor__breadcrumb">
                 <Hash size={14} className="editor__breadcrumb-icon" />
@@ -324,10 +439,12 @@ const ReactNotesApp = () => {
               </div>
             </div>
 
+            {/* Canvas Area */}
             <div className="editor__canvas">
               {isEditing ? (
+                /* ================= 编辑模式 ================= */
                 <>
-                  {/* 编辑模式：标题 (带标签) */}
+                  {/* Title Input */}
                   <div className="pane-wrapper pane-wrapper--title">
                     <span className="pane-label">METADATA // TITLE</span>
                     <input
@@ -340,9 +457,9 @@ const ReactNotesApp = () => {
                     />
                   </div>
 
-                  {/* 编辑模式：分栏 (带标签) */}
+                  {/* Split View */}
                   <div className="editor__split">
-                    {/* 左侧：源码 */}
+                    {/* Left: Source Code */}
                     <div className="pane-wrapper pane-wrapper--scroll">
                       <span className="pane-label">INPUT // SOURCE</span>
                       <textarea
@@ -359,7 +476,7 @@ const ReactNotesApp = () => {
                       />
                     </div>
 
-                    {/* 右侧：预览 */}
+                    {/* Right: Preview */}
                     <div className="pane-wrapper pane-wrapper--scroll pane-wrapper--preview-bg">
                       <span className="pane-label">OUTPUT // PREVIEW</span>
                       <div className="editor__viewer editor__viewer--preview">
@@ -373,26 +490,46 @@ const ReactNotesApp = () => {
                   </div>
                 </>
               ) : (
-                /* 阅读模式：单栏 (带标签) */
-                <div className="editor__viewer">
-                  {/* 标题区 */}
-                  <div className="pane-wrapper pane-wrapper--title">
-                    <span className="pane-label">DOC // HEADER</span>
-                    <h1 className="editor__viewer-title">{activeNote.title}</h1>
-                    <div className="editor__meta">
-                      <Clock size={12} style={{ marginRight: 6 }} />
-                      LAST UPDATED:{' '}
-                      {new Date(activeNote.updatedAt).toLocaleString()}
+                /* ================= 阅读模式 ================= */
+                <div className="read-layout">
+                  {/* Main Content Area */}
+                  <div className="read-layout__main">
+                    {/* Title Display */}
+                    <div className="pane-wrapper pane-wrapper--title">
+                      <span className="pane-label">DOC // HEADER</span>
+                      <h1 className="editor__viewer-title">
+                        {activeNote.title}
+                      </h1>
+                      <div className="editor__meta">
+                        <Clock size={12} style={{ marginRight: 6 }} />
+                        LAST UPDATED:{' '}
+                        {new Date(activeNote.updatedAt).toLocaleString()}
+                      </div>
+                    </div>
+
+                    {/* Body Content */}
+                    <div className="pane-wrapper">
+                      <span className="pane-label">DOC // BODY</span>
+                      <div className="editor__viewer-content">
+                        <div className="markdown">
+                          <ReactMarkdown {...markdownConfig}>
+                            {activeNote.content}
+                          </ReactMarkdown>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  {/* 正文区 */}
-                  <div className="pane-wrapper">
-                    <span className="pane-label">DOC // BODY</span>
-                    <div className="markdown">
-                      <ReactMarkdown {...markdownConfig}>
-                        {activeNote.content}
-                      </ReactMarkdown>
+                  {/* Right TOC Sidebar */}
+                  <div className="read-layout__sidebar">
+                    <div className="pane-wrapper pane-wrapper--scroll">
+                      <span className="pane-label">NAV // TOC</span>
+                      <div className="toc-container">
+                        <div className="toc-header">
+                          <List size={14} /> <span>INDEX</span>
+                        </div>
+                        <TableOfContents markdown={activeNote.content} />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -402,7 +539,7 @@ const ReactNotesApp = () => {
         )}
       </main>
 
-      {/* Modal 部分保持不变 */}
+      {/* --- Delete Modal --- */}
       {showDeleteDialog && (
         <div
           className="modal-overlay"
@@ -419,6 +556,8 @@ const ReactNotesApp = () => {
               <p className="modal__text">
                 Are you sure you want to delete note{' '}
                 <strong>#{activeNoteId}</strong>?
+                <br />
+                This action is irreversible and data will be lost.
               </p>
               <div className="modal__actions">
                 <button
