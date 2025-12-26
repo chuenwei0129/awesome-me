@@ -1047,3 +1047,90 @@ body {
     width: 180px;
   }
 }
+
+/* ... (之前的样式) ... */
+
+/* ==========================================
+   FEATURE: Code Block (Copy & Label)
+   ========================================== */
+
+/* 1. Code Block Container */
+.code-block {
+  margin: 1.5em 0;
+  border: 1px solid var(--border-dim);
+  border-radius: 4px;
+  background: var(--code-bg);
+  overflow: hidden; /* 确保 header 和 pre 的圆角一致 */
+}
+
+/* 2. Header Bar */
+.code-block__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: var(--item-hover-bg); /* 比代码背景稍浅或稍深 */
+  border-bottom: 1px solid var(--border-dim);
+  user-select: none; /* 防止双击复制时选中 header 文字 */
+}
+
+/* 3. Language Label */
+.code-block__lang {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--text-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* 4. Copy Button */
+.code-block__copy {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 6px;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+.code-block__copy:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text-color);
+}
+.app--dark .code-block__copy:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* 复制成功状态 */
+.code-block__copy--active {
+  color: var(--accent-color) !important;
+}
+
+/* 5. Pre tag (Content) Styling Override */
+/* 我们禁用了默认 markdown pre 样式，改为由 code-block 控制 */
+.code-block__pre {
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important; /* 背景色由 .code-block 处理 */
+  padding: 16px;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+}
+
+/* 确保内部 code 样式正确 */
+.code-block__pre code {
+  background: transparent;
+  padding: 0;
+  border: none;
+  font-size: 13px;
+  color: var(--text-color); /* 覆盖默认高亮前的颜色 */
+}
