@@ -1,4 +1,4 @@
-"use strict";(self.webpackChunk_c6i_ui=self.webpackChunk_c6i_ui||[]).push([[1904],{16775:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},94781:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},52320:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},11171:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},68989:function(r,e,a){var d;a.r(e),a.d(e,{demos:function(){return t}});var o=a(17061),O=a.n(o),M=a(17156),T=a.n(M),l=a(67294),N=a(33729),g=a(42858),i=a(90312),h=a(30789),t={"docs-notes-1-demo-7":{component:l.memo(l.lazy(function(){return a.e(2433).then(a.bind(a,22966))})),asset:{type:"BLOCK",id:"docs-notes-1-demo-7",refAtomIds:[],dependencies:{"index.tsx":{type:"FILE",value:a(13105).Z},"lucide-react":{type:"NPM",value:"0.554.0"},mermaid:{type:"NPM",value:"11.12.2"},react:{type:"NPM",value:"19.2.3"},"react-markdown":{type:"NPM",value:"10.1.0"},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.tsx"},context:{"lucide-react":N,mermaid:g,react:d||(d=a.t(l,2)),"react-markdown":i,"styled-components":h},renderOpts:{compile:function(){var x=T()(O()().mark(function b(){var y,C=arguments;return O()().wrap(function(w){for(;;)switch(w.prev=w.next){case 0:return w.next=2,a.e(250).then(a.bind(a,552));case 2:return w.abrupt("return",(y=w.sent).default.apply(y,C));case 3:case"end":return w.stop()}},b)}));function f(){return x.apply(this,arguments)}return f}()}},"docs-notes-1-demo-0x3":{component:l.memo(l.lazy(function(){return a.e(2433).then(a.bind(a,83681))})),asset:{type:"BLOCK",id:"docs-notes-1-demo-0x3",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:a(67820).Z},"lucide-react":{type:"NPM",value:"0.554.0"},react:{type:"NPM",value:"19.2.3"}},entry:"index.jsx"},context:{"lucide-react":N,react:d||(d=a.t(l,2))},renderOpts:{compile:function(){var x=T()(O()().mark(function b(){var y,C=arguments;return O()().wrap(function(w){for(;;)switch(w.prev=w.next){case 0:return w.next=2,a.e(250).then(a.bind(a,552));case 2:return w.abrupt("return",(y=w.sent).default.apply(y,C));case 3:case"end":return w.stop()}},b)}));function f(){return x.apply(this,arguments)}return f}()}}}},68695:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},32624:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},15543:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},69554:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},2140:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},69015:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},87889:function(r,e,a){a.r(e),a.d(e,{demos:function(){return l}});var d=a(17061),o=a.n(d),O=a(17156),M=a.n(O),T=a(67294),l={"docs-notes-6-demo-0":{component:T.memo(T.lazy(M()(o()().mark(function N(){var g;return o()().wrap(function(h){for(;;)switch(h.prev=h.next){case 0:g=function(x){var f=x.flags;return T.createElement(T.Fragment,null,hasFeature(f,Feature.NewHomepage)&&T.createElement(NewHome,null),hasFeature(f,Feature.BetaBanner)&&T.createElement(BetaBanner,null),T.createElement(Page,{theme:hasFeature(f,Feature.DarkMode)?"dark":"light"}))};case 1:case"end":return h.stop()}},N)})))),asset:{type:"BLOCK",id:"docs-notes-6-demo-0",refAtomIds:[],dependencies:{"index.tsx":{type:"FILE",value:`function App({ flags }: { flags: number }) {
+"use strict";(self.webpackChunk_c6i_ui=self.webpackChunk_c6i_ui||[]).push([[1904],{16775:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},94781:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},52320:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},11171:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},68989:function(r,e,a){var d;a.r(e),a.d(e,{demos:function(){return g}});var o=a(17061),P=a.n(o),T=a(17156),M=a.n(T),l=a(67294),j=a(83717),g={"docs-notes-1-demo-04":{component:l.memo(l.lazy(function(){return a.e(2433).then(a.bind(a,14445))})),asset:{type:"BLOCK",id:"docs-notes-1-demo-04",refAtomIds:[],dependencies:{"index.tsx":{type:"FILE",value:a(19732).Z},"lucide-react":{type:"NPM",value:"0.554.0"},react:{type:"NPM",value:"19.2.3"}},entry:"index.tsx"},context:{"lucide-react":j,react:d||(d=a.t(l,2))},renderOpts:{compile:function(){var i=M()(P()().mark(function t(){var s,f=arguments;return P()().wrap(function(y){for(;;)switch(y.prev=y.next){case 0:return y.next=2,a.e(250).then(a.bind(a,90250));case 2:return y.abrupt("return",(s=y.sent).default.apply(s,f));case 3:case"end":return y.stop()}},t)}));function h(){return i.apply(this,arguments)}return h}()}}}},68695:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},32624:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},15543:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},69554:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},2140:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},69015:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},87889:function(r,e,a){a.r(e),a.d(e,{demos:function(){return l}});var d=a(17061),o=a.n(d),P=a(17156),T=a.n(P),M=a(67294),l={"docs-notes-6-demo-0":{component:M.memo(M.lazy(T()(o()().mark(function j(){var g;return o()().wrap(function(h){for(;;)switch(h.prev=h.next){case 0:g=function(s){var f=s.flags;return M.createElement(M.Fragment,null,hasFeature(f,Feature.NewHomepage)&&M.createElement(NewHome,null),hasFeature(f,Feature.BetaBanner)&&M.createElement(BetaBanner,null),M.createElement(Page,{theme:hasFeature(f,Feature.DarkMode)?"dark":"light"}))};case 1:case"end":return h.stop()}},j)})))),asset:{type:"BLOCK",id:"docs-notes-6-demo-0",refAtomIds:[],dependencies:{"index.tsx":{type:"FILE",value:`function App({ flags }: { flags: number }) {
   return (
     <>
       {hasFeature(flags, Feature.NewHomepage) && <NewHome />}
@@ -6,7 +6,7 @@
       <Page theme={hasFeature(flags, Feature.DarkMode) ? 'dark' : 'light'} />
     </>
   );
-}`}},entry:"index.tsx"},context:{},renderOpts:{compile:function(){var N=M()(o()().mark(function i(){var h,t=arguments;return o()().wrap(function(f){for(;;)switch(f.prev=f.next){case 0:return f.next=2,a.e(250).then(a.bind(a,552));case 2:return f.abrupt("return",(h=f.sent).default.apply(h,t));case 3:case"end":return f.stop()}},i)}));function g(){return N.apply(this,arguments)}return g}()}}}},9001:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},75564:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},63879:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},10935:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},15004:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},57912:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},27713:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},32337:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},75788:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},44923:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},9867:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},86454:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},39012:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},11858:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},57657:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},18017:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},59614:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},36735:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},22605:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},54934:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},42746:function(r,e,a){a.r(e),a.d(e,{demos:function(){return ca}});var d=a(70215),o=a.n(d),O=a(42122),M=a.n(O),T=a(17061),l=a.n(T),N=a(59400),g=a.n(N),i=a(17156),h=a.n(i),t=a(67294),x=a(30789),f=["as","children"],b,y,C,p,w,A,D,B,R,F,J,z,$,j,k,H,V,G,K,Y,X,Q,Z,q,_,aa,ea,na,da,ta,oa,ra,Ia,la,ca={"docs-notes-css-css-in-js-demo-0":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I;return l()().wrap(function(s){for(;;)switch(s.prev=s.next){case 0:return s.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=s.sent,c=u.default,I=c.button(b||(b=g()([`
+}`}},entry:"index.tsx"},context:{},renderOpts:{compile:function(){var j=T()(o()().mark(function i(){var h,t=arguments;return o()().wrap(function(f){for(;;)switch(f.prev=f.next){case 0:return f.next=2,a.e(250).then(a.bind(a,90250));case 2:return f.abrupt("return",(h=f.sent).default.apply(h,t));case 3:case"end":return f.stop()}},i)}));function g(){return j.apply(this,arguments)}return g}()}}}},9001:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},75564:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},63879:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},10935:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},15004:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},57912:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},27713:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},32337:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},75788:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},44923:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},9867:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},86454:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},39012:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},11858:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},57657:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},18017:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},59614:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},36735:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},22605:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},54934:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},42746:function(r,e,a){a.r(e),a.d(e,{demos:function(){return ca}});var d=a(70215),o=a.n(d),P=a(42122),T=a.n(P),M=a(17061),l=a.n(M),j=a(59400),g=a.n(j),i=a(17156),h=a.n(i),t=a(67294),s=a(30789),f=["as","children"],b,y,w,p,C,A,N,R,B,z,$,J,F,D,k,H,V,K,G,X,Y,Q,Z,q,_,aa,ea,na,da,ta,oa,ra,Ia,la,ca={"docs-notes-css-css-in-js-demo-0":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I;return l()().wrap(function(x){for(;;)switch(x.prev=x.next){case 0:return x.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=x.sent,c=u.default,I=c.button(b||(b=g()([`
   background: papayawhip;
   color: palevioletred;
   font-size: 1em;
@@ -19,7 +19,7 @@
     border: 2px solid papayawhip;
     cursor: pointer;
   }
-`]))),s.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(I,null,"hello styled-components"))}});case 6:case"end":return s.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-0",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
+`]))),x.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(I,null,"hello styled-components"))}});case 6:case"end":return x.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-0",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
 
 const Button = styled.button\`
   background: papayawhip;
@@ -42,7 +42,7 @@ export default () => {
       <Button>hello styled-components</Button>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,552));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-1":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I;return l()().wrap(function(s){for(;;)switch(s.prev=s.next){case 0:return s.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=s.sent,c=u.default,I=c("button")(y||(y=g()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":s},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-1":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I;return l()().wrap(function(x){for(;;)switch(x.prev=x.next){case 0:return x.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=x.sent,c=u.default,I=c("button")(y||(y=g()([`
   background: `,`;
   color: `,`;
   font-size: 1em;
@@ -50,7 +50,7 @@ export default () => {
   padding: 0.25em 1em;
   border: 2px solid #bf4f74;
   border-radius: 3px;
-`])),function(n){return n.$primary?"#BF4F74":"white"},function(n){return n.$primary?"white":"#BF4F74"}),s.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(I,null,"Default Button"),t.createElement(I,{$primary:!0},"Primary Button"))}});case 6:case"end":return s.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-1",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
+`])),function(n){return n.$primary?"#BF4F74":"white"},function(n){return n.$primary?"white":"#BF4F74"}),x.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(I,null,"Default Button"),t.createElement(I,{$primary:!0},"Primary Button"))}});case 6:case"end":return x.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-1",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
 
 const Button = styled('button')\`
   background: \${(props) => (props.$primary ? '#BF4F74' : 'white')};
@@ -69,7 +69,7 @@ export default () => {
       <Button $primary>Primary Button</Button>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,552));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-2":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=n.sent,c=u.default,I=c("button")(C||(C=g()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":s},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-2":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=n.sent,c=u.default,I=c("button")(w||(w=g()([`
   background: `,`;
   color: `,`;
   font-size: 1em;
@@ -105,7 +105,7 @@ export default () => {
       <DashedButton>Dashed Button</DashedButton>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,552));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-3":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v,s;return l()().wrap(function(S){for(;;)switch(S.prev=S.next){case 0:return S.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=S.sent,c=u.default,I=c("button")(w||(w=g()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":s},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-3":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v,x;return l()().wrap(function(S){for(;;)switch(S.prev=S.next){case 0:return S.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=S.sent,c=u.default,I=c("button")(C||(C=g()([`
   background: 'white';
   // a \u94FE\u63A5\u989C\u8272\u4F1A\u8986\u76D6
   color: '#BF4F74';
@@ -117,7 +117,7 @@ export default () => {
   padding: 0.25em 1em;
   border: 2px solid #bf4f74;
   border-radius: 3px;
-`])),function(E){return E.$primary?"white":"#BF4F74"}),v=function(P){return t.createElement(I,M()(M()({},P),{},{children:P.children.split("").reverse()}))},s=c.a(A||(A=g()([`
+`])),function(E){return E.$primary?"white":"#BF4F74"}),v=function(O){return t.createElement(I,T()(T()({},O),{},{children:O.children.split("").reverse()}))},x=c.a(A||(A=g()([`
   color: #bf4f74;
   text-decoration: none;
   font-weight: bold;
@@ -158,13 +158,13 @@ export default () => {
       </Button>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,552));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-4":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v,s;return l()().wrap(function(S){for(;;)switch(S.prev=S.next){case 0:return S.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=S.sent,c=u.default,I=function(P){var L=P.as,W=L===void 0?"button":L,U=P.children,ua=o()(P,f);return t.createElement(W,ua,U)},v=c(I)(D||(D=g()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":s},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-4":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v,x;return l()().wrap(function(S){for(;;)switch(S.prev=S.next){case 0:return S.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=S.sent,c=u.default,I=function(O){var L=O.as,W=L===void 0?"button":L,U=O.children,ua=o()(O,f);return t.createElement(W,ua,U)},v=c(I)(N||(N=g()([`
   background: blue;
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-`]))),s=function(){return t.createElement("div",null,t.createElement(v,{forwardedAs:"a",href:"#"},"Click me"))},S.abrupt("return",{default:s});case 8:case"end":return S.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-4",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
+`]))),x=function(){return t.createElement("div",null,t.createElement(v,{forwardedAs:"a",href:"#"},"Click me"))},S.abrupt("return",{default:x});case 8:case"end":return S.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-4",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
 
 // { as: Component = 'button' } \u662F\u4E00\u4E2A\u4F7F\u7528\u4E86\u9ED8\u8BA4\u53C2\u6570\u548C\u91CD\u547D\u540D\u7684\u89E3\u6784\u8D4B\u503C\u3002\u5982\u679C\u8C03\u7528 Button \u65F6\u6CA1\u6709\u63D0\u4F9B as \u5C5E\u6027\uFF0C\u90A3\u4E48 Component \u5C06\u9ED8\u8BA4\u4E3A 'button'\uFF0C\u5373\u8FD9\u4E2A\u7EC4\u4EF6\u5C06\u9ED8\u8BA4\u6E32\u67D3\u4E3A\u4E00\u4E2A <button> \u5143\u7D20\u3002
 const Button = ({ as: Component = 'button', children, ...props }) => {
@@ -189,7 +189,7 @@ const App = () => {
   );
 };
 
-export default App;`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,552));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-5":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=n.sent,c=u.default,I=function(E){var P=E.className;return t.createElement("div",{className:P},t.createElement("h2",null,"hello world"))},v=c(I)(B||(B=g()([`
+export default App;`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":s},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-5":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=n.sent,c=u.default,I=function(E){var O=E.className;return t.createElement("div",{className:O},t.createElement("h2",null,"hello world"))},v=c(I)(R||(R=g()([`
   h2 {
     color: green;
     text-align: center;
@@ -211,14 +211,14 @@ const StyledOldComponent = styled(OldComponent)\`
   }
 \`;
 
-export default () => <StyledOldComponent />;`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,552));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-6":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I;return l()().wrap(function(s){for(;;)switch(s.prev=s.next){case 0:return s.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=s.sent,c=u.default,I=c.input(R||(R=g()([`
+export default () => <StyledOldComponent />;`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":s},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-6":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I;return l()().wrap(function(x){for(;;)switch(x.prev=x.next){case 0:return x.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=x.sent,c=u.default,I=c.input(B||(B=g()([`
   padding: 0.5em;
   margin: 0.5em;
   color: `,`;
   background: papayawhip;
   border: none;
   border-radius: 3px;
-`])),function(n){var S;return(S=n.$inputColor)!==null&&S!==void 0?S:"#BF4F74"}),s.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(I,{defaultValue:"@probablyup",type:"text"}),t.createElement(I,{defaultValue:"@geelen",type:"text",$inputColor:"rebeccapurple"}))}});case 6:case"end":return s.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-6",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
+`])),function(n){var S;return(S=n.$inputColor)!==null&&S!==void 0?S:"#BF4F74"}),x.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(I,{defaultValue:"@probablyup",type:"text"}),t.createElement(I,{defaultValue:"@geelen",type:"text",$inputColor:"rebeccapurple"}))}});case 6:case"end":return x.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-6",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
 
 const MyInput = styled.input\`
   padding: 0.5em;
@@ -236,7 +236,7 @@ export default () => {
       <MyInput defaultValue="@geelen" type="text" $inputColor="rebeccapurple" />
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,552));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-7":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return v=function(){return t.createElement("div",null,t.createElement(I,{$variant:"primary"},"Primary Button"),t.createElement(I,{$variant:"secondary"},"Secondary Button"))},n.next=3,Promise.resolve().then(a.bind(a,30789));case 3:return u=n.sent,c=u.default,I=c.button(F||(F=g()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":s},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-7":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return v=function(){return t.createElement("div",null,t.createElement(I,{$variant:"primary"},"Primary Button"),t.createElement(I,{$variant:"secondary"},"Secondary Button"))},n.next=3,Promise.resolve().then(a.bind(a,30789));case 3:return u=n.sent,c=u.default,I=c.button(z||(z=g()([`
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -273,12 +273,12 @@ function App() {
   );
 }
 
-export default App;`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,552));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-8":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=n.sent,c=u.default,I=c("div").withConfig({shouldForwardProp:function(E){return!["hidden"].includes(E)}}).attrs({className:"foo"})(J||(J=g()([`
+export default App;`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":s},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-8":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=n.sent,c=u.default,I=c("div").withConfig({shouldForwardProp:function(E){return!["hidden"].includes(E)}}).attrs({className:"foo"})($||($=g()([`
   color: red;
   &.foo {
     text-decoration: underline;
   }
-`]))),v=c("div").attrs({className:"foo"})(z||(z=g()([`
+`]))),v=c("div").attrs({className:"foo"})(J||(J=g()([`
   color: red;
   &.foo {
     text-decoration: underline;
@@ -310,7 +310,7 @@ export default () => {
       <HiddenComp hidden>This is a hidden Comp</HiddenComp>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,552));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-9":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I;return l()().wrap(function(s){for(;;)switch(s.prev=s.next){case 0:return s.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=s.sent,c=u.default,I=c.div($||($=g()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":s},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-9":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I;return l()().wrap(function(x){for(;;)switch(x.prev=x.next){case 0:return x.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=x.sent,c=u.default,I=c.div(F||(F=g()([`
   color: blue; // \u9ED8\u8BA4\u989C\u8272\u4E3A\u84DD\u8272
 
   &:hover {
@@ -332,7 +332,7 @@ export default () => {
   .something-else & {
     border: 1px solid; // <Thing> \u5728\u53E6\u4E00\u4E2A\u5E26\u6709 ".something-else" \u7C7B\u7684\u5143\u7D20\u5185\uFF0C\u8FB9\u6846\u4E3A 1px \u5B9E\u7EBF
   }
-`]))),s.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(I,null,"Hello world!"),t.createElement(I,null,"How ya doing?"),t.createElement(I,{className:"something"},"The sun is shining..."),t.createElement("div",null,"Pretty nice day today."),t.createElement(I,null,"Don't you think?"),t.createElement("div",{className:"something-else"},t.createElement(I,null,"Splendid.")))}});case 6:case"end":return s.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-9",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
+`]))),x.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(I,null,"Hello world!"),t.createElement(I,null,"How ya doing?"),t.createElement(I,{className:"something"},"The sun is shining..."),t.createElement("div",null,"Pretty nice day today."),t.createElement(I,null,"Don't you think?"),t.createElement("div",{className:"something-else"},t.createElement(I,null,"Splendid.")))}});case 6:case"end":return x.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-9",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
 
 const Thing = styled.div\`
   color: blue; // \u9ED8\u8BA4\u989C\u8272\u4E3A\u84DD\u8272
@@ -372,7 +372,7 @@ export default () => {
       </div>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,552));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-10":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=n.sent,c=u.default,I=c.input.attrs(function(S){var E;return{type:"text",$size:(E=S.$size)!==null&&E!==void 0?E:"1em"}})(j||(j=g()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":s},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-10":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=n.sent,c=u.default,I=c.input.attrs(function(S){var E;return{type:"text",$size:(E=S.$size)!==null&&E!==void 0?E:"1em"}})(D||(D=g()([`
   color: #bf4f74;
   font-size: 1em;
   border: 2px solid #bf4f74;
@@ -412,20 +412,20 @@ export default () => {
       <InputPasswordAttrs placeholder="bigger password input" $size="2em" />
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,552));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-11":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v,s,n,S;return l()().wrap(function(P){for(;;)switch(P.prev=P.next){case 0:return P.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=P.sent,c=u.default,I=u.css,v=I(H||(H=g()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":s},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-11":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v,x,n,S;return l()().wrap(function(O){for(;;)switch(O.prev=O.next){case 0:return O.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=O.sent,c=u.default,I=u.css,v=I(H||(H=g()([`
   border: 2px solid black;
   padding: 0.6rem;
   border-radius: 30px;
   cursor: pointer;
-`]))),s=c.button(V||(V=g()([`
+`]))),x=c.button(V||(V=g()([`
   color: red;
-`]))),n=c.button(G||(G=g()([`
+`]))),n=c.button(K||(K=g()([`
   `,`
   color: yellow;
-`])),v),S=c(n)(K||(K=g()([`
+`])),v),S=c(n)(G||(G=g()([`
   `,`
   color: blue;
-`])),v),P.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(s,null,"CommonButton"),t.createElement(n,null,"FusionCommonButton"),t.createElement(S,null,"styledFusionCommonButton"))}});case 10:case"end":return P.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-11",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled, { css } from 'styled-components';
+`])),v),O.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(x,null,"CommonButton"),t.createElement(n,null,"FusionCommonButton"),t.createElement(S,null,"styledFusionCommonButton"))}});case 10:case"end":return O.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-11",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled, { css } from 'styled-components';
 
 const mixinCommonCSS = css\`
   border: 2px solid black;
@@ -458,7 +458,7 @@ export default () => {
       </StyledFusionCommonButton>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,552));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-12":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=n.sent,c=u.createGlobalStyle,I=c(Y||(Y=g()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":s},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-12":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=n.sent,c=u.createGlobalStyle,I=c(X||(X=g()([`
   a {
     text-decoration: none;
     color: inherit;
@@ -486,12 +486,12 @@ const App = () => {
   );
 };
 
-export default App;`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,552));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-13":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v,s,n;return l()().wrap(function(E){for(;;)switch(E.prev=E.next){case 0:return E.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=E.sent,c=u.default,I=u.createGlobalStyle,v=I(X||(X=g()([`
+export default App;`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":s},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-13":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v,x,n;return l()().wrap(function(E){for(;;)switch(E.prev=E.next){case 0:return E.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=E.sent,c=u.default,I=u.createGlobalStyle,v=I(Y||(Y=g()([`
   :root {
     --my-primary-color: #4ca;
     --my-secondary-color: #ff5722;
   }
-`]))),s=c.button(Q||(Q=g()([`
+`]))),x=c.button(Q||(Q=g()([`
   background-color: var(--my-primary-color);
   color: white;
   font-size: var(--my-secondary-color);
@@ -503,7 +503,7 @@ export default App;`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"in
   &:hover {
     background-color: var(--my-secondary-color);
   }
-`]))),n=function(){return t.createElement(t.Fragment,null,t.createElement(v,null),t.createElement("div",{style:{padding:"20px"}},t.createElement(s,null,"Click Me")))},E.abrupt("return",{default:n});case 9:case"end":return E.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-13",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled, { createGlobalStyle } from 'styled-components';
+`]))),n=function(){return t.createElement(t.Fragment,null,t.createElement(v,null),t.createElement("div",{style:{padding:"20px"}},t.createElement(x,null,"Click Me")))},E.abrupt("return",{default:n});case 9:case"end":return E.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-13",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled, { createGlobalStyle } from 'styled-components';
 
 // \u5B9A\u4E49\u5168\u5C40\u6837\u5F0F\uFF0C\u5305\u62EC CSS \u53D8\u91CF
 const GlobalStyle = createGlobalStyle\`
@@ -539,14 +539,14 @@ const App = () => {
   );
 };
 
-export default App;`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,552));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-14":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v,s,n;return l()().wrap(function(E){for(;;)switch(E.prev=E.next){case 0:return E.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=E.sent,c=u.default,I=u.css,v=c.input.attrs({type:"checkbox"})(Z||(Z=g()([""]))),s=c.label(q||(q=g()([`
+export default App;`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":s},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-14":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v,x,n;return l()().wrap(function(E){for(;;)switch(E.prev=E.next){case 0:return E.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=E.sent,c=u.default,I=u.css,v=c.input.attrs({type:"checkbox"})(Z||(Z=g()([""]))),x=c.label(q||(q=g()([`
   align-items: center;
   display: flex;
   gap: 8px;
   margin-bottom: 8px;
 `]))),n=c.span(_||(_=g()([`
   `,`
-`])),function(P){switch(P.$mode){case"dark":return I(aa||(aa=g()([`
+`])),function(O){switch(O.$mode){case"dark":return I(aa||(aa=g()([`
           background-color: black;
           color: white;
           `,`:checked + && {
@@ -560,7 +560,7 @@ export default App;`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"in
           `,`:checked + && {
             color: red;
           }
-        `])),v)}}),E.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(s,null,t.createElement(v,{defaultChecked:!0}),t.createElement(n,null,"Foo")),t.createElement(s,null,t.createElement(v,null),t.createElement(n,{$mode:"dark"},"Foo")))}});case 9:case"end":return E.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-14",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled, { css } from 'styled-components';
+        `])),v)}}),E.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(x,null,t.createElement(v,{defaultChecked:!0}),t.createElement(n,null,"Foo")),t.createElement(x,null,t.createElement(v,null),t.createElement(n,{$mode:"dark"},"Foo")))}});case 9:case"end":return E.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-14",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled, { css } from 'styled-components';
 
 const Input = styled.input.attrs({ type: 'checkbox' })\`\`;
 
@@ -609,14 +609,14 @@ export default () => {
       </Label>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,552));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-15":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v,s;return l()().wrap(function(S){for(;;)switch(S.prev=S.next){case 0:return S.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=S.sent,c=u.default,I=u.ThemeProvider,v=c.button(na||(na=g()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":s},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-15":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v,x;return l()().wrap(function(S){for(;;)switch(S.prev=S.next){case 0:return S.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=S.sent,c=u.default,I=u.ThemeProvider,v=c.button(na||(na=g()([`
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
   border-radius: 3px;
   color: `,`;
   border: 2px solid `,`;
-`])),function(E){return E.theme.main},function(E){return E.theme.main}),v.defaultProps={theme:{main:"palevioletred"}},s={main:"mediumseagreen"},S.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(v,null,"Normal Button"),t.createElement(I,{theme:s},t.createElement(v,null,"ThemeProvider Button")))}});case 9:case"end":return S.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-15",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled, { ThemeProvider } from 'styled-components';
+`])),function(E){return E.theme.main},function(E){return E.theme.main}),v.defaultProps={theme:{main:"palevioletred"}},x={main:"mediumseagreen"},S.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(v,null,"Normal Button"),t.createElement(I,{theme:x},t.createElement(v,null,"ThemeProvider Button")))}});case 9:case"end":return S.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-15",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled, { ThemeProvider } from 'styled-components';
 
 // \u901A\u8FC7\u4F7F\u7528 props.theme \u53EF\u4EE5\u8BBF\u95EE\u5230 ThemeProvider \u4F20\u9012\u4E0B\u6765\u7684\u5BF9\u8C61
 const Button = styled.button\`
@@ -648,11 +648,11 @@ export default () => {
       </ThemeProvider>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,552));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-16":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v,s,n;return l()().wrap(function(E){for(;;)switch(E.prev=E.next){case 0:return E.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=E.sent,c=u.default,I=u.ThemeProvider,v=c.button(da||(da=g()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":s},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-16":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v,x,n;return l()().wrap(function(E){for(;;)switch(E.prev=E.next){case 0:return E.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=E.sent,c=u.default,I=u.ThemeProvider,v=c.button(da||(da=g()([`
   color: `,`;
   border: 2px solid `,`;
   background: `,`;
-`])),function(P){return P.theme.fg},function(P){return P.theme.fg},function(P){return P.theme.bg}),s={fg:"palevioletred",bg:"white"},n=function(L){var W=L.fg,U=L.bg;return{fg:U,bg:W}},E.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(v,{theme:{fg:"red",bg:"white"}},"Default Button"),t.createElement(I,{theme:s},t.createElement("div",null,t.createElement(v,null,"Default Button with Theme"),t.createElement(I,{theme:n},t.createElement(v,null,"Default Button with Inverted Theme")),t.createElement(v,{theme:{fg:"red",bg:"white"}},"Override Theme"))))}});case 9:case"end":return E.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-16",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled, { ThemeProvider } from 'styled-components';
+`])),function(O){return O.theme.fg},function(O){return O.theme.fg},function(O){return O.theme.bg}),x={fg:"palevioletred",bg:"white"},n=function(L){var W=L.fg,U=L.bg;return{fg:U,bg:W}},E.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(v,{theme:{fg:"red",bg:"white"}},"Default Button"),t.createElement(I,{theme:x},t.createElement("div",null,t.createElement(v,null,"Default Button with Theme"),t.createElement(I,{theme:n},t.createElement(v,null,"Default Button with Inverted Theme")),t.createElement(v,{theme:{fg:"red",bg:"white"}},"Override Theme"))))}});case 9:case"end":return E.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-16",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled, { ThemeProvider } from 'styled-components';
 
 const DefaultButton = styled.button\`
   color: \${(props) => props.theme.fg};
@@ -696,7 +696,7 @@ export default () => {
       </ThemeProvider>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,552));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-17":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v,s;return l()().wrap(function(S){for(;;)switch(S.prev=S.next){case 0:return S.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=S.sent,c=u.default,I=u.keyframes,v=I(ta||(ta=g()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":s},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-17":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v,x;return l()().wrap(function(S){for(;;)switch(S.prev=S.next){case 0:return S.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=S.sent,c=u.default,I=u.keyframes,v=I(ta||(ta=g()([`
   from {
     transform: rotate(0deg);
   }
@@ -704,12 +704,12 @@ export default () => {
   to {
     transform: rotate(360deg);
   }
-`]))),s=c.div(oa||(oa=g()([`
+`]))),x=c.div(oa||(oa=g()([`
   display: inline-block;
   animation: `,` 2s linear infinite;
   padding: 2rem 1rem;
   font-size: 1.2rem;
-`])),v),S.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(s,null,"Hello World"))}});case 8:case"end":return S.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-17",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled, { keyframes } from 'styled-components';
+`])),v),S.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(x,null,"Hello World"))}});case 8:case"end":return S.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-17",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled, { keyframes } from 'styled-components';
 
 const rotate = keyframes\`
   from {
@@ -734,7 +734,7 @@ export default () => {
       <Rotate>Hello World</Rotate>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,552));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-18":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I;return l()().wrap(function(s){for(;;)switch(s.prev=s.next){case 0:return s.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=s.sent,c=u.default,I=c.button(ra||(ra=g()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":s},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-18":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I;return l()().wrap(function(x){for(;;)switch(x.prev=x.next){case 0:return x.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=x.sent,c=u.default,I=c.button(ra||(ra=g()([`
   background-color: #4caf50; /* Green */
   border: none;
   color: white;
@@ -758,7 +758,7 @@ export default () => {
     font-size: 12px;
     padding: 10px 24px;
   }
-`]))),s.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(I,null,"I am a Media Button"))}});case 6:case"end":return s.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-18",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
+`]))),x.abrupt("return",{default:function(){return t.createElement(t.Fragment,null,t.createElement(I,null,"I am a Media Button"))}});case 6:case"end":return x.stop()}},m)})))),asset:{type:"BLOCK",id:"docs-notes-css-css-in-js-demo-18",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import styled from 'styled-components';
 
 const MediaButton = styled.button\`
   background-color: #4caf50; /* Green */
@@ -792,7 +792,7 @@ export default () => {
       <MediaButton>I am a Media Button</MediaButton>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,552));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-19":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=n.sent,c=u.default,I=c.button(Ia||(Ia=g()([`
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":s},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}},"docs-notes-css-css-in-js-demo-19":{component:t.memo(t.lazy(h()(l()().mark(function m(){var u,c,I,v;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,Promise.resolve().then(a.bind(a,30789));case 2:return u=n.sent,c=u.default,I=c.button(Ia||(Ia=g()([`
   padding: 10px 20px;
   font-size: 16px;
   border: none;
@@ -867,7 +867,7 @@ export default () => {
       </Container>
     </>
   );
-};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":x},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,552));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}}}},85991:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},44771:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},47465:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},813:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},24704:function(r,e,a){a.r(e),a.d(e,{demos:function(){return h}});var d=a(27424),o=a.n(d),O=a(42122),M=a.n(O),T=a(17061),l=a.n(T),N=a(17156),g=a.n(N),i=a(67294),h={"docs-notes-css-grid-layout-demo-0":{component:i.memo(i.lazy(g()(l()().mark(function t(){var x,f;return l()().wrap(function(y){for(;;)switch(y.prev=y.next){case 0:return x={display:"grid",gridTemplateColumns:"repeat(3, 100px)",gridTemplateRows:"repeat(3, 100px)",gap:"10px",justifyContent:"center",alignContent:"center",height:"400px",backgroundColor:"#f5f5f5"},f={backgroundColor:"#4CAF50",color:"white",display:"flex",justifyContent:"center",alignItems:"center",fontSize:"24px",fontWeight:"bold",borderRadius:"4px"},y.abrupt("return",{default:function(){return i.createElement("div",{style:x},[1,2,3,4,5,6,7,8,9].map(function(p){return i.createElement("div",{key:p,style:f},p)}))}});case 3:case"end":return y.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-0",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`const containerStyle = {
+};`},"styled-components":{type:"NPM",value:"6.1.19"}},entry:"index.jsx"},context:{"styled-components":s},renderOpts:{compile:function(){var m=h()(l()().mark(function c(){var I,v=arguments;return l()().wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,a.e(250).then(a.bind(a,90250));case 2:return n.abrupt("return",(I=n.sent).default.apply(I,v));case 3:case"end":return n.stop()}},c)}));function u(){return m.apply(this,arguments)}return u}()}}}},85991:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},44771:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},47465:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},813:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},24704:function(r,e,a){a.r(e),a.d(e,{demos:function(){return h}});var d=a(27424),o=a.n(d),P=a(42122),T=a.n(P),M=a(17061),l=a.n(M),j=a(17156),g=a.n(j),i=a(67294),h={"docs-notes-css-grid-layout-demo-0":{component:i.memo(i.lazy(g()(l()().mark(function t(){var s,f;return l()().wrap(function(y){for(;;)switch(y.prev=y.next){case 0:return s={display:"grid",gridTemplateColumns:"repeat(3, 100px)",gridTemplateRows:"repeat(3, 100px)",gap:"10px",justifyContent:"center",alignContent:"center",height:"400px",backgroundColor:"#f5f5f5"},f={backgroundColor:"#4CAF50",color:"white",display:"flex",justifyContent:"center",alignItems:"center",fontSize:"24px",fontWeight:"bold",borderRadius:"4px"},y.abrupt("return",{default:function(){return i.createElement("div",{style:s},[1,2,3,4,5,6,7,8,9].map(function(p){return i.createElement("div",{key:p,style:f},p)}))}});case 3:case"end":return y.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-0",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`const containerStyle = {
   display: 'grid',
   gridTemplateColumns: 'repeat(3, 100px)',
   gridTemplateRows: 'repeat(3, 100px)',
@@ -899,7 +899,7 @@ export default () => {
       ))}
     </div>
   );
-};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=g()(l()().mark(function f(){var b,y=arguments;return l()().wrap(function(p){for(;;)switch(p.prev=p.next){case 0:return p.next=2,a.e(250).then(a.bind(a,552));case 2:return p.abrupt("return",(b=p.sent).default.apply(b,y));case 3:case"end":return p.stop()}},f)}));function x(){return t.apply(this,arguments)}return x}()}},"docs-notes-css-grid-layout-demo-1":{component:i.memo(i.lazy(g()(l()().mark(function t(){var x,f,b;return l()().wrap(function(C){for(;;)switch(C.prev=C.next){case 0:return x={display:"grid",gridTemplateColumns:"repeat(auto-fill, minmax(200px, 1fr))",gridTemplateRows:"repeat(3, 100px)",gridAutoRows:"minmax(80px, auto)",gap:"10px",backgroundColor:"#f5f5f5",padding:"20px"},f=function(w){return{backgroundColor:w<12?"#2196F3":"#FF9800",color:"white",display:"flex",justifyContent:"center",alignItems:"center",fontSize:"18px",fontWeight:"bold",borderRadius:"4px",padding:"10px"}},b=Array.from({length:20},function(p,w){return{id:w+1,content:w===19?"\u8FD9\u662F\u4E00\u4E2A\u5185\u5BB9\u8F83\u591A\u7684\u5143\u7D20\uFF0C\u7528\u6765\u6F14\u793A minmax \u51FD\u6570\u5982\u4F55\u8BA9\u7F51\u683C\u81EA\u52A8\u6269\u5C55\u9AD8\u5EA6\u4EE5\u5BB9\u7EB3\u66F4\u591A\u5185\u5BB9":"".concat(w+1)}}),C.abrupt("return",{default:function(){return i.createElement("div",{style:x},b.map(function(w,A){return i.createElement("div",{key:w.id,style:f(A)},w.content)}))}});case 4:case"end":return C.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-1",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`const containerStyle = {
+};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=g()(l()().mark(function f(){var b,y=arguments;return l()().wrap(function(p){for(;;)switch(p.prev=p.next){case 0:return p.next=2,a.e(250).then(a.bind(a,90250));case 2:return p.abrupt("return",(b=p.sent).default.apply(b,y));case 3:case"end":return p.stop()}},f)}));function s(){return t.apply(this,arguments)}return s}()}},"docs-notes-css-grid-layout-demo-1":{component:i.memo(i.lazy(g()(l()().mark(function t(){var s,f,b;return l()().wrap(function(w){for(;;)switch(w.prev=w.next){case 0:return s={display:"grid",gridTemplateColumns:"repeat(auto-fill, minmax(200px, 1fr))",gridTemplateRows:"repeat(3, 100px)",gridAutoRows:"minmax(80px, auto)",gap:"10px",backgroundColor:"#f5f5f5",padding:"20px"},f=function(C){return{backgroundColor:C<12?"#2196F3":"#FF9800",color:"white",display:"flex",justifyContent:"center",alignItems:"center",fontSize:"18px",fontWeight:"bold",borderRadius:"4px",padding:"10px"}},b=Array.from({length:20},function(p,C){return{id:C+1,content:C===19?"\u8FD9\u662F\u4E00\u4E2A\u5185\u5BB9\u8F83\u591A\u7684\u5143\u7D20\uFF0C\u7528\u6765\u6F14\u793A minmax \u51FD\u6570\u5982\u4F55\u8BA9\u7F51\u683C\u81EA\u52A8\u6269\u5C55\u9AD8\u5EA6\u4EE5\u5BB9\u7EB3\u66F4\u591A\u5185\u5BB9":"".concat(C+1)}}),w.abrupt("return",{default:function(){return i.createElement("div",{style:s},b.map(function(C,A){return i.createElement("div",{key:C.id,style:f(A)},C.content)}))}});case 4:case"end":return w.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-1",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`const containerStyle = {
   display: 'grid',
   gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
   gridTemplateRows: 'repeat(3, 100px)',
@@ -939,11 +939,11 @@ export default () => {
       ))}
     </div>
   );
-};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=g()(l()().mark(function f(){var b,y=arguments;return l()().wrap(function(p){for(;;)switch(p.prev=p.next){case 0:return p.next=2,a.e(250).then(a.bind(a,552));case 2:return p.abrupt("return",(b=p.sent).default.apply(b,y));case 3:case"end":return p.stop()}},f)}));function x(){return t.apply(this,arguments)}return x}()}},"docs-notes-css-grid-layout-demo-2":{component:i.memo(i.lazy(g()(l()().mark(function t(){var x,f,b,y,C,p;return l()().wrap(function(A){for(;;)switch(A.prev=A.next){case 0:return x={display:"grid",gridTemplateAreas:`
+};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=g()(l()().mark(function f(){var b,y=arguments;return l()().wrap(function(p){for(;;)switch(p.prev=p.next){case 0:return p.next=2,a.e(250).then(a.bind(a,90250));case 2:return p.abrupt("return",(b=p.sent).default.apply(b,y));case 3:case"end":return p.stop()}},f)}));function s(){return t.apply(this,arguments)}return s}()}},"docs-notes-css-grid-layout-demo-2":{component:i.memo(i.lazy(g()(l()().mark(function t(){var s,f,b,y,w,p;return l()().wrap(function(A){for(;;)switch(A.prev=A.next){case 0:return s={display:"grid",gridTemplateAreas:`
       "header header"
       "aside  tab"
       "aside  main"
-    `,gridTemplateRows:"60px 50px 1fr",gridTemplateColumns:"200px 1fr",gap:"10px",height:"500px",backgroundColor:"#f5f5f5",padding:"10px"},f={gridArea:"header",backgroundColor:"#1976D2",color:"white",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"20px",fontWeight:"bold",borderRadius:"4px"},b={gridArea:"aside",backgroundColor:"#424242",color:"white",padding:"20px",borderRadius:"4px",fontSize:"14px"},y={gridArea:"tab",backgroundColor:"#E0E0E0",display:"flex",alignItems:"center",padding:"0 20px",gap:"10px",borderRadius:"4px"},C={gridArea:"main",backgroundColor:"white",padding:"20px",borderRadius:"4px",overflow:"auto"},p={padding:"8px 16px",backgroundColor:"#1976D2",color:"white",border:"none",borderRadius:"4px",cursor:"pointer"},A.abrupt("return",{default:function(){return i.createElement("div",{style:x},i.createElement("div",{style:f},"\u540E\u53F0\u7BA1\u7406\u7CFB\u7EDF"),i.createElement("div",{style:b},i.createElement("div",{style:{marginBottom:"10px"}},"\u{1F4CA} Dashboard"),i.createElement("div",{style:{marginBottom:"10px"}},"\u{1F465} \u7528\u6237\u7BA1\u7406"),i.createElement("div",{style:{marginBottom:"10px"}},"\u{1F4DD} \u5185\u5BB9\u7BA1\u7406"),i.createElement("div",{style:{marginBottom:"10px"}},"\u2699\uFE0F \u7CFB\u7EDF\u8BBE\u7F6E")),i.createElement("div",{style:y},i.createElement("button",{style:p},"Tab 1"),i.createElement("button",{style:M()(M()({},p),{},{backgroundColor:"#757575"})},"Tab 2"),i.createElement("button",{style:M()(M()({},p),{},{backgroundColor:"#757575"})},"Tab 3")),i.createElement("div",{style:C},i.createElement("h2",null,"\u4E3B\u8981\u5185\u5BB9\u533A\u57DF"),i.createElement("p",null,"\u8FD9\u91CC\u662F\u4E3B\u8981\u7684\u5185\u5BB9\u5C55\u793A\u533A\u57DF\uFF0C\u53EF\u4EE5\u653E\u7F6E\u5404\u79CD\u6570\u636E\u8868\u683C\u3001\u56FE\u8868\u7B49\u5185\u5BB9\u3002"),i.createElement("p",null,"Grid \u5E03\u5C40\u8BA9\u8FD9\u79CD\u7ECF\u5178\u7684\u540E\u53F0\u7BA1\u7406\u7CFB\u7EDF\u5E03\u5C40\u53D8\u5F97\u975E\u5E38\u7B80\u5355\u3002")))}});case 7:case"end":return A.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-2",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`const containerStyle = {
+    `,gridTemplateRows:"60px 50px 1fr",gridTemplateColumns:"200px 1fr",gap:"10px",height:"500px",backgroundColor:"#f5f5f5",padding:"10px"},f={gridArea:"header",backgroundColor:"#1976D2",color:"white",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"20px",fontWeight:"bold",borderRadius:"4px"},b={gridArea:"aside",backgroundColor:"#424242",color:"white",padding:"20px",borderRadius:"4px",fontSize:"14px"},y={gridArea:"tab",backgroundColor:"#E0E0E0",display:"flex",alignItems:"center",padding:"0 20px",gap:"10px",borderRadius:"4px"},w={gridArea:"main",backgroundColor:"white",padding:"20px",borderRadius:"4px",overflow:"auto"},p={padding:"8px 16px",backgroundColor:"#1976D2",color:"white",border:"none",borderRadius:"4px",cursor:"pointer"},A.abrupt("return",{default:function(){return i.createElement("div",{style:s},i.createElement("div",{style:f},"\u540E\u53F0\u7BA1\u7406\u7CFB\u7EDF"),i.createElement("div",{style:b},i.createElement("div",{style:{marginBottom:"10px"}},"\u{1F4CA} Dashboard"),i.createElement("div",{style:{marginBottom:"10px"}},"\u{1F465} \u7528\u6237\u7BA1\u7406"),i.createElement("div",{style:{marginBottom:"10px"}},"\u{1F4DD} \u5185\u5BB9\u7BA1\u7406"),i.createElement("div",{style:{marginBottom:"10px"}},"\u2699\uFE0F \u7CFB\u7EDF\u8BBE\u7F6E")),i.createElement("div",{style:y},i.createElement("button",{style:p},"Tab 1"),i.createElement("button",{style:T()(T()({},p),{},{backgroundColor:"#757575"})},"Tab 2"),i.createElement("button",{style:T()(T()({},p),{},{backgroundColor:"#757575"})},"Tab 3")),i.createElement("div",{style:w},i.createElement("h2",null,"\u4E3B\u8981\u5185\u5BB9\u533A\u57DF"),i.createElement("p",null,"\u8FD9\u91CC\u662F\u4E3B\u8981\u7684\u5185\u5BB9\u5C55\u793A\u533A\u57DF\uFF0C\u53EF\u4EE5\u653E\u7F6E\u5404\u79CD\u6570\u636E\u8868\u683C\u3001\u56FE\u8868\u7B49\u5185\u5BB9\u3002"),i.createElement("p",null,"Grid \u5E03\u5C40\u8BA9\u8FD9\u79CD\u7ECF\u5178\u7684\u540E\u53F0\u7BA1\u7406\u7CFB\u7EDF\u5E03\u5C40\u53D8\u5F97\u975E\u5E38\u7B80\u5355\u3002")))}});case 7:case"end":return A.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-2",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`const containerStyle = {
   display: 'grid',
   gridTemplateAreas: \`
       "header header"
@@ -1032,7 +1032,7 @@ export default () => {
       </div>
     </div>
   );
-};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=g()(l()().mark(function f(){var b,y=arguments;return l()().wrap(function(p){for(;;)switch(p.prev=p.next){case 0:return p.next=2,a.e(250).then(a.bind(a,552));case 2:return p.abrupt("return",(b=p.sent).default.apply(b,y));case 3:case"end":return p.stop()}},f)}));function x(){return t.apply(this,arguments)}return x}()}},"docs-notes-css-grid-layout-demo-3":{component:i.memo(i.lazy(g()(l()().mark(function t(){var x,f;return l()().wrap(function(y){for(;;)switch(y.prev=y.next){case 0:return x={display:"grid",gridTemplateColumns:"repeat(2, 200px)",gridTemplateRows:"repeat(3, 100px)",gridAutoFlow:"column",gridAutoColumns:"100px",gap:"10px",backgroundColor:"#f5f5f5",padding:"20px",overflowX:"auto"},f=function(p){return{backgroundColor:p<2?"#E91E63":"#9C27B0",color:"white",display:"flex",justifyContent:"center",alignItems:"center",fontSize:"18px",fontWeight:"bold",borderRadius:"4px",gridRow:p<2?"span 2":"auto"}},y.abrupt("return",{default:function(){return i.createElement("div",{style:x},Array.from({length:20},function(p,w){return i.createElement("div",{key:w+1,style:f(w)},String.fromCharCode(65+w))}))}});case 3:case"end":return y.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-3",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`const containerStyle = {
+};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=g()(l()().mark(function f(){var b,y=arguments;return l()().wrap(function(p){for(;;)switch(p.prev=p.next){case 0:return p.next=2,a.e(250).then(a.bind(a,90250));case 2:return p.abrupt("return",(b=p.sent).default.apply(b,y));case 3:case"end":return p.stop()}},f)}));function s(){return t.apply(this,arguments)}return s}()}},"docs-notes-css-grid-layout-demo-3":{component:i.memo(i.lazy(g()(l()().mark(function t(){var s,f;return l()().wrap(function(y){for(;;)switch(y.prev=y.next){case 0:return s={display:"grid",gridTemplateColumns:"repeat(2, 200px)",gridTemplateRows:"repeat(3, 100px)",gridAutoFlow:"column",gridAutoColumns:"100px",gap:"10px",backgroundColor:"#f5f5f5",padding:"20px",overflowX:"auto"},f=function(p){return{backgroundColor:p<2?"#E91E63":"#9C27B0",color:"white",display:"flex",justifyContent:"center",alignItems:"center",fontSize:"18px",fontWeight:"bold",borderRadius:"4px",gridRow:p<2?"span 2":"auto"}},y.abrupt("return",{default:function(){return i.createElement("div",{style:s},Array.from({length:20},function(p,C){return i.createElement("div",{key:C+1,style:f(C)},String.fromCharCode(65+C))}))}});case 3:case"end":return y.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-3",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`const containerStyle = {
   display: 'grid',
   gridTemplateColumns: 'repeat(2, 200px)',
   gridTemplateRows: 'repeat(3, 100px)',
@@ -1066,7 +1066,7 @@ export default () => {
       ))}
     </div>
   );
-};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=g()(l()().mark(function f(){var b,y=arguments;return l()().wrap(function(p){for(;;)switch(p.prev=p.next){case 0:return p.next=2,a.e(250).then(a.bind(a,552));case 2:return p.abrupt("return",(b=p.sent).default.apply(b,y));case 3:case"end":return p.stop()}},f)}));function x(){return t.apply(this,arguments)}return x}()}},"docs-notes-css-grid-layout-demo-4":{component:i.memo(i.lazy(g()(l()().mark(function t(){return l()().wrap(function(f){for(;;)switch(f.prev=f.next){case 0:return f.abrupt("return",{default:function(){var y=i.useState(!1),C=o()(y,2),p=C[0],w=C[1],A={display:"grid",gridTemplateColumns:"repeat(3, 1fr)",gridAutoFlow:p?"row dense":"row",gap:"10px",backgroundColor:"#f5f5f5",padding:"20px",marginTop:"10px"},D=function(R){return{backgroundColor:[0,3,6].includes(R)?"#FF5722":"#03A9F4",color:"white",display:"flex",justifyContent:"center",alignItems:"center",fontSize:"18px",fontWeight:"bold",borderRadius:"4px",padding:"20px",gridColumn:[0,3,6].includes(R)?"span 2":"auto"}};return i.createElement("div",null,i.createElement("button",{onClick:function(){return w(!p)},style:{padding:"10px 20px",backgroundColor:"#4CAF50",color:"white",border:"none",borderRadius:"4px",cursor:"pointer",fontSize:"16px"}},p?"\u5173\u95ED dense":"\u5F00\u542F dense"),i.createElement("div",{style:A},Array.from({length:9},function(B,R){return i.createElement("div",{key:R+1,style:D(R)},R+1)})))}});case 1:case"end":return f.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-4",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`export default () => {
+};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=g()(l()().mark(function f(){var b,y=arguments;return l()().wrap(function(p){for(;;)switch(p.prev=p.next){case 0:return p.next=2,a.e(250).then(a.bind(a,90250));case 2:return p.abrupt("return",(b=p.sent).default.apply(b,y));case 3:case"end":return p.stop()}},f)}));function s(){return t.apply(this,arguments)}return s}()}},"docs-notes-css-grid-layout-demo-4":{component:i.memo(i.lazy(g()(l()().mark(function t(){return l()().wrap(function(f){for(;;)switch(f.prev=f.next){case 0:return f.abrupt("return",{default:function(){var y=i.useState(!1),w=o()(y,2),p=w[0],C=w[1],A={display:"grid",gridTemplateColumns:"repeat(3, 1fr)",gridAutoFlow:p?"row dense":"row",gap:"10px",backgroundColor:"#f5f5f5",padding:"20px",marginTop:"10px"},N=function(B){return{backgroundColor:[0,3,6].includes(B)?"#FF5722":"#03A9F4",color:"white",display:"flex",justifyContent:"center",alignItems:"center",fontSize:"18px",fontWeight:"bold",borderRadius:"4px",padding:"20px",gridColumn:[0,3,6].includes(B)?"span 2":"auto"}};return i.createElement("div",null,i.createElement("button",{onClick:function(){return C(!p)},style:{padding:"10px 20px",backgroundColor:"#4CAF50",color:"white",border:"none",borderRadius:"4px",cursor:"pointer",fontSize:"16px"}},p?"\u5173\u95ED dense":"\u5F00\u542F dense"),i.createElement("div",{style:A},Array.from({length:9},function(R,B){return i.createElement("div",{key:B+1,style:N(B)},B+1)})))}});case 1:case"end":return f.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-4",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`export default () => {
   const [useDense, setUseDense] = React.useState(false);
 
   const containerStyle = {
@@ -1117,7 +1117,7 @@ export default () => {
       </div>
     </div>
   );
-};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=g()(l()().mark(function f(){var b,y=arguments;return l()().wrap(function(p){for(;;)switch(p.prev=p.next){case 0:return p.next=2,a.e(250).then(a.bind(a,552));case 2:return p.abrupt("return",(b=p.sent).default.apply(b,y));case 3:case"end":return p.stop()}},f)}));function x(){return t.apply(this,arguments)}return x}()}},"docs-notes-css-grid-layout-demo-5":{component:i.memo(i.lazy(g()(l()().mark(function t(){var x,f;return l()().wrap(function(y){for(;;)switch(y.prev=y.next){case 0:return x={display:"grid",gridTemplateColumns:"repeat(3, 1fr)",gap:"10px",backgroundColor:"#f5f5f5",padding:"20px"},f=function(p){return{backgroundColor:"#673AB7",color:"white",display:"flex",justifyContent:"center",alignItems:"center",fontSize:"18px",fontWeight:"bold",borderRadius:"4px",padding:"20px",order:p===8?-1:0,border:p===8?"3px solid #FFC107":"none"}},y.abrupt("return",{default:function(){return i.createElement("div",null,i.createElement("p",{style:{margin:"0 0 10px 0",color:"#666"}},"\u9EC4\u8272\u8FB9\u6846\u7684\u5143\u7D20\uFF08\u7F16\u53F7 9\uFF09\u5728 DOM \u4E2D\u662F\u6700\u540E\u4E00\u4E2A\uFF0C\u4F46\u901A\u8FC7 order: -1 \u663E\u793A\u5728\u6700\u524D\u9762"),i.createElement("div",{style:x},Array.from({length:9},function(p,w){return i.createElement("div",{key:w+1,style:f(w)},w+1)})))}});case 3:case"end":return y.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-5",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`const containerStyle = {
+};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=g()(l()().mark(function f(){var b,y=arguments;return l()().wrap(function(p){for(;;)switch(p.prev=p.next){case 0:return p.next=2,a.e(250).then(a.bind(a,90250));case 2:return p.abrupt("return",(b=p.sent).default.apply(b,y));case 3:case"end":return p.stop()}},f)}));function s(){return t.apply(this,arguments)}return s}()}},"docs-notes-css-grid-layout-demo-5":{component:i.memo(i.lazy(g()(l()().mark(function t(){var s,f;return l()().wrap(function(y){for(;;)switch(y.prev=y.next){case 0:return s={display:"grid",gridTemplateColumns:"repeat(3, 1fr)",gap:"10px",backgroundColor:"#f5f5f5",padding:"20px"},f=function(p){return{backgroundColor:"#673AB7",color:"white",display:"flex",justifyContent:"center",alignItems:"center",fontSize:"18px",fontWeight:"bold",borderRadius:"4px",padding:"20px",order:p===8?-1:0,border:p===8?"3px solid #FFC107":"none"}},y.abrupt("return",{default:function(){return i.createElement("div",null,i.createElement("p",{style:{margin:"0 0 10px 0",color:"#666"}},"\u9EC4\u8272\u8FB9\u6846\u7684\u5143\u7D20\uFF08\u7F16\u53F7 9\uFF09\u5728 DOM \u4E2D\u662F\u6700\u540E\u4E00\u4E2A\uFF0C\u4F46\u901A\u8FC7 order: -1 \u663E\u793A\u5728\u6700\u524D\u9762"),i.createElement("div",{style:s},Array.from({length:9},function(p,C){return i.createElement("div",{key:C+1,style:f(C)},C+1)})))}});case 3:case"end":return y.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-5",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`const containerStyle = {
   display: 'grid',
   gridTemplateColumns: 'repeat(3, 1fr)',
   gap: '10px',
@@ -1155,7 +1155,7 @@ export default () => {
       </div>
     </div>
   );
-};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=g()(l()().mark(function f(){var b,y=arguments;return l()().wrap(function(p){for(;;)switch(p.prev=p.next){case 0:return p.next=2,a.e(250).then(a.bind(a,552));case 2:return p.abrupt("return",(b=p.sent).default.apply(b,y));case 3:case"end":return p.stop()}},f)}));function x(){return t.apply(this,arguments)}return x}()}},"docs-notes-css-grid-layout-demo-6":{component:i.memo(i.lazy(g()(l()().mark(function t(){var x,f,b,y,C;return l()().wrap(function(w){for(;;)switch(w.prev=w.next){case 0:return x={display:"grid",gridTemplateColumns:"repeat(2, 1fr)",gridTemplateRows:"100px",gridAutoRows:"80px",gap:"10px",backgroundColor:"#f5f5f5",padding:"20px",alignItems:"center"},f={backgroundColor:"#607D8B",color:"white",display:"flex",alignItems:"center",padding:"0 20px",fontSize:"18px",fontWeight:"bold",borderRadius:"4px"},b={backgroundColor:"#E3F2FD",display:"flex",alignItems:"center",justifyContent:"end",padding:"0 20px",fontSize:"16px",borderRadius:"4px",height:"100%"},y={backgroundColor:"#FFF3E0",display:"flex",alignItems:"center",justifyContent:"start",padding:"0 20px",fontSize:"16px",borderRadius:"4px",height:"100%"},C=[{name:"iPhone 15 Pro",stock:128},{name:"MacBook Pro M3",stock:45},{name:"iPad Air",stock:203},{name:"Apple Watch",stock:89},{name:"AirPods Pro",stock:156}],w.abrupt("return",{default:function(){return i.createElement("div",{style:x},i.createElement("div",{style:f},"\u4EA7\u54C1\u540D\u79F0"),i.createElement("div",{style:f},"\u5E93\u5B58\u6570\u91CF"),C.map(function(D,B){return i.createElement(i.Fragment,{key:B},i.createElement("div",{style:b},D.name),i.createElement("div",{style:y},D.stock," \u4EF6"))}))}});case 6:case"end":return w.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-6",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`const containerStyle = {
+};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=g()(l()().mark(function f(){var b,y=arguments;return l()().wrap(function(p){for(;;)switch(p.prev=p.next){case 0:return p.next=2,a.e(250).then(a.bind(a,90250));case 2:return p.abrupt("return",(b=p.sent).default.apply(b,y));case 3:case"end":return p.stop()}},f)}));function s(){return t.apply(this,arguments)}return s}()}},"docs-notes-css-grid-layout-demo-6":{component:i.memo(i.lazy(g()(l()().mark(function t(){var s,f,b,y,w;return l()().wrap(function(C){for(;;)switch(C.prev=C.next){case 0:return s={display:"grid",gridTemplateColumns:"repeat(2, 1fr)",gridTemplateRows:"100px",gridAutoRows:"80px",gap:"10px",backgroundColor:"#f5f5f5",padding:"20px",alignItems:"center"},f={backgroundColor:"#607D8B",color:"white",display:"flex",alignItems:"center",padding:"0 20px",fontSize:"18px",fontWeight:"bold",borderRadius:"4px"},b={backgroundColor:"#E3F2FD",display:"flex",alignItems:"center",justifyContent:"end",padding:"0 20px",fontSize:"16px",borderRadius:"4px",height:"100%"},y={backgroundColor:"#FFF3E0",display:"flex",alignItems:"center",justifyContent:"start",padding:"0 20px",fontSize:"16px",borderRadius:"4px",height:"100%"},w=[{name:"iPhone 15 Pro",stock:128},{name:"MacBook Pro M3",stock:45},{name:"iPad Air",stock:203},{name:"Apple Watch",stock:89},{name:"AirPods Pro",stock:156}],C.abrupt("return",{default:function(){return i.createElement("div",{style:s},i.createElement("div",{style:f},"\u4EA7\u54C1\u540D\u79F0"),i.createElement("div",{style:f},"\u5E93\u5B58\u6570\u91CF"),w.map(function(N,R){return i.createElement(i.Fragment,{key:R},i.createElement("div",{style:b},N.name),i.createElement("div",{style:y},N.stock," \u4EF6"))}))}});case 6:case"end":return C.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-6",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`const containerStyle = {
   display: 'grid',
   gridTemplateColumns: 'repeat(2, 1fr)',
   gridTemplateRows: '100px',
@@ -1220,7 +1220,7 @@ export default () => {
       ))}
     </div>
   );
-};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=g()(l()().mark(function f(){var b,y=arguments;return l()().wrap(function(p){for(;;)switch(p.prev=p.next){case 0:return p.next=2,a.e(250).then(a.bind(a,552));case 2:return p.abrupt("return",(b=p.sent).default.apply(b,y));case 3:case"end":return p.stop()}},f)}));function x(){return t.apply(this,arguments)}return x}()}},"docs-notes-css-grid-layout-demo-7":{component:i.memo(i.lazy(g()(l()().mark(function t(){return l()().wrap(function(f){for(;;)switch(f.prev=f.next){case 0:return f.abrupt("return",{default:function(){var y=i.useState("center"),C=o()(y,2),p=C[0],w=C[1],A=i.useState("center"),D=o()(A,2),B=D[0],R=D[1],F={display:"grid",gridTemplateColumns:"repeat(3, 150px)",gridTemplateRows:"repeat(2, 100px)",gap:"10px",backgroundColor:"#f5f5f5",padding:"20px",justifyItems:p,alignItems:B},J={backgroundColor:"#00BCD4",color:"white",padding:"20px",fontSize:"16px",fontWeight:"bold",borderRadius:"4px"},z={display:"flex",gap:"10px",marginBottom:"10px",flexWrap:"wrap"},$={padding:"8px 16px",backgroundColor:"#4CAF50",color:"white",border:"none",borderRadius:"4px",cursor:"pointer",fontSize:"14px"};return i.createElement("div",null,i.createElement("div",{style:z},i.createElement("span",{style:{alignSelf:"center",fontWeight:"bold"}},"justify-items:"),["start","end","center","stretch"].map(function(j){return i.createElement("button",{key:j,onClick:function(){return w(j)},style:M()(M()({},$),{},{backgroundColor:p===j?"#2196F3":"#4CAF50"})},j)})),i.createElement("div",{style:z},i.createElement("span",{style:{alignSelf:"center",fontWeight:"bold"}},"align-items:"),["start","end","center","stretch"].map(function(j){return i.createElement("button",{key:j,onClick:function(){return R(j)},style:M()(M()({},$),{},{backgroundColor:B===j?"#2196F3":"#4CAF50"})},j)})),i.createElement("div",{style:F},Array.from({length:6},function(j,k){return i.createElement("div",{key:k+1,style:J},"Item ",k+1)})))}});case 1:case"end":return f.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-7",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`export default () => {
+};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=g()(l()().mark(function f(){var b,y=arguments;return l()().wrap(function(p){for(;;)switch(p.prev=p.next){case 0:return p.next=2,a.e(250).then(a.bind(a,90250));case 2:return p.abrupt("return",(b=p.sent).default.apply(b,y));case 3:case"end":return p.stop()}},f)}));function s(){return t.apply(this,arguments)}return s}()}},"docs-notes-css-grid-layout-demo-7":{component:i.memo(i.lazy(g()(l()().mark(function t(){return l()().wrap(function(f){for(;;)switch(f.prev=f.next){case 0:return f.abrupt("return",{default:function(){var y=i.useState("center"),w=o()(y,2),p=w[0],C=w[1],A=i.useState("center"),N=o()(A,2),R=N[0],B=N[1],z={display:"grid",gridTemplateColumns:"repeat(3, 150px)",gridTemplateRows:"repeat(2, 100px)",gap:"10px",backgroundColor:"#f5f5f5",padding:"20px",justifyItems:p,alignItems:R},$={backgroundColor:"#00BCD4",color:"white",padding:"20px",fontSize:"16px",fontWeight:"bold",borderRadius:"4px"},J={display:"flex",gap:"10px",marginBottom:"10px",flexWrap:"wrap"},F={padding:"8px 16px",backgroundColor:"#4CAF50",color:"white",border:"none",borderRadius:"4px",cursor:"pointer",fontSize:"14px"};return i.createElement("div",null,i.createElement("div",{style:J},i.createElement("span",{style:{alignSelf:"center",fontWeight:"bold"}},"justify-items:"),["start","end","center","stretch"].map(function(D){return i.createElement("button",{key:D,onClick:function(){return C(D)},style:T()(T()({},F),{},{backgroundColor:p===D?"#2196F3":"#4CAF50"})},D)})),i.createElement("div",{style:J},i.createElement("span",{style:{alignSelf:"center",fontWeight:"bold"}},"align-items:"),["start","end","center","stretch"].map(function(D){return i.createElement("button",{key:D,onClick:function(){return B(D)},style:T()(T()({},F),{},{backgroundColor:R===D?"#2196F3":"#4CAF50"})},D)})),i.createElement("div",{style:z},Array.from({length:6},function(D,k){return i.createElement("div",{key:k+1,style:$},"Item ",k+1)})))}});case 1:case"end":return f.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-grid-layout-demo-7",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`export default () => {
   const [justifyItems, setJustifyItems] = React.useState('center');
   const [alignItems, setAlignItems] = React.useState('center');
 
@@ -1306,7 +1306,7 @@ export default () => {
       </div>
     </div>
   );
-};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=g()(l()().mark(function f(){var b,y=arguments;return l()().wrap(function(p){for(;;)switch(p.prev=p.next){case 0:return p.next=2,a.e(250).then(a.bind(a,552));case 2:return p.abrupt("return",(b=p.sent).default.apply(b,y));case 3:case"end":return p.stop()}},f)}));function x(){return t.apply(this,arguments)}return x}()}}}},1523:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},6769:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},67850:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},50219:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},21:function(r,e,a){var d;a.r(e),a.d(e,{demos:function(){return N}});var o=a(17061),O=a.n(o),M=a(17156),T=a.n(M),l=a(67294),N={"docs-notes-css-tailwind-v-3-guide-demo-0":{component:l.memo(l.lazy(T()(O()().mark(function g(){var i,h;return O()().wrap(function(x){for(;;)switch(x.prev=x.next){case 0:return x.next=2,Promise.resolve().then(a.t.bind(a,67294,19));case 2:return i=x.sent,h=i.default,x.abrupt("return",{default:function(){return h.createElement(h.Fragment,null,h.createElement("div",{className:"flex rounded-lg bg-white shadow-lg max-w-sm"},h.createElement("img",{className:"block w-full h-auto",src:"https://placebear.com/100/100",alt:"Image"}),h.createElement("div",{className:"px-6 py-4"},h.createElement("h2",{className:"font-bold text-xl mb-2"},"Card Title"),h.createElement("p",{className:"text-gray-700 text-base"},"Card description goes here.")),h.createElement("div",{className:"px-6 pt-4 pb-2"},h.createElement("span",{className:"inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"},"#tag"))))}});case 5:case"end":return x.stop()}},g)})))),asset:{type:"BLOCK",id:"docs-notes-css-tailwind-v-3-guide-demo-0",refAtomIds:[],dependencies:{"index.tsx":{type:"FILE",value:`import React from 'react';
+};`}},entry:"index.jsx"},context:{},renderOpts:{compile:function(){var t=g()(l()().mark(function f(){var b,y=arguments;return l()().wrap(function(p){for(;;)switch(p.prev=p.next){case 0:return p.next=2,a.e(250).then(a.bind(a,90250));case 2:return p.abrupt("return",(b=p.sent).default.apply(b,y));case 3:case"end":return p.stop()}},f)}));function s(){return t.apply(this,arguments)}return s}()}}}},1523:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},6769:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},67850:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},50219:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},21:function(r,e,a){var d;a.r(e),a.d(e,{demos:function(){return j}});var o=a(17061),P=a.n(o),T=a(17156),M=a.n(T),l=a(67294),j={"docs-notes-css-tailwind-v-3-guide-demo-0":{component:l.memo(l.lazy(M()(P()().mark(function g(){var i,h;return P()().wrap(function(s){for(;;)switch(s.prev=s.next){case 0:return s.next=2,Promise.resolve().then(a.t.bind(a,67294,19));case 2:return i=s.sent,h=i.default,s.abrupt("return",{default:function(){return h.createElement(h.Fragment,null,h.createElement("div",{className:"flex rounded-lg bg-white shadow-lg max-w-sm"},h.createElement("img",{className:"block w-full h-auto",src:"https://placebear.com/100/100",alt:"Image"}),h.createElement("div",{className:"px-6 py-4"},h.createElement("h2",{className:"font-bold text-xl mb-2"},"Card Title"),h.createElement("p",{className:"text-gray-700 text-base"},"Card description goes here.")),h.createElement("div",{className:"px-6 pt-4 pb-2"},h.createElement("span",{className:"inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"},"#tag"))))}});case 5:case"end":return s.stop()}},g)})))),asset:{type:"BLOCK",id:"docs-notes-css-tailwind-v-3-guide-demo-0",refAtomIds:[],dependencies:{"index.tsx":{type:"FILE",value:`import React from 'react';
 
 export default () => (
   <>
@@ -1327,7 +1327,7 @@ export default () => (
       </div>
     </div>
   </>
-);`},react:{type:"NPM",value:"19.2.3"}},entry:"index.tsx"},context:{react:d||(d=a.t(l,2))},renderOpts:{compile:function(){var g=T()(O()().mark(function h(){var t,x=arguments;return O()().wrap(function(b){for(;;)switch(b.prev=b.next){case 0:return b.next=2,a.e(250).then(a.bind(a,552));case 2:return b.abrupt("return",(t=b.sent).default.apply(t,x));case 3:case"end":return b.stop()}},h)}));function i(){return g.apply(this,arguments)}return i}()}}}},48824:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},60690:function(r,e,a){var d;a.r(e),a.d(e,{demos:function(){return h}});var o=a(17061),O=a.n(o),M=a(42122),T=a.n(M),l=a(17156),N=a.n(l),g=a(67294),i=a(98388),h={"docs-notes-css-taiwind-merge-and-clsx-demo-0":{component:g.memo(g.lazy(N()(O()().mark(function t(){var x,f,b;return O()().wrap(function(C){for(;;)switch(C.prev=C.next){case 0:return C.next=2,Promise.resolve().then(a.t.bind(a,67294,19));case 2:return x=C.sent,f=x.default,b=function(w){var A="border rounded px-[20px] py-[20px] ".concat(w.className||"");return f.createElement("input",T()(T()({},w),{},{className:A}))},C.abrupt("return",{default:function(){return f.createElement(b,{className:"p-[5px]"})}});case 6:case"end":return C.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-taiwind-merge-and-clsx-demo-0",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import React from 'react';
+);`},react:{type:"NPM",value:"19.2.3"}},entry:"index.tsx"},context:{react:d||(d=a.t(l,2))},renderOpts:{compile:function(){var g=M()(P()().mark(function h(){var t,s=arguments;return P()().wrap(function(b){for(;;)switch(b.prev=b.next){case 0:return b.next=2,a.e(250).then(a.bind(a,90250));case 2:return b.abrupt("return",(t=b.sent).default.apply(t,s));case 3:case"end":return b.stop()}},h)}));function i(){return g.apply(this,arguments)}return i}()}}}},48824:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},60690:function(r,e,a){var d;a.r(e),a.d(e,{demos:function(){return h}});var o=a(17061),P=a.n(o),T=a(42122),M=a.n(T),l=a(17156),j=a.n(l),g=a(67294),i=a(98388),h={"docs-notes-css-taiwind-merge-and-clsx-demo-0":{component:g.memo(g.lazy(j()(P()().mark(function t(){var s,f,b;return P()().wrap(function(w){for(;;)switch(w.prev=w.next){case 0:return w.next=2,Promise.resolve().then(a.t.bind(a,67294,19));case 2:return s=w.sent,f=s.default,b=function(C){var A="border rounded px-[20px] py-[20px] ".concat(C.className||"");return f.createElement("input",M()(M()({},C),{},{className:A}))},w.abrupt("return",{default:function(){return f.createElement(b,{className:"p-[5px]"})}});case 6:case"end":return w.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-taiwind-merge-and-clsx-demo-0",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import React from 'react';
 
 const MyInput = (props) => {
   const className = \`border rounded px-[20px] py-[20px] \${
@@ -1339,7 +1339,7 @@ const MyInput = (props) => {
 
 export default function Page() {
   return <MyInput className="p-[5px]" />;
-}`},react:{type:"NPM",value:"19.2.3"}},entry:"index.jsx"},context:{react:d||(d=a.t(g,2))},renderOpts:{compile:function(){var t=N()(O()().mark(function f(){var b,y=arguments;return O()().wrap(function(p){for(;;)switch(p.prev=p.next){case 0:return p.next=2,a.e(250).then(a.bind(a,552));case 2:return p.abrupt("return",(b=p.sent).default.apply(b,y));case 3:case"end":return p.stop()}},f)}));function x(){return t.apply(this,arguments)}return x}()}},"docs-notes-css-taiwind-merge-and-clsx-demo-1":{component:g.memo(g.lazy(N()(O()().mark(function t(){var x,f,b,y,C;return O()().wrap(function(w){for(;;)switch(w.prev=w.next){case 0:return w.next=2,Promise.resolve().then(a.t.bind(a,67294,19));case 2:return x=w.sent,f=x.default,w.next=6,Promise.resolve().then(a.bind(a,98388));case 6:return b=w.sent,y=b.twMerge,C=function(D){var B=y("border rounded px-[20px] py-[20px] ".concat(D.className||""));return f.createElement("input",T()(T()({},D),{},{className:B}))},w.abrupt("return",{default:function(){return f.createElement(C,{className:"p-[5px]"})}});case 10:case"end":return w.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-taiwind-merge-and-clsx-demo-1",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import React from 'react';
+}`},react:{type:"NPM",value:"19.2.3"}},entry:"index.jsx"},context:{react:d||(d=a.t(g,2))},renderOpts:{compile:function(){var t=j()(P()().mark(function f(){var b,y=arguments;return P()().wrap(function(p){for(;;)switch(p.prev=p.next){case 0:return p.next=2,a.e(250).then(a.bind(a,90250));case 2:return p.abrupt("return",(b=p.sent).default.apply(b,y));case 3:case"end":return p.stop()}},f)}));function s(){return t.apply(this,arguments)}return s}()}},"docs-notes-css-taiwind-merge-and-clsx-demo-1":{component:g.memo(g.lazy(j()(P()().mark(function t(){var s,f,b,y,w;return P()().wrap(function(C){for(;;)switch(C.prev=C.next){case 0:return C.next=2,Promise.resolve().then(a.t.bind(a,67294,19));case 2:return s=C.sent,f=s.default,C.next=6,Promise.resolve().then(a.bind(a,98388));case 6:return b=C.sent,y=b.twMerge,w=function(N){var R=y("border rounded px-[20px] py-[20px] ".concat(N.className||""));return f.createElement("input",M()(M()({},N),{},{className:R}))},C.abrupt("return",{default:function(){return f.createElement(w,{className:"p-[5px]"})}});case 10:case"end":return C.stop()}},t)})))),asset:{type:"BLOCK",id:"docs-notes-css-taiwind-merge-and-clsx-demo-1",refAtomIds:[],dependencies:{"index.jsx":{type:"FILE",value:`import React from 'react';
 
 import { twMerge } from 'tailwind-merge';
 
@@ -1353,7 +1353,7 @@ const MyInput = (props) => {
 
 export default function Page() {
   return <MyInput className="p-[5px]" />;
-}`},react:{type:"NPM",value:"19.2.3"},"tailwind-merge":{type:"NPM",value:"3.4.0"}},entry:"index.jsx"},context:{react:d||(d=a.t(g,2)),"tailwind-merge":i},renderOpts:{compile:function(){var t=N()(O()().mark(function f(){var b,y=arguments;return O()().wrap(function(p){for(;;)switch(p.prev=p.next){case 0:return p.next=2,a.e(250).then(a.bind(a,552));case 2:return p.abrupt("return",(b=p.sent).default.apply(b,y));case 3:case"end":return p.stop()}},f)}));function x(){return t.apply(this,arguments)}return x}()}}}},97717:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},85379:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},95295:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},44282:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},12862:function(r,e,a){var d;a.r(e),a.d(e,{demos:function(){return g}});var o=a(17061),O=a.n(o),M=a(17156),T=a.n(M),l=a(67294),N=a(33729),g={"docs-notes-js-array-demo-7":{component:l.memo(l.lazy(function(){return a.e(2433).then(a.bind(a,15242))})),asset:{type:"BLOCK",id:"docs-notes-js-array-demo-7",refAtomIds:[],dependencies:{"index.tsx":{type:"FILE",value:a(2764).Z},"lucide-react":{type:"NPM",value:"0.554.0"},react:{type:"NPM",value:"19.2.3"}},entry:"index.tsx"},context:{"lucide-react":N,react:d||(d=a.t(l,2))},renderOpts:{compile:function(){var i=T()(O()().mark(function t(){var x,f=arguments;return O()().wrap(function(y){for(;;)switch(y.prev=y.next){case 0:return y.next=2,a.e(250).then(a.bind(a,552));case 2:return y.abrupt("return",(x=y.sent).default.apply(x,f));case 3:case"end":return y.stop()}},t)}));function h(){return i.apply(this,arguments)}return h}()}}}},34705:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},52059:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},13279:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},55417:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},63833:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},93540:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},76136:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},59856:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},87721:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},45059:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},99099:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},17900:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},35328:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},48610:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},24285:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},48355:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},17343:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},56412:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},16311:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},38446:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},35597:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},22348:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},25247:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},227:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},43521:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},303:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},22191:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},83470:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},27295:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},48032:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},93147:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},29046:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},35480:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},73814:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},20466:function(r,e,a){a.r(e),a.d(e,{texts:function(){return d}});const d=[{value:"This is a guide example.",paraId:0}]},38528:function(r,e,a){a.r(e),a.d(e,{texts:function(){return d}});const d=[{value:"\u5B98\u7F51\u5BFC\u822A",paraId:0},{value:"\u672C\u7AD9\u662F\u901A\u8FC7 ",paraId:1,tocIndex:0},{value:"create-dumi",paraId:1,tocIndex:0},{value:" \u521B\u5EFA\u7684 React \u6A21\u677F (",paraId:1,tocIndex:0},{value:"React \u9009\u9879",paraId:1,tocIndex:0},{value:")\u751F\u6210\u7684\uFF0C\u76EE\u5F55\u7ED3\u6784\u5927\u81F4\u5982\u4E0B\uFF1A",paraId:1,tocIndex:0},{value:"docs",paraId:2,tocIndex:0},{value:" \u5B58\u653E\u7B14\u8BB0\u3001\u535A\u5BA2\u3001\u788E\u7247\u5316\u77E5\u8BC6\u7B49\u3002",paraId:2,tocIndex:0},{value:"src",paraId:2,tocIndex:0},{value:" \u5B58\u653E\u5F00\u53D1 npm \u5305\u7684\u6E90\u7801\u3002",paraId:2,tocIndex:0},{value:"public",paraId:2,tocIndex:0},{value:" \u5B58\u653E\u9759\u6001\u8D44\u6E90\u3002",paraId:2,tocIndex:0},{value:".dumirc.ts",paraId:2,tocIndex:0},{value:" dumi \u7684\u914D\u7F6E\u6587\u4EF6\u3002",paraId:2,tocIndex:0},{value:".fatherrc.ts",paraId:2,tocIndex:0},{value:" father \u7684\u914D\u7F6E\u6587\u4EF6\uFF0C\u7528\u4E8E\u7EC4\u4EF6\u5E93\u6253\u5305\u3002",paraId:2,tocIndex:0},{value:`
+}`},react:{type:"NPM",value:"19.2.3"},"tailwind-merge":{type:"NPM",value:"3.4.0"}},entry:"index.jsx"},context:{react:d||(d=a.t(g,2)),"tailwind-merge":i},renderOpts:{compile:function(){var t=j()(P()().mark(function f(){var b,y=arguments;return P()().wrap(function(p){for(;;)switch(p.prev=p.next){case 0:return p.next=2,a.e(250).then(a.bind(a,90250));case 2:return p.abrupt("return",(b=p.sent).default.apply(b,y));case 3:case"end":return p.stop()}},f)}));function s(){return t.apply(this,arguments)}return s}()}}}},97717:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},85379:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},95295:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},44282:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},12862:function(r,e,a){var d;a.r(e),a.d(e,{demos:function(){return g}});var o=a(17061),P=a.n(o),T=a(17156),M=a.n(T),l=a(67294),j=a(83717),g={"docs-notes-js-array-demo-7":{component:l.memo(l.lazy(function(){return a.e(2433).then(a.bind(a,15242))})),asset:{type:"BLOCK",id:"docs-notes-js-array-demo-7",refAtomIds:[],dependencies:{"index.tsx":{type:"FILE",value:a(2764).Z},"lucide-react":{type:"NPM",value:"0.554.0"},react:{type:"NPM",value:"19.2.3"}},entry:"index.tsx"},context:{"lucide-react":j,react:d||(d=a.t(l,2))},renderOpts:{compile:function(){var i=M()(P()().mark(function t(){var s,f=arguments;return P()().wrap(function(y){for(;;)switch(y.prev=y.next){case 0:return y.next=2,a.e(250).then(a.bind(a,90250));case 2:return y.abrupt("return",(s=y.sent).default.apply(s,f));case 3:case"end":return y.stop()}},t)}));function h(){return i.apply(this,arguments)}return h}()}}}},34705:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},52059:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},13279:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},55417:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},63833:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},93540:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},76136:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},59856:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},87721:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},45059:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},99099:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},17900:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},35328:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},48610:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},24285:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},48355:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},17343:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},56412:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},16311:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},38446:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},35597:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},22348:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},25247:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},227:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},43521:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},303:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},22191:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},83470:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},27295:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},48032:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},93147:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},29046:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},35480:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},73814:function(r,e,a){a.r(e),a.d(e,{demos:function(){return o}});var d=a(67294),o={}},20466:function(r,e,a){a.r(e),a.d(e,{texts:function(){return d}});const d=[{value:"This is a guide example.",paraId:0}]},38528:function(r,e,a){a.r(e),a.d(e,{texts:function(){return d}});const d=[{value:"\u5B98\u7F51\u5BFC\u822A",paraId:0},{value:"\u672C\u7AD9\u662F\u901A\u8FC7 ",paraId:1,tocIndex:0},{value:"create-dumi",paraId:1,tocIndex:0},{value:" \u521B\u5EFA\u7684 React \u6A21\u677F (",paraId:1,tocIndex:0},{value:"React \u9009\u9879",paraId:1,tocIndex:0},{value:")\u751F\u6210\u7684\uFF0C\u76EE\u5F55\u7ED3\u6784\u5927\u81F4\u5982\u4E0B\uFF1A",paraId:1,tocIndex:0},{value:"docs",paraId:2,tocIndex:0},{value:" \u5B58\u653E\u7B14\u8BB0\u3001\u535A\u5BA2\u3001\u788E\u7247\u5316\u77E5\u8BC6\u7B49\u3002",paraId:2,tocIndex:0},{value:"src",paraId:2,tocIndex:0},{value:" \u5B58\u653E\u5F00\u53D1 npm \u5305\u7684\u6E90\u7801\u3002",paraId:2,tocIndex:0},{value:"public",paraId:2,tocIndex:0},{value:" \u5B58\u653E\u9759\u6001\u8D44\u6E90\u3002",paraId:2,tocIndex:0},{value:".dumirc.ts",paraId:2,tocIndex:0},{value:" dumi \u7684\u914D\u7F6E\u6587\u4EF6\u3002",paraId:2,tocIndex:0},{value:".fatherrc.ts",paraId:2,tocIndex:0},{value:" father \u7684\u914D\u7F6E\u6587\u4EF6\uFF0C\u7528\u4E8E\u7EC4\u4EF6\u5E93\u6253\u5305\u3002",paraId:2,tocIndex:0},{value:`
   `,paraId:3},{value:`
     `,paraId:4},{value:`
       docs
@@ -11102,514 +11102,7 @@ ssh -T git@github.com
     ],
     "description": "Vue\u6A21\u677F"
   }
-`,paraId:48,tocIndex:18},{value:"snippet-generator.app",paraId:49,tocIndex:19}]},67820:function(r,e){e.Z=`import {
-  ExternalLink,
-  FileAudio,
-  FileImage,
-  FileVideo,
-  Hash,
-  Image as ImageIcon,
-  Maximize,
-  Play,
-  Volume2,
-} from 'lucide-react';
-import React from 'react';
-
-const MarkdownBlueprint = () => {
-  return (
-    <div className="blueprint-wrapper">
-      <style>{\`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
-
-        :root {
-          --c-bg: #f8fafc;
-          --c-canvas: #ffffff;
-          --c-border: #cbd5e1;
-          --c-border-strong: #94a3b8;
-          --c-text-main: #0f172a;
-          --c-text-sub: #64748b;
-          --c-code-bg: #f1f5f9;
-          --font-ui: 'Inter', sans-serif;
-          --font-mono: 'JetBrains Mono', monospace;
-        }
-
-        .blueprint-wrapper {
-          background-color: var(--c-bg);
-          padding: 40px;
-          min-height: 100vh;
-          display: flex;
-          justify-content: center;
-          font-family: var(--font-ui);
-          color: var(--c-text-main);
-        }
-
-        /* Document Sheet */
-        .doc-sheet {
-          background-color: var(--c-canvas);
-          border: 1px solid var(--c-border);
-          width: 800px;
-          position: relative;
-          box-shadow: 10px 10px 0px rgba(0,0,0,0.05); /* Architectural block shadow */
-        }
-
-        /* Header */
-        .doc-header {
-          border-bottom: 2px solid var(--c-text-main);
-          padding: 24px 32px;
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-end;
-        }
-        
-        .doc-title {
-          font-family: var(--font-mono);
-          font-weight: 700;
-          font-size: 24px;
-          text-transform: uppercase;
-          letter-spacing: -0.5px;
-        }
-
-        .doc-meta {
-          font-family: var(--font-mono);
-          font-size: 11px;
-          color: var(--c-text-sub);
-          text-align: right;
-          line-height: 1.4;
-        }
-
-        /* Content Area */
-        .doc-content {
-          padding: 40px 48px;
-        }
-
-        /* Typography Mapping */
-        h1, h2, h3 {
-          font-family: var(--font-ui);
-          color: var(--c-text-main);
-          margin-top: 32px;
-          margin-bottom: 16px;
-          display: flex;
-          align-items: center;
-          gap: 8px;
-        }
-
-        h1 { font-size: 28px; font-weight: 800; letter-spacing: -1px; border-bottom: 1px solid var(--c-border); padding-bottom: 8px; }
-        h2 { font-size: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 48px; }
-        p { font-size: 15px; line-height: 1.7; color: #334155; margin-bottom: 16px; max-width: 65ch; }
-        
-        strong { font-weight: 800; color: #000; }
-        em { font-family: var(--font-mono); font-style: normal; background: #f1f5f9; padding: 0 4px; font-size: 0.9em; }
-
-        /* Blueprint Modules (Media Wrappers) */
-        .module-frame {
-          border: 1px solid var(--c-border);
-          margin: 24px 0;
-          background: #fff;
-        }
-
-        .module-header {
-          border-bottom: 1px solid var(--c-border);
-          padding: 6px 12px;
-          background: #f8fafc;
-          font-family: var(--font-mono);
-          font-size: 10px;
-          color: var(--c-text-sub);
-          display: flex;
-          justify-content: space-between;
-          text-transform: uppercase;
-        }
-
-        /* Video Player Style */
-        .video-container {
-          position: relative;
-          aspect-ratio: 16/9;
-          background: #e2e8f0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          overflow: hidden;
-        }
-        
-        /* Grid overlay for video placeholder */
-        .video-grid {
-          position: absolute;
-          inset: 0;
-          background-image: 
-            linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px);
-          background-size: 40px 40px;
-        }
-
-        .play-btn-large {
-          width: 64px;
-          height: 64px;
-          border: 2px solid var(--c-text-main);
-          background: rgba(255,255,255,0.8);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          z-index: 2;
-          transition: all 0.2s;
-        }
-        .play-btn-large:hover { background: #fff; transform: scale(1.05); }
-
-        .video-controls {
-          border-top: 1px solid var(--c-border);
-          padding: 8px 12px;
-          display: flex;
-          align-items: center;
-          gap: 16px;
-          background: #fff;
-          font-family: var(--font-mono);
-          font-size: 11px;
-        }
-
-        /* Audio Player Style */
-        .audio-row {
-          display: flex;
-          align-items: center;
-          padding: 16px;
-          gap: 16px;
-        }
-        
-        .waveform-viz {
-          flex: 1;
-          height: 24px;
-          display: flex;
-          align-items: center;
-          gap: 2px;
-        }
-        .wave-bar {
-          width: 3px;
-          background: var(--c-border);
-          height: 100%;
-        }
-        .wave-bar.active { background: var(--c-text-main); }
-
-        /* Image Style */
-        .image-preview {
-          padding: 16px;
-          background: #fff;
-          display: flex;
-          justify-content: center;
-        }
-        .img-placeholder {
-          width: 100%;
-          height: 240px;
-          background: #f1f5f9;
-          border: 1px dashed var(--c-border-strong);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          color: var(--c-text-sub);
-        }
-        
-        .caption-bar {
-          padding: 8px 12px;
-          border-top: 1px solid var(--c-border);
-          font-family: var(--font-mono);
-          font-size: 11px;
-          color: var(--c-text-sub);
-          display: flex;
-          gap: 12px;
-        }
-
-        /* Code Block */
-        .code-block {
-          background: var(--c-code-bg);
-          border: 1px solid var(--c-border);
-          padding: 16px;
-          margin: 16px 0;
-          font-family: var(--font-mono);
-          font-size: 13px;
-          overflow-x: auto;
-          position: relative;
-        }
-        .code-lang-tag {
-          position: absolute;
-          top: 0;
-          right: 0;
-          background: var(--c-border);
-          color: #fff;
-          font-size: 10px;
-          padding: 2px 8px;
-          text-transform: uppercase;
-        }
-
-        /* Lists */
-        .tech-list {
-          list-style: none;
-          padding: 0;
-          margin: 16px 0;
-        }
-        .tech-list li {
-          display: flex;
-          align-items: baseline;
-          margin-bottom: 8px;
-          padding-left: 8px;
-        }
-        .tech-list li::before {
-          content: '[+]';
-          font-family: var(--font-mono);
-          color: var(--c-text-sub);
-          margin-right: 12px;
-          font-size: 12px;
-        }
-
-        /* Progress Bar Shared */
-        .scrubber-track {
-          flex: 1;
-          height: 1px;
-          background: var(--c-border);
-          position: relative;
-        }
-        .scrubber-fill {
-          height: 2px;
-          background: var(--c-text-main);
-          position: absolute; top: -0.5px;
-        }
-        .scrubber-thumb {
-          width: 8px; height: 8px; background: var(--c-text-main);
-          position: absolute; top: -3px; margin-left: -4px;
-        }
-
-        /* Button Reset */
-        .icon-btn {
-          background: none; border: 1px solid transparent; 
-          cursor: pointer; padding: 4px; display: flex;
-          color: var(--c-text-main);
-        }
-        .icon-btn:hover { background: #f1f5f9; border-color: var(--c-border); }
-
-      \`}</style>
-
-      <div className="doc-sheet">
-        {/* Document Header */}
-        <div className="doc-header">
-          <div>
-            <div className="doc-title">Engineering Rendering</div>
-            <div
-              style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '12px',
-                marginTop: '4px',
-              }}
-            >
-              MD_PARSER_V4.2 // COMPONENT_DEMO
-            </div>
-          </div>
-          <div className="doc-meta">
-            DATE: 2025-05-18
-            <br />
-            AUTH: SYSTEM_ROOT
-            <br />
-            ID: DOC-8821
-          </div>
-        </div>
-
-        <div className="doc-content">
-          {/* H1 Title */}
-          <h1>Multimedia Integration</h1>
-          <p>
-            This document demonstrates the rendering capabilities of the new{' '}
-            <strong>blueprint engine</strong>. It supports embedded media types
-            including video, audio, and static imagery while maintaining a
-            strict engineering aesthetic.
-          </p>
-
-          {/* H2: Video Section */}
-          <h2>
-            <Hash size={18} style={{ marginRight: 8 }} />
-            01. Video Playback Module
-          </h2>
-          <p>
-            Video content is encapsulated in a 16:9 container with
-            hardware-accelerated playback controls.
-          </p>
-
-          <div className="module-frame">
-            <div className="module-header">
-              <span>
-                <FileVideo
-                  size={10}
-                  style={{ display: 'inline', marginRight: 6 }}
-                />{' '}
-                vid_demo_render.mp4
-              </span>
-              <span>1920x1080 @ 60fps</span>
-            </div>
-            <div className="video-container">
-              <div className="video-grid"></div>
-              <div className="play-btn-large">
-                <Play size={32} fill="currentColor" strokeWidth={1} />
-              </div>
-            </div>
-            <div className="video-controls">
-              <button className="icon-btn">
-                <Play size={14} />
-              </button>
-              <div className="scrubber-track">
-                <div className="scrubber-fill" style={{ width: '35%' }}></div>
-                <div className="scrubber-thumb" style={{ left: '35%' }}></div>
-              </div>
-              <span>04:20 / 12:00</span>
-              <button className="icon-btn">
-                <Volume2 size={14} />
-              </button>
-              <button className="icon-btn">
-                <Maximize size={14} />
-              </button>
-            </div>
-          </div>
-
-          {/* H2: Audio Section */}
-          <h2>
-            <Hash size={18} style={{ marginRight: 8 }} />
-            02. Audio Analysis
-          </h2>
-          <p>Audio tracks are visualized using a waveform approximation.</p>
-
-          <div className="module-frame">
-            <div className="module-header">
-              <span>
-                <FileAudio
-                  size={10}
-                  style={{ display: 'inline', marginRight: 6 }}
-                />{' '}
-                interview_part_1.wav
-              </span>
-              <span>44.1kHz / STEREO</span>
-            </div>
-            <div className="audio-row">
-              <button
-                className="icon-btn"
-                style={{ border: '1px solid #000', padding: 8 }}
-              >
-                <Play size={16} fill="currentColor" />
-              </button>
-
-              <div className="waveform-viz">
-                {[...Array(40)].map((_, i) => (
-                  <div
-                    key={i}
-                    className={\`wave-bar \${i < 15 ? 'active' : ''}\`}
-                    style={{ height: \`\${Math.max(20, Math.random() * 100)}%\` }}
-                  />
-                ))}
-              </div>
-
-              <div
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '11px',
-                  minWidth: '80px',
-                  textAlign: 'right',
-                }}
-              >
-                01:14 / 03:45
-              </div>
-            </div>
-          </div>
-
-          {/* H2: Images & Code */}
-          <h2>
-            <Hash size={18} style={{ marginRight: 8 }} />
-            03. Static Data & Code
-          </h2>
-
-          <ul className="tech-list">
-            <li>Standardized image containers with caption support.</li>
-            <li>
-              Monospaced syntax highlighting for technical implementation
-              details.
-            </li>
-            <li>Responsive grid alignment.</li>
-          </ul>
-
-          {/* Image Module */}
-          <div className="module-frame">
-            <div className="module-header">
-              <span>
-                <FileImage
-                  size={10}
-                  style={{ display: 'inline', marginRight: 6 }}
-                />{' '}
-                schematic_v1.png
-              </span>
-              <span>SIZE: 2.4MB</span>
-            </div>
-            <div className="image-preview">
-              <div className="img-placeholder">
-                <ImageIcon
-                  size={48}
-                  strokeWidth={1}
-                  style={{ marginBottom: 16 }}
-                />
-                <span
-                  style={{ fontFamily: 'var(--font-mono)', fontSize: '12px' }}
-                >
-                  IMAGE_RESOURCE_NOT_FOUND
-                </span>
-              </div>
-            </div>
-            <div className="caption-bar">
-              <strong>FIG 1.1:</strong> System architecture diagram showing data
-              flow between nodes.
-            </div>
-          </div>
-
-          {/* Code Module */}
-          <div className="code-block">
-            <div className="code-lang-tag">TYPESCRIPT</div>
-            <pre>{\`interface MediaNode {
-  id: string;
-  type: 'video' | 'audio' | 'image';
-  src: string;
-  metadata: {
-    duration?: number;
-    dimensions?: [number, number];
-  };
-}
-
-function renderNode(node: MediaNode): void {
-  console.log("Initializing blueprint renderer...");
-  // Connect to hardware interface
-}\`}</pre>
-          </div>
-
-          <p
-            style={{
-              marginTop: 32,
-              fontSize: 13,
-              borderTop: '1px solid #cbd5e1',
-              paddingTop: 16,
-            }}
-          >
-            <ExternalLink
-              size={12}
-              style={{ display: 'inline', marginRight: 4 }}
-            />
-            <a
-              href="#"
-              style={{
-                color: 'var(--c-text-main)',
-                textDecoration: 'none',
-                borderBottom: '1px solid currentColor',
-              }}
-            >
-              View Full Documentation
-            </a>
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default MarkdownBlueprint;
-`},2764:function(r,e){e.Z=`import { AlertCircle, Ban, Lock, X } from 'lucide-react';
+`,paraId:48,tocIndex:18},{value:"snippet-generator.app",paraId:49,tocIndex:19}]},2764:function(r,e){e.Z=`import { AlertCircle, Ban, Lock, X } from 'lucide-react';
 import React, { useState } from 'react';
 
 const BlueprintInputShowcase = () => {
@@ -12096,1148 +11589,408 @@ const BlueprintInputShowcase = () => {
 };
 
 export default BlueprintInputShowcase;
-`},13105:function(r,e){e.Z=`import {
-  AlertTriangle,
-  ChevronDown,
+`},19732:function(r,e){e.Z=`import {
+  BookOpen,
+  ChevronLeft,
   ChevronRight,
-  Cpu,
-  Edit2,
-  Hash,
-  Moon,
-  Plus,
-  Save,
-  Search,
-  Sun,
-  Terminal,
-  Trash2,
+  ExternalLink,
+  FileText,
 } from 'lucide-react';
-import mermaid from 'mermaid';
 import React, { useEffect, useRef, useState } from 'react';
-import ReactMarkdown from 'react-markdown';
-import styled, {
-  createGlobalStyle,
-  css,
-  ThemeProvider,
-} from 'styled-components';
 
-// ==========================================
-// 1. THEME DEFINITIONS (\u4E3B\u9898\u5B9A\u4E49)
-// ==========================================
+/**
+ * CSS Definitions: Flat Engineering Blueprint Style
+ */
+const styles = \`
+:root {
+  --c-bg: #f8fafc;
+  --c-canvas: #ffffff;
+  --c-border: #cbd5e1;
+  --c-text-main: #0f172a;
+  --c-text-sub: #64748b;
+  --font-ui: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
 
-const sharedTheme = {
-  fonts: {
-    mono: "'JetBrains Mono', 'Fira Code', monospace",
-    sans: "'Inter', sans-serif",
-  },
-  spacing: { unit: 4 },
-};
-
-const lightTheme = {
-  ...sharedTheme,
-  name: 'light',
-  colors: {
-    bg: '#f0f2f5',
-    panel: '#ffffff',
-    border: '#1a1a1a',
-    borderDim: '#d4d4d8',
-    text: '#1a1a1a',
-    textDim: '#71717a',
-    accent: '#0055ff',
-    warning: '#dc2626',
-    grid: '#e5e7eb',
-    shadow: 'rgba(0,0,0,1)',
-    activeItem: '#f0f9ff',
-    surfaceHover: '#f4f4f5',
-    codeBg: '#f4f4f5',
-  },
-};
-
-const darkTheme = {
-  ...sharedTheme,
-  name: 'dark',
-  colors: {
-    bg: '#09090b',
-    panel: '#18181b',
-    border: '#52525b',
-    borderDim: '#27272a',
-    text: '#e4e4e7',
-    textDim: '#a1a1aa',
-    accent: '#38bdf8',
-    warning: '#f87171',
-    grid: '#27272a',
-    shadow: '#000000',
-    activeItem: '#1e293b',
-    surfaceHover: '#27272a',
-    codeBg: '#27272a',
-  },
-};
-
-const GlobalStyles = createGlobalStyle\`
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
-
-  * { box-sizing: border-box; }
-
-  body {
-    margin: 0;
-    font-family: \${(props) => props.theme.fonts.sans};
-    background-color: \${(props) => props.theme.colors.bg};
-    color: \${(props) => props.theme.colors.text};
-    transition: background-color 0.3s ease, color 0.3s ease;
-    
-    background-image: 
-      linear-gradient(\${(props) =>
-        props.theme.colors.grid} 1px, transparent 1px),
-      linear-gradient(90deg, \${(props) =>
-        props.theme.colors.grid} 1px, transparent 1px);
-    background-size: 20px 20px;
-    height: 100vh;
-    overflow: hidden;
-  }
-  
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: \${(props) =>
-    props.theme.colors.border}; }
-\`;
-
-// ==========================================
-// 2. LAYOUT & STRUCTURAL COMPONENTS (\u5E03\u5C40\u7EC4\u4EF6)
-// ==========================================
-
-const Frame = styled.div\`
+.blueprint-container {
+  background-color: var(--c-bg);
+  padding: 2rem;
+  font-family: var(--font-ui);
+  min-height: 100vh;
   display: flex;
-  width: 100vw;
-  height: 100vh;
-  padding: 16px;
-  gap: 16px;
-  overflow: hidden; /* \u9632\u6B62\u6EA2\u51FA */
-\`;
-
-const TechPanel = styled.div\`
-  background: \${(props) => props.theme.colors.panel};
-  border: 2px solid \${(props) => props.theme.colors.border};
-  box-shadow: 4px 4px 0px \${(props) => props.theme.colors.shadow};
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  transition: all 0.3s ease;
-
-  &::after {
-    content: '+';
-    position: absolute;
-    top: -9px;
-    right: -9px;
-    background: \${(props) => props.theme.colors.bg};
-    font-family: \${(props) => props.theme.fonts.mono};
-    font-weight: bold;
-    color: \${(props) => props.theme.colors.border};
-    line-height: 1;
-    width: 16px;
-    text-align: center;
-    transition: background 0.3s ease, color 0.3s ease;
-  }
-\`;
-
-const Sidebar = styled(TechPanel)\`
-  width: 340px;
-  min-width: 340px;
-  z-index: 2;
-  /* \u786E\u4FDD\u4FA7\u8FB9\u680F\u5185\u5BB9\u5782\u76F4\u6392\u5217 */
-  display: flex;
-  flex-direction: column;
-\`;
-
-const MainArea = styled(TechPanel)\`
-  flex: 1;
-  z-index: 1;
-  /* \u786E\u4FDD\u4E3B\u533A\u57DF\u5185\u5BB9\u5782\u76F4\u6392\u5217 */
-  display: flex;
-  flex-direction: column;
-  min-width: 0; /* \u5173\u952E\uFF1A\u9632\u6B62 Flex \u5B50\u5143\u7D20\u5185\u5BB9\u6EA2\u51FA\u5BFC\u81F4\u5E03\u5C40\u5D29\u574F */
-\`;
-
-// ==========================================
-// 3. SIDEBAR COMPONENTS (\u4FA7\u8FB9\u680F\u7EC4\u4EF6)
-// ==========================================
-
-const HeaderBlock = styled.div\`
-  padding: 20px;
-  border-bottom: 2px solid \${(props) => props.theme.colors.border};
-  background: \${(props) => props.theme.colors.panel};
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  flex-shrink: 0; /* \u9632\u6B62\u5934\u90E8\u88AB\u538B\u7F29 */
-\`;
-
-const TopRow = styled.div\`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-\`;
-
-const AppTitle = styled.div\`
-  font-family: \${(props) => props.theme.fonts.mono};
-  font-weight: 800;
-  text-transform: uppercase;
-  font-size: 14px;
-  letter-spacing: 2px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  span.highlight {
-    background: \${(props) => props.theme.colors.text};
-    color: \${(props) => props.theme.colors.panel};
-    padding: 2px 6px;
-  }
-\`;
-
-const ThemeToggle = styled.button\`
-  background: transparent;
-  border: 1px solid \${(props) => props.theme.colors.border};
-  color: \${(props) => props.theme.colors.textDim};
-  cursor: pointer;
-  padding: 4px;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  transition: all 0.2s;
-
-  &:hover {
-    color: \${(props) => props.theme.colors.accent};
-    border-color: \${(props) => props.theme.colors.accent};
-  }
-\`;
-
-const SearchBox = styled.div\`
-  display: flex;
   align-items: center;
-  border: 1px solid \${(props) => props.theme.colors.border};
-  height: 40px;
+}
 
-  &:focus-within {
-    outline: 2px solid \${(props) => props.theme.colors.accent};
-  }
-\`;
-
-const SearchInput = styled.input\`
-  flex: 1;
-  border: none;
-  height: 100%;
-  padding: 0 12px;
-  font-family: \${(props) => props.theme.fonts.mono};
-  font-size: 12px;
-  outline: none;
-  background: transparent;
-  color: \${(props) => props.theme.colors.text};
-
-  &::placeholder {
-    color: \${(props) => props.theme.colors.textDim};
-    text-transform: uppercase;
-  }
-\`;
-
-const ActionButton = styled.button\`
-  height: 100%;
-  padding: 0 12px;
-  border: none;
-  border-left: 1px solid \${(props) => props.theme.colors.border};
-  background: \${(props) =>
-    props.$primary ? props.theme.colors.text : 'transparent'};
-  color: \${(props) =>
-    props.$primary ? props.theme.colors.panel : props.theme.colors.text};
-  font-family: \${(props) => props.theme.fonts.mono};
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 12px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.1s;
-
-  &:hover {
-    background: \${(props) =>
-      props.$primary ? props.theme.colors.text : props.theme.colors.grid};
-    opacity: 0.9;
-  }
-\`;
-
-const ListContainer = styled.div\`
-  flex: 1;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-\`;
-
-const NoteItemWrapper = styled.div\`
-  border-bottom: 1px solid \${(props) => props.theme.colors.border};
-  background: \${(props) =>
-    props.$active ? props.theme.colors.activeItem : 'transparent'};
-  position: relative;
-  transition: background 0.1s;
-  cursor: pointer;
-  flex-shrink: 0;
-
-  &::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background: \${(props) =>
-      props.$active ? props.theme.colors.accent : 'transparent'};
-  }
-
-  &:hover {
-    background: \${(props) =>
-      props.$active
-        ? props.theme.colors.activeItem
-        : props.theme.colors.surfaceHover};
-  }
-\`;
-
-const NoteHeader = styled.div\`
-  display: flex;
-  align-items: center;
-  padding: 12px 12px 8px 16px;
-  gap: 8px;
-\`;
-
-const NoteId = styled.span\`
-  font-family: \${(props) => props.theme.fonts.mono};
-  font-size: 10px;
-  color: \${(props) => props.theme.colors.textDim};
-  border: 1px solid \${(props) => props.theme.colors.borderDim};
-  padding: 2px 4px;
-  background: \${(props) =>
-    props.theme.name === 'dark' ? 'rgba(255,255,255,0.05)' : '#f4f4f5'};
-\`;
-
-const NoteTitle = styled.div\`
-  font-weight: 700;
-  font-size: 14px;
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: \${(props) => props.theme.colors.text};
-\`;
-
-const ExpandTrigger = styled.div\`
-  padding: 4px;
-  color: \${(props) => props.theme.colors.textDim};
-  &:hover {
-    color: \${(props) => props.theme.colors.text};
-  }
-\`;
-
-const NoteContentPreview = styled.div\`
-  padding: 0 16px 16px 16px;
-  margin-left: 24px;
-  border-left: 1px dashed \${(props) => props.theme.colors.borderDim};
-
-  p {
-    margin: 0;
-    font-family: \${(props) => props.theme.fonts.mono};
-    font-size: 11px;
-    color: \${(props) => props.theme.colors.textDim};
-    line-height: 1.5;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-\`;
-
-// ==========================================
-// 4. EDITOR & TOOLBAR (\u7F16\u8F91\u5668\u533A\u57DF)
-// ==========================================
-
-const EditorToolbar = styled.div\`
-  height: 60px;
-  border-bottom: 2px solid \${(props) => props.theme.colors.border};
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 24px;
-  background: \${(props) => props.theme.colors.panel};
-  flex-shrink: 0;
-\`;
-
-const Breadcrumb = styled.div\`
-  font-family: \${(props) => props.theme.fonts.mono};
-  font-size: 12px;
-  color: \${(props) => props.theme.colors.textDim};
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  .icon {
-    color: \${(props) => props.theme.colors.accent};
-  }
-  strong {
-    color: \${(props) => props.theme.colors.text};
-    font-weight: 700;
-  }
-\`;
-
-const ToolbarActions = styled.div\`
-  display: flex;
-  align-items: center;
-  gap: 12px;
-\`;
-
-const StatusIndicator = styled.div\`
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: \${(props) => props.theme.fonts.mono};
-  font-size: 10px;
-  color: \${(props) => props.theme.colors.textDim};
-  margin-right: 12px;
-  padding-right: 12px;
-  border-right: 1px solid \${(props) => props.theme.colors.borderDim};
-  height: 20px;
-
-  &::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: \${(props) =>
-      props.$active ? props.theme.colors.accent : props.theme.colors.textDim};
-    box-shadow: \${(props) =>
-      props.$active ? \`0 0 8px \${props.theme.colors.accent}\` : 'none'};
-  }
-\`;
-
-const CmdButton = styled.button\`
-  height: 32px;
-  padding: 0 16px;
-  border: 1px solid \${(props) => props.theme.colors.border};
-  background: transparent;
-  color: \${(props) => props.theme.colors.text};
-  font-family: \${(props) => props.theme.fonts.mono};
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
-  &:hover {
-    background: \${(props) => props.theme.colors.surfaceHover};
-    transform: translateY(-1px);
-    box-shadow: 2px 2px 0px \${(props) => props.theme.colors.borderDim};
-  }
-
-  &:active {
-    transform: translateY(0);
-    box-shadow: none;
-  }
-
-  \${(props) =>
-    props.$variant === 'primary' &&
-    css\`
-      background: \${props.theme.colors.text};
-      color: \${props.theme.colors.panel};
-      border-color: \${props.theme.colors.text};
-      &:hover {
-        background: \${props.theme.colors.accent};
-        border-color: \${props.theme.colors.accent};
-        color: #fff;
-      }
-    \`}
-
-  \${(props) =>
-    props.$variant === 'danger' &&
-    css\`
-      color: \${props.theme.colors.warning};
-      border-color: \${props.theme.colors.borderDim};
-      &:hover {
-        background: \${props.theme.colors.warning};
-        color: white;
-        border-color: \${props.theme.colors.warning};
-      }
-    \`}
-\`;
-
-const EditorCanvas = styled.div\`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  position: relative;
-  background-image: linear-gradient(
-    \${(props) => props.theme.colors.grid} 1px,
-    transparent 1px
-  );
-  background-size: 100% 32px;
-\`;
-
-const TitleInput = styled.input\`
-  font-family: \${(props) => props.theme.fonts.sans};
-  font-weight: 800;
-  font-size: 28px;
-  padding: 32px 32px 16px;
-  border: none;
-  background: transparent;
-  color: \${(props) => props.theme.colors.text};
+/* Document Canvas */
+.doc-canvas {
+  background-color: var(--c-canvas);
+  border: 1px solid var(--c-border);
   width: 100%;
-  flex-shrink: 0;
+  max-width: 800px;
+  position: relative;
+  /* Grid pattern background */
+  background-image: radial-gradient(var(--c-border) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
 
-  &:focus {
-    outline: none;
-  }
-  &::placeholder {
-    color: \${(props) => props.theme.colors.borderDim};
-  }
-\`;
-
-const ContentArea = styled.textarea\`
-  flex: 1;
-  font-family: \${(props) => props.theme.fonts.mono};
-  font-size: 14px;
-  line-height: 32px;
-  padding: 0 32px 32px;
-  border: none;
-  background: transparent;
-  resize: none;
-  color: \${(props) => props.theme.colors.text};
-
-  &:focus {
-    outline: none;
-  }
-\`;
-
-const ViewerScrollWrapper = styled.div\`
-  flex: 1;
-  padding: 0 32px 32px;
-  overflow-y: auto;
-\`;
-
-const ViewerTitle = styled.h1\`
-  font-family: \${(props) => props.theme.fonts.sans};
-  font-size: 28px;
-  font-weight: 800;
-  margin-top: 32px;
-  margin-bottom: 24px;
-  color: \${(props) => props.theme.colors.text};
-\`;
-
-// ==========================================
-// 5. MERMAID & MARKDOWN STYLES
-// ==========================================
-
-const MermaidWrapper = styled.div\`
+/* Header */
+.doc-header {
+  border-bottom: 1px solid var(--c-border);
+  padding: 1rem 2rem;
   display: flex;
-  justify-content: center;
-  background: \${(props) =>
-    props.theme.name === 'dark'
-      ? 'rgba(255,255,255,0.02)'
-      : 'rgba(0,0,0,0.02)'};
-  border: 1px dashed \${(props) => props.theme.colors.borderDim};
-  padding: 16px;
-  margin: 16px 0;
-  border-radius: 4px;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+}
+.doc-title {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+}
 
-  svg {
-    max-width: 100%;
-    font-family: \${(props) => props.theme.fonts.mono} !important;
-  }
-\`;
+/* Content Body */
+.doc-body {
+  padding: 3rem 4rem;
+  background: rgba(255, 255, 255, 0.9); 
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--c-text-main);
+  text-align: justify;
+}
 
-const MermaidDiagram = ({ chart, themeName }) => {
-  const containerRef = useRef(null);
+/* Citation Marker [N] */
+.citation-marker {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--c-text-sub);
+  background: white;
+  border: 1px solid var(--c-border);
+  padding: 0 4px;
+  margin: 0 4px;
+  cursor: pointer;
+  vertical-align: super;
+  line-height: 1.2;
+  transition: all 0.15s ease;
+  user-select: none;
+}
 
-  useEffect(() => {
-    mermaid.initialize({
-      startOnLoad: false,
-      theme: themeName === 'dark' ? 'dark' : 'default',
-      fontFamily: "'JetBrains Mono', monospace",
-      securityLevel: 'loose',
-    });
+.citation-marker:hover,
+.citation-marker.active {
+  border-color: var(--c-text-main);
+  background: var(--c-text-main);
+  color: white;
+}
 
-    const renderChart = async () => {
-      if (containerRef.current) {
-        try {
-          const id = \`mermaid-\${Math.random().toString(36).substr(2, 9)}\`;
-          containerRef.current.innerHTML = '';
-          const { svg } = await mermaid.render(id, chart);
-          containerRef.current.innerHTML = svg;
-        } catch (error) {
-          console.error('Mermaid error:', error);
-          containerRef.current.innerHTML = \`<div style="color:red; font-size:12px; font-family:monospace">SYNTAX ERROR</div>\`;
-        }
-      }
-    };
-    renderChart();
-  }, [chart, themeName]);
-
-  return <MermaidWrapper ref={containerRef} />;
-};
-
-const MarkdownContainer = styled.div\`
-  font-family: \${(props) => props.theme.fonts.sans};
-  line-height: 1.7;
-  color: \${(props) => props.theme.colors.text};
-
-  /* Headings */
-  h1,
-  h2,
-  h3,
-  h4 {
-    font-family: \${(props) => props.theme.fonts.sans};
-    font-weight: 800;
-    margin-top: 1.5em;
-    margin-bottom: 0.5em;
-    letter-spacing: -0.02em;
-    color: \${(props) => props.theme.colors.text};
-  }
-  h1 {
-    font-size: 2em;
-    border-bottom: 2px solid \${(props) => props.theme.colors.border};
-    padding-bottom: 0.2em;
-  }
-  h2 {
-    font-size: 1.5em;
-  }
-
-  /* Paragraphs */
-  p {
-    margin-bottom: 1em;
-  }
-
-  /* Links */
-  a {
-    color: \${(props) => props.theme.colors.accent};
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: border-bottom-color 0.2s;
-    &:hover {
-      border-bottom-color: \${(props) => props.theme.colors.accent};
-    }
-  }
-
-  /* Lists */
-  ul,
-  ol {
-    padding-left: 1.5em;
-    margin-bottom: 1em;
-  }
-  li {
-    margin-bottom: 0.25em;
-  }
-
-  /* Inline Code */
-  code {
-    font-family: \${(props) => props.theme.fonts.mono};
-    background: \${(props) => props.theme.colors.codeBg};
-    padding: 2px 5px;
-    border-radius: 2px;
-    font-size: 0.9em;
-    border: 1px solid \${(props) => props.theme.colors.borderDim};
-    color: \${(props) => props.theme.colors.accent};
-  }
-
-  /* Code Blocks (Pre) */
-  pre {
-    background: \${(props) => props.theme.colors.codeBg};
-    padding: 16px;
-    border-radius: 4px;
-    overflow-x: auto;
-    border: 1px solid \${(props) => props.theme.colors.borderDim};
-    margin: 1em 0;
-
-    code {
-      background: transparent;
-      padding: 0;
-      border: none;
-      color: \${(props) => props.theme.colors.text};
-      font-size: 0.9em;
-    }
-  }
-
-  /* Blockquotes */
-  blockquote {
-    border-left: 4px solid \${(props) => props.theme.colors.accent};
-    margin: 1em 0;
-    padding-left: 1em;
-    font-style: italic;
-    color: \${(props) => props.theme.colors.textDim};
-  }
-
-  /* Table */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 1em 0;
-    font-size: 0.9em;
-  }
-  th,
-  td {
-    border: 1px solid \${(props) => props.theme.colors.borderDim};
-    padding: 8px 12px;
-    text-align: left;
-  }
-  th {
-    background: \${(props) => props.theme.colors.surfaceHover};
-    font-weight: 600;
-  }
-\`;
-
-// ==========================================
-// 6. MODAL COMPONENTS (\u5F39\u7A97)
-// ==========================================
-
-const Overlay = styled.div\`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(2px);
+/* Source Popover Card */
+.source-popover {
+  position: absolute;
+  width: 320px;
+  background: white;
+  border: 1px solid var(--c-text-main); /* Strong border for overlay */
   z-index: 100;
   display: flex;
-  align-items: center;
-  justify-content: center;
-\`;
-
-const DialogPanel = styled.div\`
-  width: 400px;
-  background: \${(props) => props.theme.colors.panel};
-  border: 2px solid \${(props) => props.theme.colors.warning};
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5),
-    0 10px 10px -5px rgba(0, 0, 0, 0.2);
-  display: flex;
   flex-direction: column;
-  position: relative;
+  /* Connector Line styling simulated by positioning or simple border */
+}
 
-  &::before {
-    content: '';
-    height: 12px;
-    width: 100%;
-    background: repeating-linear-gradient(
-      45deg,
-      \${(props) => props.theme.colors.warning},
-      \${(props) => props.theme.colors.warning} 10px,
-      transparent 10px,
-      transparent 20px
-    );
-    border-bottom: 1px solid \${(props) => props.theme.colors.warning};
-  }
-\`;
-
-const DialogContent = styled.div\`
-  padding: 32px 24px 24px;
-  text-align: center;
+/* Popover Header */
+.pop-header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-\`;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--c-border);
+  background: #f8fafc;
+}
 
-const DialogTitle = styled.h3\`
-  font-family: \${(props) => props.theme.fonts.mono};
-  text-transform: uppercase;
-  font-size: 16px;
-  margin: 16px 0 8px;
-  color: \${(props) => props.theme.colors.text};
-\`;
+.pop-counter {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--c-text-sub);
+}
 
-const DialogText = styled.p\`
-  font-size: 13px;
-  color: \${(props) => props.theme.colors.textDim};
-  margin-bottom: 24px;
-  line-height: 1.5;
-\`;
-
-const ButtonGroup = styled.div\`
+.pop-nav {
   display: flex;
-  gap: 12px;
-  width: 100%;
-\`;
+  gap: 0;
+  border: 1px solid var(--c-border);
+  background: white;
+}
 
-const ModalButton = styled.button\`
-  flex: 1;
-  height: 40px;
-  border: 1px solid
-    \${(props) =>
-      props.$variant === 'danger'
-        ? props.theme.colors.warning
-        : props.theme.colors.border};
-  background: \${(props) =>
-    props.$variant === 'danger' ? props.theme.colors.warning : 'transparent'};
-  color: \${(props) =>
-    props.$variant === 'danger' ? '#fff' : props.theme.colors.text};
-  font-family: \${(props) => props.theme.fonts.mono};
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 12px;
+.pop-btn {
+  border: none;
+  background: transparent;
+  padding: 4px 8px;
   cursor: pointer;
-  transition: all 0.2s;
+  color: var(--c-text-main);
+  display: flex;
+  align-items: center;
+}
+.pop-btn:hover { background: #f1f5f9; }
+.pop-btn:first-child { border-right: 1px solid var(--c-border); }
+.pop-btn:disabled { color: #cbd5e1; cursor: not-allowed; }
 
-  &:hover {
-    background: \${(props) =>
-      props.$variant === 'danger'
-        ? '#b91c1c'
-        : props.theme.colors.surfaceHover};
-    transform: translateY(-1px);
-  }
+/* Popover Content */
+.pop-content {
+  padding: 1rem;
+}
+
+.pop-title {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pop-desc {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--c-text-sub);
+  line-height: 1.5;
+}
+
+.pop-footer {
+  padding: 0.5rem 1rem;
+  border-top: 1px dashed var(--c-border);
+  display: flex;
+  justify-content: flex-end;
+}
+.link-btn {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--c-text-main);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.link-btn:hover { text-decoration: underline; }
+
+/* Connecting Line (Optional decorative element) */
+.connector-line {
+  position: absolute;
+  width: 1px;
+  background: var(--c-text-main);
+  height: 20px;
+  /* Position logic would be dynamic in production */
+}
 \`;
 
-// ==========================================
-// 7. APP LOGIC (\u4E1A\u52A1\u903B\u8F91)
-// ==========================================
+// Mock Data
+const SOURCES = [
+  {
+    id: 1,
+    title: 'Data Source Specification',
+    content:
+      'Artificial Intelligence, often abbreviated as AI, is a broad branch of computer science concerned with building smart machines capable of performing tasks that typically require human intelligence.',
+    url: '#',
+  },
+  {
+    id: 2,
+    title: 'Agile R&D Workflow',
+    content:
+      'Rapid iteration cycles allow enterprise products to respond to market changes within 2-week sprint intervals.',
+    url: '#',
+  },
+  {
+    id: 3,
+    title: 'Component Abstraction',
+    content:
+      "High reusability is achieved by decoupling logic from view layers, establishing a 'single source of truth' for design tokens.",
+    url: '#',
+  },
+];
 
-const generateId = () => Math.floor(Math.random() * 9000 + 1000).toString();
+const CitationMarker = ({ id, activeId, onClick, markerRef }) => (
+  <span
+    ref={markerRef}
+    className={\`citation-marker \${activeId === id ? 'active' : ''}\`}
+    onClick={(e) => {
+      e.stopPropagation();
+      onClick(id);
+    }}
+  >
+    [{id}]
+  </span>
+);
 
-const NoteItem = ({ note, isActive, onClick }) => {
-  const [expanded, setExpanded] = useState(false);
+export default function SourceCitationComponent() {
+  const [activeId, setActiveId] = useState(null);
+  const [popoverPos, setPopoverPos] = useState({ top: 0, left: 0 });
+  const containerRef = useRef(null);
 
-  return (
-    <NoteItemWrapper $active={isActive} onClick={onClick}>
-      <NoteHeader>
-        <NoteId>#{note.id}</NoteId>
-        <NoteTitle>{note.title || 'UNTITLED_LOG'}</NoteTitle>
-        <ExpandTrigger
-          onClick={(e) => {
-            e.stopPropagation();
-            setExpanded(!expanded);
-          }}
-        >
-          {expanded ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
-        </ExpandTrigger>
-      </NoteHeader>
-      {expanded && (
-        <NoteContentPreview>
-          <p>{note.content || '// No data...'}</p>
-        </NoteContentPreview>
-      )}
-    </NoteItemWrapper>
-  );
-};
+  // Refs to store marker elements
+  const markerRefs = useRef({});
 
-const ReactNotesApp = () => {
-  const [themeMode, setThemeMode] = useState('light');
-
-  const [notes, setNotes] = useState([
-    {
-      id: '8024',
-      title: 'System Architecture',
-      content: \`# System Specs
-
-The system relies on a **flux capacitor** design.
-
-## Components
-- [x] React Frontend
-- [ ] Node Backend
-
-## Diagram
-\\\`\\\`\\\`mermaid
-graph LR
-    A[Client] -->|HTTP/JSON| B(API Gateway)
-    B --> C{Service Registry}
-    D[(Database)]
-\\\`\\\`\\\`
-\`,
-      updatedAt: new Date().toISOString(),
-    },
-    {
-      id: '1092',
-      title: 'Daily Log',
-      content: 'Use the \`markdown\` to write docs.',
-      updatedAt: '2023-11-25T14:00:00',
-    },
-  ]);
-
-  const [activeNoteId, setActiveNoteId] = useState('8024');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [isEditing, setIsEditing] = useState(false);
-  const [editDraft, setEditDraft] = useState(null);
-  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
-
+  // Calculate Popover Position
   useEffect(() => {
-    const savedTheme = localStorage.getItem('notes-theme');
-    if (savedTheme) setThemeMode(savedTheme);
+    if (
+      activeId !== null &&
+      markerRefs.current[activeId] &&
+      containerRef.current
+    ) {
+      const markerEl = markerRefs.current[activeId];
+      const containerRect = containerRef.current.getBoundingClientRect();
+      const markerRect = markerEl.getBoundingClientRect();
+
+      // Position: Centered below the marker
+      const top = markerRect.bottom - containerRect.top + 10; // 10px offset
+      let left =
+        markerRect.left - containerRect.left - 320 / 2 + markerRect.width / 2;
+
+      // Boundary checks (simple)
+      if (left < 20) left = 20;
+      if (left > containerRect.width - 340) left = containerRect.width - 340;
+
+      setPopoverPos({ top, left });
+    }
+  }, [activeId]);
+
+  const handleNext = () => {
+    if (activeId < SOURCES.length) setActiveId(activeId + 1);
+  };
+
+  const handlePrev = () => {
+    if (activeId > 1) setActiveId(activeId - 1);
+  };
+
+  const closePopover = () => setActiveId(null);
+
+  // Close on click outside
+  useEffect(() => {
+    const handleClickOutside = () => closePopover();
+    window.addEventListener('click', handleClickOutside);
+    return () => window.removeEventListener('click', handleClickOutside);
   }, []);
 
-  const toggleTheme = () => {
-    const newTheme = themeMode === 'light' ? 'dark' : 'light';
-    setThemeMode(newTheme);
-    localStorage.setItem('notes-theme', newTheme);
-  };
-
-  const activeNote = notes.find((n) => n.id === activeNoteId);
-  const filteredNotes = notes.filter(
-    (n) =>
-      n.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      n.content.toLowerCase().includes(searchQuery.toLowerCase()),
-  );
-
-  const handleCreate = () => {
-    const newNote = {
-      id: generateId(),
-      title: 'UNTITLED',
-      content: '',
-      updatedAt: new Date().toISOString(),
-    };
-    setNotes([newNote, ...notes]);
-    setActiveNoteId(newNote.id);
-    setIsEditing(true);
-    setEditDraft(newNote);
-  };
-
-  const handleSave = () => {
-    if (!editDraft) return;
-    setNotes(
-      notes.map((n) =>
-        n.id === editDraft.id
-          ? { ...editDraft, updatedAt: new Date().toISOString() }
-          : n,
-      ),
-    );
-    setIsEditing(false);
-  };
-
-  const handleDeleteRequest = () => setShowDeleteDialog(true);
-
-  const confirmDelete = () => {
-    setNotes(notes.filter((n) => n.id !== activeNoteId));
-    setActiveNoteId(null);
-    setIsEditing(false);
-    setShowDeleteDialog(false);
-  };
+  const activeSource = SOURCES.find((s) => s.id === activeId);
 
   return (
-    <ThemeProvider theme={themeMode === 'light' ? lightTheme : darkTheme}>
-      <GlobalStyles />
-      <Frame>
-        {/* SIDEBAR */}
-        <Sidebar>
-          <HeaderBlock>
-            <TopRow>
-              <AppTitle>
-                <Cpu size={18} />
-                <span>React</span>
-                <span className="highlight">NOTES_OS</span>
-              </AppTitle>
-              <ThemeToggle onClick={toggleTheme} title="Toggle System Mode">
-                {themeMode === 'light' ? <Moon size={16} /> : <Sun size={16} />}
-              </ThemeToggle>
-            </TopRow>
-            <SearchBox>
+    <>
+      <style>{styles}</style>
+      <div className="blueprint-container">
+        <div
+          className="doc-canvas"
+          ref={containerRef}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Header */}
+          <header className="doc-header">
+            <span className="doc-title">TECH_SPEC_V2.0 // Overview</span>
+            <BookOpen size={18} color="#64748b" />
+          </header>
+
+          {/* Body Text */}
+          <div className="doc-body">
+            <p>
+              Ant Financial has a large number of enterprise-level products.
+              With complex scenarios, we need to respond fast due to frequent
+              changes in product demands and concurrent R&D workflows
+              <CitationMarker
+                id={1}
+                activeId={activeId}
+                onClick={setActiveId}
+                markerRef={(el) => (markerRefs.current[1] = el)}
+              />
+              . Many similar contents exist in the process. Through abstraction,
+              we could obtain some stable and highly reusable components and
+              pages
+              <CitationMarker
+                id={2}
+                activeId={activeId}
+                onClick={setActiveId}
+                markerRef={(el) => (markerRefs.current[2] = el)}
+              />
+              . This ensures consistency across the entire ecosystem while
+              maintaining the flexibility required for individual business units
+              <CitationMarker
+                id={3}
+                activeId={activeId}
+                onClick={setActiveId}
+                markerRef={(el) => (markerRefs.current[3] = el)}
+              />
+              .
+            </p>
+          </div>
+
+          {/* Popover Card */}
+          {activeId && activeSource && (
+            <div
+              className="source-popover"
+              style={{ top: popoverPos.top, left: popoverPos.left }}
+              onClick={(e) => e.stopPropagation()} // Prevent close on click inside
+            >
+              {/* Connector line visual (Optional) */}
               <div
                 style={{
-                  paddingLeft: '12px',
-                  display: 'flex',
-                  alignItems: 'center',
+                  position: 'absolute',
+                  top: -11,
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  borderLeft: '5px solid transparent',
+                  borderRight: '5px solid transparent',
+                  borderBottom: '10px solid var(--c-text-main)',
                 }}
-              >
-                <Search size={14} />
+              />
+              <div
+                style={{
+                  position: 'absolute',
+                  top: -10,
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  borderLeft: '5px solid transparent',
+                  borderRight: '5px solid transparent',
+                  borderBottom: '10px solid white',
+                }}
+              />
+
+              <div className="pop-header">
+                <span className="pop-counter">
+                  REF: {String(activeId).padStart(2, '0')}/
+                  {String(SOURCES.length).padStart(2, '0')}
+                </span>
+                <div className="pop-nav">
+                  <button
+                    className="pop-btn"
+                    onClick={handlePrev}
+                    disabled={activeId === 1}
+                  >
+                    <ChevronLeft size={14} />
+                  </button>
+                  <button
+                    className="pop-btn"
+                    onClick={handleNext}
+                    disabled={activeId === SOURCES.length}
+                  >
+                    <ChevronRight size={14} />
+                  </button>
+                </div>
               </div>
-              <SearchInput
-                placeholder="QUERY_DB..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-              <ActionButton $primary onClick={handleCreate}>
-                <Plus size={14} /> NEW
-              </ActionButton>
-            </SearchBox>
-          </HeaderBlock>
-          <ListContainer>
-            {filteredNotes.map((note) => (
-              <NoteItem
-                key={note.id}
-                note={note}
-                isActive={note.id === activeNoteId}
-                onClick={() => {
-                  if (isEditing) handleSave();
-                  setActiveNoteId(note.id);
-                  setIsEditing(false);
-                }}
-              />
-            ))}
-          </ListContainer>
-          <div
-            style={{
-              padding: '8px',
-              borderTop: \`1px solid \${
-                themeMode === 'light' ? '#e5e5e5' : '#333'
-              }\`,
-              fontFamily: 'monospace',
-              fontSize: '10px',
-              opacity: 0.6,
-              textAlign: 'center',
-              marginTop: 'auto',
-            }}
-          >
-            SYS_MODE: {themeMode.toUpperCase()}
-          </div>
-        </Sidebar>
 
-        {/* MAIN AREA */}
-        <MainArea>
-          {!activeNote ? (
-            <div
-              style={{
-                flex: 1,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexDirection: 'column',
-                opacity: 0.5,
-                fontFamily: 'monospace',
-              }}
-            >
-              <Terminal
-                size={48}
-                strokeWidth={1}
-                style={{ marginBottom: 16 }}
-              />
-              <div>AWAITING INPUT...</div>
+              <div className="pop-content">
+                <div className="pop-title">
+                  <FileText size={14} />
+                  {activeSource.title}
+                </div>
+                <div className="pop-desc">{activeSource.content}</div>
+              </div>
+
+              <div className="pop-footer">
+                <a href={activeSource.url} className="link-btn">
+                  VIEW_SOURCE <ExternalLink size={10} />
+                </a>
+              </div>
             </div>
-          ) : (
-            <>
-              <EditorToolbar>
-                <Breadcrumb>
-                  <Hash size={14} className="icon" />
-                  <span>ROOT</span>
-                  <ChevronRight size={12} />
-                  <strong>{activeNote.title || 'UNTITLED'}</strong>
-                </Breadcrumb>
-                <ToolbarActions>
-                  {isEditing ? (
-                    <>
-                      <StatusIndicator $active={true}>
-                        EDITING_MODE
-                      </StatusIndicator>
-                      <CmdButton
-                        $variant="danger"
-                        onClick={handleDeleteRequest}
-                      >
-                        <Trash2 size={14} /> DELETE
-                      </CmdButton>
-                      <CmdButton $variant="primary" onClick={handleSave}>
-                        <Save size={14} /> SAVE_CHANGES
-                      </CmdButton>
-                    </>
-                  ) : (
-                    <>
-                      <StatusIndicator $active={false}>
-                        READ_ONLY
-                      </StatusIndicator>
-                      <CmdButton
-                        onClick={() => {
-                          setEditDraft({ ...activeNote });
-                          setIsEditing(true);
-                        }}
-                      >
-                        <Edit2 size={14} /> EDIT
-                      </CmdButton>
-                    </>
-                  )}
-                </ToolbarActions>
-              </EditorToolbar>
-
-              <EditorCanvas>
-                {isEditing ? (
-                  <>
-                    <TitleInput
-                      value={editDraft?.title}
-                      onChange={(e) =>
-                        setEditDraft({ ...editDraft, title: e.target.value })
-                      }
-                      placeholder="ENTER_TITLE"
-                    />
-                    <ContentArea
-                      value={editDraft?.content}
-                      onChange={(e) =>
-                        setEditDraft({ ...editDraft, content: e.target.value })
-                      }
-                      placeholder="// BEGIN TRANSMISSION..."
-                      spellCheck={false}
-                    />
-                  </>
-                ) : (
-                  <ViewerScrollWrapper>
-                    <ViewerTitle>{activeNote.title}</ViewerTitle>
-                    <MarkdownContainer>
-                      <ReactMarkdown
-                        components={{
-                          code(props) {
-                            const { children, className, node, ...rest } =
-                              props;
-                            const match = /language-(\\w+)/.exec(
-                              className || '',
-                            );
-                            const isMermaid = match && match[1] === 'mermaid';
-
-                            if (isMermaid) {
-                              return (
-                                <MermaidDiagram
-                                  chart={String(children).replace(/\\n$/, '')}
-                                  themeName={themeMode}
-                                />
-                              );
-                            }
-
-                            return (
-                              <code className={className} {...rest}>
-                                {children}
-                              </code>
-                            );
-                          },
-                        }}
-                      >
-                        {activeNote.content}
-                      </ReactMarkdown>
-                    </MarkdownContainer>
-                  </ViewerScrollWrapper>
-                )}
-              </EditorCanvas>
-            </>
           )}
-        </MainArea>
-      </Frame>
-
-      {/* CONFIRMATION MODAL */}
-      {showDeleteDialog && (
-        <Overlay onClick={() => setShowDeleteDialog(false)}>
-          <DialogPanel onClick={(e) => e.stopPropagation()}>
-            <DialogContent>
-              <AlertTriangle
-                size={48}
-                color={themeMode === 'light' ? '#dc2626' : '#f87171'}
-                strokeWidth={1.5}
-              />
-              <DialogTitle>Confirm Protocol</DialogTitle>
-              <DialogText>
-                Are you sure you want to delete note{' '}
-                <strong>#{activeNoteId}</strong>?<br />
-                This action is irreversible and data will be lost.
-              </DialogText>
-              <ButtonGroup>
-                <ModalButton onClick={() => setShowDeleteDialog(false)}>
-                  Cancel
-                </ModalButton>
-                <ModalButton $variant="danger" onClick={confirmDelete}>
-                  Confirm Delete
-                </ModalButton>
-              </ButtonGroup>
-            </DialogContent>
-          </DialogPanel>
-        </Overlay>
-      )}
-    </ThemeProvider>
+        </div>
+      </div>
+    </>
   );
-};
-
-export default ReactNotesApp;
+}
 `}}]);
