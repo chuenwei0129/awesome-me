@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Engineering Blueprint Blog Viewer</title>
+
+    <!-- Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Dependencies -->
+    <!-- Marked for Markdown Parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Mermaid for Diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <!-- MathJax for LaTeX -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+        },
+        svg: {
+          fontCache: 'global',
+        },
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+    <style>
+      :root {
+        /* Palette from Design Spec */
+        --c-bg: #f8fafc; /* Outer Background */
+        --c-canvas: #ffffff; /* Diagram Background */
+        --c-border: #cbd5e1; /* Slate-300 */
+        --c-text-main: #0f172a; /* Slate-900 */
+        --c-text-sub: #64748b; /* Slate-500 */
+        --c-accent: #000000; /* Black Accent */
+
+        /* Fonts */
+        --font-ui: 'Inter', sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+
+        /* Spacing */
+        --space-unit: 1rem;
+      }
+
+      /* 1. Global Reset & Base */
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 2rem;
+        background-color: var(--c-bg);
+        font-family: var(--font-ui);
+        color: var(--c-text-main);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* 2. Layout Structure: Diagram Canvas */
+      .diagram-canvas {
+        max-width: 960px;
+        margin: 0 auto;
+        background-color: var(--c-canvas);
+        border: 1px solid var(--c-border);
+        padding: 0; /* Header is inside, content handles padding */
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Header: Title + Uppercase Subtitle */
+      .doc-header {
+        padding: 2rem;
+        border-bottom: 2px solid var(--c-text-main); /* Stronger divider */
+        margin-bottom: 2rem;
+        background: repeating-linear-gradient(
+          45deg,
+          var(--c-canvas),
+          var(--c-canvas) 10px,
+          #f1f5f9 10px,
+          #f1f5f9 11px
+        ); /* Subtle engineering hatch pattern */
+      }
+
+      .doc-title {
+        font-size: 1.75rem;
+        font-weight: 800;
+        margin: 0;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+      }
+
+      .doc-meta {
+        font-family: var(--font-mono);
+        font-size: 0.875rem;
+        color: var(--c-text-sub);
+        margin-top: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        display: flex;
+        gap: 1rem;
+      }
+
+      .doc-meta span {
+        border: 1px solid var(--c-border);
+        padding: 2px 6px;
+        font-size: 0.75rem;
+      }
+
+      /* Main Content Area */
+      .markdown-body {
+        padding: 0 3rem 3rem 3rem;
+      }
+
+      /* 3. Typography & Elements - NO DECORATIONS */
+
+      /* Headings */
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: var(--font-ui);
+        color: var(--c-text-main);
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      h1 {
+        border-bottom: 1px solid var(--c-text-main);
+        padding-bottom: 0.5rem;
+        font-size: 2rem;
+      }
+      h2 {
+        border-left: 4px solid var(--c-text-main);
+        padding-left: 1rem;
+        font-size: 1.5rem;
+        background: #f1f5f9;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+      }
+      h3 {
+        border-bottom: 1px solid var(--c-border);
+        display: inline-block;
+        padding-bottom: 2px;
+        font-size: 1.25rem;
+      }
+
+      /* Text */
+      p {
+        margin-bottom: 1rem;
+      }
+      strong {
+        font-weight: 800;
+      }
+      em {
+        font-style: italic;
+        color: var(--c-text-sub);
+      }
+
+      /* Code: Monospace */
+      code {
+        font-family: var(--font-mono);
+        background-color: #f1f5f9;
+        border: 1px solid var(--c-border);
+        padding: 0.1em 0.3em;
+        font-size: 0.9em;
+        color: #d946ef; /* Slight accent for inline code to distinguish, or keep black */
+        color: var(--c-text-main);
+      }
+
+      pre {
+        background-color: #f8fafc;
+        border: 1px solid var(--c-text-main); /* Strong border for code blocks */
+        padding: 1rem;
+        overflow-x: auto;
+        margin-bottom: 1.5rem;
+        position: relative;
+      }
+
+      /* Label for code blocks */
+      pre::before {
+        content: 'SOURCE_CODE';
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: var(--c-text-main);
+        color: white;
+        font-family: var(--font-mono);
+        font-size: 0.6rem;
+        padding: 2px 6px;
+      }
+
+      pre code {
+        background: none;
+        border: none;
+        padding: 0;
+        color: var(--c-text-main);
+        font-size: 0.85rem;
+        display: block;
+      }
+
+      /* Blockquotes: Technical Note Style */
+      blockquote {
+        margin: 1.5rem 0;
+        padding: 1rem 1.5rem;
+        border-left: 2px solid var(--c-text-main);
+        background-color: #f1f5f9;
+        font-family: var(--font-mono);
+        font-size: 0.9rem;
+        color: var(--c-text-sub);
+      }
+      blockquote p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Lists */
+      ul,
+      ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      li {
+        margin-bottom: 0.25rem;
+        position: relative;
+      }
+
+      /* Custom bullet for engineering feel */
+      ul {
+        list-style: none;
+      }
+      ul li::before {
+        content: '';
+        position: absolute;
+        left: -1rem;
+        top: 0.6rem;
+        width: 6px;
+        height: 6px;
+        border: 1px solid var(--c-text-main);
+        background: transparent;
+      }
+
+      /* Tables: Spec Sheet Style */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1.5rem;
+        font-family: var(--font-mono);
+        font-size: 0.9rem;
+        border: 1px solid var(--c-text-main);
+      }
+
+      th,
+      td {
+        border: 1px solid var(--c-border);
+        padding: 0.75rem;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f1f5f9;
+        border-bottom: 2px solid var(--c-text-main);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      /* Links */
+      a {
+        color: var(--c-text-main);
+        text-decoration: none;
+        border-bottom: 1px solid var(--c-text-main);
+        transition: background 0.2s;
+      }
+      a:hover {
+        background-color: var(--c-text-main);
+        color: white;
+      }
+
+      /* Images & Media */
+      img,
+      video {
+        max-width: 100%;
+        border: 1px solid var(--c-text-main);
+        display: block;
+        margin: 1rem 0;
+        padding: 4px; /* Frame effect */
+        background: white;
+      }
+
+      /* Audio Player Styling (Webkit only customization to make it flat) */
+      audio {
+        width: 100%;
+        margin: 1rem 0;
+        border: 1px solid var(--c-border);
+        background: #f1f5f9;
+      }
+
+      /* Custom Audio Container if using HTML structure manually, 
+           but for raw markdown <audio>, we stick to defaults or wrap via JS */
+
+      /* Mermaid Diagram Container */
+      .mermaid {
+        display: flex;
+        justify-content: center;
+        margin: 2rem 0;
+        padding: 1rem;
+        border: 1px dashed var(--c-border); /* Dashed for abstract/diagrams */
+        background: white;
+      }
+
+      /* Horizontal Rule */
+      hr {
+        border: 0;
+        border-top: 1px solid var(--c-text-main);
+        margin: 2rem 0;
+        height: 0;
+      }
+
+      /* Checkbox (Task Lists) */
+      input[type='checkbox'] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 1.1em;
+        height: 1.1em;
+        border: 1px solid var(--c-text-main);
+        margin-right: 0.5em;
+        vertical-align: text-bottom;
+        position: relative;
+      }
+
+      input[type='checkbox']:checked {
+        background-color: var(--c-text-main);
+      }
+
+      input[type='checkbox']:checked::after {
+        content: '✓';
+        color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 0.8em;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        body {
+          padding: 1rem;
+        }
+        .markdown-body {
+          padding: 1.5rem;
+        }
+      }
+
+      /* Utility for Diagram Labels */
+      .figure-label {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--c-text-sub);
+        text-align: center;
+        margin-top: -0.5rem;
+        margin-bottom: 1.5rem;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="diagram-canvas">
+      <header class="doc-header">
+        <h1 class="doc-title">Technical Specification: System Architecture</h1>
+        <div class="doc-meta">
+          <span>DOC_ID: 2023-A04</span>
+          <span>REV: 1.2</span>
+          <span>STATUS: DRAFT</span>
+        </div>
+      </header>
+
+      <main id="content" class="markdown-body">
+        <!-- Content will be injected here via JavaScript -->
+      </main>
+    </div>
+
+    <!-- 
+      SAMPLE MARKDOWN CONTENT 
+      You can replace the content inside this backtick string with your actual blog content.
+    -->
+    <script>
+      const markdownContent = `
+## 1.0 Overview
+
+This document outlines the implementation details for the core processing module. It adheres to strict **ACID** properties and leverages *asynchronous* message passing.
+
+> **NOTE:** Ensure all environment variables are set before initialization.
+
+## 2.0 Data Structures
+
+The system utilizes a standard Entity-Component-System (ECS) architecture.
+
+| ID | Component | Type | Description |
+|---|---|---|---|
+| 0x01 | Transform | Struct | Position, Rotation, Scale |
+| 0x02 | RigidBody | Class | Physics calculations |
+| 0x03 | Collider | Enum | Box, Sphere, Mesh |
+
+## 3.0 Algorithm (LaTeX)
+
+The core physics integration uses the semi-implicit Euler method. The position update is defined as:
+
+$$
+x_{n+1} = x_n + v_{n+1} \\Delta t
+$$
+
+Where the velocity is calculated via:
+
+$$
+v_{n+1} = v_n + \\frac{F(x_n, v_n)}{m} \\Delta t
+$$
+
+An inline equation example: $E = mc^2$.
+
+## 4.0 Process Flow (Mermaid)
+
+The following diagram illustrates the initialization sequence.
+
+\`\`\`mermaid
+graph TD
+    A[System Start] -->|Load Config| B(Configuration Manager)
+    B --> C{Config Valid?}
+    C -->|Yes| D[Initialize Kernel]
+    C -->|No| E[Log Error & Exit]
+    D --> F[Start Event Loop]
+    
+    style A fill:#fff,stroke:#0f172a,stroke-width:1px
+    style B fill:#fff,stroke:#0f172a,stroke-width:1px
+    style C fill:#fff,stroke:#0f172a,stroke-width:1px
+    style D fill:#fff,stroke:#0f172a,stroke-width:1px
+    style E fill:#fff,stroke:#0f172a,stroke-width:1px
+    style F fill:#fff,stroke:#0f172a,stroke-width:1px
+\`\`\`
+
+## 5.0 Sequence Diagram
+
+\`\`\`mermaid
+sequenceDiagram
+    participant U as User
+    participant S as System
+    participant D as Database
+
+    U->>S: Request Data
+    S->>D: Query ID=42
+    D-->>S: Return Record
+    S-->>U: Render View
+\`\`\`
+
+## 6.0 Code Implementation
+
+Implementation of the connection handler in Python:
+
+\`\`\`python
+def connect_to_server(host, port):
+    """Establishes a socket connection."""
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.connect((host, port))
+        return sock
+    except ConnectionError as e:
+        print(f"Error: {e}")
+        return None
+\`\`\`
+
+## 7.0 Multimedia Assets
+
+### 7.1 System Audio Logs
+Please review the audio logs for anomaly detection.
+
+<audio controls src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+### 7.2 Simulation Footage
+Reference footage for the collision detection edge case.
+
+<video controls width="100%" poster="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg">
+    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+## 8.0 Task List (Pending)
+
+- [x] Define protocol buffer schema
+- [x] Implement TCP handshake
+- [ ] Optimize render loop
+- [ ] Write integration tests
+`;
+
+      // --- Initialization Logic ---
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const contentDiv = document.getElementById('content');
+
+        // 1. Configure Mermaid
+        mermaid.initialize({
+          startOnLoad: false,
+          theme: 'base',
+          themeVariables: {
+            primaryColor: '#ffffff',
+            primaryTextColor: '#0f172a',
+            primaryBorderColor: '#0f172a',
+            lineColor: '#0f172a',
+            secondaryColor: '#f1f5f9',
+            tertiaryColor: '#ffffff',
+            fontFamily: 'Inter',
+          },
+        });
+
+        // 2. Configure Marked (Markdown Parser)
+        marked.setOptions({
+          highlight: function (code, lang) {
+            // Basic return, highlighting can be added via PrismJS if needed
+            // But for this design, plain mono text fits well.
+            return code;
+          },
+          breaks: true,
+        });
+
+        // 3. Render Markdown
+        // We need a custom renderer to handle mermaid code blocks specifically
+        const renderer = new marked.Renderer();
+        const originalCodeRenderer = renderer.code.bind(renderer);
+
+        renderer.code = (code, language) => {
+          if (language === 'mermaid') {
+            return `<div class="mermaid">${code}</div>`;
+          }
+          // Fallback to default code block
+          return `<pre><code>${code}</code></pre>`; // Simplified for our CSS
+        };
+
+        // Parse markdown
+        contentDiv.innerHTML = marked.parse(markdownContent, {
+          renderer: renderer,
+        });
+
+        // 4. Trigger Mermaid Render
+        mermaid.run({
+          querySelector: '.mermaid',
+        });
+
+        // 5. Trigger MathJax Render
+        if (window.MathJax) {
+          MathJax.typesetPromise();
+        }
+      });
+    </script>
+  </body>
+</html>

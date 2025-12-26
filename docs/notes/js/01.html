@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Engineering Spec Sheet</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [['$$', '$$']],
+        },
+        svg: { fontCache: 'global' },
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+    <style>
+      :root {
+        /* Palette - Strict & Cold */
+        --bg-outer: #f1f5f9; /* Slate-100 */
+        --bg-paper: #ffffff; /* White */
+        --ink-primary: #0f172a; /* Slate-900 (High Contrast) */
+        --ink-secondary: #475569; /* Slate-600 */
+        --border-heavy: #0f172a; /* 2px Solid Black */
+        --border-light: #cbd5e1; /* 1px Slate-300 */
+
+        --f-sans: 'Inter', sans-serif;
+        --f-mono: 'JetBrains Mono', monospace;
+      }
+
+      /* RESET */
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 40px;
+        background-color: var(--bg-outer);
+        color: var(--ink-primary);
+        font-family: var(--f-sans);
+        display: flex;
+        justify-content: center;
+        min-height: 100vh;
+      }
+
+      /* THE BLUEPRINT SHEET */
+      .sheet {
+        width: 100%;
+        max-width: 1024px;
+        background: var(--bg-paper);
+        border: 2px solid var(--border-heavy);
+        position: relative;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.02); /* Slight depth isolation */
+      }
+
+      /* --- DECORATIVE ENGINEERING MARKS --- */
+      .mark {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border: 1px solid var(--ink-primary);
+        z-index: 10;
+      }
+      .mark-tl {
+        top: -1px;
+        left: -1px;
+        border-right: none;
+        border-bottom: none;
+      }
+      .mark-tr {
+        top: -1px;
+        right: -1px;
+        border-left: none;
+        border-bottom: none;
+      }
+      .mark-bl {
+        bottom: -1px;
+        left: -1px;
+        border-right: none;
+        border-top: none;
+      }
+      .mark-br {
+        bottom: -1px;
+        right: -1px;
+        border-left: none;
+        border-top: none;
+      }
+
+      .sheet::before {
+        content: 'SCALE 1:1';
+        position: absolute;
+        top: -25px;
+        right: 0;
+        font-family: var(--f-mono);
+        font-size: 10px;
+        color: var(--ink-secondary);
+        letter-spacing: 2px;
+      }
+
+      /* --- HEADER BLOCK (CAD TITLE BLOCK STYLE) --- */
+      .head-block {
+        display: grid;
+        grid-template-columns: 1fr 200px;
+        border-bottom: 2px solid var(--border-heavy);
+      }
+
+      .title-area {
+        padding: 24px;
+        border-right: 1px solid var(--border-light);
+      }
+      .title-area h1 {
+        margin: 0;
+        font-family: var(--f-sans);
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: 24px;
+        line-height: 1.1;
+        letter-spacing: -0.5px;
+      }
+      .title-area .subtitle {
+        font-family: var(--f-mono);
+        font-size: 12px;
+        color: var(--ink-secondary);
+        margin-top: 8px;
+        display: block;
+      }
+
+      .meta-grid {
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        font-family: var(--f-mono);
+        font-size: 11px;
+      }
+      .meta-cell {
+        border-bottom: 1px solid var(--border-light);
+        padding: 4px 8px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .meta-cell:last-child {
+        border-bottom: none;
+      }
+      .meta-label {
+        color: var(--ink-secondary);
+        font-weight: 700;
+        margin-right: 8px;
+      }
+
+      /* --- CONTENT AREA --- */
+      .content-area {
+        padding: 40px;
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      /* TYPOGRAPHY */
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-family: var(--f-sans);
+        color: var(--ink-primary);
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        margin-top: 2.5em;
+        margin-bottom: 1em;
+      }
+
+      h2 {
+        font-size: 16px;
+        font-weight: 900;
+        border-bottom: 2px solid var(--ink-primary);
+        padding-bottom: 8px;
+        display: flex;
+        align-items: center;
+      }
+      h2::before {
+        content: '//';
+        margin-right: 8px;
+        color: var(--ink-secondary);
+        font-family: var(--f-mono);
+      }
+
+      h3 {
+        font-size: 14px;
+        font-weight: 700;
+        font-family: var(--f-mono);
+        margin-top: 2em;
+      }
+      h3::before {
+        content: '>> ';
+        color: var(--ink-secondary);
+      }
+
+      p {
+        margin-bottom: 1.2em;
+        text-align: justify;
+      }
+
+      /* CODE BLOCKS - Terminal Style */
+      pre {
+        background: #f8fafc;
+        border: 1px solid var(--ink-primary);
+        padding: 16px;
+        font-family: var(--f-mono);
+        font-size: 13px;
+        overflow-x: auto;
+        margin: 24px 0;
+        position: relative;
+      }
+      pre::after {
+        content: 'EXEC_BLOCK';
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: var(--ink-primary);
+        color: white;
+        font-size: 9px;
+        padding: 2px 6px;
+      }
+      code {
+        font-family: var(--f-mono);
+      }
+      p code {
+        background: #f1f5f9;
+        border: 1px solid var(--border-light);
+        padding: 2px 4px;
+        font-size: 0.9em;
+      }
+
+      /* TABLES - Data Sheet Style */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: var(--f-mono);
+        font-size: 13px;
+        margin: 24px 0;
+        border: 1px solid var(--ink-primary);
+      }
+      th,
+      td {
+        border: 1px solid var(--border-light);
+        padding: 10px 12px;
+        text-align: left;
+      }
+      th {
+        background: #f1f5f9;
+        border-bottom: 1px solid var(--ink-primary);
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      /* MEDIA CONTAINERS */
+      .media-frame {
+        border: 1px solid var(--ink-primary);
+        padding: 4px;
+        background: white;
+        margin: 24px 0;
+      }
+      .media-label {
+        font-family: var(--f-mono);
+        font-size: 10px;
+        background: var(--ink-primary);
+        color: white;
+        padding: 2px 8px;
+        display: inline-block;
+        margin-bottom: 4px;
+      }
+      img,
+      video,
+      audio {
+        width: 100%;
+        display: block;
+      }
+
+      /* MERMAID - Strict Diagram */
+      .mermaid {
+        background: white;
+        border: 1px dashed var(--ink-secondary);
+        padding: 20px;
+        margin: 24px 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      /* LISTS */
+      ul {
+        list-style: none;
+        padding-left: 20px;
+      }
+      ul li::before {
+        content: '■';
+        font-size: 8px;
+        margin-right: 12px;
+        position: relative;
+        top: -2px;
+        color: var(--ink-secondary);
+      }
+      ol {
+        font-family: var(--f-mono);
+      }
+
+      /* QUOTES */
+      blockquote {
+        border-left: 4px solid var(--ink-primary);
+        margin: 24px 0;
+        padding: 8px 24px;
+        background: #f8fafc;
+        font-family: var(--f-mono);
+        font-size: 13px;
+        color: var(--ink-secondary);
+      }
+
+      /* FOOTER BLOCK */
+      .foot-block {
+        border-top: 2px solid var(--border-heavy);
+        padding: 12px 24px;
+        display: flex;
+        justify-content: space-between;
+        font-family: var(--f-mono);
+        font-size: 10px;
+        text-transform: uppercase;
+        background: #f8fafc;
+      }
+
+      /* UTILS */
+      hr {
+        border: 0;
+        border-top: 1px dashed var(--border-light);
+        margin: 40px 0;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+        }
+        .sheet {
+          border-width: 1px;
+        }
+        .head-block {
+          grid-template-columns: 1fr;
+        }
+        .content-area {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sheet">
+      <!-- Corner Marks -->
+      <div class="mark mark-tl"></div>
+      <div class="mark mark-tr"></div>
+      <div class="mark mark-bl"></div>
+      <div class="mark mark-br"></div>
+
+      <!-- Header Block -->
+      <header class="head-block">
+        <div class="title-area">
+          <h1>Technical Specification: <br />Core Architecture</h1>
+          <span class="subtitle">PROJECT: NEURAL_LINK_V2 // CONFIDENTIAL</span>
+        </div>
+        <div class="meta-grid">
+          <div class="meta-cell">
+            <span class="meta-label">DOC_ID</span> <span>SPEC-8842</span>
+          </div>
+          <div class="meta-cell">
+            <span class="meta-label">DATE</span>
+            <span id="date-display">2023-10-27</span>
+          </div>
+          <div class="meta-cell">
+            <span class="meta-label">REV</span> <span>1.0.4 RC</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <div id="markdown-output" class="content-area">
+        <!-- Content injected via JS -->
+      </div>
+
+      <!-- Footer Block -->
+      <footer class="foot-block">
+        <span>Generated by System Renderer</span>
+        <span>Page 1 of 1</span>
+        <span>Approved for Engineering Use</span>
+      </footer>
+    </div>
+
+    <!-- DATA SOURCE -->
+    <script>
+      const markdownSource = `
+## 01. System Overview
+
+This document defines the interface specifications for the **Holographic Projection Module**. All implementations must adhere strictly to the defined protocols.
+
+> **CRITICAL WARNING:** Direct memory access (DMA) is disabled by default. Enable only via secure kernel flag \`--unsafe-dma\`.
+
+## 02. Component Logic (Mermaid)
+
+The following diagram illustrates the signal processing flow. Note the orthogonal routing.
+
+\`\`\`mermaid
+flowchart TD
+    A[INPUT_SENSOR] -->|Raw Data| B(Pre-Processor)
+    B --> C{Signal Valid?}
+    C -->|YES| D[Core_Logic_Unit]
+    C -->|NO| E[Error_Handler]
+    D --> F[Output_Buffer]
+    E --> F
+    F --> G[Render_Engine]
+    
+    style A fill:#fff,stroke:#0f172a,stroke-width:2px
+    style B fill:#fff,stroke:#0f172a,stroke-width:1px
+    style C fill:#fff,stroke:#0f172a,stroke-width:1px
+    style D fill:#fff,stroke:#0f172a,stroke-width:1px
+    style E fill:#f1f5f9,stroke:#0f172a,stroke-width:1px,stroke-dasharray: 5 5
+    style F fill:#fff,stroke:#0f172a,stroke-width:1px
+    style G fill:#0f172a,stroke:#0f172a,stroke-width:1px,color:#fff
+    
+    linkStyle default stroke:#0f172a,stroke-width:1px,fill:none;
+\`\`\`
+
+## 03. Physics Calculation (LaTeX)
+
+Energy dissipation is calculated using the integrated surface integral:
+
+$$
+\\oint_S \\mathbf{E} \\cdot d\\mathbf{A} = \\frac{Q_{enc}}{\\varepsilon_0}
+$$
+
+Matrix transformation for the 3D projection vector $V_{proj}$:
+
+$$
+\\begin{bmatrix} x' \\\\ y' \\\\ z' \\end{bmatrix} = 
+\\begin{bmatrix} 
+\\cos \\theta & -\\sin \\theta & 0 \\\\ 
+\\sin \\theta & \\cos \\theta & 0 \\\\ 
+0 & 0 & 1 
+\\end{bmatrix} 
+\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}
+$$
+
+## 04. Data Structures
+
+The standard packet format for transmission (Big Endian):
+
+| Byte Offset | Field Name | Data Type | Description |
+| :--- | :--- | :--- | :--- |
+| 0x00 | \`PKT_HEADER\` | UINT32 | Magic number (0xDEADBEEF) |
+| 0x04 | \`PAYLOAD_LEN\` | UINT16 | Length of data payload |
+| 0x06 | \`CMD_ID\` | UINT8 | Command Instruction Code |
+| 0x07 | \`CHECKSUM\` | UINT8 | XOR Checksum |
+
+## 05. Implementation Code
+
+\`\`\`rust
+fn initialize_kernel() -> Result<(), KernelError> {
+    let config = SystemConfig::load("/etc/sys_config.toml")?;
+    
+    // Establishing secure handshake
+    if !config.verify_signature() {
+        return Err(KernelError::SecurityViolation);
+    }
+
+    println!(">> System Initialized at address: {:p}", &config);
+    Ok(())
+}
+\`\`\`
+
+## 06. Media Attachment: Acoustic Test
+
+Microphone input calibration test (Frequency Sweep 20Hz - 20kHz).
+
+<div class="media-frame">
+    <span class="media-label">AUDIO_SAMPLE_01</span>
+    <audio controls src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+</div>
+
+## 07. Visual Diagnostics
+
+Render pipeline stress test results.
+
+<div class="media-frame">
+    <span class="media-label">VIDEO_FEED_CAM_A</span>
+    <video controls poster="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg">
+        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+    </video>
+</div>
+`;
+
+      // --- RENDERING ENGINE ---
+      document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('date-display').textContent = new Date()
+          .toISOString()
+          .split('T')[0];
+
+        // 1. Mermaid Config for "Engineering" Look
+        mermaid.initialize({
+          startOnLoad: false,
+          flowchart: {
+            curve: 'step' /* ORTHOGONAL LINES - Critical for blueprint look */,
+            htmlLabels: true,
+          },
+          theme: 'base',
+          themeVariables: {
+            primaryColor: '#ffffff',
+            primaryTextColor: '#0f172a',
+            primaryBorderColor: '#0f172a',
+            lineColor: '#0f172a',
+            secondaryColor: '#f8fafc',
+            tertiaryColor: '#ffffff',
+            fontFamily: 'JetBrains Mono' /* Force Mono in diagrams */,
+          },
+        });
+
+        // 2. Marked Config
+        const renderer = new marked.Renderer();
+
+        // Custom Code Block Renderer
+        renderer.code = (code, lang) => {
+          if (lang === 'mermaid') {
+            return `<div class="mermaid">${code}</div>`;
+          }
+          return `<pre><code class="language-${lang}">${code}</code></pre>`;
+        };
+
+        // Custom Table Renderer to enforce structure
+        renderer.table = (header, body) => {
+          return `
+            <table>
+                <thead>${header}</thead>
+                <tbody>${body}</tbody>
+            </table>
+        `;
+        };
+
+        // 3. Render
+        const output = document.getElementById('markdown-output');
+        output.innerHTML = marked.parse(markdownSource, { renderer: renderer });
+
+        // 4. Trigger Diagram Render
+        mermaid.run({ querySelector: '.mermaid' });
+
+        // 5. Trigger MathJax
+        if (window.MathJax) MathJax.typesetPromise();
+      });
+    </script>
+  </body>
+</html>

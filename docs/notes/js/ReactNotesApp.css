@@ -1,16 +1,14 @@
 /* ReactNotesApp.css */
 
 /* ==========================================
-   1. THEME DEFINITIONS (CSS Variables)
+   1. 基础定义 (VARIABLES & RESET)
    ========================================== */
 :root {
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
   --font-sans: 'Inter', sans-serif;
-  --spacing-unit: 4px;
 }
 
-/* Light Theme Variables */
-.app-container.light {
+.app--light {
   --bg-color: #f0f2f5;
   --panel-bg: #ffffff;
   --border-color: #1a1a1a;
@@ -21,11 +19,10 @@
   --warning-color: #dc2626;
   --grid-color: #e5e7eb;
   --shadow-color: rgba(0, 0, 0, 1);
-  --active-item-bg: #f0f9ff;
-  --surface-hover: #f4f4f5;
+  --item-active-bg: #f0f9ff;
+  --item-hover-bg: #f4f4f5;
   --code-bg: #f4f4f5;
-
-  /* Syntax Highlighting */
+  /* 语法高亮 */
   --syntax-comment: #6a737d;
   --syntax-keyword: #d73a49;
   --syntax-entity: #6f42c1;
@@ -34,8 +31,7 @@
   --syntax-constant: #005cc5;
 }
 
-/* Dark Theme Variables */
-.app-container.dark {
+.app--dark {
   --bg-color: #09090b;
   --panel-bg: #18181b;
   --border-color: #52525b;
@@ -46,11 +42,10 @@
   --warning-color: #f87171;
   --grid-color: #27272a;
   --shadow-color: #000000;
-  --active-item-bg: #1e293b;
-  --surface-hover: #27272a;
+  --item-active-bg: #1e293b;
+  --item-hover-bg: #27272a;
   --code-bg: #27272a;
-
-  /* Syntax Highlighting */
+  /* 语法高亮 */
   --syntax-comment: #8b949e;
   --syntax-keyword: #ff7b72;
   --syntax-entity: #d2a8ff;
@@ -59,11 +54,6 @@
   --syntax-constant: #79c0ff;
 }
 
-/* ==========================================
-   2. GLOBAL STYLES
-   ========================================== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
-
 * {
   box-sizing: border-box;
 }
@@ -71,39 +61,35 @@
 body {
   margin: 0;
   font-family: var(--font-sans);
-  background-color: var(
-    --bg-color
-  ); /* Fallback usually handled on container now */
   overflow: hidden;
 }
 
-/* Scrollbar Styling */
+/* 滚动条样式优化 */
 ::-webkit-scrollbar {
   width: 4px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
-.app-container.light ::-webkit-scrollbar-thumb {
+.app--light ::-webkit-scrollbar-thumb {
   background: #1a1a1a;
 }
-.app-container.dark ::-webkit-scrollbar-thumb {
+.app--dark ::-webkit-scrollbar-thumb {
   background: #52525b;
 }
 
-/* The Main Container Wrapper to apply variables */
-.app-container {
+/* ==========================================
+   BLOCK: .app (Main Container)
+   ========================================== */
+.app {
   width: 100vw;
   height: 100vh;
   background-color: var(--bg-color);
   color: var(--text-color);
   transition: background-color 0.3s ease, color 0.3s ease;
-
-  /* Grid Background Pattern */
   background-image: linear-gradient(var(--grid-color) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
   background-size: 20px 20px;
-
   display: flex;
   padding: 16px;
   gap: 16px;
@@ -111,9 +97,9 @@ body {
 }
 
 /* ==========================================
-   3. LAYOUT COMPONENTS
+   BLOCK: .panel (UI Component)
    ========================================== */
-.tech-panel {
+.panel {
   background: var(--panel-bg);
   border: 2px solid var(--border-color);
   box-shadow: 4px 4px 0px var(--shadow-color);
@@ -123,7 +109,7 @@ body {
   transition: all 0.3s ease;
 }
 
-.tech-panel::after {
+.panel::after {
   content: '+';
   position: absolute;
   top: -9px;
@@ -138,22 +124,16 @@ body {
   transition: background 0.3s ease, color 0.3s ease;
 }
 
+/* ==========================================
+   BLOCK: .sidebar (Layout)
+   ========================================== */
 .sidebar {
   width: 340px;
   min-width: 340px;
   z-index: 2;
 }
 
-.main-area {
-  flex: 1;
-  z-index: 1;
-  min-width: 0;
-}
-
-/* ==========================================
-   4. SIDEBAR COMPONENTS
-   ========================================== */
-.header-block {
+.sidebar__header {
   padding: 20px;
   border-bottom: 2px solid var(--border-color);
   background: var(--panel-bg);
@@ -163,13 +143,13 @@ body {
   flex-shrink: 0;
 }
 
-.top-row {
+.sidebar__top-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.app-title {
+.sidebar__title {
   font-family: var(--font-mono);
   font-weight: 800;
   text-transform: uppercase;
@@ -180,47 +160,111 @@ body {
   gap: 8px;
 }
 
-.app-title .highlight {
+.sidebar__title-highlight {
   background: var(--text-color);
   color: var(--panel-bg);
   padding: 2px 6px;
 }
 
-.theme-toggle {
-  background: transparent;
+.sidebar__list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar__footer {
+  padding: 8px;
+  font-family: monospace;
+  font-size: 10px;
+  opacity: 0.6;
+  text-align: center;
+  margin-top: auto;
+  border-top: 1px solid var(--border-dim);
+}
+
+/* ==========================================
+   BLOCK: .btn (Component)
+   ========================================== */
+.btn {
   border: 1px solid var(--border-color);
-  color: var(--text-dim);
+  background: transparent;
+  color: var(--text-color);
+  font-family: var(--font-mono);
   cursor: pointer;
-  padding: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s;
 }
 
-.theme-toggle:hover {
+.btn--icon {
+  padding: 4px;
+  color: var(--text-dim);
+}
+.btn--icon:hover {
   color: var(--accent-color);
   border-color: var(--accent-color);
 }
 
-.search-box {
+.btn--cmd {
+  height: 32px;
+  padding: 0 16px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  gap: 8px;
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.btn--cmd:hover {
+  background: var(--item-hover-bg);
+  transform: translateY(-1px);
+  box-shadow: 2px 2px 0px var(--border-dim);
+}
+.btn--cmd:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn--primary {
+  background: var(--text-color);
+  color: var(--panel-bg);
+  border-color: var(--text-color);
+}
+.btn--primary:hover {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #fff;
+}
+
+.btn--danger {
+  color: var(--warning-color);
+  border-color: var(--border-dim);
+}
+.btn--danger:hover {
+  background: var(--warning-color);
+  color: white;
+  border-color: var(--warning-color);
+}
+
+/* ==========================================
+   BLOCK: .search (Component)
+   ========================================== */
+.search {
   display: flex;
   align-items: center;
   border: 1px solid var(--border-color);
   height: 40px;
 }
-
-.search-box:focus-within {
+.search:focus-within {
   outline: 2px solid var(--accent-color);
 }
-
-.search-icon-wrapper {
+.search__icon {
   padding-left: 12px;
   display: flex;
   align-items: center;
 }
-
-.search-input {
+.search__input {
   flex: 1;
   border: none;
   height: 100%;
@@ -231,13 +275,11 @@ body {
   background: transparent;
   color: var(--text-color);
 }
-
-.search-input::placeholder {
+.search__input::placeholder {
   color: var(--text-dim);
   text-transform: uppercase;
 }
-
-.action-button {
+.search__btn {
   height: 100%;
   padding: 0 12px;
   border: none;
@@ -252,46 +294,18 @@ body {
   display: flex;
   align-items: center;
   gap: 6px;
-  transition: all 0.1s;
 }
-
-.action-button.primary {
-  background: var(--text-color);
-  color: var(--panel-bg);
-}
-
-.action-button:hover {
-  opacity: 0.9;
+.search__btn:hover {
   background: var(--grid-color);
 }
-
-.action-button.primary:hover {
-  background: var(--text-color); /* Maintain bg but opacity changes */
+.search__btn.btn--primary:hover {
+  background: var(--text-color);
+  opacity: 0.9;
 }
 
-.list-container {
-  flex: 1;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.sys-mode-footer {
-  padding: 8px;
-  font-family: monospace;
-  font-size: 10px;
-  opacity: 0.6;
-  text-align: center;
-  margin-top: auto;
-}
-.light .sys-mode-footer {
-  border-top: 1px solid #e5e5e5;
-}
-.dark .sys-mode-footer {
-  border-top: 1px solid #333;
-}
-
-/* Note Items */
+/* ==========================================
+   BLOCK: .note-item (Component)
+   ========================================== */
 .note-item {
   border-bottom: 1px solid var(--border-color);
   background: transparent;
@@ -300,11 +314,9 @@ body {
   cursor: pointer;
   flex-shrink: 0;
 }
-
-.note-item.active {
-  background: var(--active-item-bg);
+.note-item--active {
+  background: var(--item-active-bg);
 }
-
 .note-item::before {
   content: '';
   position: absolute;
@@ -314,39 +326,31 @@ body {
   width: 4px;
   background: transparent;
 }
-
-.note-item.active::before {
+.note-item--active::before {
   background: var(--accent-color);
 }
-
 .note-item:hover {
-  background: var(--surface-hover);
+  background: var(--item-hover-bg);
+}
+.note-item--active:hover {
+  background: var(--item-active-bg);
 }
 
-.note-item.active:hover {
-  background: var(--active-item-bg);
-}
-
-.note-header {
+.note-item__header {
   display: flex;
   align-items: center;
   padding: 12px 12px 8px 16px;
   gap: 8px;
 }
-
-.note-id {
+.note-item__id {
   font-family: var(--font-mono);
   font-size: 10px;
   color: var(--text-dim);
   border: 1px solid var(--border-dim);
   padding: 2px 4px;
-  background: #f4f4f5;
+  background: rgba(128, 128, 128, 0.1);
 }
-.dark .note-id {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.note-title {
+.note-item__title {
   font-weight: 700;
   font-size: 14px;
   flex: 1;
@@ -355,23 +359,19 @@ body {
   text-overflow: ellipsis;
   color: var(--text-color);
 }
-
-.expand-trigger {
+.note-item__toggle {
   padding: 4px;
   color: var(--text-dim);
 }
-
-.expand-trigger:hover {
+.note-item__toggle:hover {
   color: var(--text-color);
 }
-
-.note-content-preview {
+.note-item__preview {
   padding: 0 16px 16px 16px;
   margin-left: 24px;
   border-left: 1px dashed var(--border-dim);
 }
-
-.note-content-preview p {
+.note-item__preview-text {
   margin: 0;
   font-family: var(--font-mono);
   font-size: 11px;
@@ -384,9 +384,14 @@ body {
 }
 
 /* ==========================================
-   5. EDITOR COMPONENTS
+   BLOCK: .editor (Layout)
    ========================================== */
-.empty-state {
+.editor {
+  flex: 1;
+  z-index: 1;
+  min-width: 0;
+}
+.editor__empty {
   flex: 1;
   display: flex;
   align-items: center;
@@ -395,8 +400,7 @@ body {
   opacity: 0.5;
   font-family: monospace;
 }
-
-.editor-toolbar {
+.editor__toolbar {
   height: 60px;
   border-bottom: 2px solid var(--border-color);
   display: flex;
@@ -406,8 +410,7 @@ body {
   background: var(--panel-bg);
   flex-shrink: 0;
 }
-
-.breadcrumb {
+.editor__breadcrumb {
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--text-dim);
@@ -415,23 +418,19 @@ body {
   align-items: center;
   gap: 8px;
 }
-
-.breadcrumb .icon {
+.editor__breadcrumb-icon {
   color: var(--accent-color);
 }
-
-.breadcrumb strong {
+.editor__breadcrumb-text {
   color: var(--text-color);
   font-weight: 700;
 }
-
-.toolbar-actions {
+.editor__actions {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-
-.status-indicator {
+.editor__status {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -443,73 +442,20 @@ body {
   border-right: 1px solid var(--border-dim);
   height: 20px;
 }
-
-.status-indicator::before {
+.editor__status::before {
   content: '';
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: var(--text-dim);
 }
-
-.status-indicator.active::before {
+.editor__status--active::before {
   background: var(--accent-color);
   box-shadow: 0 0 8px var(--accent-color);
 }
 
-.cmd-button {
-  height: 32px;
-  padding: 0 16px;
-  border: 1px solid var(--border-color);
-  background: transparent;
-  color: var(--text-color);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.cmd-button:hover {
-  background: var(--surface-hover);
-  transform: translateY(-1px);
-  box-shadow: 2px 2px 0px var(--border-dim);
-}
-
-.cmd-button:active {
-  transform: translateY(0);
-  box-shadow: none;
-}
-
-/* Cmd Button Variants */
-.cmd-button.primary {
-  background: var(--text-color);
-  color: var(--panel-bg);
-  border-color: var(--text-color);
-}
-
-.cmd-button.primary:hover {
-  background: var(--accent-color);
-  border-color: var(--accent-color);
-  color: #fff;
-}
-
-.cmd-button.danger {
-  color: var(--warning-color);
-  border-color: var(--border-dim);
-}
-
-.cmd-button.danger:hover {
-  background: var(--warning-color);
-  color: white;
-  border-color: var(--warning-color);
-}
-
-.editor-canvas {
+/* Content Canvas */
+.editor__canvas {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -517,7 +463,8 @@ body {
   position: relative;
 }
 
-.title-input {
+/* Inputs */
+.editor__input-title {
   font-family: var(--font-sans);
   font-weight: 800;
   font-size: 28px;
@@ -528,16 +475,14 @@ body {
   width: 100%;
   flex-shrink: 0;
 }
-
-.title-input:focus {
+.editor__input-title:focus,
+.editor__input-content:focus {
   outline: none;
 }
-
-.title-input::placeholder {
+.editor__input-title::placeholder {
   color: var(--border-dim);
 }
-
-.content-area {
+.editor__input-content {
   flex: 1;
   font-family: var(--font-mono);
   font-size: 14px;
@@ -549,88 +494,46 @@ body {
   color: var(--text-color);
 }
 
-.content-area:focus {
-  outline: none;
-}
-
-.viewer-scroll-wrapper {
+/* Viewer Container */
+.editor__viewer {
   flex: 1;
   padding: 0 32px 32px;
   overflow-y: auto;
 }
-
-.viewer-title {
+.editor__viewer-title {
   font-family: var(--font-mono);
   font-size: 28px;
   font-weight: 800;
   margin-top: 32px;
-  margin-bottom: 24px;
+  margin-bottom: 8px; /* Reduced for meta info */
   color: var(--text-color);
+  /* Removed border from title, moving it to markdown start or implicit */
+}
+
+/* NEW: Meta info (Time) */
+.editor__meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
   border-bottom: 2px solid var(--border-color);
-  padding-bottom: 0.5em;
+  padding-bottom: 16px;
 }
 
 /* ==========================================
-   6. MARKDOWN & MERMAID STYLES
+   BLOCK: .markdown (Content)
    ========================================== */
-.mermaid-wrapper {
-  display: flex;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.02);
-  border: 1px dashed var(--border-dim);
-  padding: 16px;
-  margin: 16px 0;
-  border-radius: 4px;
-}
-.dark .mermaid-wrapper {
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.mermaid-wrapper svg {
-  max-width: 100%;
-  font-family: var(--font-mono) !important;
-}
-
-.md-figure {
-  margin: 1em 0;
-  border: 1px dashed var(--border-dim);
-  padding: 8px;
-  background: var(--surface-hover);
-}
-
-.md-img {
-  max-width: 100%;
-  display: block;
-  margin: 0 auto;
-}
-
-.md-caption {
-  margin-top: 8px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-dim);
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.md-caption::before {
-  content: 'FIG: ';
-  font-weight: bold;
-  color: var(--accent-color);
-}
-
-/* General Markdown */
-.markdown-container {
+.markdown {
   font-family: var(--font-sans);
   line-height: 1.7;
   color: var(--text-color);
 }
-
-.markdown-container h1,
-.markdown-container h2,
-.markdown-container h3,
-.markdown-container h4 {
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4 {
   font-family: var(--font-mono);
   font-weight: 800;
   margin-top: 1.5em;
@@ -639,54 +542,26 @@ body {
   color: var(--text-color);
   text-transform: uppercase;
 }
-
-.markdown-container h1 {
+.markdown h1 {
   font-size: 1.8em;
   border-bottom: 2px solid var(--border-color);
   padding-bottom: 0.3em;
 }
-
-.markdown-container h2 {
+.markdown h2 {
   font-size: 1.4em;
   border-bottom: 1px solid var(--border-dim);
   padding-bottom: 0.2em;
 }
-
-.markdown-container h3 {
-  font-size: 1.2em;
-}
-
-.markdown-container p {
-  margin-bottom: 1em;
-}
-
-.markdown-container a {
+.markdown a {
   color: var(--accent-color);
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: border-bottom-color 0.2s;
 }
-
-.markdown-container a:hover {
+.markdown a:hover {
   border-bottom-color: var(--accent-color);
 }
-
-.markdown-container ul,
-.markdown-container ol {
-  padding-left: 1.5em;
-  margin-bottom: 1em;
-}
-
-.markdown-container li {
-  margin-bottom: 0.25em;
-}
-
-.markdown-container input[type='checkbox'] {
-  margin-right: 0.5em;
-}
-
-/* Code Styles */
-.markdown-container code {
+.markdown code {
   font-family: var(--font-mono);
   background: var(--code-bg);
   padding: 2px 5px;
@@ -695,8 +570,7 @@ body {
   border: 1px solid var(--border-dim);
   color: var(--accent-color);
 }
-
-.markdown-container pre {
+.markdown pre {
   background: var(--code-bg);
   padding: 16px;
   border-radius: 4px;
@@ -704,8 +578,7 @@ body {
   border: 1px solid var(--border-dim);
   margin: 1em 0;
 }
-
-.markdown-container pre code {
+.markdown pre code {
   background: transparent;
   padding: 0;
   border: none;
@@ -713,50 +586,85 @@ body {
   font-size: 0.9em;
   white-space: pre;
 }
-
-.markdown-container blockquote {
+.markdown blockquote {
   border-left: 4px solid var(--accent-color);
   margin: 1em 0;
   padding-left: 1em;
   font-style: italic;
   color: var(--text-dim);
-  background: var(--surface-hover);
+  background: var(--item-hover-bg);
   padding: 12px;
 }
-
-.markdown-container table {
+.markdown table {
   width: 100%;
   border-collapse: collapse;
   margin: 1em 0;
   font-size: 0.9em;
 }
-
-.markdown-container th,
-.markdown-container td {
+.markdown th,
+.markdown td {
   border: 1px solid var(--border-dim);
   padding: 8px 12px;
   text-align: left;
 }
-
-.markdown-container th {
-  background: var(--surface-hover);
+.markdown th {
+  background: var(--item-hover-bg);
   font-weight: 600;
   font-family: var(--font-mono);
 }
+.markdown__figure {
+  margin: 1em 0;
+  border: 1px dashed var(--border-dim);
+  padding: 8px;
+  background: var(--item-hover-bg);
+}
+.markdown__img {
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+.markdown__caption {
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.markdown__caption::before {
+  content: 'FIG: ';
+  font-weight: bold;
+  color: var(--accent-color);
+}
+.markdown__mermaid {
+  display: flex;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px dashed var(--border-dim);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 4px;
+}
+.app--dark .markdown__mermaid {
+  background: rgba(255, 255, 255, 0.02);
+}
+.markdown__mermaid svg {
+  max-width: 100%;
+  font-family: var(--font-mono) !important;
+}
 
-/* Syntax Highlighting Mapping */
+/* Syntax Highlighting */
 .hljs-comment,
 .hljs-quote {
   color: var(--syntax-comment);
   font-style: italic;
 }
-
 .hljs-keyword,
 .hljs-selector-tag,
 .hljs-operator {
   color: var(--syntax-keyword);
 }
-
 .hljs-title,
 .hljs-attr,
 .hljs-section,
@@ -764,19 +672,16 @@ body {
 .hljs-name {
   color: var(--syntax-entity);
 }
-
 .hljs-string,
 .hljs-meta,
 .hljs-symbol {
   color: var(--syntax-string);
 }
-
 .hljs-variable,
 .hljs-template-variable,
 .hljs-params {
   color: var(--syntax-variable);
 }
-
 .hljs-literal,
 .hljs-number,
 .hljs-built_in,
@@ -785,9 +690,9 @@ body {
 }
 
 /* ==========================================
-   7. MODAL STYLES
+   BLOCK: .modal (Component)
    ========================================== */
-.overlay {
+.modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -800,19 +705,16 @@ body {
   align-items: center;
   justify-content: center;
 }
-
-.dialog-panel {
+.modal {
   width: 400px;
   background: var(--panel-bg);
   border: 2px solid var(--warning-color);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5),
-    0 10px 10px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   position: relative;
 }
-
-.dialog-panel::before {
+.modal::before {
   content: '';
   height: 12px;
   width: 100%;
@@ -825,37 +727,32 @@ body {
   );
   border-bottom: 1px solid var(--warning-color);
 }
-
-.dialog-content {
+.modal__content {
   padding: 32px 24px 24px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-.dialog-title {
+.modal__title {
   font-family: var(--font-mono);
   text-transform: uppercase;
   font-size: 16px;
   margin: 16px 0 8px;
   color: var(--text-color);
 }
-
-.dialog-text {
+.modal__text {
   font-size: 13px;
   color: var(--text-dim);
   margin-bottom: 24px;
   line-height: 1.5;
 }
-
-.button-group {
+.modal__actions {
   display: flex;
   gap: 12px;
   width: 100%;
 }
-
-.modal-button {
+.modal__btn {
   flex: 1;
   height: 40px;
   border: 1px solid var(--border-color);
@@ -868,18 +765,157 @@ body {
   cursor: pointer;
   transition: all 0.2s;
 }
-
-.modal-button:hover {
-  background: var(--surface-hover);
+.modal__btn:hover {
+  background: var(--item-hover-bg);
   transform: translateY(-1px);
 }
-
-.modal-button.danger {
+.modal__btn--danger {
   border-color: var(--warning-color);
   background: var(--warning-color);
   color: #fff;
 }
-
-.modal-button.danger:hover {
+.modal__btn--danger:hover {
   background: #b91c1c;
+}
+
+/* ==========================================
+   FEATURE: Split View (Edit Mode)
+   ========================================== */
+.editor__split {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  border-top: 1px solid var(--border-dim);
+}
+
+.editor__split .editor__input-content {
+  width: 50%;
+  border-right: 1px solid var(--border-color);
+  padding-top: 24px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.editor__split .editor__viewer {
+  width: 50%;
+  background: var(--bg-color);
+  padding-top: 24px;
+  overflow-y: auto;
+  height: 100%;
+  padding-bottom: 60px; /* Space for scroll */
+}
+
+/* Dark mode adjustment for split border */
+.app--dark .editor__split .editor__input-content {
+  border-right-color: var(--border-dim);
+}
+
+/* ... (保留之前的 CSS) ... */
+
+/* ==========================================
+   FEATURE: Split View & Pane Labels
+   ========================================== */
+
+/* 1. Pane Wrappers (容器) */
+/* 用于包裹内容和标签，提供定位上下文 */
+.pane-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 标题区域的 wrapper */
+.pane-wrapper--title {
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border-dim); /* 可选：给标题区加个底部分割线 */
+}
+
+/* 需要滚动的 wrapper (用于分栏) */
+.pane-wrapper--scroll {
+  flex: 1;
+  overflow: hidden; /* 内部滚动，外部隐藏 */
+  height: 100%;
+}
+
+/* 预览背景色微调，区分左右 */
+.pane-wrapper--preview-bg {
+  background: var(--bg-color);
+}
+
+/* 2. Pane Labels (右上角标签) */
+.pane-label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 4px 8px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--text-dim);
+  background: var(--panel-bg);
+  border-bottom: 1px solid var(--border-dim);
+  border-left: 1px solid var(--border-dim);
+  z-index: 10;
+  pointer-events: none; /* 确保不影响点击下面的元素 */
+  opacity: 0.8;
+}
+
+/* 3. Layout Adjustments (适配 Wrapper 结构) */
+
+/* 编辑模式分栏容器 */
+.editor__split {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  border-top: 1px solid var(--border-dim); /* 如果上面标题有 border，这里可以去掉 */
+}
+
+/* 左侧 Wrapper */
+.editor__split .pane-wrapper:first-child {
+  width: 50%;
+  border-right: 1px solid var(--border-color);
+}
+
+/* 右侧 Wrapper */
+.editor__split .pane-wrapper:last-child {
+  width: 50%;
+}
+
+/* 深度调整：确保输入框和预览区填满 wrapper 并且可滚动 */
+.editor__split .editor__input-content {
+  width: 100%; /* 现在在 wrapper 里，所以是 100% */
+  height: 100%;
+  border: none; /* 去掉之前的边框，由 wrapper 处理 */
+  padding-top: 32px; /* 避开标签 */
+  overflow-y: auto;
+}
+
+.editor__split .editor__viewer {
+  width: 100%;
+  height: 100%;
+  padding-top: 32px; /* 避开标签 */
+  padding-bottom: 60px;
+  overflow-y: auto;
+}
+
+/* 适配：编辑标题输入框 */
+.editor__input-title {
+  /* 调整 padding 以防文字撞到标签 */
+  padding-right: 120px;
+}
+
+/* 适配：阅读模式 */
+.editor__viewer {
+  /* 阅读模式下的主容器样式调整 */
+  padding: 0 32px 32px;
+}
+
+/* 阅读模式下的标题 wrapper 样式 */
+.editor__viewer .pane-wrapper--title {
+  margin-bottom: 24px;
+  border-bottom: none; /* 阅读模式下不需要额外的线，因为 h1 已经有线了 */
+}
+/* 阅读模式下让正文内容距离标签有一定距离 */
+.editor__viewer .pane-wrapper .markdown {
+  padding-top: 16px;
 }
