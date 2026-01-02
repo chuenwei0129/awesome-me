@@ -22,6 +22,7 @@ export default defineConfig({
   },
   // 类似于在 postcss 中使用 tailwindcss 插件
   tailwindcss: {},
+  autoprefixer: {},
   // latex 配置
   extraRemarkPlugins: ['remark-math'],
   extraRehypePlugins: ['rehype-mathjax'],
