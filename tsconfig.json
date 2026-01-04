@@ -1,9 +1,6 @@
 {
   "compilerOptions": {
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
     "declaration": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -11,10 +8,9 @@
     "baseUrl": "./",
     "paths": {
       "@@/*": [".dumi/tmp/*"],
-      "@c6i/ui": ["src"],
-      "@c6i/ui/*": ["src/*", "*"],
-      "@js/*": ["docs/notes/js/*"]
+      "@c6i": ["src"],
+      "@c6i/*": ["src/*", "*"]
     }
   },
-  "include": [".dumirc.ts", "src/**/*", "docs/**/*"]
+  "include": [".dumirc.ts", "src/**/*"]
 }

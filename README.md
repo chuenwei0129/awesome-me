@@ -1,7 +1,7 @@
-# @c6i/ui
+# @c6i
 
-[![NPM version](https://img.shields.io/npm/v/@c6i/ui.svg?style=flat)](https://npmjs.org/package/@c6i/ui)
-[![NPM downloads](http://img.shields.io/npm/dm/@c6i/ui.svg?style=flat)](https://npmjs.org/package/@c6i/ui)
+[![NPM version](https://img.shields.io/npm/v/@c6i.svg?style=flat)](https://npmjs.org/package/@c6i)
+[![NPM downloads](http://img.shields.io/npm/dm/@c6i.svg?style=flat)](https://npmjs.org/package/@c6i)
 
 A react library developed with dumi
 

@@ -1,1 +1,0 @@
-OffScreen 我理解类似于现在前端常提到的 Virtual List，如果一个元素不在 viewport 的显示范围内，那么这个元素就可以在 DOM 上面卸载，以节省性能。所以，如果 React 支持 OffScreen 以后，useEffect 执行多个 mount,unmount ，是讲得通的。另外 React OffScreen 也就是 React 官方团队顺口一提，不知道猴年马月可以做好。
