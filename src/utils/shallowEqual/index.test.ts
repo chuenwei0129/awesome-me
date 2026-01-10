@@ -1,157 +1,140 @@
 import shallowEqual from '.';
 
 describe('shallowEqual', () => {
-  describe('基本相等性', () => {
-    it('相同引用返回 true', () => {
-      const obj = { a: 1, b: 2 };
+  describe('SameValue 语义', () => {
+    it('NaN 等于 NaN', () => {
+      expect(shallowEqual(NaN, NaN)).toBe(true);
+    });
+
+    it('+0 和 -0 不相等', () => {
+      expect(shallowEqual(+0, -0)).toBe(false);
+    });
+  });
+
+  describe('原始值', () => {
+    it('相同的原始值相等', () => {
+      expect(shallowEqual(1, 1)).toBe(true);
+      expect(shallowEqual('a', 'a')).toBe(true);
+      expect(shallowEqual(true, true)).toBe(true);
+      expect(shallowEqual(undefined, undefined)).toBe(true);
+      expect(shallowEqual(null, null)).toBe(true);
+    });
+
+    it('不同的原始值不相等', () => {
+      expect(shallowEqual(1, 2)).toBe(false);
+      expect(shallowEqual('a', 'b')).toBe(false);
+      expect(shallowEqual(null, undefined)).toBe(false);
+    });
+
+    it('原始值与对象不相等', () => {
+      expect(shallowEqual(1, {})).toBe(false);
+      expect(shallowEqual(null, {})).toBe(false);
+      expect(shallowEqual({}, null)).toBe(false);
+      expect(shallowEqual(undefined, {})).toBe(false);
+    });
+  });
+
+  describe('对象', () => {
+    it('相同引用相等', () => {
+      const obj = { a: 1 };
       expect(shallowEqual(obj, obj)).toBe(true);
+    });
+
+    it('相同键值对相等', () => {
+      expect(shallowEqual({ a: 1 }, { a: 1 })).toBe(true);
     });
 
     it('空对象相等', () => {
       expect(shallowEqual({}, {})).toBe(true);
     });
 
-    it('相同属性和值返回 true', () => {
-      expect(shallowEqual({ a: 1, b: 2 }, { a: 1, b: 2 })).toBe(true);
-    });
-
-    it('属性顺序不同但值相同返回 true', () => {
-      expect(shallowEqual({ a: 1, b: 2 }, { b: 2, a: 1 })).toBe(true);
-    });
-  });
-
-  describe('不相等情况', () => {
-    it('属性数量不同返回 false', () => {
-      expect(shallowEqual({ a: 1 }, { a: 1, b: 2 })).toBe(false);
-    });
-
-    it('属性值不同返回 false', () => {
-      expect(shallowEqual({ a: 1 }, { a: 2 })).toBe(false);
-    });
-
-    it('属性名不同返回 false', () => {
+    it('不同键不相等', () => {
       expect(shallowEqual({ a: 1 }, { b: 1 })).toBe(false);
     });
 
-    it('嵌套对象不进行深度比较', () => {
-      const nested1 = { a: { b: 1 } };
-      const nested2 = { a: { b: 1 } };
-      expect(shallowEqual(nested1, nested2)).toBe(false);
+    it('键数量不同不相等', () => {
+      expect(shallowEqual({ a: 1 }, { a: 1, b: 2 })).toBe(false);
+      expect(shallowEqual({ a: 1, b: 2 }, { a: 1 })).toBe(false);
     });
 
-    it('数组引用不同返回 false', () => {
-      expect(shallowEqual({ a: [1, 2] }, { a: [1, 2] })).toBe(false);
-    });
-  });
-
-  describe('Object.is 语义', () => {
-    it('NaN 与 NaN 相等', () => {
-      expect(shallowEqual({ a: NaN }, { a: NaN })).toBe(true);
-      expect(shallowEqual(NaN, NaN)).toBe(true);
+    it('嵌套对象按引用比较', () => {
+      expect(shallowEqual({ a: { x: 1 } }, { a: { x: 1 } })).toBe(false);
+      const nested = { x: 1 };
+      expect(shallowEqual({ a: nested }, { a: nested })).toBe(true);
     });
 
-    it('+0 和 -0 不相等', () => {
-      expect(shallowEqual({ a: +0 }, { a: -0 })).toBe(false);
-      expect(shallowEqual(+0, -0)).toBe(false);
-    });
-  });
-
-  describe('特殊值', () => {
-    it('undefined 属性值', () => {
-      expect(shallowEqual({ a: undefined }, { a: undefined })).toBe(true);
+    it('不同原型但相同自有属性相等', () => {
+      const a = Object.create(null);
+      a.x = 1;
+      const b = { x: 1 };
+      expect(shallowEqual(a, b)).toBe(true);
     });
 
-    it('null 属性值', () => {
-      expect(shallowEqual({ a: null }, { a: null })).toBe(true);
-    });
-
-    it('函数引用相同', () => {
+    it('函数按引用比较', () => {
       const fn = () => {};
       expect(shallowEqual({ a: fn }, { a: fn })).toBe(true);
-    });
-
-    it('函数引用不同', () => {
       expect(shallowEqual({ a: () => {} }, { a: () => {} })).toBe(false);
     });
-  });
 
-  describe('原始类型处理', () => {
-    it('相同字符串返回 true', () => {
-      expect(shallowEqual('hello', 'hello')).toBe(true);
-    });
-
-    it('不同字符串返回 false', () => {
-      expect(shallowEqual('hello', 'world')).toBe(false);
-    });
-
-    it('相同数字返回 true', () => {
-      expect(shallowEqual(42, 42)).toBe(true);
-    });
-
-    it('不同数字返回 false', () => {
-      expect(shallowEqual(42, 43)).toBe(false);
-    });
-
-    it('相同布尔值返回 true', () => {
-      expect(shallowEqual(true, true)).toBe(true);
-      expect(shallowEqual(false, false)).toBe(true);
-    });
-
-    it('不同布尔值返回 false', () => {
-      expect(shallowEqual(true, false)).toBe(false);
-    });
-
-    it('原始类型与对象返回 false', () => {
-      expect(shallowEqual('hello', { a: 1 })).toBe(false);
-      expect(shallowEqual(42, { a: 1 })).toBe(false);
+    it('Symbol 键被忽略（只比较可枚举字符串键）', () => {
+      const sym = Symbol('test');
+      const a = { x: 1, [sym]: 2 };
+      const b = { x: 1, [sym]: 3 };
+      expect(shallowEqual(a, b)).toBe(true);
     });
   });
 
-  describe('null 和 undefined 处理', () => {
-    it('null 与 null 返回 true', () => {
-      expect(shallowEqual(null, null)).toBe(true);
+  describe('数组', () => {
+    it('相同内容的数组相等', () => {
+      expect(shallowEqual([1, 2], [1, 2])).toBe(true);
     });
 
-    it('undefined 与 undefined 返回 true', () => {
-      expect(shallowEqual(undefined, undefined)).toBe(true);
+    it('空数组相等', () => {
+      expect(shallowEqual([], [])).toBe(true);
     });
 
-    it('null 与 undefined 返回 false', () => {
-      expect(shallowEqual(null, undefined)).toBe(false);
+    it('不同内容的数组不相等', () => {
+      expect(shallowEqual([1, 2], [1, 3])).toBe(false);
     });
 
-    it('null 与对象返回 false', () => {
-      expect(shallowEqual(null, {})).toBe(false);
-      expect(shallowEqual({}, null)).toBe(false);
-    });
-
-    it('undefined 与对象返回 false', () => {
-      expect(shallowEqual(undefined, {})).toBe(false);
-      expect(shallowEqual({}, undefined)).toBe(false);
-    });
-  });
-
-  describe('数组处理', () => {
-    it('相同引用数组返回 true', () => {
-      const arr = [1, 2, 3];
-      expect(shallowEqual(arr, arr)).toBe(true);
-    });
-
-    it('相同内容数组返回 true', () => {
-      expect(shallowEqual([1, 2, 3], [1, 2, 3])).toBe(true);
-    });
-
-    it('不同内容数组返回 false', () => {
-      expect(shallowEqual([1, 2, 3], [1, 2, 4])).toBe(false);
-    });
-
-    it('不同长度数组返回 false', () => {
+    it('不同长度的数组不相等', () => {
       expect(shallowEqual([1, 2], [1, 2, 3])).toBe(false);
+      expect(shallowEqual([1], [])).toBe(false);
     });
 
-    it('数组与类数组对象（相同 keys/values）返回 true', () => {
-      // shallowEqual 只比较 keys 和 values，不区分数组和对象
+    it('数组与类数组对象相等', () => {
       expect(shallowEqual([1, 2], { 0: 1, 1: 2 })).toBe(true);
+    });
+
+    it('稀疏数组', () => {
+      // eslint-disable-next-line no-sparse-arrays
+      expect(shallowEqual([1, , 3], [1, , 3])).toBe(true);
+      // eslint-disable-next-line no-sparse-arrays
+      expect(shallowEqual([1, , 3], [1, undefined, 3])).toBe(false);
+    });
+  });
+
+  describe('特殊对象（已知限制）', () => {
+    it('Date 对象没有可枚举属性，会被认为相等', () => {
+      const date = new Date('2024-01-01');
+      expect(shallowEqual(date, date)).toBe(true);
+      // ⚠️ 已知限制：不同的 Date 实例如果没有自有可枚举属性会被认为相等
+      expect(shallowEqual(new Date('2024-01-01'), new Date('2025-12-31'))).toBe(
+        true,
+      );
+    });
+
+    it('RegExp 对象没有可枚举属性，会被认为相等', () => {
+      const regex = /test/;
+      expect(shallowEqual(regex, regex)).toBe(true);
+      // ⚠️ 已知限制：不同的 RegExp 实例如果没有自有可枚举属性会被认为相等
+      expect(shallowEqual(/test/, /different/)).toBe(true);
+    });
+
+    it('Map 和 Set 对象没有可枚举属性，会被认为相等', () => {
+      // ⚠️ 已知限制：Map/Set 实例如果没有自有可枚举属性会被认为相等
+      expect(shallowEqual(new Map(), new Map([['a', 1]]))).toBe(true);
+      expect(shallowEqual(new Set(), new Set([1, 2, 3]))).toBe(true);
     });
   });
 });

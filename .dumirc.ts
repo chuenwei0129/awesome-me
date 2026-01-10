@@ -19,6 +19,7 @@ export default defineConfig({
       { type: 'package', dir: 'src/components' },
       { type: 'package', dir: 'src/hooks' },
       { type: 'package', dir: 'src/utils' },
+      { type: 'package', dir: 'src' },
     ],
 
     // 配置入口文件路径，API 解析将从这里开始，和 apiParser 配合使用
