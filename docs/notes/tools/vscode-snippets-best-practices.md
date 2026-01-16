@@ -1,6 +1,6 @@
 ---
 group:
-  title: tools
+  title: VSCode
   order: 99
 title: Snippets 最佳实践
 toc: content
