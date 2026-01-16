@@ -9,57 +9,47 @@ This is `@c6i`, a React component library built with [dumi](https://d.umijs.org/
 ## Commands
 
 ```bash
-# Install dependencies
-pnpm install
+pnpm install          # Install dependencies
+pnpm start            # Start dev server (docs + demos)
+pnpm run build        # Build library to dist/
+pnpm run docs:build   # Build docs site to docs-dist/
 
-# Start development server (docs + component demo)
-pnpm start
+# Testing
+pnpm test                              # Run all tests
+pnpm test -- path/to/file.test.ts      # Run single test file
+pnpm test -- --watch                   # Watch mode
 
-# Build component library to dist/
-pnpm run build
-
-# Build library in watch mode
-pnpm run build:watch
-
-# Build documentation site to docs-dist/
-pnpm run docs:build
-
-# Preview production docs build
-pnpm run docs:preview
-
-# Check project for potential problems
-pnpm run doctor
-
-# Run linting
-pnpm run lint          # Run both ESLint and Stylelint
-pnpm run lint:es       # ESLint only
-pnpm run lint:css      # Stylelint only
+# Linting
+pnpm run lint         # Run both ESLint and Stylelint
+pnpm run lint:es      # ESLint only
+pnpm run lint:css     # Stylelint only
 ```
 
 ## Architecture
 
-- **src/**: React components library source
-  - Each component has its own directory (e.g., `src/Foo/`)
-  - Component directories contain `index.tsx` (component) and `index.md` (documentation with live demos)
-  - `src/index.ts` exports all public components
+**src/** - Library source organized by type:
+- `src/components/` - React components (e.g., `Foo/index.tsx`)
+- `src/hooks/` - Custom React hooks (e.g., `use-latest/index.ts`)
+- `src/utils/` - Utility functions (e.g., `shallowEqual/index.ts`)
+- `src/index.ts` - Public exports
 
-- **docs/**: Documentation pages (markdown files)
-  - `docs/index.md` - Homepage
-  - Additional guides/pages as `.md` files
+Each module directory contains:
+- `index.ts` or `index.tsx` - Implementation
+- `index.md` - Documentation with live demos (jsx code blocks)
+- `index.test.ts` - Tests (optional)
+- `examples/` - Demo components (optional)
 
-- **Build outputs**:
-  - `dist/` - Built component library (ESM format)
-  - `docs-dist/` - Built documentation site
+**docs/** - Documentation pages (markdown files)
+
+## Adding New Modules
+
+1. Create directory under appropriate category (`src/components/`, `src/hooks/`, or `src/utils/`)
+2. Add `index.tsx` (or `index.ts` for non-component code)
+3. Add `index.md` with documentation and demos
+4. Export from `src/index.ts`
 
 ## Code Style
 
 - Prettier: single quotes, trailing commas, 80 char width
-- ESLint: extends `@umijs/lint`
-- Stylelint: extends `@umijs/lint`
-- Commits: follows conventional commits (`@commitlint/config-conventional`)
-
-## Adding Components
-
-1. Create `src/ComponentName/index.tsx` with the component
-2. Create `src/ComponentName/index.md` with documentation and demos (use jsx code blocks for live demos)
-3. Export from `src/index.ts`
+- ESLint/Stylelint: extends `@umijs/lint`
+- Commits: conventional commits (`@commitlint/config-conventional`)

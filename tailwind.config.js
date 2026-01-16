@@ -7,5 +7,5 @@ module.exports = {
   // 指定 tailwindcss 的作用范围
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   // 插件
-  plugins: [require('tailwindcss-animate')],
+  // plugins: [require('tailwindcss-animate')],
 };
