@@ -1,11 +1,9 @@
 ---
-title: CSS
 nav:
-  title: 笔记
-  order: 1
   second:
     title: CSS
     order: 2
+title: CSS
 ---
 
 # CSS 笔记

@@ -1,8 +1,11 @@
 ---
-title: 笔记
 nav:
-  title: 笔记
-  order: 1
+  title: Notes
+  order: 0
+group:
+  title: 介绍
+  order: -999
+title: 这是什么？
 ---
 
 # 学习笔记
