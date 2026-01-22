@@ -27,12 +27,18 @@ order: 2
 
 #### 3. IP 地址 (IP Address)
 
-- **小白理解：** 设备在网络上的“地址”。
-  - **`127.0.0.1` / `localhost`：** 特殊地址，代表“我自己”。
-  - **`0.0.0.0`：** 在配置服务时，表示“监听所有可用的 IP 地址”，允许本机、局域网乃至互联网上的其他设备访问。
-  - **局域网 IP (LAN IP)：** `192.168.x.x` 或 `10.x.x.x` 等，你的设备在内部网络中的地址，供同局域网设备访问。
+- **小白理解：** 设备在网络上的"地址"。
+  - **`127.0.0.1` / `localhost`：** 特殊地址，代表"我自己"（IPv4 回环地址）。
+  - **`::1`：** IPv6 的回环地址，等同于 `127.0.0.1`。
+  - **`0.0.0.0`：** 在配置服务时，表示"监听所有可用的 IP 地址"，允许本机、局域网乃至互联网上的其他设备访问。
+  - **`::`：** IPv6 的全零地址，服务器监听时表示"所有 IPv6 地址"。
+  - **局域网 IP (LAN IP)：**
+    - **IPv4**：`192.168.x.x` 或 `10.x.x.x` 等，你的设备在内部网络中的地址。
+    - **IPv6**：`fe80::` 开头的是链路本地地址（Link-Local），仅在同一网段有效；`fd00::` 或 `fc00::` 是唯一本地地址（类似私有 IP）。
   - **广域网 IP (WAN IP)：** 你的网络出口（通常是路由器）在互联网上的地址。由于 NAT 技术，大多数设备并没有独立的公网 IP，而是通过路由器共享一个公网 IP。
 - **为什么重要：** 决定你的服务是只有自己能访问，还是局域网/互联网也能访问。
+
+> 💡 **IPv6 提示**：现代操作系统默认启用 IPv6。在 `ifconfig` 或 `ip addr` 输出中，你会看到 `inet6 fe80::...` 这样的地址。如果你的开发服务器只监听 IPv4（`0.0.0.0`），IPv6 客户端可能无法访问，需要配置服务器同时监听 IPv6（`::`）或使用双栈绑定。
 
 #### 4. DNS (Domain Name System)
 
@@ -364,6 +370,163 @@ alias wn='watch -n 1'
 
 > **快速检查：** 运行 `source ~/.zshrc` 后，如果提示 `command not found: watch`，执行 `brew install watch` 即可。
 
+### 1.2.1 高级配置增强（可选）
+
+如果你需要更健壮的配置（错误处理、颜色输出等），可以将以下函数替换或添加到上述配置中。
+
+```sh
+# ========== 增强版 pport - 带错误处理 ==========
+pport() {
+  local port="${1:?用法: pport <端口号>}"
+
+  # 端口号校验（必须为数字且在有效范围内）
+  if ! [[ "$port" =~ ^[0-9]+$ ]]; then
+    echo "❌ 错误: 端口号必须是数字"
+    return 1
+  fi
+
+  if [ "$port" -lt 1 ] || [ "$port" -gt 65535 ]; then
+    echo "❌ 错误: 端口号必须在 1-65535 之间"
+    return 1
+  fi
+
+  lsof -nP -iTCP:"$port" -sTCP:LISTEN
+}
+
+# ========== 增强版 killport - 带超时和颜色输出 ==========
+killport() {
+  local port="${1:?用法: killport <端口号>}"
+  local timeout="${2:-10}"  # 默认等待确认 10 秒
+  local pids
+
+  # 端口校验
+  if ! [[ "$port" =~ ^[0-9]+$ ]]; then
+    echo "❌ 错误: 端口号必须是数字"
+    return 1
+  fi
+
+  pids=$(lsof -t -iTCP:"$port" -sTCP:LISTEN 2>/dev/null)
+
+  if [ -z "$pids" ]; then
+    echo "✅ 端口 $port 上没有进程在监听"
+    return 0
+  fi
+
+  echo ""
+  echo "🔍 以下进程正在监听端口 $port:"
+  lsof -nP -iTCP:"$port" -sTCP:LISTEN
+  echo ""
+
+  printf '⚠️  确认杀死这些进程? [y/N] (将在 %d 秒后超时) ' "$timeout"
+  read -t "$timeout" -r ok
+
+  # 超时或非 y/Y 均取消
+  if [ $? -ne 0 ] || { [ "$ok" != "y" ] && [ "$ok" != "Y" ]; }; then
+    echo ""
+    echo "❌ 已取消"
+    return 1
+  fi
+
+  echo ""
+  echo "🔄 发送 SIGTERM 信号到: $pids"
+  kill $pids 2>/dev/null
+  sleep 1
+
+  pids=$(lsof -t -iTCP:"$port" -sTCP:LISTEN 2>/dev/null)
+  if [ -n "$pids" ]; then
+    echo "⚡ 进程仍存活，发送 SIGKILL 强制终止: $pids"
+    kill -9 $pids 2>/dev/null
+    sleep 1
+  fi
+
+  echo ""
+  lsof -nP -iTCP:"$port" -sTCP:LISTEN 2>/dev/null || echo "✅ 端口 $port 已释放"
+}
+
+# ========== 增强版 myip - 显示更多信息 ==========
+myip() {
+  local ip
+  ip=$(ipconfig getifaddr en0 2>/dev/null || \
+       ipconfig getifaddr en1 2>/dev/null || \
+       ipconfig getifaddr bridge100 2>/dev/null)
+
+  if [ -n "$ip" ]; then
+    echo "📡 局域网 IP: $ip"
+    # 顺便显示端口访问 URL 提示
+    echo "💡 其他设备可访问: http://$ip:<端口>"
+  else
+    echo "❌ 未找到局域网 IP，请检查网络连接"
+    echo "📝 可尝试: ifconfig | grep 'inet '"
+  fi
+}
+
+# ========== 增强版 cport - 带超时和重试 ==========
+cport() {
+  local host="${1:?用法: cport <主机> <端口>}"
+  local port="${2:?用法: cport <主机> <端口>}"
+  local timeout="${3:-5}"
+
+  # 端口校验
+  if ! [[ "$port" =~ ^[0-9]+$ ]]; then
+    echo "❌ 错误: 端口号必须是数字"
+    return 1
+  fi
+
+  echo "🔌 正在连接 $host:$port (超时 ${timeout}秒)..."
+  timeout "$timeout" nc -vz "$host" "$port"
+  local result=$?
+
+  echo ""
+  if [ $result -eq 0 ]; then
+    echo "✅ 连接成功: $host:$port"
+  elif [ $result -eq 124 ]; then
+    echo "❌ 连接超时: $host:$port"
+  else
+    echo "❌ 连接失败: $host:$port"
+  fi
+  return $result
+}
+
+# ========== 彩色化端口列表 ==========
+alias ports_color='lsof -nP -iTCP -sTCP:LISTEN | awk "NR==1 || /LISTEN/" | GREP_COLOR="01;32" grep --color=always -E "^|:[0-9]+.*LISTEN|"'
+
+# ========== 显示版本信息 ==========
+# 使用这些命令查看工具版本，帮助排查兼容性问题
+show_versions() {
+  echo "🔧 工具版本信息:"
+  echo "   zsh: $(zsh --version)"
+  echo "   lsof: $(lsof -v 2>&1 | head -1)"
+  echo "   nc: $(nc -h 2>&1 | head -1 || nc --version 2>&1 | head -1)"
+  echo "   curl: $(curl --version | head -1)"
+  echo "   dig: $(dig -v | head -1)"
+}
+alias versions=show_versions
+```
+
+**增强功能说明：**
+
+- **错误处理**：端口号非数字时给出友好提示
+- **超时控制**：`killport` 和 `cport` 支持超时设置，避免无限等待
+- **颜色输出**：使用 emoji 和颜色增强可读性
+- **版本检查**：`versions` 命令显示所有工具版本，便于排查兼容性问题
+- **快捷提示**：`myip` 输出同时显示访问 URL 格式提示
+
+**使用示例：**
+
+```bash
+# 带超时的端口测试（3 秒）
+cport api.example.com 443 3
+
+# 查看 IP 时自动生成访问提示
+myip
+# 输出：
+# 📡 局域网 IP: 192.168.5.136
+# 💡 其他设备可访问: http://192.168.5.136:<端口>
+
+# 查看工具版本（排查兼容性）
+versions
+```
+
 ---
 
 ## 2. 问题一：本地开发服务“端口被占用” (EADDRINUSE)
@@ -372,7 +535,26 @@ alias wn='watch -n 1'
 
 **问题分析：** 这个错误非常直接，意味着你想要使用的端口已经被另一个进程占用了。通常是你上次启动的开发服务器没有正常关闭，或者其他应用（如数据库、代理、VPN）占用了该端口。
 
-**诊断路径：从“盲关终端”到“有意识释放端口”**
+### 常见端口冲突速查表
+
+| 端口 | 常见占用者 | 快速解决方案 |
+|------|-----------|-------------|
+| **3000** | React / Rails / Grafana | `killport 3000` 或重启开发服务器 |
+| **4200** | Angular CLI | `killport 4200` |
+| **5000** | Flask / macOS AirPlay Receiver | `killport 5000` 或关闭 AirPlay：系统设置 -> 通用 -> 隔空播放接收器 |
+| **5173** | Vite | `killport 5173` |
+| **8000** | Django / Python HTTP Server | `killport 8000` |
+| **8080** | Tomcat / Webpack / Jenkins | `killport 8080` |
+| **8081** | React Native Metro | `killport 8081` 或 `npx react-native start --reset-cache` |
+| **9000** | PHP-FPM / SonarQube | `killport 9000` |
+| **3306** | MySQL | 检查是否有 MySQL 服务在运行：`brew services list` (macOS) |
+| **5432** | PostgreSQL | 检查是否有 PostgreSQL 服务在运行 |
+| **6379** | Redis | 检查 Redis 服务：`redis-cli ping` |
+| **27017** | MongoDB | 检查 MongoDB 服务 |
+
+> 💡 **macOS 系统端口提示**：端口 5000 和 7000 在 macOS Monterey+ 上默认被 AirPlay Receiver 和 Control Center 占用。如果频繁遇到冲突，建议在系统设置中关闭这些功能，或使用其他端口。
+
+**诊断路径：从"盲关终端"到"有意识释放端口"**
 
 #### 步骤 1：是谁占用了这个端口？ (使用 `pport` / `lsof`)
 
@@ -389,7 +571,9 @@ pport 5173
 - `-n`: 不将 IP 地址转换为主机名，加快速度。
 - `-P`: 不将端口号转换成服务名（如 80 转成 http），我们想看数字。
 - `-iTCP:PORT`: 过滤 TCP 协议，并指定端口号。
-- `-sTCP:LISTEN`: 进一步过滤，只显示处于“监听”状态的连接。
+- `-sTCP:LISTEN`: 进一步过滤，只显示处于"监听"状态的连接。
+
+> 💡 **权限提示**：在某些系统上，查看其他用户的进程可能需要 `sudo` 权限。如果输出为空但确定端口被占用，尝试 `sudo lsof -nP -iTCP:PORT -sTCP:LISTEN`。
 
 **输出解读：**
 
@@ -437,13 +621,45 @@ killport 5173
 5.  最后再次检查端口，确认已释放。
 
 **小技巧：后台作业 (Job Control)**
-很多人习惯为 `npm run dev` 开一个单独终端。其实你可以：
+
+很多人习惯为 `npm run dev` 开一个单独终端。其实你可以使用 Shell 的作业控制功能更高效地管理进程。
+
+**方法一：使用 `Ctrl+Z` 和 `bg`（适合临时切换）**
 
 1.  `npm run dev` (启动服务)
 2.  `Ctrl + Z` (暂停服务，并将其放到后台的 `stopped` 状态)
 3.  `bg` (让最近的后台作业在后台继续运行，变为 `running` 状态)
 4.  `j` (或 `jobs -l`): 查看所有后台作业的列表，比如 `[1] + Running npm run dev`
-5.  `fg %1`: 当你需要看日志或与服务交互时，把作业 1 重新拉回前台 (`fg` 是 foreground)。
+5.  `fg %1`: 当你需要看日志或与服务交互时，把作业 1 重新拉回前台 (`fg` 是 foreground)
+
+**方法二：直接后台启动（使用 `&`）**
+
+```bash
+# 直接在后台启动，输出重定向到文件
+npm run dev > dev.log 2>&1 &
+
+# 查看作业编号
+jobs -l
+
+# 查看日志
+tail -f dev.log
+
+# 停止后台作业
+kill %1  # 或使用具体的 PID
+```
+
+**两种方法的区别：**
+- **`Ctrl+Z` + `bg`**：先在前台启动，需要时可暂停并后台化。灵活但步骤多。
+- **`&` 直接后台**：一步到位，适合长时间运行且不需要频繁查看输出的任务。
+
+**常用作业控制命令速查：**
+- `jobs -l`：列出所有后台作业及 PID
+- `fg %N`：将作业 N 拉回前台
+- `bg %N`：让暂停的作业 N 在后台继续运行
+- `kill %N`：终止作业 N
+- `disown %N`：让作业 N 脱离当前 Shell（关闭终端后继续运行）
+
+> 💡 **注意**：Shell 作业控制仅对当前 Shell 会话有效。如果需要进程在退出 Shell 后继续运行，使用 `nohup` 或 `pm2` 等工具。
 
 ---
 
@@ -498,7 +714,117 @@ devps    # 常见 dev server 进程
 
 结合 PID 和完整命令行，判断是哪个项目的问题。
 
-#### 步骤 3：更深层的排查与优化
+#### 步骤 2.5：查看 TCP 连接状态（高级诊断）
+
+如果你的开发服务器频繁出现连接问题，可以深入查看 TCP 连接状态。
+
+```bash
+# 查看所有 TCP 连接及其状态（macOS）
+lsof -nP -iTCP | awk '{print $NF}' | sort | uniq -c | sort -rn
+
+# 或使用 netstat（跨平台，但在新版 Linux 上已被 ss 替代）
+netstat -an | grep tcp | awk '{print $6}' | sort | uniq -c | sort -rn
+```
+
+**TCP 连接状态速查表**：
+
+| 状态 | 含义 | 常见原因 | 排查建议 |
+|------|------|---------|---------|
+| **LISTEN** | 监听状态，等待连接 | 服务器正常运行 | 这是正常状态 |
+| **ESTABLISHED** | 连接已建立 | 客户端与服务器正常通信 | 正常状态，数量过多可能是高并发或未释放连接 |
+| **TIME_WAIT** | 连接关闭后的等待期 | TCP 四次挥手后的等待阶段（2MSL，约2分钟） | 高并发场景下大量 TIME_WAIT 是正常的，会自动释放 |
+| **CLOSE_WAIT** | 对方关闭连接，本地未关闭 | **可能是资源泄漏**：客户端已关闭，但服务端代码未 close socket | 检查代码是否正确关闭连接，特别是异常处理分支 |
+| **FIN_WAIT_1/2** | 主动关闭连接的一方等待 | 正在关闭连接 | 短暂出现正常，长期存在需检查网络 |
+| **SYN_SENT** | 发送连接请求后等待 | 客户端尝试连接服务器 | 大量此状态说明连接无法建立，检查服务端或网络 |
+| **SYN_RECEIVED** | 服务器收到连接请求 | 服务器等待客户端确认 | 大量此状态可能是 SYN Flood 攻击 |
+
+**实战示例：诊断 CLOSE_WAIT 过多问题**
+
+```bash
+# 1. 统计各状态数量
+lsof -nP -iTCP | grep CLOSE_WAIT | wc -l
+
+# 2. 查看哪个进程产生了大量 CLOSE_WAIT
+lsof -nP -iTCP | grep CLOSE_WAIT | awk '{print $1}' | sort | uniq -c | sort -rn
+
+# 3. 如果是 node 进程，查看具体是哪个服务
+lsof -nP -iTCP | grep CLOSE_WAIT | grep node
+
+# 4. 解决方案：
+#    - 短期：重启该服务
+#    - 长期：检查代码中的 socket/connection 是否在 try-catch-finally 中正确关闭
+```
+
+#### 步骤 3：进程优先级与资源限制（性能调优）
+
+当多个开发任务同时运行时，合理分配资源可以避免系统卡顿。
+
+**查看进程优先级（Nice 值）**
+
+```bash
+# 查看所有 node 进程的优先级
+ps -eo pid,ni,comm | grep node
+
+# 输出示例：
+# PID   NI COMMAND
+# 12345  0 node      # NI=0 是默认优先级
+# 67890 10 node      # NI=10 是降低后的优先级（更"友好"）
+```
+
+**Nice 值说明：**
+- 范围：`-20` (最高优先级) 到 `19` (最低优先级)
+- 默认值：`0`
+- 数值越大，进程越"友好"（nice），优先级越低，获得的 CPU 时间越少
+
+**使用场景：**
+
+```bash
+# 场景1：后台构建任务，不影响前端开发服务器
+nice -n 10 npm run build  # 降低优先级
+
+# 场景2：紧急调试，需要更多 CPU 资源（需要 sudo）
+sudo nice -n -10 npm run dev  # 提高优先级（慎用）
+
+# 场景3：已运行进程动态调整优先级
+renice -n 15 -p 12345  # 将 PID 12345 的优先级降低到 15
+```
+
+**限制 Node.js 内存使用**
+
+```bash
+# 方法1：使用 NODE_OPTIONS 环境变量
+NODE_OPTIONS="--max-old-space-size=2048" npm run dev  # 限制为 2GB
+
+# 方法2：直接在 package.json 中配置
+# "dev": "node --max-old-space-size=2048 server.js"
+
+# 方法3：使用 ulimit 限制虚拟内存（macOS/Linux）
+ulimit -v 2048000  # 限制为约 2GB（单位是 KB）
+npm run dev
+
+# 查看当前限制
+ulimit -a
+```
+
+**PM2 资源管理（生产环境推荐）**
+
+```bash
+# 启动时设置内存上限，超限自动重启
+pm2 start server.js --max-memory-restart 512M
+
+# 设置 CPU 核心数限制
+pm2 start server.js -i 2  # 使用 2 个 CPU 核心
+
+# 监控资源使用
+pm2 monit
+```
+
+**实战建议：**
+- **开发环境**：使用 `nice` 降低构建任务优先级，避免影响实时编译
+- **本地多项目**：为每个项目的 dev server 设置不同的内存限制
+- **测试环境**：使用 PM2 + 内存限制，模拟生产环境资源约束
+
+#### 步骤 4：更深层的排查与优化
 
 - **如果是 `node` / `vite` 占用高 CPU：**
   - 优先怀疑代码逻辑问题，例如死循环渲染、无限请求、定时器未清理。
@@ -629,8 +955,9 @@ cport 192.168.5.136 5173
 如果 `nc` 显示 `Connection timed out`，很大一部分原因可能是你的设备防火墙阻止了外部连接。
 
 - **macOS 防火墙检查：**
-  1.  打开“系统设置” -> “网络” -> “防火墙”。
-  2.  确保防火墙处于关闭状态，或在“选项”中允许了相关应用（如 Node.js）的传入连接，或添加了对你的开发端口的允许规则。
+  1.  **macOS Ventura (13.0) 及以上：** 打开"系统设置" -> "网络" -> "防火墙"。
+  2.  **旧版 macOS：** 打开"系统偏好设置" -> "安全性与隐私" -> "防火墙"。
+  3.  确保防火墙处于关闭状态，或在"选项"中允许了相关应用（如 Node.js）的传入连接，或添加了对你的开发端口的允许规则。
 - **Windows 防火墙检查：**
   1.  打开“控制面板” -> “系统和安全” -> “Windows Defender 防火墙”。
   2.  点击“允许应用通过 Windows Defender 防火墙”，检查你的开发服务器进程是否被允许。
@@ -721,7 +1048,8 @@ dig @8.8.8.8 api.example.com
 如果 DNS 解析结果不对，且你确认域名配置无误，可能是本地 DNS 缓存问题：
 
 - **macOS:** `sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder`
-- **Linux (systemd-resolved):** `sudo systemd-resolve --flush-caches`
+- **Linux (systemd 239+):** `sudo resolvectl flush-caches`
+- **Linux (旧版 systemd):** `sudo systemd-resolve --flush-caches`
 - **Windows:** `ipconfig /flushdns`
 
 #### 步骤 2.5：SSL/TLS 证书检查（排查 HTTPS 证书问题）
@@ -822,6 +1150,45 @@ curl -X POST \
 - `-X POST`: 指定请求方法为 POST。
 - `-H "Content-Type: application/json"`: 设置请求头。
 - `-d 'JSON数据'`: 携带 JSON 数据作为请求体。
+
+##### 4.2.5 检查 HTTP/2 和 HTTP/3 支持
+
+现代 Web 应用越来越多地使用 HTTP/2 和 HTTP/3 协议以提升性能。检查服务器是否支持这些协议：
+
+```bash
+# 检查服务器是否支持 HTTP/2
+curl -I --http2 https://api.example.com
+
+# 强制使用 HTTP/2（如果服务器不支持会失败）
+curl -v --http2-prior-knowledge http://api.example.com
+
+# 检查是否支持 HTTP/3 (QUIC)
+# 注意：需要 curl 7.66.0+ 且编译时启用 HTTP/3 支持
+curl -I --http3 https://api.example.com 2>&1 | grep "HTTP/3"
+```
+
+**输出解读：**
+
+```bash
+# HTTP/2 成功输出示例
+< HTTP/2 200
+< content-type: application/json
+# 注意 "HTTP/2" 而非 "HTTP/1.1"
+
+# HTTP/1.1 回退输出示例
+< HTTP/1.1 200 OK
+# 说明服务器不支持 HTTP/2 或未配置
+```
+
+**为什么关心 HTTP 版本？**
+- **HTTP/2**：多路复用、头部压缩、服务器推送，显著提升性能
+- **HTTP/3**：基于 QUIC（UDP），更低延迟，特别适合移动网络
+- **性能对比**：对于前端资源加载，HTTP/2 比 HTTP/1.1 快 30-50%
+
+**前端开发建议：**
+- 生产环境 API 应启用 HTTP/2（大多数 CDN 和云服务商默认支持）
+- 不再需要域名分片（Domain Sharding）等 HTTP/1.1 时代的优化技巧
+- 使用浏览器开发者工具 Network 面板的 Protocol 列确认实际使用的协议
 
 ##### 4.3 诊断 CORS 问题
 
