@@ -1,43 +1,19 @@
-# @c6i
+P.A.R.A 是什么（你要的“知识库结构”）
 
-[![NPM version](https://img.shields.io/npm/v/@c6i.svg?style=flat)](https://npmjs.org/package/@c6i)
-[![NPM downloads](http://img.shields.io/npm/dm/@c6i.svg?style=flat)](https://npmjs.org/package/@c6i)
+P.A.R.A = 4 个顶层容器：
 
-A react library developed with dumi
+P — Projects 项目：有明确目标、时间范围、会结束
+例：某次项目复盘、面试冲刺（2026 春招）、某个开源仿写、搭一个组件库等
 
-## Usage
+A — Areas 领域：长期维持的责任/能力域，不会“结束”
+例：前端工程化、性能优化、React/Vue 能力、算法基础、写作、职业发展
 
-TODO
+R — Resources 资源：主题资料库，可能以后用得上，但不承担“责任”
+例：代码片段收集、优秀文章、工具用法、读书摘录、各种最佳实践链接
 
-## Options
+A — Archives 归档：结束/不再活跃的项目 & 旧资料
+例：结束的面试冲刺、做完的复盘、过期的读书计划、停更的博客系列
 
-TODO
+一句话规则：
 
-## Development
-
-```bash
-# install dependencies
-$ pnpm install
-
-# develop library by docs demo
-$ pnpm start
-
-# build library source code
-$ pnpm run build
-
-# build library source code in watch mode
-$ pnpm run build:watch
-
-# build docs
-$ pnpm run docs:build
-
-# Locally preview the production build.
-$ pnpm run docs:preview
-
-# check your project for potential problems
-$ pnpm run doctor
-```
-
-## LICENSE
-
-MIT
+“现在要推进的放 Project；长期要维持的放 Area；可能有用的素材放 Resource；不活跃的放 Archive。”

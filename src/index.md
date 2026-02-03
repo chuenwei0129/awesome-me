@@ -1,7 +1,7 @@
 ---
 nav:
   title: Packages
-  order: 0
+  order: -999
 group:
   title: 介绍
   order: -1
